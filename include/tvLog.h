@@ -41,7 +41,7 @@ extern "C"
 #define DEBUG(text, ...) do {\
         printf("%s[%d] - %s: " text, __FUNCTION__, __LINE__, "DEBUG", ##__VA_ARGS__);}while(0);
 #else
-#define DEBUG(text, ...) /** Debug log definition if DEBUG_ENABLED is false
+#define DEBUG(text, ...) /** Debug log definition if DEBUG_ENABLED is false */
 #endif
 
 

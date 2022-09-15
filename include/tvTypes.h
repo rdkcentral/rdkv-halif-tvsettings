@@ -105,7 +105,7 @@ typedef struct {
     int frameHeight; /** frame height of the tv resolution */
     int frameWidth; /** frame width of the tv resolution */
     bool isInterlaced; /** checks whether the tv resolution is interlaced */
-    tvVideoResolution_t resolutionValue; /** represents the tv resolution struct value
+    tvVideoResolution_t resolutionValue; /** represents the tv resolution struct value */
 }tvResolutionParam_t;
 
 /**
