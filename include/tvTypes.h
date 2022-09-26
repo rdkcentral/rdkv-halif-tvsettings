@@ -25,35 +25,29 @@ extern "C"
 {
 #endif
 
-typedef short int tvPictureMode_t; /** picture mode integer struct variable */
-const tvPictureMode_t tvPictureMode_MAX=0xFF; /** Setting the default value of max picture mode to OXFF */
+typedef short int tvPictureMode_t; //!< picture mode integer struct variable 
+const tvPictureMode_t tvPictureMode_MAX=0xFF; //!< Setting the default value of max picture mode to OXFF 
 
-/**
-* A enumeration defining the backlight modes 
-*/
+/* A enumeration defining the backlight modes */
 typedef enum {
-    tvBacklightMode_NONE = 0x00, /** backlight mode - None */
-    tvBacklightMode_MANUAL = 0x01, /** backlight mode - manual */
-    tvBacklightMode_AMBIENT = 0x02, /** backlight mode -ambient */
-    tvBacklightMode_ECO = 0x04, /** backlight mode - eco */
-    tvBacklightMode_INVALID = 0x08 /** backlight mode - invalid */
+    tvBacklightMode_NONE = 0x00, //!< backlight mode - None 
+    tvBacklightMode_MANUAL = 0x01, //!< backlight mode - manual 
+    tvBacklightMode_AMBIENT = 0x02, //!< backlight mode -ambient
+    tvBacklightMode_ECO = 0x04, //!< backlight mode - eco 
+    tvBacklightMode_INVALID = 0x08 //!< backlight mode - invalid 
 }tvBacklightMode_t;
 
-/** 
-* An enumeration defining different HDR video formats 
-*/
+/* An enumeration defining different HDR video formats */
 typedef enum {
-    tvVideoHDRFormat_NONE= 0x00, /** HDR video format - None */
-    tvVideoHDRFormat_SDR = 0x01, /** HDR video format - SDR */
-    tvVideoHDRFormat_HLG = 0x02, /** HDR video format - HLG */
-    tvVideoHDRFormat_HDR10 = 0x04,/** HDR video format - HDR10 */
-    tvVideoHDRFormat_HDR10PLUS = 0x08,/** HDR video fomat - HDR10plus */
-    tvVideoHDRFormat_DV = 0x010,/** HDR video format - DV */
+    tvVideoHDRFormat_NONE= 0x00, //!< HDR video format - None 
+    tvVideoHDRFormat_SDR = 0x01, //!< HDR video format - SDR 
+    tvVideoHDRFormat_HLG = 0x02, //!< HDR video format - HLG 
+    tvVideoHDRFormat_HDR10 = 0x04,//!< HDR video format - HDR10 
+    tvVideoHDRFormat_HDR10PLUS = 0x08,//!< HDR video fomat - HDR10plus 
+    tvVideoHDRFormat_DV = 0x010,//!< HDR video format - DV 
 }tvVideoHDRFormat_t;
 
-/**
-* An enumeration defining different video resolution values 
-*/
+/* An enumeration defining different video resolution values */
 typedef enum {
     tvVideoResolution_NONE, 
     tvVideoResolution_720x240,
@@ -98,19 +92,15 @@ typedef enum {
     tvVideoResolution_4096x2160,
 }tvVideoResolution_t;
 
-/**
-* A structure defining different tv resolution parameters 
-*/
+/* A structure defining different tv resolution parameters */
 typedef struct {
-    int frameHeight; /** frame height of the tv resolution */
-    int frameWidth; /** frame width of the tv resolution */
-    bool isInterlaced; /** checks whether the tv resolution is interlaced */
-    tvVideoResolution_t resolutionValue; /** represents the tv resolution struct value */
+    int frameHeight; //!< frame height of the tv resolution
+    int frameWidth; //!< frame width of the tv resolution 
+    bool isInterlaced; //!< checks whether the tv resolution is interlaced
+    tvVideoResolution_t resolutionValue; //!< represents the tv resolution struct value
 }tvResolutionParam_t;
 
-/**
-* An enumeration defining different types of framerates 
-*/
+/* An enumeration defining different types of framerates */
 typedef enum {
     tvVideoFrameRate_NONE,
     tvVideoFrameRate_24,
@@ -123,9 +113,7 @@ typedef enum {
     tvVideoFrameRate_59dot94,
 }tvVideoFrameRate_t;
 
-/**
-* An enumeration defining different display modes 
-*/
+/* An enumeration defining different display modes */
 typedef enum {
     tvDisplayMode_4x3 = 0,
     tvDisplayMode_16x9,
@@ -137,9 +125,7 @@ typedef enum {
     tvDisplayMode_MAX
 }tvDisplayMode_t;
 
-/**
-* An enumeration defining different color temperature 
-*/
+/* An enumeration defining different color temperature */
 typedef enum {
     tvColorTemp_STANDARD = 0,
     tvColorTemp_WARM,
@@ -148,9 +134,7 @@ typedef enum {
     tvColorTemp_MAX
 }tvColorTemp_t;
 
-/**
-* An enum defining different wakeup source types
-*/
+/* An enum defining different wakeup source types */
 typedef enum {
     tvWakeupSrc_VOICE = 0,
     tvWakeupSrc_PRESENCE_DETECTION,
@@ -164,9 +148,7 @@ typedef enum {
     tvWakeupSrc_MAX
 }tvWakeupSrcType_t;
 
-/**
-* An enumeration defining different parameters in tv data color
-*/
+/* An enumeration defining different parameters in tv data color */
 typedef struct _tvDataColor {
      unsigned int r_gain;
      unsigned int g_gain;
@@ -176,9 +158,7 @@ typedef struct _tvDataColor {
      int b_offset;
 }tvDataColor_t;
 
-/**
-* An enumeration defining different data color for SSM
-*/
+/* An enumeration defining different data color for SSM */
 typedef struct _tvDataColorSSM {
     unsigned int en;
     int r_pre_offset;  // s11.0, range -1024~+1023, default is 0
@@ -192,9 +172,7 @@ typedef struct _tvDataColorSSM {
     int b_post_offset; // s11.0, range -1024~+1023, default is 0
 } tvDataColorSSM_t;
 
-/**
-* An enum defining different types of gains of RGB type
-*/
+/* An enum defining different types of gains of RGB type */
 typedef enum _tvRGBType {
     TYPE_INVALID = -1,
     R_GAIN = 0,
@@ -206,9 +184,7 @@ typedef enum _tvRGBType {
     RGB_TYPE_MAX,
 } tvRGBType_t;
 
-/**
-* An enum defining different component colors
-*/
+/* An enum defining different component colors */
 typedef enum {
     tvDataColor_NONE= 0,
     tvDataColor_RED = 1,
@@ -220,9 +196,7 @@ typedef enum {
     tvDataColor_MAX = 64
 }tvDataComponentColor_t;
 
-/**
-* An enum defining different content format types
-*/
+/* An enum defining different content format types */
 typedef enum {
     tvContentFormatType_NONE= 0x00,
     tvContentFormatType_SDR = 0x01,
@@ -235,9 +209,8 @@ typedef enum {
 
 #ifndef __VE_HDR_TYPE__
 #define __VE_HDR_TYPE__
-/**
-* An enum defining different hdr types
-*/
+
+/* An enum defining different hdr types */
 typedef enum tvhdr_type_e {
     HDR_TYPE_NONE      = 0,
     HDR_TYPE_HDR10     = 1,
@@ -250,9 +223,8 @@ typedef enum tvhdr_type_e {
     HDR_TYPE_MAX,
 } tvhdr_type_t;
 #endif
-/**
-* An enum defining different component color types
-*/
+
+/* An enum defining different component color types */
 typedef enum tvcomponent_color_type_e
 {
     COLOR_ENABLE  = 0,
@@ -264,9 +236,7 @@ typedef enum tvcomponent_color_type_e
     COLOR_YELLOW,
 }tvcomponent_color_type_t;
 
-/**
-* An enum defining different component states
-*/
+/* An enum defining different component states */
 typedef enum tvcomponent_state_e
 {
     COMPONENT_DISABLE = 0,
@@ -274,9 +244,7 @@ typedef enum tvcomponent_state_e
     COMPONENT_RESET,
 }tvcomponent_state_t;
 
-/**
-* An enum defining different CMS tunel
-*/
+/* An enum defining different CMS tunel */
 typedef enum tvCMS_tunel_e 
 {
     COLOR_STATE=0,
@@ -284,9 +252,8 @@ typedef enum tvCMS_tunel_e
     COLOR_SATURATION,
     COLOR_LUMA
 }tvCMS_tunel_t;
-/**
-* An enum defining different types of saving the tv source config
-*/
+
+/* An enum defining different types of saving the tv source config */
 typedef enum tvSourceSaveConfig {
     SOURCE_SAVE_FOR_ALL = 0,
     SOURCE_SAVE_FOR_INDIVIDUAL,
@@ -294,9 +261,7 @@ typedef enum tvSourceSaveConfig {
     SOURCE_SAVE_FOR_MAX
 }tvSourceSaveConfig_t;
 
-/**
-* An enum defining the different types of saving the tv source config for various content format
-*/
+/* An enum defining the different types of saving the tv source config for various content format */
 typedef enum tvSaveFormatsConfig {
     CONTENT_FORMAT_SAVE_FOR_ALL=0,
     CONTENT_FORMAT_SAVE_FOR_CURRENT,
@@ -308,18 +273,14 @@ typedef enum tvSaveFormatsConfig {
     CONTENT_FORMAT_SAVE_MAX
 }tvSaveFormatsConfig_t;
 
-/**
-* An enum defining the different types of saving the pic modes config
-*/
+/* An enum defining the different types of saving the pic modes config */
 typedef enum tvSavePicModesConfig {
     PIC_MODE_SAVE_FOR_ALL=0,
     PIC_MODE_FORMAT_SAVE_FOR_CURRENT,
     PIC_MODE_FORMAT_SAVE_MAX
 }tvSavePicModesConfig_t;
 
-/**
-* An enum defining the PQ parameters Index
-*/
+/* An enum defining the PQ parameters Index */
 typedef enum tvPQParameterIndex {
     PQ_PARAM_BRIGHTNESS  = 0,
     PQ_PARAM_CONTRAST  ,
@@ -336,9 +297,7 @@ typedef enum tvPQParameterIndex {
     PQ_PARAM_HLG_MODE
 }tvPQParameterIndex_t;
 
-/**
-* An enum defining the various dolby modes
-*/
+/* An enum defining the various dolby modes */
 typedef enum {
     tvDolbyMode_Dark=0,
     tvDolbyMode_Bright,
@@ -349,9 +308,8 @@ typedef enum {
     tvMode_Max = 28
 }tvDolbyMode_t;
 
-/**
-* An enum defining the different dimming modes
-*/
+
+/* An enum defining the different dimming modes */
 typedef enum {
   tvDimmingMode_Fixed=0,
   tvDimmingMode_Local,

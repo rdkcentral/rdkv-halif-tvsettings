@@ -28,20 +28,20 @@ extern "C"
 {
 #endif
 
-/** Error Log definition */
+
 #define ERROR(text, ...) do {\
         printf("%s[%d] - %s: " text, __FUNCTION__, __LINE__, "ERROR", ##__VA_ARGS__);}while(0);
-/** INFO log definition */
+
 #define INFO(text, ...) do {\
         printf("%s[%d] - %s: " text, __FUNCTION__, __LINE__, "INFO", ##__VA_ARGS__);}while(0);
 
 //#define DEBUG_ENABLED
 #ifdef DEBUG_ENABLED
-/** Debug log definition */
+
 #define DEBUG(text, ...) do {\
         printf("%s[%d] - %s: " text, __FUNCTION__, __LINE__, "DEBUG", ##__VA_ARGS__);}while(0);
 #else
-#define DEBUG(text, ...) /** Debug log definition if DEBUG_ENABLED is false */
+#define DEBUG(text, ...) 
 #endif
 
 
