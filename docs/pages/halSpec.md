@@ -1,4 +1,3 @@
-@mainpage
 
 # TV Settings HAL Documentation
 
@@ -12,15 +11,15 @@
 
 | Date | Author | Comment | Version |
 | --- | --------- | --- | --- |
-| 10/10/22 | Aishwariya Bhaskar | First Release | 1.0.0 |
+| 16/11/22 | Aishwariya Bhaskar | First Release | 1.0.0 |
 
 Version format to be defined. Proposal: Major.Minor.Doc 
 
 # Description
 
-TV Settings HAL a.k.a Controlsettings-hal is an abstract layer, which will provide API to Modify/Control the Picture quality parameters.
+TV Settings HAL a.k.a Controlsettings-hal is an abstract layer, which will provide API to Modify/Control the Picture quality parameters, dimming modes, auto backlight modes.
 
-![TV Settings HAL diagram](images/tv_settings_hal_architecture.PNG)
+![TV Settings HAL diagram](tv_settings_hal_architecture.png)
 
 TvSettings-hal Initialize the HAL API's with pqmodes for specific platforms and Initiates communication with aml-pqclient.
 Mainly TvSettings-hal API's are used to control the pqparams.
@@ -45,7 +44,7 @@ RDK Middleware has to monitor the response continuosly from the drivers upon req
 TvSettings HAL API will be initialized by Tv Mgr-Plugin module. RDK-V middleware expected to have complete control over the life cycle over the TV Settings HAL module.
  TV Mgr plugin will first initialize by setting all the PQ parameters 
  1. Initialize the TV Settings hal using the function: tvInit (int *) before configuring any parameters using get/set functions. 
- 2. The TV settings hal will set all the PQ parameters for different content format and picture modes from the config file(allmodes.conf) as part of initialization.
+ 2. The TV settings hal will set all the PQ parameters for different content format and picture modes from the tvsettings.ini file as part of initialization. allmodes.conf decides the supported formats,pic modes, dimming modes, resolution etc.,
  3. We can then configure the PQ parameters such as Brightness, Contrast, Hue, ColorTemp, RGB Gain values etc., for different PQ modes using the get/set functions.
  4. We can also reset the parameters to the default value(set by config file) using the reset functions.
  5. Once the required PQ params are configured, we can terminate the tv hal instace using tvTerm().
@@ -90,9 +89,10 @@ All the TV Settings HAL API should return error synchronously as a return argume
 
 ## Persistence Model
 
-TV Settings HAL will initialize the HAL with the parameters present in GENERIC_MODE_CONFIG_FILE(allmodes.conf) .
+TV Settings HAL will initialize the HAL with the parameters present in GENERIC_MODE_CONFIG_FILE(tvsettings.ini) .
 
 The default PQ parameters are kept as a persistent data to set during initialization.
+Every OEM vendor has to define the tvsettings.ini and allmodes.conf in OEM layer.
 
 # Nonfunctional requirements
 
@@ -108,7 +108,7 @@ Make sure TV Settings HAL is not contributing more to memory and CPU utilization
 
 ## Quality Control
 
-There should not be any memory leaks/corruption introduced by HAL and underneath SOC software.
+There should not be any memory leaks/corruption introduced by HAL and underneath SOC software. TVSettings HAL should pass coverity scan verification without any issue.
 
 ## Licensing
 
@@ -129,8 +129,8 @@ Product or platform specific requirements can be handled in TV settings HAL API 
 # Interface API Documentation
 
 Using below mentioned steps  Doxygen documentation can be generated
-1. Run generate_docs.sh located at <component>/docs
-2. Go to <component>/docs/output/html
+1. Run generate_docs.sh located at rdk-components-hal-tvsettings/docs
+2. Go to rdk-components-hal-tvsettings/docs/output/html
 3. index.html will show the documentation
 
 ## Theory of operation and key concepts
@@ -143,11 +143,11 @@ This HAL will then sends the corresponding request to PQ driver and do the neces
 
 #### Sequence Diagram
 
-![TV Settings HAL Init Sequence diagram](images/InitSequence.png)
-![TV Settings HAL Set Sequence diagram](images/SetSequence.png)
-![TV Settings HAL Get Sequence diagram](images/GetSequence.png)
-![TV Settings HAL Reset Sequence diagram](images/ResetSequence.png)
+![TV Settings HAL Init Sequence diagram](InitSequence.png)
+![TV Settings HAL Set Sequence diagram](SetSequence.png)
+![TV Settings HAL Get Sequence diagram](GetSequence.png)
+![TV Settings HAL Reset Sequence diagram](ResetSequence.png)
 
 #### State Diagram
 
-![TV Settings HAL State Diagram](images/state_diagram.PNG)
+![TV Settings HAL State Diagram](state_diagram.png)
