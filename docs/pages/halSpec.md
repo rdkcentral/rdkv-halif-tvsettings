@@ -20,7 +20,7 @@ Version format to be defined. Proposal: Major.Minor.Doc
 
 TV Settings HAL a.k.a Controlsettings-hal is an abstract layer, which will provide API to Modify/Control the Picture quality parameters.
 
-![TV Settings HAL diagram](images/tv_settings_hal_architecture.png)
+![TV Settings HAL diagram](images/tv_settings_hal_architecture.PNG)
 
 TvSettings-hal Initialize the HAL API's with pqmodes for specific platforms and Initiates communication with aml-pqclient.
 Mainly TvSettings-hal API's are used to control the pqparams.
@@ -150,4 +150,4 @@ This HAL will then sends the corresponding request to PQ driver and do the neces
 
 #### State Diagram
 
-![TV Settings HAL State Diagram](state_diagram.png)
+![TV Settings HAL State Diagram](images/state_diagram.PNG)
