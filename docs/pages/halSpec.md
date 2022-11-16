@@ -13,7 +13,6 @@
 | --- | --------- | --- | --- |
 | 16/11/22 | Aishwariya Bhaskar | First Release | 1.0.0 |
 
-Version format to be defined. Proposal: Major.Minor.Doc 
 
 # Description
 
@@ -108,7 +107,8 @@ Make sure TV Settings HAL is not contributing more to memory and CPU utilization
 
 ## Quality Control
 
-There should not be any memory leaks/corruption introduced by HAL and underneath SOC software. TVSettings HAL should pass coverity scan verification without any issue.
+There should not be any memory leaks/corruption introduced by HAL and underneath SOC software. TVSettings HAL should pass coverity scan verification periodically without any issue.
+It should also pass Black duck, CMF approval, copyright checks.
 
 ## Licensing
 
