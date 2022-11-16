@@ -13,7 +13,6 @@
 | --- | --------- | --- | --- |
 | 16/11/22 | Aishwariya Bhaskar | First Release | 1.0.0 |
 
-Version format to be defined. Proposal: Major.Minor.Doc 
 
 # Description
 
