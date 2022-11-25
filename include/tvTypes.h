@@ -280,6 +280,12 @@ typedef enum tvSavePicModesConfig {
     PIC_MODE_FORMAT_SAVE_MAX
 }tvSavePicModesConfig_t;
 
+typedef enum tvSavePicModesConfig {
+    PIC_MODE_SAVE_FOR_ALL=0,
+    PIC_MODE_FORMAT_SAVE_FOR_CURRENT,
+    PIC_MODE_FORMAT_SAVE_FOR_ALL_EXCEPT_GAME,
+    PIC_MODE_FORMAT_SAVE_MAX
+}tvSavePicModesConfig_t;
 /* An enum defining the PQ parameters Index */
 typedef enum tvPQParameterIndex {
     PQ_PARAM_BRIGHTNESS  = 0,
@@ -294,7 +300,8 @@ typedef enum tvPQParameterIndex {
     PQ_PARAM_COLOR_TEMPERATURE	,
     PQ_PARAM_LDIM,
     PQ_PARAM_HDR10_MODE,
-    PQ_PARAM_HLG_MODE
+    PQ_PARAM_HLG_MODE,
+    PQ_PARAM_LOCALDIMMING_LEVEL
 }tvPQParameterIndex_t;
 
 /* An enum defining the various dolby modes */
@@ -305,6 +312,9 @@ typedef enum {
     tvHDR10Mode_Bright,
     tvHLGMode_Dark=6,
     tvHLGMode_Bright,
+    tvDolbyMode_Game=9,
+    tvHDR10Mode_Game,
+    tvHLGMode_Game,
     tvMode_Max = 28
 }tvDolbyMode_t;
 

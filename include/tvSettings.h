@@ -2509,7 +2509,9 @@ void splitstringsandvaluefrombuffer(char *buffer, pic_modes_t *availableModes[],
  * @pre  tvInit() should be called before calling this API.
  */
 tvError_t SetGammaMode(int mode);
-
+tvError_t SetLocalDimmingLevel(int localDimmingLevel);
+tvError_t GetLocalDimmingLevel(int *localDimmingLevel);
+tvError_t SaveLocalDimmingLevel(int sourceInput, int pq_mode,int hdr_type,int value);
 void SwitchEDID(int pqmode);
 tvError_t UpdateEDIDAndSetDimmingLevel(int dimmingLevel);
 void GetLDIMAndEDIDLevel(int dimmingMode,int format,int *dimmingLevel, int *edidLevel);
