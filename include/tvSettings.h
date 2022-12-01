@@ -2509,12 +2509,123 @@ void splitstringsandvaluefrombuffer(char *buffer, pic_modes_t *availableModes[],
  * @pre  tvInit() should be called before calling this API.
  */
 tvError_t SetGammaMode(int mode);
+
+/**
+ * @brief This function sets the gamma mode to driver
+ *
+ * @param[in] localDimmingLevel indicates the local dimming level
+ * @param[out] None
+ *
+ * @return tvERROR_NONE on success
+ * @return tvERROR_GENERAL on general failure 
+ * @return tvERROR_OPERATION_NOT_SUPPORTED on non-supported operation failure
+ * @return tvERROR_INVALID_PARAM on invalid param failure  
+ * @return tvERROR_INVALID_STATE on invalid state failure 
+ * 
+ * @pre  tvInit() should be called before calling this API.
+ */
 tvError_t SetLocalDimmingLevel(int localDimmingLevel);
+
+/**
+ * @brief This function sets the gamma mode to driver
+ *
+ * @param[in] *localDimmingLevel gets the localdimminglevel mode set
+ * @param[out] None
+ *
+ * @return tvERROR_NONE on success
+ * @return tvERROR_GENERAL on general failure 
+ * @return tvERROR_OPERATION_NOT_SUPPORTED on non-supported operation failure
+ * @return tvERROR_INVALID_PARAM on invalid param failure  
+ * @return tvERROR_INVALID_STATE on invalid state failure 
+ * 
+ * @pre  tvInit() should be called before calling this API.
+ */
 tvError_t GetLocalDimmingLevel(int *localDimmingLevel);
+
+/**
+ * @brief This function saves the localdimminglevel for the given sourceInput
+ *
+ * @param[in] sourceInput indicates the sourceInput for which localdimminglevel to be saved
+ * @param[in] pq_mode indicates the pq_mode of the sourceInput
+ * @param[in] hdr_type indicates the hdr type of the sourceInput
+ * @param[in] value indicates the value of the localdimminglevel to be saved.
+ * @param[out] None
+ *
+ * @return tvERROR_NONE on success
+ * @return tvERROR_GENERAL on general failure 
+ * @return tvERROR_OPERATION_NOT_SUPPORTED on non-supported operation failure
+ * @return tvERROR_INVALID_PARAM on invalid param failure  
+ * @return tvERROR_INVALID_STATE on invalid state failure 
+ * 
+ * @pre  tvInit() should be called before calling this API.
+ */
 tvError_t SaveLocalDimmingLevel(int sourceInput, int pq_mode,int hdr_type,int value);
+
+/**
+ * @brief This function switches the edid for given pqmode.
+ *
+ * @param[in] pqmode indicates the pqmode
+ * @param[out] None
+ *
+ * @return tvERROR_NONE on success
+ * @return tvERROR_GENERAL on general failure 
+ * @return tvERROR_OPERATION_NOT_SUPPORTED on non-supported operation failure
+ * @return tvERROR_INVALID_PARAM on invalid param failure  
+ * @return tvERROR_INVALID_STATE on invalid state failure 
+ * 
+ * @pre  tvInit() should be called before calling this API.
+ */
 void SwitchEDID(int pqmode);
+
+/**
+ * @brief This function updates the EDID and dimming level
+ *
+ * @param[in] dimmingLevel indicates the edid and dimming level of the sourceInput
+ * @param[out] None
+ *
+ * @return tvERROR_NONE on success
+ * @return tvERROR_GENERAL on general failure 
+ * @return tvERROR_OPERATION_NOT_SUPPORTED on non-supported operation failure
+ * @return tvERROR_INVALID_PARAM on invalid param failure  
+ * @return tvERROR_INVALID_STATE on invalid state failure 
+ * 
+ * @pre  tvInit() should be called before calling this API.
+ */
 tvError_t UpdateEDIDAndSetDimmingLevel(int dimmingLevel);
+
+/**
+ * @brief This function gets the LDIM and EDID level 
+ *
+ * @param[in] dimmingMode indicates the dimmingMode to be set.
+ * @param[in] format indicates the format
+ * @param[in] dimmingLevel indicates the dimming level.
+ * @param[in] edidLevel indicates the edid level
+ * @param[out] None
+ *
+ * @return tvERROR_NONE on success
+ * @return tvERROR_GENERAL on general failure 
+ * @return tvERROR_OPERATION_NOT_SUPPORTED on non-supported operation failure
+ * @return tvERROR_INVALID_PARAM on invalid param failure  
+ * @return tvERROR_INVALID_STATE on invalid state failure 
+ * 
+ * @pre  tvInit() should be called before calling this API.
+ */
 void GetLDIMAndEDIDLevel(int dimmingMode,int format,int *dimmingLevel, int *edidLevel);
+
+/**
+ * @brief This function gets the Game PQ mode Index.
+ *
+ * @param[in] None
+ * @param[out] None
+ *
+ * @return tvERROR_NONE on success
+ * @return tvERROR_GENERAL on general failure 
+ * @return tvERROR_OPERATION_NOT_SUPPORTED on non-supported operation failure
+ * @return tvERROR_INVALID_PARAM on invalid param failure  
+ * @return tvERROR_INVALID_STATE on invalid state failure 
+ * 
+ * @pre  tvInit() should be called before calling this API.
+ */
 int GetGamePQModeIndex();
 #ifdef __cplusplus
 }
