@@ -274,11 +274,6 @@ typedef enum tvSaveFormatsConfig {
 }tvSaveFormatsConfig_t;
 
 /* An enum defining the different types of saving the pic modes config */
-typedef enum tvSavePicModesConfig {
-    PIC_MODE_SAVE_FOR_ALL=0,
-    PIC_MODE_FORMAT_SAVE_FOR_CURRENT,
-    PIC_MODE_FORMAT_SAVE_MAX
-}tvSavePicModesConfig_t;
 
 typedef enum tvSavePicModesConfig {
     PIC_MODE_SAVE_FOR_ALL=0,
