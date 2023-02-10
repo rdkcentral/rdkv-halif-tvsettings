@@ -139,4 +139,4 @@ This HAL will then sends the corresponding request to Picture Quality driver and
 
 #### State Diagram
 
-![TV Settings HAL State Diagram](images/state_diagram.png)
+![TV Settings HAL State Diagram](images/state_diagram.PNG)
