@@ -6,6 +6,7 @@
 | Date | Author | Comment | Version |
 | --- | --------- | --- | --- |
 | 16/11/22 | Aishwariya Bhaskar | First Release | 1.0.0 |
+| 13/03/23 | Review Team | Edited | 1.0.2 |
 
 ## Acronyms
 
