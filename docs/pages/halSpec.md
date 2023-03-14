@@ -80,8 +80,7 @@ Following non functional requirement must be supported by the TV Settings HAL co
 
 ## Logging and debugging requirements
 
-TV Settings HAL component must log the error and critical info messages which helps to debug/triage the issues and understand the functional flow of the system.
-Debug logs must be disabled by default and enabled when required.
+There is no Logging mechanism handled in TVSetting HAL. As of now inbuild C library output function is used to to dump the TVSetting HAL logs.
 
 ## Memory and performance requirements
 
