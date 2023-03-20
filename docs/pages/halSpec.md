@@ -6,7 +6,7 @@
 | Date | Author | Comment | Version |
 | --- | --------- | --- | --- |
 | 16/11/22 | Aishwariya Bhaskar | First Release | 1.0.0 |
-| 13/03/23 | Review Team | Edited | 1.0.2 |
+| 20/03/23 | Review Team | Edited | 1.0.1 |
 
 ## Acronyms
 
@@ -26,22 +26,19 @@ TV Settings HAL is an abstract layer, which provides APIs to Modify/Control the 
 	
 # Component Runtime Execution Requirements
 
-Once the application is activated, it initialize the TVSettings HAL APIS with picture quality modes for specific platforms and initiates communication with Picture Quality drivers.
-SOC is responsible for handling the PQ settings at the end device as per the request from application via TV Settings HAL.
+Once the application is activated, it initializes the TVSettings HAL APIs with picture quality modes for specific platforms and initiates communication with Picture Quality drivers.
+SOC is responsible for handling the PQ settings as per the request from caller via TV Settings HAL.
 
 ## Initialization and Startup
 
-TvSettings HAL API will be initialized by ControlSettings Thunder plugin.
- 1. TV Settings HAL initialized by Control Setting plugin via tvInit(). 
- 2. The TV Settings HAL get/set methods which will be used by Control Setting plugin to set/get/reset induvidual PQ params.
- 3. The file /etc/tv/allmodes.conf decides the supported formats, picture modes, dimming modes,dvModes,HDRModes,HLGModes, resolution etc., 
- 4. ALS thread using tvsettings-hal to setBacklight() based on room light level.
- 5. Other Picture Quality parameters such as Brightness, Contrast, Hue, ColorTemp, RGB Gain values etc., for different Picture Quality modes can be configured using the TV Setting HAL get/set API's. 
- 6. TV Settings HAL instance can be terminated using tvTerm().
+ 1. The specification of the TV Picure configuration will be defined in a config file which decides supported formats, picture modes, dimming modes, dvModes, HDRModes, HLGModes, resolution etc.
+ 2. TV Settings HAL gets initialized by tvInit() API, which should initialize the parameters in the above config file aswell.
+ 3. The TV Settings HAL get/set methods will be used by caller to set/get/reset individual PQ params. 
+ 5. TV Settings HAL instance can be terminated using tvTerm().
 
 ## Threading Model
 
-TV Setting HAL is allowed to create threads and its thread safe.
+TV Setting HAL is thread safe.
 
 ## Process Model
 
@@ -49,30 +46,28 @@ The interface is expected to support a single instantiation with a single proces
 
 ## Memory Model
 
-The application is responsible to allocate, own the memory and clean up.
+The caller is responsible to allocate, own the memory and clean up.
 
 ## Power Management Requirements
 
-TV Settings HAL does participate in power management. It will cooperate with the Picture Quality Video Drivers for adjusting the Soc Picture Quality settings according to the power mode set.
+TV Settings HAL does participate in power management.
 
 ## Asynchronous Notification Model
 
-The Tv Setting HAL has callback registered for VideoFormatChange, VideoResolutionChange, VideoFrameRateChange. On any update the TV Setting HAL will notify it to the application through Control Setting Thunder Plugin.
+The TV Setting HAL has callback registered for VideoFormatChange, VideoResolutionChange, VideoFrameRateChange. On any update, the TV Setting HAL will notify it to the caller.
 
 ## Blocking calls
 
-There are no blocking calls in TV Settings HAL
+There are no blocking calls in TV Settings HAL.
 
 ## Internal Error Handling
 
-All the TV Settings HAL API must return error synchronously as return argument. HAL is responsible to handle system errors internally(e.g. out of memory).
+All the TV Settings HAL APIs must return error synchronously as return argument. HAL is responsible to handle system errors internally(e.g. out of memory).
 
 ## Persistence Model
 
-Every OEM vendor has to define the tvsettings.ini file name and allmodes.conf file name in OEM layer.
-allmodes.conf contains supported pqmodes/formats etc.
-TV Settings HAL will initialize with the parameters present in tvsettings.ini file.
-
+Every OEM vendor has to define the config file in OEM layer.
+Config file should contain the supported formats, picture modes, dimming modes, dvModes, HDRModes, HLGModes, resolution etc.
 
 # Nonfunctional requirements
 
@@ -80,7 +75,7 @@ Following non functional requirement must be supported by the TV Settings HAL co
 
 ## Logging and debugging requirements
 
-There is no Logging mechanism handled in TVSetting HAL. As of now inbuild C library output function is used to to dump the TVSetting HAL logs.
+There is no Logging mechanism handled in TVSetting HAL. As of now printf() is used to to dump the TVSetting HAL logs.
 
 ## Memory and performance requirements
 
@@ -88,8 +83,11 @@ TV Settings HAL must not contribute to excessive memory and CPU utilization whil
 
 ## Quality Control
 
-TVSettings HAL must pass coverity scan verification periodically without any issue.
-Use memory analysis tools like Valgrind to identify memory leaks/corruption introduced by HAL and underneath SOC software. 
+TV Settings HAL implementation should perform static analysis, our preferred tool is Coverity.
+
+- Have a zero-warning policy with regards to compiling. All warnings should be treated as error.
+- Use of memory analysis tools like Valgrind are encouraged, to identify leaks/corruptions.
+- HAL Tests will endeavour to create worst case scenarios to assist investigations
 
 ## Licensing
 
@@ -97,15 +95,15 @@ TV Settings HAL implementation is expected to get released under the Apache Lice
 
 ## Build Requirements
 
-TV Settings HAL source code must be build under Linux Yocto environment and must be delivered as a shared library.
+TV Settings HAL source code must be built by linking the shared library(libtvsettings-hal.so).
   
 ## Variability Management
 
-Any changes in API must be implemented by all SOC vendor and RDK generic code will be compatible with specific version of TV Settings HAL software.
+Any changes in the APIs should be reviewed and approved by COMCAST.[#TODO]
 
 ## Platform or Product Customization
 
-Product or platform specific requirements can be handled in TV Settings HAL API and the Specifications for respective product can be modified in config file.
+Product or platform specification requirements for a specific product can be handled in TV Settings HAL and modified in the config file.
 
 # Interface API Documentation
 
