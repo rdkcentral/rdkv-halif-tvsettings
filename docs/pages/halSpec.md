@@ -41,7 +41,7 @@ TvSettings HAL API will be initialized by ControlSettings Thunder plugin.
 
 ## Threading Model
 
-TV Setting HAL is not required to be thread safe, implementation is vendor specific.
+TV Setting HAL is allowed to create threads and its thread safe.
 
 ## Process Model
 
