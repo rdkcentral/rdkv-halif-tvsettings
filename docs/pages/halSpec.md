@@ -16,7 +16,6 @@
 4. SOC - System on chip
 5. OEM - Original Equipment Manufacturer
 6. ALS - Auto Light Sensor
-7. CS - Control Setting
 
 ## Description
 
