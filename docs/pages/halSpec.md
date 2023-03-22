@@ -21,7 +21,15 @@
 
 TV Settings HAL is an abstract layer, which provides APIs to Modify/Control the Picture quality parameters, dimming modes and auto backlight modes.
 
-![TV Settings HAL diagram](images/tv_settings_hal_architecture.PNG)
+```mermaid
+%%{ init : { "theme" : "forest", "flowchart" : { "curve" : "linear" }}}%%
+flowchart TD
+Application --> x[TV Setting HAL] 
+x[TV Setting HAL] --> y[Video/PictureQuality Driver]
+style Application fill:#99CCFF,stroke:#333,stroke-width:0.3px
+style y fill:#fc9,stroke:#333,stroke-width:0.3px
+style x fill:#9f9,stroke:#333,stroke-width:0.3px
+```
 	
 # Component Runtime Execution Requirements
 
