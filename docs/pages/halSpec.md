@@ -7,6 +7,7 @@
 | --- | --------- | --- | --- |
 | 16/11/22 | Aishwariya Bhaskar | First Release | 1.0.0 |
 | 20/03/23 | Review Team | Edited | 1.0.1 |
+| 23/03/23 | Thanushree Rajaselvam | Addressed comments | 1.0.2 |
 
 ## Acronyms
 
@@ -38,7 +39,7 @@ SOC is responsible for handling the PQ settings as per the request from caller v
 
 ## Initialization and Startup
 
- 1. The specification of the TV Picure configuration will be defined in a config file which decides supported formats, picture modes, dimming modes, dvModes, HDRModes, HLGModes, resolution etc.
+ 1. The specification of the TV Picure configuration will be defined in a config file(sample provided in config folder) which decides supported formats, picture modes, dimming modes, dvModes, HDRModes, HLGModes, resolution etc.
  2. TV Settings HAL gets initialized by tvInit() API, which should initialize the parameters in the above config file aswell.
  3. The TV Settings HAL get/set methods will be used by caller to set/get/reset individual PQ params. 
  5. TV Settings HAL instance can be terminated using tvTerm().
@@ -106,7 +107,7 @@ TV Settings HAL source code must be built by linking the shared library(libtvset
   
 ## Variability Management
 
-Any changes in the APIs should be reviewed and approved by COMCAST.[#TODO]
+Any changes in the APIs should be reviewed and approved by COMCAST.
 
 ## Platform or Product Customization
 
@@ -114,7 +115,7 @@ Product or platform specification requirements for a specific product can be han
 
 # Interface API Documentation
 
-The application will allocate and own the memory and is responsible for clean up.
+API documentation will be provided.
 
 ## Theory of operation and key concepts
 
@@ -126,9 +127,13 @@ The application will allocate and own the memory and is responsible for clean up
 
 #### Sequence Diagram
 
-![TV Settings HAL Init Sequence diagram](images/InitSequence.png)
-![TV Settings HAL Set Sequence diagram](images/SetSequence.png)
-![TV Settings HAL Get Sequence diagram](images/GetSequence.png)
+```mermaid
+sequenceDiagram
+Application ->> TV setting HAL:request
+TV setting HAL ->> Driver:request
+Driver ->> TV setting HAL:success/failure
+TV setting HAL ->> Application:success/failure
+```
 ![TV Settings HAL Reset Sequence diagram](images/ResetSequence.png)
 
 #### State Diagram
