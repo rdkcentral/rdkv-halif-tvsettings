@@ -134,8 +134,13 @@ TV setting HAL ->> Driver:request
 Driver ->> TV setting HAL:success/failure
 TV setting HAL ->> Application:success/failure
 ```
-![TV Settings HAL Reset Sequence diagram](images/ResetSequence.png)
 
 #### State Diagram
 
-![TV Settings HAL State Diagram](images/state_diagram.PNG)
+```mermaid
+stateDiagram-v2
+    [*] --> Configured: Initialize Picture Quality params
+    Configured --> Control: Set/get/reset PQ params
+    Control --> Validate: Recieve response from driver
+    Validate --> Configured
+```
