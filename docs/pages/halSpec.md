@@ -5,18 +5,21 @@
 
 | Date | Author | Comment | Version |
 | --- | --------- | --- | --- |
-| 16/11/22 | Aishwariya Bhaskar | First Release | 1.0.0 |
-| 20/03/23 | Review Team | Edited | 1.0.1 |
+| 24/03/23 | Review Team | Edited | 1.0.3 |
 | 23/03/23 | Thanushree Rajaselvam | Addressed comments | 1.0.2 |
+| 20/03/23 | Review Team | Edited | 1.0.1 |
+| 16/11/22 | Aishwariya Bhaskar | First Release | 1.0.0 |
 
-## Acronyms
+## Acronyms #TODO: convert to table
 
-1. CPU - Central Processing Unit
-2. HAL - Hardware Abstraction layer
-3. PQ - Picture Quality
-4. SOC - System on chip
-5. OEM - Original Equipment Manufacturer
-6. ALS - Auto Light Sensor
+| Acronym | Expansion |
+| --- | --------- |
+| CPU| Central Processing Unit |
+| HAL| Hardware Abstraction layer |
+| PQ| Picture Quality |
+| SOC| System on chip |
+| OEM| Original Equipment Manufacturer |
+| ALS| Auto Light Sensor |
 
 ## Description
 
@@ -25,28 +28,26 @@ TV Settings HAL is an abstract layer, which provides APIs to Modify/Control the 
 ```mermaid
 %%{ init : { "theme" : "forest", "flowchart" : { "curve" : "linear" }}}%%
 flowchart TD
-Application --> x[TV Setting HAL] 
+Caller --> x[TV Setting HAL] 
 x[TV Setting HAL] --> y[Video/PictureQuality Driver]
-style Application fill:#99CCFF,stroke:#333,stroke-width:0.3px
+style Caller fill:#99CCFF,stroke:#333,stroke-width:0.3px
 style y fill:#fc9,stroke:#333,stroke-width:0.3px
 style x fill:#9f9,stroke:#333,stroke-width:0.3px
 ```
 	
 # Component Runtime Execution Requirements
 
-Once the application is activated, it initializes the TVSettings HAL APIs with picture quality modes for specific platforms and initiates communication with Picture Quality drivers.
-SOC is responsible for handling the PQ settings as per the request from caller via TV Settings HAL.
-
 ## Initialization and Startup
 
- 1. The specification of the TV Picure configuration will be defined in a config file(sample provided in config folder) which decides supported formats, picture modes, dimming modes, dvModes, HDRModes, HLGModes, resolution etc.
+The caller will initialize the TVSettings HAL APIs with picture quality modes for specific platforms and initiates communication with Picture Quality drivers.
+
+ 1. The specification of the TV Picure configuration will be defined in a config file([allmodes_template.conf](../../configs/allmodes_template.conf)) which decides supported formats, picture modes, dimming modes, dvModes, HDRModes, HLGModes, resolution etc.
  2. TV Settings HAL gets initialized by tvInit() API, which should initialize the parameters in the above config file aswell.
- 3. The TV Settings HAL get/set methods will be used by caller to set/get/reset individual PQ params. 
- 5. TV Settings HAL instance can be terminated using tvTerm().
 
-## Threading Model
+## Threading Model #TBC
 
-TV Setting HAL is thread safe.
+TV Setting HAL is not required to be thread safe. 
+There are no constraints on thread creation or signal handling. 
 
 ## Process Model
 
@@ -54,11 +55,11 @@ The interface is expected to support a single instantiation with a single proces
 
 ## Memory Model
 
-The caller is responsible to allocate, own the memory and clean up.
+The caller is responsible for allocating and cleaning up any memory used.
 
 ## Power Management Requirements
 
-TV Settings HAL does participate in power management.
+TV Settings HAL is not required to participate in power management.
 
 ## Asynchronous Notification Model
 
@@ -119,11 +120,27 @@ API documentation will be provided.
 
 ## Theory of operation and key concepts
 
-- The TV Settings HAL acts as interface between the TV ControlSettings Thunder Plugin and Picture Quality drivers for handling various functionalities related to Picture Quality settings such as Brightness, Contrast, Hue, Saturation, Luminence, White Balance, Sharpness, Color Temperature, Backlight, Aspect Ratio etc., 
-- The setting chage request using remote is sent to application and it navigates as a curl request to Control Setting Thunder plugin which then extracts the response and sends to TV Settings HAL.
-- TThis HAL will then sends the corresponding request to driver to perform the necessary operation
+This interface handles various functionalities related to Picture Quality settings such as:
 
-### UML Diagrams
+- Brightness
+- Contrast
+- Hue
+- Saturation
+- White Balance
+- Sharpness
+- Color Temperature
+- Backlight 
+- Aspect Ratio
+- Dimming Modes
+
+There are other platform specific Picture Quality settings that would be managed by this interface such as:
+
+- CMS
+- Dolby Vision
+- HDR
+- HLG
+
+### Diagrams
 
 #### Sequence Diagram
 
