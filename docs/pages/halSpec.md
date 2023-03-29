@@ -63,19 +63,19 @@ TV Settings HAL is not required to participate in power management.
 
 ## Asynchronous Notification Model
 
-The TV Setting HAL has callback registered for VideoFormatChange, VideoResolutionChange, VideoFrameRateChange. On any update, the TV Setting HAL will notify it to the caller.
+This interface requires callback notification registration for VideoFormatChange, VideoResolutionChange, VideoFrameRateChange. The caller must return the callback context as fast as possible and will not block.
 
 ## Blocking calls
 
-There are no blocking calls in TV Settings HAL.
+There are no blocking calls in this interface.
 
 ## Internal Error Handling
 
-All the TV Settings HAL APIs must return error synchronously as return argument. HAL is responsible to handle system errors internally(e.g. out of memory).
+All APIs must return error synchronously as return argument. The interface is responsible to handle system errors internally(e.g. out of memory).
 
 ## Persistence Model
 
-Every OEM vendor has to define the config file in OEM layer.
+Each vendor needs to define their own config file which is expected to be stored in rootfs and this must be a readonly.
 Config file should contain the supported formats, picture modes, dimming modes, dvModes, HDRModes, HLGModes, resolution etc.
 
 # Nonfunctional requirements
@@ -84,39 +84,39 @@ Following non functional requirement must be supported by the TV Settings HAL co
 
 ## Logging and debugging requirements
 
-There is no Logging mechanism handled in TVSetting HAL. As of now printf() is used to to dump the TVSetting HAL logs.
+There is no logging mechanism handled and printf() must be used.
 
 ## Memory and performance requirements
 
-TV Settings HAL must not contribute to excessive memory and CPU utilization while configuring Picture Quality settings.
+This interface is required not to cause excessive memory and CPU utilization.
 
 ## Quality Control
 
-TV Settings HAL implementation should perform static analysis, our preferred tool is Coverity.
-
+- This interface is required to perform static analysis, our preferred tool is Coverity.
 - Have a zero-warning policy with regards to compiling. All warnings should be treated as error.
 - Use of memory analysis tools like Valgrind are encouraged, to identify leaks/corruptions.
 - HAL Tests will endeavour to create worst case scenarios to assist investigations
+- Copyright validation is required to be performed, e.g.: Black duck, FossID.
 
 ## Licensing
 
-TV Settings HAL implementation is expected to get released under the Apache License 2.0. 
+This interface is expected to get released under the Apache License 2.0. 
 
 ## Build Requirements
 
-TV Settings HAL source code must be built by linking the shared library(libtvsettings-hal.so).
+TV Settings HAL source code must build into a shared library and must be named as libtvsettings-hal.so.
   
 ## Variability Management
 
-Any changes in the APIs should be reviewed and approved by COMCAST.
+Any changes in the APIs should be reviewed and approved by component architects.
 
 ## Platform or Product Customization
 
-Product or platform specification requirements for a specific product can be handled in TV Settings HAL and modified in the config file.
+Product or platform specification requirements will be handled in vendor specific config file.
 
 # Interface API Documentation
 
-API documentation will be provided.
+API documentation will be provided by Doxygen.
 
 ## Theory of operation and key concepts
 
@@ -133,7 +133,7 @@ This interface handles various functionalities related to Picture Quality settin
 - Aspect Ratio
 - Dimming Modes
 
-There are other platform specific Picture Quality settings that would be managed by this interface such as:
+There are other platform specific Picture Quality settings that can be managed by this interface such as:
 
 - CMS
 - Dolby Vision
@@ -142,17 +142,17 @@ There are other platform specific Picture Quality settings that would be managed
 
 ### Diagrams
 
-#### Sequence Diagram
+#### Operational Call Diagram
 
 ```mermaid
 sequenceDiagram
-Application ->> TV setting HAL:request
+Caller ->> TV setting HAL:request
 TV setting HAL ->> Driver:request
 Driver ->> TV setting HAL:success/failure
-TV setting HAL ->> Application:success/failure
+TV setting HAL ->> Caller:success/failure
 ```
 
-#### State Diagram
+#### Functional Diagram
 
 ```mermaid
 stateDiagram-v2
