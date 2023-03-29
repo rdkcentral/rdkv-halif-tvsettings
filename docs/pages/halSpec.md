@@ -10,9 +10,8 @@
 
 ## Table of Contents
 
-- [Overview](#overview)
-  - [Acronyms, Terms and Abbreviations](#acronyms-terms-and-abbreviations)
-  - [Description](#description)
+- [Acronyms, Terms and Abbreviations](#acronyms-terms-and-abbreviations)
+- [Description](#description)
 - [Component Runtime Execution Requirements](#component-runtime-execution-requirements)
   - [Initialization and Startup](#initialization-and-startup)
   - [Threading Model](#threading-model)
@@ -37,9 +36,7 @@
     - [Operational Call Diagram](#operational-call-diagram)
     - [Functional Diagram](#functional-diagram)
 
-## Overview
-
-### Acronyms, Terms and Abbreviations
+## Acronyms, Terms and Abbreviations
 
 - `CPU` - Central Processing Unit
 - `HAL` - Hardware Abstraction layer
@@ -49,7 +46,7 @@
 - `ALS` - Auto Light Sensor
 - `API` - Application Programming Interface
 
-### Description
+## Description
 
 TV Settings `HAL` is an abstract layer, which provides `APIs` to Modify/Control the Picture quality parameters, dimming modes and auto backlight modes.
 
@@ -123,8 +120,9 @@ This interface is required not to cause excessive memory and CPU utilization.
 - This interface is required to perform static analysis, our preferred tool is Coverity.
 - Have a zero-warning policy with regards to compiling. All warnings should be treated as error.
 - Use of memory analysis tools like Valgrind are encouraged, to identify leaks/corruptions.
-- HAL Tests will endeavour to create worst case scenarios to assist investigations
+- HAL Tests will endeavour to create worst case scenarios to assist investigations.
 - Copyright validation is required to be performed, e.g.: Black duck, FossID.
+- Improvements by any party to the testing suite are required to be fed back.
 
 ### Licensing
 
@@ -144,7 +142,7 @@ Product or platform specification requirements will be handled in vendor specifi
 
 ## Interface API Documentation
 
-`API` documentation will be provided by Doxygen.
+`API` documentation will be provided by Doxygen which will be generated from the header file(s).
 
 ### Theory of operation and key concepts
 
