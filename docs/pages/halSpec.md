@@ -41,13 +41,13 @@
 
 ### Acronyms, Terms and Abbreviations
 
-`CPU` - Central Processing Unit
-`HAL` - Hardware Abstraction layer
-`PQ`  - Picture Quality
-`SOC` - System on chip
-`OEM` - Original Equipment Manufacturer
-`ALS` - Auto Light Sensor
-`API` - Application Programming Interface
+- `CPU` - Central Processing Unit
+- `HAL` - Hardware Abstraction layer
+- `PQ`  - Picture Quality
+- `SOC` - System on chip
+- `OEM` - Original Equipment Manufacturer
+- `ALS` - Auto Light Sensor
+- `API` - Application Programming Interface
 
 ### Description
 
