@@ -689,8 +689,8 @@ tvError_t SetColorTemp_Rgain(tvColorTemp_t colorTemp, int rgain);
 /**
  * @brief This function gets the while balance Red Gain
  *
- * @param[in] colorTemp indicates the colorTemp of TV color.
- * @param[out] rgain indicates the  white balance red gain
+ * @param[in] colorTemp - indicates the colorTemp of TV color.
+ * @param[out] rgain - indicates the  white balance red gain
  *
  * @return tvError_t
  * @retval tvERROR_NONE on success
@@ -707,9 +707,8 @@ tvError_t GetColorTemp_Rgain(tvColorTemp_t colorTemp, int* rgain);
 /**
  * @brief This function sets the white balance green gain.
  *
- * @param[in] colorTemp indicates the color temperature of the TV.
- * @param[in] ggain indicates the white balance green gain.
- * @param[out] None
+ * @param[in] colorTemp - indicates the color temperature of the TV.
+ * @param[in] ggain - indicates the white balance green gain.
  *
  * @return tvError_t
  * @retval tvERROR_NONE on success
@@ -726,8 +725,8 @@ tvError_t SetColorTemp_Ggain(tvColorTemp_t colorTemp, int ggain);
 /**
  * @brief This function gets the green gain of color.
  *
- * @param[in] colorTemp indicates the color temperature of the TV.
- * @param[out] ggain returns the green gain  color set for white balance.
+ * @param[in] colorTemp - indicates the color temperature of the TV.
+ * @param[out] ggain - returns the green gain  color set for white balance.
  *
  * @return tvError_t
  * @retval tvERROR_NONE on success
@@ -744,9 +743,8 @@ tvError_t GetColorTemp_Ggain(tvColorTemp_t colorTemp, int* ggain);
 /**
  * @brief This function sets the white balance blue gain.
  *
- * @param[in] colorTemp indicates the color temperature of the TV.
- * @param[in] ggain indicates the white balance blue gain.
- * @param[out] None
+ * @param[in] colorTemp - indicates the color temperature of the TV.
+ * @param[in] ggain - indicates the white balance blue gain.
  *
  * @return tvError_t
  * @retval tvERROR_NONE on success
@@ -762,8 +760,8 @@ tvError_t SetColorTemp_Bgain(tvColorTemp_t colorTemp, int bgain);
 /**
  * @brief This function gets the blue gain of color.
  *
- * @param[in] colorTemp indicates the color temperature of the TV.
- * @param[out] ggain returns the blue gain  color set for white balance.
+ * @param[in] colorTemp - indicates the color temperature of the TV.
+ * @param[out] ggain - returns the blue gain  color set for white balance.
  *
  * @return tvError_t
  * @retval tvERROR_NONE on success
@@ -779,9 +777,8 @@ tvError_t GetColorTemp_Bgain(tvColorTemp_t colorTemp, int* bgain);
 /**
  * @brief This function sets the whitebalance Red post offset
  *
- * @param[in] colorTemp indicates the color temperature of the TV.
- * @param[in] rpostoffset sets the red post offset 
- * @param[out] None
+ * @param[in] colorTemp - indicates the color temperature of the TV.
+ * @param[in] rpostoffset - sets the red post offset 
  *
  * @return tvError_t
  * @retval tvERROR_NONE on success
@@ -798,8 +795,8 @@ tvError_t SetColorTemp_R_post_offset(tvColorTemp_t colorTemp, int rpostoffset);
 /**
  * @brief This function gets the Red post offset of white balance
  *
- * @param[in] colorTemp indicates the color temperature of the TV.
- * @param[out] rpostoffset returns the red post offset set for white balance.
+ * @param[in] colorTemp - indicates the color temperature of the TV.
+ * @param[out] rpostoffset - returns the red post offset set for white balance.
  *
  * @return tvError_t
  * @retval tvERROR_NONE on success
@@ -816,8 +813,8 @@ tvError_t GetColorTemp_R_post_offset(tvColorTemp_t colorTemp, int* rpostoffset);
 /**
  * @brief This function sets the whitebalance Green post offset
  *
- * @param[in] colorTemp indicates the color temperature of the TV.
- * @param[in] gpostoffset sets the green post offset 
+ * @param[in] colorTemp - indicates the color temperature of the TV.
+ * @param[in] gpostoffset - sets the green post offset 
  * @param[out] None
  *
  * @return tvError_t
@@ -835,8 +832,8 @@ tvError_t SetColorTemp_G_post_offset(tvColorTemp_t colorTemp, int gpostoffset);
 /**
  * @brief This function gets the green post offset of white balance
  *
- * @param[in] colorTemp indicates the color temperature of the TV.
- * @param[out] gpostoffset returns the green post offset set for white balance.
+ * @param[in] colorTemp - indicates the color temperature of the TV.
+ * @param[out] gpostoffset - returns the green post offset set for white balance.
  *
  * @return tvError_t
  * @retval tvERROR_NONE on success
@@ -853,8 +850,8 @@ tvError_t GetColorTemp_G_post_offset(tvColorTemp_t colorTemp, int* gpostoffset);
 /**
  * @brief This function sets the whitebalance Blue post offset
  *
- * @param[in] colorTemp indicates the color temperature of the TV.
- * @param[in] bpostoffset sets the blue post offset 
+ * @param[in] colorTemp - indicates the color temperature of the TV.
+ * @param[in] bpostoffset - sets the blue post offset 
  * @param[out] None
  *
  * @return tvError_t
@@ -872,8 +869,8 @@ tvError_t SetColorTemp_B_post_offset(tvColorTemp_t colorTemp, int bpostoffset);
 /**9i-[p0p/']
  * @brief This function gets the blue post offset of white balance
  *
- * @param[in] colorTemp indicates the color temperature of the TV.
- * @param[out] bpostoffset returns the blue post offset set for white balance.
+ * @param[in] colorTemp - indicates the color temperature of the TV.
+ * @param[out] bpostoffset - returns the blue post offset set for white balance.
  *
  * @return tvError_t
  * @retval tvERROR_NONE on success
@@ -891,8 +888,8 @@ tvError_t GetColorTemp_B_post_offset(tvColorTemp_t colorTemp, int* bpostoffset);
  * @brief This function get the picture mode from the driver
  *
  * @param[in] None
- * @param[out] pictureModes returns the list of available picture modes of type tvPictureMode_t
- * @param[out] count returns the number of available picture modes
+ * @param[out] pictureModes - returns the list of available picture modes of type tvPictureMode_t
+ * @param[out] count - returns the number of available picture modes
  *
  * @return tvError_t
  * @retval tvERROR_NONE on success
@@ -908,8 +905,7 @@ tvError_t GetTVSupportedPictureModes(pic_modes_t *pictureModes[],unsigned short 
 /**
  * @brief This function register a callback for video format update
  *
- * @param[in] cbData callback function
- * @param[out] None
+ * @param[in] cbData - callback function
  *
  * @return tvError_t
  * @retval tvERROR_NONE on success
@@ -932,8 +928,7 @@ typedef struct
 /**
  * @brief This function register a callback for video resolution update
  *
- * @param[in] cbData callback function
- * @param[out] None
+ * @param[in] cbData - callback function
  *
  * @return void
  * 
@@ -962,9 +957,8 @@ void RegisterVideoFrameRateChangeCB(tvVideoFrameRateCallbackData& cbData);
 /**
  * @brief This function returns the supported DV modes.
  *
- * @param[in] None
- * @param[out] dvModes[] returns the list of available DV modes.
- * @param[out] count returns the number  of available DV modes.
+ * @param[out] dvModes[] - returns the list of available DV modes.
+ * @param[out] count - returns the number  of available DV modes.
  *
  * @return tvError_t
  * @retval tvERROR_NONE on success
@@ -980,8 +974,7 @@ tvError_t GetTVSupportedDVModes(pic_modes_t *dvModes[],unsigned short *count);
 /**
  * @brief This function sets the Dolby vision mode
  *
- * @param[in] dolbyMode indicates the dolbymode to be set on TV.
- * @param[out] None
+ * @param[in] dolbyMode - indicates the dolbymode to be set on TV.
  *
  * @return tvError_t
  * @retval tvERROR_NONE on success
@@ -999,7 +992,7 @@ tvError_t SetTVDolbyVisionMode(const char * dolbyMode);
  * @brief This function returns the dolbymode currently set on TV
  *
  * @param[in] None
- * @param[out] dolbyMode returns the dolby mode currently set
+ * @param[out] dolbyMode - returns the dolby mode currently set
  *
  * @return tvError_t
  * @retval tvERROR_NONE on success
@@ -1016,8 +1009,7 @@ tvError_t GetTVDolbyVisionMode(char *dolbyMode);
 /**
  * @brief This function sets the given hlg mode to TV.
  *
- * @param[in] hlgmode indicates the hlgmode to be set.
- * @param[out] None
+ * @param[in] hlgmode - indicates the hlgmode to be set.
  *
  * @return tvError_t
  * @retval tvERROR_NONE on success
@@ -1034,8 +1026,7 @@ tvError_t SetTVHLGMode(const char * hlgMode);
 /**
  * @brief This function sets the given hdr10 mode to TV.
  *
- * @param[in] hdr10mode indicates the required hdr10mode to be set.
- * @param[out] None
+ * @param[in] hdr10mode - indicates the required hdr10mode to be set.
  *
  * @return tvError_t
  * @retval tvERROR_NONE on success
@@ -1053,9 +1044,9 @@ tvError_t SetTVHDR10Mode(const char * hdr10Mode);
  * @brief This function returns the HLD mode currently set
  *
  * @param[in] None
- * @param[out] hlgMode returns the current hlgmode set.
+ * @param[out] hlgMode - returns the current hlgmode set.
  *
- * @retval tvError_t
+ * @return tvError_t
  * @retval tvERROR_NONE on success
  * @retval tvERROR_GENERAL on general failure 
  * @retval tvERROR_OPERATION_NOT_SUPPORTED on non-supported operation failure
@@ -1071,8 +1062,9 @@ tvError_t GetTVHLGMode(char *hlgMode);
  * @brief This function returns the current HDR10mode set.
  *
  * @param[in] None
- * @param[out] hdr10Mode returns the current hdr10Mode set.
+ * @param[out] hdr10Mode - returns the current hdr10Mode set.
  *
+ * @return tvError_t
  * @retval tvERROR_NONE on success
  * @retval tvERROR_GENERAL on general failure 
  * @retval tvERROR_OPERATION_NOT_SUPPORTED on non-supported operation failure
@@ -1088,8 +1080,8 @@ tvError_t GetTVHDR10Mode(char *hdr10Mode);
  * @brief This function returns the supported HLG modes from TV
  *
  * @param[in] None
- * @param[out] dvModes returns the list of supported HLG modes.
- * @param[out] count returns the number of supported HLG modes.
+ * @param[out] dvModes - returns the list of supported HLG modes.
+ * @param[out] count - returns the number of supported HLG modes.
  *
  * @return tvError_t
  * @retval tvERROR_NONE on success
@@ -1106,8 +1098,8 @@ tvError_t GetTVSupportedHLGModes(pic_modes_t *dvModes[],unsigned short *count);
  * @brief This function returns the supported HDR10modes in TV.
  *
  * @param[in] None
- * @param[out] dvModes returns the list of supported hdr10modes.
- * @param[out] count returns the number of supported hdr10modes.
+ * @param[out] dvModes - returns the list of supported hdr10modes.
+ * @param[out] count - returns the number of supported hdr10modes.
  *
  * @return tvError_t
  * @retval tvERROR_NONE on success
@@ -1122,8 +1114,7 @@ tvError_t GetTVSupportedHDR10Modes(pic_modes_t *dvModes[],unsigned short *count)
 
 /**
  * @brief This function sets the dynamic contrast mode
- * @param[in] dynamicContrastEnable dynamic contrast mode to be set.
- * @param[out] None
+ * @param[in] dynamicContrastEnable - dynamic contrast mode to be set.
  *
  * @return tvError_t
  * @retval tvERROR_NONE on success
@@ -1141,7 +1132,7 @@ tvError_t SetDynamicContrast(const char *dynamicContrastEnable);
  * @brief This function returns whether dynamic contrast mode currently set or not
  *
  * @param[in] None
- * @param[out] isDynamicContrastEnabled returns the string disabled/enabled for dynamic contrast mode.
+ * @param[out] isDynamicContrastEnabled - returns the string disabled/enabled for dynamic contrast mode.
  *
  * @return tvError_t
  * @retval tvERROR_NONE on success
@@ -1158,11 +1149,10 @@ tvError_t GetDynamicContrast(char *isDynamicContrastEnabled);
 /**
  * @brief This function sets the R gain on White Balanace for given source.
  *
- * @param[in] colorTemp indicates the colorTemp
- * @param[in] rgain red gain on white balance
- * @param[in] sourceId source ID of the source for which red gain to be set
- * @param[in] saveOnly indicates whether the parameter to be saved.
- * @param[out] None
+ * @param[in] colorTemp - indicates the colorTemp
+ * @param[in] rgain red - gain on white balance
+ * @param[in] sourceId - source ID of the source for which red gain to be set
+ * @param[in] saveOnly - indicates whether the parameter to be saved.
  *
  * @return tvError_t
  * @retval tvERROR_NONE on success
@@ -1178,9 +1168,9 @@ tvError_t SetColorTemp_Rgain_onSource(tvColorTemp_t colorTemp, int rgain,int sou
 /**
  * @brief This function Gets the R gain on White Balanace for given source.
  *
- * @param[in] colorTemp indicates the colorTemp
- * @param[in] sourceId source ID of the source for which red gain to be set
- * @param[out] rgain returns the R gain on white balance.
+ * @param[in] colorTemp - indicates the colorTemp
+ * @param[in] sourceId - source ID of the source for which red gain to be set
+ * @param[out] rgain - returns the R gain on white balance.
  *
  * @return tvError_t
  * @retval tvERROR_NONE on success
@@ -1195,11 +1185,10 @@ tvError_t GetColorTemp_Rgain_onSource(tvColorTemp_t colorTemp, int* rgain,int so
 /**
  * @brief This function sets the G gain on White Balanace for given source.
  *
- * @param[in] colorTemp indicates the colorTemp
- * @param[in] ggain green gain on white balance
- * @param[in] sourceId source ID of the source for which green gain to be set
- * @param[in] saveOnly indicates whether the parameter to be saved.
- * @param[out] None
+ * @param[in] colorTemp - indicates the colorTemp
+ * @param[in] ggain green - gain on white balance
+ * @param[in] sourceId - source ID of the source for which green gain to be set
+ * @param[in] saveOnly - indicates whether the parameter to be saved.
  *
  * @return tvError_t
  * @retval tvERROR_NONE on success
@@ -1215,9 +1204,9 @@ tvError_t SetColorTemp_Ggain_onSource(tvColorTemp_t colorTemp, int ggain,int sou
 /**
  * @brief This function Gets the G gain on White Balanace for given source.
  *
- * @param[in] colorTemp indicates the colorTemp
- * @param[in] sourceId source ID of the source for which green gain to be set
- * @param[out] ggain returns the G gain on white balance.
+ * @param[in] colorTemp - indicates the colorTemp
+ * @param[in] sourceId - source ID of the source for which green gain to be set
+ * @param[out] ggain - returns the G gain on white balance.
  *
  * @return tvError_t
  * @retval tvERROR_NONE on success
@@ -1233,11 +1222,10 @@ tvError_t GetColorTemp_Ggain_onSource(tvColorTemp_t colorTemp, int* ggain,int so
 /**
  * @brief This function sets the B gain on White Balanace for given source.
  *
- * @param[in] colorTemp indicates the colorTemp
- * @param[in] bgain blue gain on white balance
- * @param[in] sourceId source ID of the source for which blue gain to be set
- * @param[in] saveOnly indicates whether the parameter to be saved.
- * @param[out] None
+ * @param[in] colorTemp - indicates the colorTemp
+ * @param[in] bgain - blue gain on white balance
+ * @param[in] sourceId - source ID of the source for which blue gain to be set
+ * @param[in] saveOnly - indicates whether the parameter to be saved.
  *
  * @return tvError_t
  * @retval tvERROR_NONE on success
@@ -1270,11 +1258,10 @@ tvError_t GetColorTemp_Bgain_onSource(tvColorTemp_t colorTemp, int* bgain,int so
 /**
  * @brief This function sets the whitebalance Red post offset for given source
  *
- * @param[in] colorTemp indicates the color temperature of the TV.
- * @param[in] rpostoffset sets the red post offset 
- * @param[in] sourceId indicates the source id of the source for which the Red post offset to be set.
- * @param[in] saveOnly indicates whether the parameters needs to be saved.
- * @param[out] None
+ * @param[in] colorTemp - indicates the color temperature of the TV.
+ * @param[in] rpostoffset - sets the red post offset 
+ * @param[in] sourceId - indicates the source id of the source for which the Red post offset to be set.
+ * @param[in] saveOnly - indicates whether the parameters needs to be saved.
  *
  * @return tvError_t
  * @retval tvERROR_NONE on success
@@ -1291,9 +1278,9 @@ tvError_t SetColorTemp_R_post_offset_onSource(tvColorTemp_t colorTemp, int rpost
 /**
  * @brief This function gets the Red post offset of white balance for given source
  *
- * @param[in] colorTemp indicates the color temperature of the TV.
- * @param[in] sourceId indicates the source id of the source for which the Red post offset needs to be get.
- * @param[out] rpostoffset returns the red post offset set for white balance for the specific source.
+ * @param[in] colorTemp - indicates the color temperature of the TV.
+ * @param[in] sourceId - indicates the source id of the source for which the Red post offset needs to be get.
+ * @param[out] rpostoffset - returns the red post offset set for white balance for the specific source.
  *
  * @return tvError_t
  * @retval tvERROR_NONE on success
@@ -1310,11 +1297,10 @@ tvError_t GetColorTemp_R_post_offset_onSource(tvColorTemp_t colorTemp, int* rpos
 /**
  * @brief This function sets the whitebalance green post offset for given source
  *
- * @param[in] colorTemp indicates the color temperature of the TV.
- * @param[in] gpostoffset sets the green post offset 
- * @param[in] sourceId indicates the source id of the source for which the green post offset to be set.
- * @param[in] saveOnly indicates whether the parameters needs to be saved.
- * @param[out] None
+ * @param[in] colorTemp - indicates the color temperature of the TV.
+ * @param[in] gpostoffset - sets the green post offset 
+ * @param[in] sourceId - indicates the source id of the source for which the green post offset to be set.
+ * @param[in] saveOnly - indicates whether the parameters needs to be saved.
  *
  * @return tvError_t
  * @retval tvERROR_NONE on success
@@ -1331,16 +1317,16 @@ tvError_t SetColorTemp_G_post_offset_onSource(tvColorTemp_t colorTemp, int gpost
 /**
  * @brief This function gets the Green post offset of white balance for given source
  *
- * @param[in] colorTemp indicates the color temperature of the TV.
- * @param[in] sourceId indicates the source id of the source for which the Green post offset needs to be get.
- * @param[out] rpostoffset returns the green post offset set for white balance for the specific source.
+ * @param[in] colorTemp - indicates the color temperature of the TV.
+ * @param[in] sourceId - indicates the source id of the source for which the Green post offset needs to be get.
+ * @param[out] rpostoffset - returns the green post offset set for white balance for the specific source.
  *
- * @retval tvError_t
- * @return tvERROR_NONE on success
- * @return tvERROR_GENERAL on general failure 
- * @return tvERROR_OPERATION_NOT_SUPPORTED on non-supported operation failure
- * @return tvERROR_INVALID_PARAM on invalid param failure  
- * @return tvERROR_INVALID_STATE on invalid state failure
+ * @return tvError_t
+ * @retval tvERROR_NONE on success
+ * @retval tvERROR_GENERAL on general failure 
+ * @retval tvERROR_OPERATION_NOT_SUPPORTED on non-supported operation failure
+ * @retval tvERROR_INVALID_PARAM on invalid param failure  
+ * @retval tvERROR_INVALID_STATE on invalid state failure
  * 
  * @pre  tvInit() should be called before calling this API.
  * @see SetColorTemp_G_post_offset_onSource()
@@ -1350,11 +1336,10 @@ tvError_t GetColorTemp_G_post_offset_onSource(tvColorTemp_t colorTemp, int* gpos
 /**
  * @brief This function sets the whitebalance Blue post offset for given source
  *
- * @param[in] colorTemp indicates the color temperature of the TV.
- * @param[in] bpostoffset sets the blue post offset 
- * @param[in] sourceId indicates the source id of the source for which the blue post offset to be set.
- * @param[in] saveOnly indicates whether the parameters needs to be saved.
- * @param[out] None
+ * @param[in] colorTemp - indicates the color temperature of the TV.
+ * @param[in] bpostoffset - sets the blue post offset 
+ * @param[in] sourceId - indicates the source id of the source for which the blue post offset to be set.
+ * @param[in] saveOnly - indicates whether the parameters needs to be saved.
  *
  * @return tvError_t
  * @retval tvERROR_NONE on success
@@ -1371,9 +1356,9 @@ tvError_t SetColorTemp_B_post_offset_onSource(tvColorTemp_t colorTemp, int bpost
 /**
  * @brief This function gets the Blue post offset of white balance for given source
  *
- * @param[in] colorTemp indicates the color temperature of the TV.
- * @param[in] sourceId indicates the source id of the source for which the Blue post offset needs to be get.
- * @param[out] bpostoffset returns the blue post offset set for white balance for the specific source.
+ * @param[in] colorTemp - indicates the color temperature of the TV.
+ * @param[in] sourceId - indicates the source id of the source for which the Blue post offset needs to be get.
+ * @param[out] bpostoffset - returns the blue post offset set for white balance for the specific source.
  *
  * @return tvError_t
  * @retval tvERROR_NONE on success
@@ -1390,10 +1375,10 @@ tvError_t GetColorTemp_B_post_offset_onSource(tvColorTemp_t colorTemp, int* bpos
 /**
  * @brief This function sets the white balance for specific color, color Temp, control and value.
  *
- * @param[in] inputSrc indicates the source of input (HDMI, TV, AV)
- * @param[in] color  indicates the color to be set (red, blue, green)
- * @param[in] ctrl indicates the control to be done (gain or offset)
- * @param[in] value  indicates the values to be set for the specific control.
+ * @param[in] inputSrc - indicates the source of input (HDMI, TV, AV)
+ * @param[in] color  - indicates the color to be set (red, blue, green)
+ * @param[in] ctrl - indicates the control to be done (gain or offset)
+ * @param[in] value -  indicates the values to be set for the specific control.
  *
  * @return tvError_t
  * @retval tvERROR_NONE on success
@@ -1409,10 +1394,10 @@ tvError_t setWBctrl(char *inputSrc, char *colorTemp,char *color, char *ctrl, int
 /**
  * @brief This function gets the white balance for specific color, color Temp, control and value.
  *
- * @param[in] inputSrc indicates the source of input (HDMI, TV, AV)
- * @param[in] color  indicates the color to be set (red, blue, green)
- * @param[in] ctrl indicates the control to be done (gain or offset)
- * @param[out] value  indicates the pointer returned by driver to store the value.
+ * @param[in] inputSrc - indicates the source of input (HDMI, TV, AV)
+ * @param[in] color  - indicates the color to be set (red, blue, green)
+ * @param[in] ctrl - indicates the control to be done (gain or offset)
+ * @param[out] value  - indicates the pointer returned by driver to store the value.
  *
  * @return tvError_t
  * @retval tvERROR_NONE on success
@@ -1428,11 +1413,10 @@ tvError_t getWBctrl(char *inputSrc, char *colortemp, char *color, char *ctrl, in
 /**
  * @brief This function gets the White balance info into the vectors
  *
- * @param[in] None
- * @param[out] params indicates the pointer to the struct getWBInfo_t parameters.
- * @param[out] selector indicates the vector which tells whether to take colorTmp or input vector params.
- * @param[out] colorTmp indicates the vector which carries colorTmp details.
- * @param[out] input indicates the vector which carries the input details.
+ * @param[out] params - indicates the pointer to the struct getWBInfo_t parameters.
+ * @param[out] selector - indicates the vector which tells whether to take colorTmp or input vector params.
+ * @param[out] colorTmp - indicates the vector which carries colorTmp details.
+ * @param[out] input - indicates the vector which carries the input details.
  *
  * @return tvError_t
  * @retval tvERROR_NONE on success
@@ -1448,8 +1432,7 @@ tvError_t getWbInfo(getWBInfo_t* params, std::vector<std::string> &selector, std
 /**
  * @brief This function enables or disables White balance in the sysfs.
  *
- * @param[in] value indicates whether to enable or disable
- * @param[out] None
+ * @param[in] value - indicates whether to enable or disable
  *
  * @return tvError_t
  * @retval tvERROR_NONE on success
@@ -1465,8 +1448,7 @@ tvError_t enableWBmode(bool value);
 /**
  * @brief This function get the supported saturation color from the driver.
  *
- * @param[in] None
- * @param[out] blComponentColor returns the supported component color
+ * @param[out] blComponentColor - returns the supported component color
  *
  * @return tvError_t
  * @retval tvERROR_NONE on success
@@ -1482,8 +1464,8 @@ tvError_t GetSupportedComponentColor(int *blComponentColor);
 /**
  * @brief This function sets the current component saturation
  *
- * @param[in] blSaturationColor indicates the saturation color to be set
- * @param[in] saturation  indicates the saturation value to set 
+ * @param[in] blSaturationColor - indicates the saturation color to be set
+ * @param[in] saturation  - indicates the saturation value to set 
  *
  * @return tvError_t
  * @retval tvERROR_NONE on success
@@ -1499,8 +1481,8 @@ tvError_t SetCurrentComponentSaturation(tvDataComponentColor_t blSaturationColor
 /**
  * @brief This function returns the current component saturation
  *
- * @param[in] blSaturationColor indicates the saturation color to be changed
- * @param[out] saturation returns the saturation value of the color
+ * @param[in] blSaturationColor - indicates the saturation color to be changed
+ * @param[out] saturation - returns the saturation value of the color
  *
  * @return tvError_t
  * @retval tvERROR_NONE on success
@@ -1516,8 +1498,8 @@ tvError_t GetCurrentComponentSaturation(tvDataComponentColor_t blSaturationColor
 /**
  * @brief This function sets the Hue to the component.
  *
- * @param[in] blHueColor indicates the hue color to be set.
- * @param[in] hue indicates the hue value.
+ * @param[in] blHueColor - indicates the hue color to be set.
+ * @param[in] hue - indicates the hue value.
  * @param[out] None
  *
  * @return tvError_t
@@ -1534,8 +1516,8 @@ tvError_t SetCurrentComponentHue(tvDataComponentColor_t blHueColor, int hue);
 /**
  * @brief This function returns the hue value of the current component.                                 
  *
- * @param[in] blHueColor indicates the hue color of the component
- * @param[out] hue returns the hue value of the component
+ * @param[in] blHueColor - indicates the hue color of the component
+ * @param[out] hue - returns the hue value of the component
  *
  * @return tvError_t
  * @retval tvERROR_NONE on success
@@ -1551,8 +1533,8 @@ tvError_t GetCurrentComponentHue(tvDataComponentColor_t blHueColor, int *hue);
 /**
  * @brief This function set the luma color to the component
  *
- * @param[in] blLumaColor indicates the luma color to the set
- * @param[in] Luma indicates the luma color value to be set
+ * @param[in] blLumaColor - indicates the luma color to the set
+ * @param[in] Luma - indicates the luma color value to be set
  *
  * @return tvError_t
  * @retval tvERROR_NONE on success
@@ -1568,8 +1550,8 @@ tvError_t SetCurrentComponentLuma(tvDataComponentColor_t blLumaColor, int Luma);
 /**
  * @brief This function returns the luma value of the component.
  *
- * @param[in] blLumaColor indicates the luma color of the component
- * @param[out] Luma indicates the Luma value to be set.
+ * @param[in] blLumaColor - indicates the luma color of the component
+ * @param[out] Luma - indicates the Luma value to be set.
  *
  * @return tvError_t
  * @retval tvERROR_NONE on success
@@ -1585,9 +1567,8 @@ tvError_t GetCurrentComponentLuma(tvDataComponentColor_t blLumaColor, int *Luma)
 /**
  * @brief This function returns the supported dimming modes of TV.
  *
- * @param[in] None
- * @param[out] dimmingModes returns the dimming modes of the TV
- * @param[out] count returns the number of supported dimming modes.
+ * @param[out] dimmingModes - returns the dimming modes of the TV
+ * @param[out] count - returns the number of supported dimming modes.
  *
  * @return tvError_t
  * @retval tvERROR_NONE on success
@@ -1603,8 +1584,7 @@ tvError_t GetTVSupportedDimmingModes(char **dimmingModes,unsigned short *count);
 /**
  * @brief This function sets the TV dimming mode.
  *
- * @param[in] dimmingMode indicates the dimmingMode to be set
- * @param[out] None
+ * @param[in] dimmingMode - indicates the dimmingMode to be set
  *
  * @return tvError_t
  * @retval tvERROR_NONE on success
@@ -1620,8 +1600,7 @@ tvError_t SetTVDimmingMode(const char *dimmingMode);
 /**
  * @brief This function returns the TV backlight global factor.
  *
- * @param[in] None
- * @param[out] value returns the value of the backlight global factor.
+ * @param[out] value - returns the value of the backlight global factor.
  *
  * @return tvError_t
  * @retval tvERROR_NONE on success
@@ -1637,9 +1616,8 @@ tvError_t GetTVBacklightGlobalFactor(int * value);
 /**
  * @brief This function sets the TV backlight global factor
  *
- * @param[in] value indicates the value of the backlight global factor
- * @param[in] rangeMidPointValue indicates the mid point value of the range
- * @param[out] None
+ * @param[in] value - indicates the value of the backlight global factor
+ * @param[in] rangeMidPointValue - indicates the mid point value of the range
  *
  * @return tvError_t
  * @retval tvERROR_NONE on success
@@ -1655,8 +1633,7 @@ tvError_t SetTVBacklightGlobalFactor(int value, int rangeMidPointValue);
 /**
  * @brief This function returns the current picture mode index
  *
- * @param[in] None
- * @param[out] pictureMode indicates the picture mode index value
+ * @param[out] pictureMode - indicates the picture mode index value
  *
  * @return tvError_t
  * @retval tvERROR_NONE on success
@@ -1672,8 +1649,7 @@ tvPictureMode_t GetTVPictureModeIndex(const char * pictureMode);
 /**
  * @brief This function returns the current content format
  *
- * @param[in] None
- * @param[out] retvals the content format of type tvVideoHDRFormat_t
+ * @param[out] retvals - the content format of type tvVideoHDRFormat_t
  *
  * @retval tvError_t
  * @return tvERROR_NONE on success
@@ -1689,8 +1665,8 @@ tvVideoHDRFormat_t GetCurrentContentFormat(void);
 /**
  * @brief This function returns the supported content formats
  *
- * @param[out] contentFormats returns the supported content formats
- * @param[out] numberOfFormats returns the number of supported content formats.
+ * @param[out] contentFormats - returns the supported content formats
+ * @param[out] numberOfFormats - returns the number of supported content formats.
  *
  * @return tvError_t
  * @retval tvERROR_NONE on success
@@ -2060,10 +2036,10 @@ tvError_t SaveDynamicBacklight(int sourceInput, int pq_mode,int hdr_type,int val
  * @brief This function saves the display mode value for the 
  specific pq_mode for specific hdr_type for the given sourceInput
  *
- * @param[in] sourceInput indicates the source input for which display mode to be saved
- * @param[in] pq_mode indicates the pq mode for which display mode is set
- * @param[in] hdr_type indicates the hdr type for which the display mode to be saved.
- * @param[in] value indicates the value of the display mode to be saved
+ * @param[in] sourceInput - indicates the source input for which display mode to be saved
+ * @param[in] pq_mode - indicates the pq mode for which display mode is set
+ * @param[in] hdr_type - indicates the hdr type for which the display mode to be saved.
+ * @param[in] value - indicates the value of the display mode to be saved
  *
  * @return tvError_t
  * @retval tvERROR_NONE on success
