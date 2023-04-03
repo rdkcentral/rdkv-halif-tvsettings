@@ -2550,8 +2550,8 @@ int GetGamePQModeIndex();
 }
 #endif
 
-#endif //_TV_SETTINGS_H
+#endif // End of _TV_SETTINGS_H
 
-/** @} */
-/** @} */
+/** @} */ // End of tvsettings
+/** @} */ // End of HPK
 

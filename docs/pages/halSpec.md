@@ -33,8 +33,6 @@
 - [Interface API Documentation](#interface-api-documentation)
   - [Theory of operation and key concepts](#theory-of-operation-and-key-concepts)
   - [Diagrams](#diagrams)
-    - [Operational Call Diagram](#operational-call-diagram)
-    - [Functional Diagram](#functional-diagram)
 
 ## Acronyms, Terms and Abbreviations
 
@@ -48,7 +46,7 @@
 
 ## Description
 
-TV Settings `HAL` is an abstract layer, which provides `APIs` to Modify/Control the Picture quality parameters, dimming modes and auto backlight modes.
+TV Settings `HAL` is an abstract layer, which provides `APIs` to modify/control the picture quality parameters, dimming modes and auto backlight modes.
 
 ```mermaid
 %%{ init : { "theme" : "forest", "flowchart" : { "curve" : "linear" }}}%%
@@ -92,7 +90,7 @@ This interface requires callback notification registration for VideoFormatChange
 
 ### Blocking calls
 
-There are no blocking calls in this interface.
+This interface is required to have no blocking calls.
 
 ### Internal Error Handling
 
@@ -113,7 +111,7 @@ There is no logging mechanism handled and printf() must be used.
 
 ### Memory and performance requirements
 
-This interface is required not to cause excessive memory and CPU utilization.
+This interface is required  to not cause excessive memory and CPU utilization.
 
 ### Quality Control
 
@@ -126,7 +124,7 @@ This interface is required not to cause excessive memory and CPU utilization.
 
 ### Licensing
 
-This interface is expected to get released under the Apache License 2.0. 
+This interface is expected to get released under the Apache License 2.0.
 
 ### Build Requirements
 
