@@ -1,4 +1,8 @@
 /**
+* @addtogroup HPK
+* @{
+**/
+/**
 * @defgroup tvsettings
 * @{
 * @defgroup APIs
@@ -40,7 +44,7 @@ extern "C"
 typedef void (*tvVideoFormatChangeCB)(tvVideoHDRFormat_t format,void *userData);
  
 //! A structure representing the pic modes 
-typedef struct pic_modes{
+typedef struct {
     char name[PIC_MODE_NAME_MAX]; //!< pic modes array 
     short int value; //!< pic mode value
 }pic_modes_t;
@@ -63,7 +67,7 @@ typedef enum {
 }fp_mfrColorTemp_t;
  
 //! Structure representing the input source offset 
-typedef enum input_source_offset_e {
+typedef enum {
     HDMI_OFFSET_NEW = 0, //!< HDMI offset 
     TV_OFFSET_NEW   = 4, //!< TV offset 
     AV_OFFSET_NEW   = 8, //!< AV offset 
@@ -71,7 +75,7 @@ typedef enum input_source_offset_e {
 } input_source_offset_t;
 
 //! Structure Representing the White Balanace Info 
-typedef struct getWBInfo {
+typedef struct {
     char wbControls[CONTROL_COUNT][MAX_STRING_SIZE]; //!< White Balance Controls array
     char wbGain[CONTROL_COUNT][MAX_STRING_SIZE]; //!< White Balance Gain array
     char wbOffset[CONTROL_COUNT][MAX_STRING_SIZE]; //!< White Balance Offset 
@@ -81,14 +85,14 @@ typedef struct getWBInfo {
 #define __BL_PARA__
 
 //! Structure representing the backlight parameters 
-typedef struct bl_para_s{ 
+typedef struct { 
     int mBacklightSDR; //!< Backlight SDR
     int mBacklightHDR;  //!< Backlight HDR 
 }bl_para_t;
 #endif
 
 //! Structure representing the backlight info 
-typedef struct tvBacklightInfo_s{
+typedef struct {
     int sdrBLCurve[BACKLIGHT_CURVE_MAX_INDEX]; //!< Backlight curve SDR array
     int hdrBLCurve[BACKLIGHT_CURVE_MAX_INDEX]; //!< Backlight curve HDR  
     int defaultBLSDR;  //!< backlight SDR default value 
@@ -98,11 +102,12 @@ typedef struct tvBacklightInfo_s{
 /**
  * @brief  Initialize the TV Settings HAL API
  *
- * @return tvERROR_NONE on success
- * @return tvERROR_GENERAL on general failure 
- * @return tvERROR_OPERATION_NOT_SUPPORTED on non-supported operation failure
- * @return tvERROR_INVALID_PARAM on invalid param failure  
- * @return tvERROR_INVALID_STATE on invalid state failure
+ * @return tvError_t 
+ * @retval tvERROR_NONE                     - on success
+ * @retval tvERROR_GENERAL                  - on general failure 
+ * @retval  tvERROR_OPERATION_NOT_SUPPORTED - on non-supported operation failure
+ * @retval  tvERROR_INVALID_PARAM           - on invalid param failure  
+ * @retval tvERROR_INVALID_STATE            - on invalid state failure
  * @warning  This API is Not thread safe.
  * @see tvTerm()
  *
@@ -112,11 +117,12 @@ tvError_t tvInit();
 /**
  * @brief This function will start the SD3 and cri_data sync thread
  *
- * @return tvERROR_NONE on success
- * @return tvERROR_GENERAL on general failure 
- * @return tvERROR_OPERATION_NOT_SUPPORTED on non-supported operation failure
- * @return tvERROR_INVALID_PARAM on invalid param failure  
- * @return tvERROR_INVALID_STATE on invalid state failure
+ * @return tvError_t
+ * @retval tvERROR_NONE                    - on success
+ * @retval tvERROR_GENERAL                 - on general failure 
+ * @retval tvERROR_OPERATION_NOT_SUPPORTED - on non-supported operation failure
+ * @retval tvERROR_INVALID_PARAM           - on invalid param failure  
+ * @retval tvERROR_INVALID_STATE           - on invalid state failure
  * @warning  This API is Not thread safe.
  * @see tvInit()
  */
@@ -126,14 +132,11 @@ tvError_t tvSD3toCriSyncInit();
  * @brief Deinitialize the TV Settings HAL API
  * This function should terminate the tv settings hal api's 
  *
- * @param [in]   None
- * @param [out]  None
- *
  * @return tvERROR_NONE on success
- * @return tvERROR_GENERAL on general failure 
- * @return tvERROR_OPERATION_NOT_SUPPORTED on non-supported operation failure
- * @return tvERROR_INVALID_PARAM on invalid param failure  
- * @return tvERROR_INVALID_STATE on invalid state failure
+ * @retval tvERROR_GENERAL on general failure 
+ * @retval tvERROR_OPERATION_NOT_SUPPORTED on non-supported operation failure
+ * @retval tvERROR_INVALID_PARAM on invalid param failure  
+ * @retval tvERROR_INVALID_STATE on invalid state failure
  * @warning  This API is Not thread safe.
  * @see tvInit()
  */
@@ -143,14 +146,14 @@ tvError_t tvTerm();
  * @brief Get the TV Pciture Mode
  * This function will get the tv picture mode currently set.
  *
- * @param [in]    None 
- * @param [out]   pictureMode returns the picturemode currently set
+ * @param [out] pictureMode - returns the picturemode currently set
  *
- * @return tvERROR_NONE on success
- * @return tvERROR_GENERAL on general failure 
- * @return tvERROR_OPERATION_NOT_SUPPORTED on non-supported operation failure
- * @return tvERROR_INVALID_PARAM on invalid param failure  
- * @return tvERROR_INVALID_STATE on invalid state failure
+ * @return tvError_t
+ * @retval tvERROR_NONE - on success
+ * @retval tvERROR_GENERAL - on general failure 
+ * @retval tvERROR_OPERATION_NOT_SUPPORTED - on non-supported operation failure
+ * @retval tvERROR_INVALID_PARAM - on invalid param failure  
+ * @retval tvERROR_INVALID_STATE - on invalid state failure
  * @pre  tvInit() should be called before calling this API.
  * @see SetTVPictureMode()
  */
@@ -160,14 +163,14 @@ tvError_t GetTVPictureMode(char *pictureMode);
  * @brief Set the TV Pciture Mode
  * This function updates the picture mode to driver
  *
- * @param[in] pictureMode indicates the mode type of picture 
- * @param [out]  None
+ * @param[in] pictureMode - indicates the mode type of picture 
  *
- * @return tvERROR_NONE on success
- * @return tvERROR_GENERAL on general failure 
- * @return tvERROR_OPERATION_NOT_SUPPORTED on non-supported operation failure
- * @return tvERROR_INVALID_PARAM on invalid param failure  
- * @return tvERROR_INVALID_STATE on invalid state failure
+ * @return tvError_t
+ * @retval tvERROR_NONE - on success
+ * @retval tvERROR_GENERAL - on general failure 
+ * @retval tvERROR_OPERATION_NOT_SUPPORTED - on non-supported operation failure
+ * @retval tvERROR_INVALID_PARAM - on invalid param failure  
+ * @retval tvERROR_INVALID_STATE - on invalid state failure
  * @pre  tvInit() should be called before calling this API.
  * @see GetTVPictureMode()
  */
@@ -176,14 +179,14 @@ tvError_t SetTVPictureMode(const char * pictureMode);
 /**
  * @brief This function gets the back light from PQ
  *
- * @param[in] None 
- * @param[out] backlight indicates the pointer variable
+ * @param[out] backlight - indicates the pointer variable
  *
- * @return tvERROR_NONE on success
- * @return tvERROR_GENERAL on general failure 
- * @return tvERROR_OPERATION_NOT_SUPPORTED on non-supported operation failure
- * @return tvERROR_INVALID_PARAM on invalid param failure  
- * @return tvERROR_INVALID_STATE on invalid state failure
+ * @rerurn tvError_t
+ * @retval tvERROR_NONE - on success
+ * @retval tvERROR_GENERAL - on general failure 
+ * @retval tvERROR_OPERATION_NOT_SUPPORTED - on non-supported operation failure
+ * @retval tvERROR_INVALID_PARAM - on invalid param failure  
+ * @retval tvERROR_INVALID_STATE - on invalid state failure
  * @pre  tvInit() should be called before calling this API.
  * @see SetBacklight()
  */
@@ -192,14 +195,14 @@ tvError_t GetBacklight(int *backlight);
 /**
  * @brief This function updates the back light to PQ
  *
- * @param[in] backlight indicates the back light value of TV
- * @param[out] None
+ * @param[in] backlight - indicates the back light value of TV
  *
- * @return tvERROR_NONE on success
- * @return tvERROR_GENERAL on general failure 
- * @return tvERROR_OPERATION_NOT_SUPPORTED on non-supported operation failure
- * @return tvERROR_INVALID_PARAM on invalid param failure  
- * @return tvERROR_INVALID_STATE on invalid state failure
+ * @return tvError_t
+ * @retval tvERROR_NONE - on success
+ * @retval tvERROR_GENERAL - on general failure 
+ * @retval tvERROR_OPERATION_NOT_SUPPORTED - on non-supported operation failure
+ * @retval tvERROR_INVALID_PARAM - on invalid param failure  
+ * @retval tvERROR_INVALID_STATE - on invalid state failure
  *
  * @pre  tvInit() should be called before calling this API.
  * @see GetBacklight()
@@ -209,14 +212,14 @@ tvError_t SetBacklight(int backlight);
 /**
  * @brief This function updates the brightness to driver
  *
- * @param[in] brightness indicates the value of brightness
- * @param[out] None
+ * @param[in] brightness - indicates the value of brightness
  *
- * @return tvERROR_NONE on success
- * @return tvERROR_GENERAL on general failure 
- * @return tvERROR_OPERATION_NOT_SUPPORTED on non-supported operation failure
- * @return tvERROR_INVALID_PARAM on invalid param failure  
- * @return tvERROR_INVALID_STATE on invalid state failure
+ * @return tvError_t
+ * @retval tvERROR_NONE - on success
+ * @retval tvERROR_GENERAL - on general failure 
+ * @retval tvERROR_OPERATION_NOT_SUPPORTED - on non-supported operation failure
+ * @retval tvERROR_INVALID_PARAM - on invalid param failure  
+ * @retval tvERROR_INVALID_STATE - on invalid state failure
  * 
  * @pre  tvInit() should be called before calling this API.
  * @see GetBrightness()
@@ -226,11 +229,14 @@ tvError_t SetBrightness(int brightness);
 /**
  * @brief This function gets the brightness from driver
  *
- * @return tvERROR_NONE on success
- * @return tvERROR_GENERAL on general failure 
- * @return tvERROR_OPERATION_NOT_SUPPORTED on non-supported operation failure
- * @return tvERROR_INVALID_PARAM on invalid param failure  
- * @return tvERROR_INVALID_STATE on invalid state failure
+ * @param[out] brightness - indicates the value of brightness
+ *
+ * @return tvError_t
+ * @retval tvERROR_NONE - on success
+ * @retval tvERROR_GENERAL - on general failure 
+ * @retval tvERROR_OPERATION_NOT_SUPPORTED - on non-supported operation failure
+ * @retval tvERROR_INVALID_PARAM - on invalid param failure  
+ * @retval tvERROR_INVALID_STATE - on invalid state failure
  * @pre  tvInit() should be called before calling this API.
  * @see SetBrightness()
  */
@@ -239,14 +245,14 @@ tvError_t GetBrightness(int *brightness);
 /**
  * @brief  This function updates the contrast to driver
  *
- * @param[in] contrast indicates the contrast value
- * @param[out] None
+ * @param[in] contrast - indicates the contrast value
  *
- * @return tvERROR_NONE on success
- * @return tvERROR_GENERAL on general failure 
- * @return tvERROR_OPERATION_NOT_SUPPORTED on non-supported operation failure
- * @return tvERROR_INVALID_PARAM on invalid param failure  
- * @return tvERROR_INVALID_STATE on invalid state failure
+ * @return tvError_t
+ * @retval tvERROR_NONE - on success
+ * @retval tvERROR_GENERAL - on general failure 
+ * @retval tvERROR_OPERATION_NOT_SUPPORTED - on non-supported operation failure
+ * @retval tvERROR_INVALID_PARAM - on invalid param failure  
+ * @retval tvERROR_INVALID_STATE - on invalid state failure
  * @pre  tvInit() should be called before calling this API.
  * @see GetContrast()
  */
@@ -255,14 +261,14 @@ tvError_t SetContrast(int contrast);
 /**
  * @brief This function gets the contrast from driver
  *
- * @param[in] None
- * @param[out] *contrast indicates the pointer variable
+ * @param[out] contrast - indicates the pointer variable
  *
- * @return tvERROR_NONE on success
- * @return tvERROR_GENERAL on general failure 
- * @return tvERROR_OPERATION_NOT_SUPPORTED on non-supported operation failure
- * @return tvERROR_INVALID_PARAM on invalid param failure  
- * @return tvERROR_INVALID_STATE on invalid state failure
+ * @return tvError_t
+ * @retval tvERROR_NONE - on success
+ * @retval tvERROR_GENERAL - on general failure 
+ * @retval tvERROR_OPERATION_NOT_SUPPORTED - on non-supported operation failure
+ * @retval tvERROR_INVALID_PARAM - on invalid param failure  
+ * @retval tvERROR_INVALID_STATE - on invalid state failure
  * 
  * @pre  tvInit() should be called before calling this API.
  * @see SetContrast()
@@ -272,14 +278,14 @@ tvError_t GetContrast(int *contrast);
 /**
  * @brief This function updtes the sharpness to driver
  *
- * @param[in] sharpness indicates the sharpness value
- * @param[out] None
+ * @param[in] sharpness - indicates the sharpness value
  *
- * @return tvERROR_NONE on success
- * @return tvERROR_GENERAL on general failure 
- * @return tvERROR_OPERATION_NOT_SUPPORTED on non-supported operation failure
- * @return tvERROR_INVALID_PARAM on invalid param failure  
- * @return tvERROR_INVALID_STATE on invalid state failure
+ * @return tvError_t
+ * @retval tvERROR_NONE - on success
+ * @retval tvERROR_GENERAL - on general failure 
+ * @retval tvERROR_OPERATION_NOT_SUPPORTED - on non-supported operation failure
+ * @retval tvERROR_INVALID_PARAM - on invalid param failure  
+ * @retval tvERROR_INVALID_STATE - on invalid state failure
  * 
  * @pre  tvInit() should be called before calling this API.
  * @see GetSharpness()
@@ -289,14 +295,14 @@ tvError_t SetSharpness(int sharpness);
 /**
  * @brief  This function gets the sharpness from driver
  *
- * @param[in] None
- * @param[out] sharpness indicates the pointer variable
+ * @param[out] sharpness - indicates the pointer variable
  *
- * @return tvERROR_NONE on success
- * @return tvERROR_GENERAL on general failure 
- * @return tvERROR_OPERATION_NOT_SUPPORTED on non-supported operation failure
- * @return tvERROR_INVALID_PARAM on invalid param failure  
- * @return tvERROR_INVALID_STATE on invalid state failure
+ * @return tvError_t
+ * @retval tvERROR_NONE - on success
+ * @retval tvERROR_GENERAL - on general failure 
+ * @retval tvERROR_OPERATION_NOT_SUPPORTED - on non-supported operation failure
+ * @retval tvERROR_INVALID_PARAM - on invalid param failure  
+ * @retval tvERROR_INVALID_STATE - on invalid state failure
  * 
  * @pre  tvInit() should be called before calling this API.
  * @see SetSharpness()
@@ -306,14 +312,14 @@ tvError_t GetSharpness(int *sharpness);
 /**
  * @brief This function updates the saturation to driver
  *
- * @param[in] saturation indicates the saturation value
- * @param[out] None
+ * @param[in] saturation - indicates the saturation value
  *
- * @return tvERROR_NONE on success
- * @return tvERROR_GENERAL on general failure 
- * @return tvERROR_OPERATION_NOT_SUPPORTED on non-supported operation failure
- * @return tvERROR_INVALID_PARAM on invalid param failure  
- * @return tvERROR_INVALID_STATE on invalid state failure
+ * @return tvError_t
+ * @retval tvERROR_NONE - on success
+ * @retval tvERROR_GENERAL - on general failure 
+ * @retval tvERROR_OPERATION_NOT_SUPPORTED - on non-supported operation failure
+ * @retval tvERROR_INVALID_PARAM - on invalid param failure  
+ * @retval tvERROR_INVALID_STATE - on invalid state failure
  * 
  * @pre  tvInit() should be called before calling this API.
  * @see GetSaturation()
@@ -323,14 +329,14 @@ tvError_t SetSaturation(int saturation);
 /**
  * @brief This function gets the saturation from driver
  *
- * @param[in] None
- * @param[out] saturation indicates the pointer
+ * @param[out] saturation - indicates the pointer
  *
- * @return tvERROR_NONE on success
- * @return tvERROR_GENERAL on general failure 
- * @return tvERROR_OPERATION_NOT_SUPPORTED on non-supported operation failure
- * @return tvERROR_INVALID_PARAM on invalid param failure  
- * @return tvERROR_INVALID_STATE on invalid state failure
+ * @return tvError_t
+ * @retval tvERROR_NONE - on success
+ * @retval tvERROR_GENERAL - on general failure 
+ * @retval tvERROR_OPERATION_NOT_SUPPORTED - on non-supported operation failure
+ * @retval tvERROR_INVALID_PARAM - on invalid param failure  
+ * @retval tvERROR_INVALID_STATE - on invalid state failure
  * 
  * @pre  tvInit() should be called before calling this API.
  * @see SetSaturation()
@@ -340,14 +346,14 @@ tvError_t GetSaturation(int *saturation);
 /**
  * @brief This function updates the hue to driver
  *
- * @param[in] hue indicates the value of hue
- * @param[out] None
+ * @param[in] hue - indicates the value of hue
  *
- * @return tvERROR_NONE on success
- * @return tvERROR_GENERAL on general failure 
- * @return tvERROR_OPERATION_NOT_SUPPORTED on non-supported operation failure
- * @return tvERROR_INVALID_PARAM on invalid param failure  
- * @return tvERROR_INVALID_STATE on invalid state failure
+ * @return tvError_t
+ * @retval tvERROR_NONE - on success
+ * @retval tvERROR_GENERAL - on general failure 
+ * @retval tvERROR_OPERATION_NOT_SUPPORTED - on non-supported operation failure
+ * @retval tvERROR_INVALID_PARAM - on invalid param failure  
+ * @retval tvERROR_INVALID_STATE - on invalid state failure
  * 
  * @pre  tvInit() should be called before calling this API.
  * @see GetHue()
@@ -357,14 +363,14 @@ tvError_t SetHue(int hue);
 /**
  * @brief This function gets the hue from driver
  *
- * @param[in] None
- * @param[out] hue indicates the pointer variable
+ * @param[out] hue - indicates the pointer variable
  *
- * @return tvERROR_NONE on success
- * @return tvERROR_GENERAL on general failure 
- * @return tvERROR_OPERATION_NOT_SUPPORTED on non-supported operation failure
- * @return tvERROR_INVALID_PARAM on invalid param failure  
- * @return tvERROR_INVALID_STATE on invalid state failure
+ * @return tvError_t
+ * @retval tvERROR_NONE - on success
+ * @retval tvERROR_GENERAL - on general failure 
+ * @retval tvERROR_OPERATION_NOT_SUPPORTED - on non-supported operation failure
+ * @retval tvERROR_INVALID_PARAM - on invalid param failure  
+ * @retval tvERROR_INVALID_STATE - on invalid state failure
  * 
  * @pre  tvInit() should be called before calling this API.
  * @see SetHue()
@@ -374,14 +380,14 @@ tvError_t GetHue(int *hue);
 /**
  * @brief This function updates the color temperature to driver
  *
- * @param[in] colorTemp indicates the value of colorTemp
- * @param[out] None
+ * @param[in] colorTemp - indicates the value of colorTemp
  *
- * @return tvERROR_NONE on success
- * @return tvERROR_GENERAL on general failure 
- * @return tvERROR_OPERATION_NOT_SUPPORTED on non-supported operation failure
- * @return tvERROR_INVALID_PARAM on invalid param failure  
- * @return tvERROR_INVALID_STATE on invalid state failure
+ * @return tvError_t
+ * @retval tvERROR_NONE on success
+ * @retval tvERROR_GENERAL on general failure 
+ * @retval tvERROR_OPERATION_NOT_SUPPORTED on non-supported operation failure
+ * @retval tvERROR_INVALID_PARAM on invalid param failure  
+ * @retval tvERROR_INVALID_STATE on invalid state failure
  * 
  * @pre  tvInit() should be called before calling this API.
  * @see GetColorTemperature()
@@ -391,14 +397,14 @@ tvError_t SetColorTemperature(tvColorTemp_t colorTemp);
 /**
  * @brief This function gets the color tmperature from driver
  *
- * @param[in] None
- * @param[out] colorTemp indicates the pointer variable to enum tvColorTemp_t
+ * @param[out] colorTemp - indicates the pointer variable to enum tvColorTemp_t
  *
- * @return tvERROR_NONE on success
- * @return tvERROR_GENERAL on general failure 
- * @return tvERROR_OPERATION_NOT_SUPPORTED on non-supported operation failure
- * @return tvERROR_INVALID_PARAM on invalid param failure  
- * @return tvERROR_INVALID_STATE on invalid state failure
+ * @return tvError_t
+ * @retval tvERROR_NONE - on success
+ * @retval tvERROR_GENERAL - on general failure 
+ * @retval tvERROR_OPERATION_NOT_SUPPORTED - on non-supported operation failure
+ * @retval tvERROR_INVALID_PARAM - on invalid param failure  
+ * @retval tvERROR_INVALID_STATE - on invalid state failure
  * 
  * @pre  tvInit() should be called before calling this API.
  * @see SetColorTemperature()
@@ -408,14 +414,14 @@ tvError_t GetColorTemperature(tvColorTemp_t *colorTemp);
 /**
  * @brief This function updates the Aspect ratio to driver
  *
- * @param[in] dispMode indicates the value of aspect ratio
- * @param[out] None
+ * @param[in] dispMode - indicates the value of aspect ratio
  *
- * @return tvERROR_NONE on success
- * @return tvERROR_GENERAL on general failure 
- * @return tvERROR_OPERATION_NOT_SUPPORTED on non-supported operation failure
- * @return tvERROR_INVALID_PARAM on invalid param failure  
- * @return tvERROR_INVALID_STATE on invalid state failure
+ * @return tvError_t
+ * @retval tvERROR_NONE - on success
+ * @retval tvERROR_GENERAL - on general failure 
+ * @retval tvERROR_OPERATION_NOT_SUPPORTED - on non-supported operation failure
+ * @retval tvERROR_INVALID_PARAM - on invalid param failure  
+ * @retval tvERROR_INVALID_STATE - on invalid state failure
  * 
  * @pre  tvInit() should be called before calling this API.
  * @see GetAspectRatio()
@@ -425,14 +431,14 @@ tvError_t SetAspectRatio(tvDisplayMode_t dispMode);
 /**
  * @brief This function gets the aspect ratio from driver
  *
- * @param[in] None
- * @param[out] dispMode indicates the pointer variable to enum tvDisplayMode_t
+ * @param[out] dispMode - indicates the pointer variable to enum tvDisplayMode_t
  * 
- * @return tvERROR_NONE on success
- * @return tvERROR_GENERAL on general failure 
- * @return tvERROR_OPERATION_NOT_SUPPORTED on non-supported operation failure
- * @return tvERROR_INVALID_PARAM on invalid param failure  
- * @return tvERROR_INVALID_STATE on invalid state failure
+ * @return tvError_t
+ * @retval tvERROR_NONE - on success
+ * @retval tvERROR_GENERAL - on general failure 
+ * @retval tvERROR_OPERATION_NOT_SUPPORTED - on non-supported operation failure
+ * @retval tvERROR_INVALID_PARAM - on invalid param failure  
+ * @retval tvERROR_INVALID_STATE - on invalid state failure
  * 
  * @pre  tvInit() should be called before calling this API.
  * @see SetAspectRatio()
@@ -442,14 +448,14 @@ tvError_t GetAspectRatio(tvDisplayMode_t *dispMode);
 /**
  * @brief This function updates the back light to PQ
  *
- * @param[in] backlight indicates the back light value of TV
- * @param[out] None
+ * @param[in] tint - indicates the tint value of TV
  *
- * @return tvERROR_NONE on success
- * @return tvERROR_GENERAL on general failure 
- * @return tvERROR_OPERATION_NOT_SUPPORTED on non-supported operation failure
- * @return tvERROR_INVALID_PARAM on invalid param failure  
- * @return tvERROR_INVALID_STATE on invalid state failure
+ * @return tvError_t
+ * @retval tvERROR_NONE - on success
+ * @retval tvERROR_GENERAL - on general failure 
+ * @retval tvERROR_OPERATION_NOT_SUPPORTED - on non-supported operation failure
+ * @retval tvERROR_INVALID_PARAM - on invalid param failure  
+ * @retval tvERROR_INVALID_STATE - on invalid state failure
  * 
  * @pre  tvInit() should be called before calling this API.
  * @see GetBacklight()
@@ -459,14 +465,14 @@ tvError_t GetTint(int *tint);
 /**
  * @brief This function updates the back light to PQ
  *
- * @param[in] backlight indicates the back light value of TV
- * @param[out] None
+ * @param[in] tint - indicates the tint value of TV
  *
- * @return tvERROR_NONE on success
- * @return tvERROR_GENERAL on general failure 
- * @return tvERROR_OPERATION_NOT_SUPPORTED on non-supported operation failure
- * @return tvERROR_INVALID_PARAM on invalid param failure  
- * @return tvERROR_INVALID_STATE on invalid state failure
+ * @return tvError_t
+ * @retval tvERROR_NONE - on success
+ * @retval tvERROR_GENERAL - on general failure 
+ * @retval tvERROR_OPERATION_NOT_SUPPORTED - on non-supported operation failure
+ * @retval tvERROR_INVALID_PARAM - on invalid param failure  
+ * @retval tvERROR_INVALID_STATE - on invalid state failure
  * 
  * @pre  tvInit() should be called before calling this API.
  * @see GetBacklight()
@@ -476,14 +482,14 @@ tvError_t SetTint(int tint);
 /**
  * @brief This function gets all supported backlight modes of TV
  *
- * @param[in] None
- * @param[out] blMode indicates the pointer to modes
+ * @param[out] blMode - indicates the pointer to modes
  *
- * @return tvERROR_NONE on success
- * @return tvERROR_GENERAL on general failure 
- * @return tvERROR_OPERATION_NOT_SUPPORTED on non-supported operation failure
- * @return tvERROR_INVALID_PARAM on invalid param failure  
- * @return tvERROR_INVALID_STATE on invalid state failure
+ * @return tvError_t
+ * @retval tvERROR_NONE - on success
+ * @retval tvERROR_GENERAL - on general failure 
+ * @retval tvERROR_OPERATION_NOT_SUPPORTED - on non-supported operation failure
+ * @retval tvERROR_INVALID_PARAM - on invalid param failure  
+ * @retval tvERROR_INVALID_STATE - on invalid state failure
  * 
  * @pre  tvInit() should be called before calling this API.
  * @see GetCurrentBacklightMode(),SetCurrentBacklightMode()
@@ -493,14 +499,14 @@ tvError_t GetSupportedBacklightModes(int *blModes);
 /**
  * @brief This function gets the backlight mode
  *
- * @param[in] None
- * @param[out] blMode indicates the pointer variable
+ * @param[out] blMode - indicates the pointer variable
  *
- * @return tvERROR_NONE on success
- * @return tvERROR_GENERAL on general failure 
- * @return tvERROR_OPERATION_NOT_SUPPORTED on non-supported operation failure
- * @return tvERROR_INVALID_PARAM on invalid param failure  
- * @return tvERROR_INVALID_STATE on invalid state failure
+ * @return tvError_t
+ * @retval tvERROR_NONE - on success
+ * @retval tvERROR_GENERAL - on general failure 
+ * @retval tvERROR_OPERATION_NOT_SUPPORTED - on non-supported operation failure
+ * @retval tvERROR_INVALID_PARAM - on invalid param failure  
+ * @retval tvERROR_INVALID_STATE - on invalid state failure
  * 
  * @pre  tvInit() should be called before calling this API.
  * @see GetSupportedBacklightModes(),SetCurrentBacklightMode()
@@ -510,14 +516,14 @@ tvError_t GetCurrentBacklightMode(tvBacklightMode_t *blMode);
 /**
  * @brief This function sets the backlight mode
  *
- * @param[in] blMode indicates the back light mode of TV
- * @param[out] None
+ * @param[in] blMode - indicates the back light mode of TV
  *
- * @return tvERROR_NONE on success
- * @return tvERROR_GENERAL on general failure 
- * @return tvERROR_OPERATION_NOT_SUPPORTED on non-supported operation failure
- * @return tvERROR_INVALID_PARAM on invalid param failure  
- * @return tvERROR_INVALID_STATE on invalid state failure
+ * @return tvError_t
+ * @retval tvERROR_NONE - on success
+ * @retval tvERROR_GENERAL - on general failure 
+ * @retval tvERROR_OPERATION_NOT_SUPPORTED - on non-supported operation failure
+ * @retval tvERROR_INVALID_PARAM - on invalid param failure  
+ * @retval tvERROR_INVALID_STATE - on invalid state failure
  * 
  * @pre  tvInit() should be called before calling this API.
  * @see GetSupportedBacklightModes(),GetCurrentBacklightMode()
@@ -527,14 +533,14 @@ tvError_t SetCurrentBacklightMode(tvBacklightMode_t blMode);
 /**
  * @brief This function gets the current video format
  *
- * @param[in] None
- * @param[out] format indicates the pointer variable
+ * @param[out] format - indicates the pointer variable
  *
- * @return tvERROR_NONE on success
- * @return tvERROR_GENERAL on general failure 
- * @return tvERROR_OPERATION_NOT_SUPPORTED on non-supported operation failure
- * @return tvERROR_INVALID_PARAM on invalid param failure  
- * @return tvERROR_INVALID_STATE on invalid state failure
+ * @return tvError_t
+ * @retval tvERROR_NONE on success
+ * @retval tvERROR_GENERAL on general failure 
+ * @retval tvERROR_OPERATION_NOT_SUPPORTED on non-supported operation failure
+ * @retval tvERROR_INVALID_PARAM on invalid param failure  
+ * @retval tvERROR_INVALID_STATE on invalid state failure
  * 
  * @pre  tvInit() should be called before calling this API.
  */
@@ -543,14 +549,14 @@ tvError_t GetCurrentVideoFormat(tvVideoHDRFormat_t *format);
 /**
  * @brief This function gets the current video resolution
  *
- * @param[in] None
- * @param[out] res indicates the video resolution 
+ * @param[out] res - indicates the video resolution 
  *
- * @return tvERROR_NONE on success
- * @return tvERROR_GENERAL on general failure 
- * @return tvERROR_OPERATION_NOT_SUPPORTED on non-supported operation failure
- * @return tvERROR_INVALID_PARAM on invalid param failure  
- * @return tvERROR_INVALID_STATE on invalid state failure
+ * @return tvError_t
+ * @retval tvERROR_NONE on success
+ * @retval tvERROR_GENERAL on general failure 
+ * @retval tvERROR_OPERATION_NOT_SUPPORTED on non-supported operation failure
+ * @retval tvERROR_INVALID_PARAM on invalid param failure  
+ * @retval tvERROR_INVALID_STATE on invalid state failure
  * 
  * @pre  tvInit() should be called before calling this API.
  */
@@ -559,14 +565,14 @@ tvError_t GetVideoResolution(tvResolutionParam_t *res);
 /**
  * @brief This function gets the current video Frame Rate.
  *
- * @param[in] None
- * @param[out] format indicates the video Frame Rate
+ * @param[out] format - indicates the video Frame Rate
  *
- * @return tvERROR_NONE on success
- * @return tvERROR_GENERAL on general failure 
- * @return tvERROR_OPERATION_NOT_SUPPORTED on non-supported operation failure
- * @return tvERROR_INVALID_PARAM on invalid param failure  
- * @return tvERROR_INVALID_STATE on invalid state failure
+ * @return tvError_t
+ * @retval tvERROR_NONE on success
+ * @retval tvERROR_GENERAL on general failure 
+ * @retval tvERROR_OPERATION_NOT_SUPPORTED on non-supported operation failure
+ * @retval tvERROR_INVALID_PARAM on invalid param failure  
+ * @retval tvERROR_INVALID_STATE on invalid state failure
  * 
  * @pre  tvInit() should be called before calling this API.
  */
@@ -575,15 +581,15 @@ tvError_t GetVideoFrameRate(tvVideoFrameRate_t *format);
 /**
  * @brief This function sets the config for deepsleep wakeup
  *
- * @param[in] src_type indicates the way of waking up.
- * @param[in] value indicates whether the given src_type is enabled or disabled.
- * @param[out] None
+ * @param[in] src_type - indicates the way of waking up.
+ * @param[in] value - indicates whether the given src_type is enabled or disabled.
  * 
- * @return tvERROR_NONE on success
- * @return tvERROR_GENERAL on general failure 
- * @return tvERROR_OPERATION_NOT_SUPPORTED on non-supported operation failure
- * @return tvERROR_INVALID_PARAM on invalid param failure  
- * @return tvERROR_INVALID_STATE on invalid state failure
+ * @return tvError_t
+ * @retval tvERROR_NONE on success
+ * @retval tvERROR_GENERAL on general failure 
+ * @retval tvERROR_OPERATION_NOT_SUPPORTED on non-supported operation failure
+ * @retval tvERROR_INVALID_PARAM on invalid param failure  
+ * @retval tvERROR_INVALID_STATE on invalid state failure
  * 
  * @pre  tvInit() should be called before calling this API.
 */
@@ -592,16 +598,16 @@ tvError_t setWakeupConfig(const tvWakeupSrcType_t src_type, const bool value);
 /**
  * @brief This function updates the RGB color value for the pattern to driver
  *
- * @param[in] r indicates red colour value of the pattern
- * @param[in] g indicates green colour value of the pattern
- * @param[in] b indicates blue colour value of the pattern
- * @param[out] None
+ * @param[in] r - indicates red colour value of the pattern
+ * @param[in] g - indicates green colour value of the pattern
+ * @param[in] b - indicates blue colour value of the pattern
  *
- * @return tvERROR_NONE on success
- * @return tvERROR_GENERAL on general failure 
- * @return tvERROR_OPERATION_NOT_SUPPORTED on non-supported operation failure
- * @return tvERROR_INVALID_PARAM on invalid param failure  
- * @return tvERROR_INVALID_STATE on invalid state failure
+ * @return tvError_t
+ * @retval tvERROR_NONE on success
+ * @retval tvERROR_GENERAL on general failure 
+ * @retval tvERROR_OPERATION_NOT_SUPPORTED on non-supported operation failure
+ * @retval tvERROR_INVALID_PARAM on invalid param failure  
+ * @retval tvERROR_INVALID_STATE on invalid state failure
  * 
  * @pre  tvInit() should be called before calling this API.
  * @see GetRGBPattern()
@@ -612,16 +618,16 @@ tvError_t SetRGBPattern(int r,int g, int b) ;
 /**
  * @brief This function gets the RGB pattern value  from driver
  *
- * @param[in] None
- * @param[out] r indicates the red value of the pattern from driver
- * @param[out] g indicates the green value of the pattern from driver
- * @param[out] b indicates the blue value of the pattern from driver
+ * @param[out] r -  indicates the red value of the pattern from driver
+ * @param[out] g - indicates the green value of the pattern from driver
+ * @param[out] b - indicates the blue value of the pattern from driver
  * 
- * @return tvERROR_NONE on success
- * @return tvERROR_GENERAL on general failure 
- * @return tvERROR_OPERATION_NOT_SUPPORTED on non-supported operation failure
- * @return tvERROR_INVALID_PARAM on invalid param failure  
- * @return tvERROR_INVALID_STATE on invalid state failure
+ * @return tvError_t
+ * @retval tvERROR_NONE on success
+ * @retval tvERROR_GENERAL on general failure 
+ * @retval tvERROR_OPERATION_NOT_SUPPORTED on non-supported operation failure
+ * @retval tvERROR_INVALID_PARAM on invalid param failure  
+ * @retval tvERROR_INVALID_STATE on invalid state failure
  * 
  * @pre  tvInit() should be called before calling this API.
  * @see SetRGBPattern()
@@ -631,14 +637,14 @@ tvError_t GetRGBPattern(int *r,int *g,int *b);
 /**
  * @brief This function updates the YUV  color value  to driver
  *
- * @param[in] YUVValue indicates yuv values for the pattern
- * @param[out] None
+ * @param[in] YUVValue - indicates yuv values for the pattern
  *
- * @return tvERROR_NONE on success
- * @return tvERROR_GENERAL on general failure 
- * @return tvERROR_OPERATION_NOT_SUPPORTED on non-supported operation failure
- * @return tvERROR_INVALID_PARAM on invalid param failure  
- * @return tvERROR_INVALID_STATE on invalid state failure
+ * @return tvError_t
+ * @retval tvERROR_NONE on success
+ * @retval tvERROR_GENERAL on general failure 
+ * @retval tvERROR_OPERATION_NOT_SUPPORTED on non-supported operation failure
+ * @retval tvERROR_INVALID_PARAM on invalid param failure  
+ * @retval tvERROR_INVALID_STATE on invalid state failure
  * 
  * @pre  tvInit() should be called before calling this API.
  * @see GetGrayPattern()
@@ -648,14 +654,14 @@ tvError_t SetGrayPattern(int YUVValue);
 /**
  * @brief This function gets the GetGrayPattern  pattern value  from driver
  *
- * @param[in] None
- * @param[out] YUVValue  indicates the pointer variable
+ * @param[out] YUVValue -  indicates the pointer variable
  *
- * @return tvERROR_NONE on success
- * @return tvERROR_GENERAL on general failure 
- * @return tvERROR_OPERATION_NOT_SUPPORTED on non-supported operation failure
- * @return tvERROR_INVALID_PARAM on invalid param failure  
- * @return tvERROR_INVALID_STATE on invalid state failure
+ * @return tvError_t
+ * @retval tvERROR_NONE on success
+ * @retval tvERROR_GENERAL on general failure 
+ * @retval tvERROR_OPERATION_NOT_SUPPORTED on non-supported operation failure
+ * @retval tvERROR_INVALID_PARAM on invalid param failure  
+ * @retval tvERROR_INVALID_STATE on invalid state failure
  * 
  * @pre  tvInit() should be called before calling this API.
  * @see SetGrayPattern()
@@ -668,11 +674,12 @@ tvError_t GetGrayPattern(int* YUVValue);
  * @param[in] colorTemp indicates the colour temperature
  * @param[out] rgain indicates the red gain value.
  *
+ * @return tvError_t
  * @return tvERROR_NONE on success
- * @return tvERROR_GENERAL on general failure 
- * @return tvERROR_OPERATION_NOT_SUPPORTED on non-supported operation failure
- * @return tvERROR_INVALID_PARAM on invalid param failure  
- * @return tvERROR_INVALID_STATE on invalid state failure
+ * @retval tvERROR_GENERAL on general failure 
+ * @retval tvERROR_OPERATION_NOT_SUPPORTED on non-supported operation failure
+ * @retval tvERROR_INVALID_PARAM on invalid param failure  
+ * @retval tvERROR_INVALID_STATE on invalid state failure
  * 
  * @pre  tvInit() should be called before calling this API.
  * @see GetColorTemp_Rgain()
@@ -685,11 +692,12 @@ tvError_t SetColorTemp_Rgain(tvColorTemp_t colorTemp, int rgain);
  * @param[in] colorTemp indicates the colorTemp of TV color.
  * @param[out] rgain indicates the  white balance red gain
  *
- * @return tvERROR_NONE on success
- * @return tvERROR_GENERAL on general failure 
- * @return tvERROR_OPERATION_NOT_SUPPORTED on non-supported operation failure
- * @return tvERROR_INVALID_PARAM on invalid param failure  
- * @return tvERROR_INVALID_STATE on invalid state failure
+ * @return tvError_t
+ * @retval tvERROR_NONE on success
+ * @retval tvERROR_GENERAL on general failure 
+ * @retval tvERROR_OPERATION_NOT_SUPPORTED on non-supported operation failure
+ * @retval tvERROR_INVALID_PARAM on invalid param failure  
+ * @retval tvERROR_INVALID_STATE on invalid state failure
  * 
  * @pre  tvInit() should be called before calling this API.
  * @see SetColorTemp_Rgain()
@@ -703,11 +711,12 @@ tvError_t GetColorTemp_Rgain(tvColorTemp_t colorTemp, int* rgain);
  * @param[in] ggain indicates the white balance green gain.
  * @param[out] None
  *
- * @return tvERROR_NONE on success
- * @return tvERROR_GENERAL on general failure 
- * @return tvERROR_OPERATION_NOT_SUPPORTED on non-supported operation failure
- * @return tvERROR_INVALID_PARAM on invalid param failure  
- * @return tvERROR_INVALID_STATE on invalid state failure
+ * @return tvError_t
+ * @retval tvERROR_NONE on success
+ * @retval tvERROR_GENERAL on general failure 
+ * @retval tvERROR_OPERATION_NOT_SUPPORTED on non-supported operation failure
+ * @retval tvERROR_INVALID_PARAM on invalid param failure  
+ * @retval tvERROR_INVALID_STATE on invalid state failure
  * 
  * @pre  tvInit() should be called before calling this API.
  * @see GetColorTemp_Ggain()
@@ -720,11 +729,12 @@ tvError_t SetColorTemp_Ggain(tvColorTemp_t colorTemp, int ggain);
  * @param[in] colorTemp indicates the color temperature of the TV.
  * @param[out] ggain returns the green gain  color set for white balance.
  *
- * @return tvERROR_NONE on success
- * @return tvERROR_GENERAL on general failure 
- * @return tvERROR_OPERATION_NOT_SUPPORTED on non-supported operation failure
- * @return tvERROR_INVALID_PARAM on invalid param failure  
- * @return tvERROR_INVALID_STATE on invalid state failure
+ * @return tvError_t
+ * @retval tvERROR_NONE on success
+ * @retval tvERROR_GENERAL on general failure 
+ * @retval tvERROR_OPERATION_NOT_SUPPORTED on non-supported operation failure
+ * @retval tvERROR_INVALID_PARAM on invalid param failure  
+ * @retval tvERROR_INVALID_STATE on invalid state failure
  * 
  * @pre  tvInit() should be called before calling this API.
  * @see SetColorTemp_Ggain()
@@ -738,11 +748,12 @@ tvError_t GetColorTemp_Ggain(tvColorTemp_t colorTemp, int* ggain);
  * @param[in] ggain indicates the white balance blue gain.
  * @param[out] None
  *
- * @return tvERROR_NONE on success
- * @return tvERROR_GENERAL on general failure 
- * @return tvERROR_OPERATION_NOT_SUPPORTED on non-supported operation failure
- * @return tvERROR_INVALID_PARAM on invalid param failure  
- * @return tvERROR_INVALID_STATE on invalid state failure
+ * @return tvError_t
+ * @retval tvERROR_NONE on success
+ * @retval tvERROR_GENERAL on general failure 
+ * @retval tvERROR_OPERATION_NOT_SUPPORTED on non-supported operation failure
+ * @retval tvERROR_INVALID_PARAM on invalid param failure  
+ * @retval tvERROR_INVALID_STATE on invalid state failure
  * 
  * @pre  tvInit() should be called before calling this API.
  * @see GetColorTemp_Bgain()
@@ -754,11 +765,12 @@ tvError_t SetColorTemp_Bgain(tvColorTemp_t colorTemp, int bgain);
  * @param[in] colorTemp indicates the color temperature of the TV.
  * @param[out] ggain returns the blue gain  color set for white balance.
  *
- * @return tvERROR_NONE on success
- * @return tvERROR_GENERAL on general failure 
- * @return tvERROR_OPERATION_NOT_SUPPORTED on non-supported operation failure
- * @return tvERROR_INVALID_PARAM on invalid param failure  
- * @return tvERROR_INVALID_STATE on invalid state failure
+ * @return tvError_t
+ * @retval tvERROR_NONE on success
+ * @retval tvERROR_GENERAL on general failure 
+ * @retval tvERROR_OPERATION_NOT_SUPPORTED on non-supported operation failure
+ * @retval tvERROR_INVALID_PARAM on invalid param failure  
+ * @retval tvERROR_INVALID_STATE on invalid state failure
  * 
  * @pre  tvInit() should be called before calling this API.
  * @see SetColorTemp_Bgain()
@@ -771,11 +783,12 @@ tvError_t GetColorTemp_Bgain(tvColorTemp_t colorTemp, int* bgain);
  * @param[in] rpostoffset sets the red post offset 
  * @param[out] None
  *
- * @return tvERROR_NONE on success
- * @return tvERROR_GENERAL on general failure 
- * @return tvERROR_OPERATION_NOT_SUPPORTED on non-supported operation failure
- * @return tvERROR_INVALID_PARAM on invalid param failure  
- * @return tvERROR_INVALID_STATE on invalid state failure
+ * @return tvError_t
+ * @retval tvERROR_NONE on success
+ * @retval tvERROR_GENERAL on general failure 
+ * @retval tvERROR_OPERATION_NOT_SUPPORTED on non-supported operation failure
+ * @retval tvERROR_INVALID_PARAM on invalid param failure  
+ * @retval tvERROR_INVALID_STATE on invalid state failure
  * 
  * @pre  tvInit() should be called before calling this API.
  * @see GetColorTemp_R_post_offset()
@@ -788,11 +801,12 @@ tvError_t SetColorTemp_R_post_offset(tvColorTemp_t colorTemp, int rpostoffset);
  * @param[in] colorTemp indicates the color temperature of the TV.
  * @param[out] rpostoffset returns the red post offset set for white balance.
  *
- * @return tvERROR_NONE on success
- * @return tvERROR_GENERAL on general failure 
- * @return tvERROR_OPERATION_NOT_SUPPORTED on non-supported operation failure
- * @return tvERROR_INVALID_PARAM on invalid param failure  
- * @return tvERROR_INVALID_STATE on invalid state failure
+ * @return tvError_t
+ * @retval tvERROR_NONE on success
+ * @retval tvERROR_GENERAL on general failure 
+ * @retval tvERROR_OPERATION_NOT_SUPPORTED on non-supported operation failure
+ * @retval tvERROR_INVALID_PARAM on invalid param failure  
+ * @retval tvERROR_INVALID_STATE on invalid state failure
  * 
  * @pre  tvInit() should be called before calling this API.
  * @see SetColorTemp_R_post_offset()
@@ -806,11 +820,12 @@ tvError_t GetColorTemp_R_post_offset(tvColorTemp_t colorTemp, int* rpostoffset);
  * @param[in] gpostoffset sets the green post offset 
  * @param[out] None
  *
- * @return tvERROR_NONE on success
- * @return tvERROR_GENERAL on general failure 
- * @return tvERROR_OPERATION_NOT_SUPPORTED on non-supported operation failure
- * @return tvERROR_INVALID_PARAM on invalid param failure  
- * @return tvERROR_INVALID_STATE on invalid state failure
+ * @return tvError_t
+ * @retval tvERROR_NONE on success
+ * @retval tvERROR_GENERAL on general failure 
+ * @retval tvERROR_OPERATION_NOT_SUPPORTED on non-supported operation failure
+ * @retval tvERROR_INVALID_PARAM on invalid param failure  
+ * @retval tvERROR_INVALID_STATE on invalid state failure
  * 
  * @pre  tvInit() should be called before calling this API.
  * @see GetColorTemp_G_post_offset()
@@ -823,11 +838,12 @@ tvError_t SetColorTemp_G_post_offset(tvColorTemp_t colorTemp, int gpostoffset);
  * @param[in] colorTemp indicates the color temperature of the TV.
  * @param[out] gpostoffset returns the green post offset set for white balance.
  *
- * @return tvERROR_NONE on success
- * @return tvERROR_GENERAL on general failure 
- * @return tvERROR_OPERATION_NOT_SUPPORTED on non-supported operation failure
- * @return tvERROR_INVALID_PARAM on invalid param failure  
- * @return tvERROR_INVALID_STATE on invalid state failure
+ * @return tvError_t
+ * @retval tvERROR_NONE on success
+ * @retval tvERROR_GENERAL on general failure 
+ * @retval tvERROR_OPERATION_NOT_SUPPORTED on non-supported operation failure
+ * @retval tvERROR_INVALID_PARAM on invalid param failure  
+ * @retval tvERROR_INVALID_STATE on invalid state failure
  * 
  * @pre  tvInit() should be called before calling this API.
  * @see SetColorTemp_G_post_offset()
@@ -841,11 +857,12 @@ tvError_t GetColorTemp_G_post_offset(tvColorTemp_t colorTemp, int* gpostoffset);
  * @param[in] bpostoffset sets the blue post offset 
  * @param[out] None
  *
- * @return tvERROR_NONE on success
- * @return tvERROR_GENERAL on general failure 
- * @return tvERROR_OPERATION_NOT_SUPPORTED on non-supported operation failure
- * @return tvERROR_INVALID_PARAM on invalid param failure  
- * @return tvERROR_INVALID_STATE on invalid state failure
+ * @return tvError_t
+ * @retval tvERROR_NONE on success
+ * @retval tvERROR_GENERAL on general failure 
+ * @retval tvERROR_OPERATION_NOT_SUPPORTED on non-supported operation failure
+ * @retval tvERROR_INVALID_PARAM on invalid param failure  
+ * @retval tvERROR_INVALID_STATE on invalid state failure
  * 
  * @pre  tvInit() should be called before calling this API.
  * @see GetColorTemp_B_post_offset()
@@ -858,11 +875,12 @@ tvError_t SetColorTemp_B_post_offset(tvColorTemp_t colorTemp, int bpostoffset);
  * @param[in] colorTemp indicates the color temperature of the TV.
  * @param[out] bpostoffset returns the blue post offset set for white balance.
  *
- * @return tvERROR_NONE on success
- * @return tvERROR_GENERAL on general failure 
- * @return tvERROR_OPERATION_NOT_SUPPORTED on non-supported operation failure
- * @return tvERROR_INVALID_PARAM on invalid param failure  
- * @return tvERROR_INVALID_STATE on invalid state failure
+ * @return tvError_t
+ * @retval tvERROR_NONE on success
+ * @retval tvERROR_GENERAL on general failure 
+ * @retval tvERROR_OPERATION_NOT_SUPPORTED on non-supported operation failure
+ * @retval tvERROR_INVALID_PARAM on invalid param failure  
+ * @retval tvERROR_INVALID_STATE on invalid state failure
  * 
  * @pre  tvInit() should be called before calling this API.
  * @see SetColorTemp_B_post_offset()
@@ -876,11 +894,12 @@ tvError_t GetColorTemp_B_post_offset(tvColorTemp_t colorTemp, int* bpostoffset);
  * @param[out] pictureModes returns the list of available picture modes of type tvPictureMode_t
  * @param[out] count returns the number of available picture modes
  *
- * @return tvERROR_NONE on success
- * @return tvERROR_GENERAL on general failure 
- * @return tvERROR_OPERATION_NOT_SUPPORTED on non-supported operation failure
- * @return tvERROR_INVALID_PARAM on invalid param failure  
- * @return tvERROR_INVALID_STATE on invalid state failure
+ * @return tvError_t
+ * @retval tvERROR_NONE on success
+ * @retval tvERROR_GENERAL on general failure 
+ * @retval tvERROR_OPERATION_NOT_SUPPORTED on non-supported operation failure
+ * @retval tvERROR_INVALID_PARAM on invalid param failure  
+ * @retval tvERROR_INVALID_STATE on invalid state failure
  * 
  * @pre  tvInit() should be called before calling this API.
  */
@@ -892,11 +911,12 @@ tvError_t GetTVSupportedPictureModes(pic_modes_t *pictureModes[],unsigned short 
  * @param[in] cbData callback function
  * @param[out] None
  *
- * @return tvERROR_NONE on success
- * @return tvERROR_GENERAL on general failure 
- * @return tvERROR_OPERATION_NOT_SUPPORTED on non-supported operation failure
- * @return tvERROR_INVALID_PARAM on invalid param failure  
- * @return tvERROR_INVALID_STATE on invalid state failure
+ * @return tvError_t
+ * @retval tvERROR_NONE on success
+ * @retval tvERROR_GENERAL on general failure 
+ * @retval tvERROR_OPERATION_NOT_SUPPORTED on non-supported operation failure
+ * @retval tvERROR_INVALID_PARAM on invalid param failure  
+ * @retval tvERROR_INVALID_STATE on invalid state failure
  * 
  * @pre  tvInit() should be called before calling this API.
  */
@@ -915,11 +935,7 @@ typedef struct
  * @param[in] cbData callback function
  * @param[out] None
  *
- * @return tvERROR_NONE on success
- * @return tvERROR_GENERAL on general failure 
- * @return tvERROR_OPERATION_NOT_SUPPORTED on non-supported operation failure
- * @return tvERROR_INVALID_PARAM on invalid param failure  
- * @return tvERROR_INVALID_STATE on invalid state failure
+ * @return void
  * 
  * @pre  tvInit() should be called before calling this API.
  */
@@ -937,11 +953,7 @@ typedef struct
  * @param[in] cbData callback function
  * @param[out] None
  *
- * @return tvERROR_NONE on success
- * @return tvERROR_GENERAL on general failure 
- * @return tvERROR_OPERATION_NOT_SUPPORTED on non-supported operation failure
- * @return tvERROR_INVALID_PARAM on invalid param failure  
- * @return tvERROR_INVALID_STATE on invalid state failure
+ * @return void
  * 
  * @pre  tvInit() should be called before calling this API.
  */
@@ -954,11 +966,12 @@ void RegisterVideoFrameRateChangeCB(tvVideoFrameRateCallbackData& cbData);
  * @param[out] dvModes[] returns the list of available DV modes.
  * @param[out] count returns the number  of available DV modes.
  *
- * @return tvERROR_NONE on success
- * @return tvERROR_GENERAL on general failure 
- * @return tvERROR_OPERATION_NOT_SUPPORTED on non-supported operation failure
- * @return tvERROR_INVALID_PARAM on invalid param failure  
- * @return tvERROR_INVALID_STATE on invalid state failure
+ * @return tvError_t
+ * @retval tvERROR_NONE on success
+ * @retval tvERROR_GENERAL on general failure 
+ * @retval tvERROR_OPERATION_NOT_SUPPORTED on non-supported operation failure
+ * @retval tvERROR_INVALID_PARAM on invalid param failure  
+ * @retval tvERROR_INVALID_STATE on invalid state failure
  * 
  * @pre  tvInit() should be called before calling this API.
  */
@@ -970,11 +983,12 @@ tvError_t GetTVSupportedDVModes(pic_modes_t *dvModes[],unsigned short *count);
  * @param[in] dolbyMode indicates the dolbymode to be set on TV.
  * @param[out] None
  *
- * @return tvERROR_NONE on success
- * @return tvERROR_GENERAL on general failure 
- * @return tvERROR_OPERATION_NOT_SUPPORTED on non-supported operation failure
- * @return tvERROR_INVALID_PARAM on invalid param failure  
- * @return tvERROR_INVALID_STATE on invalid state failure
+ * @return tvError_t
+ * @retval tvERROR_NONE on success
+ * @retval tvERROR_GENERAL on general failure 
+ * @retval tvERROR_OPERATION_NOT_SUPPORTED on non-supported operation failure
+ * @retval tvERROR_INVALID_PARAM on invalid param failure  
+ * @retval tvERROR_INVALID_STATE on invalid state failure
  * 
  * @pre  tvInit() should be called before calling this API.
  * @see GetTVDolbyVisionMode()
@@ -987,11 +1001,12 @@ tvError_t SetTVDolbyVisionMode(const char * dolbyMode);
  * @param[in] None
  * @param[out] dolbyMode returns the dolby mode currently set
  *
- * @return tvERROR_NONE on success
- * @return tvERROR_GENERAL on general failure 
- * @return tvERROR_OPERATION_NOT_SUPPORTED on non-supported operation failure
- * @return tvERROR_INVALID_PARAM on invalid param failure  
- * @return tvERROR_INVALID_STATE on invalid state failure
+ * @return tvError_t
+ * @retval tvERROR_NONE on success
+ * @retval tvERROR_GENERAL on general failure 
+ * @retval tvERROR_OPERATION_NOT_SUPPORTED on non-supported operation failure
+ * @retval tvERROR_INVALID_PARAM on invalid param failure  
+ * @retval tvERROR_INVALID_STATE on invalid state failure
  * 
  * @pre  tvInit() should be called before calling this API.
  * @see SetTVDolbyVisionMode()
@@ -1004,11 +1019,12 @@ tvError_t GetTVDolbyVisionMode(char *dolbyMode);
  * @param[in] hlgmode indicates the hlgmode to be set.
  * @param[out] None
  *
- * @return tvERROR_NONE on success
- * @return tvERROR_GENERAL on general failure 
- * @return tvERROR_OPERATION_NOT_SUPPORTED on non-supported operation failure
- * @return tvERROR_INVALID_PARAM on invalid param failure  
- * @return tvERROR_INVALID_STATE on invalid state failure
+ * @return tvError_t
+ * @retval tvERROR_NONE on success
+ * @retval tvERROR_GENERAL on general failure 
+ * @retval tvERROR_OPERATION_NOT_SUPPORTED on non-supported operation failure
+ * @retval tvERROR_INVALID_PARAM on invalid param failure  
+ * @retval tvERROR_INVALID_STATE on invalid state failure
  * 
  * @pre  tvInit() should be called before calling this API.
  * @see GetTVHLGMode()
@@ -1021,11 +1037,12 @@ tvError_t SetTVHLGMode(const char * hlgMode);
  * @param[in] hdr10mode indicates the required hdr10mode to be set.
  * @param[out] None
  *
- * @return tvERROR_NONE on success
- * @return tvERROR_GENERAL on general failure 
- * @return tvERROR_OPERATION_NOT_SUPPORTED on non-supported operation failure
- * @return tvERROR_INVALID_PARAM on invalid param failure  
- * @return tvERROR_INVALID_STATE on invalid state failure
+ * @return tvError_t
+ * @retval tvERROR_NONE on success
+ * @retval tvERROR_GENERAL on general failure 
+ * @retval tvERROR_OPERATION_NOT_SUPPORTED on non-supported operation failure
+ * @retval tvERROR_INVALID_PARAM on invalid param failure  
+ * @retval tvERROR_INVALID_STATE on invalid state failure
  * 
  * @pre  tvInit() should be called before calling this API.
  * @see GetTVHDR10Mode()
@@ -1038,11 +1055,12 @@ tvError_t SetTVHDR10Mode(const char * hdr10Mode);
  * @param[in] None
  * @param[out] hlgMode returns the current hlgmode set.
  *
- * @return tvERROR_NONE on success
- * @return tvERROR_GENERAL on general failure 
- * @return tvERROR_OPERATION_NOT_SUPPORTED on non-supported operation failure
- * @return tvERROR_INVALID_PARAM on invalid param failure  
- * @return tvERROR_INVALID_STATE on invalid state failure
+ * @retval tvError_t
+ * @retval tvERROR_NONE on success
+ * @retval tvERROR_GENERAL on general failure 
+ * @retval tvERROR_OPERATION_NOT_SUPPORTED on non-supported operation failure
+ * @retval tvERROR_INVALID_PARAM on invalid param failure  
+ * @retval tvERROR_INVALID_STATE on invalid state failure
  * 
  * @pre  tvInit() should be called before calling this API.
  * @see SetTVHLGMode()
@@ -1055,11 +1073,11 @@ tvError_t GetTVHLGMode(char *hlgMode);
  * @param[in] None
  * @param[out] hdr10Mode returns the current hdr10Mode set.
  *
- * @return tvERROR_NONE on success
- * @return tvERROR_GENERAL on general failure 
- * @return tvERROR_OPERATION_NOT_SUPPORTED on non-supported operation failure
- * @return tvERROR_INVALID_PARAM on invalid param failure  
- * @return tvERROR_INVALID_STATE on invalid state failure
+ * @retval tvERROR_NONE on success
+ * @retval tvERROR_GENERAL on general failure 
+ * @retval tvERROR_OPERATION_NOT_SUPPORTED on non-supported operation failure
+ * @retval tvERROR_INVALID_PARAM on invalid param failure  
+ * @retval tvERROR_INVALID_STATE on invalid state failure
  *
  * @pre  tvInit() should be called before calling this API.
  * @see SetTVHDR10Mode()
@@ -1073,11 +1091,12 @@ tvError_t GetTVHDR10Mode(char *hdr10Mode);
  * @param[out] dvModes returns the list of supported HLG modes.
  * @param[out] count returns the number of supported HLG modes.
  *
- * @return tvERROR_NONE on success
- * @return tvERROR_GENERAL on general failure 
- * @return tvERROR_OPERATION_NOT_SUPPORTED on non-supported operation failure
- * @return tvERROR_INVALID_PARAM on invalid param failure  
- * @return tvERROR_INVALID_STATE on invalid state failure
+ * @return tvError_t
+ * @retval tvERROR_NONE on success
+ * @retval tvERROR_GENERAL on general failure 
+ * @retval tvERROR_OPERATION_NOT_SUPPORTED on non-supported operation failure
+ * @retval tvERROR_INVALID_PARAM on invalid param failure  
+ * @retval tvERROR_INVALID_STATE on invalid state failure
  * 
  * @pre  tvInit() should be called before calling this API.
  */
@@ -1090,11 +1109,12 @@ tvError_t GetTVSupportedHLGModes(pic_modes_t *dvModes[],unsigned short *count);
  * @param[out] dvModes returns the list of supported hdr10modes.
  * @param[out] count returns the number of supported hdr10modes.
  *
- * @return tvERROR_NONE on success
- * @return tvERROR_GENERAL on general failure 
- * @return tvERROR_OPERATION_NOT_SUPPORTED on non-supported operation failure
- * @return tvERROR_INVALID_PARAM on invalid param failure  
- * @return tvERROR_INVALID_STATE on invalid state failure
+ * @return tvError_t
+ * @retval tvERROR_NONE on success
+ * @retval tvERROR_GENERAL on general failure 
+ * @retval tvERROR_OPERATION_NOT_SUPPORTED on non-supported operation failure
+ * @retval tvERROR_INVALID_PARAM on invalid param failure  
+ * @retval tvERROR_INVALID_STATE on invalid state failure
  *
  * @pre  tvInit() should be called before calling this API.
  */
@@ -1105,11 +1125,12 @@ tvError_t GetTVSupportedHDR10Modes(pic_modes_t *dvModes[],unsigned short *count)
  * @param[in] dynamicContrastEnable dynamic contrast mode to be set.
  * @param[out] None
  *
- * @return tvERROR_NONE on success
- * @return tvERROR_GENERAL on general failure 
- * @return tvERROR_OPERATION_NOT_SUPPORTED on non-supported operation failure
- * @return tvERROR_INVALID_PARAM on invalid param failure  
- * @return tvERROR_INVALID_STATE on invalid state failure
+ * @return tvError_t
+ * @retval tvERROR_NONE on success
+ * @retval tvERROR_GENERAL on general failure 
+ * @retval tvERROR_OPERATION_NOT_SUPPORTED on non-supported operation failure
+ * @retval tvERROR_INVALID_PARAM on invalid param failure  
+ * @retval tvERROR_INVALID_STATE on invalid state failure
  * 
  * @pre  tvInit() should be called before calling this API.
  * @see GetDynamicContrast()
@@ -1122,11 +1143,12 @@ tvError_t SetDynamicContrast(const char *dynamicContrastEnable);
  * @param[in] None
  * @param[out] isDynamicContrastEnabled returns the string disabled/enabled for dynamic contrast mode.
  *
- * @return tvERROR_NONE on success
- * @return tvERROR_GENERAL on general failure 
- * @return tvERROR_OPERATION_NOT_SUPPORTED on non-supported operation failure
- * @return tvERROR_INVALID_PARAM on invalid param failure  
- * @return tvERROR_INVALID_STATE on invalid state failure
+ * @return tvError_t
+ * @retval tvERROR_NONE on success
+ * @retval tvERROR_GENERAL on general failure 
+ * @retval tvERROR_OPERATION_NOT_SUPPORTED on non-supported operation failure
+ * @retval tvERROR_INVALID_PARAM on invalid param failure  
+ * @retval tvERROR_INVALID_STATE on invalid state failure
  *
  * @pre  tvInit() should be called before calling this API.
  * @see SetDynamicContrast()
@@ -1142,11 +1164,12 @@ tvError_t GetDynamicContrast(char *isDynamicContrastEnabled);
  * @param[in] saveOnly indicates whether the parameter to be saved.
  * @param[out] None
  *
- * @return tvERROR_NONE on success
- * @return tvERROR_GENERAL on general failure 
- * @return tvERROR_OPERATION_NOT_SUPPORTED on non-supported operation failure
- * @return tvERROR_INVALID_PARAM on invalid param failure  
- * @return tvERROR_INVALID_STATE on invalid state failure
+ * @return tvError_t
+ * @retval tvERROR_NONE on success
+ * @retval tvERROR_GENERAL on general failure 
+ * @retval tvERROR_OPERATION_NOT_SUPPORTED on non-supported operation failure
+ * @retval tvERROR_INVALID_PARAM on invalid param failure  
+ * @retval tvERROR_INVALID_STATE on invalid state failure
  * 
  * @pre  tvInit() should be called before calling this API.
  */
@@ -1159,11 +1182,12 @@ tvError_t SetColorTemp_Rgain_onSource(tvColorTemp_t colorTemp, int rgain,int sou
  * @param[in] sourceId source ID of the source for which red gain to be set
  * @param[out] rgain returns the R gain on white balance.
  *
- * @return tvERROR_NONE on success
- * @return tvERROR_GENERAL on general failure 
- * @return tvERROR_OPERATION_NOT_SUPPORTED on non-supported operation failure
- * @return tvERROR_INVALID_PARAM on invalid param failure  
- * @return tvERROR_INVALID_STATE on invalid state failure
+ * @return tvError_t
+ * @retval tvERROR_NONE on success
+ * @retval tvERROR_GENERAL on general failure 
+ * @retval tvERROR_OPERATION_NOT_SUPPORTED on non-supported operation failure
+ * @retval tvERROR_INVALID_PARAM on invalid param failure  
+ * @retval tvERROR_INVALID_STATE on invalid state failure
  * 
  * @pre  tvInit() should be called before calling this API.
  */
@@ -1177,11 +1201,12 @@ tvError_t GetColorTemp_Rgain_onSource(tvColorTemp_t colorTemp, int* rgain,int so
  * @param[in] saveOnly indicates whether the parameter to be saved.
  * @param[out] None
  *
- * @return tvERROR_NONE on success
- * @return tvERROR_GENERAL on general failure 
- * @return tvERROR_OPERATION_NOT_SUPPORTED on non-supported operation failure
- * @return tvERROR_INVALID_PARAM on invalid param failure  
- * @return tvERROR_INVALID_STATE on invalid state failure
+ * @return tvError_t
+ * @retval tvERROR_NONE on success
+ * @retval tvERROR_GENERAL on general failure 
+ * @retval tvERROR_OPERATION_NOT_SUPPORTED on non-supported operation failure
+ * @retval tvERROR_INVALID_PARAM on invalid param failure  
+ * @retval tvERROR_INVALID_STATE on invalid state failure
  * 
  * @pre  tvInit() should be called before calling this API.
  */
@@ -1194,11 +1219,12 @@ tvError_t SetColorTemp_Ggain_onSource(tvColorTemp_t colorTemp, int ggain,int sou
  * @param[in] sourceId source ID of the source for which green gain to be set
  * @param[out] ggain returns the G gain on white balance.
  *
- * @return tvERROR_NONE on success
- * @return tvERROR_GENERAL on general failure 
- * @return tvERROR_OPERATION_NOT_SUPPORTED on non-supported operation failure
- * @return tvERROR_INVALID_PARAM on invalid param failure  
- * @return tvERROR_INVALID_STATE on invalid state failure
+ * @return tvError_t
+ * @retval tvERROR_NONE on success
+ * @retval tvERROR_GENERAL on general failure 
+ * @retval tvERROR_OPERATION_NOT_SUPPORTED on non-supported operation failure
+ * @retval tvERROR_INVALID_PARAM on invalid param failure  
+ * @retval tvERROR_INVALID_STATE on invalid state failure
  * 
  * @pre  tvInit() should be called before calling this API.
  */
@@ -1213,11 +1239,12 @@ tvError_t GetColorTemp_Ggain_onSource(tvColorTemp_t colorTemp, int* ggain,int so
  * @param[in] saveOnly indicates whether the parameter to be saved.
  * @param[out] None
  *
- * @return tvERROR_NONE on success
- * @return tvERROR_GENERAL on general failure 
- * @return tvERROR_OPERATION_NOT_SUPPORTED on non-supported operation failure
- * @return tvERROR_INVALID_PARAM on invalid param failure  
- * @return tvERROR_INVALID_STATE on invalid state failure
+ * @return tvError_t
+ * @retval tvERROR_NONE on success
+ * @retval tvERROR_GENERAL on general failure 
+ * @retval tvERROR_OPERATION_NOT_SUPPORTED on non-supported operation failure
+ * @retval tvERROR_INVALID_PARAM on invalid param failure  
+ * @retval tvERROR_INVALID_STATE on invalid state failure
  * 
  * @pre  tvInit() should be called before calling this API.
  */
@@ -1229,11 +1256,12 @@ tvError_t SetColorTemp_Bgain_onSource(tvColorTemp_t colorTemp, int bgain,int sou
  * @param[in] sourceId source ID of the source for which blue gain to be set
  * @param[out] bgain returns the Blue gain on white balance.
  *
- * @return tvERROR_NONE on success
- * @return tvERROR_GENERAL on general failure 
- * @return tvERROR_OPERATION_NOT_SUPPORTED on non-supported operation failure
- * @return tvERROR_INVALID_PARAM on invalid param failure  
- * @return tvERROR_INVALID_STATE on invalid state failure
+ * @return tvError_t
+ * @retval tvERROR_NONE on success
+ * @retval tvERROR_GENERAL on general failure 
+ * @retval tvERROR_OPERATION_NOT_SUPPORTED on non-supported operation failure
+ * @retval tvERROR_INVALID_PARAM on invalid param failure  
+ * @retval tvERROR_INVALID_STATE on invalid state failure
  * 
  * @pre  tvInit() should be called before calling this API.
  */
@@ -1248,11 +1276,12 @@ tvError_t GetColorTemp_Bgain_onSource(tvColorTemp_t colorTemp, int* bgain,int so
  * @param[in] saveOnly indicates whether the parameters needs to be saved.
  * @param[out] None
  *
- * @return tvERROR_NONE on success
- * @return tvERROR_GENERAL on general failure 
- * @return tvERROR_OPERATION_NOT_SUPPORTED on non-supported operation failure
- * @return tvERROR_INVALID_PARAM on invalid param failure  
- * @return tvERROR_INVALID_STATE on invalid state failure
+ * @return tvError_t
+ * @retval tvERROR_NONE on success
+ * @retval tvERROR_GENERAL on general failure 
+ * @retval tvERROR_OPERATION_NOT_SUPPORTED on non-supported operation failure
+ * @retval tvERROR_INVALID_PARAM on invalid param failure  
+ * @retval tvERROR_INVALID_STATE on invalid state failure
  * 
  * @pre  tvInit() should be called before calling this API.
  * @see GetColorTemp_R_post_offset_onSource()
@@ -1266,11 +1295,12 @@ tvError_t SetColorTemp_R_post_offset_onSource(tvColorTemp_t colorTemp, int rpost
  * @param[in] sourceId indicates the source id of the source for which the Red post offset needs to be get.
  * @param[out] rpostoffset returns the red post offset set for white balance for the specific source.
  *
- * @return tvERROR_NONE on success
- * @return tvERROR_GENERAL on general failure 
- * @return tvERROR_OPERATION_NOT_SUPPORTED on non-supported operation failure
- * @return tvERROR_INVALID_PARAM on invalid param failure  
- * @return tvERROR_INVALID_STATE on invalid state failure
+ * @return tvError_t
+ * @retval tvERROR_NONE on success
+ * @retval tvERROR_GENERAL on general failure 
+ * @retval tvERROR_OPERATION_NOT_SUPPORTED on non-supported operation failure
+ * @retval tvERROR_INVALID_PARAM on invalid param failure  
+ * @retval tvERROR_INVALID_STATE on invalid state failure
  * 
  * @pre  tvInit() should be called before calling this API.
  * @see SetColorTemp_R_post_offset_onSource()
@@ -1286,11 +1316,12 @@ tvError_t GetColorTemp_R_post_offset_onSource(tvColorTemp_t colorTemp, int* rpos
  * @param[in] saveOnly indicates whether the parameters needs to be saved.
  * @param[out] None
  *
- * @return tvERROR_NONE on success
- * @return tvERROR_GENERAL on general failure 
- * @return tvERROR_OPERATION_NOT_SUPPORTED on non-supported operation failure
- * @return tvERROR_INVALID_PARAM on invalid param failure  
- * @return tvERROR_INVALID_STATE on invalid state failure
+ * @return tvError_t
+ * @retval tvERROR_NONE on success
+ * @retval tvERROR_GENERAL on general failure 
+ * @retval tvERROR_OPERATION_NOT_SUPPORTED on non-supported operation failure
+ * @retval tvERROR_INVALID_PARAM on invalid param failure  
+ * @retval tvERROR_INVALID_STATE on invalid state failure
  * 
  * @pre  tvInit() should be called before calling this API.
  * @see GetColorTemp_R_post_offset_onSource()
@@ -1304,7 +1335,8 @@ tvError_t SetColorTemp_G_post_offset_onSource(tvColorTemp_t colorTemp, int gpost
  * @param[in] sourceId indicates the source id of the source for which the Green post offset needs to be get.
  * @param[out] rpostoffset returns the green post offset set for white balance for the specific source.
  *
-\* @return tvERROR_NONE on success
+ * @retval tvError_t
+ * @return tvERROR_NONE on success
  * @return tvERROR_GENERAL on general failure 
  * @return tvERROR_OPERATION_NOT_SUPPORTED on non-supported operation failure
  * @return tvERROR_INVALID_PARAM on invalid param failure  
@@ -1324,11 +1356,12 @@ tvError_t GetColorTemp_G_post_offset_onSource(tvColorTemp_t colorTemp, int* gpos
  * @param[in] saveOnly indicates whether the parameters needs to be saved.
  * @param[out] None
  *
- * @return tvERROR_NONE on success
- * @return tvERROR_GENERAL on general failure 
- * @return tvERROR_OPERATION_NOT_SUPPORTED on non-supported operation failure
- * @return tvERROR_INVALID_PARAM on invalid param failure  
- * @return tvERROR_INVALID_STATE on invalid state failure
+ * @return tvError_t
+ * @retval tvERROR_NONE on success
+ * @retval tvERROR_GENERAL on general failure 
+ * @retval tvERROR_OPERATION_NOT_SUPPORTED on non-supported operation failure
+ * @retval tvERROR_INVALID_PARAM on invalid param failure  
+ * @retval tvERROR_INVALID_STATE on invalid state failure
  * 
  * @pre  tvInit() should be called before calling this API.
  * @see GetColorTemp_B_post_offset_onSource()
@@ -1342,11 +1375,12 @@ tvError_t SetColorTemp_B_post_offset_onSource(tvColorTemp_t colorTemp, int bpost
  * @param[in] sourceId indicates the source id of the source for which the Blue post offset needs to be get.
  * @param[out] bpostoffset returns the blue post offset set for white balance for the specific source.
  *
- * @return tvERROR_NONE on success
- * @return tvERROR_GENERAL on general failure 
- * @return tvERROR_OPERATION_NOT_SUPPORTED on non-supported operation failure
- * @return tvERROR_INVALID_PARAM on invalid param failure  
- * @return tvERROR_INVALID_STATE on invalid state failure
+ * @return tvError_t
+ * @retval tvERROR_NONE on success
+ * @retval tvERROR_GENERAL on general failure 
+ * @retval tvERROR_OPERATION_NOT_SUPPORTED on non-supported operation failure
+ * @retval tvERROR_INVALID_PARAM on invalid param failure  
+ * @retval tvERROR_INVALID_STATE on invalid state failure
  * 
  * @pre  tvInit() should be called before calling this API.
  * @see SetColorTemp_B_post_offset_onSource()
@@ -1361,11 +1395,12 @@ tvError_t GetColorTemp_B_post_offset_onSource(tvColorTemp_t colorTemp, int* bpos
  * @param[in] ctrl indicates the control to be done (gain or offset)
  * @param[in] value  indicates the values to be set for the specific control.
  *
- * @return tvERROR_NONE on success
- * @return tvERROR_GENERAL on general failure 
- * @return tvERROR_OPERATION_NOT_SUPPORTED on non-supported operation failure
- * @return tvERROR_INVALID_PARAM on invalid param failure  
- * @return tvERROR_INVALID_STATE on invalid state failure
+ * @return tvError_t
+ * @retval tvERROR_NONE on success
+ * @retval tvERROR_GENERAL on general failure 
+ * @retval tvERROR_OPERATION_NOT_SUPPORTED on non-supported operation failure
+ * @retval tvERROR_INVALID_PARAM on invalid param failure  
+ * @retval tvERROR_INVALID_STATE on invalid state failure
  * 
  * @pre  tvInit() should be called before calling this API.
  */
@@ -1379,11 +1414,12 @@ tvError_t setWBctrl(char *inputSrc, char *colorTemp,char *color, char *ctrl, int
  * @param[in] ctrl indicates the control to be done (gain or offset)
  * @param[out] value  indicates the pointer returned by driver to store the value.
  *
- * @return tvERROR_NONE on success
- * @return tvERROR_GENERAL on general failure 
- * @return tvERROR_OPERATION_NOT_SUPPORTED on non-supported operation failure
- * @return tvERROR_INVALID_PARAM on invalid param failure  
- * @return tvERROR_INVALID_STATE on invalid state failure
+ * @return tvError_t
+ * @retval tvERROR_NONE on success
+ * @retval tvERROR_GENERAL on general failure 
+ * @retval tvERROR_OPERATION_NOT_SUPPORTED on non-supported operation failure
+ * @retval tvERROR_INVALID_PARAM on invalid param failure  
+ * @retval tvERROR_INVALID_STATE on invalid state failure
  * 
  * @pre  tvInit() should be called before calling this API.
  */
@@ -1398,11 +1434,12 @@ tvError_t getWBctrl(char *inputSrc, char *colortemp, char *color, char *ctrl, in
  * @param[out] colorTmp indicates the vector which carries colorTmp details.
  * @param[out] input indicates the vector which carries the input details.
  *
- * @return tvERROR_NONE on success
- * @return tvERROR_GENERAL on general failure 
- * @return tvERROR_OPERATION_NOT_SUPPORTED on non-supported operation failure
- * @return tvERROR_INVALID_PARAM on invalid param failure  
- * @return tvERROR_INVALID_STATE on invalid state failure
+ * @return tvError_t
+ * @retval tvERROR_NONE on success
+ * @retval tvERROR_GENERAL on general failure 
+ * @retval tvERROR_OPERATION_NOT_SUPPORTED on non-supported operation failure
+ * @retval tvERROR_INVALID_PARAM on invalid param failure  
+ * @retval tvERROR_INVALID_STATE on invalid state failure
  * 
  * @pre  tvInit() should be called before calling this API.
  */
@@ -1414,11 +1451,12 @@ tvError_t getWbInfo(getWBInfo_t* params, std::vector<std::string> &selector, std
  * @param[in] value indicates whether to enable or disable
  * @param[out] None
  *
- * @return tvERROR_NONE on success
- * @return tvERROR_GENERAL on general failure 
- * @return tvERROR_OPERATION_NOT_SUPPORTED on non-supported operation failure
- * @return tvERROR_INVALID_PARAM on invalid param failure  
- * @return tvERROR_INVALID_STATE on invalid state failure
+ * @return tvError_t
+ * @retval tvERROR_NONE on success
+ * @retval tvERROR_GENERAL on general failure 
+ * @retval tvERROR_OPERATION_NOT_SUPPORTED on non-supported operation failure
+ * @retval tvERROR_INVALID_PARAM on invalid param failure  
+ * @retval tvERROR_INVALID_STATE on invalid state failure
  * 
  * @pre  tvInit() should be called before calling this API.
  */
@@ -1430,11 +1468,12 @@ tvError_t enableWBmode(bool value);
  * @param[in] None
  * @param[out] blComponentColor returns the supported component color
  *
- * @return tvERROR_NONE on success
- * @return tvERROR_GENERAL on general failure 
- * @return tvERROR_OPERATION_NOT_SUPPORTED on non-supported operation failure
- * @return tvERROR_INVALID_PARAM on invalid param failure  
- * @return tvERROR_INVALID_STATE on invalid state failure
+ * @return tvError_t
+ * @retval tvERROR_NONE on success
+ * @retval tvERROR_GENERAL on general failure 
+ * @retval tvERROR_OPERATION_NOT_SUPPORTED on non-supported operation failure
+ * @retval tvERROR_INVALID_PARAM on invalid param failure  
+ * @retval tvERROR_INVALID_STATE on invalid state failure
  * 
  * @pre  tvInit() should be called before calling this API.
  */
@@ -1446,11 +1485,12 @@ tvError_t GetSupportedComponentColor(int *blComponentColor);
  * @param[in] blSaturationColor indicates the saturation color to be set
  * @param[in] saturation  indicates the saturation value to set 
  *
- * @return tvERROR_NONE on success
- * @return tvERROR_GENERAL on general failure 
- * @return tvERROR_OPERATION_NOT_SUPPORTED on non-supported operation failure
- * @return tvERROR_INVALID_PARAM on invalid param failure  
- * @return tvERROR_INVALID_STATE on invalid state failure
+ * @return tvError_t
+ * @retval tvERROR_NONE on success
+ * @retval tvERROR_GENERAL on general failure 
+ * @retval tvERROR_OPERATION_NOT_SUPPORTED on non-supported operation failure
+ * @retval tvERROR_INVALID_PARAM on invalid param failure  
+ * @retval tvERROR_INVALID_STATE on invalid state failure
  * 
  * @pre  tvInit() should be called before calling this API.
  */
@@ -1462,11 +1502,12 @@ tvError_t SetCurrentComponentSaturation(tvDataComponentColor_t blSaturationColor
  * @param[in] blSaturationColor indicates the saturation color to be changed
  * @param[out] saturation returns the saturation value of the color
  *
- * @return tvERROR_NONE on success
- * @return tvERROR_GENERAL on general failure 
- * @return tvERROR_OPERATION_NOT_SUPPORTED on non-supported operation failure
- * @return tvERROR_INVALID_PARAM on invalid param failure  
- * @return tvERROR_INVALID_STATE on invalid state failure
+ * @return tvError_t
+ * @retval tvERROR_NONE on success
+ * @retval tvERROR_GENERAL on general failure 
+ * @retval tvERROR_OPERATION_NOT_SUPPORTED on non-supported operation failure
+ * @retval tvERROR_INVALID_PARAM on invalid param failure  
+ * @retval tvERROR_INVALID_STATE on invalid state failure
  * 
  * @pre  tvInit() should be called before calling this API.
  */
@@ -1479,11 +1520,12 @@ tvError_t GetCurrentComponentSaturation(tvDataComponentColor_t blSaturationColor
  * @param[in] hue indicates the hue value.
  * @param[out] None
  *
- * @return tvERROR_NONE on success
- * @return tvERROR_GENERAL on general failure 
- * @return tvERROR_OPERATION_NOT_SUPPORTED on non-supported operation failure
- * @return tvERROR_INVALID_PARAM on invalid param failure  
- * @return tvERROR_INVALID_STATE on invalid state failure
+ * @return tvError_t
+ * @retval tvERROR_NONE on success
+ * @retval tvERROR_GENERAL on general failure 
+ * @retval tvERROR_OPERATION_NOT_SUPPORTED on non-supported operation failure
+ * @retval tvERROR_INVALID_PARAM on invalid param failure  
+ * @retval tvERROR_INVALID_STATE on invalid state failure
  * 
  * @pre  tvInit() should be called before calling this API.
  */
@@ -1495,11 +1537,12 @@ tvError_t SetCurrentComponentHue(tvDataComponentColor_t blHueColor, int hue);
  * @param[in] blHueColor indicates the hue color of the component
  * @param[out] hue returns the hue value of the component
  *
- * @return tvERROR_NONE on success
- * @return tvERROR_GENERAL on general failure 
- * @return tvERROR_OPERATION_NOT_SUPPORTED on non-supported operation failure
- * @return tvERROR_INVALID_PARAM on invalid param failure  
- * @return tvERROR_INVALID_STATE on invalid state failure
+ * @return tvError_t
+ * @retval tvERROR_NONE on success
+ * @retval tvERROR_GENERAL on general failure 
+ * @retval tvERROR_OPERATION_NOT_SUPPORTED on non-supported operation failure
+ * @retval tvERROR_INVALID_PARAM on invalid param failure  
+ * @retval tvERROR_INVALID_STATE on invalid state failure
  * 
  * @pre  tvInit() should be called before calling this API.
  */
@@ -1511,11 +1554,12 @@ tvError_t GetCurrentComponentHue(tvDataComponentColor_t blHueColor, int *hue);
  * @param[in] blLumaColor indicates the luma color to the set
  * @param[in] Luma indicates the luma color value to be set
  *
- * @return tvERROR_NONE on success
- * @return tvERROR_GENERAL on general failure 
- * @return tvERROR_OPERATION_NOT_SUPPORTED on non-supported operation failure
- * @return tvERROR_INVALID_PARAM on invalid param failure  
- * @return tvERROR_INVALID_STATE on invalid state failure
+ * @return tvError_t
+ * @retval tvERROR_NONE on success
+ * @retval tvERROR_GENERAL on general failure 
+ * @retval tvERROR_OPERATION_NOT_SUPPORTED on non-supported operation failure
+ * @retval tvERROR_INVALID_PARAM on invalid param failure  
+ * @retval tvERROR_INVALID_STATE on invalid state failure
  * 
  * @pre  tvInit() should be called before calling this API.
  */
@@ -1527,11 +1571,12 @@ tvError_t SetCurrentComponentLuma(tvDataComponentColor_t blLumaColor, int Luma);
  * @param[in] blLumaColor indicates the luma color of the component
  * @param[out] Luma indicates the Luma value to be set.
  *
- * @return tvERROR_NONE on success
- * @return tvERROR_GENERAL on general failure 
- * @return tvERROR_OPERATION_NOT_SUPPORTED on non-supported operation failure
- * @return tvERROR_INVALID_PARAM on invalid param failure  
- * @return tvERROR_INVALID_STATE on invalid state failure
+ * @return tvError_t
+ * @retval tvERROR_NONE on success
+ * @retval tvERROR_GENERAL on general failure 
+ * @retval tvERROR_OPERATION_NOT_SUPPORTED on non-supported operation failure
+ * @retval tvERROR_INVALID_PARAM on invalid param failure  
+ * @retval tvERROR_INVALID_STATE on invalid state failure
  *
  * @pre  tvInit() should be called before calling this API.
  */
@@ -1544,11 +1589,12 @@ tvError_t GetCurrentComponentLuma(tvDataComponentColor_t blLumaColor, int *Luma)
  * @param[out] dimmingModes returns the dimming modes of the TV
  * @param[out] count returns the number of supported dimming modes.
  *
- * @return tvERROR_NONE on success
- * @return tvERROR_GENERAL on general failure 
- * @return tvERROR_OPERATION_NOT_SUPPORTED on non-supported operation failure
- * @return tvERROR_INVALID_PARAM on invalid param failure  
- * @return tvERROR_INVALID_STATE on invalid state failure
+ * @return tvError_t
+ * @retval tvERROR_NONE on success
+ * @retval tvERROR_GENERAL on general failure 
+ * @retval tvERROR_OPERATION_NOT_SUPPORTED on non-supported operation failure
+ * @retval tvERROR_INVALID_PARAM on invalid param failure  
+ * @retval tvERROR_INVALID_STATE on invalid state failure
  * 
  * @pre  tvInit() should be called before calling this API.
  */
@@ -1560,11 +1606,12 @@ tvError_t GetTVSupportedDimmingModes(char **dimmingModes,unsigned short *count);
  * @param[in] dimmingMode indicates the dimmingMode to be set
  * @param[out] None
  *
- * @return tvERROR_NONE on success
- * @return tvERROR_GENERAL on general failure 
- * @return tvERROR_OPERATION_NOT_SUPPORTED on non-supported operation failure
- * @return tvERROR_INVALID_PARAM on invalid param failure  
- * @return tvERROR_INVALID_STATE on invalid state failure
+ * @return tvError_t
+ * @retval tvERROR_NONE on success
+ * @retval tvERROR_GENERAL on general failure 
+ * @retval tvERROR_OPERATION_NOT_SUPPORTED on non-supported operation failure
+ * @retval tvERROR_INVALID_PARAM on invalid param failure  
+ * @retval tvERROR_INVALID_STATE on invalid state failure
  * 
  * @pre  tvInit() should be called before calling this API.
  */
@@ -1576,11 +1623,12 @@ tvError_t SetTVDimmingMode(const char *dimmingMode);
  * @param[in] None
  * @param[out] value returns the value of the backlight global factor.
  *
- * @return tvERROR_NONE on success
- * @return tvERROR_GENERAL on general failure 
- * @return tvERROR_OPERATION_NOT_SUPPORTED on non-supported operation failure
- * @return tvERROR_INVALID_PARAM on invalid param failure  
- * @return tvERROR_INVALID_STATE on invalid state failure 
+ * @return tvError_t
+ * @retval tvERROR_NONE on success
+ * @retval tvERROR_GENERAL on general failure 
+ * @retval tvERROR_OPERATION_NOT_SUPPORTED on non-supported operation failure
+ * @retval tvERROR_INVALID_PARAM on invalid param failure  
+ * @retval tvERROR_INVALID_STATE on invalid state failure 
  * 
  * @pre  tvInit() should be called before calling this API.
  */
@@ -1593,11 +1641,12 @@ tvError_t GetTVBacklightGlobalFactor(int * value);
  * @param[in] rangeMidPointValue indicates the mid point value of the range
  * @param[out] None
  *
- * @return tvERROR_NONE on success
- * @return tvERROR_GENERAL on general failure 
- * @return tvERROR_OPERATION_NOT_SUPPORTED on non-supported operation failure
- * @return tvERROR_INVALID_PARAM on invalid param failure  
- * @return tvERROR_INVALID_STATE on invalid state failure
+ * @return tvError_t
+ * @retval tvERROR_NONE on success
+ * @retval tvERROR_GENERAL on general failure 
+ * @retval tvERROR_OPERATION_NOT_SUPPORTED on non-supported operation failure
+ * @retval tvERROR_INVALID_PARAM on invalid param failure  
+ * @retval tvERROR_INVALID_STATE on invalid state failure
  *
  * @pre  tvInit() should be called before calling this API.
  */
@@ -1609,11 +1658,12 @@ tvError_t SetTVBacklightGlobalFactor(int value, int rangeMidPointValue);
  * @param[in] None
  * @param[out] pictureMode indicates the picture mode index value
  *
- * @return tvERROR_NONE on success
- * @return tvERROR_GENERAL on general failure 
- * @return tvERROR_OPERATION_NOT_SUPPORTED on non-supported operation failure
- * @return tvERROR_INVALID_PARAM on invalid param failure  
- * @return tvERROR_INVALID_STATE on invalid state failure
+ * @return tvError_t
+ * @retval tvERROR_NONE on success
+ * @retval tvERROR_GENERAL on general failure 
+ * @retval tvERROR_OPERATION_NOT_SUPPORTED on non-supported operation failure
+ * @retval tvERROR_INVALID_PARAM on invalid param failure  
+ * @retval tvERROR_INVALID_STATE on invalid state failure
  *
  * @pre  tvInit() should be called before calling this API.
  */
@@ -1623,8 +1673,9 @@ tvPictureMode_t GetTVPictureModeIndex(const char * pictureMode);
  * @brief This function returns the current content format
  *
  * @param[in] None
- * @param[out] returns the content format of type tvVideoHDRFormat_t
+ * @param[out] retvals the content format of type tvVideoHDRFormat_t
  *
+ * @retval tvError_t
  * @return tvERROR_NONE on success
  * @return tvERROR_GENERAL on general failure 
  * @return tvERROR_OPERATION_NOT_SUPPORTED on non-supported operation failure
@@ -1638,15 +1689,15 @@ tvVideoHDRFormat_t GetCurrentContentFormat(void);
 /**
  * @brief This function returns the supported content formats
  *
- * @param[in] None
  * @param[out] contentFormats returns the supported content formats
  * @param[out] numberOfFormats returns the number of supported content formats.
  *
- * @return tvERROR_NONE on success
- * @return tvERROR_GENERAL on general failure 
- * @return tvERROR_OPERATION_NOT_SUPPORTED on non-supported operation failure
- * @return tvERROR_INVALID_PARAM on invalid param failure  
- * @return tvERROR_INVALID_STATE on invalid state failure
+ * @return tvError_t
+ * @retval tvERROR_NONE on success
+ * @retval tvERROR_GENERAL on general failure 
+ * @retval tvERROR_OPERATION_NOT_SUPPORTED on non-supported operation failure
+ * @retval tvERROR_INVALID_PARAM on invalid param failure  
+ * @retval tvERROR_INVALID_STATE on invalid state failure
  * 
  * @pre  tvInit() should be called before calling this API.
  */
@@ -1655,15 +1706,15 @@ tvError_t GetSupportedContentFormats(unsigned int * contentFormats,unsigned shor
 /**
  * @brief This function reset the brightness to default value.
  *
- * @param[in] defaultValue indicates the default value to be set.
- * @param[in] resetForAllFormats indicates whether to reset for all formats or not.
- * @param[out] None
+ * @param[in] defaultValue - indicates the default value to be set.
+ * @param[in] resetForAllFormats - indicates whether to reset for all formats or not.
  *
- * @return tvERROR_NONE on success
- * @return tvERROR_GENERAL on general failure 
- * @return tvERROR_OPERATION_NOT_SUPPORTED on non-supported operation failure
- * @return tvERROR_INVALID_PARAM on invalid param failure  
- * @return tvERROR_INVALID_STATE on invalid state failure
+ * @return tvError_t
+ * @retval tvERROR_NONE on success
+ * @retval tvERROR_GENERAL on general failure 
+ * @retval tvERROR_OPERATION_NOT_SUPPORTED on non-supported operation failure
+ * @retval tvERROR_INVALID_PARAM on invalid param failure  
+ * @retval tvERROR_INVALID_STATE on invalid state failure
  * 
  * @pre  tvInit() should be called before calling this API.
  */
@@ -1672,15 +1723,15 @@ tvError_t ResetBrightness(int defaultValue,bool resetForAllFormats);
 /**
  * @brief This function reset the contrast to default value.
  *
- * @param[in] defaultValue indicates the default value to be set.
- * @param[in] resetForAllFormats indicates whether to reset for all formats or not.
- * @param[out] None
+ * @param[in] defaultValue - indicates the default value to be set.
+ * @param[in] resetForAllFormats - indicates whether to reset for all formats or not.
  *
- * @return tvERROR_NONE on success
- * @return tvERROR_GENERAL on general failure 
- * @return tvERROR_OPERATION_NOT_SUPPORTED on non-supported operation failure
- * @return tvERROR_INVALID_PARAM on invalid param failure  
- * @return tvERROR_INVALID_STATE on invalid state failure
+ * @return tvError_t
+ * @retval tvERROR_NONE on success
+ * @retval tvERROR_GENERAL on general failure 
+ * @retval tvERROR_OPERATION_NOT_SUPPORTED on non-supported operation failure
+ * @retval tvERROR_INVALID_PARAM on invalid param failure  
+ * @retval tvERROR_INVALID_STATE on invalid state failure
  * 
  * @pre  tvInit() should be called before calling this API.
  */
@@ -1689,15 +1740,15 @@ tvError_t ResetContrast(int defaultValue,bool resetForAllFormats);
 /**
  * @brief This function reset the sharpness to default value.
  *
- * @param[in] defaultValue indicates the default value to be set.
- * @param[in] resetForAllFormats indicates whether to reset for all formats or not.
- * @param[out] None
+ * @param[in] defaultValue - indicates the default value to be set.
+ * @param[in] resetForAllFormats - indicates whether to reset for all formats or not.
  *
- * @return tvERROR_NONE on success
- * @return tvERROR_GENERAL on general failure 
- * @return tvERROR_OPERATION_NOT_SUPPORTED on non-supported operation failure
- * @return tvERROR_INVALID_PARAM on invalid param failure  
- * @return tvERROR_INVALID_STATE on invalid state failure
+ * @return tvError_t
+ * @retval tvERROR_NONE on success
+ * @retval tvERROR_GENERAL on general failure 
+ * @retval tvERROR_OPERATION_NOT_SUPPORTED on non-supported operation failure
+ * @retval tvERROR_INVALID_PARAM on invalid param failure  
+ * @retval tvERROR_INVALID_STATE on invalid state failure
  * 
  * @pre  tvInit() should be called before calling this API.
  */
@@ -1706,15 +1757,15 @@ tvError_t ResetSharpness(int defaultValue,bool resetForAllFormats);
 /**
  * @brief This function reset the saturation to default value.
  *
- * @param[in] defaultValue indicates the default value to be set.
- * @param[in] resetForAllFormats indicates whether to reset for all formats or not.
- * @param[out] None
+ * @param[in] defaultValue - indicates the default value to be set.
+ * @param[in] resetForAllFormats - indicates whether to reset for all formats or not.
  *
- * @return tvERROR_NONE on success
- * @return tvERROR_GENERAL on general failure 
- * @return tvERROR_OPERATION_NOT_SUPPORTED on non-supported operation failure
- * @return tvERROR_INVALID_PARAM on invalid param failure  
- * @return tvERROR_INVALID_STATE on invalid state failure
+ * @return tvError_t
+ * @retval tvERROR_NONE on success
+ * @retval tvERROR_GENERAL on general failure 
+ * @retval tvERROR_OPERATION_NOT_SUPPORTED on non-supported operation failure
+ * @retval tvERROR_INVALID_PARAM on invalid param failure  
+ * @retval tvERROR_INVALID_STATE on invalid state failure
  *
  * @pre  tvInit() should be called before calling this API.
  */
@@ -1723,15 +1774,15 @@ tvError_t ResetSaturation(int defaultValue,bool resetForAllFormats);
 /**
  * @brief This function reset the hue to default value.
  *
- * @param[in] defaultValue indicates the default value to be set.
- * @param[in] resetForAllFormats indicates whether to reset for all formats or not.
- * @param[out] None
+ * @param[in] defaultValue - indicates the default value to be set.
+ * @param[in] resetForAllFormats - indicates whether to reset for all formats or not.
  *
- * @return tvERROR_NONE on success
- * @return tvERROR_GENERAL on general failure 
- * @return tvERROR_OPERATION_NOT_SUPPORTED on non-supported operation failure
- * @return tvERROR_INVALID_PARAM on invalid param failure  
- * @return tvERROR_INVALID_STATE on invalid state failure
+ * @return tvError_t
+ * @retval tvERROR_NONE on success
+ * @retval tvERROR_GENERAL on general failure 
+ * @retval tvERROR_OPERATION_NOT_SUPPORTED on non-supported operation failure
+ * @retval tvERROR_INVALID_PARAM on invalid param failure  
+ * @retval tvERROR_INVALID_STATE on invalid state failure
  * 
  * @pre  tvInit() should be called before calling this API.
  */
@@ -1742,13 +1793,13 @@ tvError_t ResetHue(int defaultValue,bool resetForAllFormats);
  *
  * @param[in] defaultValue indicates the default value to be set.
  * @param[in] resetForAllFormats indicates whether to reset for all formats or not.
- * @param[out] None
  *
- * @return tvERROR_NONE on success
- * @return tvERROR_GENERAL on general failure 
- * @return tvERROR_OPERATION_NOT_SUPPORTED on non-supported operation failure
- * @return tvERROR_INVALID_PARAM on invalid param failure  
- * @return tvERROR_INVALID_STATE on invalid state failure
+ * @return tvError_t
+ * @retval tvERROR_NONE on success
+ * @retval tvERROR_GENERAL on general failure 
+ * @retval tvERROR_OPERATION_NOT_SUPPORTED on non-supported operation failure
+ * @retval tvERROR_INVALID_PARAM on invalid param failure  
+ * @retval tvERROR_INVALID_STATE on invalid state failure
  * 
  * @pre  tvInit() should be called before calling this API.
  */
@@ -1757,15 +1808,15 @@ tvError_t ResetBacklight(int defaultValue,bool resetForAllFormats);
 /**
  * @brief This function reset the color Temperature to default value.
  *
- * @param[in] defaultValue indicates the default value to be set.
- * @param[in] resetForAllFormats indicates whether to reset for all formats or not.
- * @param[out] None
+ * @param[in] defaultValue - indicates the default value to be set.
+ * @param[in] resetForAllFormats - indicates whether to reset for all formats or not.
  *
- * @return tvERROR_NONE on success
- * @return tvERROR_GENERAL on general failure 
- * @return tvERROR_OPERATION_NOT_SUPPORTED on non-supported operation failure
- * @return tvERROR_INVALID_PARAM on invalid param failure  
- * @return tvERROR_INVALID_STATE on invalid state failure
+ * @return tvError_t
+ * @retval tvERROR_NONE on success
+ * @retval tvERROR_GENERAL on general failure 
+ * @retval tvERROR_OPERATION_NOT_SUPPORTED on non-supported operation failure
+ * @retval tvERROR_INVALID_PARAM on invalid param failure  
+ * @retval tvERROR_INVALID_STATE on invalid state failure
  * 
  * @pre  tvInit() should be called before calling this API.
  */
@@ -1774,15 +1825,15 @@ tvError_t ResetColorTemperature(int defaultValue,bool resetForAllFormats);
 /**
  * @brief This function reset the component saturation to default value.
  *
- * @param[in] color indicates the color for which saturation to be set
- * @param[in] defaultValue indicates the default value to be set.
- * @param[out] None
+ * @param[in] color - indicates the color for which saturation to be set
+ * @param[in] defaultValue - indicates the default value to be set.
  *
- * @return tvERROR_NONE on success
- * @return tvERROR_GENERAL on general failure 
- * @return tvERROR_OPERATION_NOT_SUPPORTED on non-supported operation failure
- * @return tvERROR_INVALID_PARAM on invalid param failure  
- * @return tvERROR_INVALID_STATE on invalid state failure
+ * @return tvError_t
+ * @retval tvERROR_NONE on success
+ * @retval tvERROR_GENERAL on general failure 
+ * @retval tvERROR_OPERATION_NOT_SUPPORTED on non-supported operation failure
+ * @retval tvERROR_INVALID_PARAM on invalid param failure  
+ * @retval tvERROR_INVALID_STATE on invalid state failure
  * 
  * @pre  tvInit() should be called before calling this API.
  */
@@ -1791,15 +1842,15 @@ tvError_t ResetComponentSaturation(int color,int defaultValue);
 /**
  * @brief This function reset the component Luma to default value.
  *
- * @param[in] color indicates the color for which Luma to be set
- * @param[in] defaultValue indicates the default value to be set.
- * @param[out] None
+ * @param[in] color - indicates the color for which Luma to be set
+ * @param[in] defaultValue - indicates the default value to be set.
  *
- * @return tvERROR_NONE on success
- * @return tvERROR_GENERAL on general failure 
- * @return tvERROR_OPERATION_NOT_SUPPORTED on non-supported operation failure
- * @return tvERROR_INVALID_PARAM on invalid param failure  
- * @return tvERROR_INVALID_STATE on invalid state failure
+ * @return tvError_t
+ * @retval tvERROR_NONE on success
+ * @retval tvERROR_GENERAL on general failure 
+ * @retval tvERROR_OPERATION_NOT_SUPPORTED on non-supported operation failure
+ * @retval tvERROR_INVALID_PARAM on invalid param failure  
+ * @retval tvERROR_INVALID_STATE on invalid state failure
  *
  * @pre  tvInit() should be called before calling this API.
  */
@@ -1810,13 +1861,13 @@ tvError_t ResetComponentLuma(int color,int defaultValue);
  *
  * @param[in] color indicates the color for which Hue to be set
  * @param[in] defaultValue indicates the default value to be set.
- * @param[out] None
  *
- * @return tvERROR_NONE on success
- * @return tvERROR_GENERAL on general failure 
- * @return tvERROR_OPERATION_NOT_SUPPORTED on non-supported operation failure
- * @return tvERROR_INVALID_PARAM on invalid param failure  
- * @return tvERROR_INVALID_STATE on invalid state failure
+ * @return tvError_t
+ * @retval tvERROR_NONE on success
+ * @retval tvERROR_GENERAL on general failure 
+ * @retval tvERROR_OPERATION_NOT_SUPPORTED on non-supported operation failure
+ * @retval tvERROR_INVALID_PARAM on invalid param failure  
+ * @retval tvERROR_INVALID_STATE on invalid state failure
  *
  * @pre  tvInit() should be called before calling this API.
  */
@@ -1824,14 +1875,10 @@ tvError_t ResetComponentHue(int color,int defaultValue);
 
 /**
  * @brief This function checks whether the current content format is SDR
- * @param[in] None
- * @param[out] bool value indicates whether the content format is SDR - True or False
  *
- * @return tvERROR_NONE on success
- * @return tvERROR_GENERAL on general failure 
- * @return tvERROR_OPERATION_NOT_SUPPORTED on non-supported operation failure
- * @return tvERROR_INVALID_PARAM on invalid param failure  
- * @return tvERROR_INVALID_STATE on invalid state failure
+ * @return bool
+ * @retval true - the content format is SDR
+ * @retval true - the content format is not SDR
  *
  * @pre  tvInit() should be called before calling this API.
  */
@@ -1839,14 +1886,10 @@ bool isCurrentHDRTypeIsSDR(void);
 
 /**
  * @brief This function returns the panel ID
- * @param[in] None
+ * 
  * @param[out] panelid indicates the panel ID
  *
- * @return tvERROR_NONE on success
- * @return tvERROR_GENERAL on general failure 
- * @return tvERROR_OPERATION_NOT_SUPPORTED on non-supported operation failure
- * @return tvERROR_INVALID_PARAM on invalid param failure  
- * @return tvERROR_INVALID_STATE on invalid state failure
+ * @return int
  * 
  * @pre  tvInit() should be called before calling this API.
  */
@@ -1854,14 +1897,9 @@ int GetPanelID(char* panelid);
 
 /**
  * @brief This function returns the default panel ID
- * @param[in] None
  * @param[out] panelID carries the default panel ID
  *
- * @return tvERROR_NONE on success
- * @return tvERROR_GENERAL on general failure 
- * @return tvERROR_OPERATION_NOT_SUPPORTED on non-supported operation failure
- * @return tvERROR_INVALID_PARAM on invalid param failure  
- * @return tvERROR_INVALID_STATE on invalid state failure
+ * @return void
  *
  * @pre  tvInit() should be called before calling this API.
  */
@@ -1870,34 +1908,34 @@ void GetDefaultPanelID(char *panelID);
 /**
  * @brief This function saves the color Temperature value for the 
  specific pq_mode for specific hdr_type for the given sourceInput
- * @param[in] sourceInput indicates the source input for which color temperature to be saved
- * @param[in] pq_mode indicates the pq mode for which color temperature is set
- * @param[in] hdr_type indicates the hdr type for which the color temperature to be saved.
- * @param[in] value indicates the value of the color temperature to be saved
- * @param[out] None
+ * @param[in] sourceInput - indicates the source input for which color temperature to be saved
+ * @param[in] pq_mode - indicates the pq mode for which color temperature is set
+ * @param[in] hdr_type - indicates the hdr type for which the color temperature to be saved.
+ * @param[in] value - indicates the value of the color temperature to be saved
  *
- * @return tvERROR_NONE on success
- * @return tvERROR_GENERAL on general failure 
- * @return tvERROR_OPERATION_NOT_SUPPORTED on non-supported operation failure
- * @return tvERROR_INVALID_PARAM on invalid param failure  
- * @return tvERROR_INVALID_STATE on invalid state failure * @pre  tvInit() should be called before calling this API.
+ * @return tvError_t
+ * @retval tvERROR_NONE on success
+ * @retval tvERROR_GENERAL on general failure 
+ * @retval tvERROR_OPERATION_NOT_SUPPORTED on non-supported operation failure
+ * @retval tvERROR_INVALID_PARAM on invalid param failure  
+ * @retval tvERROR_INVALID_STATE on invalid state failure * @pre  tvInit() should be called before calling this API.
  */
 tvError_t SaveColorTemperature(int sourceInput, int pq_mode,int hdr_type,int value);
 
 /**
  * @brief This function saves the backlight value for the 
  specific pq_mode for specific hdr_type for the given sourceInput
- * @param[in] sourceInput indicates the source input for which backlight to be saved
- * @param[in] pq_mode indicates the pq mode for which backlight is set
- * @param[in] hdr_type indicates the hdr type for which the backlight to be saved.
- * @param[in] value indicates the value of the backlight to be saved
- * @param[out] None
+ * @param[in] sourceInput - indicates the source input for which backlight to be saved
+ * @param[in] pq_mode - indicates the pq mode for which backlight is set
+ * @param[in] hdr_type - indicates the hdr type for which the backlight to be saved.
+ * @param[in] value - indicates the value of the backlight to be saved
  *
- * @return tvERROR_NONE on success
- * @return tvERROR_GENERAL on general failure 
- * @return tvERROR_OPERATION_NOT_SUPPORTED on non-supported operation failure
- * @return tvERROR_INVALID_PARAM on invalid param failure  
- * @return tvERROR_INVALID_STATE on invalid state failure
+ * @return tvError_t
+ * @retval tvERROR_NONE on success
+ * @retval tvERROR_GENERAL on general failure 
+ * @retval tvERROR_OPERATION_NOT_SUPPORTED on non-supported operation failure
+ * @retval tvERROR_INVALID_PARAM on invalid param failure  
+ * @retval tvERROR_INVALID_STATE on invalid state failure
  *
  * @pre  tvInit() should be called before calling this API.
  */
@@ -1906,17 +1944,17 @@ tvError_t SaveBacklight(int sourceInput, int pq_mode,int hdr_type,int value);
 /**
  * @brief This function saves the contrast value for the 
  specific pq_mode for specific hdr_type for the given sourceInput
- * @param[in] sourceInput indicates the source input for which contrast to be saved
- * @param[in] pq_mode indicates the pq mode for which contrast is set
- * @param[in] hdr_type indicates the hdr type for which the contrast to be saved.
- * @param[in] value indicates the value of the contrast to be saved
- * @param[out] None
+ * @param[in] sourceInput - indicates the source input for which contrast to be saved
+ * @param[in] pq_mode - indicates the pq mode for which contrast is set
+ * @param[in] hdr_type - indicates the hdr type for which the contrast to be saved.
+ * @param[in] value - indicates the value of the contrast to be saved
  *
- * @return tvERROR_NONE on success
- * @return tvERROR_GENERAL on general failure 
- * @return tvERROR_OPERATION_NOT_SUPPORTED on non-supported operation failure
- * @return tvERROR_INVALID_PARAM on invalid param failure  
- * @return tvERROR_INVALID_STATE on invalid state failure
+ * @return tvError_t
+ * @retval tvERROR_NONE on success
+ * @retval tvERROR_GENERAL on general failure 
+ * @retval tvERROR_OPERATION_NOT_SUPPORTED on non-supported operation failure
+ * @retval tvERROR_INVALID_PARAM on invalid param failure  
+ * @retval tvERROR_INVALID_STATE on invalid state failure
  * 
  * @pre  tvInit() should be called before calling this API.
  */
@@ -1925,17 +1963,17 @@ tvError_t SaveContrast(int sourceInput, int pq_mode,int hdr_type,int value);
 /**
  * @brief This function saves the saturation value for the 
  specific pq_mode for specific hdr_type for the given sourceInput
- * @param[in] sourceInput indicates the source input for which saturation to be saved
- * @param[in] pq_mode indicates the pq mode for which saturation is set
- * @param[in] hdr_type indicates the hdr type for which the saturation to be saved.
- * @param[in] value indicates the value of the saturation to be saved
- * @param[out] None
+ * @param[in] sourceInput - indicates the source input for which saturation to be saved
+ * @param[in] pq_mode - indicates the pq mode for which saturation is set
+ * @param[in] hdr_type - indicates the hdr type for which the saturation to be saved.
+ * @param[in] value - indicates the value of the saturation to be saved
  *
- * @return tvERROR_NONE on success
- * @return tvERROR_GENERAL on general failure 
- * @return tvERROR_OPERATION_NOT_SUPPORTED on non-supported operation failure
- * @return tvERROR_INVALID_PARAM on invalid param failure  
- * @return tvERROR_INVALID_STATE on invalid state failure
+ * @return tvError_t
+ * @retval tvERROR_NONE on success
+ * @retval tvERROR_GENERAL on general failure 
+ * @retval tvERROR_OPERATION_NOT_SUPPORTED on non-supported operation failure
+ * @retval tvERROR_INVALID_PARAM on invalid param failure  
+ * @retval tvERROR_INVALID_STATE on invalid state failure
  * 
  * @pre  tvInit() should be called before calling this API.
  */
@@ -1944,17 +1982,17 @@ tvError_t SaveSaturation(int sourceInput, int pq_mode,int hdr_type,int value);
 /**
  * @brief This function saves the sharpness value for the 
  specific pq_mode for specific hdr_type for the given sourceInput
- * @param[in] sourceInput indicates the source input for which sharpness to be saved
- * @param[in] pq_mode indicates the pq mode for which sharpness is set
- * @param[in] hdr_type indicates the hdr type for which the sharpness to be saved.
- * @param[in] value indicates the value of the sharpness to be saved
- * @param[out] None
+ * @param[in] sourceInput - indicates the source input for which sharpness to be saved
+ * @param[in] pq_mode - indicates the pq mode for which sharpness is set
+ * @param[in] hdr_type - indicates the hdr type for which the sharpness to be saved.
+ * @param[in] value - indicates the value of the sharpness to be saved
  *
- * @return tvERROR_NONE on success
- * @return tvERROR_GENERAL on general failure 
- * @return tvERROR_OPERATION_NOT_SUPPORTED on non-supported operation failure
- * @return tvERROR_INVALID_PARAM on invalid param failure  
- * @return tvERROR_INVALID_STATE on invalid state failure
+ * @return tvError_t
+ * @retval tvERROR_NONE on success
+ * @retval tvERROR_GENERAL on general failure 
+ * @retval tvERROR_OPERATION_NOT_SUPPORTED on non-supported operation failure
+ * @retval tvERROR_INVALID_PARAM on invalid param failure  
+ * @retval tvERROR_INVALID_STATE on invalid state failure
  * 
  * @pre  tvInit() should be called before calling this API.
  */
@@ -1963,17 +2001,17 @@ tvError_t SaveSharpness(int sourceInput, int pq_mode,int hdr_type,int value);
 /**
  * @brief This function saves the brightness value for the 
  specific pq_mode for specific hdr_type for the given sourceInput
- * @param[in] sourceInput indicates the source input for which brightness to be saved
- * @param[in] pq_mode indicates the pq mode for which brightness is set
- * @param[in] hdr_type indicates the hdr type for which the brightness to be saved.
- * @param[in] value indicates the value of the brightness to be saved
- * @param[out] None
+ * @param[in] sourceInput - indicates the source input for which brightness to be saved
+ * @param[in] pq_mode - indicates the pq mode for which brightness is set
+ * @param[in] hdr_type - indicates the hdr type for which the brightness to be saved.
+ * @param[in] value - indicates the value of the brightness to be saved
  *
- * @return tvERROR_NONE on success
- * @return tvERROR_GENERAL on general failure 
- * @return tvERROR_OPERATION_NOT_SUPPORTED on non-supported operation failure
- * @return tvERROR_INVALID_PARAM on invalid param failure  
- * @return tvERROR_INVALID_STATE on invalid state failure
+ * @return tvError_t
+ * @retval tvERROR_NONE on success
+ * @retval tvERROR_GENERAL on general failure 
+ * @retval tvERROR_OPERATION_NOT_SUPPORTED on non-supported operation failure
+ * @retval tvERROR_INVALID_PARAM on invalid param failure  
+ * @retval tvERROR_INVALID_STATE on invalid state failure
  * 
  * @pre  tvInit() should be called before calling this API.
  */
@@ -1982,17 +2020,17 @@ tvError_t SaveBrightness(int sourceInput, int pq_mode,int hdr_type,int value);
 /**
  * @brief This function saves the hue value for the 
  specific pq_mode for specific hdr_type for the given sourceInput
- * @param[in] sourceInput indicates the source input for which hue to be saved
- * @param[in] pq_mode indicates the pq mode for which hue is set
- * @param[in] hdr_type indicates the hdr type for which the hue to be saved.
- * @param[in] value indicates the value of the hue to be saved
- * @param[out] None
+ * @param[in] sourceInput - indicates the source input for which hue to be saved
+ * @param[in] pq_mode - indicates the pq mode for which hue is set
+ * @param[in] hdr_type - indicates the hdr type for which the hue to be saved.
+ * @param[in] value - indicates the value of the hue to be saved
  *
- * @return tvERROR_NONE on success
- * @return tvERROR_GENERAL on general failure 
- * @return tvERROR_OPERATION_NOT_SUPPORTED on non-supported operation failure
- * @return tvERROR_INVALID_PARAM on invalid param failure  
- * @return tvERROR_INVALID_STATE on invalid state failure 
+ * @return tvError_t
+ * @retval tvERROR_NONE on success
+ * @retval tvERROR_GENERAL on general failure 
+ * @retval tvERROR_OPERATION_NOT_SUPPORTED on non-supported operation failure
+ * @retval tvERROR_INVALID_PARAM on invalid param failure  
+ * @retval tvERROR_INVALID_STATE on invalid state failure 
  * 
  * @pre  tvInit() should be called before calling this API.
  */
@@ -2002,17 +2040,17 @@ tvError_t SaveHue(int sourceInput, int pq_mode,int hdr_type,int value);
  * @brief This function saves the dynamic backlight value for the 
  specific pq_mode for specific hdr_type for the given sourceInput
  *
- * @param[in] sourceInput indicates the source input for which dynamic backlight to be saved
- * @param[in] pq_mode indicates the pq mode for which dynamic backlight is set
- * @param[in] hdr_type indicates the hdr type for which the dynamic backlight to be saved.
- * @param[in] value indicates the value of the dynamic backlight to be saved
- * @param[out] None
+ * @param[in] sourceInput - indicates the source input for which dynamic backlight to be saved
+ * @param[in] pq_mode - indicates the pq mode for which dynamic backlight is set
+ * @param[in] hdr_type - indicates the hdr type for which the dynamic backlight to be saved.
+ * @param[in] value - indicates the value of the dynamic backlight to be saved
  *
- * @return tvERROR_NONE on success
- * @return tvERROR_GENERAL on general failure 
- * @return tvERROR_OPERATION_NOT_SUPPORTED on non-supported operation failure
- * @return tvERROR_INVALID_PARAM on invalid param failure  
- * @return tvERROR_INVALID_STATE on invalid state failure
+ * @return tvError_t
+ * @retval tvERROR_NONE on success
+ * @retval tvERROR_GENERAL on general failure 
+ * @retval tvERROR_OPERATION_NOT_SUPPORTED on non-supported operation failure
+ * @retval tvERROR_INVALID_PARAM on invalid param failure  
+ * @retval tvERROR_INVALID_STATE on invalid state failure
  *  
  * @pre  tvInit() should be called before calling this API.
  */
@@ -2026,13 +2064,13 @@ tvError_t SaveDynamicBacklight(int sourceInput, int pq_mode,int hdr_type,int val
  * @param[in] pq_mode indicates the pq mode for which display mode is set
  * @param[in] hdr_type indicates the hdr type for which the display mode to be saved.
  * @param[in] value indicates the value of the display mode to be saved
- * @param[out] None
  *
- * @return tvERROR_NONE on success
- * @return tvERROR_GENERAL on general failure 
- * @return tvERROR_OPERATION_NOT_SUPPORTED on non-supported operation failure
- * @return tvERROR_INVALID_PARAM on invalid param failure  
- * @return tvERROR_INVALID_STATE on invalid state failure  
+ * @return tvError_t
+ * @retval tvERROR_NONE on success
+ * @retval tvERROR_GENERAL on general failure 
+ * @retval tvERROR_OPERATION_NOT_SUPPORTED on non-supported operation failure
+ * @retval tvERROR_INVALID_PARAM on invalid param failure  
+ * @retval tvERROR_INVALID_STATE on invalid state failure  
  * 
  * @pre  tvInit() should be called before calling this API.
  */
@@ -2042,17 +2080,19 @@ tvError_t SaveDisplayMode(int sourceInput, int pq_mode,int hdr_type,int value);
  * @brief This function saves the CMS value for the 
  specific pq_mode for specific hdr_type for the given sourceInput
  *
- * @param[in] sourceInput indicates the source input for which CMS to be saved
- * @param[in] pq_mode indicates the pq mode for which CMS is set
- * @param[in] hdr_type indicates the hdr type for which the CMS to be saved.
- * @param[in] value indicates the value of the CMS to be saved
- * @param[out] None
+ * @param[in] sourceInput - indicates the source input for which CMS to be saved
+ * @param[in] pq_mode - indicates the pq mode for which CMS is set
+ * @param[in] hdr_type - indicates the hdr type for which the CMS to be saved.
+ * @param[in] tunel_type - indicates the tunnel type for which the CMS to be saved.
+ * @param[in] color_type - indicates the color type for which the CMS to be saved.
+ * @param[in] value - indicates the value of the CMS to be saved
  *
- * @return tvERROR_NONE on success
- * @return tvERROR_GENERAL on general failure 
- * @return tvERROR_OPERATION_NOT_SUPPORTED on non-supported operation failure
- * @return tvERROR_INVALID_PARAM on invalid param failure  
- * @return tvERROR_INVALID_STATE on invalid state failure  
+ * @return tvError_t
+ * @retval tvERROR_NONE on success
+ * @retval tvERROR_GENERAL on general failure 
+ * @retval tvERROR_OPERATION_NOT_SUPPORTED on non-supported operation failure
+ * @retval tvERROR_INVALID_PARAM on invalid param failure  
+ * @retval tvERROR_INVALID_STATE on invalid state failure  
  * 
  * @pre  tvInit() should be called before calling this API.
  */
@@ -2062,17 +2102,17 @@ tvError_t SaveCMS(int sourceInput, int pq_mode,int hdr_type,int tunnel_type,int 
  * @brief This function saves the dolby mode value for the 
  specific pq_mode for specific hdr_type for the given sourceInput
  *
- * @param[in] sourceInput indicates the source input for which dolby mode to be saved
- * @param[in] pq_mode indicates the pq mode for which dolby mode is set
- * @param[in] hdr_type indicates the hdr type for which the dolby mode to be saved.
- * @param[in] value indicates the value of the dolby mode to be saved
- * @param[out] None
+ * @param[in] sourceInput - indicates the source input for which dolby mode to be saved
+ * @param[in] pq_mode - indicates the pq mode for which dolby mode is set
+ * @param[in] hdr_type - indicates the hdr type for which the dolby mode to be saved.
+ * @param[in] value - indicates the value of the dolby mode to be saved
  *
- * @return tvERROR_NONE on success
- * @return tvERROR_GENERAL on general failure 
- * @return tvERROR_OPERATION_NOT_SUPPORTED on non-supported operation failure
- * @return tvERROR_INVALID_PARAM on invalid param failure  
- * @return tvERROR_INVALID_STATE on invalid state failure  
+ * @return tvError_t
+ * @retval tvERROR_NONE on success
+ * @retval tvERROR_GENERAL on general failure 
+ * @retval tvERROR_OPERATION_NOT_SUPPORTED on non-supported operation failure
+ * @retval tvERROR_INVALID_PARAM on invalid param failure  
+ * @retval tvERROR_INVALID_STATE on invalid state failure  
  * 
  * @pre  tvInit() should be called before calling this API.
  */
@@ -2080,15 +2120,9 @@ tvError_t SaveDolbyMode(int sourceInput, int pq_mode,int hdr_type,int value);
 
 /**
  * @brief This function returns the number of supported modes
- * 
- * @param[in] None
- * @param[out] int value returns the number of supported modes
  *
- * @return tvERROR_NONE on success
- * @return tvERROR_GENERAL on general failure 
- * @return tvERROR_OPERATION_NOT_SUPPORTED on non-supported operation failure
- * @return tvERROR_INVALID_PARAM on invalid param failure  
- * @return tvERROR_INVALID_STATE on invalid state failure  
+ * @return int
+ * @retval intvalue - number of supported modes
  * 
  * @pre  tvInit() should be called before calling this API.
  */
@@ -2096,15 +2130,9 @@ int GetNumberOfModesupported(void);
 
 /**
  * @brief This function returns the current PQ index
- * 
- * @param[in] None
- * @param[out] int value returns with current PQ index
  *
- * @return tvERROR_NONE on success
- * @return tvERROR_GENERAL on general failure 
- * @return tvERROR_OPERATION_NOT_SUPPORTED on non-supported operation failure
- * @return tvERROR_INVALID_PARAM on invalid param failure  
- * @return tvERROR_INVALID_STATE on invalid state failure 
+ * @return int
+ * @retval intvalue - current PQ index
  * 
  * @pre  tvInit() should be called before calling this API.
  */
@@ -2114,14 +2142,9 @@ int GetCurrentPQIndex(void);
  * @brief This function saves the dynamic backlight value for the 
  specific pq_mode for specific hdr_type for the given sourceInput
  *
- * @param[in] None
- * @param[out]  pic_mode_index returns the array of all supported  pic mode index
+ * @param[out]  pic_mode_index - returns the array of all supported  pic mode index
  * 
- * @return tvERROR_NONE on success
- * @return tvERROR_GENERAL on general failure 
- * @return tvERROR_OPERATION_NOT_SUPPORTED on non-supported operation failure
- * @return tvERROR_INVALID_PARAM on invalid param failure  
- * @return tvERROR_INVALID_STATE on invalid state failure  
+ * @return void 
  * 
  * @pre  tvInit() should be called before calling this API.
  */
@@ -2130,14 +2153,10 @@ void GetAllSupportedPicModeIndex(int pic_mode_index[]);
 /**
  * @brief This function returns the default CMS value
  * 
- * @param[in] color_tunel_type indicates the color tunel type for which the CMS default value to be returned.
- * @param[out] returns the CMS default value
+ * @param[in] color_tunel_type - indicates the color tunel type for which the CMS default value to be returned.
  *
- * @return tvERROR_NONE on success
- * @return tvERROR_GENERAL on general failure 
- * @return tvERROR_OPERATION_NOT_SUPPORTED on non-supported operation failure
- * @return tvERROR_INVALID_PARAM on invalid param failure  
- * @return tvERROR_INVALID_STATE on invalid state failure 
+ * @return int
+ * @retval intvalue - the CMS default value
  *  
  * @pre  tvInit() should be called before calling this API.
  */
@@ -2146,14 +2165,9 @@ int GetCMSDefault(tvCMS_tunel_t color_tunel_type);
 /**
  * @brief This function returns the dolby mode index
  * 
- * @param[in] None
- * @param[out] dolbyMode indicates the dolbymode index.
+ * @param[out] dolbyMode - indicates the dolbymode index.
  *
- * @return tvERROR_NONE on success
- * @return tvERROR_GENERAL on general failure 
- * @return tvERROR_OPERATION_NOT_SUPPORTED on non-supported operation failure
- * @return tvERROR_INVALID_PARAM on invalid param failure  
- * @return tvERROR_INVALID_STATE on invalid state failure  
+ * @return int
  *
  * @pre  tvInit() should be called before calling this API.
  */
@@ -2162,14 +2176,9 @@ int GetDolbyModeIndex(const char * dolbyMode);
 /**
  * @brief This function converts the video format to HDR format.
  * 
- * @param[in] videoFormat indicates the videoFormat to be converted to HDR Format
- * @param[out] None
+ * @param[in] videoFormat - indicates the videoFormat to be converted to HDR Format
  *
- * @return tvERROR_NONE on success
- * @return tvERROR_GENERAL on general failure 
- * @return tvERROR_OPERATION_NOT_SUPPORTED on non-supported operation failure
- * @return tvERROR_INVALID_PARAM on invalid param failure  
- * @return tvERROR_INVALID_STATE on invalid state failure  
+ * @return int  
  *
  * @pre  tvInit() should be called before calling this API.
  */
@@ -2177,13 +2186,10 @@ int ConvertVideoFormatToHDRFormat(tvVideoHDRFormat_t videoFormat);
 
 /**
  * @brief This function converts the TV color to Vendor color
- * @param[in] blComponentColor indicates the component color to be converted to vendor color
  *
- * @return tvERROR_NONE on success
- * @return tvERROR_GENERAL on general failure 
- * @return tvERROR_OPERATION_NOT_SUPPORTED on non-supported operation failure
- * @return tvERROR_INVALID_PARAM on invalid param failure  
- * @return tvERROR_INVALID_STATE on invalid state failure 
+ * @param[in] blComponentColor - indicates the component color to be converted to vendor color
+ *
+ * @return int
  * 
  * @pre  tvInit() should be called before calling this API.
  */
@@ -2192,14 +2198,9 @@ int ConvertTVColorToVendorColor(tvDataComponentColor_t blComponentColor);
 /**
  * @brief This function converts the HDR format to content format
  * 
- * @param[in] hdrFormat indicates the hdrFormat to Content Format
- * @param[out] None
+ * @param[in] hdrFormat - indicates the hdrFormat to Content Format
  *
- * @return tvERROR_NONE on success
- * @return tvERROR_GENERAL on general failure 
- * @return tvERROR_OPERATION_NOT_SUPPORTED on non-supported operation failure
- * @return tvERROR_INVALID_PARAM on invalid param failure  
- * @return tvERROR_INVALID_STATE on invalid state failure 
+ * @return int
  * 
  * @pre  tvInit() should be called before calling this API.
  */
@@ -2207,15 +2208,8 @@ int ConvertHDRFormatToContentFormat(tvhdr_type_t hdrFormat);
 
 /**
  * @brief This function returns the custom PQ mode index
- * 
- * @param[in] None
- * @param[out] returns the int value of custom PQ mode index
  *
- * @return tvERROR_NONE on success
- * @return tvERROR_GENERAL on general failure 
- * @return tvERROR_OPERATION_NOT_SUPPORTED on non-supported operation failure
- * @return tvERROR_INVALID_PARAM on invalid param failure  
- * @return tvERROR_INVALID_STATE on invalid state failure 
+ * @return int
  * 
  * @pre  tvInit() should be called before calling this API.
  */
@@ -2224,16 +2218,16 @@ int GetCustomPQModeIndex(void);
 /**
  * @brief This function sets the CMS state for the specific tunel type and color type and component state
  *
- * @param[in] tunelType indicates the tunel type
- * @param[in] colorType indicates the color type
- * @param[in] componentState indicates the component state
- * @param[out] None
+ * @param[in] tunelType - indicates the tunel type
+ * @param[in] colorType - indicates the color type
+ * @param[in] componentState - indicates the component state
  *
- * @return tvERROR_NONE on success
- * @return tvERROR_GENERAL on general failure 
- * @return tvERROR_OPERATION_NOT_SUPPORTED on non-supported operation failure
- * @return tvERROR_INVALID_PARAM on invalid param failure  
- * @return tvERROR_INVALID_STATE on invalid state failure 
+ * @return tvError_t
+ * @retval tvERROR_NONE on success
+ * @retval tvERROR_GENERAL on general failure 
+ * @retval tvERROR_OPERATION_NOT_SUPPORTED on non-supported operation failure
+ * @retval tvERROR_INVALID_PARAM on invalid param failure  
+ * @retval tvERROR_INVALID_STATE on invalid state failure 
  * 
  * @pre  tvInit() should be called before calling this API.
  */
@@ -2242,15 +2236,12 @@ tvError_t SetCMSState(tvCMS_tunel_t tunelType,tvcomponent_color_type_t colorType
 /**
  * @brief This function checks if the White balance parameters are equal to default value.
  * 
- * @param[in] wbvalue indicates the white balance value struct member of type tvDataColor_t
- * @param[in] colorType indicates the color type
- * @param[out] bool True/False indicates whether the white balance is user default or not
+ * @param[in] wbvalue - indicates the white balance value struct member of type tvDataColor_t
+ * @param[in] colorType - indicates the color type
  *
- * @return tvERROR_NONE on success
- * @return tvERROR_GENERAL on general failure 
- * @return tvERROR_OPERATION_NOT_SUPPORTED on non-supported operation failure
- * @return tvERROR_INVALID_PARAM on invalid param failure  
- * @return tvERROR_INVALID_STATE on invalid state failure 
+ * @return bool
+ * @retval true - its a default WB value
+ * @retval false - its not a default WB value
  * 
  * @pre  tvInit() should be called before calling this API.
  */
@@ -2259,15 +2250,10 @@ bool isWBUserDfault(tvDataColor_t wbvalue);
 /**
  * @brief This function gets the White balance RGB type
  * 
- * @param[in] None
- * @param[out] color indicates the color of white balance RGB type(red, green or blue)
- * @param[out] ctrl indicates the control whether gain or offset.
+ * @param[out] color - indicates the color of white balance RGB type(red, green or blue)
+ * @param[out] ctrl - indicates the control whether gain or offset.
  *
- * @return tvERROR_NONE on success
- * @return tvERROR_GENERAL on general failure 
- * @return tvERROR_OPERATION_NOT_SUPPORTED on non-supported operation failure
- * @return tvERROR_INVALID_PARAM on invalid param failure  
- * @return tvERROR_INVALID_STATE on invalid state failure 
+ * @return int
  * 
  * @pre  tvInit() should be called before calling this API.
  */
@@ -2276,14 +2262,12 @@ int GetWBRgbType(const char *color, const char * ctrl);
 /**
  * @brief This function checks the user White balance value on init
  * 
- * @param[in] None
- * @param[out] tvDataColor_t type struct - returns the user WB value on init.
- *
- * @return tvERROR_NONE on success
- * @return tvERROR_GENERAL on general failure 
- * @return tvERROR_OPERATION_NOT_SUPPORTED on non-supported operation failure
- * @return tvERROR_INVALID_PARAM on invalid param failure  
- * @return tvERROR_INVALID_STATE on invalid state failure 
+ * @return tvDataColor_t
+ * @retval tvERROR_NONE on success
+ * @retval tvERROR_GENERAL on general failure 
+ * @retval tvERROR_OPERATION_NOT_SUPPORTED on non-supported operation failure
+ * @retval tvERROR_INVALID_PARAM on invalid param failure  
+ * @retval tvERROR_INVALID_STATE on invalid state failure 
  * 
  * @pre  tvInit() should be called before calling this API.
  */
@@ -2296,11 +2280,9 @@ tvDataColor_t GetUSerWBValueOnInit(void);
  * @param[in] wbvalueThat indicates the struct member of type tvDataColor_t
  * @param[out] bool True/False indicates whether wbvalueThis and wbvalueThat are equal or not
  *
- * @return tvERROR_NONE on success
- * @return tvERROR_GENERAL on general failure 
- * @return tvERROR_OPERATION_NOT_SUPPORTED on non-supported operation failure
- * @return tvERROR_INVALID_PARAM on invalid param failure  
- * @return tvERROR_INVALID_STATE on invalid state failure 
+ * @return bool
+ * @retval 0 - Not equal
+ * @retval 1 - Equal
  * 
  * @pre  tvInit() should be called before calling this API.
  */
@@ -2309,15 +2291,15 @@ bool areEqual(tvDataColor_t wbvalueThis,tvDataColor_t wbvalueThat);
 /**
  * @brief This function updates the color temperature to driver from user
  *
- * @param[in] rgbType indicates the type of rgb
- * @param[in] value indicates the value of rgbtype
- * @param[out] None
+ * @param[in] rgbType - indicates the type of rgb
+ * @param[in] value - indicates the value of rgbtype
  *
- * @return tvERROR_NONE on success
- * @return tvERROR_GENERAL on general failure 
- * @return tvERROR_OPERATION_NOT_SUPPORTED on non-supported operation failure
- * @return tvERROR_INVALID_PARAM on invalid param failure  
- * @return tvERROR_INVALID_STATE on invalid state failure 
+ * @return tvError_t
+ * @retval tvERROR_NONE on success
+ * @retval tvERROR_GENERAL on general failure 
+ * @retval tvERROR_OPERATION_NOT_SUPPORTED on non-supported operation failure
+ * @retval tvERROR_INVALID_PARAM on invalid param failure  
+ * @retval tvERROR_INVALID_STATE on invalid state failure 
  * 
  * @pre  tvInit() should be called before calling this API.
  */
@@ -2326,15 +2308,15 @@ tvError_t SetColorTemperatureUser(int rgbType, int value);
 /**
  * @brief This function saves the color temperature to driver from user
  *
- * @param[in] rgbType indicates the type of rgb
- * @param[in] value indicates the value of rgbtype
- * @param[out] None
+ * @param[in] rgbType - indicates the type of rgb
+ * @param[in] value - indicates the value of rgbtype
  *
- * @return tvERROR_NONE on success
- * @return tvERROR_GENERAL on general failure 
- * @return tvERROR_OPERATION_NOT_SUPPORTED on non-supported operation failure
- * @return tvERROR_INVALID_PARAM on invalid param failure  
- * @return tvERROR_INVALID_STATE on invalid state failure 
+ * @return tvError_t
+ * @retval tvERROR_NONE on success
+ * @retval tvERROR_GENERAL on general failure 
+ * @retval tvERROR_OPERATION_NOT_SUPPORTED on non-supported operation failure
+ * @retval tvERROR_INVALID_PARAM on invalid param failure  
+ * @retval tvERROR_INVALID_STATE on invalid state failure 
  * 
  * @pre  tvInit() should be called before calling this API.
  */
@@ -2343,14 +2325,14 @@ tvError_t SaveColorTemperatureUser(int rgbType, int value);
 /**
  * @brief This function updates the backlight info to driver
  *
- * @param[in] backlightDefaults indicates the backlight info to be set
- * @param[out] None
+ * @param[in] backlightDefaults - indicates the backlight info to be set
  *
- * @return tvERROR_NONE on success
- * @return tvERROR_GENERAL on general failure 
- * @return tvERROR_OPERATION_NOT_SUPPORTED on non-supported operation failure
- * @return tvERROR_INVALID_PARAM on invalid param failure  
- * @return tvERROR_INVALID_STATE on invalid state failure 
+ * @return tvError_t
+ * @retval tvERROR_NONE on success
+ * @retval tvERROR_GENERAL on general failure 
+ * @retval tvERROR_OPERATION_NOT_SUPPORTED on non-supported operation failure
+ * @retval tvERROR_INVALID_PARAM on invalid param failure  
+ * @retval tvERROR_INVALID_STATE on invalid state failure 
  * 
  * @pre  tvInit() should be called before calling this API.
  */
@@ -2359,14 +2341,9 @@ tvError_t SetBacklightInfo(tvBacklightInfo_t backlightDefaults);
 /**
  * @brief This function returns the driver equivalent backlight for current format
  *
- * @param[in] backlight indicates the backlight info to be set
- * @param[out] None
+ * @param[in] backlight - indicates the backlight info to be set
  *
- * @return tvERROR_NONE on success
- * @return tvERROR_GENERAL on general failure 
- * @return tvERROR_OPERATION_NOT_SUPPORTED on non-supported operation failure
- * @return tvERROR_INVALID_PARAM on invalid param failure  
- * @return tvERROR_INVALID_STATE on invalid state failure 
+ * @return int
  * 
  * @pre  tvInit() should be called before calling this API.
  */
@@ -2375,14 +2352,9 @@ int GetDriverEquivalentBLForCurrentFmt(int backlight);
 /**
  * @brief This function returns HLG mode index from driver
  *
- * @param[in] None
- * @param[out] hlgMode indicates the hlgmode index
+ * @param[out] hlgMode - indicates the hlgmode index
  *
- * @return tvERROR_NONE on success
- * @return tvERROR_GENERAL on general failure 
- * @return tvERROR_OPERATION_NOT_SUPPORTED on non-supported operation failure
- * @return tvERROR_INVALID_PARAM on invalid param failure  
- * @return tvERROR_INVALID_STATE on invalid state failure 
+ * @return int
  * 
  * @pre  tvInit() should be called before calling this API.
  */
@@ -2391,14 +2363,9 @@ int GetHLGModeIndex(const char * hlgMode);
 /**
  * @brief This function returns HDR10 mode index from driver
  *
- * @param[in] None
- * @param[out] hdr10Mode indicates the hdr10Mode index
+ * @param[out] hdr10Mode - indicates the hdr10Mode index
  *
- * @return tvERROR_NONE on success
- * @return tvERROR_GENERAL on general failure 
- * @return tvERROR_OPERATION_NOT_SUPPORTED on non-supported operation failure
- * @return tvERROR_INVALID_PARAM on invalid param failure  
- * @return tvERROR_INVALID_STATE on invalid state failure 
+ * @return int
  * 
  * @pre  tvInit() should be called before calling this API.
  */
@@ -2407,16 +2374,16 @@ int GetHDR10ModeIndex(const char * hdr10Mode);
 /**
  * @brief This function sets the faded backlight to driver
  *
- * @param[in] from indicates the from time from when the backlight to be faded.
- * @param[in] to indicates the to time till when the backlight to be faded.
- * @param[in] duration  indicates the duration for which the backlight to be faded.
- * @param[out] None
+ * @param[in] from - indicates the from time from when the backlight to be faded.
+ * @param[in] to - indicates the to time till when the backlight to be faded.
+ * @param[in] duration - indicates the duration for which the backlight to be faded.
  *
- * @return tvERROR_NONE on success
- * @return tvERROR_GENERAL on general failure 
- * @return tvERROR_OPERATION_NOT_SUPPORTED on non-supported operation failure
- * @return tvERROR_INVALID_PARAM on invalid param failure  
- * @return tvERROR_INVALID_STATE on invalid state failure 
+ * @return tvError_t
+ * @retval tvERROR_NONE on success
+ * @retval tvERROR_GENERAL on general failure 
+ * @retval tvERROR_OPERATION_NOT_SUPPORTED on non-supported operation failure
+ * @retval tvERROR_INVALID_PARAM on invalid param failure  
+ * @retval tvERROR_INVALID_STATE on invalid state failure 
  * 
  * @pre  tvInit() should be called before calling this API.
  */
@@ -2425,15 +2392,16 @@ tvError_t SetBacklightFade(int from,int to,int duration);
 /**
  * @brief This function reads all the config modes from the file
  *
- * @param[in] file indicates the file to be read
- * @param[in] searchstring indicates the string to be searched from the file
- * @param[out] cpybuffer indicates the buffer read from the file
+ * @param[in] file - indicates the file to be read
+ * @param[in] searchstring - indicates the string to be searched from the file
+ * @param[out] cpybuffer - indicates the buffer read from the file
  *
- * @return tvERROR_NONE on success
- * @return tvERROR_GENERAL on general failure 
- * @return tvERROR_OPERATION_NOT_SUPPORTED on non-supported operation failure
- * @return tvERROR_INVALID_PARAM on invalid param failure  
- * @return tvERROR_INVALID_STATE on invalid state failure 
+ * @return tvError_t
+ * @retval tvERROR_NONE on success
+ * @retval tvERROR_GENERAL on general failure 
+ * @retval tvERROR_OPERATION_NOT_SUPPORTED on non-supported operation failure
+ * @retval tvERROR_INVALID_PARAM on invalid param failure  
+ * @retval tvERROR_INVALID_STATE on invalid state failure 
  * 
  * @pre  tvInit() should be called before calling this API.
  */
@@ -2443,15 +2411,11 @@ tvError_t ReadAllModeConfigfile(const char *file, char *cpybuffer, const char *s
 /**
  * @brief This function splits the buffer and stores the available modes from the buffer
  *
- * @param[in] buffer the buffer to be read for string splitting
- * @param[out] availableModes indicates the availableModes read from buffer after splitting it
- * @param[out] totalcount indicates the total count of the string read.
+ * @param[in] buffer - the buffer to be read for string splitting
+ * @param[out] availableModes - indicates the availableModes read from buffer after splitting it
+ * @param[out] totalcount - indicates the total count of the string read.
  *
- * @return tvERROR_NONE on success
- * @return tvERROR_GENERAL on general failure 
- * @return tvERROR_OPERATION_NOT_SUPPORTED on non-supported operation failure
- * @return tvERROR_INVALID_PARAM on invalid param failure  
- * @return tvERROR_INVALID_STATE on invalid state failure 
+ * @return void
  * 
  * @pre  tvInit() should be called before calling this API.
  */
@@ -2461,15 +2425,11 @@ void splitstringsfrombuffer(char *buffer, char *availableModes, unsigned short *
 /**
  * @brief This function splits the buffer and stores the available modes from the buffer
  *
- * @param[in] buffer the buffer to be read for string splitting
- * @param[out] availableModes indicates the array of availableModes read from buffer after splitting it
- * @param[out] totalcount indicates the total count of the string read.
+ * @param[in] buffer - the buffer to be read for string splitting
+ * @param[out] availableModes - indicates the array of availableModes read from buffer after splitting it
+ * @param[out] totalcount - indicates the total count of the string read.
  *
- * @return tvERROR_NONE on success
- * @return tvERROR_GENERAL on general failure 
- * @return tvERROR_OPERATION_NOT_SUPPORTED on non-supported operation failure
- * @return tvERROR_INVALID_PARAM on invalid param failure  
- * @return tvERROR_INVALID_STATE on invalid state failure 
+ * @return void
  * 
  * @pre  tvInit() should be called before calling this API.
  */
@@ -2478,14 +2438,14 @@ void splitstringsandvaluefrombuffer(char *buffer, pic_modes_t *availableModes[],
 /**
  * @brief This function sets the gamma mode to driver
  *
- * @param[in] mode indicates the gamme mode to be set
- * @param[out] None
+ * @param[in] mode - indicates the gamme mode to be set
  *
- * @return tvERROR_NONE on success
- * @return tvERROR_GENERAL on general failure 
- * @return tvERROR_OPERATION_NOT_SUPPORTED on non-supported operation failure
- * @return tvERROR_INVALID_PARAM on invalid param failure  
- * @return tvERROR_INVALID_STATE on invalid state failure 
+ * @return tvError_t
+ * @retval tvERROR_NONE on success
+ * @retval tvERROR_GENERAL on general failure 
+ * @retval tvERROR_OPERATION_NOT_SUPPORTED on non-supported operation failure
+ * @retval tvERROR_INVALID_PARAM on invalid param failure  
+ * @retval tvERROR_INVALID_STATE on invalid state failure 
  * 
  * @pre  tvInit() should be called before calling this API.
  */
@@ -2494,14 +2454,14 @@ tvError_t SetGammaMode(int mode);
 /**
  * @brief This function sets the gamma mode to driver
  *
- * @param[in] localDimmingLevel indicates the local dimming level
- * @param[out] None
+ * @param[in] localDimmingLevel - indicates the local dimming level
  *
- * @return tvERROR_NONE on success
- * @return tvERROR_GENERAL on general failure 
- * @return tvERROR_OPERATION_NOT_SUPPORTED on non-supported operation failure
- * @return tvERROR_INVALID_PARAM on invalid param failure  
- * @return tvERROR_INVALID_STATE on invalid state failure 
+ * @return tvError_t
+ * @retval tvERROR_NONE on success
+ * @retval tvERROR_GENERAL on general failure 
+ * @retval tvERROR_OPERATION_NOT_SUPPORTED on non-supported operation failure
+ * @retval tvERROR_INVALID_PARAM on invalid param failure  
+ * @retval tvERROR_INVALID_STATE on invalid state failure 
  * 
  * @pre  tvInit() should be called before calling this API.
  */
@@ -2510,14 +2470,14 @@ tvError_t SetLocalDimmingLevel(int localDimmingLevel);
 /**
  * @brief This function sets the gamma mode to driver
  *
- * @param[in] *localDimmingLevel gets the localdimminglevel mode set
- * @param[out] None
+ * @param[in] localDimmingLevel - gets the localdimminglevel mode set
  *
- * @return tvERROR_NONE on success
- * @return tvERROR_GENERAL on general failure 
- * @return tvERROR_OPERATION_NOT_SUPPORTED on non-supported operation failure
- * @return tvERROR_INVALID_PARAM on invalid param failure  
- * @return tvERROR_INVALID_STATE on invalid state failure 
+ * @return tvError_t
+ * @retval tvERROR_NONE on success
+ * @retval tvERROR_GENERAL on general failure 
+ * @retval tvERROR_OPERATION_NOT_SUPPORTED on non-supported operation failure
+ * @retval tvERROR_INVALID_PARAM on invalid param failure  
+ * @retval tvERROR_INVALID_STATE on invalid state failure 
  * 
  * @pre  tvInit() should be called before calling this API.
  */
@@ -2526,17 +2486,17 @@ tvError_t GetLocalDimmingLevel(int *localDimmingLevel);
 /**
  * @brief This function saves the localdimminglevel for the given sourceInput
  *
- * @param[in] sourceInput indicates the sourceInput for which localdimminglevel to be saved
- * @param[in] pq_mode indicates the pq_mode of the sourceInput
- * @param[in] hdr_type indicates the hdr type of the sourceInput
- * @param[in] value indicates the value of the localdimminglevel to be saved.
- * @param[out] None
+ * @param[in] sourceInput - indicates the sourceInput for which localdimminglevel to be saved
+ * @param[in] pq_mode - indicates the pq_mode of the sourceInput
+ * @param[in] hdr_type - indicates the hdr type of the sourceInput
+ * @param[in] value - indicates the value of the localdimminglevel to be saved.
  *
- * @return tvERROR_NONE on success
- * @return tvERROR_GENERAL on general failure 
- * @return tvERROR_OPERATION_NOT_SUPPORTED on non-supported operation failure
- * @return tvERROR_INVALID_PARAM on invalid param failure  
- * @return tvERROR_INVALID_STATE on invalid state failure 
+ * @return tvError_t
+ * @retval tvERROR_NONE on success
+ * @retval tvERROR_GENERAL on general failure 
+ * @retval tvERROR_OPERATION_NOT_SUPPORTED on non-supported operation failure
+ * @retval tvERROR_INVALID_PARAM on invalid param failure  
+ * @retval tvERROR_INVALID_STATE on invalid state failure 
  * 
  * @pre  tvInit() should be called before calling this API.
  */
@@ -2545,14 +2505,14 @@ tvError_t SaveLocalDimmingLevel(int sourceInput, int pq_mode,int hdr_type,int va
 /**
  * @brief This function switches the edid for given pqmode.
  *
- * @param[in] pqmode indicates the pqmode
- * @param[out] None
+ * @param[in] pqmode - indicates the pqmode
  *
- * @return tvERROR_NONE on success
- * @return tvERROR_GENERAL on general failure 
- * @return tvERROR_OPERATION_NOT_SUPPORTED on non-supported operation failure
- * @return tvERROR_INVALID_PARAM on invalid param failure  
- * @return tvERROR_INVALID_STATE on invalid state failure 
+ * @return tvError_t
+ * @retval tvERROR_NONE on success
+ * @retval tvERROR_GENERAL on general failure 
+ * @retval tvERROR_OPERATION_NOT_SUPPORTED on non-supported operation failure
+ * @retval tvERROR_INVALID_PARAM on invalid param failure  
+ * @retval tvERROR_INVALID_STATE on invalid state failure 
  * 
  * @pre  tvInit() should be called before calling this API.
  */
@@ -2561,14 +2521,14 @@ void SwitchEDID(int pqmode);
 /**
  * @brief This function updates the EDID and dimming level
  *
- * @param[in] dimmingLevel indicates the edid and dimming level of the sourceInput
- * @param[out] None
+ * @param[in] dimmingLevel - indicates the edid and dimming level of the sourceInput
  *
- * @return tvERROR_NONE on success
- * @return tvERROR_GENERAL on general failure 
- * @return tvERROR_OPERATION_NOT_SUPPORTED on non-supported operation failure
- * @return tvERROR_INVALID_PARAM on invalid param failure  
- * @return tvERROR_INVALID_STATE on invalid state failure 
+ * @return tvError_t
+ * @retval tvERROR_NONE on success
+ * @retval tvERROR_GENERAL on general failure 
+ * @retval tvERROR_OPERATION_NOT_SUPPORTED on non-supported operation failure
+ * @retval tvERROR_INVALID_PARAM on invalid param failure  
+ * @retval tvERROR_INVALID_STATE on invalid state failure 
  * 
  * @pre  tvInit() should be called before calling this API.
  */
@@ -2581,13 +2541,8 @@ tvError_t UpdateEDIDAndSetDimmingLevel(int dimmingLevel);
  * @param[in] format indicates the format
  * @param[in] dimmingLevel indicates the dimming level.
  * @param[in] edidLevel indicates the edid level
- * @param[out] None
  *
- * @return tvERROR_NONE on success
- * @return tvERROR_GENERAL on general failure 
- * @return tvERROR_OPERATION_NOT_SUPPORTED on non-supported operation failure
- * @return tvERROR_INVALID_PARAM on invalid param failure  
- * @return tvERROR_INVALID_STATE on invalid state failure 
+ * @return void
  * 
  * @pre  tvInit() should be called before calling this API.
  */
@@ -2596,14 +2551,12 @@ void GetLDIMAndEDIDLevel(int dimmingMode,int format,int *dimmingLevel, int *edid
 /**
  * @brief This function gets the Game PQ mode Index.
  *
- * @param[in] None
- * @param[out] None
- *
- * @return tvERROR_NONE on success
- * @return tvERROR_GENERAL on general failure 
- * @return tvERROR_OPERATION_NOT_SUPPORTED on non-supported operation failure
- * @return tvERROR_INVALID_PARAM on invalid param failure  
- * @return tvERROR_INVALID_STATE on invalid state failure 
+ * @return tvError_t
+ * @retval tvERROR_NONE on success
+ * @retval tvERROR_GENERAL on general failure 
+ * @retval tvERROR_OPERATION_NOT_SUPPORTED on non-supported operation failure
+ * @retval tvERROR_INVALID_PARAM on invalid param failure  
+ * @retval tvERROR_INVALID_STATE on invalid state failure 
  * 
  * @pre  tvInit() should be called before calling this API.
  */
@@ -2614,6 +2567,7 @@ int GetGamePQModeIndex();
 
 #endif //_TV_SETTINGS_H
 
+/** @} */
 /** @} */
 /** @} */
 
