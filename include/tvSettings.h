@@ -1,11 +1,27 @@
+/*
+* If not stated otherwise in this file or this component's Licenses.txt file the
+* following copyright and licenses apply:
+*
+* Copyright 2016 RDK Management
+*
+* Licensed under the Apache License, Version 2.0 (the "License");
+* you may not use this file except in compliance with the License.
+* You may obtain a copy of the License at
+*
+* http://www.apache.org/licenses/LICENSE-2.0
+*
+* Unless required by applicable law or agreed to in writing, software
+* distributed under the License is distributed on an "AS IS" BASIS,
+* WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+* See the License for the specific language governing permissions and
+* limitations under the License.
+*/
 /**
 * @addtogroup HPK
 * @{
 **/
 /**
-* @defgroup tvsettings
-* @{
-* @defgroup APIs
+* @addtogroup tvsettings
 * @{
 **/
 
@@ -18,17 +34,17 @@
 #include "tvError.h"
 #include "tvTypes.h"
 
-#include <vector>
+#include <vector> 
 
-#ifdef __cplusplus
-extern "C"
+#ifdef __cplusplus 
+extern "C" //TODO C++ functions cannot externunder C
 {
 #endif
+//TODO single line comments for macros tobe added
+#define TVSETTINGS_MAX_STRING_SIZE (15) //TODO check and add prefix for macros
+#define TVSETTINGS_CONTROL_COUNT (2)
 
-#define MAX_STRING_SIZE (15)
-#define CONTROL_COUNT (2)
-
-#define PIC_MODES_SUPPORTED_MAX   (15)
+#define PIC_MODES_SUPPORTED_MAX   (15) //TODO move the macros to .C file not to be exposed
 #define PIC_MODE_NAME_MAX (25)
 #define DIMMING_MODE_NAME_SIZE    (25)
 #define DIMMING_MODE_MAX          (10)
@@ -39,14 +55,13 @@ extern "C"
 #define OFFSET_MAX       (1024)
 #define BACKLIGHT_CURVE_MAX_INDEX     (101)
 #define EXPECTED_FILE_SIZE (512)
-#define GENERIC_MODE_CONFIG_FILE  "/etc/tv/allmodes.conf"
 
-typedef void (*tvVideoFormatChangeCB)(tvVideoHDRFormat_t format,void *userData);
+typedef void (*tvVideoFormatChangeCB)(tvVideoHDRFormat_t format,void *userData); //TODO Add comment
  
 //! A structure representing the pic modes 
 typedef struct {
-    char name[PIC_MODE_NAME_MAX]; //!< pic modes array 
-    short int value; //!< pic mode value
+    char name[PIC_MODE_NAME_MAX]; //!< pic modes name 
+    short int value; //!< pic mode value //TODO will move to inttypes.h
 }pic_modes_t;
 
  
@@ -66,7 +81,7 @@ typedef enum {
     mfrColorTemp_MAX //!< Max Color Temperature 
 }fp_mfrColorTemp_t;
  
-//! Structure representing the input source offset 
+//! Structure representing the input source offset TODO: add comment its used for bitwise(check if it should be macro)
 typedef enum {
     HDMI_OFFSET_NEW = 0, //!< HDMI offset 
     TV_OFFSET_NEW   = 4, //!< TV offset 
@@ -76,12 +91,12 @@ typedef enum {
 
 //! Structure Representing the White Balanace Info 
 typedef struct {
-    char wbControls[CONTROL_COUNT][MAX_STRING_SIZE]; //!< White Balance Controls array
-    char wbGain[CONTROL_COUNT][MAX_STRING_SIZE]; //!< White Balance Gain array
-    char wbOffset[CONTROL_COUNT][MAX_STRING_SIZE]; //!< White Balance Offset 
+    char wbControls[TVSETTINGS_CONTROL_COUNT][TVSETTINGS_MAX_STRING_SIZE]; //!< White Balance Controls array
+    char wbGain[TVSETTINGS_CONTROL_COUNT][TVSETTINGS_MAX_STRING_SIZE]; //!< White Balance Gain array
+    char wbOffset[TVSETTINGS_CONTROL_COUNT][TVSETTINGS_MAX_STRING_SIZE]; //!< White Balance Offset 
 }getWBInfo_t;
 
-#ifndef __BL_PARA__
+#ifndef __BL_PARA__ //TODO check and remove the struct if not used
 #define __BL_PARA__
 
 //! Structure representing the backlight parameters 
@@ -104,27 +119,21 @@ typedef struct {
  *
  * @return tvError_t 
  * @retval tvERROR_NONE                     - on success
- * @retval tvERROR_GENERAL                  - on general failure 
- * @retval  tvERROR_OPERATION_NOT_SUPPORTED - on non-supported operation failure
- * @retval  tvERROR_INVALID_PARAM           - on invalid param failure  
- * @retval tvERROR_INVALID_STATE            - on invalid state failure
+ * @retval tvERROR_GENERAL                  - on general failure //TODO error condition need to be more specific
  * @warning  This API is Not thread safe.
  * @see tvTerm()
  *
  */
-
 tvError_t tvInit();
+ 
 /**
  * @brief This function will start the SD3 and cri_data sync thread
  *
  * @return tvError_t
  * @retval tvERROR_NONE                    - on success
  * @retval tvERROR_GENERAL                 - on general failure 
- * @retval tvERROR_OPERATION_NOT_SUPPORTED - on non-supported operation failure
- * @retval tvERROR_INVALID_PARAM           - on invalid param failure  
- * @retval tvERROR_INVALID_STATE           - on invalid state failure
  * @warning  This API is Not thread safe.
- * @see tvInit()
+ * @see tvInit() 
  */
 tvError_t tvSD3toCriSyncInit();
 
@@ -140,7 +149,7 @@ tvError_t tvSD3toCriSyncInit();
  * @warning  This API is Not thread safe.
  * @see tvInit()
  */
-tvError_t tvTerm();
+tvError_t tvTerm(); //TODO: revisit error conditions all apis
 
 /**
  * @brief Get the TV Pciture Mode
@@ -2543,7 +2552,6 @@ int GetGamePQModeIndex();
 
 #endif //_TV_SETTINGS_H
 
-/** @} */
 /** @} */
 /** @} */
 
