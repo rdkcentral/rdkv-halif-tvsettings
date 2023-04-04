@@ -33,6 +33,10 @@ extern "C"
 {
 #endif
  
+ /**
+  * TODO: Create more specific errors instead of GENERAL error in V2.
+  */
+ 
 /* Error codes defined for tvError_t */
 typedef enum {
      
