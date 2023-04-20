@@ -36,21 +36,18 @@ extern "C"
 {
 #endif
 
-/* Macro defined to log ERROR log messages */
 #define ERROR(text, ...) do {\
-        printf("%s[%d] - %s: " text, __FUNCTION__, __LINE__, "ERROR", ##__VA_ARGS__);}while(0);
+        printf("%s[%d] - %s: " text, __FUNCTION__, __LINE__, "ERROR", ##__VA_ARGS__);}while(0); //!< Macro to log ERROR messages
 
-/* Macro defined to log INFO log messages */
 #define INFO(text, ...) do {\
-        printf("%s[%d] - %s: " text, __FUNCTION__, __LINE__, "INFO", ##__VA_ARGS__);}while(0);
+        printf("%s[%d] - %s: " text, __FUNCTION__, __LINE__, "INFO", ##__VA_ARGS__);}while(0); //!< Macro to log INFO messages
 
-/* Macro defined to log DEBUG log messages */
-#ifdef DEBUG_ENABLED
+#ifdef DEBUG_ENABLED 
 
 #define DEBUG(text, ...) do {\
         printf("%s[%d] - %s: " text, __FUNCTION__, __LINE__, "DEBUG", ##__VA_ARGS__);}while(0);
 #else
-#define DEBUG(text, ...)
+#define DEBUG(text, ...) //!< Macro to log DEBUG messages
 #endif
 
 

@@ -37,7 +37,7 @@ extern "C"
   * TODO: Create more specific errors instead of GENERAL error in V2.
   */
  
-/* Error codes defined for tvError_t */
+/* Error codes returned by tvSetting HAL */
 typedef enum {
      
     tvERROR_NONE = 0,                   //!< No error
