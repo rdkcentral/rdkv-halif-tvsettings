@@ -3,10 +3,10 @@
 
 ## Version History
 
-| Date | Author | Comment | Version |
-| --- | --------- | --- | --- |
-| 20/03/23 | Review Team | Edited | 1.0.1 |
-| 16/11/22 | Aishwariya Bhaskar | First Release | 1.0.0 |
+| Date(DD/MM/YY) | Comment | Version |
+| --- | --- | --- |
+| 20/03/23 | Edited | 1.0.1 |
+| 16/11/22 | First Release | 1.0.0 |
 
 ## Table of Contents
 
@@ -46,13 +46,13 @@
 
 ## Description
 
-TV Settings `HAL` is an abstract layer, which provides `APIs` to modify/control the picture quality parameters, dimming modes and auto backlight modes.
+TV Settings `HAL` is an interface which provides `APIs` to modify/control the picture quality parameters, dimming modes and auto backlight modes.
 
 ```mermaid
 %%{ init : { "theme" : "forest", "flowchart" : { "curve" : "linear" }}}%%
 flowchart TD
-Caller --> x[TV Setting HAL] 
-x[TV Setting HAL] --> y[Video/PictureQuality Driver]
+Caller <--> x[TV Setting HAL] 
+x[TV Setting HAL] <--> y[Video/Picture Quality Driver]
 style Caller fill:#99CCFF,stroke:#333,stroke-width:0.3px
 style y fill:#fc9,stroke:#333,stroke-width:0.3px
 style x fill:#9f9,stroke:#333,stroke-width:0.3px
@@ -62,12 +62,12 @@ style x fill:#9f9,stroke:#333,stroke-width:0.3px
 
 ### Initialization and Startup
 
-The caller should initialize the `APIs` with picture quality modes for specific platforms and initiates communication with Picture Quality drivers.
+The caller should initialize the `APIs` with picture quality modes for specific platforms and initiates communication with picture quality drivers.
 
- 1. The specification of the TV Picure configuration will be defined in a config file([allmodes_template.conf](../../configs/allmodes_template.conf)) which decides supported formats, picture modes, dimming modes, dvModes, HDRModes, HLGModes, resolution etc.
- 2. Caller should initialize by calling `tvInit()`, which should initialize the parameters in the above config file as well.
+ 1. The specification of the TV picure configuration will be defined in a config file ([allmodes_template.conf](../../configs/allmodes_template.conf)) which decides supported formats, picture modes, dimming modes, dvModes, HDRModes, HLGModes, resolution etc.
+ 2. Caller should initialize by calling `tvInit()` which should initialize the parameters in the above config file as well.
 
-### Threading Model #TBC
+### Threading Model
 
 This interface is not required to be thread safe. 
 There are no constraints on thread creation or signal handling. 
@@ -86,7 +86,7 @@ This interface is not required to participate in power management.
 
 ### Asynchronous Notification Model
 
-This interface requires callback notification registration for VideoFormatChange, VideoResolutionChange, VideoFrameRateChange. The caller must return the callback context as fast as possible and will not block.
+This interface requires callback notification registration for VideoFormatChange, VideoResolutionChange, VideoFrameRateChange, VideoContentChange. The caller must return the callback context as fast as possible and will not block.
 
 ### Blocking calls
 
@@ -94,7 +94,7 @@ This interface is required to have no blocking calls.
 
 ### Internal Error Handling
 
-All `APIs` must return error synchronously as return argument. This interface is responsible to handle system errors internally(e.g. out of memory).
+All `APIs` must return error synchronously as return argument.
 
 ### Persistence Model
 
@@ -103,11 +103,11 @@ Config file should contain the supported formats, picture modes, dimming modes, 
 
 ## Non-functional requirements
 
-Following non-functional requirement must be supported by the TV Settings `HAL` component.
+Following non-functional requirement must be supported by the TV Settings `HAL` component:
 
 ### Logging and debugging requirements
 
-There is no logging mechanism handled and printf() must be used.
+This interface is required to support DEBUG, INFO and ERROR messages. DEBUG is required to be disabled by default and enabled when needed.
 
 ### Memory and performance requirements
 
@@ -144,7 +144,7 @@ Product or platform specification requirements will be handled in vendor specifi
 
 ### Theory of operation and key concepts
 
-This interface handles various functionalities related to Picture Quality settings such as:
+This interface handles various functionalities/requests related to Picture Quality settings :
 
 - Brightness
 - Contrast
@@ -156,8 +156,12 @@ This interface handles various functionalities related to Picture Quality settin
 - Backlight 
 - Aspect Ratio
 - Dimming Modes
+- Notify Video Format Change
+- Notify Video Resolution Change
+- Notify Video FrameRate Change
+- Notify Video Content Change
 
-There are other platform specific Picture Quality settings that can be managed by this interface such as:
+There are other platform specific Picture Quality settings that can be managed by this interface :
 
 - CMS
 - Dolby Vision
@@ -170,18 +174,27 @@ There are other platform specific Picture Quality settings that can be managed b
 
 ```mermaid
 sequenceDiagram
-Caller ->> TV setting HAL:request
-TV setting HAL ->> Driver:request
+Caller ->> TV setting HAL: tvInit
+TV setting HAL ->> Caller:success
+Caller ->> TV setting HAL: request
+TV setting HAL ->> Driver: request
 Driver ->> TV setting HAL:success/failure
 TV setting HAL ->> Caller:success/failure
+TV setting HAL ->> TV setting HAL:Register callback
+Driver ->> TV setting HAL:Notify on video format/framerate/resolution change
+TV setting HAL ->> Caller:Notify on video format/framerate/resolution change
 ```
 
 #### Functional Diagram
 
 ```mermaid
 stateDiagram-v2
-    [*] --> Configured: Initialize Picture Quality params
-    Configured --> Control: Set/get/reset PQ params
-    Control --> Validate: Recieve response from driver
-    Validate --> Configured
+    [*] --> ClosedState
+    ClosedState --> OpenState: tvInit()-Initialize Picture Quality params
+    OpenState --> ControlState: Set/Get PQ params
+    ControlState --> Validate: Recieve success/failure response from driver
+    Validate --> OpenState
+    OpenState --> MonitorState: Watch for events
+    MonitorState --> NotifyState: Notify events
+    NotifyState --> MonitorState
 ```

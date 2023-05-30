@@ -21,7 +21,12 @@
 * @{
 **/
 /**
-* @addtogroup tvsettings
+* @addtogroup TV_Settings_HAL
+* @{
+**/
+
+/**
+* @defgroup TV_Error TV_Error
 * @{
 **/
 
@@ -34,7 +39,7 @@ extern "C"
 #endif
  
  /**
-  * TODO: Create more specific errors instead of GENERAL error in V2.
+  * @todo Create more specific errors instead of GENERAL error in V2.
   */
  
 /* Error codes returned by tvSetting HAL */
@@ -53,5 +58,6 @@ typedef enum {
 
 #endif // _TV_ERROR_H
 
-/** @} */ // End of tvsettings
+/** @} */ // End of TV_Error
+/** @} */ // End of TV_Settings_HAL
 /** @} */ // End of HPK

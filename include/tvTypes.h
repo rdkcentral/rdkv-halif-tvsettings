@@ -21,7 +21,12 @@
 * @{
 **/
 /**
-* @addtogroup tvsettings
+* @addtogroup TV_Settings_HAL
+* @{
+**/
+
+/**
+* @defgroup TV_Types TV_Types
 * @{
 **/
 
@@ -29,14 +34,14 @@
 #define _TV_TYPES_H
 
 /** 
- * TODO: BUG: incorrect usage of enum, it has to be #define in V2
- * TODO: enum name should end with _e in V2
- * TODO: need to prefix all enum with tvSettings_ in V2
- * TODO: change the int to inttypes variables  in V2
- * TODO: Add enum MAX for all exposed enums.
- * TODO: Do not expose enum and struct that are not used by application in V2
- * TODO: Check the naming of enum and struct(maintain caps for start of word) in V2
- * TODO: Expose tv_source_input_t enum and mention whall all source values are supported in V2.
+ * @todo incorrect usage of enum, it has to be hash define in V2
+ * @todo enum name should end with _e in V2
+ * @todo need to prefix all enum with tvSettings_ in V2
+ * @todo change the int to inttypes variables  in V2
+ * @todo Add enum MAX for all exposed enums in V2.
+ * @todo Do not expose enum and struct that are not used by application in V2
+ * @todo Check the naming of enum and struct(maintain caps for start of word) in V2
+ * @todo Expose tv_source_input_t enum and mention what all source values are supported in V2.
  */
 
 #ifdef __cplusplus
@@ -48,7 +53,15 @@ typedef short int tvPictureMode_t;             //!< Picture mode struct variable
 const tvPictureMode_t tvPictureMode_MAX=0xFF;  //!< Setting the default value of max picture mode to OXFF 
 
 /**
- * TODO: Sreeni to revisit on backlight
+ * Enumeration defining the supported FMM modes
+ *
+ */
+typedef enum {
+    tvContentType_NONE= 0x00,
+    tvContentType_FMM = 0x01,
+}tvContentType_t;
+
+/**
  * Enumeration defining the supported backlight modes
  * 
  */
@@ -57,20 +70,20 @@ typedef enum {
     tvBacklightMode_MANUAL = 0x01,             //!< backlight mode is manual
     tvBacklightMode_AMBIENT = 0x02,            //!< backlight mode is ambient
     tvBacklightMode_ECO = 0x04,                //!< backlight mode is eco
-    tvBacklightMode_INVALID = 0x08,            //!< backlight mode is invalid
+    tvBacklightMode_INVALID = 0x08            //!< backlight mode is invalid
 }tvBacklightMode_t;
 
 /**
- * TODO: Name of enum looks confusing changes to tvVideoFormat_t in V2
+ * @todo Name of enum looks confusing changes to tvVideoFormat_t in V2
  * Enumeration defining supported HDR video formats
  */
 typedef enum {
-    tvVideoFormat_NONE= 0x00,                  //!< No video format 
-    tvVideoFormat_SDR = 0x01,                  //!< video format is SDR 
-    tvVideoFormat_HLG = 0x02,                  //!< video format is HLG 
-    tvVideoFormat_HDR10 = 0x04,                //!< video format is HDR10 
-    tvVideoFormat_HDR10PLUS = 0x08,            //!< video format is HDR10plus 
-    tvVideoFormat_DV = 0x010,                  //!< video format is DV 
+    tvVideoHDRFormat_NONE= 0x00,                  //!< No video format 
+    tvVideoHDRFormat_SDR = 0x01,                  //!< video format is SDR 
+    tvVideoHDRFormat_HLG = 0x02,                  //!< video format is HLG 
+    tvVideoHDRFormat_HDR10 = 0x04,                //!< video format is HDR10 
+    tvVideoHDRFormat_HDR10PLUS = 0x08,            //!< video format is HDR10plus 
+    tvVideoHDRFormat_DV = 0x010                  //!< video format is DV 
 }tvVideoHDRFormat_t;
 
 /**
@@ -117,7 +130,7 @@ typedef enum {
     tvVideoResolution_2560x1440,               //!< Resolution is 2560x1440
     tvVideoResolution_3440x1440,               //!< Resolution is 3440x1440
     tvVideoResolution_3840x2160,               //!< Resolution is 3840x2160
-    tvVideoResolution_4096x2160,               //!< Resolution is 4096x2160
+    tvVideoResolution_4096x2160               //!< Resolution is 4096x2160
 }tvVideoResolution_t;
 
 /**
@@ -131,7 +144,6 @@ typedef struct {
 }tvResolutionParam_t;
 
 /**
- * TODO: in description of enum add "is" everywhere
  *  Enumeration defining supported types of frame rates 
  */
 typedef enum {
@@ -143,7 +155,7 @@ typedef enum {
     tvVideoFrameRate_60,                        //!< Frame rate is 60
     tvVideoFrameRate_23dot98,                   //!< Frame rate is 23.98
     tvVideoFrameRate_29dot97,                   //!< Frame rate is 29.97
-    tvVideoFrameRate_59dot94,                   //!< Frame rate is 59.94
+    tvVideoFrameRate_59dot94                   //!< Frame rate is 59.94
 }tvVideoFrameRate_t;
 
 /**
@@ -156,7 +168,8 @@ typedef enum {
     tvDisplayMode_NORMAL,                       //!< Display mode is Normal
     tvDisplayMode_AUTO,                         //!< Display mode is Auto
     tvDisplayMode_DIRECT,                       //!< Display mode is Direct
-    tvDisplayMode_ZOOM,                         //!< Display mode is Zoom
+    tvDisplayMode_ZOOM,                          //!< Display mode is Zoom
+    tvDisplayMode_MAX                           //!< End of enum
 }tvDisplayMode_t;
 
 /**
@@ -225,7 +238,7 @@ typedef enum _tvRGBType {
     R_POST_OFFSET,                              //!< RGB type is ROffset
     G_POST_OFFSET,                              //!< RGB type is GOffset
     B_POST_OFFSET,                              //!< RGB type is BOffset
-    RGB_TYPE_MAX,                               //!< End of enum
+    RGB_TYPE_MAX                               //!< End of enum
 } tvRGBType_t;
 
 /**
@@ -270,7 +283,7 @@ typedef enum tvhdr_type_e {
     HDR_TYPE_HLG       = 5,                     //!< HDR Type is HLG
     HDR_TYPE_SDR       = 6,                     //!< HDR Type is SDR
     HDR_TYPE_MVC       = 7,                     //!< HDR Type is MVC
-    HDR_TYPE_MAX,                               //!< End of enum
+    HDR_TYPE_MAX                               //!< End of enum
 } tvhdr_type_t;
 #endif // __VE_HDR_TYPE__
 
@@ -285,7 +298,7 @@ typedef enum
     COLOR_BLUE,                                 //!< Color is Blue
     COLOR_CYAN,                                 //!< Color is Cyan
     COLOR_MAGENTA,                              //!< Color is Megenta
-    COLOR_YELLOW,                               //!< Color is Yellow
+    COLOR_YELLOW                               //!< Color is Yellow
 }tvcomponent_color_type_t;
 
 /**
@@ -295,7 +308,7 @@ typedef enum
 {
     COMPONENT_DISABLE = 0,                      //!< State is Disable
     COMPONENT_ENABLE,                           //!< State is Enable
-    COMPONENT_RESET,                            //!< State is Reset
+    COMPONENT_RESET                            //!< State is Reset
 }tvcomponent_state_t;
 
 /** 
@@ -306,7 +319,7 @@ typedef enum
     COLOR_STATE=0,                              //!< CMS tunel is State
     COLOR_HUE,                                  //!< CMS tunel is Hue
     COLOR_SATURATION,                           //!< CMS tunel is Saturation
-    COLOR_LUMA,                                 //!< CMS tunel is Luma
+    COLOR_LUMA                                 //!< CMS tunel is Luma
 }tvCMS_tunel_t;
 
 /**
@@ -365,7 +378,7 @@ typedef enum tvPQParameterIndex {
 }tvPQParameterIndex_t;
 
 /**
- * TODO: Name of enum looks confusing changes to tvHDRMode_t in V2
+ * @todo Name of enum looks confusing changes to tvHDRMode_t in V2
  */
 /**
  *  Enumeration defining the various supported dolby modes 
@@ -390,7 +403,7 @@ typedef enum {
 typedef enum {
   tvDimmingMode_Fixed=0,                        //!< Mode is Fixed
   tvDimmingMode_Local,                          //!< Mode is Local
-  tvDimmingMode_Global,                         //!< Mode is Global
+  tvDimmingMode_Global                         //!< Mode is Global
 }tvDimmingMode_t;
 
 #ifdef __cplusplus
@@ -399,5 +412,6 @@ typedef enum {
 
 #endif //_TV_TYPES_H
 
-/** @} */ // End of tvsettings
+/** @} */ // End of TV_Types
+/** @} */ // End of TV_Settings_HAL
 /** @} */ // End of HPK

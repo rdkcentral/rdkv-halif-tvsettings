@@ -21,10 +21,14 @@
 * @{
 **/
 /**
-* @addtogroup tvsettings
+* @addtogroup TV_Settings_HAL
 * @{
 **/
 
+/**
+* @defgroup TV_Settings TV_Settings
+* @{
+**/
 
 #ifndef _TV_SETTINGS_H
 #define _TV_SETTINGS_H
@@ -59,11 +63,56 @@ extern "C"
 #define GENERIC_MODE_CONFIG_FILE  "/etc/tv/allmodes.conf"    //!< Defines the config file
 
 /**
- * TODO: naming of APIs should be prefixed with tvSettings_ in V2
- * TODO: change the int to inttypes variables  in V2
- * TODO: Do not expose API, variables and struct that are not used by application in V2
- * TODO: Check the naming of enum and struct(maintain caps for start of word) in V2
+ * @todo naming of APIs should be prefixed with tvSettings_ in V2
+ * @todo change the int to inttypes variables  in V2
+ * @todo Do not expose API, variables and struct that are not used by application in V2
+ * @todo Check the naming of enum and struct(maintain caps for start of word) in V2
  */
+
+
+/**
+ * @brief Callback for tvVideoFormatChangeCB
+ *
+ * This callback is triggered when a video format change is encountered.
+ *
+ * @param[in] format   			- Type of content format
+ * @param[in] userData 			- Data of the content
+ *
+ */
+typedef void (*tvVideoFormatChangeCB)(tvVideoHDRFormat_t format,void *userData);
+
+/**
+ * @brief Callback for tvVideoContentChangeCB
+ *
+ * This callback is triggered when a video content change is encountered.
+ *
+ * @param[in] mode                      - Types of FMM mode
+ * @param[in] userData                  - Data of the content
+ *
+ */
+typedef void (*tvVideoContentChangeCB)(tvContentType_t mode,void *userData);
+
+/**
+ * @brief Callback for tvVideoResolutionChangeCB.
+ *
+ * This callback is triggered when a video resolution change is encountered.
+ *
+ * @param[in] resolutionStruct    - Resolution parameter
+ * @param[in] userData            - Data of the content
+ *
+ */
+typedef void (*tvVideoResolutionChangeCB)(tvResolutionParam_t resolutionStruct,void *userData);
+
+/**
+ * @brief Callback for tvVideoFrameRateChangeCB.
+ *
+ * This callback is triggered when a video framerate change is encountered.
+ *
+ * @param[in] frameRate            - framerate parameter
+ * @param[in] userData             - Data of the content
+ *
+ */
+typedef void (*tvVideoFrameRateChangeCB)(tvVideoFrameRate_t frameRate,void *userData);
 
 /** 
  * @brief Structure for the pic modes and value.@n
@@ -73,7 +122,25 @@ typedef struct
 {
     char name[PIC_MODE_NAME_MAX];           //!< Pic modes name
     short int value;                        //!< Pic mode value
-}pic_Modes_t;
+}pic_modes_t;
+
+/** 
+ * @brief Structure for video format call back data. 
+ */
+typedef struct
+{ 
+    void *userdata;                         //!< User data received from call back
+    tvVideoFormatChangeCB cb;               //!< Callback function pointer
+}tvVideoFormatCallbackData;
+
+/**
+ * @brief Structure for FMM content call back data.
+ */
+typedef struct
+{
+    void *userdata;                         //!< User data received from call back
+    tvVideoContentChangeCB cb;              //!< Callback function pointer
+}tvVideoContentCallbackData;
 
 /** 
  * @brief Structure for video resolution callback data. 
@@ -84,22 +151,14 @@ typedef struct
     tvVideoResolutionChangeCB cb;           //!< Callback function pointer
 }tvVideoResolutionCallbackData;
 
-/* An enumeration defining different mfr color temperature */
-typedef enum {
-    mfrColorTemp_STANDARD = 0,             //!< Temperature standard
-    mfrColorTemp_COLD,                     //!< Temperature cold
-    mfrColorTemp_WARM,                     //!< Temperature warm
-    mfrColorTemp_USER,                     //!< Temperature user
-    mfrColorTemp_MAX                       //!< End of enum
-}fp_mfrColorTemp_t;
-
-/* An enumeration defining different source offset */
-typedef enum input_source_offset_e {
-    HDMI_OFFSET_NEW = 0,                  //!< HDMI offset
-    TV_OFFSET_NEW   = 4,                  //!< TV offset
-    AV_OFFSET_NEW   = 8,                  //!< AV offset
-    MAX_OFFSET_NEW                        //!< End of enum
-} input_source_offset_t;
+/** 
+ * @brief Structure for video framerate callback data. 
+ */
+typedef struct
+{
+    void *userdata;                         //!< Data of content
+    tvVideoFrameRateChangeCB cb;            //!< Callback function pointer
+}tvVideoFrameRateCallbackData;
 
 /** 
  * @brief Structure for the white balanace Information. 
@@ -131,6 +190,23 @@ typedef struct {
     int defaultBLHDR;                             //!< Backlight HDR default value
 }tvBacklightInfo_t;
 
+/* An enumeration defining different mfr color temperature */
+typedef enum {
+    mfrColorTemp_STANDARD = 0,             //!< Temperature standard
+    mfrColorTemp_COLD,                     //!< Temperature cold
+    mfrColorTemp_WARM,                     //!< Temperature warm
+    mfrColorTemp_USER,                     //!< Temperature user
+    mfrColorTemp_MAX                       //!< End of enum
+}fp_mfrColorTemp_t;
+
+/* An enumeration defining different source offset */
+typedef enum input_source_offset_e {
+    HDMI_OFFSET_NEW = 0,                  //!< HDMI offset
+    TV_OFFSET_NEW   = 4,                  //!< TV offset
+    AV_OFFSET_NEW   = 8,                  //!< AV offset
+    MAX_OFFSET_NEW                        //!< End of enum
+} input_source_offset_t;
+
 /**
  * @brief  Init TV Settings HAL.
  * 
@@ -145,24 +221,39 @@ typedef struct {
 tvError_t tvInit();
 
 /**
+ * @brief  Sync the calibration data.
+ * 
+ * This function is to read the calibration data from serialization area and sync to picture quality driver during init.
+ * @todo Change this api name in V2
+ * 
+ * @return tvError_t 
+ * @retval tvERROR_NONE              - Success
+ * @retval tvERROR_GENERAL           - When thread creation failure
+ * @see tvTerm()
+ *
+ */
+tvError_t tvSD3toCriSyncInit();
+
+/**
  * @brief Deinit TV Settings HAL.
  * 
  * This function should terminate the TV Settings HAL API's.
  * 
+ * @return tvError_t 
+ * @retval tvERROR_NONE              - Success
+ * 
  */
-void tvTerm();
-
-tvError_t tvSD3toCriSyncInit();
+tvError_t tvTerm();
 
 /**
- * TODO: Change the get functions in V2 - returntype to respective type and void parameter.
+ * @todo Change the get functions in V2 - returntype to respective type and void parameter.
  */
 /**
  * @brief Get the TV Picture Mode.
  * 
  * This function will get the current selected tv picture mode.
- *
- * @param[out] pictureMode         - Current picturemode (Entertainment, Dynamic, Expert, Movie, Sports, Graphics)
+ * 
+ * @param[out] pictureMode         - Current picturemode
  *
  * @return tvError_t
  * @retval tvERROR_NONE            - Success
@@ -177,8 +268,8 @@ tvError_t GetTVPictureMode(char *pictureMode);
  * @brief Set the TV Picture Mode.
  * 
  * This function updates the picture mode.
- *
- * @param[in] pictureMode           - Picture mode to be set (Entertainment, Dynamic, Expert, Movie, Sports, Graphics)
+ * 
+ * @param[in] pictureMode           - Picture mode to be set
  *
  * @return tvError_t
  * @retval tvERROR_NONE             - Success
@@ -193,7 +284,7 @@ tvError_t SetTVPictureMode(const char * pictureMode);
 /**
  * @brief Get the backlight value.
  * 
- * This function gets the current backlight value of TV.
+ * This function gets the current backlight value.
  *
  * @param[out] backlight           - Current backlight value(0 - 100)
  *
@@ -210,7 +301,7 @@ tvError_t GetBacklight(int *backlight);
 /**
  * @brief Set the backlight value.
  * 
- * This function updates the new backlight value to TV.
+ * This function updates the new backlight value.
  *
  * @param[in] backlight            - Backlight value to be set(0 - 100)
  *
@@ -379,7 +470,7 @@ tvError_t GetSaturation(int *saturation);
 tvError_t SetHue(int hue);
 
 /**
- * TODO: Simplify to one get set method with enum value to what param to get/set in V2
+ * @todo Simplify to one get set method with enum value to what param to get/set in V2
 */
 
 /**
@@ -402,7 +493,6 @@ tvError_t GetHue(int *hue);
  * @brief Set the color temperature value.
  * 
  * This function updates the color temperature value.
- *
  * @param[in] colorTemp              - Color temperature value to be set(tvColorTemp_t)
  *
  * @return tvError_t
@@ -436,7 +526,6 @@ tvError_t GetColorTemperature(tvColorTemp_t *colorTemp);
  * @brief Set the aspect ratio.
  * 
  * This function updates the Aspect ratio.
- *
  * @param[in] dispMode                - Display mode value(tvDisplayMode_t)
  *
  * @return tvError_t
@@ -469,7 +558,6 @@ tvError_t GetAspectRatio(tvDisplayMode_t *dispMode);
  * @brief Get the supported backlight modes.
  * 
  * This function gets all supported backlight modes of TV.
- *
  * @param[out] blModes                - Supported backlight modes(tvBacklightMode_t)
  *
  * @return tvError_t
@@ -519,19 +607,22 @@ tvError_t SetCurrentBacklightMode(tvBacklightMode_t blMode);
 /**
  * @brief Get current video format.
  * 
- * This function gets the current video format value.
+ * This function gets the video format value of the current content played on TV.
  *
- * @param[out] format                         - Current video format(tvBacklightMode_t)
+ * @param[out] format                         - Current video format(tvVideoHDRFormat_t)
+ * 
+ * @return tvError_t
+ * @retval tvERROR_NONE                      - Success
  * 
  * @pre  tvInit() should be called before calling this API.
- * TODO: Instead of out param return it as return value in V2
+ * @todo Instead of out param return it as return value in V2
  */
-void GetCurrentVideoFormat(tvVideoHDRFormat_t *format);
+tvError_t GetCurrentVideoFormat(tvVideoHDRFormat_t *format);
 
 /**
  * @brief Get the current video resolution.
  * 
- * This function gets the current video resolution from TV.
+ * This function gets the video resolution of the current content played on TV.
  *
  * @param[out] res                          - Video resolution value(tvResolutionParam_t)
  *
@@ -546,7 +637,7 @@ tvError_t GetVideoResolution(tvResolutionParam_t *res);
 /**
  * @brief Get current video framerate.
  * 
- * This function gets the current video frame rate.
+ * This function gets the video frame rate of the current content played on TV.
  *
  * @param[out] format                       - Video frame rate value(tvVideoFrameRate_t)
  *
@@ -555,7 +646,7 @@ tvError_t GetVideoResolution(tvResolutionParam_t *res);
  * @retval tvERROR_INVALID_STATE            - Interface is not initialized
  * 
  * @pre  tvInit() should be called before calling this API.
- * TODO: Instead of out param return it as return value in V2
+ * @todo Instead of out param return it as return value in V2
  */
 tvError_t GetVideoFrameRate(tvVideoFrameRate_t *format);
 
@@ -577,6 +668,515 @@ tvError_t GetVideoFrameRate(tvVideoFrameRate_t *format);
 tvError_t setWakeupConfig(const tvWakeupSrcType_t src_type, const bool value);
 
 /**
+ * @brief Set the RGB values.
+ * 
+ * This function sets the primary color level at 8bit resolution(0 - 255). This pattern goes through videopipeline.
+ *
+ * @param[in] r                    - Red level of input pattern
+ * @param[in] g                    - Green level of input pattern
+ * @param[in] b                    - Blue level of input pattern
+ * 
+ * @return tvError_t
+ * @retval tvERROR_NONE             - Success
+ * @retval tvERROR_GENERAL          - Error while setting RGB values
+ * @retval tvERROR_INVALID_STATE    - Interface is not initialized
+ * 
+ * @pre  tvInit() should be called before calling this API.
+ */
+tvError_t SetRGBPattern(int r,int g, int b) ;
+
+/**
+ * @brief Get the RGB values.
+ * 
+ * This function gets the current primary color level(0 - 255).
+ *
+ * @param[out] r                    - Red level of input pattern
+ * @param[out] g                    - Green level of input pattern
+ * @param[out] b                    - Blue level of input pattern
+ * 
+ * @return tvError_t
+ * @retval tvERROR_NONE             - Success
+ * @retval tvERROR_INVALID_STATE    - Interface is not initialized
+ * 
+ * @pre  tvInit() should be called before calling this API.
+ */
+tvError_t GetRGBPattern(int *r,int *g,int *b);
+
+/**
+ * @brief Set the gray pattern value.
+ * This function sets the various gray pattern levels.
+ *
+ * @param[in] YUVValue              - Gray level of input pattern(0 - 255)
+ * 
+ * @return tvError_t
+ * @retval tvERROR_NONE             - Success
+ * @retval tvERROR_GENERAL          - Error while setting gray pattern values
+ * @retval tvERROR_INVALID_STATE    - Interface is not initialized
+ * 
+ * @pre  tvInit() should be called before calling this API.
+ */
+tvError_t SetGrayPattern(int YUVValue);
+
+/**
+ * @brief Get the gray pattern value.
+ * 
+ * This function gets the current gray pattern level.
+ *
+ * @param[out] YUVValue              - Gray level of input pattern(0 - 255)
+ * 
+ * @return tvError_t
+ * @retval tvERROR_NONE             - Success
+ * @retval tvERROR_GENERAL          - Error while getting gray pattern values
+ * @retval tvERROR_INVALID_STATE    - Interface is not initialized
+ * 
+ * @pre  tvInit() should be called before calling this API.
+ */
+tvError_t GetGrayPattern(int* YUVValue);
+
+/**
+ * @brief Set the rgain value.
+ * 
+ * This function sets the rgain value for specfic color temperature.
+ *
+ * @param[in] colorTemp              - Color temperature
+ * @param[in] rgain                  - Value(0 - 2047)
+ * 
+ * @return tvError_t
+ * @retval tvERROR_NONE             - Success
+ * @retval tvERROR_GENERAL          - Error while setting the value
+ * @retval tvERROR_INVALID_STATE    - Interface is not initialized
+ * @retval tvERROR_INVALID_PARAM    - When the parameter value is invalid
+ * 
+ * @pre  tvInit() should be called before calling this API.
+ */
+tvError_t SetColorTemp_Rgain(tvColorTemp_t colorTemp, int rgain);
+
+/**
+ * @brief Get the rgain value.
+ * 
+ * This function gets the rgain value for specfic color temperature.
+ *
+ * @param[in] colorTemp              - Color temperature
+ * @param[out] rgain                 - Value(0 - 2047)
+ * 
+ * @return tvError_t
+ * @retval tvERROR_NONE             - Success
+ * @retval tvERROR_GENERAL          - Error while getting the value
+ * @retval tvERROR_INVALID_STATE    - Interface is not initialized
+ * @retval tvERROR_INVALID_PARAM    - When the parameter value is invalid
+ * 
+ * @pre  tvInit() should be called before calling this API.
+ */
+tvError_t GetColorTemp_Rgain(tvColorTemp_t colorTemp, int* rgain);
+
+/**
+ * @brief Set the ggain value.
+ * 
+ * This function sets the ggain value for specfic color temperature.
+ *
+ * @param[in] colorTemp              - Color temperature
+ * @param[in] ggain                  - Value(0 - 2047)
+ * 
+ * @return tvError_t
+ * @retval tvERROR_NONE             - Success
+ * @retval tvERROR_GENERAL          - Error while setting the value
+ * @retval tvERROR_INVALID_STATE    - Interface is not initialized
+ * @retval tvERROR_INVALID_PARAM    - When the parameter value is invalid
+ * 
+ * @pre  tvInit() should be called before calling this API.
+ */
+tvError_t SetColorTemp_Ggain(tvColorTemp_t colorTemp, int ggain);
+
+/**
+ * @brief Get the ggain value.
+ * 
+ * This function gets the ggain value for specfic color temperature.
+ *
+ * @param[in] colorTemp              - Color temperature
+ * @param[out] ggain                 - Value(0 - 2047)
+ * 
+ * @return tvError_t
+ * @retval tvERROR_NONE             - Success
+ * @retval tvERROR_GENERAL          - Error while getting the value
+ * @retval tvERROR_INVALID_STATE    - Interface is not initialized
+ * @retval tvERROR_INVALID_PARAM    - When the parameter value is invalid
+ * 
+ * @pre  tvInit() should be called before calling this API.
+ */
+tvError_t GetColorTemp_Ggain(tvColorTemp_t colorTemp, int* ggain);
+
+/**
+ * @brief Set the bgain value.
+ * 
+ * This function sets the bgain value for specfic color temperature.
+ *
+ * @param[in] colorTemp              - Color temperature
+ * @param[in] bgain                  - Value(0 - 2047)
+ * 
+ * @return tvError_t
+ * @retval tvERROR_NONE             - Success
+ * @retval tvERROR_GENERAL          - Error while setting the value
+ * @retval tvERROR_INVALID_STATE    - Interface is not initialized
+ * @retval tvERROR_INVALID_PARAM    - When the parameter value is invalid
+ * 
+ * @pre  tvInit() should be called before calling this API.
+ */
+tvError_t SetColorTemp_Bgain(tvColorTemp_t colorTemp, int bgain);
+
+/**
+ * @brief Get the bgain value.
+ * 
+ * This function gets the bgain value for specfic color temperature.
+ *
+ * @param[in] colorTemp              - Color temperature
+ * @param[out] bgain                 - Value(0 - 2047)
+ * 
+ * @return tvError_t
+ * @retval tvERROR_NONE             - Success
+ * @retval tvERROR_GENERAL          - Error while getting the value
+ * @retval tvERROR_INVALID_STATE    - Interface is not initialized
+ * @retval tvERROR_INVALID_PARAM    - When the parameter value is invalid
+ * 
+ * @pre  tvInit() should be called before calling this API.
+ */
+tvError_t GetColorTemp_Bgain(tvColorTemp_t colorTemp, int* bgain);
+
+/**
+ * @brief Set the rpostoffset value.
+ * 
+ * This function sets the rpostoffset value for specfic color temperature.
+ *
+ * @param[in] colorTemp              - Color temperature
+ * @param[in] rpostoffset            - Value(-1024 - 1024)
+ * 
+ * @return tvError_t
+ * @retval tvERROR_NONE             - Success
+ * @retval tvERROR_GENERAL          - Error while setting the value
+ * @retval tvERROR_INVALID_STATE    - Interface is not initialized
+ * @retval tvERROR_INVALID_PARAM    - When the parameter value is invalid
+ * 
+ * @pre  tvInit() should be called before calling this API.
+ */
+tvError_t SetColorTemp_R_post_offset(tvColorTemp_t colorTemp, int rpostoffset);
+
+/**
+ * @brief Get the rpostoffset value.
+ * 
+ * This function gets the rpostoffset value for specfic color temperature.
+ *
+ * @param[in] colorTemp              - Color temperature
+ * @param[out] rpostoffset           - Value(-1024 - 1024)
+ * 
+ * @return tvError_t
+ * @retval tvERROR_NONE             - Success
+ * @retval tvERROR_INVALID_STATE    - Interface is not initialized
+ * @retval tvERROR_INVALID_PARAM    - When the parameter value is invalid
+ * 
+ * @pre  tvInit() should be called before calling this API.
+ */
+tvError_t GetColorTemp_R_post_offset(tvColorTemp_t colorTemp, int* rpostoffset);
+
+/**
+ * @brief Set the gpostoffset value.
+ * 
+ * This function sets the gpostoffset value for specfic color temperature.
+ *
+ * @param[in] colorTemp              - Color temperature
+ * @param[in] gpostoffset            - Value(-1024 - 1024)
+ * 
+ * @return tvError_t
+ * @retval tvERROR_NONE             - Success
+ * @retval tvERROR_GENERAL          - Error while setting the value
+ * @retval tvERROR_INVALID_STATE    - Interface is not initialized
+ * @retval tvERROR_INVALID_PARAM    - When the parameter value is invalid
+ * 
+ * @pre  tvInit() should be called before calling this API.
+ */
+tvError_t SetColorTemp_G_post_offset(tvColorTemp_t colorTemp, int gpostoffset);
+
+/**
+ * @brief Get the gpostoffset value.
+ * 
+ * This function gets the gpostoffset value for specfic color temperature.
+ *
+ * @param[in] colorTemp              - Color temperature
+ * @param[out] gpostoffset           - Value(-1024 - 1024)
+ * 
+ * @return tvError_t
+ * @retval tvERROR_NONE             - Success
+ * @retval tvERROR_INVALID_STATE    - Interface is not initialized
+ * @retval tvERROR_INVALID_PARAM    - When the parameter value is invalid
+ * 
+ * @pre  tvInit() should be called before calling this API.
+ */
+tvError_t GetColorTemp_G_post_offset(tvColorTemp_t colorTemp, int* gpostoffset);
+
+/**
+ * @brief Set the bpostoffset value.
+ * 
+ * This function sets the bpostoffset value for specfic color temperature.
+ *
+ * @param[in] colorTemp              - Color temperature
+ * @param[in] bpostoffset            - Value(-1024 - 1024)
+ * 
+ * @return tvError_t
+ * @retval tvERROR_NONE             - Success
+ * @retval tvERROR_GENERAL          - Error while setting the value
+ * @retval tvERROR_INVALID_STATE    - Interface is not initialized
+ * @retval tvERROR_INVALID_PARAM    - When the parameter value is invalid
+ * 
+ * @pre  tvInit() should be called before calling this API.
+ */
+tvError_t SetColorTemp_B_post_offset(tvColorTemp_t colorTemp, int bpostoffset);
+
+/**
+ * @brief Get the bpostoffset value.
+ * 
+ * This function gets the bpostoffset value for specfic color temperature.
+ *
+ * @param[in] colorTemp              - Color temperature
+ * @param[out] bpostoffset           - Value(-1024 - 1024)
+ * 
+ * @return tvError_t
+ * @retval tvERROR_NONE             - Success
+ * @retval tvERROR_INVALID_STATE    - Interface is not initialized
+ * @retval tvERROR_INVALID_PARAM    - When the parameter value is invalid
+ * 
+ * @pre  tvInit() should be called before calling this API.
+ */
+tvError_t GetColorTemp_B_post_offset(tvColorTemp_t colorTemp, int* bpostoffset);
+
+/**
+ * @brief Set the rgain value for the source.
+ * 
+ * This function sets the rgain value for specfic color temperature and source.
+ *
+ * @param[in] colorTemp            - Color temperature
+ * @param[in] rgain                - Value(0 - 2047)
+ * @param[in] sourceId             - Source offset
+ * @param[in] saveOnly             - save(0 or 1)
+ * 
+ * @return tvError_t
+ * @retval tvERROR_NONE             - Success
+ * @retval tvERROR_GENERAL          - Error while setting the value
+ * @retval tvERROR_INVALID_STATE    - Interface is not initialized
+ * @retval tvERROR_INVALID_PARAM    - When the parameter value is invalid
+ * 
+ * @pre  tvInit() should be called before calling this API.
+ */
+tvError_t SetColorTemp_Rgain_onSource(tvColorTemp_t colorTemp, int rgain,int sourceId, int saveOnly);
+
+/**
+ * @brief Get the rgain value for the source.
+ * 
+ * This function gets the rgain value for specfic color temperature and source.
+ *
+ * @param[in] colorTemp            - Color temperature
+ * @param[out] rgain               - Value(0 - 2047)
+ * @param[in] sourceId             - Source offset
+ * 
+ * @return tvError_t
+ * @retval tvERROR_NONE             - Success
+ * @retval tvERROR_GENERAL          - Error while getting the value
+ * @retval tvERROR_INVALID_STATE    - Interface is not initialized
+ * @retval tvERROR_INVALID_PARAM    - When the parameter value is invalid
+ * 
+ * @pre  tvInit() should be called before calling this API.
+ */
+tvError_t GetColorTemp_Rgain_onSource(tvColorTemp_t colorTemp, int* rgain,int sourceId);
+
+/**
+ * @brief Set the ggain value for the source.
+ * 
+ * This function sets the ggain value for specfic color temperature and source.
+ *
+ * @param[in] colorTemp            - Color temperature
+ * @param[in] ggain                - Value(0 - 2047)
+ * @param[in] sourceId             - Source offset
+ * @param[in] saveOnly             - save(0 or 1)
+ * 
+ * @return tvError_t
+ * @retval tvERROR_NONE             - Success
+ * @retval tvERROR_GENERAL          - Error while setting the value
+ * @retval tvERROR_INVALID_STATE    - Interface is not initialized
+ * @retval tvERROR_INVALID_PARAM    - When the parameter value is invalid
+ * 
+ * @pre  tvInit() should be called before calling this API.
+ */
+tvError_t SetColorTemp_Ggain_onSource(tvColorTemp_t colorTemp, int ggain,int sourceId, int saveOnly);
+
+/**
+ * @brief Get the ggain value for the source.
+ * 
+ * This function gets the ggain value for specfic color temperature and source.
+ *
+ * @param[in] colorTemp            - Color temperature
+ * @param[out] ggain               - Value(0 - 2047)
+ * @param[in] sourceId             - Source offset
+ * 
+ * @return tvError_t
+ * @retval tvERROR_NONE             - Success
+ * @retval tvERROR_GENERAL          - Error while getting the value
+ * @retval tvERROR_INVALID_STATE    - Interface is not initialized
+ * @retval tvERROR_INVALID_PARAM    - When the parameter value is invalid
+ * 
+ * @pre  tvInit() should be called before calling this API.
+ */
+tvError_t GetColorTemp_Ggain_onSource(tvColorTemp_t colorTemp, int* ggain,int sourceId);
+
+/**
+ * @brief Set the bgain value for the source.
+ * 
+ * This function sets the bgain value for specfic color temperature and source.
+ *
+ * @param[in] colorTemp            - Color temperature
+ * @param[in] bgain                - Value(0 - 2047)
+ * @param[in] sourceId             - Source offset
+ * @param[in] saveOnly             - save(0 or 1)
+ * 
+ * @return tvError_t
+ * @retval tvERROR_NONE             - Success
+ * @retval tvERROR_GENERAL          - Error while setting the value
+ * @retval tvERROR_INVALID_STATE    - Interface is not initialized
+ * @retval tvERROR_INVALID_PARAM    - When the parameter value is invalid
+ * 
+ * @pre  tvInit() should be called before calling this API.
+ */
+tvError_t SetColorTemp_Bgain_onSource(tvColorTemp_t colorTemp, int bgain,int sourceId, int saveOnly);
+/**
+ * @brief Get the bgain value for the source.
+ * 
+ * This function gets the bgain value for specfic color temperature and source.
+ *
+ * @param[in] colorTemp            - Color temperature
+ * @param[out] bgain               - Value(0 - 2047)
+ * @param[in] sourceId             - Source offset
+ * 
+ * @return tvError_t
+ * @retval tvERROR_NONE             - Success
+ * @retval tvERROR_GENERAL          - Error while getting the value
+ * @retval tvERROR_INVALID_STATE    - Interface is not initialized
+ * @retval tvERROR_INVALID_PARAM    - When the parameter value is invalid
+ * 
+ * @pre  tvInit() should be called before calling this API.
+ */
+tvError_t GetColorTemp_Bgain_onSource(tvColorTemp_t colorTemp, int* bgain,int sourceId);
+
+/**
+ * @brief Set the rpostoffset value for the source.
+ * 
+ * This function sets the rpostoffset value for specfic color temperature and source.
+ *
+ * @param[in] colorTemp            - Color temperature
+ * @param[in] rpostoffset          - Value(-1024 - 1024)
+ * @param[in] sourceId             - Source offset
+ * @param[in] saveOnly             - save(0 or 1)
+ * 
+ * @return tvError_t
+ * @retval tvERROR_NONE             - Success
+ * @retval tvERROR_GENERAL          - Error while setting the value
+ * @retval tvERROR_INVALID_STATE    - Interface is not initialized
+ * @retval tvERROR_INVALID_PARAM    - When the parameter value is invalid
+ * 
+ * @pre  tvInit() should be called before calling this API.
+ */
+tvError_t SetColorTemp_R_post_offset_onSource(tvColorTemp_t colorTemp, int rpostoffset,int sourceId, int saveOnly);
+
+/**
+ * @brief Get the rpostoffset value for the source.
+ * 
+ * This function gets the rpostoffset value for specfic color temperature and source.
+ *
+ * @param[in] colorTemp            - Color temperature
+ * @param[out] rpostoffset         - Value(-1024 - 1024)
+ * @param[in] sourceId             - Source offset
+ * 
+ * @return tvError_t
+ * @retval tvERROR_NONE             - Success
+ * @retval tvERROR_INVALID_STATE    - Interface is not initialized
+ * @retval tvERROR_INVALID_PARAM    - When the parameter value is invalid
+ * 
+ * @pre  tvInit() should be called before calling this API.
+ */
+tvError_t GetColorTemp_R_post_offset_onSource(tvColorTemp_t colorTemp, int* rpostoffset,int sourceId);
+
+/**
+ * @brief Set the gpostoffset value for the source.
+ * 
+ * This function sets the gpostoffset value for specfic color temperature and source.
+ *
+ * @param[in] colorTemp            - Color temperature
+ * @param[in] gpostoffset          - Value(-1024 - 1024)
+ * @param[in] sourceId             - Source offset
+ * @param[in] saveOnly             - save(0 or 1)
+ * 
+ * @return tvError_t
+ * @retval tvERROR_NONE             - Success
+ * @retval tvERROR_GENERAL          - Error while setting the value
+ * @retval tvERROR_INVALID_STATE    - Interface is not initialized
+ * @retval tvERROR_INVALID_PARAM    - When the parameter value is invalid
+ * 
+ * @pre  tvInit() should be called before calling this API.
+ */
+tvError_t SetColorTemp_G_post_offset_onSource(tvColorTemp_t colorTemp, int gpostoffset,int sourceId, int saveOnly);
+
+/**
+ * @brief Get the gpostoffset value for the source.
+ * 
+ * This function gets the gpostoffset value for specfic color temperature and source.
+ *
+ * @param[in] colorTemp            - Color temperature
+ * @param[out] gpostoffset         - Value(-1024 - 1024)
+ * @param[in] sourceId             - Source offset
+ * 
+ * @return tvError_t
+ * @retval tvERROR_NONE             - Success
+ * @retval tvERROR_INVALID_STATE    - Interface is not initialized
+ * @retval tvERROR_INVALID_PARAM    - When the parameter value is invalid
+ * 
+ * @pre  tvInit() should be called before calling this API.
+ */
+tvError_t GetColorTemp_G_post_offset_onSource(tvColorTemp_t colorTemp, int* gpostoffset,int sourceId);
+
+/**
+ * @brief Set the bpostoffset value for the source.
+ * 
+ * This function sets the bpostoffset value for specfic color temperature and source.
+ *
+ * @param[in] colorTemp            - Color temperature
+ * @param[in] bpostoffset          - Value(-1024 - 1024)
+ * @param[in] sourceId             - Source offset
+ * @param[in] saveOnly             - save(0 or 1)
+ * 
+ * @return tvError_t
+ * @retval tvERROR_NONE             - Success
+ * @retval tvERROR_GENERAL          - Error while setting the value
+ * @retval tvERROR_INVALID_STATE    - Interface is not initialized
+ * @retval tvERROR_INVALID_PARAM    - When the parameter value is invalid
+ * 
+ * @pre  tvInit() should be called before calling this API.
+ */
+tvError_t SetColorTemp_B_post_offset_onSource(tvColorTemp_t colorTemp, int bpostoffset,int sourceId, int saveOnly);
+
+/**
+ * @brief Get the bpostoffset value for the source.
+ * 
+ * This function gets the bpostoffset value for specfic color temperature and source.
+ *
+ * @param[in] colorTemp            - Color temperature
+ * @param[out] bpostoffset         - Value(-1024 - 1024)
+ * @param[in] sourceId             - Source offset
+ * 
+ * @return tvError_t
+ * @retval tvERROR_NONE             - Success
+ * @retval tvERROR_INVALID_STATE    - Interface is not initialized
+ * @retval tvERROR_INVALID_PARAM    - When the parameter value is invalid
+ * 
+ * @pre  tvInit() should be called before calling this API.
+ */
+tvError_t GetColorTemp_B_post_offset_onSource(tvColorTemp_t colorTemp, int* bpostoffset,int sourceId);
+
+/**
  * @brief Get supported picture modes.tvResolutionParam_t
  * 
  * This function get the array of picture modes supported.
@@ -591,17 +1191,17 @@ tvError_t setWakeupConfig(const tvWakeupSrcType_t src_type, const bool value);
  * 
  * @pre  tvInit() should be called before calling this API.
  */
-tvError_t GetTVSupportedPictureModes(pic_Modes_t *pictureModes[],unsigned short *count);
+tvError_t GetTVSupportedPictureModes(pic_modes_t *pictureModes[],unsigned short *count);
 
 /**
- * TODO: Move the c++ function out of C extern.
- * TODO: if possible move c++ function move to different header in V2
+ * @todo Move the c++ function out of C extern in V2.
+ * @todo if possible move c++ function move to different header in V2
 */
 
 /**
  * @brief Register video format change callback.
  * 
- * This function register a callback for video format change.
+ * This function register a callback for playback content video format change.
  *
  * @param[in] cbData                - Callback data
  * 
@@ -610,29 +1210,20 @@ tvError_t GetTVSupportedPictureModes(pic_Modes_t *pictureModes[],unsigned short 
 void RegisterVideoFormatChangeCB(tvVideoFormatCallbackData& cbData);
 
 /**
- * @brief Callback for tvVideoFormatChangeCB
+ * @brief Register VideoContent FMM change callback.
  *
- * This callback is triggered when a video format change is encountered.
+ * This function register a callback for playback FMM mode change.
  *
- * @param[in] format   			- Type of content format
- * @param[in] userData 			- Data of the content
+ * @param[in] cbData                - Callback data
  *
+ * @pre  tvInit() should be called before calling this API.
  */
-typedef void (*tvVideoFormatChangeCB)(tvVideoHDRFormat_t format,void *userData);
-
-/** 
- * @brief Structure for video format call back data. 
- */
-typedef struct
-{ 
-    void *userdata;                         //!< User data received from call back
-    tvVideoFormatChangeCB cb;               //!< Callback function pointer
-}tvVideoFormatCallbackData;
+void RegisterVideoContentChangeCB(tvVideoContentCallbackData &cbData);
 
 /**
  * @brief Register Video resolution change callback.
  * 
- * This function register a callback for video resolution change.
+ * This function register a callback for playback content video resolution change.
  *
  * @param[in] cbData                - Callback data
  *
@@ -641,46 +1232,15 @@ typedef struct
 void RegisterVideoResolutionChangeCB(tvVideoResolutionCallbackData& cbData);
 
 /**
- * @brief Callback for tvVideoResolutionChangeCB.
- *
- * This callback is triggered when a video resolution change is encountered.
- *
- * @param[in] resolutionStruct    - Resolution parameter
- * @param[in] userData            - Data of the content
- *
- */
-typedef void (*tvVideoResolutionChangeCB)(tvResolutionParam_t resolutionStruct,void *userData);
-
-/** 
- * @brief Structure for video framerate callback data. 
- */
-typedef struct
-{
-    void *userdata;                         //!< Data of content
-    tvVideoFrameRateChangeCB cb;            //!< Callback function pointer
-}tvVideoFrameRateCallbackData;
-
-/**
  * @brief Register Video resolution change callback.
  * 
- * This function register a callback for video frame rate change.
+ * This function register a callback for playback content video frame rate change.
  *
  * @param[in] cbData                - Callback function
  *
  * @pre  tvInit() should be called before calling this API.
  */
 void RegisterVideoFrameRateChangeCB(tvVideoFrameRateCallbackData& cbData);
-
-/**
- * @brief Callback for tvVideoFrameRateChangeCB.
- *
- * This callback is triggered when a video framerate change is encountered.
- *
- * @param[in] frameRate            - framerate parameter
- * @param[in] userData             - Data of the content
- *
- */
-typedef void (*tvVideoFrameRateChangeCB)(tvVideoFrameRate_t frameRate,void *userData);
 
 /**
  * @brief Get supported DV modes.
@@ -697,7 +1257,7 @@ typedef void (*tvVideoFrameRateChangeCB)(tvVideoFrameRate_t frameRate,void *user
  * 
  * @pre  tvInit() should be called before calling this API.
  */
-tvError_t GetTVSupportedDVModes(pic_Modes_t *dvModes[],unsigned short *count);
+tvError_t GetTVSupportedDVModes(pic_modes_t *dvModes[],unsigned short *count);
 
 /**
  * @brief Set dolby vision mode.
@@ -755,7 +1315,7 @@ tvError_t SetTVHLGMode(const char * hlgMode);
  * @brief Set HDR10 mode.
  * 
  * This function sets the given HDR10 mode.
- * TODO: change the input param to enum for HDR, HLG, Dolby in V2
+ * @todo change the input param to enum for HDR, HLG, Dolby in V2
  *
  * @param[in] hdr10Mode             - HDR10 mode to be set(dark, bright)
  *
@@ -772,8 +1332,8 @@ tvError_t SetTVHDR10Mode(const char * hdr10Mode);
 /**
  * @brief Get the supported HLG modes.
  * 
- * This function returns the supported HLG modes from TV
- * TODO: Define seperate struct for dvModes , hlgmode, hdr mode(because value parameter is not required) in V2
+ * This function returns the supported HLG modes
+ * @todo Define seperate struct for dvModes , hlgmode, hdr mode(because value parameter is not required) in V2
  *
  * @param[out] dvModes             - List of supported HLG modes.
  * @param[out] count               - Count of supported HLG modes.
@@ -784,12 +1344,12 @@ tvError_t SetTVHDR10Mode(const char * hdr10Mode);
  * 
  * @pre  tvInit() should be called before calling this API.
  */
-tvError_t GetTVSupportedHLGModes(pic_Modes_t *dvModes[],unsigned short *count);
+tvError_t GetTVSupportedHLGModes(pic_modes_t *dvModes[],unsigned short *count);
 
 /**
  * @brief Get the supported HDR10 modes.
  * 
- * This function returns the supported HDR10modes in TV.
+ * This function returns the supported HDR10modes
  *
  * @param[out] dvModes            - List of    supported hdr10modes.
  * @param[out] count           - Count of supported hdr10modes.
@@ -800,13 +1360,13 @@ tvError_t GetTVSupportedHLGModes(pic_Modes_t *dvModes[],unsigned short *count);
  *
  * @pre  tvInit() should be called before calling this API.
  */
-tvError_t GetTVSupportedHDR10Modes(pic_Modes_t *dvModes[],unsigned short *count);
+tvError_t GetTVSupportedHDR10Modes(pic_modes_t *dvModes[],unsigned short *count);
 
 /**
  * @brief Set Dynamic contrast.
  * 
- * This function sets the dynamic contrast value.
- * TODO: The returntype should be void and parameter should be bool in V2.
+ * This function enables/disables the dynamic contrast mode.
+ * @todo The returntype should be void and parameter should be bool in V2.
  * 
  * @param[in] dynamicContrastEnable  - Dynamic contrast mode to be set(enabled, disabled)
  *
@@ -824,7 +1384,7 @@ tvError_t SetDynamicContrast(const char *dynamicContrastEnable);
  * @brief Get Dynamic contrast mode.
  * 
  * This function returns whether dynamic contrast mode enabled/disabled.
- * TODO: The returntype should be bool and parameter should be void in V2.
+ * @todo The returntype should be bool and parameter should be void in V2.
  *
  * @param[out] isDynamicContrastEnabled   - Current dynamic contrast mode(enabled, disabled)
  *
@@ -840,8 +1400,8 @@ tvError_t SetDynamicContrast(const char *dynamicContrastEnable);
 tvError_t GetDynamicContrast(char *isDynamicContrastEnabled);
 
 /**
- * TODO: For all input/output values, if values are fixed then use enum only in V2
- * TODO: char* can be used only when the values returned is not specific in V2
+ * @todo For all input/output values, if values are fixed then use enum only in V2
+ * @todo char* can be used only when the values returned is not specific in V2
  */
 /**
  * @brief Set white balance control.
@@ -883,7 +1443,9 @@ tvError_t setWBctrl(char *inputSrc, char *colorTemp,char *color, char *ctrl, int
 tvError_t getWBctrl(char *inputSrc, char *colortemp, char *color, char *ctrl, int *value);
 
 /**
- * @brief This function gets the White balance info into the vectors
+ * @brief Get the white balance info
+ * 
+ * This function gets the White balance info into the vectors
  *
  * @param[out] params               - WB info param
  * @param[out] selector             - selector vector(color temp, input)
@@ -900,7 +1462,7 @@ tvError_t getWbInfo(getWBInfo_t* params, std::vector<std::string> &selector, std
 /**
  * @brief Enable/disable WB mode.
  * 
- * This function enables or disables White balance mode.
+ * This function enables or disables white balance mode.
  *
  * @param[in] value                        - Enable/disable WB mode
  *
@@ -932,7 +1494,7 @@ tvError_t GetSupportedComponentColor(int *blComponentColor);
 /**
  * @brief Set current component saturation.
  * 
- * This function sets the current component saturation.
+ * This function sets the current component saturation for the specific color.
  * @param[in] blSaturationColor          - Component color(tvDataComponentColor_t)
  * @param[in] saturation                 - Saturation value to set(0 - 100)
  *
@@ -949,7 +1511,7 @@ tvError_t SetCurrentComponentSaturation(tvDataComponentColor_t blSaturationColor
 /**
  * @brief Get current component saturation.
  * 
- * This function returns the current component saturation.
+ * This function returns the current component saturation for the specific color.
  *
  * @param[in] blSaturationColor         - Component color(tvDataComponentColor_t)
  * @param[out] saturation               - Saturation value of the color(0 - 100)
@@ -965,7 +1527,7 @@ tvError_t GetCurrentComponentSaturation(tvDataComponentColor_t blSaturationColor
 /**
  * @brief Set current component hue.
  * 
- * This function sets the current component hue.
+ * This function sets the current component hue for the specific color.
  *
  * @param[in] blHueColor               - Component color(tvDataComponentColor_t)
  * @param[in] hue                      - Hue value(0 - 100)
@@ -981,9 +1543,9 @@ tvError_t GetCurrentComponentSaturation(tvDataComponentColor_t blSaturationColor
 tvError_t SetCurrentComponentHue(tvDataComponentColor_t blHueColor, int hue);
 
 /**
- * @brief 
+ * @brief Get current component hue.
  * 
- * This function returns the hue value of the current component.                                 
+ * This function returns the hue value for the specific color                                 
  *
  * @param[in] blHueColor              - Componenct color(tvDataComponentColor_t)
  * @param[out] hue                    - Hue value(0 - 100)
@@ -999,10 +1561,10 @@ tvError_t GetCurrentComponentHue(tvDataComponentColor_t blHueColor, int *hue);
 /**
  * @brief Set the current component luma value.
  * 
- * This function set the current component luma value.
+ * This function set the current component luma value for the specific color.
  *
  * @param[in] blLumaColor            - Componenct color(tvDataComponentColor_t)
- * @param[in] Luma                   - Luma value(0 - 100)
+ * @param[in] Luma                   - Luma value(0 - 30)
  *
  * @return tvError_t
  * @retval tvERROR_NONE              - Success
@@ -1017,7 +1579,7 @@ tvError_t SetCurrentComponentLuma(tvDataComponentColor_t blLumaColor, int Luma);
 /**
  * @brief Get the current component luma.
  * 
- * This function returns the luma value of the component.
+ * This function returns the luma value for the specific color.
  *
  * @param[in] blLumaColor          - Color component(tvDataComponentColor_t)
  * @param[out] Luma                - Luma value(0 - 100)
@@ -1035,7 +1597,7 @@ tvError_t GetCurrentComponentLuma(tvDataComponentColor_t blLumaColor, int *Luma)
  * 
  * This function returns the supported dimming modes of TV.
  *
- * @param[out] dimmingModes        - List of dimming modes of the TV(local, fixed)
+ * @param[out] dimmingModes        - List of dimming modes of the TV(local, fixed, global)
  * @param[out] count               - count of supported dimming modes.
  *
  * @return tvError_t
@@ -1053,7 +1615,7 @@ tvError_t GetTVSupportedDimmingModes(char **dimmingModes,unsigned short *count);
  * 
  * This function sets the TV dimming mode.
  *
- * @param[in] dimmingMode           - Dimming mode to be set(local, fixed)
+ * @param[in] dimmingMode           - Dimming mode to be set(local, fixed, global)
  *
  * @return tvError_t
  * @retval tvERROR_NONE             - Success
@@ -1064,6 +1626,37 @@ tvError_t GetTVSupportedDimmingModes(char **dimmingModes,unsigned short *count);
  * @pre  tvInit() should be called before calling this API.
  */
 tvError_t SetTVDimmingMode(const char *dimmingMode);
+
+/**
+ * @brief Set the backlight factor value.
+ * 
+ * This function sets the value of global backlight factor.
+ *
+ * @param[in] value               - Global backlight factor value(0 - 512)
+ * @param[in] rangeMidPointValue  - Backlight midpoint value
+ *
+ * @return tvError_t
+ * @retval tvERROR_NONE             - Success
+ * @retval tvERROR_GENERAL          - Error while setting dimming mode
+ * @retval tvERROR_INVALID_STATE    - Interface is not initialized
+ * 
+ * @pre  tvInit() should be called before calling this API.
+ */
+tvError_t SetTVBacklightGlobalFactor(int value, int rangeMidPointValue);
+
+/**
+ * @brief Get the backlight factor value.
+ * 
+ * This function returns the value of global backlight factor.
+ *
+ * @param[out] value               - Global backlight factor value
+ *
+ * @return tvError_t
+ * @retval tvERROR_NONE            - Success
+ * 
+ * @pre  tvInit() should be called before calling this API.
+ */
+tvError_t GetTVBacklightGlobalFactor(int * value);
 
 /**
  * @brief Get picture mode index.
@@ -1103,9 +1696,12 @@ tvVideoHDRFormat_t GetCurrentContentFormat(void);
  * @param[out] contentFormats       - List of supported content formats(tvVideoHDRFormat_t)
  * @param[out] numberOfFormats      - Count of supported content formats.
  * 
+ * @return tvError_t
+ * @retval tvERROR_NONE            - Success
+ *
  * @pre  tvInit() should be called before calling this API.
  */
-void GetSupportedContentFormats(unsigned int * contentFormats,unsigned short *numberOfFormats);
+tvError_t GetSupportedContentFormats(unsigned int * contentFormats,unsigned short *numberOfFormats);
 
 /**
  * @brief Check if HDR type is SDR.
@@ -1116,7 +1712,7 @@ void GetSupportedContentFormats(unsigned int * contentFormats,unsigned short *nu
  * @retval 1                        - the content format is SDR
  * @retval 0                        - the content format is not SDR
  *
- * @pre  tvInit() should be called before calling this API.
+ * @pre  tvSettings_tvInit() should be called before calling this API.
  */
 bool isCurrentHDRTypeIsSDR(void);
 
@@ -1124,8 +1720,6 @@ bool isCurrentHDRTypeIsSDR(void);
  * @brief Get the panel ID.
  * 
  * This function returns current panel ID.
- * The panelid value will be programed in factory at serial data partition. @n 
- * On every bootup the panelid will be read and based on that corresponding config files will be loaded.
  * 
  * @param[out] panelID              - Current panel ID
  *                                    
@@ -1140,7 +1734,6 @@ int GetPanelID(char* panelID);
 /**
  * @brief Get the default panel ID
  * 
- * This function returns the default panel ID value. Eg: For LLAMA its 1_55_01. @n
  * When the GetPanelID function is failed then this function is invoked load the default panelid.
  * 
  * @param[out] panelID              - Default panel ID
@@ -1150,14 +1743,14 @@ int GetPanelID(char* panelID);
 void GetDefaultPanelID(char *panelID);
 
 /**
- * @brief Save color temperature values to vendor specific storage file.
+ * @brief Save color temperature values to driver.
  * 
  * This function saves the color temperature value for the specific picture mode, hdr_type and sourceInput. @n
  * Currently SOURCE_INVALID(-1) is specified it will be treated as save to all sources.
- * TODO: Add new enum value for sourceinput ALL in V2.
- * TODO: sourcetype should be tv_source_input_t in V2
- * TODO: hdr_type should be tvhdr_type_t in V2
- * TODO: value should be tvColorTemp_t in V2
+ * @todo Add new enum value for sourceinput ALL in V2.
+ * @todo sourcetype should be tv_source_input_t in V2
+ * @todo hdr_type should be tvhdr_type_t in V2
+ * @todo value should be tvColorTemp_t in V2
  *
  * @param[in] sourceInput           - Source input value
  * @param[in] pq_mode               - PQ mode value(0 - 9)
@@ -1174,14 +1767,14 @@ void GetDefaultPanelID(char *panelID);
 tvError_t SaveColorTemperature(int sourceInput, int pq_mode,int hdr_type,int value);
 
 /**
- * @brief Save backlight value to vendor specific storage file.
+ * @brief Save backlight value to driver.
  * 
  * This function saves the backlight value for the specific picture mode, hdr_type and sourceInput. @n
  * Currently SOURCE_INVALID(-1) is specified it will be treated as save to all sources.
- * TODO: Add new enum value for sourceinput ALL in V2.
- * TODO: sourcetype should be tv_source_input_t in V2
- * TODO: hdr_type should be tvhdr_type_t in V2
- * TODO: value should be tvColorTemp_t in V2
+ * @todo Add new enum value for sourceinput ALL in V2.
+ * @todo sourcetype should be tv_source_input_t in V2
+ * @todo hdr_type should be tvhdr_type_t in V2
+ * @todo value should be tvColorTemp_t in V2
  * 
  * @param[in] sourceInput           - Source input value
  * @param[in] pq_mode               - PQ mode value(0 - 9)
@@ -1198,14 +1791,14 @@ tvError_t SaveColorTemperature(int sourceInput, int pq_mode,int hdr_type,int val
 tvError_t SaveBacklight(int sourceInput, int pq_mode,int hdr_type,int value);
 
 /**
- * @brief Save contrast value to vendor specific storage file.
+ * @brief Save contrast value to driver.
  * 
  * This function saves the contrast value for the specific picture mode, hdr_type and sourceInput. @n
  * Currently SOURCE_INVALID(-1) is specified it will be treated as save to all sources.
- * TODO: Add new enum value for sourceinput ALL in V2.
- * TODO: sourcetype should be tv_source_input_t in V2
- * TODO: hdr_type should be tvhdr_type_t in V2
- * TODO: value should be tvColorTemp_t in V2
+ * @todo Add new enum value for sourceinput ALL in V2.
+ * @todo sourcetype should be tv_source_input_t in V2
+ * @todo hdr_type should be tvhdr_type_t in V2
+ * @todo value should be tvColorTemp_t in V2
  * 
  * @param[in] sourceInput           - Source input value
  * @param[in] pq_mode               - PQ mode value(0 - 9)
@@ -1222,14 +1815,15 @@ tvError_t SaveBacklight(int sourceInput, int pq_mode,int hdr_type,int value);
 tvError_t SaveContrast(int sourceInput, int pq_mode,int hdr_type,int value);
 
 /**
- * @brief Save saturation value to vendor specific storage file.
+ * @brief Save saturation value to driver.
  * 
  * This function saves the saturation value for the specific picture mode, hdr_type and sourceInput. @n
  * Currently SOURCE_INVALID(-1) is specified it will be treated as save to all sources.
- * TODO: Add new enum value for sourceinput ALL in V2.
- * TODO: sourcetype should be tv_source_input_t in V2
- * TODO: hdr_type should be tvhdr_type_t in V2
- * TODO: value should be tvColorTemp_t in V2
+ * @todo change the brief for all save functions.
+ * @todo Add new enum value for sourceinput ALL in V2.
+ * @todo sourcetype should be tv_source_input_t in V2
+ * @todo hdr_type should be tvhdr_type_t in V2
+ * @todo value should be tvColorTemp_t in V2
  * 
  * @param[in] sourceInput           - Source input value
  * @param[in] pq_mode               - PQ mode value(0 - 9)
@@ -1246,14 +1840,14 @@ tvError_t SaveContrast(int sourceInput, int pq_mode,int hdr_type,int value);
 tvError_t SaveSaturation(int sourceInput, int pq_mode,int hdr_type,int value);
 
 /**
- * @brief Save sharpness value to vendor specific storage file.
+ * @brief Save sharpness value to driver.
  * 
  * This function saves the sharpness value for the specific picture mode, hdr_type and sourceInput. @n
  * Currently SOURCE_INVALID(-1) is specified it will be treated as save to all sources.
- * TODO: Add new enum value for sourceinput ALL in V2.
- * TODO: sourcetype should be tv_source_input_t in V2
- * TODO: hdr_type should be tvhdr_type_t in V2
- * TODO: value should be tvColorTemp_t in V2
+ * @todo Add new enum value for sourceinput ALL in V2.
+ * @todo sourcetype should be tv_source_input_t in V2
+ * @todo hdr_type should be tvhdr_type_t in V2
+ * @todo value should be tvColorTemp_t in V2
  * 
  * @param[in] sourceInput           - Source input value
  * @param[in] pq_mode               - PQ mode value(0 - 9)
@@ -1270,14 +1864,14 @@ tvError_t SaveSaturation(int sourceInput, int pq_mode,int hdr_type,int value);
 tvError_t SaveSharpness(int sourceInput, int pq_mode,int hdr_type,int value);
 
 /**
- * @brief Save brightness value to vendor specific storage file.
+ * @brief Save brightness value to driver.
  * 
  * This function saves the brightness value for the specific picture mode, hdr_type and sourceInput. @n
  * Currently SOURCE_INVALID(-1) is specified it will be treated as save to all sources.
- * TODO: Add new enum value for sourceinput ALL in V2.
- * TODO: sourcetype should be tv_source_input_t in V2
- * TODO: hdr_type should be tvhdr_type_t in V2
- * TODO: value should be tvColorTemp_t in V2
+ * @todo Add new enum value for sourceinput ALL in V2.
+ * @todo sourcetype should be tv_source_input_t in V2
+ * @todo hdr_type should be tvhdr_type_t in V2
+ * @todo value should be tvColorTemp_t in V2
  *
  * @param[in] sourceInput           - Source input value
  * @param[in] pq_mode               - PQ mode value(0 - 9)
@@ -1294,14 +1888,14 @@ tvError_t SaveSharpness(int sourceInput, int pq_mode,int hdr_type,int value);
 tvError_t SaveBrightness(int sourceInput, int pq_mode,int hdr_type,int value);
 
 /**
- * @brief Save hue value to vendor specific storage file.
+ * @brief Save hue value to driver.
  * 
  * This function saves the hue value for the specific picture mode, hdr_type and sourceInput. @n
  * Currently SOURCE_INVALID(-1) is specified it will be treated as save to all sources.
- * TODO: Add new enum value for sourceinput ALL in V2.
- * TODO: sourcetype should be tv_source_input_t in V2
- * TODO: hdr_type should be tvhdr_type_t in V2
- * TODO: value should be tvColorTemp_t in V2
+ * @todo Add new enum value for sourceinput ALL in V2.
+ * @todo sourcetype should be tv_source_input_t in V2
+ * @todo hdr_type should be tvhdr_type_t in V2
+ * @todo value should be tvColorTemp_t in V2
  *
  * @param[in] sourceInput           - Source input value
  * @param[in] pq_mode               - PQ mode value(0 - 9)
@@ -1318,14 +1912,14 @@ tvError_t SaveBrightness(int sourceInput, int pq_mode,int hdr_type,int value);
 tvError_t SaveHue(int sourceInput, int pq_mode,int hdr_type,int value);
 
 /**
- * @brief Save dynamic backlight value to vendor specific storage file.
+ * @brief Save dynamic backlight value to driver.
  * 
  * This function saves the dynamic backlight value for the specific picture mode, hdr_type and sourceInput. @n
  * Currently SOURCE_INVALID(-1) is specified it will be treated as save to all sources.
- * TODO: Add new enum value for sourceinput ALL in V2.
- * TODO: sourcetype should be tv_source_input_t in V2
- * TODO: hdr_type should be tvhdr_type_t in V2
- * TODO: value should be tvColorTemp_t in V2
+ * @todo Add new enum value for sourceinput ALL in V2.
+ * @todo sourcetype should be tv_source_input_t in V2
+ * @todo hdr_type should be tvhdr_type_t in V2
+ * @todo value should be tvColorTemp_t in V2
  *
  * @param[in] sourceInput           - Source input value
  * @param[in] pq_mode               - PQ mode value(0 - 9)
@@ -1342,14 +1936,14 @@ tvError_t SaveHue(int sourceInput, int pq_mode,int hdr_type,int value);
 tvError_t SaveDynamicBacklight(int sourceInput, int pq_mode,int hdr_type,int value);
 
 /**
- * @brief Save display mode value to vendor specific storage file.
+ * @brief Save display mode value to driver.
  * 
  * This function saves the display mode value for the specific picture mode, hdr_type and sourceInput. @n
  * Currently SOURCE_INVALID(-1) is specified it will be treated as save to all sources.
- * TODO: Add new enum value for sourceinput ALL in V2.
- * TODO: sourcetype should be tv_source_input_t in V2
- * TODO: hdr_type should be tvhdr_type_t in V2
- * TODO: value should be tvColorTemp_t in V2
+ * @todo Add new enum value for sourceinput ALL in V2.
+ * @todo sourcetype should be tv_source_input_t in V2
+ * @todo hdr_type should be tvhdr_type_t in V2
+ * @todo value should be tvColorTemp_t in V2
  *
  * @param[in] sourceInput           - Source input value
  * @param[in] pq_mode               - PQ mode value(0 - 9)
@@ -1366,15 +1960,15 @@ tvError_t SaveDynamicBacklight(int sourceInput, int pq_mode,int hdr_type,int val
 tvError_t SaveDisplayMode(int sourceInput, int pq_mode,int hdr_type,int value);
 
 /**
- * @brief Save CMS value to vendor specific storage file.
+ * @brief Save CMS value to driver.
  * 
  * This function saves the CMS value for the specific picture mode, hdr_type and sourceInput. @n
  * Currently SOURCE_INVALID(-1) is specified it will be treated as save to all sources.
- * TODO: Add new enum value for sourceinput ALL in V2.
- * TODO: sourcetype should be tv_source_input_t in V2
- * TODO: hdr_type should be tvhdr_type_t in V2
- * TODO: color_type should be tvcomponent_color_type_t in V2
- * TODO: value should be tvColorTemp_t in V2
+ * @todo Add new enum value for sourceinput ALL in V2.
+ * @todo sourcetype should be tv_source_input_t in V2
+ * @todo hdr_type should be tvhdr_type_t in V2
+ * @todo color_type should be tvcomponent_color_type_t in V2
+ * @todo value should be tvColorTemp_t in V2
  *
  * @param[in] sourceInput           - Source input value
  * @param[in] pq_mode               - PQ mode value(0 - 9)
@@ -1393,14 +1987,14 @@ tvError_t SaveDisplayMode(int sourceInput, int pq_mode,int hdr_type,int value);
 tvError_t SaveCMS(int sourceInput, int pq_mode,int hdr_type,int tunnel_type,int color_type,int value);
 
 /**
- * @brief Save dolby mode value to vendor specific storage file.
+ * @brief Save dolby mode value to driver.
  * 
  * This function saves the dolby mode value for the specific picture mode, hdr_type and sourceInput. @n
  * Currently SOURCE_INVALID(-1) is specified it will be treated as save to all sources.
- * TODO: Add new enum value for sourceinput ALL in V2.
- * TODO: sourcetype should be tv_source_input_t in V2
- * TODO: hdr_type should be tvhdr_type_t in V2
- * TODO: value should be tvColorTemp_t in V2
+ * @todo Add new enum value for sourceinput ALL in V2.
+ * @todo sourcetype should be tv_source_input_t in V2
+ * @todo hdr_type should be tvhdr_type_t in V2
+ * @todo value should be tvColorTemp_t in V2
  *
  * @param[in] sourceInput           - Source input value
  * @param[in] pq_mode               - PQ mode value(0 - 9)
@@ -1485,7 +2079,7 @@ int GetDolbyModeIndex(const char * dolbyMode);
  * @brief Convert video to HDR.
  * 
  * This function converts the video format to HDR format.
- * TODO: Discuss on all convert methods, how to make api generic.
+ * @todo Discuss on all convert methods, how to make api generic in V2.
  * 
  * @param[in] videoFormat          - Video format(tvVideoHDRFormat_t)
  * @return int
@@ -1537,18 +2131,6 @@ int ConvertTVColorToVendorColor(tvDataComponentColor_t blComponentColor);
 int ConvertHDRFormatToContentFormat(tvhdr_type_t hdrFormat);
 
 /**
- * @brief Get custom PQ mode index.
- * 
- * This function returns the custom PQ mode index
- *
- * @return int
- * @retval 3                        - Expert
- * 
- * @pre  tvInit() should be called before calling this API.
- */
-int GetCustomPQModeIndex(void);
-
-/**
  * @brief Set the CMS state.
  * 
  * This function sets the CMS state for the specific tunel type, color type and component state
@@ -1567,7 +2149,9 @@ int GetCustomPQModeIndex(void);
 tvError_t SetCMSState(tvCMS_tunel_t tunelType,tvcomponent_color_type_t colorType,tvcomponent_state_t componentState);
 
 /**
- * @brief This function checks if the white balance parameters are equal to default value.
+ * @brief Check the given WB values are default or not
+ * 
+ * This function checks if the white balance parameters are equal to default value.
  * 
  * @param[in] wbvalue               - White balance value struct member of type tvDataColor_t
  *
@@ -1631,7 +2215,6 @@ bool areEqual(tvDataColor_t wbvalueThis,tvDataColor_t wbvalueThat);
  * @brief Set color temperature.
  * 
  * This function updates the color temperature for user.
- * TODO: check the value parameter
  *
  * @param[in] rgbType               - RGB type(red, blue, green)
  * @param[in] value                 - Color temperature value
@@ -1648,7 +2231,7 @@ tvError_t SetColorTemperatureUser(int rgbType, int value);
 /**
  * @brief Save color temperature.
  * 
- * This function saves the color temperature for user in storage file.
+ * This function saves the color temperature for user to driver.
  *
  * @param[in] rgbType               - RGB type(red, blue, green)
  * @param[in] value                 - Color temperature value
@@ -1675,7 +2258,7 @@ tvError_t SaveColorTemperatureUser(int rgbType, int value);
  * 
  * @pre  tvInit() should be called before calling this API.
  */
-tvError_t SetBacklightInfo(tvBacklightInfo_t backlightDefaults);
+tvError_t SetBacklightInfo(tvBacklightInfo_t *backlightDefaults);
 
 /**
  * @brief Get Driver BL value for current format.
@@ -1759,38 +2342,69 @@ tvError_t ReadAllModeConfigfile(const char *file, char *cpybuffer, const char *s
  * @brief Parse buffer and return values & total count
  * 
  * This function parses the buffer returned through ReadAllModeConfigfile() and returns the available modes and their count.
- * TODO: Need to moved as part of internal implementation.
  *
  * @param[in] buffer                - input buffer to be read
  * @param[out] availableModes       - Available Modes read from buffer
  * @param[out] totalcount           - Count of the available modes
  *
- * @pre  tvInit() should be called before calling this API.
  */
 void splitstringsfrombuffer(char *buffer, char *availableModes, unsigned short *totalcount);
 
 /**
- * @brief Parse buffer and return values & total count
+ * @brief Enable or disable gamma mode.
  * 
- * This function parses the buffer returned through ReadAllModeConfigfile() and returns the available modes with index value and their count.
- * TODO: Need to moved as part of internal implementation.
+ * This function enables or disables the gamma mode.
+ * @todo Change the parameter type to bool if 0/1 in V2(revisit)
  *
- * @param[in] buffer                - input buffer to be read
- * @param[out] availableModes       - Available Modes with index read from buffer
- * @param[out] totalcount           - Count of the available modes
+ * @param[in] mode                - Gamma mode(0 or 1)
  *
+ * @return tvError_t
+ * @retval tvERROR_NONE             - Success
+ * @retval tvERROR_GENERAL          - Error while write to sysfs
+ * 
  * @pre  tvInit() should be called before calling this API.
  */
-void splitstringsandvaluefrombuffer(char *buffer, pic_Modes_t *availableModes[], unsigned short *totalcount);
+tvError_t SetGammaMode(int mode);
 
 /**
- * @brief Save local dimming level value to vendor specific storage file.
+ * @brief Set the dimming level.
+ * 
+ * This function sets the dimming level value.
+ *
+ * @param[in] localDimmingLevel                -  Dimming level (0 - 1)
+ *
+ * @return tvError_t
+ * @retval tvERROR_NONE             - Success
+ * @retval tvERROR_GENERAL          - Error while setting dimming level
+ * @retval tvERROR_INVALID_STATE    - Interface is not initialized
+ * 
+ * @pre  tvInit() should be called before calling this API.
+ */
+tvError_t SetLocalDimmingLevel(int localDimmingLevel);
+
+/**
+ * @brief Get the dimming level.
+ * 
+ * This function gets the dimming level value.
+ *
+ * @param[out] localDimmingLevel                -  Dimming level (0 - 1)
+ *
+ * @return tvError_t
+ * @retval tvERROR_NONE             - Success
+ * @retval tvERROR_INVALID_STATE    - Interface is not initialized
+ * 
+ * @pre  tvInit() should be called before calling this API.
+ */
+tvError_t GetLocalDimmingLevel(int *localDimmingLevel);
+
+/**
+ * @brief Save local dimming level value to driver.
  * 
  * This function saves the local dimming level value for the specific picture mode, hdr type and source type. @n
  * Currently SOURCE_INVALID(-1) is specified it will be treated as save to all sources.
- * TODO: Add new enum value for sourceinput ALL in V2.
- * TODO: sourcetype should be tv_source_input_t in V2
- * TODO: hdr_type should be tvhdr_type_t in V2
+ * @todo Add new enum value for sourceinput ALL in V2.
+ * @todo sourcetype should be tv_source_input_t in V2
+ * @todo hdr_type should be tvhdr_type_t in V2
  *
  * @param[in] sourceInput           - Source input value
  * @param[in] pq_mode               - PQ mode value(0 - 9)
@@ -1827,7 +2441,6 @@ tvError_t UpdateEDIDAndSetDimmingLevel(int dimmingLevel);
  * @brief Get LDIM and EDID level
  * 
  * This function gets the LDIM and EDID level based on the dimming mode and current video format set
- * TODO: Need to revisit (Sreeni)
  * 
  * @param[in] dimmingMode           - Dimming mode(local, fixed)
  * @param[in] format                - HDR format type(tvhdr_type_t)
@@ -1838,12 +2451,68 @@ tvError_t UpdateEDIDAndSetDimmingLevel(int dimmingLevel);
  */
 void GetLDIMAndEDIDLevel(int dimmingMode,int format,int *dimmingLevel, int *edidLevel);
 
+/**
+ * @brief Save low latency state to driver.
+ * 
+ * This function saves the low latency state for the specific picture mode, hdr_type and sourceInput. @n
+ * Currently SOURCE_INVALID(-1) is specified it will be treated as save to all sources.
+ * @todo Add new enum value for sourceinput ALL in V2.
+ * @todo sourcetype should be tv_source_input_t in V2
+ * @todo hdr_type should be tvhdr_type_t in V2
+ *
+ * @param[in] sourceInput           - Source input value
+ * @param[in] pq_mode               - PQ mode value(0 - 9)
+ * @param[in] hdr_type              - HDR type value(tvhdr_type_t)
+ * @param[in] value                 - Value of the low latency index(0 or 1)
+ *
+ * @return tvError_t
+ * @retval tvERROR_NONE             - Success
+ * @retval tvERROR_GENERAL          - Error while setting latency state
+ * @retval tvERROR_INVALID_STATE    - Interface is not initialized
+ * 
+ * @pre  tvInit() should be called before calling this API.
+ */
+tvError_t SaveLowLatencyState( int sourceInput, int pq_mode,int hdr_type,int value );
+
+/**
+ * @brief Set low latency state
+ * 
+ * This function sets the low latency state
+ *
+ * @param[in] lowLatencyIndex       - Value of the low latency state(0 or 1)
+ *
+ * @return tvError_t
+ * @retval tvERROR_NONE             - Success
+ * @retval tvERROR_GENERAL          - Error while setting latency state
+ * @retval tvERROR_INVALID_STATE    - Interface is not initialized
+ * 
+ * @pre  tvInit() should be called before calling this API.
+ */
+tvError_t SetLowLatencyState( int lowLatencyIndex );
+
+/**
+ * @brief Get low latency state
+ * 
+ * This function gets the low latency state
+ *
+ * @param[in] lowlatencystate       - Value of the low latency state(0 or 1)
+ *
+ * @return tvError_t
+ * @retval tvERROR_NONE             - Success
+ * @retval tvERROR_GENERAL          - Error while setting latency state
+ * @retval tvERROR_INVALID_STATE    - Interface is not initialized
+ * 
+ * @pre  tvInit() should be called before calling this API.
+ */
+tvError_t GetLowLatencyState(int *lowlatencystate);
+
 #ifdef __cplusplus
 }
 #endif
 
 #endif // End of _TV_SETTINGS_H
 
-/** @} */ // End of tvsettings
+/** @} */ // End of TV_Settings
+/** @} */ // End of TV_Settings_HAL
 /** @} */ // End of HPK
 

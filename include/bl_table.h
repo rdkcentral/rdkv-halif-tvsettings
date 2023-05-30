@@ -21,7 +21,12 @@
 * @{
 **/
 /**
-* @addtogroup tvsettings
+* @defgroup TV_Settings_HAL TV_Settings_HAL
+* @{
+**/
+
+/**
+* @defgroup BL_Table BL_Table
 * @{
 **/
 
@@ -36,5 +41,6 @@ const int defaultHDR = 100;      //!< default HDR value
 
 #endif // __BL_TABLE_INFO_H
 
-/** @} */ // End of tvsettings
+/** @} */ // End of BL_Table
+/** @} */ // End of TV_Settings_HAL
 /** @} */ // End of HPK
