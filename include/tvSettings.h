@@ -1628,37 +1628,6 @@ tvError_t GetTVSupportedDimmingModes(char **dimmingModes,unsigned short *count);
 tvError_t SetTVDimmingMode(const char *dimmingMode);
 
 /**
- * @brief Set the backlight factor value.
- * 
- * This function sets the value of global backlight factor.
- *
- * @param[in] value               - Global backlight factor value(0 - 512)
- * @param[in] rangeMidPointValue  - Backlight midpoint value
- *
- * @return tvError_t
- * @retval tvERROR_NONE             - Success
- * @retval tvERROR_GENERAL          - Error while setting dimming mode
- * @retval tvERROR_INVALID_STATE    - Interface is not initialized
- * 
- * @pre  tvInit() should be called before calling this API.
- */
-tvError_t SetTVBacklightGlobalFactor(int value, int rangeMidPointValue);
-
-/**
- * @brief Get the backlight factor value.
- * 
- * This function returns the value of global backlight factor.
- *
- * @param[out] value               - Global backlight factor value
- *
- * @return tvError_t
- * @retval tvERROR_NONE            - Success
- * 
- * @pre  tvInit() should be called before calling this API.
- */
-tvError_t GetTVBacklightGlobalFactor(int * value);
-
-/**
  * @brief Get picture mode index.
  * 
  * This function returns the current picture mode index value.
@@ -1702,45 +1671,6 @@ tvVideoHDRFormat_t GetCurrentContentFormat(void);
  * @pre  tvInit() should be called before calling this API.
  */
 tvError_t GetSupportedContentFormats(unsigned int * contentFormats,unsigned short *numberOfFormats);
-
-/**
- * @brief Check if HDR type is SDR.
- * 
- * This function checks whether the current content format of HDR type is SDR.
- *
- * @return bool
- * @retval 1                        - the content format is SDR
- * @retval 0                        - the content format is not SDR
- *
- * @pre  tvSettings_tvInit() should be called before calling this API.
- */
-bool isCurrentHDRTypeIsSDR(void);
-
-/**
- * @brief Get the panel ID.
- * 
- * This function returns current panel ID.
- * 
- * @param[out] panelID              - Current panel ID
- *                                    
- * @return int                        
- * @retval 0                        - Success
- * @retval -1                       - On any failure in file operation
- * 
- * @pre  tvInit() should be called before calling this API.
- */
-int GetPanelID(char* panelID);
-
-/**
- * @brief Get the default panel ID
- * 
- * When the GetPanelID function is failed then this function is invoked load the default panelid.
- * 
- * @param[out] panelID              - Default panel ID
- *
- * @pre  tvInit() should be called before calling this API.
- */
-void GetDefaultPanelID(char *panelID);
 
 /**
  * @brief Save color temperature values to driver.
@@ -2196,22 +2126,6 @@ int GetWBRgbType(const char *color, const char * ctrl);
 tvDataColor_t GetUSerWBValueOnInit(void);
 
 /**
- * @brief Check WB values are equal.
- * 
- * This function checks if two white balance values are same.
- * 
- * @param[in] wbvalueThis           - WB struct of member1
- * @param[in] wbvalueThat           - WB struct of member2
- * 
- * @return bool
- * @retval 0                        - Not equal
- * @retval 1                        - Equal
- * 
- * @pre  tvInit() should be called before calling this API.
- */
-bool areEqual(tvDataColor_t wbvalueThis,tvDataColor_t wbvalueThat);
-
-/**
  * @brief Set color temperature.
  * 
  * This function updates the color temperature for user.
@@ -2319,36 +2233,6 @@ int GetHDR10ModeIndex(const char * hdr10Mode);
  * @pre  tvInit() should be called before calling this API.
  */
 tvError_t SetBacklightFade(int from,int to,int duration);
-
-/**
- * @brief Read from config file.
- * 
- * This function reads the specific config from the configuration file.
- *
- * @param[in] file                  - File to be read
- * @param[in] searchstring          - Tvsetting mode to be searched from the file
- * @param[out] cpybuffer            - Data read from the file for the tvsetting mode specified
- *
- * @return tvError_t
- * @retval tvERROR_NONE             - Success
- * @retval tvERROR_INVALID_PARAM    - File cannot be opened or data cannot be read
- * 
- * @pre  tvInit() should be called before calling this API.
- */
-tvError_t ReadAllModeConfigfile(const char *file, char *cpybuffer, const char *searchstring);
-
-
-/**
- * @brief Parse buffer and return values & total count
- * 
- * This function parses the buffer returned through ReadAllModeConfigfile() and returns the available modes and their count.
- *
- * @param[in] buffer                - input buffer to be read
- * @param[out] availableModes       - Available Modes read from buffer
- * @param[out] totalcount           - Count of the available modes
- *
- */
-void splitstringsfrombuffer(char *buffer, char *availableModes, unsigned short *totalcount);
 
 /**
  * @brief Enable or disable gamma mode.
@@ -2469,14 +2353,14 @@ void GetLDIMAndEDIDLevel(int dimmingMode,int format,int *dimmingLevel, int *edid
  * @retval tvERROR_NONE             - Success
  * @retval tvERROR_GENERAL          - Error while setting latency state
  * @retval tvERROR_INVALID_STATE    - Interface is not initialized
- * 
+ *
  * @pre  tvInit() should be called before calling this API.
  */
 tvError_t SaveLowLatencyState( int sourceInput, int pq_mode,int hdr_type,int value );
 
 /**
  * @brief Set low latency state
- * 
+ *
  * This function sets the low latency state
  *
  * @param[in] lowLatencyIndex       - Value of the low latency state(0 or 1)
@@ -2485,14 +2369,14 @@ tvError_t SaveLowLatencyState( int sourceInput, int pq_mode,int hdr_type,int val
  * @retval tvERROR_NONE             - Success
  * @retval tvERROR_GENERAL          - Error while setting latency state
  * @retval tvERROR_INVALID_STATE    - Interface is not initialized
- * 
+ *
  * @pre  tvInit() should be called before calling this API.
  */
 tvError_t SetLowLatencyState( int lowLatencyIndex );
 
 /**
  * @brief Get low latency state
- * 
+ *
  * This function gets the low latency state
  *
  * @param[in] lowlatencystate       - Value of the low latency state(0 or 1)
@@ -2501,10 +2385,88 @@ tvError_t SetLowLatencyState( int lowLatencyIndex );
  * @retval tvERROR_NONE             - Success
  * @retval tvERROR_GENERAL          - Error while setting latency state
  * @retval tvERROR_INVALID_STATE    - Interface is not initialized
- * 
+ *
  * @pre  tvInit() should be called before calling this API.
  */
 tvError_t GetLowLatencyState(int *lowlatencystate);
+
+/**
+ * @brief Set the gamma calibrated values
+ *
+ * This function sets the gamma calibrated values(0 - 65535) for the primary colors.
+ *
+ * @param[in] pData_R       - Array of gamma red values
+ * @param[in] pData_G       - Array of gamma green values
+ * @param[in] pData_B       - Array of gamma blue values
+ * @param[in] size          - size of each array(256)
+ *
+ * @return tvError_t
+ * @retval tvERROR_NONE             - Success
+ * @retval tvERROR_GENERAL          - Error while setting the gamma values
+ * @retval tvERROR_INVALID_STATE    - Interface is not initialized
+ *
+ * @pre  tvInit() should be called before calling this API.
+ */
+tvError_t SetGammaTable(unsigned short *pData_R, unsigned short *pData_G, unsigned short *pData_B, unsigned short size);
+
+/**
+ * @brief Get the gamma calibrated values
+ *
+ * This function gets the gamma calibrated values(0 - 65535) for the primary colors for a specific color temperature.
+ *
+ * @param[in] colortemp       - Color temperature(tvColorTemp_t)
+ * @param[out] pData_R        - Array of gamma red values
+ * @param[out] pData_G        - Array of gamma green values
+ * @param[out] pData_B        - Array of gamma blue values
+ * @param[out] size           - size of each array(256)
+ *
+ * @return tvError_t
+ * @retval tvERROR_NONE             - Success
+ * @retval tvERROR_GENERAL          - Error while geting the gamma values
+ * @retval tvERROR_INVALID_STATE    - Interface is not initialized
+ *
+ * @pre  tvInit() should be called before calling this API.
+ */
+tvError_t GetGammaTable(int colortemp, unsigned short *pData_R, unsigned short *pData_G, unsigned short *pData_B, unsigned short size);
+
+/**
+ * @brief Save the gamma calibrated values to driver
+ *
+ * This function saves the gamma calibrated values(0 - 65535) for the primary colors for a specific color temperature.
+ *
+ * @param[in] colortemp       - Color temperature(tvColorTemp_t)
+ * @param[in] pData_R        - Array of gamma red values
+ * @param[in] pData_G         - Array of gamma green values
+ * @param[in] pData_B         - Array of gamma blue values
+ * @param[in] size            - size of each array(256)
+ *
+ * @return tvError_t
+ * @retval tvERROR_NONE             - Success
+ * @retval tvERROR_GENERAL          - Error while geting the gamma values
+ * @retval tvERROR_INVALID_STATE    - Interface is not initialized
+ *
+ * @pre  tvInit() should be called before calling this API.
+ */
+tvError_t SaveGammaTable(int colortemp, unsigned short *pData_R, unsigned short *pData_G, unsigned short *pData_B, unsigned short size);
+
+/**
+ * @brief Set the gamma pattern.
+ *
+ * This function sets the primary color level at 10bit resolution(0 - 1023).
+ *
+ * @param[in] is_10_bit                  - value is 10 bit or not(0 or 1)
+ * @param[in] R_Value                    - Red level of input pattern
+ * @param[in] G_Value                    - Green level of input pattern
+ * @param[in] B_Value                    - Blue level of input pattern
+ *
+ * @return tvError_t
+ * @retval tvERROR_NONE             - Success
+ * @retval tvERROR_GENERAL          - Error while setting gamma pattern
+ * @retval tvERROR_INVALID_STATE    - Interface is not initialized
+ *
+ * @pre  tvInit() should be called before calling this API.
+ */
+tvError_t SetGammaPattern(int is_10_bit, int R_Value, int G_Value, int B_Value);
 
 #ifdef __cplusplus
 }
