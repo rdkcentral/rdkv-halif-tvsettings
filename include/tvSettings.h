@@ -2413,8 +2413,9 @@ tvError_t SetGammaTable(unsigned short *pData_R, unsigned short *pData_G, unsign
  * @brief Get the gamma calibrated values
  *
  * This function gets the gamma calibrated values(0 - 65535) for the primary colors for a specific color temperature.
+ * @todo colortemp should be tvColorTemp_t in V2
  *
- * @param[in] colortemp       - Color temperature(tvColorTemp_t)
+ * @param[in] colortemp       - Color temperature
  * @param[out] pData_R        - Array of gamma red values
  * @param[out] pData_G        - Array of gamma green values
  * @param[out] pData_B        - Array of gamma blue values
@@ -2433,9 +2434,10 @@ tvError_t GetGammaTable(int colortemp, unsigned short *pData_R, unsigned short *
  * @brief Save the gamma calibrated values to driver
  *
  * This function saves the gamma calibrated values(0 - 65535) for the primary colors for a specific color temperature.
+ * @todo colortemp should be tvColorTemp_t in V2
  *
- * @param[in] colortemp       - Color temperature(tvColorTemp_t)
- * @param[in] pData_R        - Array of gamma red values
+ * @param[in] colortemp       - Color temperature
+ * @param[in] pData_R         - Array of gamma red values
  * @param[in] pData_G         - Array of gamma green values
  * @param[in] pData_B         - Array of gamma blue values
  * @param[in] size            - size of each array(256)
@@ -2454,7 +2456,7 @@ tvError_t SaveGammaTable(int colortemp, unsigned short *pData_R, unsigned short 
  *
  * This function sets the primary color level at 10bit resolution(0 - 1023).
  *
- * @param[in] is_10_bit                  - value is 10 bit or not(0 or 1)
+ * @param[in] is_10_bit                  - value is 10 bit(0) or not(1)
  * @param[in] R_Value                    - Red level of input pattern
  * @param[in] G_Value                    - Green level of input pattern
  * @param[in] B_Value                    - Blue level of input pattern

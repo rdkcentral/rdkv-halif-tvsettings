@@ -160,6 +160,7 @@ This interface handles various functionalities/requests related to Picture Quali
 - Notify Video Resolution Change
 - Notify Video FrameRate Change
 - Notify Video Content Change
+- Gamma Calibration
 
 There are other platform specific Picture Quality settings that can be managed by this interface :
 
