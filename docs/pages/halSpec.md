@@ -64,7 +64,7 @@ style x fill:#9f9,stroke:#333,stroke-width:0.3px
 
 The caller should initialize the `APIs` with picture quality modes for specific platforms and initiates communication with picture quality drivers.
 
- 1. The specification of the TV picure configuration will be defined in a config file ([allmodes_template.conf](../../configs/allmodes_template.conf)) which decides supported formats, picture modes, dimming modes, dvModes, HDRModes, HLGModes, resolution etc.
+ 1. The specification of the TV picure configuration will be defined in a config file ([allmodes_template.conf](../../config/allmodes_template.conf)) which decides supported formats, picture modes, dimming modes, dvModes, HDRModes, HLGModes, resolution etc.
  2. Caller should initialize by calling `tvInit()` which should initialize the parameters in the above config file as well.
 
 ### Threading Model
