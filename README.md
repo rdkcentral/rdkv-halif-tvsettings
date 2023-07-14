@@ -1,2 +1,1 @@
-# rdk-components-hal-tvsettings
-TV Settings HAL
+./docs/pages/halSpec.md
