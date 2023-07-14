@@ -17,16 +17,16 @@
 * limitations under the License.
 */
 /**
-* @addtogroup HPK
+* @addtogroup HPK HPK
 * @{
 **/
 /**
-* @addtogroup TV_Settings_HAL
+* @addtogroup TV_Settings_HAL TV Settings HAL
 * @{
 **/
 
 /**
-* @defgroup TV_Error TV_Error
+* @defgroup TV_Error TV Error
 * @{
 **/
 
@@ -43,7 +43,8 @@ extern "C"
   */
  
 /* Error codes returned by tvSetting HAL */
-typedef enum {
+typedef enum
+{
      
     tvERROR_NONE = 0,                   //!< No error
     tvERROR_GENERAL,                    //!< Other errors from drivers

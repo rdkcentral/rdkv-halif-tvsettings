@@ -17,16 +17,16 @@
 * limitations under the License.
 */
 /**
-* @addtogroup HPK
+* @addtogroup HPK HPK
 * @{
 **/
 /**
-* @defgroup TV_Settings_HAL TV_Settings_HAL
+* @defgroup TV_Settings_HAL TV Settings HAL
 * @{
 **/
 
 /**
-* @defgroup BL_Table BL_Table
+* @defgroup BL_Table BL Table
 * @{
 **/
 

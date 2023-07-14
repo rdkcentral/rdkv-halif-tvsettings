@@ -17,16 +17,16 @@
 * limitations under the License.
 */
 /**
-* @addtogroup HPK
+* @addtogroup HPK HPK
 * @{
 **/
 /**
-* @addtogroup TV_Settings_HAL
+* @addtogroup TV_Settings_HAL TV Settings HAL
 * @{
 **/
 
 /**
-* @defgroup TV_Log TV_Log
+* @defgroup TV_Log TV Log
 * @{
 **/
 

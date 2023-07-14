@@ -17,16 +17,16 @@
 * limitations under the License.
 */
 /**
-* @addtogroup HPK
+* @addtogroup HPK HPK
 * @{
 **/
 /**
-* @addtogroup TV_Settings_HAL
+* @addtogroup TV_Settings_HAL TV Settings HAL
 * @{
 **/
 
 /**
-* @defgroup TV_Settings TV_Settings
+* @defgroup TV_Settings TV Settings
 * @{
 **/
 
@@ -174,7 +174,8 @@ typedef struct
 #ifndef __BL_PARA__
 #define __BL_PARA__
 /* An enumeration defining different backlight parameters */
-typedef struct bl_para_s{
+typedef struct bl_para_s
+{
     int mBacklightSDR;                   //!< Param SDR
     int mBacklightHDR;                   //!< Param HDR
 }bl_para_t;
@@ -183,7 +184,8 @@ typedef struct bl_para_s{
 /** 
  * @brief Structure for the backlight information. 
  */
-typedef struct {
+typedef struct
+{
     int sdrBLCurve[BACKLIGHT_CURVE_MAX_INDEX];    //!< Backlight curve SDR
     int hdrBLCurve[BACKLIGHT_CURVE_MAX_INDEX];    //!< Backlight curve HDR
     int defaultBLSDR;                             //!< Backlight SDR default value
@@ -191,7 +193,8 @@ typedef struct {
 }tvBacklightInfo_t;
 
 /* An enumeration defining different mfr color temperature */
-typedef enum {
+typedef enum
+{
     mfrColorTemp_STANDARD = 0,             //!< Temperature standard
     mfrColorTemp_COLD,                     //!< Temperature cold
     mfrColorTemp_WARM,                     //!< Temperature warm
@@ -200,7 +203,8 @@ typedef enum {
 }fp_mfrColorTemp_t;
 
 /* An enumeration defining different source offset */
-typedef enum input_source_offset_e {
+typedef enum input_source_offset_e
+{
     HDMI_OFFSET_NEW = 0,                  //!< HDMI offset
     TV_OFFSET_NEW   = 4,                  //!< TV offset
     AV_OFFSET_NEW   = 8,                  //!< AV offset
