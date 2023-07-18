@@ -21,7 +21,7 @@
 * @{
 **/
 /**
-* @addtogroup TV_Settings_HAL TV Settings HAL
+* @defgroup TV_Settings_HAL TV Settings HAL
 * @{
 **/
 
@@ -2162,34 +2162,6 @@ tvError_t SetColorTemperatureUser(int rgbType, int value);
  * @pre  tvInit() should be called before calling this API.
  */
 tvError_t SaveColorTemperatureUser(int rgbType, int value);
-
-/**
- * @brief Set backlight info.
- * 
- * This function updates the backlight info
- *
- * @param[in] backlightDefaults     - Backlight info.
- *
- * @return tvError_t
- * @retval tvERROR_NONE             - Success
- * @retval tvERROR_GENERAL          - When the backlight value us NULL
- * 
- * @pre  tvInit() should be called before calling this API.
- */
-tvError_t SetBacklightInfo(tvBacklightInfo_t *backlightDefaults);
-
-/**
- * @brief Get Driver BL value for current format.
- * 
- * This function returns the driver equivalent backlight for current backlight value.
- *
- * @param[in] backlight             - Backlight value(0 - 100)
- *
- * @return int
- * 
- * @pre  tvInit() should be called before calling this API.
- */
-int GetDriverEquivalentBLForCurrentFmt(int backlight);
 
 /**
  * @brief Get HLG mode.
