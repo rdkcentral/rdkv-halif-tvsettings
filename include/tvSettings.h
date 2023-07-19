@@ -204,20 +204,6 @@ typedef enum input_source_offset_e
 tvError_t tvInit();
 
 /**
- * @brief  Sync the calibration data.
- * 
- * This function is to read the calibration data from serialization area and sync to picture quality driver during init.
- * @todo Change this api name in V2
- * 
- * @return tvError_t 
- * @retval tvERROR_NONE              - Success
- * @retval tvERROR_GENERAL           - When thread creation failure
- * @see tvTerm()
- *
- */
-tvError_t tvSD3toCriSyncInit();
-
-/**
  * @brief Deinit TV Settings HAL.
  * 
  * This function should terminate the TV Settings HAL API's.
