@@ -1996,7 +1996,7 @@ tvError_t SetCMSState(tvCMS_tunel_t tunelType,tvcomponent_color_type_t colorType
  * 
  * This function updates the color temperature for user.
  *
- * @param[in] rgbType               - RGB type(red, blue, green)
+ * @param[in] rgbType               - RGB type(tvRGBType_t)
  * @param[in] value                 - Color temperature value
  *
  * @return tvError_t
@@ -2013,7 +2013,7 @@ tvError_t SetColorTemperatureUser(int rgbType, int value);
  * 
  * This function saves the color temperature for user to driver.
  *
- * @param[in] rgbType               - RGB type(red, blue, green)
+ * @param[in] rgbType               - RGB type(tvRGBType_t)
  * @param[in] value                 - Color temperature value
  *
  * @return tvError_t
