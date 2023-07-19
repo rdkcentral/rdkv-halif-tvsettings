@@ -171,27 +171,6 @@ typedef struct
     char wbOffset[CONTROL_COUNT][MAX_STRING_SIZE];   //!< White Balance Offset value
 }getWBInfo_t;
 
-#ifndef __BL_PARA__
-#define __BL_PARA__
-/* An enumeration defining different backlight parameters */
-typedef struct bl_para_s
-{
-    int mBacklightSDR;                   //!< Param SDR
-    int mBacklightHDR;                   //!< Param HDR
-}bl_para_t;
-#endif
-
-/** 
- * @brief Structure for the backlight information. 
- */
-typedef struct
-{
-    int sdrBLCurve[BACKLIGHT_CURVE_MAX_INDEX];    //!< Backlight curve SDR
-    int hdrBLCurve[BACKLIGHT_CURVE_MAX_INDEX];    //!< Backlight curve HDR
-    int defaultBLSDR;                             //!< Backlight SDR default value
-    int defaultBLHDR;                             //!< Backlight HDR default value
-}tvBacklightInfo_t;
-
 /* An enumeration defining different mfr color temperature */
 typedef enum
 {
@@ -1753,7 +1732,6 @@ tvError_t SaveContrast(int sourceInput, int pq_mode,int hdr_type,int value);
  * 
  * This function saves the saturation value for the specific picture mode, hdr_type and sourceInput. @n
  * Currently SOURCE_INVALID(-1) is specified it will be treated as save to all sources.
- * @todo change the brief for all save functions.
  * @todo Add new enum value for sourceinput ALL in V2.
  * @todo sourcetype should be tv_source_input_t in V2
  * @todo hdr_type should be tvhdr_type_t in V2
@@ -2010,61 +1988,6 @@ int GetCMSDefault(tvCMS_tunel_t color_tunel_type);
 int GetDolbyModeIndex(const char * dolbyMode);
 
 /**
- * @brief Convert video to HDR.
- * 
- * This function converts the video format to HDR format.
- * @todo Discuss on all convert methods, how to make api generic in V2.
- * 
- * @param[in] videoFormat          - Video format(tvVideoHDRFormat_t)
- * @return int
- * @retval 1                       - HDR_TYPE_HDR10
- * @retval 2                       - HDR_TYPE_HDR10PLUS
- * @retval 3                       - HDR_TYPE_DOVI
- * @retval 5                       - HDR_TYPE_HLG
- * @retval 6                       - HDR_TYPE_SDR
- *
- * @pre  tvInit() should be called before calling this API.
- */
-int ConvertVideoFormatToHDRFormat(tvVideoHDRFormat_t videoFormat);
-
-/**
- * @brief Convert TV color to vendor color.
- * 
- * This function converts the TV color to Vendor color value
- *
- * @param[in] blComponentColor      - Component color(tvDataComponentColor_t)
- *
- * @return int
- * @retval 1                        - Red
- * @retval 2                        - Green
- * @retval 3                        - Blue
- * @retval 4                        - Cyan
- * @retval 5                        - Megenta
- * @retval 6                        - Yellow
- * 
- * @pre  tvInit() should be called before calling this API.
- */
-int ConvertTVColorToVendorColor(tvDataComponentColor_t blComponentColor);
-
-/**
- * @brief Convert HDR to content format.
- * 
- * This function converts the HDR format to content format value.
- * 
- * @param[in] hdrFormat             - HDR format(tvhdr_type_t)
- *
- * @return int
- * @retval 0x00                     - tvContentFormatType_SDR
- * @retval 0x01                     - tvContentFormatType_HLG
- * @retval 0x02                     - tvContentFormatType_HDR10
- * @retval 0x03                     - tvContentFormatType_HDR10PLUS
- * @retval 0x04                     - tvContentFormatType_DOVI
- * 
- * @pre  tvInit() should be called before calling this API.
- */
-int ConvertHDRFormatToContentFormat(tvhdr_type_t hdrFormat);
-
-/**
  * @brief Set the CMS state.
  * 
  * This function sets the CMS state for the specific tunel type, color type and component state
@@ -2081,53 +2004,6 @@ int ConvertHDRFormatToContentFormat(tvhdr_type_t hdrFormat);
  * @pre  tvInit() should be called before calling this API.
  */
 tvError_t SetCMSState(tvCMS_tunel_t tunelType,tvcomponent_color_type_t colorType,tvcomponent_state_t componentState);
-
-/**
- * @brief Check the given WB values are default or not
- * 
- * This function checks if the white balance parameters are equal to default value.
- * 
- * @param[in] wbvalue               - White balance value struct member of type tvDataColor_t
- *
- * @return bool
- * @retval 1                        - its a default WB value
- * @retval 0                        - its not a default WB value
- * 
- * @pre  tvInit() should be called before calling this API.
- */
-bool isWBUserDfault(tvDataColor_t wbvalue);
-
-/**
- * @brief Get WB RGB type.
- * 
- * This function gets the white balance RGB type for specific color and control value.
- * 
- * @param[in] color                - Color (red, green or blue)
- * @param[in] ctrl                 - Control (gain or offset)
- *
- * @return int
- * @retval 0                        - R_GAIN
- * @retval 1                        - G_GAIN
- * @retval 2                        - B_GAIN
- * @retval 3                        - R_POST_OFFSET
- * @retval 4                        - R_POST_OFFSET
- * @retval 5                        - R_POST_OFFSET
- * 
- * @pre  tvInit() should be called before calling this API.
- */
-int GetWBRgbType(const char *color, const char * ctrl);
-
-/**
- * @brief Get WB values on init.
- * 
- * This function gets the user white balance value on init.
- * 
- * @return tvDataColor_t
- * @retval updated members of struct
- * 
- * @pre  tvInit() should be called before calling this API.
- */
-tvDataColor_t GetUSerWBValueOnInit(void);
 
 /**
  * @brief Set color temperature.
@@ -2279,37 +2155,6 @@ tvError_t GetLocalDimmingLevel(int *localDimmingLevel);
  * @pre  tvInit() should be called before calling this API.
  */
 tvError_t SaveLocalDimmingLevel(int sourceInput, int pq_mode,int hdr_type,int value);
-
-/**
- * @brief Set the EDID and dimming level
- * 
- * This function retrives the EDID and set dimming level through UpdateEDIDAndSetDimmingLevel() based @n
- * on the dimming mode and current video format set. @n
- * For SDR the  dimming level is always 0 irrespective of dimming mode
- *
- * @param[in] dimmingLevel          - Dimming mode level(local, fixed)
- *
- * @return tvError_t
- * @retval tvERROR_NONE             - Success
- * @retval tvERROR_GENERAL          - Interface is not initialized
- * 
- * @pre  tvInit() should be called before calling this API.
- */
-tvError_t UpdateEDIDAndSetDimmingLevel(int dimmingLevel);
-
-/**
- * @brief Get LDIM and EDID level
- * 
- * This function gets the LDIM and EDID level based on the dimming mode and current video format set
- * 
- * @param[in] dimmingMode           - Dimming mode(local, fixed)
- * @param[in] format                - HDR format type(tvhdr_type_t)
- * @param[out] dimmingLevel         - Dimming level value(0 or 1)
- * @param[out] edidLevel            - EDID value(0 or 1)
- * 
- * @pre  tvInit() should be called before calling this API.
- */
-void GetLDIMAndEDIDLevel(int dimmingMode,int format,int *dimmingLevel, int *edidLevel);
 
 /**
  * @brief Save low latency state to driver.
