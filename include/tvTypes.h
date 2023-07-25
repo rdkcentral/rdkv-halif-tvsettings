@@ -41,7 +41,6 @@
  * @todo Add enum MAX for all exposed enums in V2.
  * @todo Do not expose enum and struct that are not used by application in V2
  * @todo Check the naming of enum and struct(maintain caps for start of word) in V2
- * @todo Expose tv_source_input_t enum and mention what all source values are supported in V2.
  */
 
 #ifdef __cplusplus
@@ -426,6 +425,38 @@ typedef enum
   tvDimmingMode_Local,                          //!< Mode is Local
   tvDimmingMode_Global                         //!< Mode is Global
 }tvDimmingMode_t;
+
+
+#ifndef __TV_SOURCE_INPUT__
+#define __TV_SOURCE_INPUT__
+/**
+ * Enumeration defining supported source types 
+ */
+
+typedef enum tv_source_input_e
+{
+    SOURCE_INVALID = -1,                //!< Source is all
+    SOURCE_TV = 0,                      //!< Source is TV
+    SOURCE_AV1,                         //!< Source is AV1
+    SOURCE_AV2,                         //!< Source is AV2
+    SOURCE_YPBPR1,                      //!< Source is YPBPR1
+    SOURCE_YPBPR2,                      //!< Source is YPBPR1
+    SOURCE_HDMI1,                       //!< Source is HDMI1
+    SOURCE_HDMI2,                       //!< Source is HDMI2
+    SOURCE_HDMI3,                       //!< Source is HDMI3
+    SOURCE_HDMI4,                       //!< Source is HDMI4
+    SOURCE_VGA,                         //!< Source is VGA
+    SOURCE_MPEG,                        //!< Source is MPEG
+    SOURCE_DTV,                         //!< Source is DTV
+    SOURCE_SVIDEO,                      //!< Source is SVIDEO
+    SOURCE_IPTV,                        //!< Source is IPTV
+    SOURCE_DUMMY,                       //!< Source is DUMMY
+    SOURCE_SPDIF,                       //!< Source is SPDIF
+    SOURCE_ADTV,                        //!< Source is ADTV
+    SOURCE_MAX                          //!< End of enum
+}tv_source_input_t;
+
+#endif
 
 #ifdef __cplusplus
 }
