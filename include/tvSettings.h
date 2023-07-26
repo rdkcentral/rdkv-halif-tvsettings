@@ -1648,7 +1648,7 @@ tvError_t GetSupportedContentFormats(unsigned int * contentFormats,unsigned shor
  * Currently SOURCE_INVALID(-1) is specified it will be treated as save to all sources.
  *
  * @param[in] sourceInput           - Source input value(tv_source_input_t)
- * @param[in] pq_mode               - PQ mode value(0 - 9)
+ * @param[in] pq_mode               - PQ mode value read from config file(0 - 9)
  * @param[in] hdr_type              - HDR type value(tvhdr_type_t)
  * @param[in] value                 - Value of the color temperature(tvColorTemp_t)
  *                                    
@@ -1668,7 +1668,7 @@ tvError_t SaveColorTemperature(tv_source_input_t sourceInput, int pq_mode,tvhdr_
  * Currently SOURCE_INVALID(-1) is specified it will be treated as save to all sources.
  * 
  * @param[in] sourceInput           - Source input value(tv_source_input_t)
- * @param[in] pq_mode               - PQ mode value(0 - 9)
+ * @param[in] pq_mode               - PQ mode value read from config file(0 - 9)
  * @param[in] hdr_type              - HDR type value(tvhdr_type_t)
  * @param[in] value                 - Value of the backlight(0 - 100)
  *                                    
@@ -1688,7 +1688,7 @@ tvError_t SaveBacklight(tv_source_input_t sourceInput, int pq_mode,tvhdr_type_t 
  * Currently SOURCE_INVALID(-1) is specified it will be treated as save to all sources.
  * 
  * @param[in] sourceInput           - Source input value(tv_source_input_t)
- * @param[in] pq_mode               - PQ mode value(0 - 9)
+ * @param[in] pq_mode               - PQ mode value read from config file(0 - 9)
  * @param[in] hdr_type              - HDR type value(tvhdr_type_t)
  * @param[in] value                 - Value of the contrast(0 - 100)
  *
@@ -1708,7 +1708,7 @@ tvError_t SaveContrast(tv_source_input_t sourceInput, int pq_mode,tvhdr_type_t h
  * Currently SOURCE_INVALID(-1) is specified it will be treated as save to all sources.
  * 
  * @param[in] sourceInput           - Source input value(tv_source_input_t)
- * @param[in] pq_mode               - PQ mode value(0 - 9)
+ * @param[in] pq_mode               - PQ mode value read from config file(0 - 9)
  * @param[in] hdr_type              - HDR type value(tvhdr_type_t)
  * @param[in] value                 - Value of the saturation(0 - 100)
  *
@@ -1728,7 +1728,7 @@ tvError_t SaveSaturation(tv_source_input_t sourceInput, int pq_mode,tvhdr_type_t
  * Currently SOURCE_INVALID(-1) is specified it will be treated as save to all sources.
  * 
  * @param[in] sourceInput           - Source input value(tv_source_input_t)
- * @param[in] pq_mode               - PQ mode value(0 - 9)
+ * @param[in] pq_mode               - PQ mode value read from config file(0 - 9)
  * @param[in] hdr_type              - HDR type value(tvhdr_type_t)
  * @param[in] value                 - Value of the sharpness(0 - 100)
  *
@@ -1748,7 +1748,7 @@ tvError_t SaveSharpness(tv_source_input_t sourceInput, int pq_mode,tvhdr_type_t 
  * Currently SOURCE_INVALID(-1) is specified it will be treated as save to all sources.
  *
  * @param[in] sourceInput           - Source input value(tv_source_input_t)
- * @param[in] pq_mode               - PQ mode value(0 - 9)
+ * @param[in] pq_mode               - PQ mode value read from config file(0 - 9)
  * @param[in] hdr_type              - HDR type value(tvhdr_type_t)
  * @param[in] value                 - Value of the brightness(0 - 100)
  *
@@ -1768,7 +1768,7 @@ tvError_t SaveBrightness(tv_source_input_t sourceInput, int pq_mode,tvhdr_type_t
  * Currently SOURCE_INVALID(-1) is specified it will be treated as save to all sources.
  *
  * @param[in] sourceInput           - Source input value(tv_source_input_t)
- * @param[in] pq_mode               - PQ mode value(0 - 9)
+ * @param[in] pq_mode               - PQ mode value read from config file(0 - 9)
  * @param[in] hdr_type              - HDR type value(tvhdr_type_t)
  * @param[in] value                 - Value of the hue(0 - 100)
  *
@@ -1788,7 +1788,7 @@ tvError_t SaveHue(tv_source_input_t sourceInput, int pq_mode,tvhdr_type_t hdr_ty
  * Currently SOURCE_INVALID(-1) is specified it will be treated as save to all sources.
  *
  * @param[in] sourceInput           - Source input value(tv_source_input_t)
- * @param[in] pq_mode               - PQ mode value(0 - 9)
+ * @param[in] pq_mode               - PQ mode value read from config file(0 - 9)
  * @param[in] hdr_type              - HDR type value(tvhdr_type_t)
  * @param[in] value                 - Value of the dynamic backlight(tvDimmingMode_t)
  *
@@ -1808,7 +1808,7 @@ tvError_t SaveDynamicBacklight(tv_source_input_t sourceInput, int pq_mode,tvhdr_
  * Currently SOURCE_INVALID(-1) is specified it will be treated as save to all sources.
  *
  * @param[in] sourceInput           - Source input value(tv_source_input_t)
- * @param[in] pq_mode               - PQ mode value(0 - 9)
+ * @param[in] pq_mode               - PQ mode value read from config file(0 - 9)
  * @param[in] hdr_type              - HDR type value(tvhdr_type_t)
  * @param[in] value                 - Value of the display mode(tvDisplayMode_t)
  *
@@ -1828,7 +1828,7 @@ tvError_t SaveDisplayMode(tv_source_input_t sourceInput, int pq_mode,tvhdr_type_
  * Currently SOURCE_INVALID(-1) is specified it will be treated as save to all sources.
  *
  * @param[in] sourceInput           - Source input value(tv_source_input_t)
- * @param[in] pq_mode               - PQ mode value(0 - 9)
+ * @param[in] pq_mode               - PQ mode value read from config file(0 - 9)
  * @param[in] hdr_type              - HDR type value(tvhdr_type_t)
  * @param[in] tunnel_type           - Tunnel type value(tvCMS_tunel_t)
  * @param[in] color_type            - Color type value(tvcomponent_color_type_t)
@@ -1850,7 +1850,7 @@ tvError_t SaveCMS(tv_source_input_t sourceInput, int pq_mode,tvhdr_type_t hdr_ty
  * Currently SOURCE_INVALID(-1) is specified it will be treated as save to all sources.
  *
  * @param[in] sourceInput           - Source input value(tv_source_input_t)
- * @param[in] pq_mode               - PQ mode value(0 - 9)
+ * @param[in] pq_mode               - PQ mode value read from config file(0 - 9)
  * @param[in] hdr_type              - HDR type value(tvhdr_type_t)
  * @param[in] value                 - Value of the dolby mode(dark, bright)
  *
@@ -1952,7 +1952,7 @@ tvError_t SetCMSState(tvCMS_tunel_t tunelType,tvcomponent_color_type_t colorType
  * This function updates the color temperature for user.
  *
  * @param[in] rgbType               - RGB type(tvRGBType_t)
- * @param[in] value                 - Color temperature value
+ * @param[in] value                 - Color temperature value(gain: 0 - 2047, offset: -1024 - 1024)
  *
  * @return tvError_t
  * @retval tvERROR_NONE             - Success
@@ -1969,7 +1969,7 @@ tvError_t SetColorTemperatureUser(tvRGBType_t rgbType, int value);
  * This function saves the color temperature for user to driver.
  *
  * @param[in] rgbType               - RGB type(tvRGBType_t)
- * @param[in] value                 - Color temperature value
+ * @param[in] value                 - Color temperature value(gain: 0 - 2047, offset: -1024 - 1024)
  *
  * @return tvError_t
  * @retval tvERROR_NONE             - Success
@@ -2081,7 +2081,7 @@ tvError_t GetLocalDimmingLevel(int *localDimmingLevel);
  * Currently SOURCE_INVALID(-1) is specified it will be treated as save to all sources.
  *
  * @param[in] sourceInput           - Source input value(tv_source_input_t)
- * @param[in] pq_mode               - PQ mode value(0 - 9)
+ * @param[in] pq_mode               - PQ mode value read from config file(0 - 9)
  * @param[in] hdr_type              - HDR type value(tvhdr_type_t)
  * @param[in] value                 - Value of the local dimming level(0 - 1)
  *
@@ -2101,7 +2101,7 @@ tvError_t SaveLocalDimmingLevel(tv_source_input_t sourceInput, int pq_mode,tvhdr
  * Currently SOURCE_INVALID(-1) is specified it will be treated as save to all sources.
  *
  * @param[in] sourceInput           - Source input value(tv_source_input_t)
- * @param[in] pq_mode               - PQ mode value(0 - 9)
+ * @param[in] pq_mode               - PQ mode value read from config file(0 - 9)
  * @param[in] hdr_type              - HDR type value(tvhdr_type_t)
  * @param[in] value                 - Value of the low latency index(0 or 1)
  *
