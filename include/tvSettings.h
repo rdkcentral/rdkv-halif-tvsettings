@@ -1832,7 +1832,7 @@ tvError_t SaveDisplayMode(tv_source_input_t sourceInput, int pq_mode,tvhdr_type_
  * @param[in] hdr_type              - HDR type value(tvhdr_type_t)
  * @param[in] tunnel_type           - Tunnel type value(tvCMS_tunel_t)
  * @param[in] color_type            - Color type value(tvcomponent_color_type_t)
- * @param[in] value                 - Value of the CMS(0 - 100)
+ * @param[in] value                 - Value of the CMS(Hue and saturation: 0 - 100, Luma: 0 -30)
  *
  * @return tvError_t
  * @retval tvERROR_NONE             - Success
@@ -1841,7 +1841,7 @@ tvError_t SaveDisplayMode(tv_source_input_t sourceInput, int pq_mode,tvhdr_type_
  * 
  * @pre  tvInit() should be called before calling this API.
  */
-tvError_t SaveCMS(tv_source_input_t sourceInput, int pq_mode,tvhdr_type_t hdr_type,int tunnel_type,int color_type,int value);
+tvError_t SaveCMS(tv_source_input_t sourceInput, int pq_mode,tvhdr_type_t hdr_type,tvCMS_tunel_t tunnel_type,tvcomponent_color_type_t color_type,int value);
 
 /**
  * @brief Save dolby mode value to driver.
