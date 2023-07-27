@@ -21,7 +21,7 @@
 * @{
 **/
 /**
-* @addtogroup TV_Settings_HAL TV Settings HAL
+* @defgroup TV_Settings_HAL TV Settings HAL
 * @{
 **/
 
@@ -171,27 +171,6 @@ typedef struct
     char wbOffset[CONTROL_COUNT][MAX_STRING_SIZE];   //!< White Balance Offset value
 }getWBInfo_t;
 
-#ifndef __BL_PARA__
-#define __BL_PARA__
-/* An enumeration defining different backlight parameters */
-typedef struct bl_para_s
-{
-    int mBacklightSDR;                   //!< Param SDR
-    int mBacklightHDR;                   //!< Param HDR
-}bl_para_t;
-#endif
-
-/** 
- * @brief Structure for the backlight information. 
- */
-typedef struct
-{
-    int sdrBLCurve[BACKLIGHT_CURVE_MAX_INDEX];    //!< Backlight curve SDR
-    int hdrBLCurve[BACKLIGHT_CURVE_MAX_INDEX];    //!< Backlight curve HDR
-    int defaultBLSDR;                             //!< Backlight SDR default value
-    int defaultBLHDR;                             //!< Backlight HDR default value
-}tvBacklightInfo_t;
-
 /* An enumeration defining different mfr color temperature */
 typedef enum
 {
@@ -206,8 +185,8 @@ typedef enum
 typedef enum input_source_offset_e
 {
     HDMI_OFFSET_NEW = 0,                  //!< HDMI offset
-    TV_OFFSET_NEW   = 4,                  //!< TV offset
-    AV_OFFSET_NEW   = 8,                  //!< AV offset
+    TV_OFFSET_NEW,                        //!< TV offset
+    AV_OFFSET_NEW,                        //!< AV offset
     MAX_OFFSET_NEW                        //!< End of enum
 } input_source_offset_t;
 
@@ -223,20 +202,6 @@ typedef enum input_source_offset_e
  *
  */
 tvError_t tvInit();
-
-/**
- * @brief  Sync the calibration data.
- * 
- * This function is to read the calibration data from serialization area and sync to picture quality driver during init.
- * @todo Change this api name in V2
- * 
- * @return tvError_t 
- * @retval tvERROR_NONE              - Success
- * @retval tvERROR_GENERAL           - When thread creation failure
- * @see tvTerm()
- *
- */
-tvError_t tvSD3toCriSyncInit();
 
 /**
  * @brief Deinit TV Settings HAL.
@@ -1681,15 +1646,11 @@ tvError_t GetSupportedContentFormats(unsigned int * contentFormats,unsigned shor
  * 
  * This function saves the color temperature value for the specific picture mode, hdr_type and sourceInput. @n
  * Currently SOURCE_INVALID(-1) is specified it will be treated as save to all sources.
- * @todo Add new enum value for sourceinput ALL in V2.
- * @todo sourcetype should be tv_source_input_t in V2
- * @todo hdr_type should be tvhdr_type_t in V2
- * @todo value should be tvColorTemp_t in V2
  *
- * @param[in] sourceInput           - Source input value
- * @param[in] pq_mode               - PQ mode value(0 - 9)
+ * @param[in] sourceInput           - Source input value(tv_source_input_t)
+ * @param[in] pq_mode               - PQ mode value read from config file(0 - 9)
  * @param[in] hdr_type              - HDR type value(tvhdr_type_t)
- * @param[in] value                 - Value of the color temperature(0 - 4)
+ * @param[in] value                 - Value of the color temperature(tvColorTemp_t)
  *                                    
  * @return tvError_t                  
  * @retval tvERROR_NONE             - Success
@@ -1698,20 +1659,16 @@ tvError_t GetSupportedContentFormats(unsigned int * contentFormats,unsigned shor
  * 
  * @pre  tvInit() should be called before calling this API.
  */
-tvError_t SaveColorTemperature(int sourceInput, int pq_mode,int hdr_type,int value);
+tvError_t SaveColorTemperature(tv_source_input_t sourceInput, int pq_mode,tvhdr_type_t hdr_type,tvColorTemp_t value);
 
 /**
  * @brief Save backlight value to driver.
  * 
  * This function saves the backlight value for the specific picture mode, hdr_type and sourceInput. @n
  * Currently SOURCE_INVALID(-1) is specified it will be treated as save to all sources.
- * @todo Add new enum value for sourceinput ALL in V2.
- * @todo sourcetype should be tv_source_input_t in V2
- * @todo hdr_type should be tvhdr_type_t in V2
- * @todo value should be tvColorTemp_t in V2
  * 
- * @param[in] sourceInput           - Source input value
- * @param[in] pq_mode               - PQ mode value(0 - 9)
+ * @param[in] sourceInput           - Source input value(tv_source_input_t)
+ * @param[in] pq_mode               - PQ mode value read from config file(0 - 9)
  * @param[in] hdr_type              - HDR type value(tvhdr_type_t)
  * @param[in] value                 - Value of the backlight(0 - 100)
  *                                    
@@ -1722,20 +1679,16 @@ tvError_t SaveColorTemperature(int sourceInput, int pq_mode,int hdr_type,int val
  *
  * @pre  tvInit() should be called before calling this API.
  */
-tvError_t SaveBacklight(int sourceInput, int pq_mode,int hdr_type,int value);
+tvError_t SaveBacklight(tv_source_input_t sourceInput, int pq_mode,tvhdr_type_t hdr_type,int value);
 
 /**
  * @brief Save contrast value to driver.
  * 
  * This function saves the contrast value for the specific picture mode, hdr_type and sourceInput. @n
  * Currently SOURCE_INVALID(-1) is specified it will be treated as save to all sources.
- * @todo Add new enum value for sourceinput ALL in V2.
- * @todo sourcetype should be tv_source_input_t in V2
- * @todo hdr_type should be tvhdr_type_t in V2
- * @todo value should be tvColorTemp_t in V2
  * 
- * @param[in] sourceInput           - Source input value
- * @param[in] pq_mode               - PQ mode value(0 - 9)
+ * @param[in] sourceInput           - Source input value(tv_source_input_t)
+ * @param[in] pq_mode               - PQ mode value read from config file(0 - 9)
  * @param[in] hdr_type              - HDR type value(tvhdr_type_t)
  * @param[in] value                 - Value of the contrast(0 - 100)
  *
@@ -1746,21 +1699,16 @@ tvError_t SaveBacklight(int sourceInput, int pq_mode,int hdr_type,int value);
  * 
  * @pre  tvInit() should be called before calling this API.
  */
-tvError_t SaveContrast(int sourceInput, int pq_mode,int hdr_type,int value);
+tvError_t SaveContrast(tv_source_input_t sourceInput, int pq_mode,tvhdr_type_t hdr_type,int value);
 
 /**
  * @brief Save saturation value to driver.
  * 
  * This function saves the saturation value for the specific picture mode, hdr_type and sourceInput. @n
  * Currently SOURCE_INVALID(-1) is specified it will be treated as save to all sources.
- * @todo change the brief for all save functions.
- * @todo Add new enum value for sourceinput ALL in V2.
- * @todo sourcetype should be tv_source_input_t in V2
- * @todo hdr_type should be tvhdr_type_t in V2
- * @todo value should be tvColorTemp_t in V2
  * 
- * @param[in] sourceInput           - Source input value
- * @param[in] pq_mode               - PQ mode value(0 - 9)
+ * @param[in] sourceInput           - Source input value(tv_source_input_t)
+ * @param[in] pq_mode               - PQ mode value read from config file(0 - 9)
  * @param[in] hdr_type              - HDR type value(tvhdr_type_t)
  * @param[in] value                 - Value of the saturation(0 - 100)
  *
@@ -1771,20 +1719,16 @@ tvError_t SaveContrast(int sourceInput, int pq_mode,int hdr_type,int value);
  * 
  * @pre  tvInit() should be called before calling this API.
  */
-tvError_t SaveSaturation(int sourceInput, int pq_mode,int hdr_type,int value);
+tvError_t SaveSaturation(tv_source_input_t sourceInput, int pq_mode,tvhdr_type_t hdr_type,int value);
 
 /**
  * @brief Save sharpness value to driver.
  * 
  * This function saves the sharpness value for the specific picture mode, hdr_type and sourceInput. @n
  * Currently SOURCE_INVALID(-1) is specified it will be treated as save to all sources.
- * @todo Add new enum value for sourceinput ALL in V2.
- * @todo sourcetype should be tv_source_input_t in V2
- * @todo hdr_type should be tvhdr_type_t in V2
- * @todo value should be tvColorTemp_t in V2
  * 
- * @param[in] sourceInput           - Source input value
- * @param[in] pq_mode               - PQ mode value(0 - 9)
+ * @param[in] sourceInput           - Source input value(tv_source_input_t)
+ * @param[in] pq_mode               - PQ mode value read from config file(0 - 9)
  * @param[in] hdr_type              - HDR type value(tvhdr_type_t)
  * @param[in] value                 - Value of the sharpness(0 - 100)
  *
@@ -1795,20 +1739,16 @@ tvError_t SaveSaturation(int sourceInput, int pq_mode,int hdr_type,int value);
  * 
  * @pre  tvInit() should be called before calling this API.
  */
-tvError_t SaveSharpness(int sourceInput, int pq_mode,int hdr_type,int value);
+tvError_t SaveSharpness(tv_source_input_t sourceInput, int pq_mode,tvhdr_type_t hdr_type,int value);
 
 /**
  * @brief Save brightness value to driver.
  * 
  * This function saves the brightness value for the specific picture mode, hdr_type and sourceInput. @n
  * Currently SOURCE_INVALID(-1) is specified it will be treated as save to all sources.
- * @todo Add new enum value for sourceinput ALL in V2.
- * @todo sourcetype should be tv_source_input_t in V2
- * @todo hdr_type should be tvhdr_type_t in V2
- * @todo value should be tvColorTemp_t in V2
  *
- * @param[in] sourceInput           - Source input value
- * @param[in] pq_mode               - PQ mode value(0 - 9)
+ * @param[in] sourceInput           - Source input value(tv_source_input_t)
+ * @param[in] pq_mode               - PQ mode value read from config file(0 - 9)
  * @param[in] hdr_type              - HDR type value(tvhdr_type_t)
  * @param[in] value                 - Value of the brightness(0 - 100)
  *
@@ -1819,20 +1759,16 @@ tvError_t SaveSharpness(int sourceInput, int pq_mode,int hdr_type,int value);
  * 
  * @pre  tvInit() should be called before calling this API.
  */
-tvError_t SaveBrightness(int sourceInput, int pq_mode,int hdr_type,int value);
+tvError_t SaveBrightness(tv_source_input_t sourceInput, int pq_mode,tvhdr_type_t hdr_type,int value);
 
 /**
  * @brief Save hue value to driver.
  * 
  * This function saves the hue value for the specific picture mode, hdr_type and sourceInput. @n
  * Currently SOURCE_INVALID(-1) is specified it will be treated as save to all sources.
- * @todo Add new enum value for sourceinput ALL in V2.
- * @todo sourcetype should be tv_source_input_t in V2
- * @todo hdr_type should be tvhdr_type_t in V2
- * @todo value should be tvColorTemp_t in V2
  *
- * @param[in] sourceInput           - Source input value
- * @param[in] pq_mode               - PQ mode value(0 - 9)
+ * @param[in] sourceInput           - Source input value(tv_source_input_t)
+ * @param[in] pq_mode               - PQ mode value read from config file(0 - 9)
  * @param[in] hdr_type              - HDR type value(tvhdr_type_t)
  * @param[in] value                 - Value of the hue(0 - 100)
  *
@@ -1843,20 +1779,16 @@ tvError_t SaveBrightness(int sourceInput, int pq_mode,int hdr_type,int value);
  * 
  * @pre  tvInit() should be called before calling this API.
  */
-tvError_t SaveHue(int sourceInput, int pq_mode,int hdr_type,int value);
+tvError_t SaveHue(tv_source_input_t sourceInput, int pq_mode,tvhdr_type_t hdr_type,int value);
 
 /**
  * @brief Save dynamic backlight value to driver.
  * 
  * This function saves the dynamic backlight value for the specific picture mode, hdr_type and sourceInput. @n
  * Currently SOURCE_INVALID(-1) is specified it will be treated as save to all sources.
- * @todo Add new enum value for sourceinput ALL in V2.
- * @todo sourcetype should be tv_source_input_t in V2
- * @todo hdr_type should be tvhdr_type_t in V2
- * @todo value should be tvColorTemp_t in V2
  *
- * @param[in] sourceInput           - Source input value
- * @param[in] pq_mode               - PQ mode value(0 - 9)
+ * @param[in] sourceInput           - Source input value(tv_source_input_t)
+ * @param[in] pq_mode               - PQ mode value read from config file(0 - 9)
  * @param[in] hdr_type              - HDR type value(tvhdr_type_t)
  * @param[in] value                 - Value of the dynamic backlight(tvDimmingMode_t)
  *
@@ -1867,20 +1799,16 @@ tvError_t SaveHue(int sourceInput, int pq_mode,int hdr_type,int value);
  *  
  * @pre  tvInit() should be called before calling this API.
  */
-tvError_t SaveDynamicBacklight(int sourceInput, int pq_mode,int hdr_type,int value);
+tvError_t SaveDynamicBacklight(tv_source_input_t sourceInput, int pq_mode,tvhdr_type_t hdr_type,tvDimmingMode_t value);
 
 /**
  * @brief Save display mode value to driver.
  * 
  * This function saves the display mode value for the specific picture mode, hdr_type and sourceInput. @n
  * Currently SOURCE_INVALID(-1) is specified it will be treated as save to all sources.
- * @todo Add new enum value for sourceinput ALL in V2.
- * @todo sourcetype should be tv_source_input_t in V2
- * @todo hdr_type should be tvhdr_type_t in V2
- * @todo value should be tvColorTemp_t in V2
  *
- * @param[in] sourceInput           - Source input value
- * @param[in] pq_mode               - PQ mode value(0 - 9)
+ * @param[in] sourceInput           - Source input value(tv_source_input_t)
+ * @param[in] pq_mode               - PQ mode value read from config file(0 - 9)
  * @param[in] hdr_type              - HDR type value(tvhdr_type_t)
  * @param[in] value                 - Value of the display mode(tvDisplayMode_t)
  *
@@ -1891,25 +1819,20 @@ tvError_t SaveDynamicBacklight(int sourceInput, int pq_mode,int hdr_type,int val
  * 
  * @pre  tvInit() should be called before calling this API.
  */
-tvError_t SaveDisplayMode(int sourceInput, int pq_mode,int hdr_type,int value);
+tvError_t SaveDisplayMode(tv_source_input_t sourceInput, int pq_mode,tvhdr_type_t hdr_type,tvDisplayMode_t value);
 
 /**
  * @brief Save CMS value to driver.
  * 
  * This function saves the CMS value for the specific picture mode, hdr_type and sourceInput. @n
  * Currently SOURCE_INVALID(-1) is specified it will be treated as save to all sources.
- * @todo Add new enum value for sourceinput ALL in V2.
- * @todo sourcetype should be tv_source_input_t in V2
- * @todo hdr_type should be tvhdr_type_t in V2
- * @todo color_type should be tvcomponent_color_type_t in V2
- * @todo value should be tvColorTemp_t in V2
  *
- * @param[in] sourceInput           - Source input value
- * @param[in] pq_mode               - PQ mode value(0 - 9)
+ * @param[in] sourceInput           - Source input value(tv_source_input_t)
+ * @param[in] pq_mode               - PQ mode value read from config file(0 - 9)
  * @param[in] hdr_type              - HDR type value(tvhdr_type_t)
  * @param[in] tunnel_type           - Tunnel type value(tvCMS_tunel_t)
  * @param[in] color_type            - Color type value(tvcomponent_color_type_t)
- * @param[in] value                 - Value of the CMS(0 - 100)
+ * @param[in] value                 - Value of the CMS(Hue and saturation: 0 - 100, Luma: 0 -30)
  *
  * @return tvError_t
  * @retval tvERROR_NONE             - Success
@@ -1918,20 +1841,16 @@ tvError_t SaveDisplayMode(int sourceInput, int pq_mode,int hdr_type,int value);
  * 
  * @pre  tvInit() should be called before calling this API.
  */
-tvError_t SaveCMS(int sourceInput, int pq_mode,int hdr_type,int tunnel_type,int color_type,int value);
+tvError_t SaveCMS(tv_source_input_t sourceInput, int pq_mode,tvhdr_type_t hdr_type,tvCMS_tunel_t tunnel_type,tvcomponent_color_type_t color_type,int value);
 
 /**
  * @brief Save dolby mode value to driver.
  * 
  * This function saves the dolby mode value for the specific picture mode, hdr_type and sourceInput. @n
  * Currently SOURCE_INVALID(-1) is specified it will be treated as save to all sources.
- * @todo Add new enum value for sourceinput ALL in V2.
- * @todo sourcetype should be tv_source_input_t in V2
- * @todo hdr_type should be tvhdr_type_t in V2
- * @todo value should be tvColorTemp_t in V2
  *
- * @param[in] sourceInput           - Source input value
- * @param[in] pq_mode               - PQ mode value(0 - 9)
+ * @param[in] sourceInput           - Source input value(tv_source_input_t)
+ * @param[in] pq_mode               - PQ mode value read from config file(0 - 9)
  * @param[in] hdr_type              - HDR type value(tvhdr_type_t)
  * @param[in] value                 - Value of the dolby mode(dark, bright)
  *
@@ -1942,7 +1861,7 @@ tvError_t SaveCMS(int sourceInput, int pq_mode,int hdr_type,int tunnel_type,int 
  * 
  * @pre  tvInit() should be called before calling this API.
  */
-tvError_t SaveDolbyMode(int sourceInput, int pq_mode,int hdr_type,int value);
+tvError_t SaveDolbyMode(tv_source_input_t sourceInput, int pq_mode,tvhdr_type_t hdr_type,int value);
 
 /**
  * @brief Get count of supported modes.
@@ -2010,61 +1929,6 @@ int GetCMSDefault(tvCMS_tunel_t color_tunel_type);
 int GetDolbyModeIndex(const char * dolbyMode);
 
 /**
- * @brief Convert video to HDR.
- * 
- * This function converts the video format to HDR format.
- * @todo Discuss on all convert methods, how to make api generic in V2.
- * 
- * @param[in] videoFormat          - Video format(tvVideoHDRFormat_t)
- * @return int
- * @retval 1                       - HDR_TYPE_HDR10
- * @retval 2                       - HDR_TYPE_HDR10PLUS
- * @retval 3                       - HDR_TYPE_DOVI
- * @retval 5                       - HDR_TYPE_HLG
- * @retval 6                       - HDR_TYPE_SDR
- *
- * @pre  tvInit() should be called before calling this API.
- */
-int ConvertVideoFormatToHDRFormat(tvVideoHDRFormat_t videoFormat);
-
-/**
- * @brief Convert TV color to vendor color.
- * 
- * This function converts the TV color to Vendor color value
- *
- * @param[in] blComponentColor      - Component color(tvDataComponentColor_t)
- *
- * @return int
- * @retval 1                        - Red
- * @retval 2                        - Green
- * @retval 3                        - Blue
- * @retval 4                        - Cyan
- * @retval 5                        - Megenta
- * @retval 6                        - Yellow
- * 
- * @pre  tvInit() should be called before calling this API.
- */
-int ConvertTVColorToVendorColor(tvDataComponentColor_t blComponentColor);
-
-/**
- * @brief Convert HDR to content format.
- * 
- * This function converts the HDR format to content format value.
- * 
- * @param[in] hdrFormat             - HDR format(tvhdr_type_t)
- *
- * @return int
- * @retval 0x00                     - tvContentFormatType_SDR
- * @retval 0x01                     - tvContentFormatType_HLG
- * @retval 0x02                     - tvContentFormatType_HDR10
- * @retval 0x03                     - tvContentFormatType_HDR10PLUS
- * @retval 0x04                     - tvContentFormatType_DOVI
- * 
- * @pre  tvInit() should be called before calling this API.
- */
-int ConvertHDRFormatToContentFormat(tvhdr_type_t hdrFormat);
-
-/**
  * @brief Set the CMS state.
  * 
  * This function sets the CMS state for the specific tunel type, color type and component state
@@ -2083,59 +1947,12 @@ int ConvertHDRFormatToContentFormat(tvhdr_type_t hdrFormat);
 tvError_t SetCMSState(tvCMS_tunel_t tunelType,tvcomponent_color_type_t colorType,tvcomponent_state_t componentState);
 
 /**
- * @brief Check the given WB values are default or not
- * 
- * This function checks if the white balance parameters are equal to default value.
- * 
- * @param[in] wbvalue               - White balance value struct member of type tvDataColor_t
- *
- * @return bool
- * @retval 1                        - its a default WB value
- * @retval 0                        - its not a default WB value
- * 
- * @pre  tvInit() should be called before calling this API.
- */
-bool isWBUserDfault(tvDataColor_t wbvalue);
-
-/**
- * @brief Get WB RGB type.
- * 
- * This function gets the white balance RGB type for specific color and control value.
- * 
- * @param[in] color                - Color (red, green or blue)
- * @param[in] ctrl                 - Control (gain or offset)
- *
- * @return int
- * @retval 0                        - R_GAIN
- * @retval 1                        - G_GAIN
- * @retval 2                        - B_GAIN
- * @retval 3                        - R_POST_OFFSET
- * @retval 4                        - R_POST_OFFSET
- * @retval 5                        - R_POST_OFFSET
- * 
- * @pre  tvInit() should be called before calling this API.
- */
-int GetWBRgbType(const char *color, const char * ctrl);
-
-/**
- * @brief Get WB values on init.
- * 
- * This function gets the user white balance value on init.
- * 
- * @return tvDataColor_t
- * @retval updated members of struct
- * 
- * @pre  tvInit() should be called before calling this API.
- */
-tvDataColor_t GetUSerWBValueOnInit(void);
-
-/**
  * @brief Set color temperature.
  * 
  * This function updates the color temperature for user.
  *
- * @param[in] rgbType               - RGB type(red, blue, green)
- * @param[in] value                 - Color temperature value
+ * @param[in] rgbType               - RGB type(tvRGBType_t)
+ * @param[in] value                 - Color temperature value(gain: 0 - 2047, offset: -1024 - 1024)
  *
  * @return tvError_t
  * @retval tvERROR_NONE             - Success
@@ -2144,15 +1961,15 @@ tvDataColor_t GetUSerWBValueOnInit(void);
  * 
  * @pre  tvInit() should be called before calling this API.
  */
-tvError_t SetColorTemperatureUser(int rgbType, int value);
+tvError_t SetColorTemperatureUser(tvRGBType_t rgbType, int value);
 
 /**
  * @brief Save color temperature.
  * 
  * This function saves the color temperature for user to driver.
  *
- * @param[in] rgbType               - RGB type(red, blue, green)
- * @param[in] value                 - Color temperature value
+ * @param[in] rgbType               - RGB type(tvRGBType_t)
+ * @param[in] value                 - Color temperature value(gain: 0 - 2047, offset: -1024 - 1024)
  *
  * @return tvError_t
  * @retval tvERROR_NONE             - Success
@@ -2161,35 +1978,7 @@ tvError_t SetColorTemperatureUser(int rgbType, int value);
  * 
  * @pre  tvInit() should be called before calling this API.
  */
-tvError_t SaveColorTemperatureUser(int rgbType, int value);
-
-/**
- * @brief Set backlight info.
- * 
- * This function updates the backlight info
- *
- * @param[in] backlightDefaults     - Backlight info.
- *
- * @return tvError_t
- * @retval tvERROR_NONE             - Success
- * @retval tvERROR_GENERAL          - When the backlight value us NULL
- * 
- * @pre  tvInit() should be called before calling this API.
- */
-tvError_t SetBacklightInfo(tvBacklightInfo_t *backlightDefaults);
-
-/**
- * @brief Get Driver BL value for current format.
- * 
- * This function returns the driver equivalent backlight for current backlight value.
- *
- * @param[in] backlight             - Backlight value(0 - 100)
- *
- * @return int
- * 
- * @pre  tvInit() should be called before calling this API.
- */
-int GetDriverEquivalentBLForCurrentFmt(int backlight);
+tvError_t SaveColorTemperatureUser(tvRGBType_t rgbType, int value);
 
 /**
  * @brief Get HLG mode.
@@ -2290,12 +2079,9 @@ tvError_t GetLocalDimmingLevel(int *localDimmingLevel);
  * 
  * This function saves the local dimming level value for the specific picture mode, hdr type and source type. @n
  * Currently SOURCE_INVALID(-1) is specified it will be treated as save to all sources.
- * @todo Add new enum value for sourceinput ALL in V2.
- * @todo sourcetype should be tv_source_input_t in V2
- * @todo hdr_type should be tvhdr_type_t in V2
  *
- * @param[in] sourceInput           - Source input value
- * @param[in] pq_mode               - PQ mode value(0 - 9)
+ * @param[in] sourceInput           - Source input value(tv_source_input_t)
+ * @param[in] pq_mode               - PQ mode value read from config file(0 - 9)
  * @param[in] hdr_type              - HDR type value(tvhdr_type_t)
  * @param[in] value                 - Value of the local dimming level(0 - 1)
  *
@@ -2306,50 +2092,16 @@ tvError_t GetLocalDimmingLevel(int *localDimmingLevel);
  * 
  * @pre  tvInit() should be called before calling this API.
  */
-tvError_t SaveLocalDimmingLevel(int sourceInput, int pq_mode,int hdr_type,int value);
-
-/**
- * @brief Set the EDID and dimming level
- * 
- * This function retrives the EDID and set dimming level through UpdateEDIDAndSetDimmingLevel() based @n
- * on the dimming mode and current video format set. @n
- * For SDR the  dimming level is always 0 irrespective of dimming mode
- *
- * @param[in] dimmingLevel          - Dimming mode level(local, fixed)
- *
- * @return tvError_t
- * @retval tvERROR_NONE             - Success
- * @retval tvERROR_GENERAL          - Interface is not initialized
- * 
- * @pre  tvInit() should be called before calling this API.
- */
-tvError_t UpdateEDIDAndSetDimmingLevel(int dimmingLevel);
-
-/**
- * @brief Get LDIM and EDID level
- * 
- * This function gets the LDIM and EDID level based on the dimming mode and current video format set
- * 
- * @param[in] dimmingMode           - Dimming mode(local, fixed)
- * @param[in] format                - HDR format type(tvhdr_type_t)
- * @param[out] dimmingLevel         - Dimming level value(0 or 1)
- * @param[out] edidLevel            - EDID value(0 or 1)
- * 
- * @pre  tvInit() should be called before calling this API.
- */
-void GetLDIMAndEDIDLevel(int dimmingMode,int format,int *dimmingLevel, int *edidLevel);
+tvError_t SaveLocalDimmingLevel(tv_source_input_t sourceInput, int pq_mode,tvhdr_type_t hdr_type,int value);
 
 /**
  * @brief Save low latency state to driver.
  * 
  * This function saves the low latency state for the specific picture mode, hdr_type and sourceInput. @n
  * Currently SOURCE_INVALID(-1) is specified it will be treated as save to all sources.
- * @todo Add new enum value for sourceinput ALL in V2.
- * @todo sourcetype should be tv_source_input_t in V2
- * @todo hdr_type should be tvhdr_type_t in V2
  *
- * @param[in] sourceInput           - Source input value
- * @param[in] pq_mode               - PQ mode value(0 - 9)
+ * @param[in] sourceInput           - Source input value(tv_source_input_t)
+ * @param[in] pq_mode               - PQ mode value read from config file(0 - 9)
  * @param[in] hdr_type              - HDR type value(tvhdr_type_t)
  * @param[in] value                 - Value of the low latency index(0 or 1)
  *
@@ -2360,7 +2112,7 @@ void GetLDIMAndEDIDLevel(int dimmingMode,int format,int *dimmingLevel, int *edid
  *
  * @pre  tvInit() should be called before calling this API.
  */
-tvError_t SaveLowLatencyState( int sourceInput, int pq_mode,int hdr_type,int value );
+tvError_t SaveLowLatencyState(tv_source_input_t sourceInput, int pq_mode,tvhdr_type_t hdr_type,int value );
 
 /**
  * @brief Set low latency state
