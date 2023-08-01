@@ -1335,9 +1335,8 @@ tvError_t GetTVSupportedHDR10Modes(pic_modes_t *dvModes[],unsigned short *count)
  * @brief Set Dynamic contrast.
  * 
  * This function enables/disables the dynamic contrast mode.
- * @todo The returntype should be void and parameter should be bool in V2.
  * 
- * @param[in] dynamicContrastEnable  - Dynamic contrast mode to be set(enabled, disabled)
+ * @param[in] mode  - Dynamic contrast mode to be enabled/disabled(true, false)
  *
  * @return tvError_t
  * @retval tvERROR_NONE              - Success
@@ -1347,15 +1346,14 @@ tvError_t GetTVSupportedHDR10Modes(pic_modes_t *dvModes[],unsigned short *count)
  * @pre  tvInit() should be called before calling this API.
  * @see GetDynamicContrast()
  */
-tvError_t SetDynamicContrast(const char *dynamicContrastEnable);
+tvError_t SetDynamicContrast(bool mode);
 
 /**
  * @brief Get Dynamic contrast mode.
  * 
  * This function returns whether dynamic contrast mode enabled/disabled.
- * @todo The returntype should be bool and parameter should be void in V2.
  *
- * @param[out] isDynamicContrastEnabled   - Current dynamic contrast mode(enabled, disabled)
+ * @param[out] mode        - Current dynamic contrast mode(true, false)
  *
  * @return tvError_t
  * @retval tvERROR_NONE                   - Success
@@ -1366,7 +1364,7 @@ tvError_t SetDynamicContrast(const char *dynamicContrastEnable);
  * @pre  tvInit() should be called before calling this API.
  * @see SetDynamicContrast()
  */
-tvError_t GetDynamicContrast(char *isDynamicContrastEnabled);
+tvError_t GetDynamicContrast(bool *mode);
 
 /**
  * @todo For all input/output values, if values are fixed then use enum only in V2
