@@ -33,16 +33,6 @@
 #ifndef _TV_TYPES_H
 #define _TV_TYPES_H
 
-/** 
- * @todo incorrect usage of enum, it has to be hash define in V2
- * @todo enum name should end with _e in V2
- * @todo need to prefix all enum with tvSettings_ in V2
- * @todo change the int to inttypes variables  in V2
- * @todo Add enum MAX for all exposed enums in V2.
- * @todo Do not expose enum and struct that are not used by application in V2
- * @todo Check the naming of enum and struct(maintain caps for start of word) in V2
- */
-
 #ifdef __cplusplus
 extern "C"
 {
@@ -74,10 +64,6 @@ typedef enum
     tvBacklightMode_INVALID = 0x08            //!< backlight mode is invalid
 }tvBacklightMode_t;
 
-/**
- * @todo Name of enum looks confusing changes to tvVideoFormat_t in V2
- * Enumeration defining supported HDR video formats
- */
 typedef enum
 {
     tvVideoHDRFormat_NONE= 0x00,                  //!< No video format 
@@ -395,9 +381,6 @@ typedef enum tvPQParameterIndex
     PQ_PARAM_DIMMINGMODE                       //!< Param is dimming mode
 }tvPQParameterIndex_t;
 
-/**
- * @todo Name of enum looks confusing changes to tvHDRMode_t in V2
- */
 /**
  *  Enumeration defining the various supported dolby modes 
  */

@@ -41,9 +41,6 @@ extern "C"
 {
 #endif
 
-/**
- * @todo Need not expose this header file - takeup in V2
- */
 #define ERROR(text, ...) do {\
         printf("%s[%d] - %s: " text, __FUNCTION__, __LINE__, "ERROR", ##__VA_ARGS__);}while(0); //!< Macro to log ERROR messages
 
