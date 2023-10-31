@@ -202,6 +202,7 @@ tvError_t tvInit();
  * 
  * @return tvError_t 
  * @retval tvERROR_NONE              - Success
+* @retval tvERROR_INVALID_STATE      - Interface is not terminated
  * 
  */
 tvError_t tvTerm();
@@ -215,6 +216,7 @@ tvError_t tvTerm();
  *
  * @return tvError_t
  * @retval tvERROR_NONE            - Success
+ * @retval tvERROR_INVALID_PARAM   - When the parameter is invalid
  * @retval tvERROR_INVALID_STATE   - Interface is not initialized
  * 
  * @pre  tvInit() should be called before calling this API.
@@ -249,6 +251,7 @@ tvError_t SetTVPictureMode(const char * pictureMode);
  * @return tvError_t
  * @retval tvERROR_NONE            - Success
  * @retval tvERROR_GENERAL         - Error while getting backlight value
+ * @retval tvERROR_INVALID_PARAM   - When the parameter is invalid
  * @retval tvERROR_INVALID_STATE   - Interface is not initialized
  * 
  * @pre  tvInit() should be called before calling this API.
@@ -301,6 +304,7 @@ tvError_t SetBrightness(int brightness);
  *
  * @return tvError_t
  * @retval tvERROR_NONE              - Success
+ * @retval tvERROR_INVALID_PARAM     - When the parameter is invalid
  * @retval tvERROR_INVALID_STATE     - Interface is not initialized
  * 
  * @pre  tvInit() should be called before calling this API.
@@ -334,6 +338,7 @@ tvError_t SetContrast(int contrast);
  *
  * @return tvError_t
  * @retval tvERROR_NONE               - Success
+ * @retval tvERROR_INVALID_PARAM      - When the parameter is invalid
  * @retval tvERROR_INVALID_STATE      - Interface is not initialized
  * 
  * @pre  tvInit() should be called before calling this API.
@@ -368,6 +373,7 @@ tvError_t SetSharpness(int sharpness);
  *
  * @return tvError_t
  * @retval tvERROR_NONE               - Success 
+ * @retval tvERROR_INVALID_PARAM      - When the parameter is invalid
  * @retval tvERROR_INVALID_STATE      - Interface is not initialized
  * 
  * @pre  tvInit() should be called before calling this API.
@@ -402,6 +408,7 @@ tvError_t SetSaturation(int saturation);
  *
  * @return tvError_t
  * @retval tvERROR_NONE                - Success
+ * @retval tvERROR_INVALID_PARAM       - When the parameter is invalid
  * @retval tvERROR_INVALID_STATE       - Interface is not initialized
  * 
  * @pre  tvInit() should be called before calling this API.
@@ -436,6 +443,7 @@ tvError_t SetHue(int hue);
  *
  * @return tvError_t
  * @retval tvERROR_NONE               - Success
+ * @retval tvERROR_INVALID_PARAM      - When the parameter is invalid
  * @retval tvERROR_INVALID_STATE      - Interface is not initialized
  * 
  * @pre  tvInit() should be called before calling this API.
@@ -469,6 +477,7 @@ tvError_t SetColorTemperature(tvColorTemp_t colorTemp);
  *
  * @return tvError_t
  * @retval tvERROR_NONE              - Success
+ * @retval tvERROR_INVALID_PARAM     - When the parameter is invalid
  * @retval tvERROR_INVALID_STATE     - Interface is not initialized
  * 
  * @pre  tvInit() should be called before calling this API.
@@ -501,6 +510,7 @@ tvError_t SetAspectRatio(tvDisplayMode_t dispMode);
  * 
  * @return tvError_t
  * @retval tvERROR_NONE             - Success
+ * @retval tvERROR_INVALID_PARAM    - When the parameter is invalid
  * @retval tvERROR_INVALID_STATE    - Interface is not initialized
  * 
  * @pre  tvInit() should be called before calling this API.
@@ -516,6 +526,7 @@ tvError_t GetAspectRatio(tvDisplayMode_t *dispMode);
  *
  * @return tvError_t
  * @retval tvERROR_NONE               - Success
+  * @retval tvERROR_INVALID_PARAM     - When the parameter is invalid
  * @retval tvERROR_INVALID_STATE      - Interface is not initialized
  * 
  * @pre  tvInit() should be called before calling this API.
@@ -532,6 +543,7 @@ tvError_t GetSupportedBacklightModes(int *blModes);
  *
  * @return tvError_t
  * @retval tvERROR_NONE              - Success
+ * @retval tvERROR_INVALID_PARAM     - When the parameter is invalid
  * @retval tvERROR_INVALID_STATE     - Interface is not initialized
  * 
  * @pre  tvInit() should be called before calling this API.
@@ -567,6 +579,8 @@ tvError_t SetCurrentBacklightMode(tvBacklightMode_t blMode);
  * 
  * @return tvError_t
  * @retval tvERROR_NONE                      - Success
+ * @retval tvERROR_INVALID_PARAM             - When the parameter is invalid
+ * @retval tvERROR_INVALID_STATE             - Interface is not initialized
  * 
  * @pre  tvInit() should be called before calling this API.
  */
@@ -581,6 +595,7 @@ tvError_t GetCurrentVideoFormat(tvVideoHDRFormat_t *format);
  *
  * @return tvError_t
  * @retval tvERROR_NONE                     - Success
+ * @retval tvERROR_INVALID_PARAM            - When the parameter is invalid
  * @retval tvERROR_INVALID_STATE            - Interface is not initialized
  * 
  * @pre  tvInit() should be called before calling this API.
@@ -596,6 +611,7 @@ tvError_t GetVideoResolution(tvResolutionParam_t *res);
  *
  * @return tvError_t
  * @retval tvERROR_NONE                     - Success
+ * @retval tvERROR_INVALID_PARAM            - When the parameter is invalid
  * @retval tvERROR_INVALID_STATE            - Interface is not initialized
  * 
  * @pre  tvInit() should be called before calling this API.
@@ -614,6 +630,7 @@ tvError_t GetVideoFrameRate(tvVideoFrameRate_t *format);
  * @retval tvERROR_NONE                    - Success
  * @retval tvERROR_GENERAL                 - Wakeup Configuration write failed
  * @retval tvERROR_INVALID_PARAM           - When the set value is not valid
+ * @retval tvERROR_INVALID_STATE           - Interface is not initialized 
  * 
  * @pre  tvInit() should be called before calling this API.
 */
@@ -631,6 +648,7 @@ tvError_t setWakeupConfig(const tvWakeupSrcType_t src_type, const bool value);
  * @return tvError_t
  * @retval tvERROR_NONE             - Success
  * @retval tvERROR_GENERAL          - Error while setting RGB values
+ * @retval tvERROR_INVALID_PARAM    - When the set value is not valid
  * @retval tvERROR_INVALID_STATE    - Interface is not initialized
  * 
  * @pre  tvInit() should be called before calling this API.
@@ -648,6 +666,7 @@ tvError_t SetRGBPattern(int r,int g, int b) ;
  * 
  * @return tvError_t
  * @retval tvERROR_NONE             - Success
+ * @retval tvERROR_INVALID_PARAM    - When the parameter is invalid
  * @retval tvERROR_INVALID_STATE    - Interface is not initialized
  * 
  * @pre  tvInit() should be called before calling this API.
@@ -663,6 +682,7 @@ tvError_t GetRGBPattern(int *r,int *g,int *b);
  * @return tvError_t
  * @retval tvERROR_NONE             - Success
  * @retval tvERROR_GENERAL          - Error while setting gray pattern values
+ * @retval tvERROR_INVALID_PARAM    - When the set value is not valid
  * @retval tvERROR_INVALID_STATE    - Interface is not initialized
  * 
  * @pre  tvInit() should be called before calling this API.
@@ -679,6 +699,7 @@ tvError_t SetGrayPattern(int YUVValue);
  * @return tvError_t
  * @retval tvERROR_NONE             - Success
  * @retval tvERROR_GENERAL          - Error while getting gray pattern values
+ * @retval tvERROR_INVALID_PARAM    - When the parameter is invalid
  * @retval tvERROR_INVALID_STATE    - Interface is not initialized
  * 
  * @pre  tvInit() should be called before calling this API.
@@ -1139,6 +1160,7 @@ tvError_t GetColorTemp_B_post_offset_onSource(tvColorTemp_t colorTemp, int* bpos
  * @return tvError_t
  * @retval tvERROR_NONE                   - Success
  * @retval tvERROR_GENERAL                - When the picture modes count is 0
+ * @retval tvERROR_INVALID_PARAM          - When the parameter value is invalid
  * @retval tvERROR_INVALID_STATE          - Interface is not initialized
  * 
  * @pre  tvInit() should be called before calling this API.
@@ -1200,6 +1222,7 @@ void RegisterVideoFrameRateChangeCB(tvVideoFrameRateCallbackData& cbData);
  * @return tvError_t
  * @retval tvERROR_NONE             - Success
  * @retval tvERROR_GENERAL          - When the count of supported modes is 0
+ * @retval tvERROR_INVALID_PARAM    - When the parameter value is invalid
  * @retval tvERROR_INVALID_STATE    - Interface is not initialized
  * 
  * @pre  tvInit() should be called before calling this API.
@@ -1235,6 +1258,7 @@ tvError_t SetTVDolbyVisionMode(const char * dolbyMode);
  * @retval tvERROR_NONE               - Success
  * @retval tvERROR_INVALID_STATE      - Interface is not initialized
  * @retval tvERROR_GENERAL            - Error while getiing DV mode
+ * @retval tvERROR_INVALID_PARAM          - When the parameter value is invalid
  * 
  * @pre  tvInit() should be called before calling this API.
  * @see SetTVDolbyVisionMode()
@@ -1286,6 +1310,7 @@ tvError_t SetTVHDR10Mode(const char * hdr10Mode);
  * @return tvError_t
  * @retval tvERROR_NONE            - Success
  * @retval tvERROR_GENERAL         - When the count of supported modes is 0
+ * @retval tvERROR_INVALID_PARAM   - When the parameter value is invalid
  * 
  * @pre  tvInit() should be called before calling this API.
  */
@@ -1302,6 +1327,7 @@ tvError_t GetTVSupportedHLGModes(pic_modes_t *dvModes[],unsigned short *count);
  * @return tvError_t
  * @retval tvERROR_NONE           - Success
  * @retval tvERROR_GENERAL        - When the count of supported modes is 0
+ * @retval tvERROR_INVALID_PARAM  - When the parameter value is invalid
  *
  * @pre  tvInit() should be called before calling this API.
  */
@@ -1334,6 +1360,7 @@ tvError_t SetDynamicContrast(bool mode);
  * @return tvError_t
  * @retval tvERROR_NONE                   - Success
  * @retval tvERROR_GENERAL                - Error while getting dynamic contrast
+ * @retval tvERROR_INVALID_PARAM          - When the parameter value is invalid
  * @retval tvERROR_INVALID_STATE          - Interface is not initialized
 
  *
@@ -1356,6 +1383,7 @@ tvError_t GetDynamicContrast(bool *mode);
  * @return tvError_t
  * @retval tvERROR_NONE                   - Success
  * @retval tvERROR_GENERAL                - Error while setting color temperature
+ * @retval tvERROR_INVALID_PARAM          - When the set value is not valid
  * @retval tvERROR_INVALID_STATE          - When the input value is not valid
  * 
  * @pre  tvInit() should be called before calling this API.
@@ -1375,6 +1403,7 @@ tvError_t setWBctrl(char *inputSrc, char *colorTemp,char *color, char *ctrl, int
  *
  * @return tvError_t
  * @retval tvERROR_NONE                    - Success
+ * @retval tvERROR_INVALID_PARAM          - When the parameter value is invalid
  * @retval tvERROR_INVALID_STATE           - When the input value is not valid
  * 
  * @pre  tvInit() should be called before calling this API.
@@ -1392,7 +1421,9 @@ tvError_t getWBctrl(char *inputSrc, char *colortemp, char *color, char *ctrl, in
  * @param[out] input                - Input source vector(TV, HDMI, AV)
  *
  * @return tvError_t
- * @retval tvERROR_NONE                                                         - Success
+ * @retval tvERROR_NONE                    - Success
+ * @retval tvERROR_INVALID_PARAM           - When the parameter value is invalid
+ * @retval tvERROR_INVALID_STATE           - When the input value is not valid
  * 
  * @pre  tvInit() should be called before calling this API.
  */
@@ -1424,6 +1455,7 @@ tvError_t enableWBmode(bool value);
  *
  * @return tvError_t
  * @retval tvERROR_NONE                   - Success
+ * @retval tvERROR_INVALID_PARAM          - When the parameter value is invalid
  * @retval tvERROR_INVALID_STATE          - Interface is not initialized
  * 
  * @pre  tvInit() should be called before calling this API.
@@ -1457,6 +1489,7 @@ tvError_t SetCurrentComponentSaturation(tvDataComponentColor_t blSaturationColor
  *
  * @return tvError_t
  * @retval tvERROR_NONE                 - Success
+ * @retval tvERROR_INVALID_PARAM           - When the parameter value is invalid
  * @retval tvERROR_INVALID_STATE        - Interface is not initialized
  * 
  * @pre  tvInit() should be called before calling this API.
@@ -1491,6 +1524,7 @@ tvError_t SetCurrentComponentHue(tvDataComponentColor_t blHueColor, int hue);
  *
  * @return tvError_t
  * @retval tvERROR_NONE               - Success
+ * @retval tvERROR_INVALID_PARAM      - When the parameter value is invalid
  * @retval tvERROR_INVALID_STATE      - Interface is not initialized
  * 
  * @pre  tvInit() should be called before calling this API.
@@ -1525,6 +1559,7 @@ tvError_t SetCurrentComponentLuma(tvDataComponentColor_t blLumaColor, int Luma);
  *
  * @return tvError_t
  * @retval tvERROR_NONE            - Success
+ * @retval tvERROR_INVALID_PARAM   - When the parameter value is invalid
  * @retval tvERROR_INVALID_STATE   - Interface is not initialized
  *
  * @pre  tvInit() should be called before calling this API.
@@ -1542,6 +1577,7 @@ tvError_t GetCurrentComponentLuma(tvDataComponentColor_t blLumaColor, int *Luma)
  * @return tvError_t
  * @retval tvERROR_NONE            - Success
  * @retval tvERROR_GENERAL         - When the supported count is 0
+ * @retval tvERROR_INVALID_PARAM   - When the parameter value is invalid
  * @retval tvERROR_INVALID_STATE   - Interface is not initialized
 
  * 
@@ -1606,6 +1642,8 @@ tvVideoHDRFormat_t GetCurrentContentFormat(void);
  * 
  * @return tvError_t
  * @retval tvERROR_NONE            - Success
+ * @retval tvERROR_INVALID_PARAM   - When the parameter value is invalid
+ * @retval tvERROR_INVALID_STATE   - Interface is not initialized
  *
  * @pre  tvInit() should be called before calling this API.
  */
@@ -2037,6 +2075,7 @@ tvError_t SetLocalDimmingLevel(int localDimmingLevel);
  *
  * @return tvError_t
  * @retval tvERROR_NONE             - Success
+ * @retval tvERROR_INVALID_PARAM    - When the parameter value is invalid
  * @retval tvERROR_INVALID_STATE    - Interface is not initialized
  * 
  * @pre  tvInit() should be called before calling this API.
@@ -2109,6 +2148,7 @@ tvError_t SetLowLatencyState( int lowLatencyIndex );
  * @return tvError_t
  * @retval tvERROR_NONE             - Success
  * @retval tvERROR_GENERAL          - Error while setting latency state
+ * @retval tvERROR_INVALID_PARAM    - When the parameter value is invalid
  * @retval tvERROR_INVALID_STATE    - Interface is not initialized
  *
  * @pre  tvInit() should be called before calling this API.
@@ -2148,6 +2188,7 @@ tvError_t SetGammaTable(unsigned short *pData_R, unsigned short *pData_G, unsign
  * @return tvError_t
  * @retval tvERROR_NONE             - Success
  * @retval tvERROR_GENERAL          - Error while geting the gamma values
+ * @retval tvERROR_INVALID_PARAM    - When the parameter value is invalid
  * @retval tvERROR_INVALID_STATE    - Interface is not initialized
  *
  * @pre  tvInit() should be called before calling this API.
