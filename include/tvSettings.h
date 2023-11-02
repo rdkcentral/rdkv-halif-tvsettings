@@ -1177,9 +1177,15 @@ tvError_t GetTVSupportedPictureModes(pic_modes_t *pictureModes[],unsigned short 
  *
  * @param[in] cbData                - Callback data
  * 
+ * @return tvError_t
+ * @retval tvERROR_NONE                      - Success
+ * @retval tvERROR_INVALID_PARAM             - When the parameter value is invalid
+ * @retval tvERROR_INVALID_STATE             - Interface is not initialized
+ * @retval tvERROR_OPERATION_NOT_SUPPORTED   - Operation is not supported
+ *
  * @pre  tvInit() should be called before calling this API.
  */
-void RegisterVideoFormatChangeCB(tvVideoFormatCallbackData& cbData);
+tvError_t RegisterVideoFormatChangeCB(tvVideoFormatCallbackData& cbData);
 
 /**
  * @brief Register VideoContent FMM change callback.
@@ -1188,9 +1194,15 @@ void RegisterVideoFormatChangeCB(tvVideoFormatCallbackData& cbData);
  *
  * @param[in] cbData                - Callback data
  *
+ * @return tvError_t
+ * @retval tvERROR_NONE                      - Success
+ * @retval tvERROR_INVALID_PARAM             - When the parameter value is invalid
+ * @retval tvERROR_INVALID_STATE             - Interface is not initialized
+ * @retval tvERROR_OPERATION_NOT_SUPPORTED   - Operation is not supported
+ *
  * @pre  tvInit() should be called before calling this API.
  */
-void RegisterVideoContentChangeCB(tvVideoContentCallbackData &cbData);
+tvError_t RegisterVideoContentChangeCB(tvVideoContentCallbackData &cbData);
 
 /**
  * @brief Register Video resolution change callback.
@@ -1199,9 +1211,15 @@ void RegisterVideoContentChangeCB(tvVideoContentCallbackData &cbData);
  *
  * @param[in] cbData                - Callback data
  *
+ * @return tvError_t
+ * @retval tvERROR_NONE                      - Success
+ * @retval tvERROR_INVALID_PARAM             - When the parameter value is invalid
+ * @retval tvERROR_INVALID_STATE             - Interface is not initialized
+ * @retval tvERROR_OPERATION_NOT_SUPPORTED   - Operation is not supported
+ *
  * @pre  tvInit() should be called before calling this API.
  */
-void RegisterVideoResolutionChangeCB(tvVideoResolutionCallbackData& cbData);
+tvError_t RegisterVideoResolutionChangeCB(tvVideoResolutionCallbackData& cbData);
 
 /**
  * @brief Register Video resolution change callback.
@@ -1210,9 +1228,15 @@ void RegisterVideoResolutionChangeCB(tvVideoResolutionCallbackData& cbData);
  *
  * @param[in] cbData                - Callback function
  *
+ * @return tvError_t
+ * @retval tvERROR_NONE                      - Success
+ * @retval tvERROR_INVALID_PARAM             - When the parameter value is invalid
+ * @retval tvERROR_INVALID_STATE             - Interface is not initialized
+ * @retval tvERROR_OPERATION_NOT_SUPPORTED   - Operation is not supported
+ *
  * @pre  tvInit() should be called before calling this API.
  */
-void RegisterVideoFrameRateChangeCB(tvVideoFrameRateCallbackData& cbData);
+tvError_t RegisterVideoFrameRateChangeCB(tvVideoFrameRateCallbackData& cbData);
 
 /**
  * @brief Get supported DV modes.
