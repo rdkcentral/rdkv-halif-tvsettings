@@ -492,9 +492,10 @@ tvError_t GetColorTemperature(tvColorTemp_t *colorTemp);
  * @param[in] dispMode                - Display mode value(tvDisplayMode_t)
  *
  * @return tvError_t
- * @retval tvERROR_NONE               - Success
- * @retval tvERROR_GENERAL            - When thread creation failure
- * @retval tvERROR_INVALID_STATE      - Interface is not initialized
+ * @retval tvERROR_NONE                      - Success
+ * @retval tvERROR_GENERAL                   - When thread creation failure
+ * @retval tvERROR_INVALID_STATE             - Interface is not initialized
+ * @retval tvERROR_OPERATION_NOT_SUPPORTED   - Operation is not supported
  * 
  * @pre  tvInit() should be called before calling this API.
  * @see GetAspectRatio()
@@ -509,9 +510,10 @@ tvError_t SetAspectRatio(tvDisplayMode_t dispMode);
  * @param[out] dispMode             - Display mode value(tvDisplayMode_t)
  * 
  * @return tvError_t
- * @retval tvERROR_NONE             - Success
- * @retval tvERROR_INVALID_PARAM    - When the parameter is invalid
- * @retval tvERROR_INVALID_STATE    - Interface is not initialized
+ * @retval tvERROR_NONE                      - Success
+ * @retval tvERROR_INVALID_PARAM             - When the parameter is invalid
+ * @retval tvERROR_INVALID_STATE             - Interface is not initialized
+ * @retval tvERROR_OPERATION_NOT_SUPPORTED   - Operation is not supported
  * 
  * @pre  tvInit() should be called before calling this API.
  * @see SetAspectRatio()
@@ -627,10 +629,11 @@ tvError_t GetVideoFrameRate(tvVideoFrameRate_t *format);
  * @param[in] value                        - Enable/disable wakeup source
  * 
  * @return tvError_t
- * @retval tvERROR_NONE                    - Success
- * @retval tvERROR_GENERAL                 - Wakeup Configuration write failed
- * @retval tvERROR_INVALID_PARAM           - When the set value is not valid
- * @retval tvERROR_INVALID_STATE           - Interface is not initialized 
+ * @retval tvERROR_NONE                      - Success
+ * @retval tvERROR_GENERAL                   - Wakeup Configuration write failed
+ * @retval tvERROR_INVALID_PARAM             - When the set value is not valid
+ * @retval tvERROR_INVALID_STATE             - Interface is not initialized
+ * @retval tvERROR_OPERATION_NOT_SUPPORTED   - Operation is not supported
  * 
  * @pre  tvInit() should be called before calling this API.
 */
@@ -1220,10 +1223,11 @@ void RegisterVideoFrameRateChangeCB(tvVideoFrameRateCallbackData& cbData);
  * @param[out] count                - Count  of available DV modes.(max count value is 2)
  *
  * @return tvError_t
- * @retval tvERROR_NONE             - Success
- * @retval tvERROR_GENERAL          - When the count of supported modes is 0
- * @retval tvERROR_INVALID_PARAM    - When the parameter value is invalid
- * @retval tvERROR_INVALID_STATE    - Interface is not initialized
+ * @retval tvERROR_NONE                      - Success
+ * @retval tvERROR_GENERAL                   - When the count of supported modes is 0
+ * @retval tvERROR_INVALID_PARAM             - When the parameter value is invalid
+ * @retval tvERROR_INVALID_STATE             - Interface is not initialized
+ * @retval tvERROR_OPERATION_NOT_SUPPORTED   - Operation is not supported
  * 
  * @pre  tvInit() should be called before calling this API.
  */
@@ -1237,10 +1241,11 @@ tvError_t GetTVSupportedDVModes(pic_modes_t *dvModes[],unsigned short *count);
  * @param[in] dolbyMode              - Dolby vision mode to be set(dark, bright)
  *
  * @return tvError_t
- * @retval tvERROR_NONE              - Success
- * @retval tvERROR_GENERAL           - Error while setting DV mode
- * @retval tvERROR_INVALID_PARAM     - When the set value is not valid
- * @retval tvERROR_INVALID_STATE     - Interface is not initialized
+ * @retval tvERROR_NONE                      - Success
+ * @retval tvERROR_GENERAL                   - Error while setting DV mode
+ * @retval tvERROR_INVALID_PARAM             - When the set value is not valid
+ * @retval tvERROR_INVALID_STATE             - Interface is not initialized
+ * @retval tvERROR_OPERATION_NOT_SUPPORTED   - Operation is not supported
  * 
  * @pre  tvInit() should be called before calling this API.
  * @see GetTVDolbyVisionMode()
@@ -1255,10 +1260,11 @@ tvError_t SetTVDolbyVisionMode(const char * dolbyMode);
  * @param[out] dolbyMode              - Current Dolby vision mode(dark, bright)
  *
  * @return tvError_t
- * @retval tvERROR_NONE               - Success
- * @retval tvERROR_INVALID_STATE      - Interface is not initialized
- * @retval tvERROR_GENERAL            - Error while getiing DV mode
- * @retval tvERROR_INVALID_PARAM          - When the parameter value is invalid
+ * @retval tvERROR_NONE                      - Success
+ * @retval tvERROR_INVALID_STATE             - Interface is not initialized
+ * @retval tvERROR_GENERAL                   - Error while getiing DV mode
+ * @retval tvERROR_INVALID_PARAM             - When the parameter value is invalid
+ * @retval tvERROR_OPERATION_NOT_SUPPORTED   - Operation is not supported
  * 
  * @pre  tvInit() should be called before calling this API.
  * @see SetTVDolbyVisionMode()
@@ -1273,10 +1279,11 @@ tvError_t GetTVDolbyVisionMode(char *dolbyMode);
  * @param[in] hlgMode               - HLG mode to be set(dark, bright)
  *
  * @return tvError_t
- * @retval tvERROR_NONE             - Success
- * @retval tvERROR_GENERAL          - Error while setting HLG mode
- * @retval tvERROR_INVALID_PARAM    - When the set value is not valid
- * @retval tvERROR_INVALID_STATE    - Interface is not initialized
+ * @retval tvERROR_NONE                      - Success
+ * @retval tvERROR_GENERAL                   - Error while setting HLG mode
+ * @retval tvERROR_INVALID_PARAM             - When the set value is not valid
+ * @retval tvERROR_INVALID_STATE             - Interface is not initialized
+ * @retval tvERROR_OPERATION_NOT_SUPPORTED   - Operation is not supported
  * 
  * @pre  tvInit() should be called before calling this API.
  */
@@ -1290,10 +1297,11 @@ tvError_t SetTVHLGMode(const char * hlgMode);
  * @param[in] hdr10Mode             - HDR10 mode to be set(dark, bright)
  *
  * @return tvError_t
- * @retval tvERROR_NONE             - Success
- * @retval tvERROR_GENERAL          - Error while setting HDR mode
- * @retval tvERROR_INVALID_PARAM    - When the set value is not valid
- * @retval tvERROR_INVALID_STATE    - Interface is not initialized
+ * @retval tvERROR_NONE                      - Success
+ * @retval tvERROR_GENERAL                   - Error while setting HDR mode
+ * @retval tvERROR_INVALID_PARAM             - When the set value is not valid
+ * @retval tvERROR_INVALID_STATE             - Interface is not initialized
+ * @retval tvERROR_OPERATION_NOT_SUPPORTED   - Operation is not supported
  * 
  * @pre  tvInit() should be called before calling this API.
  */
@@ -1308,9 +1316,10 @@ tvError_t SetTVHDR10Mode(const char * hdr10Mode);
  * @param[out] count               - Count of supported HLG modes.(max count value is 2)
  *
  * @return tvError_t
- * @retval tvERROR_NONE            - Success
- * @retval tvERROR_GENERAL         - When the count of supported modes is 0
- * @retval tvERROR_INVALID_PARAM   - When the parameter value is invalid
+ * @retval tvERROR_NONE                      - Success
+ * @retval tvERROR_GENERAL                   - When the count of supported modes is 0
+ * @retval tvERROR_INVALID_PARAM             - When the parameter value is invalid
+ * @retval tvERROR_OPERATION_NOT_SUPPORTED   - Operation is not supported
  * 
  * @pre  tvInit() should be called before calling this API.
  */
@@ -1325,9 +1334,10 @@ tvError_t GetTVSupportedHLGModes(pic_modes_t *dvModes[],unsigned short *count);
  * @param[out] count              - Count of supported hdr10modes.(max count value is 2)
  *
  * @return tvError_t
- * @retval tvERROR_NONE           - Success
- * @retval tvERROR_GENERAL        - When the count of supported modes is 0
- * @retval tvERROR_INVALID_PARAM  - When the parameter value is invalid
+ * @retval tvERROR_NONE                      - Success
+ * @retval tvERROR_GENERAL                   - When the count of supported modes is 0
+ * @retval tvERROR_INVALID_PARAM             - When the parameter value is invalid
+ * @retval tvERROR_OPERATION_NOT_SUPPORTED   - Operation is not supported
  *
  * @pre  tvInit() should be called before calling this API.
  */
@@ -1663,7 +1673,7 @@ tvError_t GetSupportedContentFormats(unsigned int * contentFormats,unsigned shor
  * Currently SOURCE_INVALID(-1) is specified it will be treated as save to all sources.
  *
  * @param[in] sourceInput           - Source input value(tv_source_input_t)
- * @param[in] pq_mode               - PQ mode value read from config file(0 - 9)
+ * @param[in] pq_mode               - PQ mode value read from config file 
  * @param[in] hdr_type              - HDR type value(tvhdr_type_t)
  * @param[in] value                 - Value of the color temperature(tvColorTemp_t)
  *                                    
@@ -1684,7 +1694,7 @@ tvError_t SaveColorTemperature(tv_source_input_t sourceInput, int pq_mode,tvhdr_
  * Currently SOURCE_INVALID(-1) is specified it will be treated as save to all sources.
  * 
  * @param[in] sourceInput           - Source input value(tv_source_input_t)
- * @param[in] pq_mode               - PQ mode value read from config file(0 - 9)
+ * @param[in] pq_mode               - PQ mode value read from config file 
  * @param[in] hdr_type              - HDR type value(tvhdr_type_t)
  * @param[in] value                 - Value of the backlight(0 - 100)
  *                                    
@@ -1726,7 +1736,7 @@ tvError_t SaveContrast(tv_source_input_t sourceInput, int pq_mode,tvhdr_type_t h
  * Currently SOURCE_INVALID(-1) is specified it will be treated as save to all sources.
  * 
  * @param[in] sourceInput           - Source input value(tv_source_input_t)
- * @param[in] pq_mode               - PQ mode value read from config file(0 - 9)
+ * @param[in] pq_mode               - PQ mode value read from config file 
  * @param[in] hdr_type              - HDR type value(tvhdr_type_t)
  * @param[in] value                 - Value of the saturation(0 - 100)
  *
@@ -1747,7 +1757,7 @@ tvError_t SaveSaturation(tv_source_input_t sourceInput, int pq_mode,tvhdr_type_t
  * Currently SOURCE_INVALID(-1) is specified it will be treated as save to all sources.
  * 
  * @param[in] sourceInput           - Source input value(tv_source_input_t)
- * @param[in] pq_mode               - PQ mode value read from config file(0 - 9)
+ * @param[in] pq_mode               - PQ mode value read from config file 
  * @param[in] hdr_type              - HDR type value(tvhdr_type_t)
  * @param[in] value                 - Value of the sharpness(0 - 100)
  *
@@ -1768,7 +1778,7 @@ tvError_t SaveSharpness(tv_source_input_t sourceInput, int pq_mode,tvhdr_type_t 
  * Currently SOURCE_INVALID(-1) is specified it will be treated as save to all sources.
  *
  * @param[in] sourceInput           - Source input value(tv_source_input_t)
- * @param[in] pq_mode               - PQ mode value read from config file(0 - 9)
+ * @param[in] pq_mode               - PQ mode value read from config file 
  * @param[in] hdr_type              - HDR type value(tvhdr_type_t)
  * @param[in] value                 - Value of the brightness(0 - 100)
  *
@@ -1789,7 +1799,7 @@ tvError_t SaveBrightness(tv_source_input_t sourceInput, int pq_mode,tvhdr_type_t
  * Currently SOURCE_INVALID(-1) is specified it will be treated as save to all sources.
  *
  * @param[in] sourceInput           - Source input value(tv_source_input_t)
- * @param[in] pq_mode               - PQ mode value read from config file(0 - 9)
+ * @param[in] pq_mode               - PQ mode value read from config file 
  * @param[in] hdr_type              - HDR type value(tvhdr_type_t)
  * @param[in] value                 - Value of the hue(0 - 100)
  *
@@ -1810,7 +1820,7 @@ tvError_t SaveHue(tv_source_input_t sourceInput, int pq_mode,tvhdr_type_t hdr_ty
  * Currently SOURCE_INVALID(-1) is specified it will be treated as save to all sources.
  *
  * @param[in] sourceInput           - Source input value(tv_source_input_t)
- * @param[in] pq_mode               - PQ mode value read from config file(0 - 9)
+ * @param[in] pq_mode               - PQ mode value read from config file 
  * @param[in] hdr_type              - HDR type value(tvhdr_type_t)
  * @param[in] value                 - Value of the dynamic backlight(tvDimmingMode_t)
  *
@@ -1831,7 +1841,7 @@ tvError_t SaveDynamicBacklight(tv_source_input_t sourceInput, int pq_mode,tvhdr_
  * Currently SOURCE_INVALID(-1) is specified it will be treated as save to all sources.
  *
  * @param[in] sourceInput           - Source input value(tv_source_input_t)
- * @param[in] pq_mode               - PQ mode value read from config file(0 - 9)
+ * @param[in] pq_mode               - PQ mode value read from config file 
  * @param[in] hdr_type              - HDR type value(tvhdr_type_t)
  * @param[in] value                 - Value of the display mode(tvDisplayMode_t)
  *
@@ -1852,7 +1862,7 @@ tvError_t SaveDisplayMode(tv_source_input_t sourceInput, int pq_mode,tvhdr_type_
  * Currently SOURCE_INVALID(-1) is specified it will be treated as save to all sources.
  *
  * @param[in] sourceInput           - Source input value(tv_source_input_t)
- * @param[in] pq_mode               - PQ mode value read from config file(0 - 9)
+ * @param[in] pq_mode               - PQ mode value read from config file 
  * @param[in] hdr_type              - HDR type value(tvhdr_type_t)
  * @param[in] tunnel_type           - Tunnel type value(tvCMS_tunel_t)
  * @param[in] color_type            - Color type value(tvcomponent_color_type_t)
@@ -1876,7 +1886,7 @@ tvError_t SaveCMS(tv_source_input_t sourceInput, int pq_mode,tvhdr_type_t hdr_ty
  * Currently SOURCE_INVALID(-1) is specified it will be treated as save to all sources.
  *
  * @param[in] sourceInput           - Source input value(tv_source_input_t)
- * @param[in] pq_mode               - PQ mode value read from config file(0 - 9)
+ * @param[in] pq_mode               - PQ mode value read from config file 
  * @param[in] hdr_type              - HDR type value(tvhdr_type_t)
  * @param[in] value                 - Value of the dolby mode(dark, bright)
  *
@@ -1926,7 +1936,7 @@ tvError_t GetCurrentPQIndex(int *pqIndex);
  * 
  * This function gets all the supported picture mode index.
  *
- * @param[out]  pic_mode_index      - List of all supported  pic mode index  (0 to 9)
+ * @param[out]  pic_mode_index      - List of all supported  pic mode index  ( 0 to 9)
  * 
  * @pre  tvInit() should be called before calling this API.
  */
@@ -2128,7 +2138,7 @@ tvError_t GetLocalDimmingLevel(int *localDimmingLevel);
  * Currently SOURCE_INVALID(-1) is specified it will be treated as save to all sources.
  *
  * @param[in] sourceInput           - Source input value(tv_source_input_t)
- * @param[in] pq_mode               - PQ mode value read from config file(0 - 9)
+ * @param[in] pq_mode               - PQ mode value read from config file 
  * @param[in] hdr_type              - HDR type value(tvhdr_type_t)
  * @param[in] value                 - Value of the local dimming level(0 - 1)
  *
@@ -2150,7 +2160,7 @@ tvError_t SaveLocalDimmingLevel(tv_source_input_t sourceInput, int pq_mode,tvhdr
  * Currently SOURCE_INVALID(-1) is specified it will be treated as save to all sources.
  *
  * @param[in] sourceInput           - Source input value(tv_source_input_t)
- * @param[in] pq_mode               - PQ mode value read from config file(0 - 9)
+ * @param[in] pq_mode               - PQ mode value read from config file 
  * @param[in] hdr_type              - HDR type value(tvhdr_type_t)
  * @param[in] value                 - Value of the low latency index(0 or 1)
  *
