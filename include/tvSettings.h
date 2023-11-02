@@ -1689,7 +1689,7 @@ tvError_t SaveColorTemperature(tv_source_input_t sourceInput, int pq_mode,tvhdr_
  *
  * @pre  tvInit() should be called before calling this API.
  */
-tvError_t SaveBacklight(tv_source_input_t sourceInput, int 	,tvhdr_type_t hdr_type,int value);
+tvError_t SaveBacklight(tv_source_input_t sourceInput, int pq_mode	,tvhdr_type_t hdr_type,int value);
 
 /**
  * @brief Save contrast value to driver.
@@ -1698,7 +1698,7 @@ tvError_t SaveBacklight(tv_source_input_t sourceInput, int 	,tvhdr_type_t hdr_ty
  * Currently SOURCE_INVALID(-1) is specified it will be treated as save to all sources.
  * 
  * @param[in] sourceInput           - Source input value(tv_source_input_t)
- * @param[in] pq_mode               - PQ mode value read from config file(0 - 9)
+ * @param[in] pq_mode               - PQ mode value read from config file
  * @param[in] hdr_type              - HDR type value(tvhdr_type_t)
  * @param[in] value                 - Value of the contrast(0 - 100)
  *
@@ -1887,24 +1887,31 @@ tvError_t SaveDolbyMode(tv_source_input_t sourceInput, int pq_mode,tvhdr_type_t 
  * 
  * This function returns the number of supported picture modes. The number should be greater than zero.
  *
- * @return int
- * @retval greater than 0  (0 to 9)
+ * @param[in] pqmode                - total Number of Pq Modes support available in config file
+ *
+ * @return tvError_t
+ * @retval tvERROR_NONE             - Success
+ * @retval tvERROR_INVALID_PARAM    - When the parameter value is invalid
+ * @retval tvERROR_INVALID_STATE    - Interface is not initialized  
  * 
  * @pre  tvInit() should be called before calling this API.
  */
-int GetNumberOfModesupported(void);
+tvError_t GetNumberOfModesupported(int *pqmode);
 
 /**
  * @brief Get current PQ index.
  * 
  * This function returns the current PQ index value.
+ * @param[in] pqIndex                -  Pq Modes Index value in config file
  *
- * @return int
- * @retval greater or equal to 0  (0 to 9)
+ * @return tvError_t
+ * @retval tvERROR_NONE             - Success
+ * @retval tvERROR_INVALID_PARAM    - When the parameter value is invalid
+ * @retval tvERROR_INVALID_STATE    - Interface is not initialized  
  * 
  * @pre  tvInit() should be called before calling this API.
  */
-int GetCurrentPQIndex(void);
+tvError_t GetCurrentPQIndex(int *pqIndex);
 
 /**
  * @brief Get supported picture mode index.
