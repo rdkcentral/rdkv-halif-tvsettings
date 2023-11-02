@@ -1454,9 +1454,10 @@ tvError_t enableWBmode(bool value);
  * @param[out] blComponentColor           - Component color(tvDataComponentColor_t)
  *
  * @return tvError_t
- * @retval tvERROR_NONE                   - Success
- * @retval tvERROR_INVALID_PARAM          - When the parameter value is invalid
- * @retval tvERROR_INVALID_STATE          - Interface is not initialized
+ * @retval tvERROR_NONE                      - Success
+ * @retval tvERROR_INVALID_PARAM             - When the parameter value is invalid
+ * @retval tvERROR_INVALID_STATE             - Interface is not initialized
+ * @retval tvERROR_OPERATION_NOT_SUPPORTED   - Operation is not supported
  * 
  * @pre  tvInit() should be called before calling this API.
  */
@@ -1488,9 +1489,10 @@ tvError_t SetCurrentComponentSaturation(tvDataComponentColor_t blSaturationColor
  * @param[out] saturation               - Saturation value of the color(0 - 100)
  *
  * @return tvError_t
- * @retval tvERROR_NONE                 - Success
- * @retval tvERROR_INVALID_PARAM           - When the parameter value is invalid
- * @retval tvERROR_INVALID_STATE        - Interface is not initialized
+ * @retval tvERROR_NONE                      - Success
+ * @retval tvERROR_INVALID_PARAM             - When the parameter value is invalid
+ * @retval tvERROR_INVALID_STATE             - Interface is not initialized
+ * @retval tvERROR_OPERATION_NOT_SUPPORTED   - Operation is not supported
  * 
  * @pre  tvInit() should be called before calling this API.
  */
@@ -1523,9 +1525,10 @@ tvError_t SetCurrentComponentHue(tvDataComponentColor_t blHueColor, int hue);
  * @param[out] hue                    - Hue value(0 - 100)
  *
  * @return tvError_t
- * @retval tvERROR_NONE               - Success
- * @retval tvERROR_INVALID_PARAM      - When the parameter value is invalid
- * @retval tvERROR_INVALID_STATE      - Interface is not initialized
+ * @retval tvERROR_NONE                      - Success
+ * @retval tvERROR_INVALID_PARAM             - When the parameter value is invalid
+ * @retval tvERROR_INVALID_STATE             - Interface is not initialized
+ * @retval tvERROR_OPERATION_NOT_SUPPORTED   - Operation is not supported
  * 
  * @pre  tvInit() should be called before calling this API.
  */
@@ -1558,9 +1561,10 @@ tvError_t SetCurrentComponentLuma(tvDataComponentColor_t blLumaColor, int Luma);
  * @param[out] Luma                - Luma value(0 - 100)
  *
  * @return tvError_t
- * @retval tvERROR_NONE            - Success
- * @retval tvERROR_INVALID_PARAM   - When the parameter value is invalid
- * @retval tvERROR_INVALID_STATE   - Interface is not initialized
+ * @retval tvERROR_NONE                      - Success
+ * @retval tvERROR_INVALID_PARAM             - When the parameter value is invalid
+ * @retval tvERROR_INVALID_STATE             - Interface is not initialized
+ * @retval tvERROR_OPERATION_NOT_SUPPORTED   - Operation is not supported
  *
  * @pre  tvInit() should be called before calling this API.
  */
@@ -1852,10 +1856,11 @@ tvError_t SaveDisplayMode(tv_source_input_t sourceInput, int pq_mode,tvhdr_type_
  * @param[in] value                 - Value of the CMS(Hue and saturation: 0 - 100, Luma: 0 -30)
  *
  * @return tvError_t
- * @retval tvERROR_NONE             - Success
- * @retval tvERROR_GENERAL          - Error while saving CMS
- * @retval tvERROR_INVALID_PARAM    - When the parameter value is invalid
- * @retval tvERROR_INVALID_STATE    - Interface is not initialized 
+ * @retval tvERROR_NONE                      - Success
+ * @retval tvERROR_GENERAL                   - Error while saving CMS
+ * @retval tvERROR_INVALID_PARAM             - When the parameter value is invalid
+ * @retval tvERROR_INVALID_STATE             - Interface is not initialized 
+ * @retval tvERROR_OPERATION_NOT_SUPPORTED   - Operation is not supported
  * 
  * @pre  tvInit() should be called before calling this API.
  */
@@ -1966,10 +1971,11 @@ int GetDolbyModeIndex(const char * dolbyMode);
  * @param[in] componentState        - Component state(tvcomponent_state_t)
  *
  * @return tvError_t
- * @retval tvERROR_NONE             - Success
- * @retval tvERROR_GENERAL          - Error while setting CMS state
- * @retval tvERROR_INVALID_PARAM    - When the parameter value is invalid
- * @retval tvERROR_INVALID_STATE    - Interface is not initialized
+ * @retval tvERROR_NONE                      - Success
+ * @retval tvERROR_GENERAL                   - Error while setting CMS state
+ * @retval tvERROR_INVALID_PARAM             - When the parameter value is invalid
+ * @retval tvERROR_INVALID_STATE             - Interface is not initialized
+ * @retval tvERROR_OPERATION_NOT_SUPPORTED   - Operation is not supported
  * 
  * @pre  tvInit() should be called before calling this API.
  */
@@ -2085,10 +2091,11 @@ tvError_t SetGammaMode(int mode);
  * @param[in] localDimmingLevel                -  Dimming level (0 - 1)
  *
  * @return tvError_t
- * @retval tvERROR_NONE             - Success
- * @retval tvERROR_GENERAL          - Error while setting dimming level
- * @retval tvERROR_INVALID_PARAM    - When the parameter value is invalid
- * @retval tvERROR_INVALID_STATE    - Interface is not initialized
+ * @retval tvERROR_NONE                      - Success
+ * @retval tvERROR_GENERAL                   - Error while setting dimming level
+ * @retval tvERROR_INVALID_PARAM             - When the parameter value is invalid
+ * @retval tvERROR_INVALID_STATE             - Interface is not initialized
+ * @retval tvERROR_OPERATION_NOT_SUPPORTED   - Operation is not supported
  * 
  * @pre  tvInit() should be called before calling this API.
  */
@@ -2102,9 +2109,10 @@ tvError_t SetLocalDimmingLevel(int localDimmingLevel);
  * @param[out] localDimmingLevel                -  Dimming level (0 - 1)
  *
  * @return tvError_t
- * @retval tvERROR_NONE             - Success
- * @retval tvERROR_INVALID_PARAM    - When the parameter value is invalid
- * @retval tvERROR_INVALID_STATE    - Interface is not initialized
+ * @retval tvERROR_NONE                      - Success
+ * @retval tvERROR_INVALID_PARAM             - When the parameter value is invalid
+ * @retval tvERROR_INVALID_STATE             - Interface is not initialized
+ * @retval tvERROR_OPERATION_NOT_SUPPORTED   - Operation is not supported
  * 
  * @pre  tvInit() should be called before calling this API.
  */
@@ -2122,10 +2130,11 @@ tvError_t GetLocalDimmingLevel(int *localDimmingLevel);
  * @param[in] value                 - Value of the local dimming level(0 - 1)
  *
  * @return tvError_t
- * @retval tvERROR_NONE             - Success
- * @retval tvERROR_GENERAL          - Error while setting dimming level
- * @retval tvERROR_INVALID_PARAM    - When the parameter value is invalid
- * @retval tvERROR_INVALID_STATE    - Interface is not initialized
+ * @retval tvERROR_NONE                      - Success
+ * @retval tvERROR_GENERAL                   - Error while setting dimming level
+ * @retval tvERROR_INVALID_PARAM             - When the parameter value is invalid
+ * @retval tvERROR_INVALID_STATE             - Interface is not initialized
+ * @retval tvERROR_OPERATION_NOT_SUPPORTED   - Operation is not supported
  * 
  * @pre  tvInit() should be called before calling this API.
  */
