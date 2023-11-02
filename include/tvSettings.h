@@ -1155,7 +1155,7 @@ tvError_t GetColorTemp_B_post_offset_onSource(tvColorTemp_t colorTemp, int* bpos
  * This function get the array of picture modes supported.
  *
  * @param[out] pictureModes               - List of available picture modes("Entertainment", "Dynamic", "Expert", "Movie", "Sports", "Graphics")
- * @param[out] count                      - Count of available picture modes (max supported picturemode is PIC_MODES_SUPPORTED_MAX) 
+ * @param[out] count                      - Number of Supported picture modes 
  *
  * @return tvError_t
  * @retval tvERROR_NONE                   - Success
@@ -1471,10 +1471,11 @@ tvError_t GetSupportedComponentColor(int *blComponentColor);
  * @param[in] saturation                 - Saturation value to set(0 - 100)
  *
  * @return tvError_t
- * @retval tvERROR_NONE                  - Success
- * @retval tvERROR_GENERAL               - Error while setting current saturation
- * @retval tvERROR_INVALID_PARAM         - When the set value is not valid
- * @retval tvERROR_INVALID_STATE         - Interface is not initialized
+ * @retval tvERROR_NONE                      - Success
+ * @retval tvERROR_GENERAL                   - Error while setting current saturation
+ * @retval tvERROR_INVALID_PARAM             - When the set value is not valid
+ * @retval tvERROR_INVALID_STATE             - Interface is not initialized
+ * @retval tvERROR_OPERATION_NOT_SUPPORTED   - Operation is not supported
  * 
  * @pre  tvInit() should be called before calling this API.
  */
@@ -1507,10 +1508,11 @@ tvError_t GetCurrentComponentSaturation(tvDataComponentColor_t blSaturationColor
  * @param[in] hue                      - Hue value(0 - 100)
  *
  * @return tvError_t
- * @retval tvERROR_NONE                - Success
- * @retval tvERROR_GENERAL             - Error while setting current hue
- * @retval tvERROR_INVALID_PARAM       - When the set value is not valid
- * @retval tvERROR_INVALID_STATE       - Interface is not initialized
+ * @retval tvERROR_NONE                      - Success
+ * @retval tvERROR_GENERAL                   - Error while setting current hue
+ * @retval tvERROR_INVALID_PARAM             - When the set value is not valid
+ * @retval tvERROR_INVALID_STATE             - Interface is not initialized
+ * @retval tvERROR_OPERATION_NOT_SUPPORTED   - Operation is not supported
  * 
  * @pre  tvInit() should be called before calling this API.
  */
@@ -1543,10 +1545,11 @@ tvError_t GetCurrentComponentHue(tvDataComponentColor_t blHueColor, int *hue);
  * @param[in] Luma                   - Luma value(0 - 30)
  *
  * @return tvError_t
- * @retval tvERROR_NONE              - Success
- * @retval tvERROR_GENERAL           - Error while setting current luma
- * @retval tvERROR_INVALID_PARAM     - When the set value is not valid
- * @retval tvERROR_INVALID_STATE     - Interface is not initialized
+ * @retval tvERROR_NONE                      - Success
+ * @retval tvERROR_GENERAL                   - Error while setting current luma
+ * @retval tvERROR_INVALID_PARAM             - When the set value is not valid
+ * @retval tvERROR_INVALID_STATE             - Interface is not initialized
+ * @retval tvERROR_OPERATION_NOT_SUPPORTED   - Operation is not supported
  * 
  * @pre  tvInit() should be called before calling this API.
  */
