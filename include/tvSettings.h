@@ -1464,7 +1464,7 @@ tvError_t setWBctrl(char *inputSrc, char *colorTemp,char *color, char *ctrl, int
  * This function gets the white balance for specific color, color Temp, control.
  *
  * @param[in] inputSrc                    - Source of input ("HDMI", "TV", "AV")
- * @param[in] colorTemp                   - Color temperature value("custom", "normal", "cool", "warm")
+ * @param[in] colortemp                   - Color temperature value("custom", "normal", "cool", "warm")
  * @param[in] color                       - Color to be set ("red", "blue", "green")
  * @param[in] ctrl                        - Control to be set ("gain", "offset")
  * @param[in] value                       - Values to be set for the specific control(gain: 0 to 2047, offset: -1024 to 1024)
