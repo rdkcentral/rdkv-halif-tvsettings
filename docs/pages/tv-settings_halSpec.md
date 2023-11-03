@@ -174,17 +174,51 @@ There are other platform specific Picture Quality settings that can be managed b
 
 ```mermaid
 sequenceDiagram
-Caller ->> TV setting HAL: tvInit()
-TV setting HAL ->> Caller:success
-Caller ->> TV setting HAL: request
-TV setting HAL ->> SoC Driver: request
-SoC Driver ->> TV setting HAL:success/failure
-TV setting HAL ->> Caller:success/failure
-TV setting HAL ->> TV setting HAL:Register callback
-SoC Driver ->> TV setting HAL:Notify on video format/framerate/resolution change
-TV setting HAL ->> Caller:Notify on video format/framerate/resolution change
+participant Caller as Caller
+    participant HAL as TvSettings-hal
+    participant Driver as SoC
+    Caller->>HAL:tvInit()
+    Note over HAL: initialize the TV Setting HAL APIs
+    HAL->>Driver: Allocates resources
+    Driver-->>HAL:return
+    HAL-->>Caller:return
+    Caller->>HAL: tvSettings_SetMethods
+    Note over HAL: APIs to set the Picture Quality Parameters
+    HAL->>Driver:Sets the PQ Parameters
+    Driver-->>HAL:return
+    HAL-->>Caller:return
+    Caller->>HAL: tvSettings_GetMethods
+    Note over HAL: APIs to get the PQ Parameters
+    HAL->>Driver:Gets the PQ Parameters
+    Driver-->>HAL:return
+    HAL-->>Caller:return
+    Caller->>HAL: tvSettings_SaveMethods
+    Note over HAL: APIs to save the Picture Quality Parameters
+    HAL->>Driver:Save the PQ Parameters
+    Driver-->>HAL:return
+    HAL-->>Caller:return
+    Caller->>HAL: RegisterCallBack
+    Note over HAL:RegisterCallBack for Format/Resultion/FrameRate Change
+    Driver-->>HAL:Notify on video format/framerate/resolution change
+    HAL-->>Caller:Notify on video format/framerate/resolution change
+    Caller ->>HAL:tvTerm()
+    HAL ->> Driver: Releases all the resources allocated during tvInit()
+    Driver-->>HAL:return
+    HAL-->>Caller:return
 ```
+<b> LEGEND: </b>
 
+<b>tvSettings_SetMethods:</b>
+SetBrightness(), SetContrast(), SetSaturation(), SetHue(),SetSharpness(), SetColorTemperature(),SetBacklight()
+
+<b>tvSettings_GetMethods:</b> 
+SetBrightness(), SetContrast(), SetSaturation(), SetHue(),SetSharpness(), SetColorTemperature(),GetBacklight()
+ 
+<b>tvSettings_SaveMethods :</b> 
+SaveBrightness(), SaveContrast(), SaveSaturation(), SaveHue(),SaveSharpness(), SaveColorTemperature(),SaveBacklight()
+  
+<b>RegisterCallback :</b>
+RegisterVideoFormatChangeCB( ),RegisterVideoContentChangeCB( ),RegisterVideoResolutionChangeCB( ), RegisterVideoFrameRateChangeCB( )
 #### Functional Diagram
 
 ```mermaid
