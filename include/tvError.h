@@ -45,6 +45,10 @@ extern "C"
 {
 #endif
  
+ /**
+  * @todo Create more specific errors instead of GENERAL error in V2.
+  */
+
 /* Error codes returned by tvSetting HAL */
 typedef enum
 {
