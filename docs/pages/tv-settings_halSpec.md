@@ -62,10 +62,10 @@ style x fill:#9f9,stroke:#333,stroke-width:0.3px
 
 ### Initialization and Startup
 
-The caller should initialize the `APIs` with picture quality modes for specific platforms and initiates communication with picture quality drivers.
+The caller must initialize the `APIs` with picture quality modes for specific platforms and initiates communication with picture quality drivers.
 
  1. The specification of the TV picure configuration will be defined in a config file ([allmodes_template.conf](../../config/allmodes_template.conf "allmodes_template.conf")) which decides supported formats, picture modes, dimming modes, dvModes, HDRModes, HLGModes, resolution etc.
- 2. Caller should initialize by calling `tvInit()` which should initialize the parameters in the above config file as well.
+ 2. Caller must initialize by calling `tvInit()` which must initialize the parameters in the above config file as well.
 
 ### Threading Model
 
@@ -99,7 +99,7 @@ All `APIs` must return error synchronously as return argument.
 ### Persistence Model
 
 Each vendor needs to define their own config file which is expected to be stored in rootfs and this must be a readonly.
-Config file should contain the supported formats, picture modes, dimming modes, dvModes, HDRModes, HLGModes, resolution etc.
+Config file must contain the supported formats, picture modes, dimming modes, dvModes, HDRModes, HLGModes, resolution etc.
 
 ## Non-functional requirements
 
@@ -111,12 +111,12 @@ This interface is required to support DEBUG, INFO and ERROR messages. DEBUG is r
 
 ### Memory and performance requirements
 
-This interface is required  to not cause excessive memory and CPU utilization.
+This interface is required  to not cause excessive memory and `CPU` utilization.
 
 ### Quality Control
 
 - This interface is required to perform static analysis, our preferred tool is Coverity.
-- Have a zero-warning policy with regards to compiling. All warnings should be treated as errors.
+- Have a zero-warning policy with regards to compiling. All warnings must be treated as errors.
 - Use of memory analysis tools like Valgrind are encouraged to identify leaks/corruptions.
 - `HAL` Tests will endeavour to create worst case scenarios to assist investigations.
 - Copyright validation is required to be performed, e.g.: `Black duck`, `FossID`.
@@ -132,7 +132,7 @@ TV Settings `HAL` source code must build into a shared library and must be named
   
 ### Variability Management
 
-Any changes in the `APIs` should be reviewed and approved by component architects.
+Any changes in the `APIs` must be reviewed and approved by component architects.
 
 ### Platform or Product Customization
 
@@ -175,7 +175,7 @@ There are other platform specific Picture Quality settings that can be managed b
 ```mermaid
 sequenceDiagram
 participant Caller as Caller
-    participant HAL as TvSettings-hal
+    participant HAL as TV Settings HAL
     participant Driver as SoC
     Caller->>HAL:tvInit()
     Note over HAL: Initialize the TV Setting HAL APIs
