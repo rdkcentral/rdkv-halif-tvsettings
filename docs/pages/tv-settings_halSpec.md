@@ -178,7 +178,7 @@ participant Caller as Caller
     participant HAL as TvSettings-hal
     participant Driver as SoC
     Caller->>HAL:tvInit()
-    Note over HAL: initialize the TV Setting HAL APIs
+    Note over HAL: Initialize the TV Setting HAL APIs
     HAL->>Driver: Allocates resources
     Driver-->>HAL:return
     HAL-->>Caller:return
@@ -209,16 +209,16 @@ participant Caller as Caller
 <b> LEGEND: </b>
 
 <b>tvSettings_SetMethods:</b>
-SetBrightness(), SetContrast(), SetSaturation(), SetHue(),SetSharpness(), SetColorTemperature(),SetBacklight()
+SetBrightness(), SetContrast(), SetSaturation(), SetHue(),SetSharpness(), SetColorTemperature(),SetBacklight(), etc..
 
 <b>tvSettings_GetMethods:</b> 
-SetBrightness(), SetContrast(), SetSaturation(), SetHue(),SetSharpness(), SetColorTemperature(),GetBacklight()
+SetBrightness(), SetContrast(), SetSaturation(), SetHue(),SetSharpness(), SetColorTemperature(),GetBacklight(), etc..
  
 <b>tvSettings_SaveMethods :</b> 
-SaveBrightness(), SaveContrast(), SaveSaturation(), SaveHue(),SaveSharpness(), SaveColorTemperature(),SaveBacklight()
+SaveBrightness(), SaveContrast(), SaveSaturation(), SaveHue(),SaveSharpness(), SaveColorTemperature(),SaveBacklight(), etc..
   
 <b>RegisterCallback :</b>
-RegisterVideoFormatChangeCB( ),RegisterVideoContentChangeCB( ),RegisterVideoResolutionChangeCB( ), RegisterVideoFrameRateChangeCB( )
+RegisterVideoFormatChangeCB(),RegisterVideoContentChangeCB(),RegisterVideoResolutionChangeCB(), RegisterVideoFrameRateChangeCB()
 #### Functional Diagram
 
 ```mermaid
