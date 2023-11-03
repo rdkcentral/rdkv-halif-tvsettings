@@ -64,7 +64,7 @@ style x fill:#9f9,stroke:#333,stroke-width:0.3px
 
 The caller should initialize the `APIs` with picture quality modes for specific platforms and initiates communication with picture quality drivers.
 
- 1. The specification of the TV picure configuration will be defined in a config file ([allmodes_template.conf](../../config/allmodes_template.conf)) which decides supported formats, picture modes, dimming modes, dvModes, HDRModes, HLGModes, resolution etc.
+ 1. The specification of the TV picure configuration will be defined in a config file ([allmodes_template.conf](../../config/allmodes_template.conf "allmodes_template.conf")) which decides supported formats, picture modes, dimming modes, dvModes, HDRModes, HLGModes, resolution etc.
  2. Caller should initialize by calling `tvInit()` which should initialize the parameters in the above config file as well.
 
 ### Threading Model
@@ -116,10 +116,10 @@ This interface is required  to not cause excessive memory and CPU utilization.
 ### Quality Control
 
 - This interface is required to perform static analysis, our preferred tool is Coverity.
-- Have a zero-warning policy with regards to compiling. All warnings should be treated as error.
-- Use of memory analysis tools like Valgrind are encouraged, to identify leaks/corruptions.
-- HAL Tests will endeavour to create worst case scenarios to assist investigations.
-- Copyright validation is required to be performed, e.g.: Black duck, FossID.
+- Have a zero-warning policy with regards to compiling. All warnings should be treated as errors.
+- Use of memory analysis tools like Valgrind are encouraged to identify leaks/corruptions.
+- `HAL` Tests will endeavour to create worst case scenarios to assist investigations.
+- Copyright validation is required to be performed, e.g.: `Black duck`, `FossID`.
 - Improvements by any party to the testing suite are required to be fed back.
 
 ### Licensing
@@ -174,14 +174,14 @@ There are other platform specific Picture Quality settings that can be managed b
 
 ```mermaid
 sequenceDiagram
-Caller ->> TV setting HAL: tvInit
+Caller ->> TV setting HAL: tvInit()
 TV setting HAL ->> Caller:success
 Caller ->> TV setting HAL: request
-TV setting HAL ->> Driver: request
-Driver ->> TV setting HAL:success/failure
+TV setting HAL ->> SoC Driver: request
+SoC Driver ->> TV setting HAL:success/failure
 TV setting HAL ->> Caller:success/failure
 TV setting HAL ->> TV setting HAL:Register callback
-Driver ->> TV setting HAL:Notify on video format/framerate/resolution change
+SoC Driver ->> TV setting HAL:Notify on video format/framerate/resolution change
 TV setting HAL ->> Caller:Notify on video format/framerate/resolution change
 ```
 

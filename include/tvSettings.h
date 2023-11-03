@@ -20,13 +20,19 @@
 * @addtogroup HPK HPK
 * @{
 **/
+
+/**
+* @defgroup TV_Settings TV Settings Module
+* @{
+**/
+
 /**
 * @defgroup TV_Settings_HAL TV Settings HAL
 * @{
 **/
 
 /**
-* @defgroup TV_Settings TV Settings
+* @defgroup TV_Settings_H TV Settings Header
 * @{
 **/
 
@@ -2322,7 +2328,8 @@ tvError_t SetGammaPattern(int is_10_bit, int R_Value, int G_Value, int B_Value);
 
 #endif // End of _TV_SETTINGS_H
 
-/** @} */ // End of TV_Settings
+/** @} */ // End of TV_Settings_H
 /** @} */ // End of TV_Settings_HAL
+/** @} */ // End of TV_Settings
 /** @} */ // End of HPK
 

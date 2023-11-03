@@ -16,17 +16,24 @@
 * See the License for the specific language governing permissions and
 * limitations under the License.
 */
+
 /**
 * @addtogroup HPK HPK
 * @{
 **/
+
 /**
-* @addtogroup TV_Settings_HAL TV Settings HAL
+* @defgroup TV_Settings TV Settings Module
 * @{
 **/
 
 /**
-* @defgroup TV_Types TV Types
+* @defgroup TV_Settings_HAL TV Settings HAL
+* @{
+**/
+
+/**
+* @defgroup TV_Types_H TV Types Header
 * @{
 **/
 
@@ -447,6 +454,7 @@ typedef enum tv_source_input_e
 
 #endif //_TV_TYPES_H
 
-/** @} */ // End of TV_Types
+/** @} */ // End of TV_Types_H
 /** @} */ // End of TV_Settings_HAL
+/** @} */ // End of TV_Settings
 /** @} */ // End of HPK

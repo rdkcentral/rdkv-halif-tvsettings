@@ -16,17 +16,24 @@
 * See the License for the specific language governing permissions and
 * limitations under the License.
 */
+
 /**
 * @addtogroup HPK HPK
 * @{
 **/
+
 /**
-* @addtogroup TV_Settings_HAL TV Settings HAL
+* @defgroup TV_Settings TV Settings Module
 * @{
 **/
 
 /**
-* @defgroup TV_Log TV Log
+* @defgroup TV_Settings_HAL TV Settings HAL
+* @{
+**/
+
+/**
+* @defgroup TV_Log_H TV Log Header
 * @{
 **/
 
@@ -62,6 +69,7 @@ extern "C"
 
 #endif // _TV_LOG_H
 
-/** @} */ // End of TV_Log
+/** @} */ // End of TV_Log_H
 /** @} */ // End of TV_Settings_HAL
+/** @} */ // End of TV_Settings
 /** @} */ // End of HPK
