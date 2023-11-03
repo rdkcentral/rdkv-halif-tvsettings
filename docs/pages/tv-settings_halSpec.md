@@ -62,10 +62,10 @@ style x fill:#9f9,stroke:#333,stroke-width:0.3px
 
 ### Initialization and Startup
 
-The caller should initialize the `APIs` with picture quality modes for specific platforms and initiates communication with picture quality drivers.
+The caller must initialize the `APIs` with picture quality modes for specific platforms and initiates communication with picture quality drivers.
 
- 1. The specification of the TV picure configuration will be defined in a config file ([allmodes_template.conf](../../config/allmodes_template.conf)) which decides supported formats, picture modes, dimming modes, dvModes, HDRModes, HLGModes, resolution etc.
- 2. Caller should initialize by calling `tvInit()` which should initialize the parameters in the above config file as well.
+ 1. The specification of the TV picure configuration will be defined in a config file ([allmodes_template.conf](../../config/allmodes_template.conf "allmodes_template.conf")) which decides supported formats, picture modes, dimming modes, dvModes, HDRModes, HLGModes, resolution etc.
+ 2. Caller must initialize by calling `tvInit()` which must initialize the parameters in the above config file as well.
 
 ### Threading Model
 
@@ -99,7 +99,7 @@ All `APIs` must return error synchronously as return argument.
 ### Persistence Model
 
 Each vendor needs to define their own config file which is expected to be stored in rootfs and this must be a readonly.
-Config file should contain the supported formats, picture modes, dimming modes, dvModes, HDRModes, HLGModes, resolution etc.
+Config file must contain the supported formats, picture modes, dimming modes, dvModes, HDRModes, HLGModes, resolution etc.
 
 ## Non-functional requirements
 
@@ -111,15 +111,15 @@ This interface is required to support DEBUG, INFO and ERROR messages. DEBUG is r
 
 ### Memory and performance requirements
 
-This interface is required  to not cause excessive memory and CPU utilization.
+This interface is required  to not cause excessive memory and `CPU` utilization.
 
 ### Quality Control
 
 - This interface is required to perform static analysis, our preferred tool is Coverity.
-- Have a zero-warning policy with regards to compiling. All warnings should be treated as error.
-- Use of memory analysis tools like Valgrind are encouraged, to identify leaks/corruptions.
-- HAL Tests will endeavour to create worst case scenarios to assist investigations.
-- Copyright validation is required to be performed, e.g.: Black duck, FossID.
+- Have a zero-warning policy with regards to compiling. All warnings must be treated as errors.
+- Use of memory analysis tools like Valgrind are encouraged to identify leaks/corruptions.
+- `HAL` Tests will endeavour to create worst case scenarios to assist investigations.
+- Copyright validation is required to be performed, e.g.: `Black duck`, `FossID`.
 - Improvements by any party to the testing suite are required to be fed back.
 
 ### Licensing
@@ -132,7 +132,7 @@ TV Settings `HAL` source code must build into a shared library and must be named
   
 ### Variability Management
 
-Any changes in the `APIs` should be reviewed and approved by component architects.
+Any changes in the `APIs` must be reviewed and approved by component architects.
 
 ### Platform or Product Customization
 
@@ -174,17 +174,51 @@ There are other platform specific Picture Quality settings that can be managed b
 
 ```mermaid
 sequenceDiagram
-Caller ->> TV setting HAL: tvInit
-TV setting HAL ->> Caller:success
-Caller ->> TV setting HAL: request
-TV setting HAL ->> Driver: request
-Driver ->> TV setting HAL:success/failure
-TV setting HAL ->> Caller:success/failure
-TV setting HAL ->> TV setting HAL:Register callback
-Driver ->> TV setting HAL:Notify on video format/framerate/resolution change
-TV setting HAL ->> Caller:Notify on video format/framerate/resolution change
+participant Caller as Caller
+    participant HAL as TV Settings HAL
+    participant Driver as SoC
+    Caller->>HAL:tvInit()
+    Note over HAL: Initialize the TV Setting HAL APIs
+    HAL->>Driver: Allocates resources
+    Driver-->>HAL:return
+    HAL-->>Caller:return
+    Caller->>HAL: tvSettings_SetMethods
+    Note over HAL: APIs to set the Picture Quality Parameters
+    HAL->>Driver:Sets the PQ Parameters
+    Driver-->>HAL:return
+    HAL-->>Caller:return
+    Caller->>HAL: tvSettings_GetMethods
+    Note over HAL: APIs to get the PQ Parameters
+    HAL->>Driver:Gets the PQ Parameters
+    Driver-->>HAL:return
+    HAL-->>Caller:return
+    Caller->>HAL: tvSettings_SaveMethods
+    Note over HAL: APIs to save the Picture Quality Parameters
+    HAL->>Driver:Save the PQ Parameters
+    Driver-->>HAL:return
+    HAL-->>Caller:return
+    Caller->>HAL: RegisterCallBack
+    Note over HAL:RegisterCallBack for Format/Resultion/FrameRate Change
+    Driver-->>HAL:Notify on video format/framerate/resolution change
+    HAL-->>Caller:Notify on video format/framerate/resolution change
+    Caller ->>HAL:tvTerm()
+    HAL ->> Driver: Releases all the resources allocated during tvInit()
+    Driver-->>HAL:return
+    HAL-->>Caller:return
 ```
+<b> LEGEND: </b>
 
+<b>tvSettings_SetMethods:</b>
+SetBrightness(), SetContrast(), SetSaturation(), SetHue(),SetSharpness(), SetColorTemperature(),SetBacklight(), etc..
+
+<b>tvSettings_GetMethods:</b> 
+SetBrightness(), SetContrast(), SetSaturation(), SetHue(),SetSharpness(), SetColorTemperature(),GetBacklight(), etc..
+ 
+<b>tvSettings_SaveMethods :</b> 
+SaveBrightness(), SaveContrast(), SaveSaturation(), SaveHue(),SaveSharpness(), SaveColorTemperature(),SaveBacklight(), etc..
+  
+<b>RegisterCallback :</b>
+RegisterVideoFormatChangeCB(),RegisterVideoContentChangeCB(),RegisterVideoResolutionChangeCB(), RegisterVideoFrameRateChangeCB()
 #### Functional Diagram
 
 ```mermaid

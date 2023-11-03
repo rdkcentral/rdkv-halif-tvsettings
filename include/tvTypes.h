@@ -16,22 +16,39 @@
 * See the License for the specific language governing permissions and
 * limitations under the License.
 */
+
 /**
 * @addtogroup HPK HPK
 * @{
 **/
+
 /**
-* @addtogroup TV_Settings_HAL TV Settings HAL
+* @defgroup TV_Settings TV Settings Module
 * @{
 **/
 
 /**
-* @defgroup TV_Types TV Types
+* @defgroup TV_Settings_HAL TV Settings HAL
+* @{
+**/
+
+/**
+* @defgroup TV_Types_H TV Types Header
 * @{
 **/
 
 #ifndef _TV_TYPES_H
 #define _TV_TYPES_H
+
+/** 
+ * @todo incorrect usage of enum, it has to be hash define in V2
+ * @todo enum name should end with _e in V2
+ * @todo need to prefix all enum with tvSettings_ in V2
+ * @todo change the int to inttypes variables  in V2
+ * @todo Add enum MAX for all exposed enums in V2.
+ * @todo Do not expose enum and struct that are not used by application in V2
+ * @todo Check the naming of enum and struct(maintain caps for start of word) in V2
+ */
 
 #ifdef __cplusplus
 extern "C"
@@ -64,6 +81,10 @@ typedef enum
     tvBacklightMode_INVALID = 0x08            //!< backlight mode is invalid
 }tvBacklightMode_t;
 
+/**
+ * @todo Name of enum looks confusing changes to tvVideoFormat_t in V2
+ * Enumeration defining supported HDR video formats
+ */
 typedef enum
 {
     tvVideoHDRFormat_NONE= 0x00,                  //!< No video format 
@@ -382,6 +403,9 @@ typedef enum tvPQParameterIndex
 }tvPQParameterIndex_t;
 
 /**
+ * @todo Name of enum looks confusing changes to tvHDRMode_t in V2
+ */
+/**
  *  Enumeration defining the various supported dolby modes 
  */
 typedef enum
@@ -447,6 +471,7 @@ typedef enum tv_source_input_e
 
 #endif //_TV_TYPES_H
 
-/** @} */ // End of TV_Types
+/** @} */ // End of TV_Types_H
 /** @} */ // End of TV_Settings_HAL
+/** @} */ // End of TV_Settings
 /** @} */ // End of HPK
