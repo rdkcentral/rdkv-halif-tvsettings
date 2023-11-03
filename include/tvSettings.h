@@ -494,6 +494,7 @@ tvError_t GetColorTemperature(tvColorTemp_t *colorTemp);
  * @return tvError_t
  * @retval tvERROR_NONE                      - Success
  * @retval tvERROR_GENERAL                   - When thread creation failure
+ * @retval tvERROR_INVALID_PARAM             - When the parameter is invalid
  * @retval tvERROR_INVALID_STATE             - Interface is not initialized
  * @retval tvERROR_OPERATION_NOT_SUPPORTED   - Operation is not supported
  * 
@@ -1915,10 +1916,11 @@ tvError_t SaveCMS(tv_source_input_t sourceInput, int pq_mode,tvhdr_type_t hdr_ty
  * @param[in] value                 - Value of the dolby mode(dark, bright)
  *
  * @return tvError_t
- * @retval tvERROR_NONE             - Success
- * @retval tvERROR_GENERAL          - Error while saving dolby mode
- * @retval tvERROR_INVALID_PARAM    - When the parameter value is invalid
- * @retval tvERROR_INVALID_STATE    - Interface is not initialized  
+ * @retval tvERROR_NONE                      - Success
+ * @retval tvERROR_GENERAL                   - Error while saving dolby mode
+ * @retval tvERROR_INVALID_PARAM             - When the parameter value is invalid
+ * @retval tvERROR_INVALID_STATE             - Interface is not initialized
+ * @retval tvERROR_OPERATION_NOT_SUPPORTED   - Operation is not supported
  * 
  * @pre  tvInit() should be called before calling this API.
  */
