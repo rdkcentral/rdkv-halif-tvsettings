@@ -1,1 +1,1 @@
-./docs/pages/halSpec.md
+./docs/pages/tv-settings_halSpec.md

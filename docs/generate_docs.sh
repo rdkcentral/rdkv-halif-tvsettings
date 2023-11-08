@@ -25,14 +25,13 @@ HAL_GENERATOR_VERSION=master
 
 # This will look up the last tag in the git repo, depending on the project this may require modification
 PROJECT_VERSION=$(git describe --tags | head -n1)
-DOXYGEN_REPO=$(git remote -vv | head -n1 | awk -F ' ' '{print $2}' | sed 's/hal.*/hal-doxygen.git/g')
 
 # Check if the common document configuration is present, if not clone it
 if [ -d "./build" ]; then
     make -C ./build PROJECT_NAME="TV Settings HAL" PROJECT_VERSION=${PROJECT_VERSION}
 else
     echo "Cloning Common documentation generation"
-    git clone $DOXYGEN_REPO build
+    git clone git@github.com:rdkcentral/hal-doxygen.git build
     cd ./build
     git checkout ${HAL_GENERATOR_VERSION}
     cd ..
