@@ -69,13 +69,6 @@ extern "C"
 #define GENERIC_MODE_CONFIG_FILE  "/etc/tv/allmodes.conf"    //!< Defines the config file
 
 /**
- * @todo naming of APIs should be prefixed with tvSettings_ in V2
- * @todo change the int to inttypes variables  in V2
- * @todo Do not expose API, variables and struct that are not used by application in V2
- * @todo Check the naming of enum and struct(maintain caps for start of word) in V2
- */
-
-/**
  * @brief Callback for tvVideoFormatChangeCB
  *
  * This callback is triggered when a video format change is encountered.
@@ -220,9 +213,6 @@ tvError_t tvInit();
  */
 tvError_t tvTerm();
 
-/**
- * @todo Change the get functions in V2 - returntype to respective type and void parameter.
- */
 /**
  * @brief Get the TV Picture Mode.
  * 
@@ -451,10 +441,6 @@ tvError_t GetSaturation(int *saturation);
 tvError_t SetHue(int hue);
 
 /**
- * @todo Simplify to one get set method with enum value to what param to get/set in V2
-*/
-
-/**
  * @brief Get the hue value.
  * 
  * This function gets the current hue value.
@@ -606,7 +592,6 @@ tvError_t SetCurrentBacklightMode(tvBacklightMode_t blMode);
  * @retval tvERROR_INVALID_STATE             - Interface is not initialized
  * 
  * @pre  tvInit() should be called before calling this API.
- * @todo Instead of out param return it as return value in V2
  */
 tvError_t GetCurrentVideoFormat(tvVideoHDRFormat_t *format);
 
@@ -639,7 +624,6 @@ tvError_t GetVideoResolution(tvResolutionParam_t *res);
  * @retval tvERROR_INVALID_STATE            - Interface is not initialized
  * 
  * @pre  tvInit() should be called before calling this API.
- * @todo Instead of out param return it as return value in V2
  */
 tvError_t GetVideoFrameRate(tvVideoFrameRate_t *format);
 
@@ -1194,11 +1178,6 @@ tvError_t GetColorTemp_B_post_offset_onSource(tvColorTemp_t colorTemp, int* bpos
 tvError_t GetTVSupportedPictureModes(pic_modes_t *pictureModes[],unsigned short *count);
 
 /**
- * @todo Move the c++ function out of C extern in V2.
- * @todo if possible move c++ function move to different header in V2
-*/
-
-/**
  * @brief Register video format change callback.
  * 
  * This function register a callback for playback content video format change.
@@ -1345,7 +1324,6 @@ tvError_t SetTVHLGMode(const char * hlgMode);
  * @brief Set HDR10 mode.
  * 
  * This function sets the given HDR10 mode.
- * @todo change the input param to enum for HDR, HLG, Dolby in V2
  *
  * @param[in] hdr10Mode             - HDR10 mode to be set(dark, bright)
  *
@@ -1364,7 +1342,6 @@ tvError_t SetTVHDR10Mode(const char * hdr10Mode);
  * @brief Get the supported HLG modes.
  * 
  * This function returns the supported HLG modes
- * @todo Define seperate struct for dvModes , hlgmode, hdr mode(because value parameter is not required) in V2
  *
  * @param[out] dvModes             - List of supported HLG modes.(dark, bright)
  * @param[out] count               - Count of supported HLG modes.(max count value is 2)
@@ -1433,10 +1410,6 @@ tvError_t SetDynamicContrast(bool mode);
  */
 tvError_t GetDynamicContrast(bool *mode);
 
-/**
- * @todo For all input/output values, if values are fixed then use enum only in V2
- * @todo char* can be used only when the values returned is not specific in V2
- */
 /**
  * @brief Set white balance control.
  * 
@@ -2141,7 +2114,6 @@ tvError_t SetBacklightFade(int from,int to,int duration);
 
 /**
  * @brief Enable or disable gamma mode.
- * @todo Change the parameter type to bool if 0/1 in V2(revisit)
  * 
  * This function enables or disables the gamma mode.
  *
@@ -2292,7 +2264,6 @@ tvError_t SetGammaTable(unsigned short *pData_R, unsigned short *pData_G, unsign
  * @brief Get the gamma calibrated values
  *
  * This function gets the gamma calibrated values(0 - 65535) for the primary colors for a specific color temperature.
- * @todo colortemp should be tvColorTemp_t in V2
  *
  * @param[in] colortemp       - Color temperature (tvColorTemp_t)
  * @param[out] pData_R        - Array of gamma red values (0 - 65535)
@@ -2314,7 +2285,6 @@ tvError_t GetGammaTable(int colortemp, unsigned short *pData_R, unsigned short *
  * @brief Save the gamma calibrated values to driver
  *
  * This function saves the gamma calibrated values(0 - 65535) for the primary colors for a specific color temperature.
- * @todo colortemp should be tvColorTemp_t in V2
  *
  * @param[in] colortemp       - Color temperature (tvColorTemp_t)
  * @param[in] pData_R         - Array of gamma red values (0 - 65535)
