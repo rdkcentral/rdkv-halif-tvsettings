@@ -23,11 +23,11 @@
 # HAL Name is replaced with haltest, allowing this script to be part of the template for all
 
 # This will look up the last tag in the git repo, depending on the project this may require modification
-TEST_REPO=$(git remote -vv | head -n1 | awk -F ' ' '{print $2}' | sed 's/hal/haltest/g')
+TEST_REPO=$(git remote -vv | head -n1 | awk -F ' ' '{print $2}' | sed 's/halif/halif-test/g' | sed 's/hal-/haltest-/g' )
 
-# Set default UT_PROJECT_VERSION to master
+# Set default UT_PROJECT_VERSION to main
 if [ -z "${UT_PROJECT_VERSION}" ]; then
-    UT_PROJECT_VERSION=master
+    UT_PROJECT_VERSION=main
 fi
 
 UT_DIR="./ut"

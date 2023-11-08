@@ -21,7 +21,7 @@
 # PLEASE RUN THIS SCRIPT FROM INSIDE THE docs/ DIR SO THAT RELATIVE PATHS SET IN Doxyfile.cfg WORK AS EXPECTED
 
 # In the future this should moved to a fixed verison
-HAL_GENERATOR_VERSION=master
+HAL_GENERATOR_VERSION=1.2.0
 
 # This will look up the last tag in the git repo, depending on the project this may require modification
 PROJECT_VERSION=$(git describe --tags | head -n1)
