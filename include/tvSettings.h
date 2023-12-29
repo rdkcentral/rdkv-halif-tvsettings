@@ -24,7 +24,6 @@
 #include <string>
 #include "tvError.h"
 #include "tvTypes.h"
-#include "mfrMgr.h"
 
 #include <vector>
 
