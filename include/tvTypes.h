@@ -2,7 +2,7 @@
 * If not stated otherwise in this file or this component's LICENSE file the
 * following copyright and licenses apply:
 *
-* Copyright 2022 Sky UK
+* Copyright 2016 RDK Management
 *
 * Licensed under the Apache License, Version 2.0 (the "License");
 * you may not use this file except in compliance with the License.
@@ -17,322 +17,531 @@
 * limitations under the License.
 */
 
+/**
+ * @addtogroup HPK Hardware Porting Kit
+ * @{
+ * @par The Hardware Porting Kit
+ * HPK is the next evolution of the well-defined Hardware Abstraction Layer
+ * (HAL), but augmented with more comprehensive documentation and test suites
+ * that OEM or SOC vendors can use to self-certify their ports before taking
+ * them to RDKM for validation or to an operator for final integration and
+ * deployment. The Hardware Porting Kit effectively enables an OEM and/or SOC
+ * vendor to self-certify their own Video Accelerator devices, with minimal RDKM
+ * assistance.
+ *
+ */
+
+/**
+ * @addtogroup TV_Settings TV Settings Module
+ * @{
+ */
+
+
+/**
+* @addtogroup TV_Settings_HAL TV Settings HAL
+* @{
+*/
+
+/**
+* @defgroup TV_Types_H TV Types Header
+* @{
+**/
+
+
 #ifndef _TV_TYPES_H
 #define _TV_TYPES_H
+
+#include "tvTypesODM.h"
 
 #ifdef __cplusplus
 extern "C"
 {
 #endif
 
-typedef short int tvPictureMode_t;
-const tvPictureMode_t tvPictureMode_MAX=0xFF;
+#define PIC_MODES_SUPPORTED_MAX   (15)      //!< Defines the maximum pic modes supported
+#define PIC_MODE_NAME_MAX (25)              //!< Defines the maximum picture mode name length
+#define VIDEO_SRC_NAME_MAX (25)
+#define VIDEO_FORMAT_NAME_MAX (25)
+#define DIMMING_MODE_NAME_SIZE    (25)      //!< Defines the maximum mode name size
+#define DIMMING_MODE_MAX          (10)      //!< Defines the maximum dimming mode
 
-typedef enum {
-    tvContentType_NONE= 0x00,
-    tvContentType_FMM = 0x01,
+#define GAIN_MIN         (0)                //!< Defines the minimum gain value
+#define GAIN_MAX         (2047)             //!< Defines the maximum gain value
+#define OFFSET_MIN       (-1024)            //!< Defines the minimum offset value
+#define OFFSET_MAX       (1024)             //!< Defines the maximum offset value
+
+/**
+ * @brief Enumeration defining the supported FMM modes
+ *
+ */
+typedef enum
+{
+    tvContentType_NONE= 0x00,                 //!< Content type is NONE
+    tvContentType_FMM = 0x01,                 //!< Content type is FMM
+    tvContentType_MAX                         //!< End of enum
 }tvContentType_t;
 
-typedef enum {
-    tvBacklightMode_NONE = 0x00,
-    tvBacklightMode_MANUAL = 0x01,
-    tvBacklightMode_AMBIENT = 0x02,
-    tvBacklightMode_ECO = 0x04,
-    tvBacklightMode_INVALID = 0x08
+/**
+ * @brief Enumeration defining the supported backlight modes
+ * 
+ */
+typedef enum
+{
+    tvBacklightMode_NONE = 0x00,               //!< No backlight
+    tvBacklightMode_MANUAL = 0x01,             //!< backlight mode is manual
+    tvBacklightMode_AMBIENT = 0x02,            //!< backlight mode is ambient
+    tvBacklightMode_ECO = 0x04,                //!< backlight mode is eco
+    tvBacklightMode_INVALID = 0x08,            //!< backlight mode is invalid
+    tvBacklightMode_MAX = 0x10                 //!< End of enum
 }tvBacklightMode_t;
 
-typedef enum {
-    tvVideoHDRFormat_NONE= 0x00,
-    tvVideoHDRFormat_SDR = 0x01,
-    tvVideoHDRFormat_HLG = 0x02,
-    tvVideoHDRFormat_HDR10 = 0x04,
-    tvVideoHDRFormat_HDR10PLUS = 0x08,
-    tvVideoHDRFormat_DV = 0x010,
-}tvVideoHDRFormat_t;
+/**
+ * @brief Enumeration defining the supported video format types
+ *
+ */
+typedef enum tvVideoFormatType_e {
+    VIDEO_FORMAT_NONE  	   = 0,                 //!< No video format
+    VIDEO_FORMAT_HDR10,                         //!< Video format is HDR10
+    VIDEO_FORMAT_HDR10PLUS,                     //!< Video format is HDR10 plus
+    VIDEO_FORMAT_DV,                            //!< Video format is Dolby Vision
+    VIDEO_FORMAT_PRIMESL,                       //!< Video format is PRIMESL
+    VIDEO_FORMAT_HLG,                           //!< Video format is HLG
+    VIDEO_FORMAT_SDR,                           //!< Video format is SDR
+    VIDEO_FORMAT_MVC,                           //!< Video format is MVC
+    VIDEO_FORMAT_MAX                            //!< End of enum
+} tvVideoFormatType_t;
 
-typedef enum {
-    tvVideoResolution_NONE,
-    tvVideoResolution_720x240,
-    tvVideoResolution_2880x240,
-    tvVideoResolution_720x288,
-    tvVideoResolution_2880x288,
-    tvVideoResolution_640x480,
-    tvVideoResolution_720x480,
-    tvVideoResolution_800x480,
-    tvVideoResolution_852x480,
-    tvVideoResolution_854x480,
-    tvVideoResolution_1440x480,
-    tvVideoResolution_2880x480,
-    tvVideoResolution_960x540,
-    tvVideoResolution_3840x540,
-    tvVideoResolution_720x576,
-    tvVideoResolution_1440x576,
-    tvVideoResolution_2880x576,
-    tvVideoResolution_800x600,
-    tvVideoResolution_1024x600,
-    tvVideoResolution_1280x600,
-    tvVideoResolution_1280x720,
-    tvVideoResolution_1280x1024,
-    tvVideoResolution_1680x720,
-    tvVideoResolution_1024x768,
-    tvVideoResolution_1280x768,
-    tvVideoResolution_1360x768,
-    tvVideoResolution_1366x768,
-    tvVideoResolution_1440x900,
-    tvVideoResolution_1600x900,
-    tvVideoResolution_1280x960,
-    tvVideoResolution_1920x1080,
-    tvVideoResolution_2560x1080,
-    tvVideoResolution_3840x1080,
-    tvVideoResolution_1600x1200,
-    tvVideoResolution_1920x1200,
-    tvVideoResolution_2160x1200,
-    tvVideoResolution_2400x1200,
-    tvVideoResolution_2560x1440,
-    tvVideoResolution_3440x1440,
-    tvVideoResolution_3840x2160,
-    tvVideoResolution_4096x2160,
+/**
+ * @brief Enumeration defining the supported source offset
+ *
+ */
+typedef enum tvColorTempSourceOffset_e {
+    ALL_SRC_OFFSET = -1,        //!< Video source offset is all
+    HDMI_OFFSET    = 0,         //!< Video source offset HDMI and tuner
+    TV_OFFSET      = 1,         //!< Video source offset IP
+    AV_OFFSET      = 2,         //!< Video source offset Composite
+    MAX_OFFSET     = 3          //!< End of enum.
+} tvColorTempSourceOffset_t;
+
+/**
+ * @brief Enumeration defining the supported video source types
+ *
+ */
+typedef enum tvVideoSrcType_e {
+    VIDEO_SOURCE_ALL        = -1,               //!< Video source is All
+    VIDEO_SOURCE_ANALOGUE = 0,                  //!< Video source is Analogue
+    VIDEO_SOURCE_COMPOSITE1,                    //!< Video source is Composite1
+    VIDEO_SOURCE_COMPOSITE2,                    //!< Video source is Composite2
+    VIDEO_SOURCE_YPBPR1,                        //!< Video source is YPbPr1
+    VIDEO_SOURCE_YPBPR2,                        //!< Video source is YPbPr2
+    VIDEO_SOURCE_HDMI1,                         //!< Video source is HDMI1
+    VIDEO_SOURCE_HDMI2,                         //!< Video source is HDMI2
+    VIDEO_SOURCE_HDMI3,                         //!< Video source is HDMI3
+    VIDEO_SOURCE_HDMI4,                         //!< Video source is HDMI4
+    VIDEO_SOURCE_VGA,                           //!< Video source is VGA
+    VIDEO_SOURCE_IP,                            //!< Video source is IP
+    VIDEO_SOURCE_TUNER,                         //!< Video source is Tuner
+    VIDEO_SOURCE_SVIDEO,                        //!< Video source is SVideo
+    VIDEO_SOURCE_RESERVED,                      //!< Video source reserved
+    VIDEO_SOURCE_RESERVED1,                     //!< Video source reserved
+    VIDEO_SOURCE_RESERVED2,                     //!< Video source reserved
+    VIDEO_SOURCE_RESERVED3,                     //!< Video source reserved
+    VIDEO_SOURCE_MAX                            //!< End of enum.
+} tvVideoSrcType_t;
+
+/**
+ *  @brief Enumeration defining supported video resolution values
+ */
+typedef enum
+{
+    tvVideoResolution_NONE,                    //!< No Resolution
+    tvVideoResolution_720x240,                 //!< Resolution is 720x240
+    tvVideoResolution_2880x240,                //!< Resolution is 2880x240
+    tvVideoResolution_720x288,                 //!< Resolution is 720x288
+    tvVideoResolution_2880x288,                //!< Resolution is 2880x288
+    tvVideoResolution_640x480,                 //!< Resolution is 640x480
+    tvVideoResolution_720x480,                 //!< Resolution is 720x480
+    tvVideoResolution_800x480,                 //!< Resolution is 800x480
+    tvVideoResolution_852x480,                 //!< Resolution is 852x480
+    tvVideoResolution_854x480,                 //!< Resolution is 854x480
+    tvVideoResolution_1440x480,                //!< Resolution is 1440x480
+    tvVideoResolution_2880x480,                //!< Resolution is 2880x480
+    tvVideoResolution_960x540,                 //!< Resolution is 960x540
+    tvVideoResolution_3840x540,                //!< Resolution is 3840x540
+    tvVideoResolution_720x576,                 //!< Resolution is 720x576
+    tvVideoResolution_1440x576,                //!< Resolution is 1440x576
+    tvVideoResolution_2880x576,                //!< Resolution is 2880x576
+    tvVideoResolution_800x600,                 //!< Resolution is 800x600
+    tvVideoResolution_1024x600,                //!< Resolution is 1024x600
+    tvVideoResolution_1280x600,                //!< Resolution is 1280x600
+    tvVideoResolution_1280x720,                //!< Resolution is 1280x720
+    tvVideoResolution_1280x1024,               //!< Resolution is 1280x1024
+    tvVideoResolution_1680x720,                //!< Resolution is 1680x720
+    tvVideoResolution_1024x768,                //!< Resolution is 1024x768
+    tvVideoResolution_1280x768,                //!< Resolution is 1280x768
+    tvVideoResolution_1360x768,                //!< Resolution is 1360x768
+    tvVideoResolution_1366x768,                //!< Resolution is 1366x768
+    tvVideoResolution_1440x900,                //!< Resolution is 1440x900
+    tvVideoResolution_1600x900,                //!< Resolution is 1600x900
+    tvVideoResolution_1280x960,                //!< Resolution is 1280x960
+    tvVideoResolution_1920x1080,               //!< Resolution is 1920x1080
+    tvVideoResolution_2560x1080,               //!< Resolution is 2560x1080
+    tvVideoResolution_3840x1080,               //!< Resolution is 3840x1080
+    tvVideoResolution_1600x1200,               //!< Resolution is 1600x1200
+    tvVideoResolution_1920x1200,               //!< Resolution is 1920x1200
+    tvVideoResolution_2160x1200,               //!< Resolution is 2160x1200
+    tvVideoResolution_2400x1200,               //!< Resolution is 2400x1200
+    tvVideoResolution_2560x1440,               //!< Resolution is 2560x1440
+    tvVideoResolution_3440x1440,               //!< Resolution is 3440x1440
+    tvVideoResolution_3840x2160,               //!< Resolution is 3840x2160
+    tvVideoResolution_4096x2160,               //!< Resolution is 4096x2160
+    tvVideoResolution_MAX                      //!< End of enum
 }tvVideoResolution_t;
 
-typedef struct {
-    int frameHeight;
-    int frameWidth;
-    bool isInterlaced;
-    tvVideoResolution_t resolutionValue;
-}tvResolutionParam_t;
-
-typedef enum {
-    tvVideoFrameRate_NONE,
-    tvVideoFrameRate_24,
-    tvVideoFrameRate_25,
-    tvVideoFrameRate_30,
-    tvVideoFrameRate_50,
-    tvVideoFrameRate_60,
-    tvVideoFrameRate_23dot98,
-    tvVideoFrameRate_29dot97,
-    tvVideoFrameRate_59dot94,
+/**
+ *  @brief Enumeration defining supported types of frame rates
+ */
+typedef enum
+{
+    tvVideoFrameRate_NONE,                      //!< No frame rate
+    tvVideoFrameRate_24,                        //!< Frame rate is 24
+    tvVideoFrameRate_25,                        //!< Frame rate is 25
+    tvVideoFrameRate_30,                        //!< Frame rate is 30
+    tvVideoFrameRate_50,                        //!< Frame rate is 50
+    tvVideoFrameRate_60,                        //!< Frame rate is 60
+    tvVideoFrameRate_23dot98,                   //!< Frame rate is 23.98
+    tvVideoFrameRate_29dot97,                   //!< Frame rate is 29.97
+    tvVideoFrameRate_59dot94,                   //!< Frame rate is 59.94
+    tvVideoFrameRate_MAX                        //!< End of enum
 }tvVideoFrameRate_t;
 
-typedef enum {
-    tvDisplayMode_4x3 = 0,
-    tvDisplayMode_16x9,
-    tvDisplayMode_FULL,
-    tvDisplayMode_NORMAL,
-    tvDisplayMode_AUTO,
-    tvDisplayMode_DIRECT,
-    tvDisplayMode_ZOOM,
-    tvDisplayMode_MAX
+/**
+ *  @brief Enumeration defining supported display modes
+ */
+typedef enum
+{
+    tvDisplayMode_4x3 = 0,                      //!< Display mode is 4x3
+    tvDisplayMode_16x9,                         //!< Display mode is 16x9
+    tvDisplayMode_FULL,                         //!< Display mode is Full
+    tvDisplayMode_NORMAL,                       //!< Display mode is Normal
+    tvDisplayMode_AUTO,                         //!< Display mode is Auto
+    tvDisplayMode_DIRECT,                       //!< Display mode is Direct
+    tvDisplayMode_ZOOM,                         //!< Display mode is Zoom
+    tvDisplayMode_MAX                           //!< End of enum
 }tvDisplayMode_t;
 
-
-typedef enum {
-    tvColorTemp_STANDARD = 0,
-    tvColorTemp_WARM,
-    tvColorTemp_COLD,
-    tvColorTemp_USER,
-    tvColorTemp_BOOST_STANDARD,
-    tvColorTemp_BOOST_WARM,
-    tvColorTemp_BOOST_COLD,
-    tvColorTemp_BOOST_USER,
-    tvColorTemp_MAX
+/**
+ * @brief Enumeration defining supported color temperature
+ */
+ typedef enum {
+    tvColorTemp_STANDARD = 0,                   //!< Color Temperature is Standard
+    tvColorTemp_WARM,                           //!< Color Temperature is Warm
+    tvColorTemp_COLD,                           //!< Color Temperature is Cold
+    tvColorTemp_USER,                           //!< User defined color temperature
+    tvColorTemp_BOOST_STANDARD,                 //!< Color Temperature is Standard for boost mode
+    tvColorTemp_BOOST_WARM,                     //!< Color Temperature is Warm for boost mode
+    tvColorTemp_BOOST_COLD,                     //!< Color Temperature is Cold for boost mode
+    tvColorTemp_BOOST_USER,                     //!< User defined color temperature for boost mode
+    tvColorTemp_MAX                             //!< End of enum    
 }tvColorTemp_t;
 
-typedef enum {
-    tvWakeupSrc_VOICE = 0,
-    tvWakeupSrc_PRESENCE_DETECTION,
-    tvWakeupSrc_BLUETOOTH,
-    tvWakeupSrc_WIFI,
-    tvWakeupSrc_IR,
-    tvWakeupSrc_POWER_KEY,
-    tvWakeupSrc_TIMER,
-    tvWakeupSrc_CEC,
-    tvWakeupSrc_LAN,
-    tvWakeupSrc_MAX
+/**
+ * @brief Enumeration defining supported wakeup source types
+ */
+typedef enum
+{
+    tvWakeupSrc_VOICE = 0,                     //!< Wake up source is Voice
+    tvWakeupSrc_PRESENCE_DETECTION,            //!< Wake up source is Presence detection
+    tvWakeupSrc_BLUETOOTH,                     //!< Wake up source is bluetooth
+    tvWakeupSrc_WIFI,                          //!< Wake up source is Wifi
+    tvWakeupSrc_IR,                            //!< Wake up source is IR
+    tvWakeupSrc_POWER_KEY,                     //!< Wake up source is Powerkey
+    tvWakeupSrc_TIMER,                         //!< Wake up source is Timer
+    tvWakeupSrc_CEC,                           //!< Wake up source is CEC
+    tvWakeupSrc_LAN,                           //!< Wake up source is LAN
+    tvWakeupSrc_MAX                            //!< End of enum
 }tvWakeupSrcType_t;
 
-#ifndef __TV_DATA_COLOR__
-#define __TV_DATA_COLOR__
-typedef struct _tvDataColor {
-     unsigned int r_gain;
-     unsigned int g_gain;
-     unsigned int b_gain;
-     int r_offset;
-     int g_offset;
-     int b_offset;
-}tvDataColor_t;
-#endif
-
-typedef struct _tvDataColorSSM {
-    unsigned int en;
-    int r_pre_offset;  // s11.0, range -1024~+1023, default is 0
-    int g_pre_offset;  // s11.0, range -1024~+1023, default is 0
-    int b_pre_offset;  // s11.0, range -1024~+1023, default is 0
-    unsigned int r_gain;        // u1.10, range 0~2047, default is 1024 (1.0x)
-    unsigned int g_gain;        // u1.10, range 0~2047, default is 1024 (1.0x)
-    unsigned int b_gain;        // u1.10, range 0~2047, default is 1024 (1.0x)
-    int r_post_offset; // s11.0, range -1024~+1023, default is 0
-    int g_post_offset; // s11.0, range -1024~+1023, default is 0
-    int b_post_offset; // s11.0, range -1024~+1023, default is 0
-} tvDataColorSSM_t;
-
-typedef enum _tvRGBType {
-    TYPE_INVALID = -1,
-    R_GAIN = 0,
-    G_GAIN,
-    B_GAIN,
-    R_POST_OFFSET,
-    G_POST_OFFSET,
-    B_POST_OFFSET,
-    RGB_TYPE_MAX,
+/**
+ * @brief Enumeration defining supported RGB values
+ */
+typedef enum _tvRGBType
+{
+    TYPE_INVALID = -1,                          //!< RGB type is invalid
+    R_GAIN = 0,                                 //!< RGB type is RGain
+    G_GAIN,                                     //!< RGB type is GGain
+    B_GAIN,                                     //!< RGB type is BGain
+    R_POST_OFFSET,                              //!< RGB type is ROffset
+    G_POST_OFFSET,                              //!< RGB type is GOffset
+    B_POST_OFFSET,                              //!< RGB type is BOffset
+    RGB_TYPE_MAX                                //!< End of enum
 } tvRGBType_t;
 
-typedef enum {
-    tvDataColor_NONE= 0,
-    tvDataColor_RED = 1,
-    tvDataColor_GREEN = 2,
-    tvDataColor_BLUE = 4,
-    tvDataColor_YELLOW = 8,
-    tvDataColor_CYAN = 16,
-    tvDataColor_MAGENTA = 32,
-    tvDataColor_MAX = 64
+/**
+ * @brief Enumeration defining supported TV component colors
+ */
+typedef enum
+{
+    tvDataColor_NONE= 0,                        //!< No color
+    tvDataColor_RED = 1,                        //!< Color is Red
+    tvDataColor_GREEN = 2,                      //!< Color is Green
+    tvDataColor_BLUE = 4,                       //!< Color is Blue
+    tvDataColor_YELLOW = 8,                     //!< Color is Yellow
+    tvDataColor_CYAN = 16,                      //!< Color is Cyan
+    tvDataColor_MAGENTA = 32,                   //!< Color is Megenta
+    tvDataColor_MAX = 64                        //!< End of enum
 }tvDataComponentColor_t;
 
-typedef enum {
-    tvContentFormatType_NONE= 0x00,
-    tvContentFormatType_SDR = 0x01,
-    tvContentFormatType_HLG = 0x02,
-    tvContentFormatType_HDR10 = 0x03,
-    tvContentFormatType_HDR10PLUS = 0x04,
-    tvContentFormatType_DOVI = 0x05,
-    tvContentFormatType_MAX 
-}tvContentFormatType_t;
-
-#ifndef __VE_HDR_TYPE__
-#define __VE_HDR_TYPE__
-typedef enum tvhdr_type_e {
-    HDR_TYPE_NONE      = 0,
-    HDR_TYPE_HDR10     = 1,
-    HDR_TYPE_HDR10PLUS = 2,
-    HDR_TYPE_DOVI      = 3,
-    HDR_TYPE_PRIMESL   = 4,
-    HDR_TYPE_HLG       = 5,
-    HDR_TYPE_SDR       = 6,
-    HDR_TYPE_MVC       = 7,
-    HDR_TYPE_MAX,
-} tvhdr_type_t;
-#endif
-
-typedef enum tvcomponent_color_type_e
+/**
+ * @brief Enumeration defining the supported component types
+ *
+ */
+typedef enum tvComponentType_e 
 {
-    COLOR_ENABLE  = 0,
-    COLOR_RED,
-    COLOR_GREEN,
-    COLOR_BLUE,
-    COLOR_CYAN,
-    COLOR_MAGENTA,
-    COLOR_YELLOW,
-}tvcomponent_color_type_t;
+    COMP_NONE=0,                                //!< No Component
+    COMP_HUE,                                   //!< Component is Hue
+    COMP_SATURATION,                            //!< Component is Saturation
+    COMP_LUMA,                                  //!< Component is Luma
+    COMP_MAX                                    //!< End of enum
+}tvComponentType_t;
 
-typedef enum tvcomponent_state_e
-{
-    COMPONENT_DISABLE = 0,
-    COMPONENT_ENABLE,
-    COMPONENT_RESET,
-}tvcomponent_state_t;
+/**
+ * @brief Enumeration defining the supported PQ mode types
+ *
+ */
+typedef enum tvPQModeIndex {
+    PQ_MODE_INVALID  = -1,                      //!< Picture mode is Invalid
+    PQ_MODE_STANDARD  = 0,                      //!< Picture mode is "Standard" or "Entertainment" */
+    PQ_MODE_VIVID =1 ,                          //!< Picture mode is "Vivid" or "Dynamic" */
+    PQ_MODE_ENERGY_SAVING =2,                   //!< Picture mode is "Energysaving" */
+    PQ_MODE_CUSTOM =3,                          //!< Picture mode is "Custom" or "Expert" */
+    PQ_MODE_THEATER =4 ,                        //!< Picture mode is "Theater" or "Movie" */
+    PQ_MODE_RESERVED1 =5 ,                      //!< Picture mode is Reserved */
+    PQ_MODE_RESERVED2 =6 ,                      //!< Picture mode is Reserved */
+    PQ_MODE_GAME =7,                            //!< Picture mode is "Game" */
+    PQ_MODE_SPORTS =8 ,                         //!< Picture mode is "Sports" */
+    PQ_MODE_GRAPHICS =9 ,                       //!< Picture mode is "Graphics" */
+    PQ_MODE_FMM =10,                            //!< Picture mode is "Filmmaker" */
+    PQ_MODE_MAX=15                              //!< End of enum
+}tvPQModeIndex_t;
 
-typedef enum tvCMS_tunel_e 
-{
-    COLOR_STATE=0,
-    COLOR_HUE,
-    COLOR_SATURATION,
-    COLOR_LUMA
-}tvCMS_tunel_t;
-
-typedef enum tvSourceSaveConfig {
-    SOURCE_SAVE_FOR_ALL = 0,
-    SOURCE_SAVE_FOR_INDIVIDUAL,
-    SOURCE_SAVE_FOR_GROUPED ,
-    SOURCE_SAVE_FOR_MAX
-}tvSourceSaveConfig_t;
-
-typedef enum tvSaveFormatsConfig {
-    CONTENT_FORMAT_SAVE_FOR_ALL=0,
-    CONTENT_FORMAT_SAVE_FOR_CURRENT,
-    CONTENT_FORMAT_SAVE_FOR_GROUPED,
-    CONTENT_FORMAT_SAVE_FOR_DV_ONLY,
-    CONTENT_FORMAT_SAVE_FOR_NON_DV,
-    CONTENT_FORMAT_SAVE_FOR_HDR10_ONLY,
-    CONTENT_FORMAT_SAVE_FOR_HLG_ONLY,
-    CONTENT_FORMAT_SAVE_MAX
-}tvSaveFormatsConfig_t;
-
-typedef enum tvSavePicModesConfig {
-    PIC_MODE_SAVE_FOR_ALL=0,
-    PIC_MODE_FORMAT_SAVE_FOR_CURRENT,
-    PIC_MODE_FORMAT_SAVE_MAX
-}tvSavePicModesConfig_t;
-
+/**
+ * @brief Enumeration defining the supported PQ param types
+ *
+ */
 typedef enum tvPQParameterIndex {
-    PQ_PARAM_BRIGHTNESS  = 0,
-    PQ_PARAM_CONTRAST  ,
-    PQ_PARAM_SHARPNESS , 
-    PQ_PARAM_SATURATION ,
-    PQ_PARAM_BACKLIGHT  ,
-    PQ_PARAM_HUE  ,
-    PQ_PARAM_ASPECT_RATIO  ,
-    PQ_PARAM_CMS  ,
-    PQ_PARAM_DOLBY_MODE,
-    PQ_PARAM_COLOR_TEMPERATURE	,
-    PQ_PARAM_LDIM,
-    PQ_PARAM_HDR10_MODE,
-    PQ_PARAM_HLG_MODE,
-    PQ_PARAM_LOCALDIMMING_LEVEL,
-    PQ_PARAM_LOWLATENCY_STATE,
-    PQ_PARAM_DIMMINGMODE
+    PQ_PARAM_BRIGHTNESS  = 0,                   //!< Picture parmaeter is Brightness
+    PQ_PARAM_CONTRAST,                          //!< Picture parmaeter is Contrast
+    PQ_PARAM_SHARPNESS,                         //!< Picture parmaeter is Sharpness
+    PQ_PARAM_SATURATION,                        //!< Picture parmaeter is Saturation
+    PQ_PARAM_HUE,                               //!< Picture parmaeter is Hue
+    PQ_PARAM_BACKLIGHT,                         //!< Picture parmaeter is Backlight
+    PQ_PARAM_DOLBY_MODE,                        //!< Picture parmaeter is Dolby Mode
+    PQ_PARAM_HDR10_MODE,                        //!< Picture parmaeter is HDR10 mode. To be deprecated
+    PQ_PARAM_HLG_MODE,                          //!< Picture parmaeter is HLG mode. To be deprecated
+    PQ_PARAM_ASPECT_RATIO,                      //!< Picture parmaeter is Aspect ratio
+    PQ_PARAM_COLOR_TEMPERATURE,                 //!< Picture parmaeter is Colour temperature
+    PQ_PARAM_DIMMINGMODE,                       //!< Picture parmaeter is Dimming mode
+    PQ_PARAM_LDIM,                               //!< Picture parmaeter is LDIM. To be deprecated 
+    PQ_PARAM_LOCALDIMMING_LEVEL,                //!< Picture parmaeter is Local dimming level
+    PQ_PARAM_LOWLATENCY_STATE,                  //!< Picture parmaeter is Low latency state
+    PQ_PARAM_CMS,                               //!< Picture parmaeter is CMS. To be deprecated
+    PQ_PARAM_CMS_STATE,                         //!< Picture parmaeter is CMS. To be deprecated
+    PQ_PARAM_CMS_SATURATION_RED,                //!< Picture parmaeter is Component saturation red
+    PQ_PARAM_CMS_SATURATION_BLUE,               //!< Picture parmaeter is Component saturation blue
+    PQ_PARAM_CMS_SATURATION_GREEN,              //!< Picture parmaeter is Component saturation green
+    PQ_PARAM_CMS_SATURATION_YELLOW,              //!< Picture parmaeter is Component saturation yellow
+    PQ_PARAM_CMS_SATURATION_CYAN,               //!< Picture parmaeter is Component saturation cyan
+    PQ_PARAM_CMS_SATURATION_MAGENTA,            //!< Picture parmaeter is Component saturation magenta
+    PQ_PARAM_CMS_HUE_RED,                       //!< Picture parmaeter is Component hue red
+    PQ_PARAM_CMS_HUE_BLUE,                      //!< Picture parmaeter is Component hue blue
+    PQ_PARAM_CMS_HUE_GREEN,                     //!< Picture parmaeter is Component hue green
+    PQ_PARAM_CMS_HUE_YELLOW,                     //!< Picture parmaeter is Component hue yellow
+    PQ_PARAM_CMS_HUE_CYAN,                      //!< Picture parmaeter is Component hue cyan
+    PQ_PARAM_CMS_HUE_MAGENTA,                   //!< Picture parmaeter is Component hue magenta
+    PQ_PARAM_CMS_LUMA_RED,                      //!< Picture parmaeter is Component luma red
+    PQ_PARAM_CMS_LUMA_BLUE,                     //!< Picture parmaeter is Component luma blue
+    PQ_PARAM_CMS_LUMA_GREEN,                    //!< Picture parmaeter is Component luma green
+    PQ_PARAM_CMS_LUMA_YELLOW,                    //!< Picture parmaeter is Component luma yellow
+    PQ_PARAM_CMS_LUMA_CYAN,                     //!< Picture parmaeter is Component luma cyan
+    PQ_PARAM_CMS_LUMA_MAGENTA,                  //!< Picture parmaeter is Component luma magenta
+    PQ_PARAM_MAX                                //!< End of enum
 }tvPQParameterIndex_t;
 
-typedef enum {
-    tvDolbyMode_Invalid = -1,
-    tvDolbyMode_Dark = 0,
-    tvDolbyMode_Bright,
-    tvDolbyMode_Custom,
-    tvHDR10Mode_Dark,
-    tvHDR10Mode_Bright,
-    tvHDR10Mode_Custom,
-    tvHLGMode_Dark,
-    tvHLGMode_Bright,
-    tvHLGMode_Custom,
-    tvDolbyMode_Dark_Game,
-    tvDolbyMode_Bright_Game,
-    tvHDR10Mode_Dark_Game,
-    tvHDR10Mode_Bright_Game,
-    tvHLGMode_Dark_Game,
-    tvHLGMode_Bright_Game,
-    tvMode_Max = 28
+/**
+ *  @brief Enumeration defining the various supported dolby modes
+ */
+ typedef enum {
+    tvDolbyMode_Invalid = -1,           //!< Dolby mode is invalid
+    tvDolbyMode_Dark = 0,               //!< Dolby mode is Dolby Dark
+    tvDolbyMode_Bright,                 //!< Dolby mode is Dolby Bright
+    tvDolbyMode_Reserved1,              //!< Dolby mode is reserved
+    tvHDR10Mode_Dark,                   //!< Dolby mode is HDR10 Dark
+    tvHDR10Mode_Bright,                 //!< Dolby mode is HDR10 Bright
+    tvHDR10Mode_Reserved2,              //!< Dolby mode is Reserved
+    tvHLGMode_Dark,                     //!< Dolby mode is HLG Dark
+    tvHLGMode_Bright,                   //!< Dolby mode is HLG Bright
+    tvHLGMode_Reserved3,                //!< Dolby mode is reserved
+    tvMode_Max = 28                     //!< End of enum
 }tvDolbyMode_t;
 
-typedef enum {
-  tvDimmingMode_Fixed=0,
-  tvDimmingMode_Local,
-  tvDimmingMode_Global
+/**
+ * @brief Enumeration defining the supported dimming modes
+ */
+typedef enum
+{
+  tvDimmingMode_Fixed=0,                 //!< Dimming Mode is Fixed
+  tvDimmingMode_Local,                   //!< Dimming Mode is Local
+  tvDimmingMode_Global,                  //!< Dimming Mode is Global
+  tvDimmingMode_MAX                      //!< End of enum
 }tvDimmingMode_t;
 
-typedef struct _gammaCalibrated {
-     unsigned short r_gamma_offset[256];
-     unsigned short g_gamma_offset[256];
-     unsigned short b_gamma_offset[256];
-}gammaCalibrated_t;
-
-typedef enum _LDIM_STATE_INDEX
+/**
+ * @brief Enumeration defining the supported LDIM states
+ *
+ */
+typedef enum _ldimStateLevel
 {
-    LDIM_STATE_NONBOOST = 0,
-    LDIM_STATE_BOOST,
-    LDIM_STATE_BURST,
-    LDIM_STATE_MAX,
-} LDIM_STATE_INDEX;
+    LDIM_STATE_NONBOOST = 0,            //!< LDIM state level is non boost (AKA Normal)
+    LDIM_STATE_BOOST,                   //!< LDIM state level is boost
+    LDIM_STATE_BURST,                   //!< LDIM state level is burst
+    LDIM_STATE_MAX,                     //!< End of enum
+} ldimStateLevel_t;
+
+/**
+ * @brief Enumeration defining the supported backlight test modes
+ *
+ */
+typedef enum tvBacklightTestMode_s{
+    tvBacklightTestMode_Normal = 0,     //!< Backlight test mode is normal
+    tvBacklightTestMode_Boost,          //!< Backlight test mode is boost
+    tvBacklightTestMode_Burst,          //!< Backlight test mode is burst
+    tvBacklightTestMode_Reset,          //!< Backlight test mode is reset
+    tvBacklightTestMode_Max             //!< End of enum
+}tvBacklightTestMode_t;
+
+/**
+ * @brief Callback for tvVideoFormatChangeCB
+ *
+ * This callback is triggered when a video format change is encountered.
+ *
+ * @param[in] format   			- Type of content format. Valid values will be member of ::tvVideoFormatType_t
+ * @param[in] userData 			- Data of the content
+ *
+ */
+typedef void (*tvVideoFormatChangeCB)(tvVideoFormatType_t format,void *userData);
+
+
+/**
+ * @brief Callback for tvVideoContentChangeCB
+ *
+ * This callback is triggered when a video content change is encountered.
+ *
+ * @param[in] mode                      - Types of FMM mode. Valid values will be member of ::tvContentType_t
+ * @param[in] userData                  - Data of the content
+ *
+ */
+typedef void (*tvVideoContentChangeCB)(tvContentType_t mode,void *userData);
+
+
+/**
+ * @brief Structure for TV resolution parameters
+ */
+typedef struct
+{
+    int frameHeight;                            //!< Frame height of the TV resolution
+    int frameWidth;                             //!< Frame width of the TV resolution 
+    bool isInterlaced;                          //!< Checks whether the TV resolution is interlaced
+    tvVideoResolution_t resolutionValue;        //!< Represents the struct TV resolution value
+}tvResolutionParam_t;
+
+/**
+ * @brief Callback for tvVideoResolutionChangeCB.
+ *
+ * This callback is triggered when a video resolution change is encountered.
+ *
+ * @param[in] resolutionStruct    - Resolution parameter. Valid values will be member of ::tvResolutionParam_t
+ * @param[in] userData            - Data of the content
+ *
+ */
+typedef void (*tvVideoResolutionChangeCB)(tvResolutionParam_t resolutionStruct,void *userData);
+
+/**
+ * @brief Callback for tvVideoFrameRateChangeCB.
+ *
+ * This callback is triggered when a video framerate change is encountered.
+ *
+ * @param[in] frameRate            - framerate parameter. Valid values will be member of ::tvVideoFrameRate_t
+ * @param[in] userData             - Data of the content
+ *
+ */
+typedef void (*tvVideoFrameRateChangeCB)(tvVideoFrameRate_t frameRate,void *userData);
+
+/** 
+ * @brief Structure for the pic modes and value.@n
+   The value contains the index and parameter is applicable only for get/set of picmodes.
+ */
+typedef struct pic_modes{
+    char name[PIC_MODE_NAME_MAX];       //!< name of the picture mode
+    short int value;                    //!< Index of the picture mode
+}pic_modes_t;
+
+/**
+ * @brief Structure defining supported parameters in tv color
+ */
+typedef struct _tvDataColor
+{
+     unsigned int r_gain;                       //!< Color Data is r_gain
+     unsigned int g_gain;                       //!< Color Data is g_gain
+     unsigned int b_gain;                       //!< Color Data is b_gain
+     int r_offset;                              //!< Color Data is r_offset
+     int g_offset;                              //!< Color Data is g_offset
+     int b_offset;                              //!< Color Data is b_offset
+}tvDataColor_t;
+
+/** 
+ * @brief Structure for video format call back data. 
+ */
+typedef struct
+{
+    void *userdata;                             //!< User data passed back to caller during call back
+    tvVideoFormatChangeCB cb;                   //!< Video format change call back function pointed
+}tvVideoFormatCallbackData;
+
+/**
+ * @brief Structure for FMM content call back data.
+ */
+typedef struct
+{
+    void *userdata;                             //!< User data passed back to caller during call back
+    tvVideoContentChangeCB cb;                  //!< Video content change call back function pointed
+}tvVideoContentCallbackData;
+
+/** 
+ * @brief Structure for video resolution callback data. 
+ */
+typedef struct
+{
+    void *userdata;                             //!< User data passed back to caller during call back
+    tvVideoResolutionChangeCB cb;               //!< Video resolution change call back function pointed
+}tvVideoResolutionCallbackData;
+
+/** 
+ * @brief Structure for video framerate callback data. 
+ */
+typedef struct
+{
+    void *userdata;                             //!< User data passed back to caller during call back
+    tvVideoFrameRateChangeCB cb;                //!< Video frame change call back function pointed
+}tvVideoFrameRateCallbackData;
 
 #ifdef __cplusplus
 }
 #endif
 
 #endif //_TV_TYPES_H
+
+/** @} */ // End of TV_Types_H
+/** @} */ // End of TV_Settings_HAL
+/** @} */ // End of TV_Settings
+/** @} */ // End of HPK
