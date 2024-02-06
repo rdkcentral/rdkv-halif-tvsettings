@@ -330,6 +330,7 @@ participant Caller as Caller
     OPPDB-->>HAL:return
     HAL-->>Caller:return
     Caller->>HAL: SetTVPictureMode()
+    Note over HAL: Set the default picture mode entertainment
     HAL->>OPPDB: Read associated picture properties
     OPPDB-->>HAL:return
     Note over HAL: Reload gamma and white balance if there is a colour temperature value change.
