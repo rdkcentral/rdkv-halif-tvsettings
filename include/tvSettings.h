@@ -510,7 +510,7 @@ tvError_t SetTVDimmingMode(const char *dimmingMode);
  *
  * @pre TvInit() should be called before calling this API
  */
-tvError_t GetTVDimmingMode(const char *dimmingMode);
+tvError_t GetTVDimmingMode(char *dimmingMode);
 
 /**
  * @brief Saves the backlight dimming mode
@@ -1777,7 +1777,7 @@ tvError_t SetGammaTable(unsigned short *pData_R, unsigned short *pData_G, unsign
  * @param[out] pData_R        - Array of gamma red values. Valid range is (0 - 1023)
  * @param[out] pData_G        - Array of gamma green values. Valid range is (0 - 1023)
  * @param[out] pData_B        - Array of gamma blue values. Valid range is (0 - 1023)
- * @param[out] size           - Common size of each array. Valid range is (0 - 256)
+ * @param[in] size           - Common size of each array. Valid range is (0 - 256)
  *
  * @return tvError_t
  *
@@ -1798,7 +1798,7 @@ tvError_t GetDefaultGammaTable(tvColorTemp_t colortemp, unsigned short *pData_R,
  * @param[out] pData_R        - Array of gamma red values. Valid range is (0 - 1023)
  * @param[out] pData_G        - Array of gamma green values. Valid range is (0 - 1023)
  * @param[out] pData_B        - Array of gamma blue values. Valid range is (0 - 1023)
- * @param[out] size           - Common size of each array. Valid range is (0 - 256)
+ * @param[in] size           - Common size of each array. Valid range is (0 - 256)
  *
  * @return tvError_t
  *
