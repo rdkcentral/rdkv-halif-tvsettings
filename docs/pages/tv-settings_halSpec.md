@@ -417,7 +417,7 @@ participant Caller as Caller
 SetBrightness(), SetContrast(), SetSaturation(), SetHue(),SetSharpness(), SetColorTemperature(),SetBacklight(), etc..
 
 <h5>tvSettings_GetMethods:</h5> 
-SetBrightness(), SetContrast(), SetSaturation(), SetHue(),SetSharpness(), SetColorTemperature(),GetBacklight(), etc..
+GetBrightness(), GetContrast(), GetSaturation(), GetHue(),GetSharpness(), GetColorTemperature(),GetBacklight(), etc..
  
 <h5>tvSettings_SaveMethods :</h5> 
 SaveBrightness(), SaveContrast(), SaveSaturation(), SaveHue(),SaveSharpness(), SaveColorTemperature(),SaveBacklight(), etc..
