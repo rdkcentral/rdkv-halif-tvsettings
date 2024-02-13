@@ -81,7 +81,7 @@ Picture profile database will have 5 types of tables:
 5. TMAX table for every local dimming level to maintain the TMAX value
 
 - The capabilities of a specific platform with respect to TV picture configuration will be defined in a config file ([pq_capablities.ini](../../config/pq_capablities.ini "pq_capablities.ini")) which decides supported formats, picture modes, dimming modes, dvModes, resolution etc.
-- Caller must initialize by calling `tvInit()` which must initialize the parameters in default picture property table. These parameters are decided by Soc vendor  based on platform capability.
+- Caller must initialize by calling `tvInit()` which must initialize the parameters in default picture property database. These parameters are decided by Soc vendor  based on platform capability.
 - On every bootup the default picture profile database will be copied to override picture profile database.  
 
 #### Table Format
@@ -324,14 +324,14 @@ participant Caller as Caller
     Note over HAL: Initialize the TV Setting HAL APIs
     HAL->>Driver: Allocates resources
     Driver-->>HAL:return
-    HAL->>DPPDB: Read default picture profile properites
+    HAL->>DPPDB: tvSettings_GetDefaultPQParams() Read default picture profile properites
     DPPDB-->>HAL:return
     HAL->>OPPDB: Copy default picture profile properites
     OPPDB-->>HAL:return
     HAL-->>Caller:return
     Caller->>HAL: SetTVPictureMode()
     Note over HAL: Set the default picture mode entertainment
-    HAL->>OPPDB: Read associated picture properties
+    HAL->>OPPDB: tvSettings_GetPQParams() Read associated picture properties
     OPPDB-->>HAL:return
     Note over HAL: Reload gamma and white balance if there is a colour temperature value change.
     HAL->>OPPDB: Read associated Gamma and White balance
@@ -417,7 +417,7 @@ participant Caller as Caller
 SetBrightness(), SetContrast(), SetSaturation(), SetHue(),SetSharpness(), SetColorTemperature(),SetBacklight(), etc..
 
 <h5>tvSettings_GetMethods:</h5> 
-GetBrightness(), GetContrast(), GetSaturation(), GetHue(),GetSharpness(), GetColorTemperature(),GetBacklight(), etc..
+GetBrightness(), GetContrast(), GetSaturation(), GetHue(),GetSharpness(), GetColorTemperature(),GetBacklight(), GetPQParams(), GetDefaultPQParams() etc..
  
 <h5>tvSettings_SaveMethods :</h5> 
 SaveBrightness(), SaveContrast(), SaveSaturation(), SaveHue(),SaveSharpness(), SaveColorTemperature(),SaveBacklight(), etc..
