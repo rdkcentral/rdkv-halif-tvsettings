@@ -72,18 +72,19 @@ style x fill:#9f9,stroke:#333,stroke-width:0.3px
 
 ### Initialization and Startup
 
-The caller must initialize the `APIs` with picture quality modes for specific platforms and initiates communication with picture quality drivers. The standard/default values shall be maintained in default Picture profile database and any modified values for these parameters using TV Settings HAL APIs will be maintained in override Picture profile database. When there is no input selected before save the default values will be "Entertainment" for picturemode, "SDR" for video format and "IP" for video source. HAL shall be responsible to store these Picture profile data into the database.
+The caller must initialize the `APIs` with picture quality modes for specific platforms and initiates communication with picture quality drivers. The standard/default values shall be maintained in default Picture profile database and any modified values for these parameters using TV Settings HAL APIs will be maintained in override Picture profile database. HAL shall be responsible to store these Picture profile data into the database.
 Picture profile database will have 5 types of tables:
 1. Picture property table to maintain all picture properties for a given picture mode, video format and video source
 2. Picture mode association table maintain the association of a given video source and video format to a picture mode
-3. White balance table for every color temperature and video source to maintain WB calibrated values
-4. Gamma table for every color temperature to maintain the gamma calibrated values.
-5. TMAX table for every local dimming level to maintain the TMAX value
+3. If input source, picture mode, and video format are not already set or specified, they will default to "IP source," "Entertainment," and "SDR," respectively. However, if the caller attempts to change parameters that rely on these values, they will be acted upon default values accordingly.
+4. White balance table for every color temperature and video source to maintain WB calibrated values
+5. Gamma table for every color temperature to maintain the gamma calibrated values.
+6. TMAX table for every local dimming level to maintain the TMAX value
 
 - The capabilities of a specific platform with respect to TV picture configuration will be defined in a config file ([pq_capablities.ini](../../config/pq_capablities.ini "pq_capablities.ini")) which decides supported formats, picture modes, dimming modes, dvModes, resolution etc.
 - Caller must initialize by calling `tvInit()` which must initialize the parameters in default picture property database. These parameters are decided by Soc vendor  based on platform capability.
-- On every bootup the default picture profile database will be copied to override picture profile database.  
-
+- On every bootup the default picture profile database will be copied to override picture profile database.
+  
 #### Table Format
 ##### Picture Property Table
 | Video Source | Video Format | Picture Mode | Picture Property |
