@@ -56,7 +56,6 @@
 */
 #include "tvError.h"
 #include "tvTypes.h"
-#include "tvSettingsExtODM.h"
 #include "tvSettingsODM.h"
 
 #ifdef __cplusplus
@@ -113,7 +112,7 @@ tvError_t TvInit();
  *
  * @pre TvInit() should be called before calling this API
  */
-void RegisterVideoFormatChangeCB(tvVideoFormatCallbackData& cbData);
+void RegisterVideoFormatChangeCB(tvVideoFormatCallbackData *cbData);
     
 /**
  * @brief Registers the VideoContent FMM change callback
@@ -128,7 +127,7 @@ void RegisterVideoFormatChangeCB(tvVideoFormatCallbackData& cbData);
  *
  * @pre TvInit() should be called before calling this API
  */
-void RegisterVideoContentChangeCB(tvVideoContentCallbackData &cbData);
+void RegisterVideoContentChangeCB(tvVideoContentCallbackData *cbData);
 
 /**
  * @brief Registers the Video resolution change callback.
@@ -141,7 +140,7 @@ void RegisterVideoContentChangeCB(tvVideoContentCallbackData &cbData);
  *
  * @pre TvInit() should be called before calling this API
  */
-void RegisterVideoResolutionChangeCB(tvVideoResolutionCallbackData& cbData);
+void RegisterVideoResolutionChangeCB(tvVideoResolutionCallbackData *cbData);
 
 /**
  * @brief Registers the Video framerate change callback
@@ -154,7 +153,7 @@ void RegisterVideoResolutionChangeCB(tvVideoResolutionCallbackData& cbData);
  *
  * @pre TvInit() should be called before calling this API
  */
-void RegisterVideoFrameRateChangeCB(tvVideoFrameRateCallbackData& cbData);
+void RegisterVideoFrameRateChangeCB(tvVideoFrameRateCallbackData *cbData);
 
 
 /**
