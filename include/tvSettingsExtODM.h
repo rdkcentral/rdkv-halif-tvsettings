@@ -49,6 +49,7 @@
 #ifndef _TV_SETTINGS_EXT_ODM_H
 #define _TV_SETTINGS_EXT_ODM_H
 #include <vector>
+#include <string>
 #include "tvError.h"
 #include "tvTypes.h"
 #include "tvTypesODM.h"

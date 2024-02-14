@@ -50,7 +50,6 @@
 #define _TV_SETTINGS_H
 
 #include <stdbool.h>
-#include <string>
 /*
  *@todo: Instead of tv add prefix tvSettings ie: tvSettingsError.h and tvSettingsType.h
 */
@@ -97,7 +96,7 @@ tvError_t TvInit();
  * @retval tvERROR_NONE              - Success
  * @retval tvERROR_INVALID_STATE     - Interface is already terminated
  * @retval tvERROR_GENERAL           - Underlying failures - SoC, memory, etc
- * 
+ *
  */
  tvError_t TvTerm();
 
@@ -110,9 +109,14 @@ tvError_t TvInit();
  *
  * @param[in] cbData                - Callback data. Please refer ::tvVideoFormatCallbackData
  *
+ * @retval tvERROR_NONE            - Success
+ * @retval tvERROR_INVALID_PARAM   - Parameter is invalid
+ * @retval tvERROR_INVALID_STATE   - Interface is not initialized
+ * @retval tvERROR_GENERAL         - Underlying failures - SoC, memory, etc
+ *
  * @pre TvInit() should be called before calling this API
  */
-void RegisterVideoFormatChangeCB(tvVideoFormatCallbackData *cbData);
+tvError_t RegisterVideoFormatChangeCB(tvVideoFormatCallbackData *cbData);
     
 /**
  * @brief Registers the VideoContent FMM change callback
@@ -125,9 +129,14 @@ void RegisterVideoFormatChangeCB(tvVideoFormatCallbackData *cbData);
  *
  * @param[in] cbData                - Callback data. Please refer::tvVideoContentCallbackData
  *
+ * @retval tvERROR_NONE            - Success
+ * @retval tvERROR_INVALID_PARAM   - Parameter is invalid
+ * @retval tvERROR_INVALID_STATE   - Interface is not initialized
+ * @retval tvERROR_GENERAL         - Underlying failures - SoC, memory, etc
+ *
  * @pre TvInit() should be called before calling this API
  */
-void RegisterVideoContentChangeCB(tvVideoContentCallbackData *cbData);
+tvError_t RegisterVideoContentChangeCB(tvVideoContentCallbackData *cbData);
 
 /**
  * @brief Registers the Video resolution change callback.
@@ -138,9 +147,14 @@ void RegisterVideoContentChangeCB(tvVideoContentCallbackData *cbData);
  *
  * @param[in] cbData                - Callback data. Please refer ::tvVideoResolutionCallbackData
  *
+ * @retval tvERROR_NONE            - Success
+ * @retval tvERROR_INVALID_PARAM   - Parameter is invalid
+ * @retval tvERROR_INVALID_STATE   - Interface is not initialized
+ * @retval tvERROR_GENERAL         - Underlying failures - SoC, memory, etc
+ *
  * @pre TvInit() should be called before calling this API
  */
-void RegisterVideoResolutionChangeCB(tvVideoResolutionCallbackData *cbData);
+tvError_t RegisterVideoResolutionChangeCB(tvVideoResolutionCallbackData *cbData);
 
 /**
  * @brief Registers the Video framerate change callback
@@ -151,9 +165,16 @@ void RegisterVideoResolutionChangeCB(tvVideoResolutionCallbackData *cbData);
  *
  * @param[in] cbData                - Callback function. Please refer ::tvVideoFrameRateCallbackData
  *
+ * @return tvError_t
+ *
+ * @retval tvERROR_NONE            - Success
+ * @retval tvERROR_INVALID_PARAM   - Parameter is invalid
+ * @retval tvERROR_INVALID_STATE   - Interface is not initialized
+ * @retval tvERROR_GENERAL         - Underlying failures - SoC, memory, etc
+ *
  * @pre TvInit() should be called before calling this API
  */
-void RegisterVideoFrameRateChangeCB(tvVideoFrameRateCallbackData *cbData);
+tvError_t RegisterVideoFrameRateChangeCB(tvVideoFrameRateCallbackData *cbData);
 
 
 /**
