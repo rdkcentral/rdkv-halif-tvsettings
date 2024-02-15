@@ -50,13 +50,11 @@
 #define _TV_SETTINGS_H
 
 #include <stdbool.h>
-#include <string>
 /*
  *@todo: Instead of tv add prefix tvSettings ie: tvSettingsError.h and tvSettingsType.h
 */
 #include "tvError.h"
 #include "tvTypes.h"
-#include "tvSettingsExtODM.h"
 #include "tvSettingsODM.h"
 
 #ifdef __cplusplus
@@ -98,7 +96,7 @@ tvError_t TvInit();
  * @retval tvERROR_NONE              - Success
  * @retval tvERROR_INVALID_STATE     - Interface is already terminated
  * @retval tvERROR_GENERAL           - Underlying failures - SoC, memory, etc
- * 
+ *
  */
  tvError_t TvTerm();
 
@@ -111,9 +109,14 @@ tvError_t TvInit();
  *
  * @param[in] cbData                - Callback data. Please refer ::tvVideoFormatCallbackData
  *
+ * @retval tvERROR_NONE            - Success
+ * @retval tvERROR_INVALID_PARAM   - Parameter is invalid
+ * @retval tvERROR_INVALID_STATE   - Interface is not initialized
+ * @retval tvERROR_GENERAL         - Underlying failures - SoC, memory, etc
+ *
  * @pre TvInit() should be called before calling this API
  */
-void RegisterVideoFormatChangeCB(tvVideoFormatCallbackData& cbData);
+tvError_t RegisterVideoFormatChangeCB(tvVideoFormatCallbackData *cbData);
     
 /**
  * @brief Registers the VideoContent FMM change callback
@@ -126,9 +129,14 @@ void RegisterVideoFormatChangeCB(tvVideoFormatCallbackData& cbData);
  *
  * @param[in] cbData                - Callback data. Please refer::tvVideoContentCallbackData
  *
+ * @retval tvERROR_NONE            - Success
+ * @retval tvERROR_INVALID_PARAM   - Parameter is invalid
+ * @retval tvERROR_INVALID_STATE   - Interface is not initialized
+ * @retval tvERROR_GENERAL         - Underlying failures - SoC, memory, etc
+ *
  * @pre TvInit() should be called before calling this API
  */
-void RegisterVideoContentChangeCB(tvVideoContentCallbackData &cbData);
+tvError_t RegisterVideoContentChangeCB(tvVideoContentCallbackData *cbData);
 
 /**
  * @brief Registers the Video resolution change callback.
@@ -139,9 +147,14 @@ void RegisterVideoContentChangeCB(tvVideoContentCallbackData &cbData);
  *
  * @param[in] cbData                - Callback data. Please refer ::tvVideoResolutionCallbackData
  *
+ * @retval tvERROR_NONE            - Success
+ * @retval tvERROR_INVALID_PARAM   - Parameter is invalid
+ * @retval tvERROR_INVALID_STATE   - Interface is not initialized
+ * @retval tvERROR_GENERAL         - Underlying failures - SoC, memory, etc
+ *
  * @pre TvInit() should be called before calling this API
  */
-void RegisterVideoResolutionChangeCB(tvVideoResolutionCallbackData& cbData);
+tvError_t RegisterVideoResolutionChangeCB(tvVideoResolutionCallbackData *cbData);
 
 /**
  * @brief Registers the Video framerate change callback
@@ -152,9 +165,16 @@ void RegisterVideoResolutionChangeCB(tvVideoResolutionCallbackData& cbData);
  *
  * @param[in] cbData                - Callback function. Please refer ::tvVideoFrameRateCallbackData
  *
+ * @return tvError_t
+ *
+ * @retval tvERROR_NONE            - Success
+ * @retval tvERROR_INVALID_PARAM   - Parameter is invalid
+ * @retval tvERROR_INVALID_STATE   - Interface is not initialized
+ * @retval tvERROR_GENERAL         - Underlying failures - SoC, memory, etc
+ *
  * @pre TvInit() should be called before calling this API
  */
-void RegisterVideoFrameRateChangeCB(tvVideoFrameRateCallbackData& cbData);
+tvError_t RegisterVideoFrameRateChangeCB(tvVideoFrameRateCallbackData *cbData);
 
 
 /**
@@ -510,7 +530,7 @@ tvError_t SetTVDimmingMode(const char *dimmingMode);
  *
  * @pre TvInit() should be called before calling this API
  */
-tvError_t GetTVDimmingMode(const char *dimmingMode);
+tvError_t GetTVDimmingMode(char *dimmingMode);
 
 /**
  * @brief Saves the backlight dimming mode
@@ -1777,7 +1797,7 @@ tvError_t SetGammaTable(unsigned short *pData_R, unsigned short *pData_G, unsign
  * @param[out] pData_R        - Array of gamma red values. Valid range is (0 - 1023)
  * @param[out] pData_G        - Array of gamma green values. Valid range is (0 - 1023)
  * @param[out] pData_B        - Array of gamma blue values. Valid range is (0 - 1023)
- * @param[out] size           - Common size of each array. Valid range is (0 - 256)
+ * @param[in] size           - Common size of each array. Valid range is (0 - 256)
  *
  * @return tvError_t
  *
@@ -1798,7 +1818,7 @@ tvError_t GetDefaultGammaTable(tvColorTemp_t colortemp, unsigned short *pData_R,
  * @param[out] pData_R        - Array of gamma red values. Valid range is (0 - 1023)
  * @param[out] pData_G        - Array of gamma green values. Valid range is (0 - 1023)
  * @param[out] pData_B        - Array of gamma blue values. Valid range is (0 - 1023)
- * @param[out] size           - Common size of each array. Valid range is (0 - 256)
+ * @param[in] size           - Common size of each array. Valid range is (0 - 256)
  *
  * @return tvError_t
  *
