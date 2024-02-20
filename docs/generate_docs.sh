@@ -28,7 +28,7 @@ PROJECT_VERSION=$(git describe --tags | head -n1)
 
 # Check if the common document configuration is present, if not clone it
 if [ -d "./build" ]; then
-    make -C ./build PROJECT_NAME="Deep Sleep Manager HAL" PROJECT_VERSION=${PROJECT_VERSION}
+    make -C ./build PROJECT_NAME="TVSetting HAL" PROJECT_VERSION=${PROJECT_VERSION}
 else
     echo "Cloning Common documentation generation"
     git clone git@github.com:rdkcentral/hal-doxygen.git build

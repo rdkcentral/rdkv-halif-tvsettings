@@ -1,14 +1,6 @@
 
 # TV Settings HAL Documentation
 
-## Version History
-
-| Date(DD/MM/YY) | Comment | Version |
-| --- | --- | --- |
-| 24/01/24 | Updated sections Startup description, sequence diagram and table format | 1.0.2 |
-| 20/03/23 | Edited | 1.0.1 |
-| 16/11/22 | First Release | 1.0.0 |
-
 ## Table of Contents
 
 - [Acronyms, Terms and Abbreviations](#acronyms-terms-and-abbreviations)
