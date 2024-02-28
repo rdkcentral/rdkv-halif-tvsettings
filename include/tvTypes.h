@@ -238,10 +238,12 @@ typedef enum
     tvColorTemp_WARM,                           //!< Color Temperature is Warm
     tvColorTemp_COLD,                           //!< Color Temperature is Cold
     tvColorTemp_USER,                           //!< User defined color temperature
+    tvColorTemp_SUPERCOLD,                      //!< Color Temperature is Supercold
     tvColorTemp_BOOST_STANDARD,                 //!< Color Temperature is Standard for boost mode
     tvColorTemp_BOOST_WARM,                     //!< Color Temperature is Warm for boost mode
     tvColorTemp_BOOST_COLD,                     //!< Color Temperature is Cold for boost mode
     tvColorTemp_BOOST_USER,                     //!< User defined color temperature for boost mode
+    tvColorTemp_BOOST_SUPERCOLD,                //!< Color Temperature is Supercold for boost mode
     tvColorTemp_MAX                             //!< End of enum    
 }tvColorTemp_t;
 
