@@ -232,6 +232,9 @@ typedef enum
 
 /**
  * @brief Enumeration defining supported color temperature
+ *
+ * #TODO: This enum list will be deprecated, no further extensions can take place, 
+ *         It will be replaced by a picture mode string list, that can be defined by a "well-known name" to allow future scaling. 
  */
  typedef enum {
     tvColorTemp_STANDARD = 0,                   //!< Color Temperature is Standard
@@ -242,6 +245,8 @@ typedef enum
     tvColorTemp_BOOST_WARM,                     //!< Color Temperature is Warm for boost mode
     tvColorTemp_BOOST_COLD,                     //!< Color Temperature is Cold for boost mode
     tvColorTemp_BOOST_USER,                     //!< User defined color temperature for boost mode
+    tvColorTemp_SUPERCOLD,                      //!< Color Temperature is Supercold
+    tvColorTemp_BOOST_SUPERCOLD,                //!< Color Temperature is Supercold for boost mode
     tvColorTemp_MAX                             //!< End of enum    
 }tvColorTemp_t;
 
