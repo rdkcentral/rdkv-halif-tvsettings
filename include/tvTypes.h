@@ -232,6 +232,9 @@ typedef enum
 
 /**
  * @brief Enumeration defining supported color temperature
+ *
+ * #TODO: This enum list will be deprecated, no further extensions can take place, 
+ *         It will be replaced by a picture mode string list, that can be defined by a "well-known name" to allow future scaling. 
  */
  typedef enum {
     tvColorTemp_STANDARD = 0,                   //!< Color Temperature is Standard
