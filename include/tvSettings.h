@@ -146,10 +146,10 @@ typedef struct tvBacklightInfo_s{
  *
  */
 tvError_t tvInit();
-
 /**
- * @brief tv SD3 to cri data sync Init
+ * @brief Sync the calibrated data to driver
  *
+ * This function is to read the calibration data from serialization area and sync to driver during init.
  *
  * @return tvError_t
  *
@@ -250,9 +250,7 @@ tvError_t GetBacklight(int *backlight);
  * @brief Sets the backlight value in the backlight hardware
  *
  * This function updates the new backlight value to hardware. The change is applied for current primary video source selected,
- * video format played and picture mode selected and if successful will be saved in override picture profile database.
- * The saved backlight value should be applied automatically whenever the  current picture mode, current primary video format
- * and current primary video source are again selected in future.
+ * video format played and picture mode selected
  *
  * @param[in] backlight            - Backlight value to be set. Valid range is (0 - 100)
  *
@@ -272,8 +270,7 @@ tvError_t SetBacklight(int backlight);
  * @brief Sets the brightness value to driver register(s)
  *
  * This function updates the new brightness value to hardware. The change is applied for current primary video source selected,
- * video format played and picture mode selected and if successful will be saved in override picture profile database.
- * The saved brightness value should be applied automatically whenever the  current picture mode, current primary video format
+ * video format played and picture mode selected
  *
  * @param[in] brightness             - Brightness value to be set. Valid range is (0 - 100)
  *
@@ -313,8 +310,7 @@ tvError_t GetBrightness(int *brightness);
  * @brief Sets the contrast value to driver register(s)
  *
  * This function updates the new contrast value to hardware. The change is applied for current primary video source selected,
- * video format played and picture mode selected and if successful will be saved in override picture profile database.
- * The saved contrast value should be applied automatically whenever the  current picture mode, current primary video format
+ * video format played and picture mode selected.
  *
  * @param[in] contrast               - Contrast value to be set.Valid range is (0 - 100)
  *
@@ -354,8 +350,7 @@ tvError_t GetContrast(int *contrast);
  * @brief Sets the sharpness value to driver register(s)
  *
  * This function updates the new sharpness value to hardware. The change is applied for current primary video source selected,
- * video format played and picture mode selected and if successful will be saved in override picture profile database.
- * The saved sharpness value should be applied automatically whenever the  current picture mode, current primary video format
+ * video format played and picture mode selected
  *
  * @param[in] sharpness                - Sharpness value to be set. Valid range is (0 - 100)
  *
@@ -395,8 +390,7 @@ tvError_t GetSharpness(int *sharpness);
  * @brief Sets the saturation value to driver register(s)
  *
  * This function updates the new saturation value to hardware. The change is applied for current primary video source selected,
- * video format played and picture mode selected and if successful will be saved in override picture profile database.
- * The saved saturation value should be applied automatically whenever the  current picture mode, current primary video format
+ * video format played and picture mode selected
  *
  * @param[in] saturation              - Saturation value to be set. Valid range is (0 - 100)
  *
@@ -436,8 +430,7 @@ tvError_t GetSaturation(int *saturation);
  * @brief Sets the hue value to driver register(s)
  *
  * This function updates the new hue value to hardware. The change is applied for current primary video source selected,
- * video format played and picture mode selected and if successful will be saved in override picture profile database.
- * The saved hue value should be applied automatically whenever the  current picture mode, current primary video format
+ * video format played and picture mode selected
  *
  * @param[in] hue                     - Hue value to be set. Valid range is (0 - 100)
  *
@@ -477,9 +470,7 @@ tvError_t GetHue(int *hue);
  * @brief Sets the color temperature to driver register(s)
  *
  * This function updates the new color temperature value to hardware. The change is applied for current primary video source selected,
- * video format played and picture mode selected and if successful will be saved in override picture profile database.
- * The saved color temperature value should be applied automatically whenever the  current picture mode, current primary video format
- * Loads the corresponding gamma and white balance values assoicated to the colour temperature from the picure quality database.
+ * video format played and picture mode selected
  *
  * @param[in] colorTemp              - Color temperature value to be set. Valid value will be a member of ::tvColorTemp_t
  *
@@ -519,8 +510,7 @@ tvError_t GetColorTemperature(tvColorTemp_t *colorTemp);
  * @brief Sets the aspect ratio
  *
  * This function updates the new aspect ratio value to hardware. The change is applied for current primary video source selected,
- * video format played and picture mode selected and if successful will be saved in override picture profile database.
- * The saved aspect ratio value should be applied automatically whenever the  current picture mode, current primary video format
+ * video format played and picture mode selected
  *
  * @param[in] dispMode                - Aspect ratio value to be set. Valid value will be a member of ::tvDisplayMode_t
  *
@@ -557,8 +547,10 @@ tvError_t SetAspectRatio(tvDisplayMode_t dispMode);
  */
 tvError_t GetAspectRatio(tvDisplayMode_t *dispMode);
 /**
- * @brief Get Tint
+ * @brief Gets the current tint value
  *
+ * This function gets the current tint value for the primary video
+ * source selected,primary video format played and picture mode selected
  *
  * @return tvError_t
  *
@@ -572,7 +564,10 @@ tvError_t GetAspectRatio(tvDisplayMode_t *dispMode);
  */
 tvError_t GetTint(int *tint);
 /**
- * @brief Set Tint
+ * @brief Sets the tint value to driver register(s)
+ *
+ * This function updates the new tint value to hardware. The change is applied for current primary video source selected,
+ * video format played and picture mode selected.
  *
  * @return tvError_t
  *
@@ -664,8 +659,9 @@ tvError_t SetCurrentBacklightMode(tvBacklightMode_t blMode);
  */
 tvError_t GetCurrentVideoFormat(tvVideoHDRFormat_t *format);
 /**
- * @brief Get Video Resolution
+ * @brief Gets the current video resolution
  *
+ * This function gets the video resolution of the current primary video played on TV
  *
  * @param[out] res - Resolution
  *
@@ -681,8 +677,9 @@ tvError_t GetCurrentVideoFormat(tvVideoHDRFormat_t *format);
  */
 tvError_t GetVideoResolution(tvResolutionParam_t *res);
 /**
- * @brief Get VideoFrame Rate
+ * @brief Gets current video framerate
  *
+ * This function gets the video frame rate of the current primary video played on TV
  *
  * @param[out] format - Format
  *
@@ -793,7 +790,9 @@ tvError_t SetGrayPattern(int YUVValue);
  */
 tvError_t GetGrayPattern(int* YUVValue);
 /**
- * @brief Set Color Temperature Rgain
+ * @brief Set the rgain value.
+ *
+ * This function sets the rgain value for specfic color temperature.
  *
  * @param[in] colorTemp - color temperature
  * @param[in] rgain - rgain
@@ -810,7 +809,9 @@ tvError_t GetGrayPattern(int* YUVValue);
  */
 tvError_t SetColorTemp_Rgain(tvColorTemp_t colorTemp, int rgain);
 /**
- * @brief Get Color Temperature Rgain
+ * @brief Get the ggain value.
+ *
+ * This function gets the ggain value for specfic color temperature.
  *
  * @param[in] colorTemp - color temperature
  * @param[in] rgain - rgain
@@ -827,7 +828,9 @@ tvError_t SetColorTemp_Rgain(tvColorTemp_t colorTemp, int rgain);
  */
 tvError_t GetColorTemp_Rgain(tvColorTemp_t colorTemp, int* rgain);
 /**
- * @brief Set Color Temperature Ggain
+ * @brief Set the ggain value.
+ *
+ * This function sets the ggain value for specfic color temperature.
  *
  * @param[in] colorTemp - color temperature
  * @param[in] ggain - ggain
@@ -844,8 +847,9 @@ tvError_t GetColorTemp_Rgain(tvColorTemp_t colorTemp, int* rgain);
  */
 tvError_t SetColorTemp_Ggain(tvColorTemp_t colorTemp, int ggain);
 /**
- * @brief Get Color Temperature G gain
+ * @brief Get the ggain value.
  *
+ * This function gets the ggain value for specfic color temperature.
  *
  * @param[in] colorTemp - color temperature
  * @param[in] ggain - ggain
@@ -862,8 +866,9 @@ tvError_t SetColorTemp_Ggain(tvColorTemp_t colorTemp, int ggain);
  */
 tvError_t GetColorTemp_Ggain(tvColorTemp_t colorTemp, int* ggain);
 /**
- * @brief Set Color Temp Bgain
+ * @brief Set the bgain value.
  *
+ * This function sets the bgain value for specfic color temperature.
  *
  * @param[in] colorTemp - Color Temperature
  * @param[in] bgain - Bgain value
@@ -880,8 +885,9 @@ tvError_t GetColorTemp_Ggain(tvColorTemp_t colorTemp, int* ggain);
  */
 tvError_t SetColorTemp_Bgain(tvColorTemp_t colorTemp, int bgain);
 /**
- * @brief Get ColorTemperature Bgain
+ * @brief Get the bgain value.
  *
+ * This function gets the bgain value for specfic color temperature.
  *
  * @param[in] colorTemp - Color Temperature
  * @param[out] bgain - bgain
@@ -898,7 +904,9 @@ tvError_t SetColorTemp_Bgain(tvColorTemp_t colorTemp, int bgain);
  */
 tvError_t GetColorTemp_Bgain(tvColorTemp_t colorTemp, int* bgain);
 /**
- * @brief Set ColorTemperature R post offset
+ * @brief Set the rpostoffset value.
+ *
+ * This function sets the rpostoffset value for specfic color temperature.
  *
  * @param[in] colorTemp - Color Temperature
  * @param[in] rpostoffset - rpostoffset
@@ -915,8 +923,9 @@ tvError_t GetColorTemp_Bgain(tvColorTemp_t colorTemp, int* bgain);
  */
 tvError_t SetColorTemp_R_post_offset(tvColorTemp_t colorTemp, int rpostoffset);
 /**
- * @brief Get ColorTemperature R post offset
+ * @brief Get the rpostoffset value.
  *
+ * This function gets the rpostoffset value for specfic color temperature.
  *
  * @param[in] colorTemp - Color Temperature
  * @param[in] rpostoffset - rpostoffset
@@ -933,7 +942,9 @@ tvError_t SetColorTemp_R_post_offset(tvColorTemp_t colorTemp, int rpostoffset);
  */
 tvError_t GetColorTemp_R_post_offset(tvColorTemp_t colorTemp, int* rpostoffset);
 /**
- * @brief Set ColorTemperature G post offset
+ * @brief Set the gpostoffset value.
+ *
+ * This function sets the gpostoffset value for specfic color temperature.
  *
  * @param[in] colorTemp - Color Temperature
  * @param[out] gpostoffset - gpostoffset
@@ -950,7 +961,9 @@ tvError_t GetColorTemp_R_post_offset(tvColorTemp_t colorTemp, int* rpostoffset);
  */
 tvError_t SetColorTemp_G_post_offset(tvColorTemp_t colorTemp, int gpostoffset);
 /**
- * @brief Get ColorTemperature  G post offset
+ * @brief Get the gpostoffset value.
+ *
+ * This function gets the gpostoffset value for specfic color temperature.
  *
  * @param[in] colorTemp - Color Temperature
  * @param[in] gpostoffset - gpostoffset
@@ -967,7 +980,9 @@ tvError_t SetColorTemp_G_post_offset(tvColorTemp_t colorTemp, int gpostoffset);
  */
 tvError_t GetColorTemp_G_post_offset(tvColorTemp_t colorTemp, int* gpostoffset);
 /**
- * @brief Set ColorTemperature post offset
+ * @brief Set the bpostoffset value.
+ *
+ * This function sets the bpostoffset value for specfic color temperature.
  *
  * @param[in] colorTemp - Color Temperature
  * @param[out] bpostoffset - bpostoffset
@@ -984,8 +999,9 @@ tvError_t GetColorTemp_G_post_offset(tvColorTemp_t colorTemp, int* gpostoffset);
  */
 tvError_t SetColorTemp_B_post_offset(tvColorTemp_t colorTemp, int bpostoffset);
 /**
- * @brief Get Color Temperature B post offset
+ * @brief Get the gpostoffset value.
  *
+ * This function gets the gpostoffset value for specfic color temperature.
  *
  * @param[in] colorTemp - Color Temperature
  * @param[in] bpostoffset - bpostoffset
@@ -1100,8 +1116,9 @@ typedef struct
  */
 void RegisterVideoFrameRateChangeCB(tvVideoFrameRateCallbackData& cbData);
 /**
- * @brief Get TV Supported DV Modes
+ * @brief Gets the supported DV modes and their count
  *
+ * This function returns the supported Dolby Vision modes and their count
  *
  * @param[out] dvModes - hdr 10 modes
  * @param[in] count - count
@@ -1215,8 +1232,10 @@ tvError_t SetTVHLGMode(const char * hlgMode);
  */
 tvError_t SetTVHDR10Mode(const char * hdr10Mode);
 /**
- * @brief Get TV HLG Mode
+ * @brief Gets the current current HLG mode
  *
+ * This function gets the current HLG mode value for the primary video source selected,
+ * primary video format played and picture mode selected.
  *
  * @param[out] hlgMode - HLG mode to get
  *
@@ -1232,8 +1251,10 @@ tvError_t SetTVHDR10Mode(const char * hdr10Mode);
  */
 tvError_t GetTVHLGMode(char *hlgMode);
 /**
- * @brief Get TV HDR10 Mode
+ * @brief Gets the current current HDR10 mode
  *
+ * This function gets the current HDR10 mode value for the primary video source selected,
+ * primary video format played and picture mode selected.
  *
  * @param[out] hdr10Mode - HDR mode to get
  *
@@ -1638,8 +1659,9 @@ tvError_t GetColorTemp_B_post_offset_onSource(tvColorTemp_t colorTemp, int* bpos
  */
 tvError_t setWBctrl(char *inputSrc, char *colorTemp,char *color, char *ctrl, int value);
 /**
- * @brief get WB ctrl
+ * @brief Gets the current white balance control.
  *
+ * This function gets the white balance for a specific source, color, color temperature and control.
  *
  * @param[in] inputSrc -  Input source
  * @param[in] colortemp - color temperature value
@@ -1680,8 +1702,9 @@ tvError_t getWBctrl(char *inputSrc, char *colortemp, char *color, char *ctrl, in
  */
 tvError_t getWbInfo(getWBInfo_t* params, std::vector<std::string> &selector, std::vector<std::string> &colorTmp, std::vector<std::string> &input);
 /**
- * @brief enable WB mode
+ * @brief Enable/disable WB mode.
  *
+ * This function enables or disables white balance mode.
  *
  * @param[in] value - value
  *
@@ -1719,8 +1742,7 @@ tvError_t GetSupportedComponentColor(int *blComponentColor);
  * @brief Sets current component saturation
  *
  * This function updates the component saturation value to hardware. The change is applied for current primary video source selected,
- * video format played and picture mode selected and if successful will be saved in override picture profile database.
- * The saved component saturation value should be applied automatically whenever the  current picture mode, current primary video format
+ * video format played and picture mode selected
  *
  * @param[in] blSaturationColor          - Component color. Valid value will be one of the member of ::tvDataComponentColor_t.
  *                                         If more than one value is bitwise OR-ed and passed then the function should return invalid param.
@@ -1763,8 +1785,7 @@ tvError_t GetCurrentComponentSaturation(tvDataComponentColor_t blSaturationColor
  * @brief Sets current component hue
  *
  * This function updates the component hue value to hardware. The change is applied for current primary video source selected,
- * video format played and picture mode selected and if successful will be saved in override picture profile database.
- * The saved component hue value should be applied automatically whenever the  current picture mode, current primary video format
+ * video format played and picture mode selected
  *
  * @param[in] blHueColor               - Component color. Valid value will be a member of ::tvDataComponentColor_t
  * @param[in] hue                      - Hue value to be set. Valid range is (0 - 100)
@@ -1806,8 +1827,7 @@ tvError_t GetCurrentComponentHue(tvDataComponentColor_t blHueColor, int *hue);
  * @brief Sets the current component luma value
  *
  * This function updates the component luma value to hardware. The change is applied for current primary video source selected,
- * video format played and picture mode selected and if successful will be saved in override picture profile database.
- * The saved component lume value should be applied automatically whenever the  current picture mode, current primary video format
+ * video format played and picture mode selected
  *
  * @param[in] blLumaColor            - Component color. Valid value will be a member of ::tvDataComponentColor_t
  * @param[in] Luma                    - Luma value to be set. Valid range is (0 - 30)
@@ -1867,8 +1887,7 @@ tvError_t GetTVSupportedDimmingModes(char **dimmingModes,unsigned short *count);
  * @brief Sets the backlight dimming mode.
  *
  * This function updates the new dimming mode to hardware. The change is applied for current primary video source selected,
- * video format played and picture mode selected and if successful will be saved in override picture profile database.
- * The saved dimming mode value should be applied automatically whenever the  current picture mode, current primary video format
+ * video format played and picture mode selected.
  * If peak brightness capablity of the panel changes as a result of dimming mode change reload the edid accordingly
  * to update VSVDB string if video format currently playing is handled via Dolby Vision core.
  *
@@ -1889,6 +1908,7 @@ tvError_t SetTVDimmingMode(const char *dimmingMode);
 /**
  * @brief Get TV Backlight Global Factor
  *
+ * This function get the current applied Backlight Global Factor
  *
  * @param[out] value  - value
  *
@@ -1906,6 +1926,7 @@ tvError_t GetTVBacklightGlobalFactor(int * value);
 /**
  * @brief Set TV Backlight Global Factor
  *
+ * This function controls the backlight through backlight global factor.
  *
  * @param[in] value  - value
  * @param[in] rangeMidPointValue - Range Mid point value
@@ -1924,6 +1945,7 @@ tvError_t SetTVBacklightGlobalFactor(int value, int rangeMidPointValue);
 /**
  * @brief Get TV Picture Mode Index
  *
+ * This function returns the current selected picture mode index value.
  *
  * @param[in] pictureMode - Picture Mode
  *
@@ -1941,6 +1963,7 @@ tvPictureMode_t GetTVPictureModeIndex(const char * pictureMode);
 /**
  * @brief Get Current Content Format
  *
+ * This function gets the video format value of the current primary video played on TV
  *
  * @return tvVideoHDRFormat_t
  *
@@ -1951,6 +1974,8 @@ tvPictureMode_t GetTVPictureModeIndex(const char * pictureMode);
 tvVideoHDRFormat_t GetCurrentContentFormat(void);
 /**
  * @brief Get Supported Content Formats
+ *
+ * This function returns all the supported content formats.
  *
  * @param[out] contentFormats - content formats
  * @param[out] numberOfFormats - number Of Formats
@@ -1969,15 +1994,15 @@ tvError_t GetSupportedContentFormats(unsigned int * contentFormats,unsigned shor
 /**
  * @brief Reset Brightness
  *
+ * This function reset Brightness value to default value for all formats (or) current format.
+ *
  * @param[in] defaultValue - Default values
  * @param[in] resetForAllFormats - reset for all formats
  *
  * @return tvError_t
  *
  * @retval tvERROR_NONE                      - Success
- * @retval tvERROR_INVALID_PARAM             - Input parameter is invalid
  * @retval tvERROR_INVALID_STATE             - Interface is not initialized
- * @retval tvERROR_OPERATION_NOT_SUPPORTED   - Operation is not supported
  * @retval tvERROR_GENERAL                   - Underlying failures - SoC, memory, etc
  *
  * @pre TvInit() should be called before calling this API
@@ -1986,15 +2011,15 @@ tvError_t ResetBrightness(int defaultValue,bool resetForAllFormats);
 /**
  * @brief Reset Contrast
  *
+ * This function reset Contrast value to default value for all formats (or) current format.
+ *
  * @param[in] defaultValue - Default values
  * @param[in] resetForAllFormats - reset for all formats
  *
  * @return tvError_t
  *
  * @retval tvERROR_NONE                      - Success
- * @retval tvERROR_INVALID_PARAM             - Input parameter is invalid
  * @retval tvERROR_INVALID_STATE             - Interface is not initialized
- * @retval tvERROR_OPERATION_NOT_SUPPORTED   - Operation is not supported
  * @retval tvERROR_GENERAL                   - Underlying failures - SoC, memory, etc
  *
  * @pre TvInit() should be called before calling this API
@@ -2003,15 +2028,15 @@ tvError_t ResetContrast(int defaultValue,bool resetForAllFormats);
 /**
  * @brief Reset Sharpness
  *
+ * This function reset Sharpness value to default value for all formats (or) current format.
+ *
  * @param[in] defaultValue - Default values
  * @param[in] resetForAllFormats - reset for all formats
  *
  * @return tvError_t
  *
  * @retval tvERROR_NONE                      - Success
- * @retval tvERROR_INVALID_PARAM             - Input parameter is invalid
  * @retval tvERROR_INVALID_STATE             - Interface is not initialized
- * @retval tvERROR_OPERATION_NOT_SUPPORTED   - Operation is not supported
  * @retval tvERROR_GENERAL                   - Underlying failures - SoC, memory, etc
  *
  * @pre TvInit() should be called before calling this API
@@ -2020,15 +2045,15 @@ tvError_t ResetSharpness(int defaultValue,bool resetForAllFormats);
 /**
  * @brief Reset Saturation
  *
+ * This function reset Saturation value to default value for all formats (or) current format.
+ *
  * @param[in] defaultValue - Default values
  * @param[in] resetForAllFormats - reset for all formats
  *
  * @return tvError_t
  *
  * @retval tvERROR_NONE                      - Success
- * @retval tvERROR_INVALID_PARAM             - Input parameter is invalid
  * @retval tvERROR_INVALID_STATE             - Interface is not initialized
- * @retval tvERROR_OPERATION_NOT_SUPPORTED   - Operation is not supported
  * @retval tvERROR_GENERAL                   - Underlying failures - SoC, memory, etc
  *
  * @pre TvInit() should be called before calling this API
@@ -2037,23 +2062,24 @@ tvError_t ResetSaturation(int defaultValue,bool resetForAllFormats);
 /**
  * @brief Reset Hue
  *
+ * This function reset Hue value to default value for all formats (or) current format.
+ *
  * @param[in] defaultValue - Default values
  * @param[in] resetForAllFormats - reset for all formats
  *
  * @return tvError_t
  *
  * @retval tvERROR_NONE                      - Success
- * @retval tvERROR_INVALID_PARAM             - Input parameter is invalid
  * @retval tvERROR_INVALID_STATE             - Interface is not initialized
- * @retval tvERROR_OPERATION_NOT_SUPPORTED   - Operation is not supported
  * @retval tvERROR_GENERAL                   - Underlying failures - SoC, memory, etc
  *
  * @pre TvInit() should be called before calling this API
  */
 tvError_t ResetHue(int defaultValue,bool resetForAllFormats);
 /**
- * @brief Reset Back light
+ * @brief Reset Backlight
  *
+ * This function reset Backlight value to default value for all formats (or) current format.
  *
  * @param[in] defaultValue - Default values
  * @param[in] resetForAllFormats - reset for all formats
@@ -2061,17 +2087,16 @@ tvError_t ResetHue(int defaultValue,bool resetForAllFormats);
  * @return tvError_t
  *
  * @retval tvERROR_NONE                      - Success
- * @retval tvERROR_INVALID_PARAM             - Input parameter is invalid
  * @retval tvERROR_INVALID_STATE             - Interface is not initialized
- * @retval tvERROR_OPERATION_NOT_SUPPORTED   - Operation is not supported
  * @retval tvERROR_GENERAL                   - Underlying failures - SoC, memory, etc
  *
  * @pre TvInit() should be called before calling this API
  */
 tvError_t ResetBacklight(int defaultValue,bool resetForAllFormats);
 /**
- * @brief Reset Color Temperature
+ * @brief Reset Color Tempearture
  *
+ * This function reset Color Tempearture value to default value for all formats (or) current format.
  *
  * @param[in] defaultValue - Default values
  * @param[in] resetForAllFormats - reset for all formats
@@ -2079,9 +2104,7 @@ tvError_t ResetBacklight(int defaultValue,bool resetForAllFormats);
  * @return tvError_t
  *
  * @retval tvERROR_NONE                      - Success
- * @retval tvERROR_INVALID_PARAM             - Input parameter is invalid
  * @retval tvERROR_INVALID_STATE             - Interface is not initialized
- * @retval tvERROR_OPERATION_NOT_SUPPORTED   - Operation is not supported
  * @retval tvERROR_GENERAL                   - Underlying failures - SoC, memory, etc
  *
  * @pre TvInit() should be called before calling this API
@@ -2090,16 +2113,15 @@ tvError_t ResetColorTemperature(int defaultValue,bool resetForAllFormats);
 /**
  * @brief Reset Component Saturation
  *
+ * This function reset Component Saturation value to default value for all formats (or) current format.
  *
- * @param[in] color - color
- * @param[in] defaultValue - default value
+ * @param[in] color - saturation color
+ * @param[in] defaultValue - Default values
  *
  * @return tvError_t
  *
  * @retval tvERROR_NONE                      - Success
- * @retval tvERROR_INVALID_PARAM             - Input parameter is invalid
  * @retval tvERROR_INVALID_STATE             - Interface is not initialized
- * @retval tvERROR_OPERATION_NOT_SUPPORTED   - Operation is not supported
  * @retval tvERROR_GENERAL                   - Underlying failures - SoC, memory, etc
  *
  * @pre TvInit() should be called before calling this API
@@ -2108,42 +2130,41 @@ tvError_t ResetComponentSaturation(int color,int defaultValue);
 /**
  * @brief Reset Component Luma
  *
+ * This function reset Component luma value to default value for all formats (or) current format.
  *
- * @param[in] color - color
- * @param[in] defaultValue - default value
+ * @param[in] color - Luma color
+ * @param[in] defaultValue - Default values
  *
  * @return tvError_t
  *
  * @retval tvERROR_NONE                      - Success
- * @retval tvERROR_INVALID_PARAM             - Input parameter is invalid
  * @retval tvERROR_INVALID_STATE             - Interface is not initialized
- * @retval tvERROR_OPERATION_NOT_SUPPORTED   - Operation is not supported
  * @retval tvERROR_GENERAL                   - Underlying failures - SoC, memory, etc
  *
  * @pre TvInit() should be called before calling this API
  */
 tvError_t ResetComponentLuma(int color,int defaultValue);
 /**
- * @brief Reset Component Hue
+ * @brief Reset Component hue
  *
- *
- * @param[in] color  - color
+ * This function reset Component Hue value to default value for all formats (or) current format.
+ * 
+ * @param[in] color - Hue color
  * @param[in] defaultValue - default value
  *
  * @return tvError_t
  *
  * @retval tvERROR_NONE                      - Success
- * @retval tvERROR_INVALID_PARAM             - Input parameter is invalid
  * @retval tvERROR_INVALID_STATE             - Interface is not initialized
- * @retval tvERROR_OPERATION_NOT_SUPPORTED   - Operation is not supported
  * @retval tvERROR_GENERAL                   - Underlying failures - SoC, memory, etc
  *
  * @pre TvInit() should be called before calling this API
  */
 tvError_t ResetComponentHue(int color,int defaultValue);
 /**
- * @brief is Current HDR Type Is SDR
+ * @brief Check if current format is SDR.
  *
+ * This function checks whether the current content format is SDR or not.
  *
  * @return bool
  *
@@ -2167,11 +2188,11 @@ bool isCurrentHDRTypeIsSDR(void);
  *
  * @pre tvInit() should be called before calling this API
  */
-
 int GetPanelID(char* panelid);
 /**
- * @brief Get Default Panel ID
+ * @brief Get the default panel ID
  *
+ * This function return the default panelid.
  *
  * @param[out] panelID - Panel ID
  *
@@ -2179,7 +2200,6 @@ int GetPanelID(char* panelid);
  * @pre TvInit() should be called before calling this API
  */
 void GetDefaultPanelID(char *panelID);
-
 /**
  * @brief Saves the color temperature value
  *
@@ -2228,7 +2248,6 @@ tvError_t SaveColorTemperature(int sourceInput, int pq_mode,int hdr_type,int val
 tvError_t SaveBacklight(int sourceInput, int pq_mode,int hdr_type,int value);
 /**
  * @brief Saves the contrast value
- *
  *
  * This function saves the contrast value in picture profile database for the specific picture mode, primary video format type
  * and primary video source. The saved contrast value should be applied automatically by whenever the
@@ -2343,39 +2362,47 @@ tvError_t SaveBrightness(int sourceInput, int pq_mode,int hdr_type,int value);
  */
 tvError_t SaveHue(int sourceInput, int pq_mode,int hdr_type,int value);
 /**
- * @brief Save Dynamic Back light
+ * @brief Saves the DynamicBacklight mode
+ *
+ * This function saves the backlight dimming mode(DynamicBacklight) in picture profile database for the specific picture mode, primary video format type
+ * and primary video source. The saved backlight dimming mode should be applied automatically whenever the
+ * specified picture mode is selected, specified primary video format is played and specified primary video source is selected.
+ * There will be no change in current backlight dimming mode.
+ * If peak brightness capablity of the panel changes as a result of dimming mode change in future reload the edid accordingly
+ * to update VSVDB string if current video format is handled via Dolby Vision core.
  *
  * @param[in] sourceInput            - Source input value.
  * @param[in] pq_mode                - Picture mode index.
  * @param[in] hdr_type               - hdr type value.
- * @param[in] value                  - Value of the CMS to be set.
+ * @param[in] value                  - Value of the DynamicBacklight(tvDimmingMode_t)
  *
  * @return tvError_t
  *
- * @retval tvERROR_NONE                      - Success
- * @retval tvERROR_INVALID_PARAM             - Input parameter is invalid
- * @retval tvERROR_INVALID_STATE             - Interface is not initialized
- * @retval tvERROR_OPERATION_NOT_SUPPORTED   - Operation is not supported
- * @retval tvERROR_GENERAL                   - Underlying failures - SoC, memory, etc
+ * @retval tvERROR_NONE             - Success
+ * @retval tvERROR_INVALID_STATE    - Interface is not initialized
+ * @retval tvERROR_GENERAL          - Underlying failures - SoC, memory, etc
  *
  * @pre TvInit() should be called before calling this API
  */
 tvError_t SaveDynamicBacklight(int sourceInput, int pq_mode,int hdr_type,int value);
 /**
- * @brief Save Display Mode
+ * @brief Saves the DisplayMode value
+ *
+ * This function saves the aspect ratio(DisplayMode) value in picture profile database for the specific picture mode, primary video format type
+ * and primary video source. The saved aspect ratio value should be applied automatically by whenever the
+ * specified picture mode is selected, specified primary video format is played and specified primary video source is selected.
+ * There will be no change in current aspect ratio value applied in PQ module.
  *
  * @param[in] sourceInput            - Source input value.
  * @param[in] pq_mode                - Picture mode index.
  * @param[in] hdr_type               - hdr type value.
- * @param[in] value                  - Value of the CMS to be set.
+ * @param[in] value                  - Value of AspectRatio(tvDisplayMode_t)
  *
  * @return tvError_t
  *
- * @retval tvERROR_NONE                      - Success
- * @retval tvERROR_INVALID_PARAM             - Input parameter is invalid
- * @retval tvERROR_INVALID_STATE             - Interface is not initialized
- * @retval tvERROR_OPERATION_NOT_SUPPORTED   - Operation is not supported
- * @retval tvERROR_GENERAL                   - Underlying failures - SoC, memory, etc
+ * @retval tvERROR_NONE             - Success
+ * @retval tvERROR_INVALID_STATE    - Interface is not initialized
+ * @retval tvERROR_GENERAL          - Underlying failures - SoC, memory, etc
  *
  * @pre TvInit() should be called before calling this API
  */
@@ -2408,7 +2435,12 @@ tvError_t SaveDisplayMode(int sourceInput, int pq_mode,int hdr_type,int value);
  */
 tvError_t SaveCMS(int sourceInput, int pq_mode,int hdr_type,int tunnel_type,int color_type,int value);
 /**
- * @brief Save Dolby Mode
+ * @brief Saves the dolby mode value
+ *
+ * This function saves the dolby mode value in picture profile database for the specific picture mode, primary video format type
+ * and primary video source. The saved dolby mode value should be applied automatically by whenever the
+ * specified picture mode is selected, specified primary video format(if handled via Dolby core) is played
+ * and specified primary video source is selected. There will be no change in current dolby mode value in Dolby Vision core.
  *
  * @param[in] sourceInput            - Source input value.
  * @param[in] pq_mode                - Picture mode index.
@@ -2429,6 +2461,8 @@ tvError_t SaveDolbyMode(int sourceInput, int pq_mode,int hdr_type,int value);
 /**
  * @brief GetNumberOfModesupported
  *
+ * This function returns the number of supported picture modes.
+ *
  * @return int
  *
  * @retval numberModesSupported
@@ -2437,8 +2471,9 @@ tvError_t SaveDolbyMode(int sourceInput, int pq_mode,int hdr_type,int value);
  */
 int GetNumberOfModesupported(void);
 /**
- * @brief GetCurrentPQIndex
+ * @brief Get current PQ Mode index.
  *
+ * This function returns the current PQ index value.
  *
  * @return int
  *
@@ -2449,6 +2484,8 @@ int GetNumberOfModesupported(void);
 int GetCurrentPQIndex(void);
 /**
  * @brief Get All Supported PicMode Index
+ *
+ * This function gets all the supported picture mode index.
  *
  * @param[out] pic_mode_index
  *
@@ -2474,6 +2511,8 @@ int GetCMSDefault(tvCMS_tunel_t color_tunel_type);
 /**
  * @brief Get Dolby Mode Index
  *
+ * This function returns the dolby mode index.
+ *
  * @param[in] dolbyMode
  *
  * @return int
@@ -2485,9 +2524,8 @@ int GetCMSDefault(tvCMS_tunel_t color_tunel_type);
 int GetDolbyModeIndex(const char * dolbyMode);
 /**
  * @brief Returns ::tvhdr_type_t enum for given ::tvVideoHDRFormat_t enum. To be deprecated soon.
- * @note SOC vendors can stub these ODM functions and mark it as weak
  *
- * This function ::tvhdr_type_t enum for given ::tvVideoHDRFormat_t enum.
+ * This function converts the video format to HDR format.
  *
  * @param[in] videoFormat            - Video format. Valid values can be member of ::tvVideoHDRFormat_t
  *
@@ -2497,8 +2535,9 @@ int GetDolbyModeIndex(const char * dolbyMode);
  */
 int ConvertVideoFormatToHDRFormat(tvVideoHDRFormat_t videoFormat);
 /**
- * @brief Convert TV Color To Vendor Color
+ * @brief Convert TV color to vendor color.
  *
+ * This function converts the TV color to Vendor color value
  *
  * @param[in] blComponentColor - blComponentColor
  *
@@ -2510,8 +2549,9 @@ int ConvertVideoFormatToHDRFormat(tvVideoHDRFormat_t videoFormat);
  */
 int ConvertTVColorToVendorColor(tvDataComponentColor_t blComponentColor);
 /**
- * @brief Convert HDR Format To Content Format
+ * @brief Convert HDR to content format.
  *
+ * This function converts the vendor HDR format to tv format value.
  *
  * @param[in] hdrFormat - hdrformat
  *
@@ -2523,7 +2563,9 @@ int ConvertTVColorToVendorColor(tvDataComponentColor_t blComponentColor);
  */
 int ConvertHDRFormatToContentFormat(tvhdr_type_t hdrFormat);
 /**
- * @brief
+ * @brief Get Custom mode index.
+ *
+ * This function return the custom pqmode index
  *
  * @return int
  *
@@ -2555,8 +2597,9 @@ int GetCustomPQModeIndex(void);
  */
 tvError_t SetCMSState(tvCMS_tunel_t tunelType,tvcomponent_color_type_t colorType,tvcomponent_state_t componentState);
 /**
- * @brief is WB User Default
+ * @brief Check the given WB values are default or not
  *
+ * This function checks if the white balance parameters are equal to default value.
  *
  * @param[in] wbvalue - wb value
  *
@@ -2568,8 +2611,9 @@ tvError_t SetCMSState(tvCMS_tunel_t tunelType,tvcomponent_color_type_t colorType
  */
 bool isWBUserDfault(tvDataColor_t wbvalue);
 /**
- * @brief Get WB Rgb Type
+ * @brief Get WB RGB type.
  *
+ * This function gets the white balance RGB type for specific color and control value.
  *
  * @param[in] color - color
  * @param[in] ctrl - ctrl
@@ -2582,7 +2626,9 @@ bool isWBUserDfault(tvDataColor_t wbvalue);
  */
 int GetWBRgbType(const char *color, const char * ctrl);
 /**
- * @brief Get USer WB Value On Init
+ * @brief Get WB values on init.
+ *
+ * This function gets the user white balance value on init.
  *
  * @return tvDataColor_t
  *
@@ -2592,8 +2638,9 @@ int GetWBRgbType(const char *color, const char * ctrl);
  */
 tvDataColor_t GetUSerWBValueOnInit(void);
 /**
- * @brief areEqual
+ * @brief Check WB values are equal.
  *
+ * This function checks if two white balance values are same.
  *
  * @param[in] wbvalueThis - value this
  * @param[in] wbvalueThat - value that
@@ -2608,6 +2655,7 @@ bool areEqual(tvDataColor_t wbvalueThis,tvDataColor_t wbvalueThat);
 /**
  * @brief Set Color Temperature User
  *
+ * This function update RGB(WhiteBalance) values for user colortemperature
  *
  * @param[in] rgbType - rgb type
  * @param[in] value - value
@@ -2642,8 +2690,9 @@ tvError_t SetColorTemperatureUser(int rgbType, int value);
  */
 tvError_t SaveColorTemperatureUser(int rgbType, int value);
 /**
- * @brief Set Back light Information
+ * @brief Set backlight info.
  *
+ * This function updates the backlight curve details to HAL
  *
  * @param[in] backlightDefaults - backlightDefaults to set
  *
@@ -2659,8 +2708,9 @@ tvError_t SaveColorTemperatureUser(int rgbType, int value);
  */
 tvError_t SetBacklightInfo(tvBacklightInfo_t *backlightDefaults);
 /**
- * @brief Get Driver Equivalent backlight For Current Format
+ * @brief Get Driver BL value for current format.
  *
+ * This function returns the driver equivalent backlight for current backlight value.
  *
  * @param[in] backlight - Backlight
  *
@@ -2676,8 +2726,9 @@ tvError_t SetBacklightInfo(tvBacklightInfo_t *backlightDefaults);
  */
 int GetDriverEquivalentBLForCurrentFmt(int backlight);
 /**
- * @brief Get HLG Mode Index
+ * @brief Get HLG mode Index.
  *
+ * This function returns HLG mode index.
  *
  * @param[in] hlgMode - hlg mode
  *
@@ -2693,8 +2744,9 @@ int GetDriverEquivalentBLForCurrentFmt(int backlight);
  */
 int GetHLGModeIndex(const char * hlgMode);
 /**
- * @brief Get HDR 10 Mode Index
+ * @brief Get HDR10 mode index.
  *
+ * This function returns HDR10 mode index.
  *
  * @param[in] hdr10Mode  - hdr10mode
  *
@@ -2757,8 +2809,9 @@ tvError_t SetBacklightFade(int from,int to,int duration);
  */
 tvError_t ReadAllModeConfigfile(const char *file, char *cpybuffer, const char *searchstring);
 /**
- * @brief split strings from buffer
+ * @brief Parse buffer and return string values & total count
  *
+ * This function parses the buffer returned through ReadAllModeConfigfile() and returns the string value and their count.
  *
  * @param[in] buffer - Buffer to split
  * @param[in] availableModes - avilable modes
@@ -2769,21 +2822,21 @@ tvError_t ReadAllModeConfigfile(const char *file, char *cpybuffer, const char *s
  */
 void splitstringsfrombuffer(char *buffer, char *availableModes, unsigned short *totalcount);
 /**
- * @brief split strings and value from buffer
+ * @brief Parse buffer and return string values,index & total count
  *
+ * This function parses the buffer returned through ReadAllModeConfigfile() and returns the string value,index and their count.
  *
  * @param[in] buffer - Buffer to split
  * @param[in] availableModes - avilable modes
  * @param[out] totalcount - total count
  *
- *
- *
  * @pre TvInit() should be called before calling this API
  */
 void splitstringsandvaluefrombuffer(char *buffer, pic_modes_t *availableModes[], unsigned short *totalcount);
 /**
- * @brief Sets Gamma Mode
+ * @brief Enable or disable gamma mode.
  *
+ * This function enables or disables the gamma mode.
  *
  * @param[in] mode - Mode
  *
@@ -2869,16 +2922,17 @@ tvError_t SaveLocalDimmingLevel(int sourceInput, int pq_mode,int hdr_type,int va
 /**
  * @brief Switch EDID
  *
+ * This Function updates the EDID for given picture mode
  *
  * @param[in] pqmode - picture quality mode
- *
  *
  * @pre TvInit() should be called before calling this API
  */
 void SwitchEDID(int pqmode);
 /**
- * @brief Updates EDID and Sets the Dimming Level
+ * @brief Set the EDID and dimming level
  *
+ * This function Update  EDID and set dimming level for current Picture mode
  *
  * @param[in] dimmingLevel - Dimming level
  *
@@ -2894,8 +2948,9 @@ void SwitchEDID(int pqmode);
  */
 tvError_t UpdateEDIDAndSetDimmingLevel(int dimmingLevel);
 /**
- * @brief Gets the LDIM and EDID Level
+ * @brief Get LDIM and EDID level
  *
+ * This function gets the LDIM and EDID level for given video format and dimmingMode
  *
  * @param[in]  dimmingMode - Dimming mode
  * @param[in]  format      - Format
