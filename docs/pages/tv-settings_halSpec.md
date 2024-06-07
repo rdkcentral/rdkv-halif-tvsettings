@@ -129,8 +129,7 @@ Picture profile database will have 5 types of tables:
 | IP | Repeat as HDMI1 |
 | Composite | Repeat as HDMI1 |
 
-Note: Currently Dolby mode is treated as a picture property and not a picture mode. In future Dolby mode might be treated as picture mode.
-      Values of index in pq_capabilites.ini are mapped to enum values in tvTypes.h
+Note: Currently Dolby mode is treated as a picture property and not a picture mode. In future Dolby mode might be treated as picture mode. Values of index in pq_capabilites.ini are mapped to enum values in tvTypes.h
 
 ##### Picture Association Table
 | Video Source | Video Format | Picture Mode |
