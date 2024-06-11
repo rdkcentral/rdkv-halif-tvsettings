@@ -127,9 +127,9 @@ Picture profile database will have 5 types of tables:
 | HDMI3 | Repeat as HDMI1 |
 | Tunner | Repeat as HDMI1 |
 | IP | Repeat as HDMI1 |
-| Composite | Repeat as HDMI1 for SDR and Entertainment |
+| Composite | Repeat as HDMI1 |
 
-Note: Currently Dolby mode is treated as a picture property and not a picture mode. In future Dolby mode might be treated as picture mode.
+Note: Currently Dolby mode is treated as a picture property and not a picture mode. In future Dolby mode might be treated as picture mode. Values of index in pq_capabilites.ini are mapped to enum values in tvTypes.h
 
 ##### Picture Association Table
 | Video Source | Video Format | Picture Mode |
@@ -150,7 +150,7 @@ Note: Currently Dolby mode is treated as a picture property and not a picture mo
 | HDMI3 | Repeat as HDMI1 |
 | Tunner | Repeat as HDMI1 |
 | IP | Repeat as HDMI1 |
-| Composite | Repeat as HDMI1 for SDR and Entertainment |
+| Composite | Repeat as HDMI1 |
 
 ##### WB Table
 | Video Source | White Balance | Property | Value Range |
@@ -172,7 +172,7 @@ Note: Currently Dolby mode is treated as a picture property and not a picture mo
 | HDMI3 | Repeat as HDMI1 |
 | Tunner | Repeat as HDMI1 |
 | IP | Repeat as HDMI1 |
-| Composite | Repeat as HDMI1 for SDR and Entertainment |
+| Composite | Repeat as HDMI1 |
 
 ##### Gamma Table
 | Gamma | Index | Property | Value Range |
