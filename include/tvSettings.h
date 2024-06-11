@@ -79,6 +79,8 @@ extern "C"
  * @retval tvERROR_GENERAL           - Underlying failures - SoC, memory, etc
  * @see TvTerm()
  *
+ * @post TvTerm() must be called to to release resources.
+ *
  */
 tvError_t TvInit();
 
