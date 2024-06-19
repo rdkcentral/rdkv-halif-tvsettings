@@ -108,7 +108,8 @@ tvError_t TvInit();
  * This function registers a callback for video format change event.
  * Once registered, the callback function will be called by the TV Settings HAL implementation
  * whenever the system detects a change in video format of the primary video currently played.
- *
+ * When the video playback stops, the VIDEO_FORMAT_SDR is returned as default format.
+ * 
  * @param[in] cbData                - Callback data. Please refer ::tvVideoFormatCallbackData
  *
  * @retval tvERROR_NONE            - Success
@@ -126,6 +127,7 @@ tvError_t RegisterVideoFormatChangeCB(tvVideoFormatCallbackData *cbData);
  * This function registers a callback for the playback Filmmaker mode change event.
  * Once registered, the callback function will be called by the TV Settings HAL implementation
  * When the system detects SEI content_type 0x01 and content_subtype 0x00, the FMM enter event is raised.
+ * Values other then SEI content_type 0x01 and ontent_subtype 0x00, are consideded as FMM exit event. Without FMM entry event, there will not be any exit event.
  * When the system detects SEI content_type is other than 0x01 or content_subtype is other than 0x00, the FMM exit event is raised.
  * This applies only to IP video sources and Tuner video sources.
  *
@@ -221,7 +223,8 @@ tvError_t GetCurrentVideoFormat(tvVideoFormatType_t *videoFormat);
  * @brief Gets the current video resolution
  *
  * This function gets the video resolution of the current primary video played on TV
- *
+ * If no video is played the Default tvVideoResolution_NONE is returned as default resolution.
+ * 
  * @param[out] res                      - Video resolution value. Valid value will be a member of ::tvResolutionParam_t
  *
  * @return tvError_t
@@ -239,7 +242,8 @@ tvError_t GetCurrentVideoResolution(tvResolutionParam_t *res);
  * @brief Gets current video framerate
  *
  * This function gets the video frame rate of the current primary video played on TV
- *
+ * If no video is played the Default tvVideoFrameRate_NONE is returned as default framerate.
+ * 
  * @param[out] format                   - Video frame rate value. Valid value will be a member of ::tvVideoFrameRate_t
  *
  * @return tvError_t
@@ -2135,6 +2139,8 @@ tvError_t SetCMSState(bool enableCMSState);
  *
  * This function gets the current CMSState for the current picture mode selected,
  * current primary video format played and current primary video source selected. 
+ * By default SetCMSState value wll be false. When the CMS state is enabled, CMS values will be applied to the color management block.
+ * CMS values are Hue, Saturation and Luma values for six primary colours (Red, Green, Blue, Magenta, Cyan, Yellow). 
  *
  * @param[out] enableCMSState        - Current CMS state set. @n
  *                                    Valid values are true if it is enabled and false if it is disabled.
@@ -2156,6 +2162,7 @@ tvError_t GetCMSState(bool *enableCMSState);
  *
  * This function returns default values for various PQ Setting parameters for a given picture mode index, primary video source @n
  * and primary video format.
+ * GetCMSState will return value of CMS state set by SetCMSState for respective source, format and picture mode.
  *
  * @param[in] videoSrcType          - Source input value. Valid value will be a member of ::tvVideoSrcType_t
  * @param[in] pqIndex               - Picture mode index value. Valid values are as per values will be a member of ::tvPQModeIndex_t
