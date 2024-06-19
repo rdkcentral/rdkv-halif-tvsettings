@@ -107,8 +107,9 @@ tvError_t TvInit();
  *
  * This function registers a callback for video format change event.
  * Once registered, the callback function will be called by the TV Settings HAL implementation
- * whenever the system detects a change in video format of the primary video currently played.
- * When the video playback stops, the VIDEO_FORMAT_SDR is returned as default format.
+ * whenever change in video format is detected at the start the primary video playback, with
+ * right video format value detected. When the primary video playback stops, the TVSettings 
+ * HAL will callback notifying SDR format as the default.
  * 
  * @param[in] cbData                - Callback data. Please refer ::tvVideoFormatCallbackData
  *
@@ -126,10 +127,12 @@ tvError_t RegisterVideoFormatChangeCB(tvVideoFormatCallbackData *cbData);
  *
  * This function registers a callback for the playback Filmmaker mode change event.
  * Once registered, the callback function will be called by the TV Settings HAL implementation
- * When the system detects SEI content_type 0x01 and content_subtype 0x00, the FMM enter event is raised.
- * Values other then SEI content_type 0x01 and ontent_subtype 0x00, are consideded as FMM exit event. Without FMM entry event, there will not be any exit event.
- * When the system detects SEI content_type is other than 0x01 or content_subtype is other than 0x00, the FMM exit event is raised.
- * This applies only to IP video sources and Tuner video sources.
+ * whenever the system detects SEI content_type 0x01 and content_subtype 0x00 at the start of the 
+ * primary video playback, with value tvContentType_FMM for FMM enter event. Whenever the system 
+ * detects SEI content_type other than 0x01 or content_subtype other than 0x00 during middle of 
+ * primary video playback or when playback finishes the callback function will be called with
+ * with value tvContentType_NONE for FMM exit event. This applies only to IP video sources and 
+ * Tuner video sources.
  *
  * @param[in] cbData                - Callback data. Please refer::tvVideoContentCallbackData
  *
@@ -145,9 +148,11 @@ tvError_t RegisterVideoContentChangeCB(tvVideoContentCallbackData *cbData);
 /**
  * @brief Registers the Video resolution change callback.
  *
- * This function registers a callback for playback content video resolution change event.
+ * This function registers a callback for Video resolution change event.
  * Once registered, the callback function will be called by the TV Settings HAL implementation
- * whenever the system detects resolution change for the primary video currently played.
+ * whenever change in video resolution is detected at the start the primary video playback, with
+ * right video resolution value detected. When the primary video playback stops, the TVSettings 
+ * HAL will not make any callback.
  *
  * @param[in] cbData                - Callback data. Please refer ::tvVideoResolutionCallbackData
  *
@@ -163,9 +168,11 @@ tvError_t RegisterVideoResolutionChangeCB(tvVideoResolutionCallbackData *cbData)
 /**
  * @brief Registers the Video framerate change callback
  *
- * This function registers a callback for playback content video frame rate change event.
+ * This function registers a callback for Video framerate change event.
  * Once registered, the callback function will be called by the TV Settings HAL implementation
- * whenever the system detects frame rate change for the primary video currently played.
+ * whenever change in video framerate is detected at the start the primary video playback, with
+ * right video framerate value detected. When the primary video playback stops, the TVSettings 
+ * HAL will not make any callback.
  *
  * @param[in] cbData                - Callback function. Please refer ::tvVideoFrameRateCallbackData
  *
@@ -204,7 +211,7 @@ tvError_t RegisterVideoFrameRateChangeCB(tvVideoFrameRateCallbackData *cbData);
  * @brief Gets current video format
  *
  * This function gets the video format value of the current primary video played on TV.@n
- * If no video is played the VIDEO_FORMAT_SDR is returned as default format.
+ * Whenever no video is played this API always returns VIDEO_FORMAT_SDR.
  *
  * @param[out] videoFormat                    - Current video format. Valid value will be a member of ::tvVideoFormatType_t
  *
@@ -223,7 +230,8 @@ tvError_t GetCurrentVideoFormat(tvVideoFormatType_t *videoFormat);
  * @brief Gets the current video resolution
  *
  * This function gets the video resolution of the current primary video played on TV
- * If no video is played the Default tvVideoResolution_NONE is returned as default resolution.
+ * Whenever no video is played this API always returns tvVideoResolution_NONE for resolutionValue in 
+ * tvResolutionParam_t structure and rest of the parameters of tvResolutionParam_t structure are returned as 0 value.
  * 
  * @param[out] res                      - Video resolution value. Valid value will be a member of ::tvResolutionParam_t
  *
@@ -242,7 +250,7 @@ tvError_t GetCurrentVideoResolution(tvResolutionParam_t *res);
  * @brief Gets current video framerate
  *
  * This function gets the video frame rate of the current primary video played on TV
- * If no video is played the Default tvVideoFrameRate_NONE is returned as default framerate.
+ * Whenever no video is played this API always returns tvVideoFrameRate_NONE.
  * 
  * @param[out] format                   - Video frame rate value. Valid value will be a member of ::tvVideoFrameRate_t
  *
@@ -261,7 +269,7 @@ tvError_t GetCurrentVideoFrameRate(tvVideoFrameRate_t *format);
  * @brief Gets current video source selected
  *
  * This function gets the video source selected for the primary video.
- * If no source is connected the VIDEO_SOURCE_IP is returned as default video source.
+ * Whenever no video is played this API always returns VIDEO_SOURCE_IP.
  *
  * @param[out] currentSource            - Video source value. Valid value will be a member of ::tvVideoSrcType_t
  *
@@ -1945,11 +1953,13 @@ tvError_t SetDvTmaxValue(int value);
 tvError_t GetSupportedComponentColor(int *blComponentColor);
 
 /**
- * @brief Sets current component saturation
+ * @brief Sets the current component saturation value
  *
- * This function updates the component saturation value to hardware. The change is applied for current primary video source selected,
- * video format played and picture mode selected and if successful will be saved in override picture profile database.
- * The saved component saturation value should be applied automatically whenever the  current picture mode, current primary video format
+ * This function uses specified saturation property for the specified colour and adjust the default colour properties
+ * of the colour management system. The change is applied for current primary video source selected,
+ * video format played and picture mode selected and if successfull will be saved in override picture profile database.
+ * The saved component saturation value for the specified colour will take effect automatically whenever the 
+ * current picture mode, current primary video format and current video source are again selected in future.
  *
  * @param[in] blSaturationColor          - Component color. Valid value will be one of the member of ::tvDataComponentColor_t.
  *                                         If more than one value is bitwise OR-ed and passed then the function should return invalid param.
@@ -1963,7 +1973,7 @@ tvError_t GetSupportedComponentColor(int *blComponentColor);
  * @retval tvERROR_OPERATION_NOT_SUPPORTED   - Operation is not supported
  * @retval tvERROR_GENERAL                   - Underlying failures - SoC, memory, etc
  *
- * @pre TvInit() and SetCMSState() should be called before calling this API
+ * @pre TvInit() and SetCMSState(true) should be called before calling this API
  *
  * @see SetCMSState()
  */
@@ -1972,7 +1982,7 @@ tvError_t SetCurrentComponentSaturation(tvDataComponentColor_t blSaturationColor
 /**
  * @brief Gets current component saturation
  *
- * This function returns the current component saturation for the specific color, for the primary video source selected, 
+ * This function returns the current component saturation for the specified color, for the primary video source selected, 
  * primary video format played and picture mode selected.
  *
  * @param[in] blSaturationColor         - Component color. Valid value will be a member of ::tvDataComponentColor_t
@@ -1986,16 +1996,20 @@ tvError_t SetCurrentComponentSaturation(tvDataComponentColor_t blSaturationColor
  * @retval tvERROR_OPERATION_NOT_SUPPORTED   - Operation is not supported
  * @retval tvERROR_GENERAL                   - Underlying failures - SoC, memory, etc
  *
+ * @see SetCurrentComponentSaturation()
+ *
  * @pre TvInit() should be called before calling this API
  */
 tvError_t GetCurrentComponentSaturation(tvDataComponentColor_t blSaturationColor, int *saturation);
 
 /**
- * @brief Sets current component hue
+ * @brief Sets the current component hue value
  *
- * This function updates the component hue value to hardware. The change is applied for current primary video source selected,
- * video format played and picture mode selected and if successful will be saved in override picture profile database.
- * The saved component hue value should be applied automatically whenever the  current picture mode, current primary video format
+ * This function uses specified hue property for the specified colour and adjust the default colour properties
+ * of the colour management system. The change is applied for current primary video source selected,
+ * video format played and picture mode selected and if successfull will be saved in override picture profile database.
+ * The saved component hue value for the specified colour will take effect automatically whenever the 
+ * current picture mode, current primary video format and current video source are again selected in future.
  *
  * @param[in] blHueColor               - Component color. Valid value will be a member of ::tvDataComponentColor_t
  * @param[in] hue                      - Hue value to be set. Valid range is (0 - 100)
@@ -2008,7 +2022,7 @@ tvError_t GetCurrentComponentSaturation(tvDataComponentColor_t blSaturationColor
  * @retval tvERROR_OPERATION_NOT_SUPPORTED   - Operation is not supported
  * @retval tvERROR_GENERAL                   - Underlying failures - SoC, memory, etc
  *
- * @pre TvInit() and SetCMSState() should be called before calling this API
+ * @pre TvInit() and SetCMSState(true) should be called before calling this API
  *
  * @see SetCMSState()
  */
@@ -2017,7 +2031,7 @@ tvError_t SetCurrentComponentHue(tvDataComponentColor_t blHueColor, int hue);
 /**
  * @brief Gets current component hue
  *
- * This function returns the current component hue for the specific color, for the primary video source selected, 
+ * This function returns the current component hue for the specified color, for the primary video source selected, 
  * primary video format played and picture mode selected.                          
  *
  * @param[in] blHueColor              - Component color. Valid value will be a member of ::tvDataComponentColor_t
@@ -2031,6 +2045,8 @@ tvError_t SetCurrentComponentHue(tvDataComponentColor_t blHueColor, int hue);
  * @retval tvERROR_OPERATION_NOT_SUPPORTED   - Operation is not supported
  * @retval tvERROR_GENERAL                   - Underlying failures - SoC, memory, etc
  *
+ * @see SetCurrentComponentHue()
+ *
  * @pre TvInit() should be called before calling this API
  */
 tvError_t GetCurrentComponentHue(tvDataComponentColor_t blHueColor, int *hue);
@@ -2038,9 +2054,11 @@ tvError_t GetCurrentComponentHue(tvDataComponentColor_t blHueColor, int *hue);
 /**
  * @brief Sets the current component luma value
  *
- * This function updates the component luma value to hardware. The change is applied for current primary video source selected,
- * video format played and picture mode selected and if successful will be saved in override picture profile database.
- * The saved component lume value should be applied automatically whenever the  current picture mode, current primary video format
+ * This function uses specified luma property for the specified colour and adjust the default colour properties
+ * of the colour management system. The change is applied for current primary video source selected,
+ * video format played and picture mode selected and if successfull will be saved in override picture profile database.
+ * The saved component luma value for the specified colour will take effect automatically whenever the 
+ * current picture mode, current primary video format and current video source are again selected in future.
  *
  * @param[in] blLumaColor            - Component color. Valid value will be a member of ::tvDataComponentColor_t
  * @param[in] Luma                    - Luma value to be set. Valid range is (0 - 30)
@@ -2053,7 +2071,7 @@ tvError_t GetCurrentComponentHue(tvDataComponentColor_t blHueColor, int *hue);
  * @retval tvERROR_OPERATION_NOT_SUPPORTED   - Operation is not supported
  * @retval tvERROR_GENERAL                   - Underlying failures - SoC, memory, etc
  *
- * @pre TvInit() and SetCMSState() should be called before calling this API
+ * @pre TvInit() and SetCMSState(true) should be called before calling this API
  *
  * @see SetCMSState()
  */
@@ -2062,7 +2080,7 @@ tvError_t SetCurrentComponentLuma(tvDataComponentColor_t blLumaColor, int Luma);
 /**
  * @brief Gets the current component luma
  *
- * This function returns the current component luma for the specific color, for the primary video source selected, 
+ * This function returns the current component luma for the specified color, for the primary video source selected, 
  * primary video format played and picture mode selected.
  *
  * @param[in] blLumaColor          - Component color. Valid value will be a member of ::tvDataComponentColor_t
@@ -2076,6 +2094,8 @@ tvError_t SetCurrentComponentLuma(tvDataComponentColor_t blLumaColor, int Luma);
  * @retval tvERROR_OPERATION_NOT_SUPPORTED   - Operation is not supported
  * @retval tvERROR_GENERAL                   - Underlying failures - SoC, memory, etc
  *
+ * @see SetCurrentComponentLuma()
+ *
  * @pre TvInit() should be called before calling this API
  */
 tvError_t GetCurrentComponentLuma(tvDataComponentColor_t blLumaColor, int *Luma);
@@ -2083,11 +2103,12 @@ tvError_t GetCurrentComponentLuma(tvDataComponentColor_t blLumaColor, int *Luma)
 /**
  * @brief Save the CMS value
  *
- * This function saves the CMS value in picture profile database for the specific picture mode, primary video format type 
- * and primary video source. The saved hue value should be applied automatically by whenever the 
+ * This function saves the CMS value in override picture profile database for the specific picture mode, primary video format type 
+ * and primary video source. The saved CMS value should automatically take effect whenever the 
  * specified picture mode is selected, specified primary video format is played, specified primary video source is selected
- * and the CMS state is enabled for that combination.
- * There will be no change in current CMS value applied in PQ module.
+ * and the CMS state is enabled for that combination. There will be no change in current CMS value applied in colour management system.
+ * When the component_type is passed as COMP_NONE and color_type is passed as tvDataColor_NONE, the cms_value
+ * refers to CMS state.
  *
  * @param[in] videoSrcType            - Source input value. Valid value will be a member of ::tvVideoSrcType_t
  * @param[in] pq_mode                - Picture mode index. Valid value will be a member of ::tvPQModeIndex_t
@@ -2109,6 +2130,7 @@ tvError_t GetCurrentComponentLuma(tvDataComponentColor_t blLumaColor, int *Luma)
  * @retval tvERROR_OPERATION_NOT_SUPPORTED   - Operation is not supported
  * @retval tvERROR_GENERAL                   - Underlying failures - SoC, memory, etc
  *
+ * @see SetCMSState(), SetCurrentComponentHue(), GetCurrentComponentLuma() and SetCurrentComponentSaturation()
  * @pre TvInit() should be called before calling this API
  */
  tvError_t SaveCMS(tvVideoSrcType_t videoSrcType, int pq_mode,tvVideoFormatType_t videoFormatType,tvComponentType_t component_type,tvDataComponentColor_t color_type,int cms_value);
@@ -2116,9 +2138,15 @@ tvError_t GetCurrentComponentLuma(tvDataComponentColor_t blLumaColor, int *Luma)
 /**
  * @brief Sets and save's the CMS state
  *
- * This function enable or disable the CMS state. The change is applied for current primary video source selected,
- * video format played and picture mode selected and if successful will be saved in override picture profile database.
- * The saved CMS state value should be applied automatically whenever the  current picture mode, current primary video format
+ * This function enable or disable the CMS state. When enabled the hue/saturation/luma properties for
+ * RGBCMY colours stored in override picture profile database for the current picture mode, video source and video format 
+ * will used to adjust the default properties of the colour management system. 
+ * When disabled the colour management system is restored with default properties and hue/saturation/luma properties 
+ * for RGBCMY colours will not be used to adjust default properties.
+ * The change is applied for current primary video source selected, video format played and picture mode selected 
+ * and if successfull will be saved in override picture profile database. The saved CMS state value should be 
+ * take effect automatically whenever the  current picture mode, current primary video format
+ * and current primary video source are again selected in future.
  *
  * @param[in] enableCMSState        - CMS state to be set. @n
  *                                    Valid values are true if need to be enabled and false if need to be disabled.
@@ -2139,8 +2167,7 @@ tvError_t SetCMSState(bool enableCMSState);
  *
  * This function gets the current CMSState for the current picture mode selected,
  * current primary video format played and current primary video source selected. 
- * By default SetCMSState value wll be false. When the CMS state is enabled, CMS values will be applied to the color management block.
- * CMS values are Hue, Saturation and Luma values for six primary colours (Red, Green, Blue, Magenta, Cyan, Yellow). 
+ * The default value is determined during PQ calibration before pre production stage.
  *
  * @param[out] enableCMSState        - Current CMS state set. @n
  *                                    Valid values are true if it is enabled and false if it is disabled.
@@ -2153,6 +2180,8 @@ tvError_t SetCMSState(bool enableCMSState);
  * @retval tvERROR_OPERATION_NOT_SUPPORTED   - Operation is not supported
  * @retval tvERROR_GENERAL                   - Underlying failures - SoC, memory, etc
  *
+ * @see SetCMSState()
+ * 
  * @pre TvInit() should be called before calling this API
  */
 tvError_t GetCMSState(bool *enableCMSState);
