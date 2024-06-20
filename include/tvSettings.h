@@ -132,7 +132,8 @@ tvError_t RegisterVideoFormatChangeCB(tvVideoFormatCallbackData *cbData);
  * detects SEI content_type other than 0x01 or content_subtype other than 0x00 during middle of 
  * primary video playback or when playback finishes the callback function will be called with
  * with value tvContentType_NONE for FMM exit event. This applies only to IP video sources and 
- * Tuner video sources.
+ * Tuner video sources. AVI Infoframes for HDMI sources will be handled in dsHDMIIn through 
+ * dsHdmiInRegisterAviContentTypeChangeCB.
  *
  * @param[in] cbData                - Callback data. Please refer::tvVideoContentCallbackData
  *
