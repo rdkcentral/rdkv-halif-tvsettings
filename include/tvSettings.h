@@ -2612,6 +2612,9 @@ tvError_t EnableLocalContrast(bool mode);
 *     - Underlying failures - SoC, memory, etc
 *     - Status and shortcircuit_zone_list are invalid.
 *
+* @retval tvERROR_OPERATION_NOT_SUPPORTED
+*     - Operation is not supported on this platform
+*
 * @pre TvInit() should be called before calling this API
 */
 tvError_t GetLdimZoneShortCircuitStatus(unsigned char* shortcircuit_zone_list, int size, int* status);
