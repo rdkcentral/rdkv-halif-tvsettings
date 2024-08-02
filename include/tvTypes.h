@@ -380,13 +380,13 @@ typedef enum tvPQParameterIndex {
     tvDolbyMode_Invalid = -1,           //!< Dolby mode is invalid
     tvDolbyMode_Dark = 0,               //!< Dolby mode is Dolby Dark
     tvDolbyMode_Bright,                 //!< Dolby mode is Dolby Bright
-    tvDolbyMode_Reserved1,              //!< Dolby mode is reserved
+    tvDolbyMode_Game,                   //!< Dolby mode is Dolby Game
     tvHDR10Mode_Dark,                   //!< Dolby mode is HDR10 Dark
     tvHDR10Mode_Bright,                 //!< Dolby mode is HDR10 Bright
-    tvHDR10Mode_Reserved2,              //!< Dolby mode is Reserved
+    tvHDR10Mode_Game,                   //!< Dolby mode is HDR10 Game
     tvHLGMode_Dark,                     //!< Dolby mode is HLG Dark
     tvHLGMode_Bright,                   //!< Dolby mode is HLG Bright
-    tvHLGMode_Reserved3,                //!< Dolby mode is reserved
+    tvHLGMode_Game,                     //!< Dolby mode is HLG Game
     tvMode_Max = 28                     //!< End of enum
 }tvDolbyMode_t;
 
