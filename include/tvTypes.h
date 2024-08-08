@@ -370,6 +370,12 @@ typedef enum tvPQParameterIndex {
     PQ_PARAM_CMS_LUMA_YELLOW,                    //!< Picture parmaeter is Component luma yellow
     PQ_PARAM_CMS_LUMA_CYAN,                     //!< Picture parmaeter is Component luma cyan
     PQ_PARAM_CMS_LUMA_MAGENTA,                  //!< Picture parmaeter is Component luma magenta
+    PQ_PARAM_WB_RED_GAIN,                       //!< Picture parmaeter is Component Red Gain
+    PQ_PARAM_WB_GREEN_GAIN,                     //!< Picture parmaeter is Component Green Gain
+    PQ_PARAM_WB_BLUE_GAIN,                      //!< Picture parmaeter is Component Blue Gain
+    PQ_PARAM_WB_RED_OFFSET,                     //!< Picture parmaeter is Component Red Offset
+    PQ_PARAM_WB_GREEN_OFFSET,                   //!< Picture parmaeter is Component Blue offset
+    PQ_PARAM_WB_BLUE_OFFSET,                    //!< Picture parmaeter is Component Green Offset
     PQ_PARAM_MAX                                //!< End of enum
 }tvPQParameterIndex_t;
 
@@ -539,6 +545,48 @@ typedef struct
     void *userdata;                             //!< User data passed back to caller during call back
     tvVideoFrameRateChangeCB cb;                //!< Video frame change call back function pointed
 }tvVideoFrameRateCallbackData;
+
+/**
+ * @brief Structure for holding capablity.
+ */
+
+typedef struct
+{
+    std::string range;
+    std::string pqmode;
+    std::string format;
+    std::string source;
+    std::string isPlatformSupport;
+    std::string index;
+    std::string color;
+    std::string component;
+    std::string colorTemperature;
+    std::string control;
+}capDetails_t;
+
+/**
+ * @brief Enumeration defining the supported WhiteBalance Color
+ *
+ */
+typedef enum
+{
+    tvWB_COLOR_RED = 0,
+    tvWB_COLOR_GREEN,
+    tvWB_COLOR_BLUE,
+    tvWB_COLOR_MAX
+}tvWBColor_t;
+
+/**
+ * @brief Enumeration defining the supported WhiteBalance Control
+ *
+ */
+typedef enum
+{
+    tvWB_CONTROL_GAIN = 0,
+    tvWB_CONTROL_OFFSET,
+    tvWB_CONTROL_MAX
+}tvWBControl_t;
+
 
 #ifdef __cplusplus
 }
