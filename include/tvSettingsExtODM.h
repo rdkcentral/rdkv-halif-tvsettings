@@ -67,12 +67,7 @@ extern "C"
  * The file format is predefined and a template file is supplied by RDK.
  *
  * @param[in] param               - Heading of the section in PQ capability configuration file.
- * @param[out] rangeInfo          - Range information for the specified section to be returned.
- * @param[out] pqmodeInfo         - Picture mode information for the specified section to be returned.
- * @param[out] formatInfo         - Video format information for the specified section to be returned.
- * @param[out] sourceInfo         - Video source information for the specified section to be returned.
- * @param[out] platformsupport    - Platform support information for the specified section to be returned.
- * @param[out] index              - Index information for the specified section to be returned.
+ * @param[out] info               - info holds the capability details of all picture quality params.
  *
  * @return tvError_t
  *
@@ -83,8 +78,7 @@ extern "C"
  *
  * @pre tvInit() should be called before calling this API
  */
-int ReadCapablitiesFromConfODM(std::string &rangeInfo,std::string &pqmodeInfo,std::string &formatInfo,std::string &sourceInfo,
-		            std::string param, std::string & platformsupport, std::string & index);
+int ReadCapablitiesFromConfODM(std::string param, capDetails_t& info);
 
 /**
  * @brief Gets the current white balance info. To be deprecated soon.
