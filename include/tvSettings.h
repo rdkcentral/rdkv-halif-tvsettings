@@ -2238,7 +2238,7 @@ tvError_t GetCMSState(bool *enableCMSState);
  *
  * @pre TvInit() should be called before calling this API
  */
- tvError_t GetDefaultPQParams(int pqIndex,tvVideoSrcType_t videoSrcType,tvVideoFormatType_t videoFormatType, tvPQParameterIndex_t pqParamIndex, int *value);
+ tvError_t GetDefaultPQParams(int pqIndex,tvVideoSrcType_t videoSrcType,tvVideoFormatType_t videoFormatType, tvColorTemp_t colorTemp,tvPQParameterIndex_t pqParamIndex, int *value);
 
 
 /**
@@ -2263,7 +2263,7 @@ tvError_t GetCMSState(bool *enableCMSState);
  *
  * @pre TvInit() should be called before calling this API
  */
-tvError_t GetPQParams(int pqIndex,tvVideoSrcType_t videoSrcType,tvVideoFormatType_t videoFormatType, tvPQParameterIndex_t pqParamIndex, int *value);
+tvError_t GetPQParams(int pqIndex,tvVideoSrcType_t videoSrcType,tvVideoFormatType_t videoFormatType, tvColorTemp_t colorTemp, tvPQParameterIndex_t pqParamIndex, int *value);
 
 /**
  * @brief Gets the max gamma/whitebalance gain value capable for the platform.

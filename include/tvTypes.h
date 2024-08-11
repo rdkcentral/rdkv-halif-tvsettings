@@ -52,6 +52,7 @@
 #define _TV_TYPES_H
 
 #include "tvTypesODM.h"
+#include "tvTypesExtODM.h"
 
 #ifdef __cplusplus
 extern "C"
@@ -545,24 +546,6 @@ typedef struct
     void *userdata;                             //!< User data passed back to caller during call back
     tvVideoFrameRateChangeCB cb;                //!< Video frame change call back function pointed
 }tvVideoFrameRateCallbackData;
-
-/**
- * @brief Structure for holding capablity.
- */
-
-typedef struct
-{
-    std::string range;
-    std::string pqmode;
-    std::string format;
-    std::string source;
-    std::string isPlatformSupport;
-    std::string index;
-    std::string color;
-    std::string component;
-    std::string colorTemperature;
-    std::string control;
-}capDetails_t;
 
 /**
  * @brief Enumeration defining the supported WhiteBalance Color

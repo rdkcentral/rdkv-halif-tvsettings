@@ -53,6 +53,7 @@
 #include "tvError.h"
 #include "tvTypes.h"
 #include "tvTypesODM.h"
+#include "tvTypesExtODM.h"
 
 #ifdef __cplusplus
 extern "C"
