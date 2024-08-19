@@ -377,7 +377,7 @@ typedef enum tvPQParameterIndex {
     PQ_PARAM_WB_RED_OFFSET,                     //!< Picture parmaeter is Component Red Offset
     PQ_PARAM_WB_GREEN_OFFSET,                   //!< Picture parmaeter is Component Blue offset
     PQ_PARAM_WB_BLUE_OFFSET,                    //!< Picture parmaeter is Component Green Offset
-    PQ_PARAM_HDRMODE,                           //!< Picture parmaeter is HDRMode
+    PQ_PARAM_HDR_MODE,                           //!< Picture parmaeter is HDRMode
     PQ_PARAM_MAX                                //!< End of enum
 }tvPQParameterIndex_t;
 
