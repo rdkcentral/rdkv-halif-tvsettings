@@ -2574,6 +2574,10 @@ tvError_t EnableLocalContrast(bool mode);
 * is triggered. It detects short circuits between zones.  On completion, it
 * returns a list of zones where a short circuit was detected.
 *
+* Shall return OPERATION_NOT_SUPPORTED, if this feature is not supported
+* on the called platform.
+*
+*
 * @param[out] status
 *     - int*, Callee-saved status indicating short circuit detected or not.
 *     - 0 indicates success, no short circuit detected.
