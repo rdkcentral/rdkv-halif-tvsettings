@@ -52,7 +52,6 @@
 #define _TV_TYPES_H
 
 #include "tvTypesODM.h"
-#include "tvTypesExtODM.h"
 
 #ifdef __cplusplus
 extern "C"
@@ -388,13 +387,13 @@ typedef enum tvPQParameterIndex {
     tvDolbyMode_Invalid = -1,           //!< Dolby mode is invalid
     tvDolbyMode_Dark = 0,               //!< Dolby mode is Dolby Dark
     tvDolbyMode_Bright,                 //!< Dolby mode is Dolby Bright
-    tvDolbyMode_Game,                   //!< Dolby mode is Dolby Game
+    tvDolbyMode_Game,                   //!< Dolby mode is Game
     tvHDR10Mode_Dark,                   //!< Dolby mode is HDR10 Dark
     tvHDR10Mode_Bright,                 //!< Dolby mode is HDR10 Bright
-    tvHDR10Mode_Game,                   //!< Dolby mode is HDR10 Game
+    tvHDR10Mode_Game,                   //!< Dolby mode is Game
     tvHLGMode_Dark,                     //!< Dolby mode is HLG Dark
     tvHLGMode_Bright,                   //!< Dolby mode is HLG Bright
-    tvHLGMode_Game,                     //!< Dolby mode is HLG Game
+    tvHLGMode_Game,                     //!< Dolby mode is Game
     tvMode_Max = 28                     //!< End of enum
 }tvDolbyMode_t;
 

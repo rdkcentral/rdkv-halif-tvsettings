@@ -53,33 +53,11 @@
 #include "tvError.h"
 #include "tvTypes.h"
 #include "tvTypesODM.h"
-#include "tvTypesExtODM.h"
 
 #ifdef __cplusplus
 extern "C"
 {
 #endif
-
-/**
- * @brief Reads PQ capability information sections PQ capability configuration file. To be deprecated soon.
- * @note SOC vendors can stub these ODM functions and mark it as weak
- *
- * This function reads PQ capability information sections from the PQ capability configuration file. @n
- * The file format is predefined and a template file is supplied by RDK.
- *
- * @param[in] param               - Heading of the section in PQ capability configuration file.
- * @param[out] info               - info holds the capability details of all picture quality params.
- *
- * @return tvError_t
- *
- * @retval tvERROR_NONE             - Success
- * @retval tvERROR_INVALID_PARAM    - Input parameter is invalid
- * @retval tvERROR_INVALID_STATE    - Interface is not initialized
- * @retval tvERROR_GENERAL          - Underlying failures - SoC, memory, etc
- *
- * @pre tvInit() should be called before calling this API
- */
-int ReadCapablitiesFromConfODM(std::string param, capDetails_t& info);
 
 /**
  * @brief Gets the current white balance info. To be deprecated soon.

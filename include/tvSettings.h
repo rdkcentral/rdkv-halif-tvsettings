@@ -1463,7 +1463,6 @@ tvError_t SaveSourcePictureMode(tvVideoSrcType_t videoSrcType, tvVideoFormatType
  * @param[in] pictureMode           - Picture mode value to be saved. Valid values are as per values returned by
  *                                    ::pic_modes_t.value  parmaeter from GetTVSupportedPictureModes API.
  * @param[in] videoFormatType       - Video format type value. Valid value will be a member of ::tvVideoFormatType_t
- * @param[in] colorTemp             - colorTemp Value.Valid value will be a member of ::tvColorTemp_t
  * @param[in] color                 - color Value. Valid value will be a member of ::tvWBColor_t
  * @param[in] control               - control Value.Valid value will be a member of ::tvWBControl_t
  *
@@ -1478,7 +1477,7 @@ tvError_t SaveSourcePictureMode(tvVideoSrcType_t videoSrcType, tvVideoFormatType
  * @pre TvInit() should be called before calling this API
  */
 
-tvError_t SaveWhiteBalance(tvVideoSrcType_t videoSrcType, int pq_mode,tvVideoFormatType_t videoFormatType,tvColorTemp_t colorTemp, tvWBColor_t color, tvWBControl_t control, int value);
+tvError_t SaveWhiteBalance(tvVideoSrcType_t videoSrcType, int pq_mode,tvVideoFormatType_t videoFormatType, tvWBColor_t color, tvWBControl_t control, int value);
 
 /**
  * @brief Sets or saves the rgain value
@@ -2238,7 +2237,7 @@ tvError_t GetCMSState(bool *enableCMSState);
  *
  * @pre TvInit() should be called before calling this API
  */
- tvError_t GetDefaultPQParams(int pqIndex,tvVideoSrcType_t videoSrcType,tvVideoFormatType_t videoFormatType, tvColorTemp_t colorTemp,tvPQParameterIndex_t pqParamIndex, int *value);
+ tvError_t GetDefaultPQParams(int pqIndex,tvVideoSrcType_t videoSrcType,tvVideoFormatType_t videoFormatType, tvPQParameterIndex_t pqParamIndex, int *value);
 
 
 /**
