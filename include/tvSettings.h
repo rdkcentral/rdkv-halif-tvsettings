@@ -2578,6 +2578,7 @@ tvError_t EnableLocalContrast(bool mode);
  *                                        0 - No short circuit detected.
  *                                        1 - Short circuit detected.
  * @param[in]  size                    Size of the shortcircuit_zone_list array.
+ *                                        The size is platform/hardware specific.
  * @param[out] status                  Short circuit detection status.
  *                                        0 - Success, no short circuit detected.
  *                                        1 - Failure, at least one short circuit detected.
