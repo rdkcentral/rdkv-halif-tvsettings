@@ -2590,9 +2590,31 @@ tvError_t EnableLocalContrast(bool mode);
  * @retval tvERROR_GENERAL                 Underlying failures (SoC, memory, etc.).
  * @retval tvERROR_OPERATION_NOT_SUPPORTED Operation is not supported on this platform.
  *
+ * @see GetNumberOfDimmingZones()
+ *
  * @pre TvInit() should be called before calling this API.
  */
 tvError_t GetLdimZoneShortCircuitStatus(unsigned char* shortcircuit_zone_list, int size, int* status);
+
+/**
+ * @brief Retrieves the number of dimming zones supported by the platform.
+ *
+ * On calling GetNumberOfDimmingZones, the API retrieves the number of dimming zones
+ * available for the current platform.
+ *
+ * @param[out] number_of_dimming_zones  Pointer to an unsigned integer where the number of dimming zones
+ *                                      will be stored. This is a platform-specific value.
+ *
+ * @return tvError_t
+ * @retval tvERROR_NONE                    The number of dimming zones was retrieved successfully.
+ * @retval tvERROR_INVALID_PARAM           Invalid input parameter (e.g., number_of_dimming_zones is NULL).
+ * @retval tvERROR_INVALID_STATE           The system is not in a state where dimming zones can be queried.
+ * @retval tvERROR_GENERAL                 Underlying failures (e.g., hardware issues, memory errors).
+ * @retval tvERROR_OPERATION_NOT_SUPPORTED The platform does not support dimming zones.
+ *
+ * @pre TvInit() should be called before calling this API.
+ */
+tvError_t GetNumberOfDimmingZones(unsigned int* number_of_dimming_zones);
 
 #ifdef __cplusplus
 }
