@@ -2301,11 +2301,18 @@ tvError_t SetGammaPattern(int is_10_bit, int R_Value, int G_Value, int B_Value);
  * @param[in] colorTemp            - Colour temperature value. The valid value will be a member of::tvColorTemp_t
  * @param[out] x                   - X coordinate value is as defined by CIE 1931 color space chromaticity coordinates. The range is 0 to 1.0.
  * @param[out] y                   - Y coordinate value is as defined by CIE 1931 color space chromaticity coordinates. The range is 0 to 1.0.
+ * 
+ * @return tvError_t
  *
+ * @retval tvERROR_NONE             - Success
+ * @retval tvERROR_INVALID_PARAM    - Input parameter is invalid
+ * @retval tvERROR_INVALID_STATE    - Interface is not initialized
+ * @retval tvERROR_GENERAL          - Underlying failures - SoC, memory, etc
+ * 
  * @pre TvInit() should be called before calling this API
  */
 
-void GetTVGammaTarget(tvColorTemp_t colorTemp,double *x, double *y);
+tvError_t GetTVGammaTarget(tvColorTemp_t colorTemp,double *x, double *y);
 
 /**
  * @brief Sets the gamma pattern mode
