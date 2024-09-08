@@ -1289,48 +1289,6 @@ tvError_t SetDynamicGamma(double tvGammaValue);
 tvError_t GetTVSupportedDolbyVisionModes(tvDolbyMode_t *dvModes[],unsigned short *count);
 
 /**
- * @brief Gets the supported HDR10 modes and their count
- *
- * This function returns the supported HDR10 modes and their count
- *
- * @param[out] HDR10Modes[]            - List of available HDR10 modes. Refer ::tvDolbyMode_t @n
- *                                     Valid values are member of ::tvDolbyMode_t
- * @param[out] count                - Count of supported HDR10 modes. Max is tvMode_Max and min is 0
- *
- * @return tvError_t
- *
- * @retval tvERROR_NONE                      - Success
- * @retval tvERROR_INVALID_PARAM             - Parameter is invalid
- * @retval tvERROR_INVALID_STATE             - Interface is not initialized
- * @retval tvERROR_OPERATION_NOT_SUPPORTED   - Operation is not supported
- * @retval tvERROR_GENERAL                   - Underlying failures - SoC, memory, etc
- *
- * @pre TvInit() should be called before calling this API
- */
-tvError_t GetTVSupportedHDR10Modes(tvDolbyMode_t *HDR10Modes[],unsigned short *count)
-
-/**
- * @brief Gets the supported HLG modes and their count
- *
- * This function returns the supported Dolby Vision modes and their count
- *
- * @param[out] HLGModes[]            - List of available HLG modes. Refer ::tvDolbyMode_t @n
- *                                    Valid values are member of ::tvDolbyMode_t
- * @param[out] count                - Count of supported HLG modes. Max is tvMode_Max and min is 0
- *
- * @return tvError_t
- *
- * @retval tvERROR_NONE                      - Success
- * @retval tvERROR_INVALID_PARAM             - Parameter is invalid
- * @retval tvERROR_INVALID_STATE             - Interface is not initialized
- * @retval tvERROR_OPERATION_NOT_SUPPORTED   - Operation is not supported
- * @retval tvERROR_GENERAL                   - Underlying failures - SoC, memory, etc
- *
- * @pre TvInit() should be called before calling this API
- */
-tvError_t GetTVSupportedHLGModes(tvDolbyMode_t *HLGModes[],unsigned short *count)
-
-/**
  * @brief Sets dolby vision mode
  *
  * This function updates the new dolby vision mode value to hardware. The change is applied for current primary video source selected,
