@@ -2311,7 +2311,7 @@ tvError_t SetGammaPattern(int is_10_bit, int R_Value, int G_Value, int B_Value);
  * @pre TvInit() should be called before calling this API
  */
 
-tvError_t GetTVGammaTarget(tvColorTemp_t colorTemp,double *x, double *y)
+tvError_t GetTVGammaTarget(tvColorTemp_t colorTemp,double *x, double *y);
 
 /**
  * @brief Sets the gamma pattern mode
