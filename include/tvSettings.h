@@ -2594,6 +2594,33 @@ tvError_t EnableDynamicContrast(bool mode);
  */
 tvError_t EnableLocalContrast(bool mode);
 
+/**
+ * @brief Triggers short circuit detection and returns the status.
+ *
+ * On calling GetLdimZoneShortCircuitStatus, the short circuit detection logic
+ * is triggered. It detects short circuits between zones. On completion, it
+ * returns a list of zones where a short circuit was detected.
+ *
+ * @param[out] shortcircuit_zone_list  Pre-allocated array indicating short circuit status for each zone.
+ *                                        0 - No short circuit detected.
+ *                                        1 - Short circuit detected.
+ * @param[in]  size                    Size of the shortcircuit_zone_list array.
+ *                                        The size is platform/hardware specific.
+ * @param[out] status                  Short circuit detection status.
+ *                                        0 - Success, no short circuit detected.
+ *                                        1 - Failure, at least one short circuit detected.
+ *
+ * @return tvError_t
+ * @retval tvERROR_NONE                    Short circuit detection completed successfully.
+ * @retval tvERROR_INVALID_PARAM           Invalid input parameter.
+ * @retval tvERROR_INVALID_STATE           Detection logic failed to execute.
+ * @retval tvERROR_GENERAL                 Underlying failures (SoC, memory, etc.).
+ * @retval tvERROR_OPERATION_NOT_SUPPORTED Operation is not supported on this platform.
+ *
+ * @pre TvInit() should be called before calling this API.
+ */
+tvError_t GetLdimZoneShortCircuitStatus(unsigned char* shortcircuit_zone_list, int size, int* status);
+
 #ifdef __cplusplus
 }
 #endif
