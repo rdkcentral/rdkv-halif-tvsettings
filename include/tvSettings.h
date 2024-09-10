@@ -2621,6 +2621,29 @@ tvError_t EnableLocalContrast(bool mode);
  */
 tvError_t GetLdimZoneShortCircuitStatus(unsigned char* shortcircuit_zone_list, int size, int* status);
 
+/**
+ * @brief Sets 2Point Custom Whitebalance
+ *
+ * This function sets Whitebalance for a given picture mode index, primary video source @n
+ * and primary video format.
+ *
+ * @param[in] source                - Source input value. Valid value will be a member of ::tvVideoSrcType_t
+ * @param[in] color                 - Color type value. Valid value will be a member of ::tvWBColor_t
+ * @param[in] control               - Control index value. Valid values will be a member of ::tvWBControl_t
+ * @param[in] value                 - The WhiteBalance Value to be set.
+ *
+ * @return tvError_t
+ *
+ * @retval tvERROR_NONE                      - Success
+ * @retval tvERROR_INVALID_PARAM             - Input parameter is invalid
+ * @retval tvERROR_INVALID_STATE             - Interface is not initialized
+ * @retval tvERROR_OPERATION_NOT_SUPPORTED   - Operation is not supported
+ * @retval tvERROR_GENERAL                   - Underlying failures - SoC, memory, etc
+ *
+ * @pre TvInit() should be called before calling this API
+ */
+tvError_t SetCustom2PointWhiteBalance(tvVideoSrcType_t source,tvWBColor_t color, tvWBControl_t control, int value);
+
 #ifdef __cplusplus
 }
 #endif
