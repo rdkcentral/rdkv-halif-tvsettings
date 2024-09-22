@@ -387,7 +387,7 @@ typedef enum tvPQParameterIndex {
     tvDolbyMode_Invalid = -1,           //!< Dolby mode is invalid
     tvDolbyMode_Dark = 0,               //!< Dolby mode is Dolby Dark
     tvDolbyMode_Bright,                 //!< Dolby mode is Dolby Bright
-    tvDolbyMode_Game,                   //!< Dolby mode is dolby Game
+    tvDolbyMode_Game,                   //!< Dolby mode is Dolby Game
     tvHDR10Mode_Dark,                   //!< Dolby mode is HDR10 Dark
     tvHDR10Mode_Bright,                 //!< Dolby mode is HDR10 Bright
     tvHDR10Mode_Game,                   //!< Dolby mode is HDR10 Game

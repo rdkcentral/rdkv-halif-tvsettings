@@ -1477,7 +1477,7 @@ tvError_t SaveSourcePictureMode(tvVideoSrcType_t videoSrcType, tvVideoFormatType
  * @pre TvInit() should be called before calling this API
  */
 
-tvError_t SaveWhiteBalance(tvVideoSrcType_t videoSrcType, int pq_mode,tvVideoFormatType_t videoFormatType, tvWBColor_t color, tvWBControl_t control, int value);
+tvError_t SaveCustom2PointWhiteBalance(tvVideoSrcType_t videoSrcType, int pq_mode,tvVideoFormatType_t videoFormatType, tvWBColor_t color, tvWBControl_t control, int value);
 
 /**
  * @brief Sets or saves the rgain value
