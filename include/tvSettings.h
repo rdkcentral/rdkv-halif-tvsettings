@@ -2302,10 +2302,16 @@ tvError_t SetGammaPattern(int is_10_bit, int R_Value, int G_Value, int B_Value);
  * @param[out] x                   - X coordinate value is as defined by CIE 1931 color space chromaticity coordinates. The range is 0 to 1.0.
  * @param[out] y                   - Y coordinate value is as defined by CIE 1931 color space chromaticity coordinates. The range is 0 to 1.0.
  *
+* @return tvError_t
+ *
+ * @retval tvERROR_NONE             - Success
+ * @retval tvERROR_INVALID_PARAM    - Input parameter is invalid
+ * @retval tvERROR_INVALID_STATE    - Interface is not initialized
+ * @retval tvERROR_GENERAL          - Underlying failures - SoC, memory, etc
  * @pre TvInit() should be called before calling this API
  */
 
-void GetTVGammaTarget(tvColorTemp_t colorTemp,double *x, double *y);
+tvError_t GetTVGammaTarget(tvColorTemp_t colorTemp,double *x, double *y);
 
 /**
  * @brief Sets the gamma pattern mode
@@ -2566,6 +2572,55 @@ tvError_t EnableDynamicContrast(bool mode);
  * @pre TvInit() should be called before calling this API
  */
 tvError_t EnableLocalContrast(bool mode);
+
+/**
+ * @brief Triggers short circuit detection and returns the status.
+ *
+ * On calling GetLdimZoneShortCircuitStatus, the short circuit detection logic
+ * is triggered. It detects short circuits between zones. On completion, it
+ * returns a list of zones where a short circuit was detected.
+ *
+ * @param[out] shortcircuit_zone_list  Pre-allocated array indicating short circuit status for each zone.
+ *                                        0 - No short circuit detected.
+ *                                        1 - Short circuit detected.
+ * @param[in]  size                    Size of the shortcircuit_zone_list array.
+ *                                        The size is platform/hardware specific.
+ * @param[out] status                  Short circuit detection status.
+ *                                        0 - Success, no short circuit detected.
+ *                                        1 - Failure, at least one short circuit detected.
+ *
+ * @return tvError_t
+ * @retval tvERROR_NONE                    Short circuit detection completed successfully.
+ * @retval tvERROR_INVALID_PARAM           Invalid input parameter.
+ * @retval tvERROR_INVALID_STATE           Detection logic failed to execute.
+ * @retval tvERROR_GENERAL                 Underlying failures (SoC, memory, etc.).
+ * @retval tvERROR_OPERATION_NOT_SUPPORTED Operation is not supported on this platform.
+ *
+ * @see GetNumberOfDimmingZones()
+ *
+ * @pre TvInit() should be called before calling this API.
+ */
+tvError_t GetLdimZoneShortCircuitStatus(unsigned char* shortcircuit_zone_list, unsigned int size, int* status);
+
+/**
+ * @brief Retrieves the number of dimming zones supported by the platform.
+ *
+ * On calling GetNumberOfDimmingZones, the API retrieves the number of dimming zones
+ * available for the current platform.
+ *
+ * @param[out] number_of_dimming_zones  Pointer to an unsigned integer where the number of dimming zones
+ *                                      will be stored. This is a platform-specific value.
+ *
+ * @return tvError_t
+ * @retval tvERROR_NONE                    The number of dimming zones was retrieved successfully.
+ * @retval tvERROR_INVALID_PARAM           Invalid input parameter (e.g., number_of_dimming_zones is NULL).
+ * @retval tvERROR_INVALID_STATE           The system is not in a state where dimming zones can be queried.
+ * @retval tvERROR_GENERAL                 Underlying failures (e.g., hardware issues, memory errors).
+ * @retval tvERROR_OPERATION_NOT_SUPPORTED The platform does not support dimming zones.
+ *
+ * @pre TvInit() should be called before calling this API.
+ */
+tvError_t GetNumberOfDimmingZones(unsigned int* number_of_dimming_zones);
 
 #ifdef __cplusplus
 }
