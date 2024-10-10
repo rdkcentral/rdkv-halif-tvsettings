@@ -1453,6 +1453,33 @@ tvError_t SetTVPictureMode(const char * pictureMode);
 tvError_t SaveSourcePictureMode(tvVideoSrcType_t videoSrcType, tvVideoFormatType_t videoFormatType, int pictureMode);
 
 /**
+ * @brief Saves WhiteBalance
+ *
+ * This function saves the WhiteBalance in picture profile database for the specific primary video format type
+ * and primary video source. The saved picture mode should be applied automatically whenever the
+ * specified specified primary video format is played and specified primary video source is selected.
+ *
+ * @param[in] videoSrcType          - Source input value. Valid value will be a member of ::tvVideoSrcType_t
+ * @param[in] pictureMode           - Picture mode value to be saved. Valid values are as per values returned by
+ *                                    ::pic_modes_t.value  parmaeter from GetTVSupportedPictureModes API.
+ * @param[in] videoFormatType       - Video format type value. Valid value will be a member of ::tvVideoFormatType_t
+ * @param[in] color                 - color Value. Valid value will be a member of ::tvWBColor_t
+ * @param[in] control               - control Value.Valid value will be a member of ::tvWBControl_t
+ *
+ * @return tvError_t
+ *
+ * @retval tvERROR_NONE                      - Success
+ * @retval tvERROR_INVALID_PARAM             - Input parameter is invalid
+ * @retval tvERROR_INVALID_STATE             - Interface is not initialized
+ * @retval tvERROR_OPERATION_NOT_SUPPORTED   - Operation is not supported
+ * @retval tvERROR_GENERAL                   - Underlying failures - SoC, memory, etc
+ *
+ * @pre TvInit() should be called before calling this API
+ */
+
+tvError_t SaveCustom2PointWhiteBalance(tvVideoSrcType_t videoSrcType, int pq_mode,tvVideoFormatType_t videoFormatType, tvWBColor_t color, tvWBControl_t control, int value);
+
+/**
  * @brief Sets or saves the rgain value
  *
  * This function sets or saves the rgain value for a specfic color temperature and video source. If it is set operation (saveOnly=0) @n
@@ -2621,6 +2648,29 @@ tvError_t GetLdimZoneShortCircuitStatus(unsigned char* shortcircuit_zone_list, u
  * @pre TvInit() should be called before calling this API.
  */
 tvError_t GetNumberOfDimmingZones(unsigned int* number_of_dimming_zones);
+
+/**
+ * @brief Sets 2Point Custom Whitebalance
+ *
+ * This function sets Whitebalance for a given picture mode index, primary video source @n
+ * and primary video format.
+ *
+ * @param[in] source                - Source input value. Valid value will be a member of ::tvVideoSrcType_t
+ * @param[in] color                 - Color type value. Valid value will be a member of ::tvWBColor_t
+ * @param[in] control               - Control index value. Valid values will be a member of ::tvWBControl_t
+ * @param[in] value                 - The WhiteBalance Value to be set.
+ *
+ * @return tvError_t
+ *
+ * @retval tvERROR_NONE                      - Success
+ * @retval tvERROR_INVALID_PARAM             - Input parameter is invalid
+ * @retval tvERROR_INVALID_STATE             - Interface is not initialized
+ * @retval tvERROR_OPERATION_NOT_SUPPORTED   - Operation is not supported
+ * @retval tvERROR_GENERAL                   - Underlying failures - SoC, memory, etc
+ *
+ * @pre TvInit() should be called before calling this API
+ */
+tvError_t SetCustom2PointWhiteBalance(tvVideoSrcType_t source,tvWBColor_t color, tvWBControl_t control, int value);
 
 #ifdef __cplusplus
 }
