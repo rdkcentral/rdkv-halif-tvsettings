@@ -327,6 +327,7 @@ typedef enum tvPQModeIndex {
     PQ_MODE_SPORTS =8 ,                         //!< Picture mode is "Sports" */
     PQ_MODE_GRAPHICS =9 ,                       //!< Picture mode is "Graphics" */
     PQ_MODE_FMM =10,                            //!< Picture mode is "Filmmaker" */
+    PQ_MODE_VIVID2 =11,                         //!< Picture mode is "Vivid2 or Dynamic2" */
     PQ_MODE_MAX=15                              //!< End of enum
 }tvPQModeIndex_t;
 
