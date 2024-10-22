@@ -60,33 +60,6 @@ extern "C"
 #endif
 
 /**
- * @brief Reads PQ capability information sections PQ capability configuration file. To be deprecated soon.
- * @note SOC vendors can stub these ODM functions and mark it as weak
- *
- * This function reads PQ capability information sections from the PQ capability configuration file. @n
- * The file format is predefined and a template file is supplied by RDK.
- *
- * @param[in] param               - Heading of the section in PQ capability configuration file.
- * @param[out] rangeInfo          - Range information for the specified section to be returned.
- * @param[out] pqmodeInfo         - Picture mode information for the specified section to be returned.
- * @param[out] formatInfo         - Video format information for the specified section to be returned.
- * @param[out] sourceInfo         - Video source information for the specified section to be returned.
- * @param[out] platformsupport    - Platform support information for the specified section to be returned.
- * @param[out] index              - Index information for the specified section to be returned.
- *
- * @return tvError_t
- *
- * @retval tvERROR_NONE             - Success
- * @retval tvERROR_INVALID_PARAM    - Input parameter is invalid
- * @retval tvERROR_INVALID_STATE    - Interface is not initialized
- * @retval tvERROR_GENERAL          - Underlying failures - SoC, memory, etc
- *
- * @pre tvInit() should be called before calling this API
- */
-int ReadCapablitiesFromConfODM(std::string &rangeInfo,std::string &pqmodeInfo,std::string &formatInfo,std::string &sourceInfo,
-		            std::string param, std::string & platformsupport, std::string & index);
-
-/**
  * @brief Gets the current white balance info. To be deprecated soon.
  * @note SOC vendors can stub these ODM functions and mark it as weak
  *
