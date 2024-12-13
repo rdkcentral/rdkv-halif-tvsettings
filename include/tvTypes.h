@@ -336,48 +336,48 @@ typedef enum tvPQModeIndex {
  *
  */
 typedef enum tvPQParameterIndex {
-    PQ_PARAM_BRIGHTNESS  = 0,                   //!< Picture parmaeter is Brightness
-    PQ_PARAM_CONTRAST,                          //!< Picture parmaeter is Contrast
-    PQ_PARAM_SHARPNESS,                         //!< Picture parmaeter is Sharpness
-    PQ_PARAM_SATURATION,                        //!< Picture parmaeter is Saturation
-    PQ_PARAM_HUE,                               //!< Picture parmaeter is Hue
-    PQ_PARAM_BACKLIGHT,                         //!< Picture parmaeter is Backlight
-    PQ_PARAM_DOLBY_MODE,                        //!< Picture parmaeter is Dolby Mode
-    PQ_PARAM_HDR10_MODE,                        //!< Picture parmaeter is HDR10 mode. To be deprecated
-    PQ_PARAM_HLG_MODE,                          //!< Picture parmaeter is HLG mode. To be deprecated
-    PQ_PARAM_ASPECT_RATIO,                      //!< Picture parmaeter is Aspect ratio
-    PQ_PARAM_COLOR_TEMPERATURE,                 //!< Picture parmaeter is Colour temperature
-    PQ_PARAM_DIMMINGMODE,                       //!< Picture parmaeter is Dimming mode
-    PQ_PARAM_LDIM,                               //!< Picture parmaeter is LDIM. To be deprecated 
-    PQ_PARAM_LOCALDIMMING_LEVEL,                //!< Picture parmaeter is Local dimming level
-    PQ_PARAM_LOWLATENCY_STATE,                  //!< Picture parmaeter is Low latency state
-    PQ_PARAM_CMS,                               //!< Picture parmaeter is CMS. To be deprecated
-    PQ_PARAM_CMS_STATE,                         //!< Picture parmaeter is CMS. To be deprecated
-    PQ_PARAM_CMS_SATURATION_RED,                //!< Picture parmaeter is Component saturation red
-    PQ_PARAM_CMS_SATURATION_BLUE,               //!< Picture parmaeter is Component saturation blue
-    PQ_PARAM_CMS_SATURATION_GREEN,              //!< Picture parmaeter is Component saturation green
-    PQ_PARAM_CMS_SATURATION_YELLOW,              //!< Picture parmaeter is Component saturation yellow
-    PQ_PARAM_CMS_SATURATION_CYAN,               //!< Picture parmaeter is Component saturation cyan
-    PQ_PARAM_CMS_SATURATION_MAGENTA,            //!< Picture parmaeter is Component saturation magenta
-    PQ_PARAM_CMS_HUE_RED,                       //!< Picture parmaeter is Component hue red
-    PQ_PARAM_CMS_HUE_BLUE,                      //!< Picture parmaeter is Component hue blue
-    PQ_PARAM_CMS_HUE_GREEN,                     //!< Picture parmaeter is Component hue green
-    PQ_PARAM_CMS_HUE_YELLOW,                     //!< Picture parmaeter is Component hue yellow
-    PQ_PARAM_CMS_HUE_CYAN,                      //!< Picture parmaeter is Component hue cyan
-    PQ_PARAM_CMS_HUE_MAGENTA,                   //!< Picture parmaeter is Component hue magenta
-    PQ_PARAM_CMS_LUMA_RED,                      //!< Picture parmaeter is Component luma red
-    PQ_PARAM_CMS_LUMA_BLUE,                     //!< Picture parmaeter is Component luma blue
-    PQ_PARAM_CMS_LUMA_GREEN,                    //!< Picture parmaeter is Component luma green
-    PQ_PARAM_CMS_LUMA_YELLOW,                    //!< Picture parmaeter is Component luma yellow
-    PQ_PARAM_CMS_LUMA_CYAN,                     //!< Picture parmaeter is Component luma cyan
-    PQ_PARAM_CMS_LUMA_MAGENTA,                  //!< Picture parmaeter is Component luma magenta
-    PQ_PARAM_WB_RED_GAIN,                       //!< Picture parmaeter is Component Red Gain
-    PQ_PARAM_WB_GREEN_GAIN,                     //!< Picture parmaeter is Component Green Gain
-    PQ_PARAM_WB_BLUE_GAIN,                      //!< Picture parmaeter is Component Blue Gain
-    PQ_PARAM_WB_RED_OFFSET,                     //!< Picture parmaeter is Component Red Offset
-    PQ_PARAM_WB_GREEN_OFFSET,                   //!< Picture parmaeter is Component Blue offset
-    PQ_PARAM_WB_BLUE_OFFSET,                    //!< Picture parmaeter is Component Green Offset
-    PQ_PARAM_HDR_MODE,                           //!< Picture parmaeter is HDRMode
+    PQ_PARAM_BRIGHTNESS  = 0,                   //!< Picture parameter is Brightness
+    PQ_PARAM_CONTRAST,                          //!< Picture parameter is Contrast
+    PQ_PARAM_SHARPNESS,                         //!< Picture parameter is Sharpness
+    PQ_PARAM_SATURATION,                        //!< Picture parameter is Saturation
+    PQ_PARAM_HUE,                               //!< Picture parameter is Hue
+    PQ_PARAM_BACKLIGHT,                         //!< Picture parameter is Backlight
+    PQ_PARAM_DOLBY_MODE,                        //!< Picture parameter is Dolby Mode
+    PQ_PARAM_HDR10_MODE,                        //!< Picture parameter is HDR10 mode. To be deprecated
+    PQ_PARAM_HLG_MODE,                          //!< Picture parameter is HLG mode. To be deprecated
+    PQ_PARAM_ASPECT_RATIO,                      //!< Picture parameter is Aspect ratio
+    PQ_PARAM_COLOR_TEMPERATURE,                 //!< Picture parameter is Colour temperature
+    PQ_PARAM_DIMMINGMODE,                       //!< Picture parameter is Dimming mode
+    PQ_PARAM_LDIM,                               //!< Picture parameter is LDIM. To be deprecated 
+    PQ_PARAM_LOCALDIMMING_LEVEL,                //!< Picture parameter is Local dimming level
+    PQ_PARAM_LOWLATENCY_STATE,                  //!< Picture parameter is Low latency state
+    PQ_PARAM_CMS,                               //!< Picture parameter is CMS. To be deprecated
+    PQ_PARAM_CMS_STATE,                         //!< Picture parameter is CMS. To be deprecated
+    PQ_PARAM_CMS_SATURATION_RED,                //!< Picture parameter is Component saturation red
+    PQ_PARAM_CMS_SATURATION_BLUE,               //!< Picture parameter is Component saturation blue
+    PQ_PARAM_CMS_SATURATION_GREEN,              //!< Picture parameter is Component saturation green
+    PQ_PARAM_CMS_SATURATION_YELLOW,              //!< Picture parameter is Component saturation yellow
+    PQ_PARAM_CMS_SATURATION_CYAN,               //!< Picture parameter is Component saturation cyan
+    PQ_PARAM_CMS_SATURATION_MAGENTA,            //!< Picture parameter is Component saturation magenta
+    PQ_PARAM_CMS_HUE_RED,                       //!< Picture parameter is Component hue red
+    PQ_PARAM_CMS_HUE_BLUE,                      //!< Picture parameter is Component hue blue
+    PQ_PARAM_CMS_HUE_GREEN,                     //!< Picture parameter is Component hue green
+    PQ_PARAM_CMS_HUE_YELLOW,                     //!< Picture parameter is Component hue yellow
+    PQ_PARAM_CMS_HUE_CYAN,                      //!< Picture parameter is Component hue cyan
+    PQ_PARAM_CMS_HUE_MAGENTA,                   //!< Picture parameter is Component hue magenta
+    PQ_PARAM_CMS_LUMA_RED,                      //!< Picture parameter is Component luma red
+    PQ_PARAM_CMS_LUMA_BLUE,                     //!< Picture parameter is Component luma blue
+    PQ_PARAM_CMS_LUMA_GREEN,                    //!< Picture parameter is Component luma green
+    PQ_PARAM_CMS_LUMA_YELLOW,                    //!< Picture parameter is Component luma yellow
+    PQ_PARAM_CMS_LUMA_CYAN,                     //!< Picture parameter is Component luma cyan
+    PQ_PARAM_CMS_LUMA_MAGENTA,                  //!< Picture parameter is Component luma magenta
+    PQ_PARAM_WB_GAIN_RED,                       //!< Picture parameter is Component Red Gain
+    PQ_PARAM_WB_GAIN_GREEN,                     //!< Picture parameter is Component Green Gain
+    PQ_PARAM_WB_GAIN_BLUE,                      //!< Picture parameter is Component Blue Gain
+    PQ_PARAM_WB_OFFSET_RED,                     //!< Picture parameter is Component Red Offset
+    PQ_PARAM_WB_OFFSET_GREEN,                   //!< Picture parameter is Component Blue offset
+    PQ_PARAM_WB_OFFSET_BLUE,                    //!< Picture parameter is Component Green Offset
+    PQ_PARAM_HDR_MODE,                           //!< Picture parameter is HDRMode
     PQ_PARAM_MAX                                //!< End of enum
 }tvPQParameterIndex_t;
 

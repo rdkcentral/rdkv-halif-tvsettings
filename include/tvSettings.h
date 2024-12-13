@@ -2630,7 +2630,7 @@ tvError_t GetNumberOfDimmingZones(unsigned int* number_of_dimming_zones);
  *
  * @param[in] color                 - Color type value. Valid value will be a member of ::tvWBColor_t
  * @param[in] control               - Control index value. Valid values will be a member of ::tvWBControl_t
- * @param[in] value                 - The WhiteBalance Value to be set.
+ * @param[in] value                 - The WhiteBalance Value to be set.Valid range gain (0 - 2047) and offset (-1024 to 1023)
  *
  * @return tvError_t
  *
@@ -2650,7 +2650,9 @@ tvError_t SetCustom2PointWhiteBalance(tvWBColor_t color, tvWBControl_t control, 
  * This function gets the current WhiteBalance value for the primary video source selected,
  * primary video format played,picture mode selected,given color and given control value..
  *
- * @param[out] valuw                 - Current WB Value. Valid range gain  (0 - 2047) and offset (-1024 to 1023)
+ * @param[in] color                 - Color type value. Valid value will be a member of ::tvWBColor_t
+ * @param[in] control               - Control index value. Valid values will be a member of ::tvWBControl_t
+ * @param[out] value                - Current WB value. Valid range gain  (0 - 2047) and offset (-1024 to 1023)
  *
  * @return tvError_t
  *
@@ -2661,7 +2663,7 @@ tvError_t SetCustom2PointWhiteBalance(tvWBColor_t color, tvWBControl_t control, 
  *
  * @pre TvInit() should be called before calling this API
  *
- * @see SetBrightness()
+ * @see SetCustom2PointWhiteBalance()
  */
 tvError_t GetCustom2PointWhiteBalance(tvWBColor_t color, tvWBControl_t control, int *value);
 
@@ -2669,15 +2671,16 @@ tvError_t GetCustom2PointWhiteBalance(tvWBColor_t color, tvWBControl_t control, 
  * @brief Saves WhiteBalance
  *
  * This function saves the WhiteBalance in picture profile database for the specific primary video format type
- * and primary video source. The saved picture mode should be applied automatically whenever the
+ * and primary video source. The saved Whitebalance value should be applied automatically whenever the
  * specified specified primary video format is played and specified primary video source is selected.
  *
- * @param[in] videoSrcType          - Source input value. Valid value will be a member of ::tvVideoSrcType_t
- * @param[in] pictureMode           - Picture mode value to be saved. Valid values are as per values returned by
- *                                    ::pic_modes_t.value  parmaeter from GetTVSupportedPictureModes API.
- * @param[in] videoFormatType       - Video format type value. Valid value will be a member of ::tvVideoFormatType_t
- * @param[in] color                 - color Value. Valid value will be a member of ::tvWBColor_t
- * @param[in] control               - control Value.Valid value will be a member of ::tvWBControl_t
+ * @param[in] videoSrcType          - Source input value.Valid value will be a member of ::tvVideoSrcType_t
+ * @param[in] pictureMode           - Picture mode value to be saved.Valid values are as per values returned by
+ *                                    ::pic_modes_t.value  parmeter from GetTVSupportedPictureModes API.
+ * @param[in] videoFormatType       - Video format type value.Valid value will be a member of ::tvVideoFormatType_t
+ * @param[in] color                 - color value.Valid value will be a member of ::tvWBColor_t
+ * @param[in] control               - control value.Valid value will be a member of ::tvWBControl_t
+ * @param[in] value                 - The WhiteBalance value to be set.Valid range gain  (0 - 2047) and offset (-1024 to 1023)
  *
  * @return tvError_t
  *
