@@ -283,7 +283,7 @@ tvError_t GetCurrentVideoFrameRate(tvVideoFrameRate_t *format);
  *
  * @pre TvInit() should be called before calling this API
  */
-tvError_t GetCurrentVideoSource(int *currentSource);
+tvError_t GetCurrentVideoSource(tvVideoSrcType_t *currentSource);
 
 /**
  * @brief Gets supported video sources of the system. 
