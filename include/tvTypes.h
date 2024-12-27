@@ -553,10 +553,10 @@ typedef struct
  */
 typedef enum
 {
-    tvWB_COLOR_RED = 0,
-    tvWB_COLOR_GREEN,
-    tvWB_COLOR_BLUE,
-    tvWB_COLOR_MAX
+    tvWB_COLOR_RED = 0,                         //!< Color is Red
+    tvWB_COLOR_GREEN,                           //!< Color is Green
+    tvWB_COLOR_BLUE,                            //!< Color is Blue
+    tvWB_COLOR_MAX                              //!< End of enum
 }tvWBColor_t;
 
 /**
@@ -565,9 +565,9 @@ typedef enum
  */
 typedef enum
 {
-    tvWB_CONTROL_GAIN = 0,
-    tvWB_CONTROL_OFFSET,
-    tvWB_CONTROL_MAX
+    tvWB_CONTROL_GAIN = 0,                      //!< Modifies the intensity of Red, Green, and Blue at the brighter level
+    tvWB_CONTROL_OFFSET,                        //!< Modifies the intensity of Red, Green, and Blue at the darker level
+    tvWB_CONTROL_MAX                            //!< End of enum
 }tvWBControl_t;
 
 
