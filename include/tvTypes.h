@@ -375,8 +375,8 @@ typedef enum tvPQParameterIndex {
     PQ_PARAM_WB_GAIN_GREEN,                     //!< Picture parameter is Component Green Gain
     PQ_PARAM_WB_GAIN_BLUE,                      //!< Picture parameter is Component Blue Gain
     PQ_PARAM_WB_OFFSET_RED,                     //!< Picture parameter is Component Red Offset
-    PQ_PARAM_WB_OFFSET_GREEN,                   //!< Picture parameter is Component Blue offset
-    PQ_PARAM_WB_OFFSET_BLUE,                    //!< Picture parameter is Component Green Offset
+    PQ_PARAM_WB_OFFSET_GREEN,                   //!< Picture parameter is Component Green Offset
+    PQ_PARAM_WB_OFFSET_BLUE,                    //!< Picture parameter is Component Blue Offset
     PQ_PARAM_MAX                                //!< End of enum
 }tvPQParameterIndex_t;
 
