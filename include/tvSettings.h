@@ -194,7 +194,7 @@ tvError_t RegisterVideoFrameRateChangeCB(tvVideoFrameRateCallbackData *cbData);
  *
  * This function returns all the supported content formats. 
  *
- * @param[out] videoFormats    - List of available video formats. Please refer ::tvVideoFormatType_t
+ * @param[out] videoFormats    - List of available video formats.Allocate memory at caller end. Please refer ::tvVideoFormatType_t
  * @param[out] numberOfFormats - Count of supported video formats. Min should be 1. Max value is VIDEO_FORMAT_MAX.
  *
  * @return tvError_t
@@ -290,7 +290,7 @@ tvError_t GetCurrentVideoSource(tvVideoSrcType_t *currentSource);
  *
  * This function returns all the supported video sources.
  *
- * @param[out] videoSources    - List of available video sources. Please refer ::tvVideoSrcType_t
+ * @param[out] videoSources    - List of available video sources.Allocate memory at caller end. Please refer ::tvVideoSrcType_t
  * @param[out] numberOfSources - Count of supported video sources. Min should be 1, max should be VIDEO_SOURCE_MAX
  *
  * @return tvError_t
@@ -489,7 +489,7 @@ tvError_t SetCurrentBacklightMode(tvBacklightMode_t blMode);
  *
  * This function returns all the supported backlight dimming modes.
  *
- * @param[out] dimmingModes    - List of dimming modes. Please refer ::tvDimmingMode_t
+ * @param[out] dimmingModes    - List of dimming modes.Allocate memory at caller end. Please refer ::tvDimmingMode_t
  * @param[out] numDimmingModes - Count of supported dimming modes. Min should be 1, Max should be tvDimmingMode_MAX.
  *
  * @return tvError_t
@@ -1272,7 +1272,7 @@ tvError_t SetDynamicGamma(double tvGammaValue);
  *
  * This function returns the supported Dolby Vision modes and their count
  *
- * @param[out] dvModes[]            - List of available DV modes. Refer ::tvDolbyMode_t @n
+ * @param[out] dvModes[]            - List of available DV modes.Allocate memory at caller end. Refer ::tvDolbyMode_t @n
  *                                    Valid values are member of ::tvDolbyMode_t
  * @param[out] count                - Count of supported DV modes. Max is tvMode_Max and min is 0
  *
@@ -1365,7 +1365,7 @@ tvError_t SaveTVDolbyVisionMode(tvVideoSrcType_t videoSrcType, int pq_mode,tvVid
  *
  * This function get the array of picture modes supported and their count
  *
- * @param[out] pictureModes              - List of available picture modes. Valid values are as per values returned by pic_modes_t.name and pic_modes_t.values parameter(refer tvPQModeIndex_t).
+ * @param[out] pictureModes              - List of available picture modes.Allocate memory at caller end. Valid values are as per values returned by pic_modes_t.name and pic_modes_t.values parameter(refer tvPQModeIndex_t).
  * @param[out] count                     - Count of supported picture modes. Maximum possile value is PIC_MODES_SUPPORTED_MAX. Min is 1.
  *
  * @return tvError_t
