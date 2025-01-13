@@ -2623,10 +2623,14 @@ tvError_t GetLdimZoneShortCircuitStatus(unsigned char* shortcircuit_zone_list, u
 tvError_t GetNumberOfDimmingZones(unsigned int* number_of_dimming_zones);
 
 /**
- * @brief Sets 2Point Custom Whitebalance
+ * @brief Sets 2Point Custom WhiteBalance
  *
- * This function sets Whitebalance for a current picture mode index, primary video source @n
- * and primary video format.
+ * This function sets WhiteBalance (Red,Green,Blue Gain/Offset) for the current picture mode index, current video source,
+ * and current video format.
+ * The custom WhiteBalance (Red, Green, Blue Gain/Offset) is applicable only when the color temperature is set to tvColorTemp_USER.
+ *
+ * Gain                             - Modifies the intensity of Red, Green, and Blue at the brighter level
+ * Offset                           - Modifies the intensity of Red, Green, and Blue at the darker level
  *
  * @param[in] color                 - Color type value. Valid value will be a member of ::tvWBColor_t
  * @param[in] control               - Control index value. Valid values will be a member of ::tvWBControl_t
@@ -2645,10 +2649,15 @@ tvError_t GetNumberOfDimmingZones(unsigned int* number_of_dimming_zones);
 tvError_t SetCustom2PointWhiteBalance(tvWBColor_t color, tvWBControl_t control, int value);
 
 /**
- * @brief Gets the current Custom WhiteBalance
+ * @brief Gets the Custom WhiteBalance
  *
- * This function gets the current WhiteBalance value for the primary video source selected,
- * primary video format played,picture mode selected,given color and given control value..
+ *  This function gets the custom WhiteBalance(Red,Green,Blue Gain/Offset) value for the current video source selected,
+ *  current video format played,picture mode selected,given color and given control value.
+ *
+ *  The function always retrieves the custom WhiteBalance (Red, Green, Blue Gain/Offset) associated with tvColorTemp_USER.
+ *
+ *  Gain                            - Modifies the intensity of Red, Green, and Blue at the brighter level
+ *  Offset                          - Modifies the intensity of Red, Green, and Blue at the darker level
  *
  * @param[in] color                 - Color type value. Valid value will be a member of ::tvWBColor_t
  * @param[in] control               - Control index value. Valid values will be a member of ::tvWBControl_t
@@ -2673,6 +2682,8 @@ tvError_t GetCustom2PointWhiteBalance(tvWBColor_t color, tvWBControl_t control, 
  * This function saves the WhiteBalance in picture profile database for the specific primary video format type
  * and primary video source. The saved Whitebalance value should be applied automatically whenever the
  * specified specified primary video format is played and specified primary video source is selected.
+ * Gain                             - Modifies the intensity of Red, Green, and Blue at the brighter level
+ * Offset                           - Modifies the intensity of Red, Green, and Blue at the darker level
  *
  * @param[in] videoSrcType          - Source input value.Valid value will be a member of ::tvVideoSrcType_t
  * @param[in] pictureMode           - Picture mode value to be saved.Valid values are as per values returned by
