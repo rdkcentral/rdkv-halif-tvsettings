@@ -2645,6 +2645,7 @@ tvError_t GetNumberOfDimmingZones(unsigned int* number_of_dimming_zones);
  * @retval tvERROR_GENERAL                   - Underlying failures - SoC, memory, etc
  *
  * @pre TvInit() should be called before calling this API
+ * @pre SetColorTemperature() should be set to "tvColorTemp_USER" before calling this API
  */
 tvError_t SetCustom2PointWhiteBalance(tvWBColor_t color, tvWBControl_t control, int value);
 
