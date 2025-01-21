@@ -112,6 +112,12 @@ Picture profile database will have 5 types of tables:
 |  |  |  | CMS Luma YELLOW |
 |  |  |  | CMS Luma CYAN |
 |  |  |  | CMS Luma MAGENTA |
+|  |  |  | Custom WhiteBalance Gain RED |
+|  |  |  | Custom WhiteBalance Gain GREEN |
+|  |  |  | Custom WhiteBalance Gain BLUE |
+|  |  |  | Custom WhiteBalance Offset RED |
+|  |  |  | Custom WhiteBalance Offset GREEN |
+|  |  |  | Custom WhiteBalance Offset BLUE |
 |  |  | Theater/Movie | Repeat as standard |
 |  |  | FilmMaker | Repeat as standard |
 |  |  | Sports | Repeat as standard |
