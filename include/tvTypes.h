@@ -541,6 +541,72 @@ typedef struct
     tvVideoFrameRateChangeCB cb;                //!< Video frame change call back function pointed
 }tvVideoFrameRateCallbackData;
 
+/**
+ * @brief Structure for DV Calibration Settings.
+ *
+ * This struct holds calibration settings including
+ * maximum and minimum temperature settings (Tmax, Tmin), gamma correction (Tgamma),
+ * and RGBW color coordinate values (Rx, Ry, Gx, Gy, Bx, By, Wx, Wy).
+ */
+typedef struct {
+    double Tmax, Tmin,
+        Tgamma,
+        Rx, Ry,
+        Gx, Gy,
+        Bx, By,
+        Wx, Wy;
+} tvDVCalibrationSettings_t;
+
+/**
+ * @brief Structure that holds a single context, used to describe a supported feature configuration.
+ *
+ * A context is formed from a PQ picture mode, video format and video source combination.
+ * When listed in capabilities it indicates a valid combination a feature can be configured against.
+ */
+typedef struct
+{
+    tvPQModeIndex_t pq_mode; /**< PQ picture mode. When set to PQ_MODE_INVALID, it is global across
+    all PQ picture modes. */
+    tvVideoFormatType_t videoFormatType; /**< Video format When set to VIDEO_FORMAT_NONE, it is global across
+    all video formats. */
+    tvVideoSrcType_t videoSrcType; /**< Video source. When set to VIDEO_SOURCE_ALL, it is global across
+    all video sources. */
+} tvConfigContext_t;
+
+/**
+ * @brief Structure that holds an array of `tvConfigContext_t`, used to describe all of the supported feature
+capabilities.
+ *
+ * When `num_contexts` is 0 it indicates a global feature setting that can't be configured for
+ * specific PQ picture modes, video formats or video sources.
+ */
+typedef struct
+{
+    size_t num_contexts;
+    tvConfigContext_t * contexts;
+} tvContextCaps_t;
+
+/**
+ * @brief Enum for SDR Gamma values.
+ *
+ * This enum defines the possible values for SDR gamma correction,
+ * including invalid, specific gamma values (1.8 to 2.4), ITU-R BT.1886 standard,
+ * and the maximum boundary of the enum.
+ */
+typedef enum
+{
+    tvSdrGamma_INVALID = -1, //!< SDR gamma is invalid.
+    tvSdrGamma_1_8, //!< SDR gamma is 1.8
+    tvSdrGamma_1_9, //!< SDR gamma is 1.9
+    tvSdrGamma_2_0, //!< SDR gamma is 2.0
+    tvSdrGamma_2_1, //!< SDR gamma is 2.1
+    tvSdrGamma_2_2, //!< SDR gamma is 2.2
+    tvSdrGamma_2_3, //!< SDR gamma is 2.3
+    tvSdrGamma_2_4, //!< SDR gamma is 2.4
+    tvSdrGamma_BT_1886, //!< SDR gamma is ITU-R BT.1886
+    tvSdrGamma_MAX //!< End of enum
+} tvSdrGamma_t;
+
 #ifdef __cplusplus
 }
 #endif
