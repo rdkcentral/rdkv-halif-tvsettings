@@ -328,7 +328,11 @@ typedef enum tvPQModeIndex {
     PQ_MODE_GRAPHICS =9 ,                       //!< Picture mode is "Graphics" */
     PQ_MODE_FMM =10,                            //!< Picture mode is "Filmmaker" */
     PQ_MODE_VIVID2 =11,                         //!< Picture mode is "Vivid2 or Dynamic2" */
-    PQ_MODE_MAX=15                              //!< End of enum
+    PQ_MODE_AIPQ =12                            //!< Picture mode is "AIPQ" */
+    PQ_MODE_DARK = 13,                          //!< Picture mode is "Dark" */
+    PQ_MODE_BRIGHT = 14,                        //!< Picture mode is "Bright" */
+    PQ_MODE_DVIQ = 15,                          //!< Picture mode is "DV IQ" */
+    PQ_MODE_MAX=16                              //!< End of enum
 }tvPQModeIndex_t;
 
 /**
@@ -376,6 +380,7 @@ typedef enum tvPQParameterIndex {
 
 /**
  *  @brief Enumeration defining the various supported dolby modes
+ *  This enum will be deprecated and switched to tvPQModeIndex_t
  */
  typedef enum {
     tvDolbyMode_Invalid = -1,           //!< Dolby mode is invalid
