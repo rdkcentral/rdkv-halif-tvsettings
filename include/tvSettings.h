@@ -196,7 +196,7 @@ tvError_t RegisterVideoFrameRateChangeCB(tvVideoFrameRateCallbackData *cbData);
  *
  * @param[out] videoFormats    - List of available video formats.
  *                               Memory should be allocated for an array of pointers (tvVideoFormatType_t) with a size equal to the VIDEO_FORMAT_MAX index of the enum.
- *                               Make sure that each pointer in the array points to a valid memory location.
+ *                               Ensure that each pointer in the array points to a valid memory location.
  * @param[out] numberOfFormats - Count of supported video formats. Min should be 1. Max value is VIDEO_FORMAT_MAX.
  *
  * @return tvError_t
@@ -294,7 +294,7 @@ tvError_t GetCurrentVideoSource(tvVideoSrcType_t *currentSource);
  *
  * @param[out] videoSources    - List of available video sources.
  *                               Memory should be allocated for an array of pointers (tvVideoSrcType_t) with a size equal to the VIDEO_SOURCE_MAX index of the enum.
- *                               Make sure that each pointer in the array points to a valid memory location.
+ *                               Ensure that each pointer in the array points to a valid memory location.
  * @param[out] numberOfSources - Count of supported video sources. Min should be 1, max should be VIDEO_SOURCE_MAX
  *
  * @return tvError_t
@@ -495,7 +495,7 @@ tvError_t SetCurrentBacklightMode(tvBacklightMode_t blMode);
  *
  * @param[out] dimmingModes    - List of dimming modes.
  *                               Memory should be allocated for an array of pointers (tvDimmingMode_t) with a size equal to the tvDimmingMode_MAX index of the enum.
- *                               Make sure that each pointer in the array points to a valid memory location.
+ *                               Ensure that each pointer in the array points to a valid memory location.
  * @param[out] numDimmingModes - Count of supported dimming modes. Min should be 1, Max should be tvDimmingMode_MAX.
  *
  * @return tvError_t
@@ -1280,7 +1280,7 @@ tvError_t SetDynamicGamma(double tvGammaValue);
  *
  * @param[out] dvModes[]            - List of available DV modes.
  *                                    Memory should be allocated for an array of pointers (tvDolbyMode_t) with a size equal to the tvMode_Max index of the enum.
- *                                    Make sure that each pointer in the array points to a valid memory location.
+ *                                    Ensure that each pointer in the array points to a valid memory location.
  *                                    Valid values are member of ::tvDolbyMode_t
  * @param[out] count                - Count of supported DV modes. Max is tvMode_Max and min is 0
  *
@@ -1375,7 +1375,7 @@ tvError_t SaveTVDolbyVisionMode(tvVideoSrcType_t videoSrcType, int pq_mode,tvVid
  *
  * @param[out] pictureModes              - List of available picture modes.
  *                                         Memory should be allocated for an array of pointers (pic_modes_t) with a size equal to the PIC_MODES_SUPPORTED_MAX.
- *                                         Make sure that each pointer in the array points to a valid memory location.
+ *                                         Ensure that each pointer in the array points to a valid memory location.
  *                                         Valid values are as per values returned by pic_modes_t.name and pic_modes_t.values parameter(refer tvPQModeIndex_t).
  * @param[out] count                     - Count of supported picture modes. Maximum possile value is PIC_MODES_SUPPORTED_MAX. Min is 1.
  *
