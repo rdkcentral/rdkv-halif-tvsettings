@@ -375,7 +375,16 @@ typedef enum tvPQParameterIndex {
     PQ_PARAM_CMS_LUMA_YELLOW,                    //!< Picture parmaeter is Component luma yellow
     PQ_PARAM_CMS_LUMA_CYAN,                     //!< Picture parmaeter is Component luma cyan
     PQ_PARAM_CMS_LUMA_MAGENTA,                  //!< Picture parmaeter is Component luma magenta
-    PQ_PARAM_MAX                                //!< End of enum
+    PQ_PARAM_PRECISION_DETAIL,                 //!< Picture parameter is Precision Detail
+    PQ_PARAM_SDR_GAMMA,                        //!< Picture parameter is SDR Gamma
+    PQ_PARAM_LOCAL_CONTRAST_ENHANCEMENT,       //!< Picture parameter is Local Contrast Enhancement
+    PQ_PARAM_MPEG_NOISE_REDUCTION,             //!< Picture parameter is MPEG Noise Reduction
+    PQ_PARAM_DIGITAL_NOISE_REDUCTION,          //!< Picture parameter is Digital Noise Reduction
+    PQ_PARAM_AI_SUPER_RESOLUTION,              //!< Picture parameter is AI Super Resolution
+    PQ_PARAM_MEMC,                             //!< Picture parameter is MEMC
+    PQ_PARAM_MULTI_POINT_WB,                   //!< Picture parameter is Multi-Point WB
+    PQ_PARAM_DOLBY_VISION_CALIBRATION,         //!< Picture parameter is Dolby Vision Calibration
+    PQ_PARAM_MAX                               //!< End of enum
 }tvPQParameterIndex_t;
 
 /**
