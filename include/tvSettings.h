@@ -2629,6 +2629,9 @@ tvError_t GetNumberOfDimmingZones(unsigned int* number_of_dimming_zones);
  * configuration contexts that this feature can be configured for. If the feature is global, then the
  * `tvContextCaps_t.num_contexts` is returned as 0.
  *
+ * The capabilities structure returned by this call is allocated by the HAL function and shall
+ * be safe to reference for the lifetime of the process.
+ *
  * If the platform does not support precision detail, then tvERROR_OPERATION_NOT_SUPPORTED is returned.
  *
  * @param[out] context_caps - A capabilities structure listing the configuration contexts supported.
@@ -2726,6 +2729,9 @@ videoFormatType, int * precisionDetail);
  * The `context_caps` parameter receives a pointer to a `tvContextCaps_t` structure that lists the different
  * configuration contexts that this feature can be configured for. If the feature is global, then the
  * `tvContextCaps_t.num_contexts` is returned as 0.
+ *
+ * The capabilities structure returned by this call is allocated by the HAL function and shall
+ * be safe to reference for the lifetime of the process.
  *
  * If the platform does not support SDR gamma setting, then tvERROR_OPERATION_NOT_SUPPORTED is returned.
  *
@@ -2827,6 +2833,9 @@ level and
  * The `context_caps` parameter receives a pointer to a `tvContextCaps_t` structure that lists the different
  * configuration contexts that this feature can be configured for. If the feature is global, then the
  * `tvContextCaps_t.num_contexts` is returned as 0.
+ *
+ * The capabilities structure returned by this call is allocated by the HAL function and shall
+ * be safe to reference for the lifetime of the process.
  *
  * If the platform does not support a local contrast enhancement setting, then tvERROR_OPERATION_NOT_SUPPORTED is
 returned.
@@ -2944,6 +2953,9 @@ tvError_t GetLocalContrastEnhancementDefault(tvVideoSrcType_t videoSrcType, tvPQ
  * configuration contexts that this feature can be configured for. If the feature is global, then the
  * `tvContextCaps_t.num_contexts` is returned as 0.
  *
+ * The capabilities structure returned by this call is allocated by the HAL function and shall
+ * be safe to reference for the lifetime of the process.
+ *
  * If the platform does not support an MPEG noise reduction setting, then tvERROR_OPERATION_NOT_SUPPORTED is
 returned.
  *
@@ -3057,6 +3069,9 @@ and
  * The `context_caps` parameter receives a pointer to a `tvContextCaps_t` structure that lists the different
  * configuration contexts that this feature can be configured for. If the feature is global, then the
  * `tvContextCaps_t.num_contexts` is returned as 0.
+ *
+ * The capabilities structure returned by this call is allocated by the HAL function and shall
+ * be safe to reference for the lifetime of the process.
  *
  * If the platform does not support an digital noise reduction setting, then tvERROR_OPERATION_NOT_SUPPORTED is
 returned.
@@ -3173,6 +3188,9 @@ tvError_t GetDigitalNoiseReductionDefault(tvVideoSrcType_t videoSrcType, tvPQMod
  * configuration contexts that this feature can be configured for. If the feature is global, then the
  * `tvContextCaps_t.num_contexts` is returned as 0.
  *
+ * The capabilities structure returned by this call is allocated by the HAL function and shall
+ * be safe to reference for the lifetime of the process.
+ *
  * If the platform does not support an AI super resolution setting, then tvERROR_OPERATION_NOT_SUPPORTED is returned.
  *
  * @param[out] maxAISuperResolution - Maximum AI super resolution setting value.
@@ -3286,6 +3304,9 @@ tvError_t GetAISuperResolutionDefault(tvVideoSrcType_t videoSrcType, tvPQModeInd
  * The `context_caps` parameter receives a pointer to a `tvContextCaps_t` structure that lists the different
  * configuration contexts that this feature can be configured for. If the feature is global, then the
  * `tvContextCaps_t.num_contexts` is returned as 0.
+ *
+ * The capabilities structure returned by this call is allocated by the HAL function and shall
+ * be safe to reference for the lifetime of the process.
  *
  * If the platform does not support a MEMC setting, then tvERROR_OPERATION_NOT_SUPPORTED is returned.
  *
@@ -3413,6 +3434,9 @@ video source and video format.
  * configuration contexts that this feature can be configured for. If the feature is global, then the
  * `tvContextCaps_t.num_contexts` is returned as 0.
  *
+ * The capabilities structure returned by this call is allocated by the HAL function and shall
+ * be safe to reference for the lifetime of the process.
+ *
  * If the platform does not support multi-point white balance, then tvERROR_OPERATION_NOT_SUPPORTED is returned.
  *
  * @param[out] num_hal_matrix_points - The number of points in the HAL gamma matrix.
@@ -3490,6 +3514,9 @@ tvError_t SetMultiPointWBMatrix(tvColorTemp_t colorTemp, tvPQModeIndex_t pq_mode
  * configuration contexts that this feature can be configured for. If the feature is global, then the
  * `tvContextCaps_t.num_contexts` is returned as 0.
  * The `context_caps` shall return only the Dolby Vision picture modes.
+ *
+ * The capabilities structure returned by this call is allocated by the HAL function and shall
+ * be safe to reference for the lifetime of the process.
  *
  * If the platform does not support Dolby Vision PQ Calibration, then tvERROR_OPERATION_NOT_SUPPORTED is returned.
  *
