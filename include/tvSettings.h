@@ -304,6 +304,31 @@ tvError_t GetCurrentVideoSource(tvVideoSrcType_t *currentSource);
  */
  tvError_t GetTVSupportedVideoSources(tvVideoSrcType_t *videoSources[],unsigned short *numberOfSources);
 
+/**
+ * @brief Gets the Backlight capabilities.
+ *
+ * The `context_caps` parameter receives a pointer to a `tvContextCaps_t` structure that lists the different
+ * configuration contexts that this feature can be configured for. If the feature is global, then the
+ * `tvContextCaps_t.num_contexts` is returned as 0.
+ *
+ * The capabilities structure returned by this call is allocated by the HAL function and shall
+ * be safe to reference for the lifetime of the process.
+ *
+ * If the platform does not support backlight, then tvERROR_OPERATION_NOT_SUPPORTED is returned.
+ *
+ * @param[out] context_caps - A capabilities structure listing the configuration contexts supported.
+ *
+ * @return tvError_t
+ *
+ * @retval tvERROR_NONE - Success
+ * @retval tvERROR_INVALID_PARAM - Parameter is invalid
+ * @retval tvERROR_INVALID_STATE - Interface is not initialized
+ * @retval tvERROR_OPERATION_NOT_SUPPORTED - Operation is not supported
+ * @retval tvERROR_GENERAL - Underlying failures - SoC, memory, etc
+ *
+ * @pre TvInit() should be called before calling this API
+ */
+tvError_t GetBacklightCaps(tvContextCaps_t ** context_caps);
 
 /**
  * @brief Gets the current backlight value
@@ -644,6 +669,32 @@ tvError_t GetLocalDimmingLevel(ldimStateLevel_t *ldimStateLevel);
 tvError_t SaveLocalDimmingLevel(tvVideoSrcType_t videoSrcType, int pq_mode,tvVideoFormatType_t videoFormatType,ldimStateLevel_t ldimStateLevel);
 
 /**
+ * @brief Gets the Brightness capabilities.
+ *
+ * The `context_caps` parameter receives a pointer to a `tvContextCaps_t` structure that lists the different
+ * configuration contexts that this feature can be configured for. If the feature is global, then the
+ * `tvContextCaps_t.num_contexts` is returned as 0.
+ *
+ * The capabilities structure returned by this call is allocated by the HAL function and shall
+ * be safe to reference for the lifetime of the process.
+ *
+ * If the platform does not support brightness, then tvERROR_OPERATION_NOT_SUPPORTED is returned.
+ *
+ * @param[out] context_caps - A capabilities structure listing the configuration contexts supported.
+ *
+ * @return tvError_t
+ *
+ * @retval tvERROR_NONE - Success
+ * @retval tvERROR_INVALID_PARAM - Parameter is invalid
+ * @retval tvERROR_INVALID_STATE - Interface is not initialized
+ * @retval tvERROR_OPERATION_NOT_SUPPORTED - Operation is not supported
+ * @retval tvERROR_GENERAL - Underlying failures - SoC, memory, etc
+ *
+ * @pre TvInit() should be called before calling this API
+ */
+tvError_t GetBrightnessCaps(tvContextCaps_t ** context_caps);
+
+/**
  * @brief Sets the brightness value to driver register(s)
  *
  * This function updates the new brightness value to hardware. The change is applied for current primary video source selected,
@@ -710,6 +761,32 @@ tvError_t GetBrightness(int *brightness);
  * @todo: instead of int for pq_mode use tvPQModeIndex_t enum for all save API's
  */
 tvError_t SaveBrightness(tvVideoSrcType_t videoSrcType, int pq_mode,tvVideoFormatType_t videoFormatType,int value);
+
+/**
+ * @brief Gets the Contrast capabilities.
+ *
+ * The `context_caps` parameter receives a pointer to a `tvContextCaps_t` structure that lists the different
+ * configuration contexts that this feature can be configured for. If the feature is global, then the
+ * `tvContextCaps_t.num_contexts` is returned as 0.
+ *
+ * The capabilities structure returned by this call is allocated by the HAL function and shall
+ * be safe to reference for the lifetime of the process.
+ *
+ * If the platform does not support contrast, then tvERROR_OPERATION_NOT_SUPPORTED is returned.
+ *
+ * @param[out] context_caps - A capabilities structure listing the configuration contexts supported.
+ *
+ * @return tvError_t
+ *
+ * @retval tvERROR_NONE - Success
+ * @retval tvERROR_INVALID_PARAM - Parameter is invalid
+ * @retval tvERROR_INVALID_STATE - Interface is not initialized
+ * @retval tvERROR_OPERATION_NOT_SUPPORTED - Operation is not supported
+ * @retval tvERROR_GENERAL - Underlying failures - SoC, memory, etc
+ *
+ * @pre TvInit() should be called before calling this API
+ */
+tvError_t GetContrastCaps(tvContextCaps_t ** context_caps);
 
 /**
  * @brief Sets the contrast value to driver register(s)
@@ -802,6 +879,32 @@ tvError_t SaveContrast(tvVideoSrcType_t videoSrcType, int pq_mode,tvVideoFormatT
 tvError_t SetSharpness(int sharpness);
 
 /**
+ * @brief Gets the Sharpness capabilities.
+ *
+ * The `context_caps` parameter receives a pointer to a `tvContextCaps_t` structure that lists the different
+ * configuration contexts that this feature can be configured for. If the feature is global, then the
+ * `tvContextCaps_t.num_contexts` is returned as 0.
+ *
+ * The capabilities structure returned by this call is allocated by the HAL function and shall
+ * be safe to reference for the lifetime of the process.
+ *
+ * If the platform does not support sharpness, then tvERROR_OPERATION_NOT_SUPPORTED is returned.
+ *
+ * @param[out] context_caps - A capabilities structure listing the configuration contexts supported.
+ *
+ * @return tvError_t
+ *
+ * @retval tvERROR_NONE - Success
+ * @retval tvERROR_INVALID_PARAM - Parameter is invalid
+ * @retval tvERROR_INVALID_STATE - Interface is not initialized
+ * @retval tvERROR_OPERATION_NOT_SUPPORTED - Operation is not supported
+ * @retval tvERROR_GENERAL - Underlying failures - SoC, memory, etc
+ *
+ * @pre TvInit() should be called before calling this API
+ */
+tvError_t GetSharpnessCaps(tvContextCaps_t ** context_caps);
+
+/**
  * @brief Gets the current sharpness value
  *
  * This function gets the current sharpness value for the primary video source selected, 
@@ -890,6 +993,32 @@ tvError_t SetSaturation(int saturation);
 tvError_t GetSaturation(int *saturation);
 
 /**
+ * @brief Gets the Saturation capabilities.
+ *
+ * The `context_caps` parameter receives a pointer to a `tvContextCaps_t` structure that lists the different
+ * configuration contexts that this feature can be configured for. If the feature is global, then the
+ * `tvContextCaps_t.num_contexts` is returned as 0.
+ *
+ * The capabilities structure returned by this call is allocated by the HAL function and shall
+ * be safe to reference for the lifetime of the process.
+ *
+ * If the platform does not support saturation, then tvERROR_OPERATION_NOT_SUPPORTED is returned.
+ *
+ * @param[out] context_caps - A capabilities structure listing the configuration contexts supported.
+ *
+ * @return tvError_t
+ *
+ * @retval tvERROR_NONE - Success
+ * @retval tvERROR_INVALID_PARAM - Parameter is invalid
+ * @retval tvERROR_INVALID_STATE - Interface is not initialized
+ * @retval tvERROR_OPERATION_NOT_SUPPORTED - Operation is not supported
+ * @retval tvERROR_GENERAL - Underlying failures - SoC, memory, etc
+ *
+ * @pre TvInit() should be called before calling this API
+ */
+tvError_t GetSaturationCaps(tvContextCaps_t ** context_caps);
+
+/**
  * @brief Saves the saturation value
  *
  * This function saves the sharpness value in picture profile database for the specific picture mode, primary video format type 
@@ -934,6 +1063,32 @@ tvError_t SaveSaturation(tvVideoSrcType_t videoSrcType, int pq_mode,tvVideoForma
  * @see GetHue()
  */
 tvError_t SetHue(int hue);
+
+/**
+ * @brief Gets the Hue capabilities.
+ *
+ * The `context_caps` parameter receives a pointer to a `tvContextCaps_t` structure that lists the different
+ * configuration contexts that this feature can be configured for. If the feature is global, then the
+ * `tvContextCaps_t.num_contexts` is returned as 0.
+ *
+ * The capabilities structure returned by this call is allocated by the HAL function and shall
+ * be safe to reference for the lifetime of the process.
+ *
+ * If the platform does not support hue, then tvERROR_OPERATION_NOT_SUPPORTED is returned.
+ *
+ * @param[out] context_caps - A capabilities structure listing the configuration contexts supported.
+ *
+ * @return tvError_t
+ *
+ * @retval tvERROR_NONE - Success
+ * @retval tvERROR_INVALID_PARAM - Parameter is invalid
+ * @retval tvERROR_INVALID_STATE - Interface is not initialized
+ * @retval tvERROR_OPERATION_NOT_SUPPORTED - Operation is not supported
+ * @retval tvERROR_GENERAL - Underlying failures - SoC, memory, etc
+ *
+ * @pre TvInit() should be called before calling this API
+ */
+tvError_t GetHueCaps(tvContextCaps_t ** context_caps);
 
 /**
  * @brief Gets the current hue value
@@ -1023,6 +1178,32 @@ tvError_t SetColorTemperature(tvColorTemp_t colorTemp);
  * @see SetColorTemperature()
  */
 tvError_t GetColorTemperature(tvColorTemp_t *colorTemp);
+
+/**
+ * @brief Gets the ColorTemperature capabilities.
+ *
+ * The `context_caps` parameter receives a pointer to a `tvContextCaps_t` structure that lists the different
+ * configuration contexts that this feature can be configured for. If the feature is global, then the
+ * `tvContextCaps_t.num_contexts` is returned as 0.
+ *
+ * The capabilities structure returned by this call is allocated by the HAL function and shall
+ * be safe to reference for the lifetime of the process.
+ *
+ * If the platform does not support colorTemperature, then tvERROR_OPERATION_NOT_SUPPORTED is returned.
+ *
+ * @param[out] context_caps - A capabilities structure listing the configuration contexts supported.
+ *
+ * @return tvError_t
+ *
+ * @retval tvERROR_NONE - Success
+ * @retval tvERROR_INVALID_PARAM - Parameter is invalid
+ * @retval tvERROR_INVALID_STATE - Interface is not initialized
+ * @retval tvERROR_OPERATION_NOT_SUPPORTED - Operation is not supported
+ * @retval tvERROR_GENERAL - Underlying failures - SoC, memory, etc
+ *
+ * @pre TvInit() should be called before calling this API
+ */
+tvError_t GetColorTemperatureCaps(tvContextCaps_t ** context_caps);
 
 /**
  * @brief Saves the color temperature value
