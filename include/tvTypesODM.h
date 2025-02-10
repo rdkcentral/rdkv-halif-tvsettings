@@ -55,16 +55,6 @@ extern "C"
 {
 #endif
 
-//ODM Specific Macros
-#define MAX_STRING_SIZE (15)                //!< Defines the maximum size of string
-#define CONTROL_COUNT (2)                   //!< Defines the maximum WB control count
-
-typedef struct getWBInfo {
-    char wbControls[CONTROL_COUNT][MAX_STRING_SIZE];
-    char wbGain[CONTROL_COUNT][MAX_STRING_SIZE];
-    char wbOffset[CONTROL_COUNT][MAX_STRING_SIZE];
-}getWBInfo_t;
-
 typedef struct _gammaCalibrated {
      unsigned short r_gamma_offset[256];
      unsigned short g_gamma_offset[256];
