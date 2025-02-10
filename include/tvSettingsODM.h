@@ -82,28 +82,6 @@ void SetGammaTestPoint( int length, unsigned short gamma[ ]);
  */
 void GetGammaTestPoint( int *length, unsigned short gamma[]);
 
-/**
- * @brief Sets the white balance control. To be deprecated soon.
- * @note SOC vendors can stub these ODM functions and mark it as weak
- *
- * This function sets the white balance for a specific source, color, color temperature and control.
- *
- * @param[in] inputSrc                    - Source of input to be set. Valid values are ( "HDMI", "TV", "AV" )
- * @param[in] colorTemp                   - Color temperature value to be set. Valid values are ( "custom", "normal", "cool", "warm" )
- * @param[in] color                       - Color to be set. Valid values are ( "red", "blue", "green" )
- * @param[in] ctrl                        - Control to be set. Valid values are ( "gain", "offset" )
- * @param[in] value                       - Values to be set for the specific control. Valid range : for gain is ( 0 to 2047 ), for offset is ( -1024 to 1024 )
- *
- * @return tvError_t
- *
- * @retval tvERROR_NONE                   - Success
- * @retval tvERROR_INVALID_PARAM          - Input parameter is invalid
- * @retval tvERROR_INVALID_STATE          - When the input value is not valid
- * @retval tvERROR_GENERAL                - Underlying failures - SoC, memory, etc
- *
- * @pre tvInit() should be called before calling this API
- */
-
 #ifdef __cplusplus
 }
 #endif
