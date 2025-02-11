@@ -244,16 +244,10 @@
         "platformSupport": true,
         "context": {
             "DV Bright": {
-                "DV": [ "IP", "HDMI1", "HDMI2", "HDMI3" ]
-            },
-            "DV Dark": {
-                "DV": [ "IP", "HDMI1", "HDMI2", "HDMI3" ]
-            },
-            "Game": {
-                "DV": [ "IP", "HDMI1", "HDMI2", "HDMI3" ]
+                "DV": [ "IP", "Tuner", "HDMI1", "HDMI2", "HDMI3" ]
             },
             "DV IQ": {
-                "DV": [ "IP", "HDMI1", "HDMI2", "HDMI3" ]
+                "DV": [ "IP", "Tuner", "HDMI1", "HDMI2", "HDMI3" ]
             }
         }
     },
