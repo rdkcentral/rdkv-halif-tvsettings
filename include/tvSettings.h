@@ -194,7 +194,14 @@ tvError_t RegisterVideoFrameRateChangeCB(tvVideoFrameRateCallbackData *cbData);
  *
  * This function returns all the supported content formats. 
  *
- * @param[out] videoFormats    - List of available video formats. Please refer ::tvVideoFormatType_t
+ * @param[out] videoFormats    - List of available video formats.
+ *                             - Array of pointers to `tvVideoFormatType_t` that will be populated with the supported video formats.
+ *                             - The caller must allocate memory for the array of pointers (`tvVideoFormatType_t *`) before
+ *                               invoking this function.
+ *                             - The size of the array should be equal to the `VIDEO_FORMAT_MAX` index of the
+ *                               `tvVideoFormatType_t` enumeration.
+ *                             - Each pointer in the array must point to a valid memory location that can store a
+ *                               `tvVideoFormatType_t` value.
  * @param[out] numberOfFormats - Count of supported video formats. Min should be 1. Max value is VIDEO_FORMAT_MAX.
  *
  * @return tvError_t
@@ -290,7 +297,14 @@ tvError_t GetCurrentVideoSource(tvVideoSrcType_t *currentSource);
  *
  * This function returns all the supported video sources.
  *
- * @param[out] videoSources    - List of available video sources. Please refer ::tvVideoSrcType_t
+ * @param[out] videoSources    - List of available video sources.
+ *                             - Array of pointers to `tvVideoSrcType_t` that will be populated with the supported video sources.
+ *                             - The caller must allocate memory for the array of pointers (`tvVideoSrcType_t *`) before
+ *                               invoking this function.
+ *                             - The size of the array should be equal to the `VIDEO_SOURCE_MAX` index of the
+ *                               `tvVideoSrcType_t` enumeration.
+ *                             - Each pointer in the array must point to a valid memory location that can store a
+ *                               `tvVideoSrcType_t` value.
  * @param[out] numberOfSources - Count of supported video sources. Min should be 1, max should be VIDEO_SOURCE_MAX
  *
  * @return tvError_t
@@ -304,6 +318,31 @@ tvError_t GetCurrentVideoSource(tvVideoSrcType_t *currentSource);
  */
  tvError_t GetTVSupportedVideoSources(tvVideoSrcType_t *videoSources[],unsigned short *numberOfSources);
 
+/**
+ * @brief Gets the Backlight capabilities.
+ *
+ * The `context_caps` parameter receives a pointer to a `tvContextCaps_t` structure that lists the different
+ * configuration contexts that this feature can be configured for. If the feature is global, then the
+ * `tvContextCaps_t.num_contexts` is returned as 0.
+ *
+ * The capabilities structure returned by this call is allocated by the HAL function and shall
+ * be safe to reference for the lifetime of the process.
+ *
+ * If the platform does not support backlight, then tvERROR_OPERATION_NOT_SUPPORTED is returned.
+ *
+ * @param[out] context_caps - A capabilities structure listing the configuration contexts supported.
+ *
+ * @return tvError_t
+ *
+ * @retval tvERROR_NONE - Success
+ * @retval tvERROR_INVALID_PARAM - Parameter is invalid
+ * @retval tvERROR_INVALID_STATE - Interface is not initialized
+ * @retval tvERROR_OPERATION_NOT_SUPPORTED - Operation is not supported
+ * @retval tvERROR_GENERAL - Underlying failures - SoC, memory, etc
+ *
+ * @pre TvInit() should be called before calling this API
+ */
+tvError_t GetBacklightCaps(int *max_backlight, tvContextCaps_t ** context_caps);
 
 /**
  * @brief Gets the current backlight value
@@ -489,7 +528,14 @@ tvError_t SetCurrentBacklightMode(tvBacklightMode_t blMode);
  *
  * This function returns all the supported backlight dimming modes.
  *
- * @param[out] dimmingModes    - List of dimming modes. Please refer ::tvDimmingMode_t
+ * @param[out] dimmingModes    - List of dimming modes.
+ *                             - Array of pointers to `tvDimmingMode_t` that will be populated with the supported dimming modes.
+ *                             - The caller must allocate memory for the array of pointers (`tvDimmingMode_t *`) before
+ *                               invoking this function.
+ *                             - The size of the array should be equal to the `tvDimmingMode_MAX` index of the
+ *                               `tvDimmingMode_t` enumeration.
+ *                             - Each pointer in the array must point to a valid memory location that can store a
+ *                               `tvDimmingMode_t` value.
  * @param[out] numDimmingModes - Count of supported dimming modes. Min should be 1, Max should be tvDimmingMode_MAX.
  *
  * @return tvError_t
@@ -644,6 +690,32 @@ tvError_t GetLocalDimmingLevel(ldimStateLevel_t *ldimStateLevel);
 tvError_t SaveLocalDimmingLevel(tvVideoSrcType_t videoSrcType, int pq_mode,tvVideoFormatType_t videoFormatType,ldimStateLevel_t ldimStateLevel);
 
 /**
+ * @brief Gets the Brightness capabilities.
+ *
+ * The `context_caps` parameter receives a pointer to a `tvContextCaps_t` structure that lists the different
+ * configuration contexts that this feature can be configured for. If the feature is global, then the
+ * `tvContextCaps_t.num_contexts` is returned as 0.
+ *
+ * The capabilities structure returned by this call is allocated by the HAL function and shall
+ * be safe to reference for the lifetime of the process.
+ *
+ * If the platform does not support brightness, then tvERROR_OPERATION_NOT_SUPPORTED is returned.
+ *
+ * @param[out] context_caps - A capabilities structure listing the configuration contexts supported.
+ *
+ * @return tvError_t
+ *
+ * @retval tvERROR_NONE - Success
+ * @retval tvERROR_INVALID_PARAM - Parameter is invalid
+ * @retval tvERROR_INVALID_STATE - Interface is not initialized
+ * @retval tvERROR_OPERATION_NOT_SUPPORTED - Operation is not supported
+ * @retval tvERROR_GENERAL - Underlying failures - SoC, memory, etc
+ *
+ * @pre TvInit() should be called before calling this API
+ */
+tvError_t GetBrightnessCaps(tvContextCaps_t ** context_caps);
+
+/**
  * @brief Sets the brightness value to driver register(s)
  *
  * This function updates the new brightness value to hardware. The change is applied for current primary video source selected,
@@ -710,6 +782,32 @@ tvError_t GetBrightness(int *brightness);
  * @todo: instead of int for pq_mode use tvPQModeIndex_t enum for all save API's
  */
 tvError_t SaveBrightness(tvVideoSrcType_t videoSrcType, int pq_mode,tvVideoFormatType_t videoFormatType,int value);
+
+/**
+ * @brief Gets the Contrast capabilities.
+ *
+ * The `context_caps` parameter receives a pointer to a `tvContextCaps_t` structure that lists the different
+ * configuration contexts that this feature can be configured for. If the feature is global, then the
+ * `tvContextCaps_t.num_contexts` is returned as 0.
+ *
+ * The capabilities structure returned by this call is allocated by the HAL function and shall
+ * be safe to reference for the lifetime of the process.
+ *
+ * If the platform does not support contrast, then tvERROR_OPERATION_NOT_SUPPORTED is returned.
+ *
+ * @param[out] context_caps - A capabilities structure listing the configuration contexts supported.
+ *
+ * @return tvError_t
+ *
+ * @retval tvERROR_NONE - Success
+ * @retval tvERROR_INVALID_PARAM - Parameter is invalid
+ * @retval tvERROR_INVALID_STATE - Interface is not initialized
+ * @retval tvERROR_OPERATION_NOT_SUPPORTED - Operation is not supported
+ * @retval tvERROR_GENERAL - Underlying failures - SoC, memory, etc
+ *
+ * @pre TvInit() should be called before calling this API
+ */
+tvError_t GetContrastCaps(tvContextCaps_t ** context_caps);
 
 /**
  * @brief Sets the contrast value to driver register(s)
@@ -802,6 +900,32 @@ tvError_t SaveContrast(tvVideoSrcType_t videoSrcType, int pq_mode,tvVideoFormatT
 tvError_t SetSharpness(int sharpness);
 
 /**
+ * @brief Gets the Sharpness capabilities.
+ *
+ * The `context_caps` parameter receives a pointer to a `tvContextCaps_t` structure that lists the different
+ * configuration contexts that this feature can be configured for. If the feature is global, then the
+ * `tvContextCaps_t.num_contexts` is returned as 0.
+ *
+ * The capabilities structure returned by this call is allocated by the HAL function and shall
+ * be safe to reference for the lifetime of the process.
+ *
+ * If the platform does not support sharpness, then tvERROR_OPERATION_NOT_SUPPORTED is returned.
+ *
+ * @param[out] context_caps - A capabilities structure listing the configuration contexts supported.
+ *
+ * @return tvError_t
+ *
+ * @retval tvERROR_NONE - Success
+ * @retval tvERROR_INVALID_PARAM - Parameter is invalid
+ * @retval tvERROR_INVALID_STATE - Interface is not initialized
+ * @retval tvERROR_OPERATION_NOT_SUPPORTED - Operation is not supported
+ * @retval tvERROR_GENERAL - Underlying failures - SoC, memory, etc
+ *
+ * @pre TvInit() should be called before calling this API
+ */
+tvError_t GetSharpnessCaps(tvContextCaps_t ** context_caps);
+
+/**
  * @brief Gets the current sharpness value
  *
  * This function gets the current sharpness value for the primary video source selected, 
@@ -890,6 +1014,32 @@ tvError_t SetSaturation(int saturation);
 tvError_t GetSaturation(int *saturation);
 
 /**
+ * @brief Gets the Saturation capabilities.
+ *
+ * The `context_caps` parameter receives a pointer to a `tvContextCaps_t` structure that lists the different
+ * configuration contexts that this feature can be configured for. If the feature is global, then the
+ * `tvContextCaps_t.num_contexts` is returned as 0.
+ *
+ * The capabilities structure returned by this call is allocated by the HAL function and shall
+ * be safe to reference for the lifetime of the process.
+ *
+ * If the platform does not support saturation, then tvERROR_OPERATION_NOT_SUPPORTED is returned.
+ *
+ * @param[out] context_caps - A capabilities structure listing the configuration contexts supported.
+ *
+ * @return tvError_t
+ *
+ * @retval tvERROR_NONE - Success
+ * @retval tvERROR_INVALID_PARAM - Parameter is invalid
+ * @retval tvERROR_INVALID_STATE - Interface is not initialized
+ * @retval tvERROR_OPERATION_NOT_SUPPORTED - Operation is not supported
+ * @retval tvERROR_GENERAL - Underlying failures - SoC, memory, etc
+ *
+ * @pre TvInit() should be called before calling this API
+ */
+tvError_t GetSaturationCaps(tvContextCaps_t ** context_caps);
+
+/**
  * @brief Saves the saturation value
  *
  * This function saves the sharpness value in picture profile database for the specific picture mode, primary video format type 
@@ -934,6 +1084,32 @@ tvError_t SaveSaturation(tvVideoSrcType_t videoSrcType, int pq_mode,tvVideoForma
  * @see GetHue()
  */
 tvError_t SetHue(int hue);
+
+/**
+ * @brief Gets the Hue capabilities.
+ *
+ * The `context_caps` parameter receives a pointer to a `tvContextCaps_t` structure that lists the different
+ * configuration contexts that this feature can be configured for. If the feature is global, then the
+ * `tvContextCaps_t.num_contexts` is returned as 0.
+ *
+ * The capabilities structure returned by this call is allocated by the HAL function and shall
+ * be safe to reference for the lifetime of the process.
+ *
+ * If the platform does not support hue, then tvERROR_OPERATION_NOT_SUPPORTED is returned.
+ *
+ * @param[out] context_caps - A capabilities structure listing the configuration contexts supported.
+ *
+ * @return tvError_t
+ *
+ * @retval tvERROR_NONE - Success
+ * @retval tvERROR_INVALID_PARAM - Parameter is invalid
+ * @retval tvERROR_INVALID_STATE - Interface is not initialized
+ * @retval tvERROR_OPERATION_NOT_SUPPORTED - Operation is not supported
+ * @retval tvERROR_GENERAL - Underlying failures - SoC, memory, etc
+ *
+ * @pre TvInit() should be called before calling this API
+ */
+tvError_t GetHueCaps(tvContextCaps_t ** context_caps);
 
 /**
  * @brief Gets the current hue value
@@ -1023,6 +1199,32 @@ tvError_t SetColorTemperature(tvColorTemp_t colorTemp);
  * @see SetColorTemperature()
  */
 tvError_t GetColorTemperature(tvColorTemp_t *colorTemp);
+
+/**
+ * @brief Gets the ColorTemperature capabilities.
+ *
+ * The `context_caps` parameter receives a pointer to a `tvContextCaps_t` structure that lists the different
+ * configuration contexts that this feature can be configured for. If the feature is global, then the
+ * `tvContextCaps_t.num_contexts` is returned as 0.
+ *
+ * The capabilities structure returned by this call is allocated by the HAL function and shall
+ * be safe to reference for the lifetime of the process.
+ *
+ * If the platform does not support colorTemperature, then tvERROR_OPERATION_NOT_SUPPORTED is returned.
+ *
+ * @param[out] context_caps - A capabilities structure listing the configuration contexts supported.
+ *
+ * @return tvError_t
+ *
+ * @retval tvERROR_NONE - Success
+ * @retval tvERROR_INVALID_PARAM - Parameter is invalid
+ * @retval tvERROR_INVALID_STATE - Interface is not initialized
+ * @retval tvERROR_OPERATION_NOT_SUPPORTED - Operation is not supported
+ * @retval tvERROR_GENERAL - Underlying failures - SoC, memory, etc
+ *
+ * @pre TvInit() should be called before calling this API
+ */
+tvError_t GetColorTemperatureCaps(tvContextCaps_t ** context_caps);
 
 /**
  * @brief Saves the color temperature value
@@ -1272,9 +1474,15 @@ tvError_t SetDynamicGamma(double tvGammaValue);
  *
  * This function returns the supported Dolby Vision modes and their count
  *
- * @param[out] dvModes[]            - List of available DV modes. Refer ::tvDolbyMode_t @n
- *                                    Valid values are member of ::tvDolbyMode_t
- * @param[out] count                - Count of supported DV modes. Max is tvMode_Max and min is 0
+ * @param[out] dvModes[]       - List of available DV modes.
+ *                             - Array of pointers to `tvDolbyMode_t` that will be populated with the supported DV modes.
+ *                             - The caller must allocate memory for the array of pointers (`tvDolbyMode_t *`) before
+ *                               invoking this function.
+ *                             - The size of the array should be equal to the `tvMode_Max` index of the
+ *                               `tvDolbyMode_t` enumeration.
+ *                             - Each pointer in the array must point to a valid memory location that can store a
+ *                               `tvDolbyMode_t` value.
+ * @param[out] count           - Count of supported DV modes. Max is tvMode_Max and min is 0
  *
  * @return tvError_t
  *
@@ -1365,8 +1573,14 @@ tvError_t SaveTVDolbyVisionMode(tvVideoSrcType_t videoSrcType, int pq_mode,tvVid
  *
  * This function get the array of picture modes supported and their count
  *
- * @param[out] pictureModes              - List of available picture modes. Valid values are as per values returned by pic_modes_t.name and pic_modes_t.values parameter(refer tvPQModeIndex_t).
- * @param[out] count                     - Count of supported picture modes. Maximum possile value is PIC_MODES_SUPPORTED_MAX. Min is 1.
+ * @param[out] pictureModes    - List of available picture modes.
+ *                             - Array of pointers to `pic_modes_t` that will be populated with the supported picture modes.
+ *                             - The caller must allocate memory for the array of pointers (`pic_modes_t *`) before
+ *                               invoking this function.
+ *                             - The size of the array should be equal to the `PIC_MODES_SUPPORTED_MAX`.
+ *                             - Each pointer in the array must point to a valid memory location that can store a
+ *                               `pic_modes_t` value.
+ * @param[out] count           - Count of supported picture modes. Maximum possile value is PIC_MODES_SUPPORTED_MAX. Min is 1.
  *
  * @return tvError_t
  *
@@ -2629,6 +2843,9 @@ tvError_t GetNumberOfDimmingZones(unsigned int* number_of_dimming_zones);
  * configuration contexts that this feature can be configured for. If the feature is global, then the
  * `tvContextCaps_t.num_contexts` is returned as 0.
  *
+ * The capabilities structure returned by this call is allocated by the HAL function and shall
+ * be safe to reference for the lifetime of the process.
+ *
  * If the platform does not support precision detail, then tvERROR_OPERATION_NOT_SUPPORTED is returned.
  *
  * @param[out] context_caps - A capabilities structure listing the configuration contexts supported.
@@ -2726,6 +2943,9 @@ videoFormatType, int * precisionDetail);
  * The `context_caps` parameter receives a pointer to a `tvContextCaps_t` structure that lists the different
  * configuration contexts that this feature can be configured for. If the feature is global, then the
  * `tvContextCaps_t.num_contexts` is returned as 0.
+ *
+ * The capabilities structure returned by this call is allocated by the HAL function and shall
+ * be safe to reference for the lifetime of the process.
  *
  * If the platform does not support SDR gamma setting, then tvERROR_OPERATION_NOT_SUPPORTED is returned.
  *
@@ -2827,6 +3047,9 @@ level and
  * The `context_caps` parameter receives a pointer to a `tvContextCaps_t` structure that lists the different
  * configuration contexts that this feature can be configured for. If the feature is global, then the
  * `tvContextCaps_t.num_contexts` is returned as 0.
+ *
+ * The capabilities structure returned by this call is allocated by the HAL function and shall
+ * be safe to reference for the lifetime of the process.
  *
  * If the platform does not support a local contrast enhancement setting, then tvERROR_OPERATION_NOT_SUPPORTED is
 returned.
@@ -2944,6 +3167,9 @@ tvError_t GetLocalContrastEnhancementDefault(tvVideoSrcType_t videoSrcType, tvPQ
  * configuration contexts that this feature can be configured for. If the feature is global, then the
  * `tvContextCaps_t.num_contexts` is returned as 0.
  *
+ * The capabilities structure returned by this call is allocated by the HAL function and shall
+ * be safe to reference for the lifetime of the process.
+ *
  * If the platform does not support an MPEG noise reduction setting, then tvERROR_OPERATION_NOT_SUPPORTED is
 returned.
  *
@@ -3057,6 +3283,9 @@ and
  * The `context_caps` parameter receives a pointer to a `tvContextCaps_t` structure that lists the different
  * configuration contexts that this feature can be configured for. If the feature is global, then the
  * `tvContextCaps_t.num_contexts` is returned as 0.
+ *
+ * The capabilities structure returned by this call is allocated by the HAL function and shall
+ * be safe to reference for the lifetime of the process.
  *
  * If the platform does not support an digital noise reduction setting, then tvERROR_OPERATION_NOT_SUPPORTED is
 returned.
@@ -3173,6 +3402,9 @@ tvError_t GetDigitalNoiseReductionDefault(tvVideoSrcType_t videoSrcType, tvPQMod
  * configuration contexts that this feature can be configured for. If the feature is global, then the
  * `tvContextCaps_t.num_contexts` is returned as 0.
  *
+ * The capabilities structure returned by this call is allocated by the HAL function and shall
+ * be safe to reference for the lifetime of the process.
+ *
  * If the platform does not support an AI super resolution setting, then tvERROR_OPERATION_NOT_SUPPORTED is returned.
  *
  * @param[out] maxAISuperResolution - Maximum AI super resolution setting value.
@@ -3286,6 +3518,9 @@ tvError_t GetAISuperResolutionDefault(tvVideoSrcType_t videoSrcType, tvPQModeInd
  * The `context_caps` parameter receives a pointer to a `tvContextCaps_t` structure that lists the different
  * configuration contexts that this feature can be configured for. If the feature is global, then the
  * `tvContextCaps_t.num_contexts` is returned as 0.
+ *
+ * The capabilities structure returned by this call is allocated by the HAL function and shall
+ * be safe to reference for the lifetime of the process.
  *
  * If the platform does not support a MEMC setting, then tvERROR_OPERATION_NOT_SUPPORTED is returned.
  *
@@ -3413,6 +3648,9 @@ video source and video format.
  * configuration contexts that this feature can be configured for. If the feature is global, then the
  * `tvContextCaps_t.num_contexts` is returned as 0.
  *
+ * The capabilities structure returned by this call is allocated by the HAL function and shall
+ * be safe to reference for the lifetime of the process.
+ *
  * If the platform does not support multi-point white balance, then tvERROR_OPERATION_NOT_SUPPORTED is returned.
  *
  * @param[out] num_hal_matrix_points - The number of points in the HAL gamma matrix.
@@ -3490,6 +3728,9 @@ tvError_t SetMultiPointWBMatrix(tvColorTemp_t colorTemp, tvPQModeIndex_t pq_mode
  * configuration contexts that this feature can be configured for. If the feature is global, then the
  * `tvContextCaps_t.num_contexts` is returned as 0.
  * The `context_caps` shall return only the Dolby Vision picture modes.
+ *
+ * The capabilities structure returned by this call is allocated by the HAL function and shall
+ * be safe to reference for the lifetime of the process.
  *
  * If the platform does not support Dolby Vision PQ Calibration, then tvERROR_OPERATION_NOT_SUPPORTED is returned.
  *
@@ -3584,6 +3825,92 @@ specified picture mode.
  * @pre TvInit() should be called before calling this API
  */
 tvError_t GetDVCalibrationDefault(tvPQModeIndex_t pq_mode, tvDVCalibrationSettings_t * calibration_values);
+
+/**
+ * @brief Sets 2Point Custom WhiteBalance
+ *
+ * This function sets WhiteBalance (Red,Green,Blue Gain/Offset) for the current picture mode index, current video source,
+ * and current video format.
+ * The custom WhiteBalance (Red, Green, Blue Gain/Offset) is applicable only when the color temperature is set to tvColorTemp_USER.
+ *
+ * Gain                             - Modifies the intensity of Red, Green, and Blue at the brighter level
+ * Offset                           - Modifies the intensity of Red, Green, and Blue at the darker level
+ *
+ * @param[in] color                 - Color type value. Valid value will be a member of ::tvWBColor_t
+ * @param[in] control               - Control index value. Valid values will be a member of ::tvWBControl_t
+ * @param[in] value                 - The WhiteBalance Value to be set.Valid range gain (0 - 2047) and offset (-1024 to 1023)
+ *
+ * @return tvError_t
+ *
+ * @retval tvERROR_NONE                      - Success
+ * @retval tvERROR_INVALID_PARAM             - Input parameter is invalid
+ * @retval tvERROR_INVALID_STATE             - Interface is not initialized
+ * @retval tvERROR_OPERATION_NOT_SUPPORTED   - Operation is not supported
+ * @retval tvERROR_GENERAL                   - Underlying failures - SoC, memory, etc
+ *
+ * @pre TvInit() should be called before calling this API
+ * @pre SetColorTemperature() should be set to "tvColorTemp_USER" before calling this API
+ */
+tvError_t SetCustom2PointWhiteBalance(tvWBColor_t color, tvWBControl_t control, int value);
+
+/**
+ * @brief Gets the Custom WhiteBalance
+ *
+ *  This function gets the custom WhiteBalance(Red,Green,Blue Gain/Offset) value for the current video source selected,
+ *  current video format played,picture mode selected,given color and given control value.
+ *
+ *  The function always retrieves the custom WhiteBalance (Red, Green, Blue Gain/Offset) associated with tvColorTemp_USER.
+ *
+ *  Gain                            - Modifies the intensity of Red, Green, and Blue at the brighter level
+ *  Offset                          - Modifies the intensity of Red, Green, and Blue at the darker level
+ *
+ * @param[in] color                 - Color type value. Valid value will be a member of ::tvWBColor_t
+ * @param[in] control               - Control index value. Valid values will be a member of ::tvWBControl_t
+ * @param[out] value                - Current WB value. Valid range gain  (0 - 2047) and offset (-1024 to 1023)
+ *
+ * @return tvError_t
+ *
+ * @retval tvERROR_NONE              - Success
+ * @retval tvERROR_INVALID_PARAM     - Parameter is invalid
+ * @retval tvERROR_INVALID_STATE     - Interface is not initialized
+ * @retval tvERROR_GENERAL           - Underlying failures - SoC, memory, etc
+ *
+ * @pre TvInit() should be called before calling this API
+ *
+ * @see SetCustom2PointWhiteBalance()
+ */
+tvError_t GetCustom2PointWhiteBalance(tvWBColor_t color, tvWBControl_t control, int *value);
+
+/**
+ * @brief Saves WhiteBalance
+ *
+ * This function saves the WhiteBalance in picture profile database for the specific primary video format type
+ * and primary video source. The saved Whitebalance value should be applied automatically whenever the
+ * specified specified primary video format is played and specified primary video source is selected.
+ * Gain                             - Modifies the intensity of Red, Green, and Blue at the brighter level
+ * Offset                           - Modifies the intensity of Red, Green, and Blue at the darker level
+ *
+ * @param[in] videoSrcType          - Source input value.Valid value will be a member of ::tvVideoSrcType_t
+ * @param[in] pictureMode           - Picture mode value to be saved.Valid values are as per values returned by
+ *                                    ::pic_modes_t.value  parmeter from GetTVSupportedPictureModes API.
+ * @param[in] videoFormatType       - Video format type value.Valid value will be a member of ::tvVideoFormatType_t
+ * @param[in] color                 - color value.Valid value will be a member of ::tvWBColor_t
+ * @param[in] control               - control value.Valid value will be a member of ::tvWBControl_t
+ * @param[in] value                 - The WhiteBalance value to be set.Valid range gain  (0 - 2047) and offset (-1024 to 1023)
+ *
+ * @return tvError_t
+ *
+ * @retval tvERROR_NONE                      - Success
+ * @retval tvERROR_INVALID_PARAM             - Input parameter is invalid
+ * @retval tvERROR_INVALID_STATE             - Interface is not initialized
+ * @retval tvERROR_OPERATION_NOT_SUPPORTED   - Operation is not supported
+ * @retval tvERROR_GENERAL                   - Underlying failures - SoC, memory, etc
+ *
+ * @pre TvInit() should be called before calling this API
+ */
+
+tvError_t SaveCustom2PointWhiteBalance(tvVideoSrcType_t videoSrcType, int pq_mode,tvVideoFormatType_t videoFormatType, tvWBColor_t color, tvWBControl_t control, int value);
+
 
 #ifdef __cplusplus
 }
