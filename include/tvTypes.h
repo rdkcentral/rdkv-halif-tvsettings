@@ -375,7 +375,7 @@ typedef enum tvPQParameterIndex {
     PQ_PARAM_CMS_LUMA_YELLOW,                    //!< Picture parameter is Component luma yellow
     PQ_PARAM_CMS_LUMA_CYAN,                     //!< Picture parameter is Component luma cyan
     PQ_PARAM_CMS_LUMA_MAGENTA,                  //!< Picture parameter is Component luma magenta
-    PQ_PARAM_WB_GAIN_RED,                       //!< Picture parameter is Component Red Gain
+	PQ_PARAM_WB_GAIN_RED,                       //!< Picture parameter is Component Red Gain
     PQ_PARAM_WB_GAIN_GREEN,                     //!< Picture parameter is Component Green Gain
     PQ_PARAM_WB_GAIN_BLUE,                      //!< Picture parameter is Component Blue Gain
     PQ_PARAM_WB_OFFSET_RED,                     //!< Picture parameter is Component Red Offset
@@ -390,7 +390,7 @@ typedef enum tvPQParameterIndex {
     PQ_PARAM_MEMC,                             //!< Picture parameter is MEMC
     PQ_PARAM_MULTI_POINT_WB,                   //!< Picture parameter is Multi-Point WB
     PQ_PARAM_DOLBY_VISION_CALIBRATION,         //!< Picture parameter is Dolby Vision Calibration
-    PQ_PARAM_MAX                                //!< End of enum
+    PQ_PARAM_MAX                               //!< End of enum
 }tvPQParameterIndex_t;
 
 /**
@@ -562,7 +562,29 @@ typedef struct
 }tvVideoFrameRateCallbackData;
 
 /**
+ * @brief Enumeration defining the supported WhiteBalance Color
+ *
+ */
+typedef enum
+{
+    tvWB_COLOR_RED = 0,                         //!< Color is Red
+    tvWB_COLOR_GREEN,                           //!< Color is Green
+    tvWB_COLOR_BLUE,                            //!< Color is Blue
+    tvWB_COLOR_MAX                              //!< End of enum
+}tvWBColor_t;
 
+/**
+ * @brief Enumeration defining the supported WhiteBalance Control
+ *
+ */
+typedef enum
+{
+    tvWB_CONTROL_GAIN = 0,                      //!< Modifies the intensity of Red, Green, and Blue at the brighter level
+    tvWB_CONTROL_OFFSET,                        //!< Modifies the intensity of Red, Green, and Blue at the darker level
+    tvWB_CONTROL_MAX                            //!< End of enum
+}tvWBControl_t;
+
+/**
  * @brief Structure for DV Calibration Settings.
  *
  * This struct holds calibration settings including
@@ -627,30 +649,6 @@ typedef enum
     tvSdrGamma_BT_1886, //!< SDR gamma is ITU-R BT.1886
     tvSdrGamma_MAX //!< End of enum
 } tvSdrGamma_t;
-
- * @brief Enumeration defining the supported WhiteBalance Color
- *
- */
-typedef enum
-{
-    tvWB_COLOR_RED = 0,                         //!< Color is Red
-    tvWB_COLOR_GREEN,                           //!< Color is Green
-    tvWB_COLOR_BLUE,                            //!< Color is Blue
-    tvWB_COLOR_MAX                              //!< End of enum
-}tvWBColor_t;
-
-/**
- * @brief Enumeration defining the supported WhiteBalance Control
- *
- */
-typedef enum
-{
-    tvWB_CONTROL_GAIN = 0,                      //!< Modifies the intensity of Red, Green, and Blue at the brighter level
-    tvWB_CONTROL_OFFSET,                        //!< Modifies the intensity of Red, Green, and Blue at the darker level
-    tvWB_CONTROL_MAX                            //!< End of enum
-}tvWBControl_t;
-
-
 
 #ifdef __cplusplus
 }
