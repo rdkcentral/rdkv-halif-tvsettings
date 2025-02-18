@@ -194,7 +194,14 @@ tvError_t RegisterVideoFrameRateChangeCB(tvVideoFrameRateCallbackData *cbData);
  *
  * This function returns all the supported content formats. 
  *
- * @param[out] videoFormats    - List of available video formats. Please refer ::tvVideoFormatType_t
+ * @param[out] videoFormats    - List of available video formats.
+ *                             - Array of pointers to `tvVideoFormatType_t` that will be populated with the supported video formats.
+ *                             - The caller must allocate memory for the array of pointers (`tvVideoFormatType_t *`) before
+ *                               invoking this function.
+ *                             - The size of the array should be equal to the `VIDEO_FORMAT_MAX` index of the
+ *                               `tvVideoFormatType_t` enumeration.
+ *                             - Each pointer in the array must point to a valid memory location that can store a
+ *                               `tvVideoFormatType_t` value.
  * @param[out] numberOfFormats - Count of supported video formats. Min should be 1. Max value is VIDEO_FORMAT_MAX.
  *
  * @return tvError_t
@@ -290,7 +297,14 @@ tvError_t GetCurrentVideoSource(tvVideoSrcType_t *currentSource);
  *
  * This function returns all the supported video sources.
  *
- * @param[out] videoSources    - List of available video sources. Please refer ::tvVideoSrcType_t
+ * @param[out] videoSources    - List of available video sources.
+ *                             - Array of pointers to `tvVideoSrcType_t` that will be populated with the supported video sources.
+ *                             - The caller must allocate memory for the array of pointers (`tvVideoSrcType_t *`) before
+ *                               invoking this function.
+ *                             - The size of the array should be equal to the `VIDEO_SOURCE_MAX` index of the
+ *                               `tvVideoSrcType_t` enumeration.
+ *                             - Each pointer in the array must point to a valid memory location that can store a
+ *                               `tvVideoSrcType_t` value.
  * @param[out] numberOfSources - Count of supported video sources. Min should be 1, max should be VIDEO_SOURCE_MAX
  *
  * @return tvError_t
@@ -489,7 +503,14 @@ tvError_t SetCurrentBacklightMode(tvBacklightMode_t blMode);
  *
  * This function returns all the supported backlight dimming modes.
  *
- * @param[out] dimmingModes    - List of dimming modes. Please refer ::tvDimmingMode_t
+ * @param[out] dimmingModes    - List of dimming modes.
+ *                             - Array of pointers to `tvDimmingMode_t` that will be populated with the supported dimming modes.
+ *                             - The caller must allocate memory for the array of pointers (`tvDimmingMode_t *`) before
+ *                               invoking this function.
+ *                             - The size of the array should be equal to the `tvDimmingMode_MAX` index of the
+ *                               `tvDimmingMode_t` enumeration.
+ *                             - Each pointer in the array must point to a valid memory location that can store a
+ *                               `tvDimmingMode_t` value.
  * @param[out] numDimmingModes - Count of supported dimming modes. Min should be 1, Max should be tvDimmingMode_MAX.
  *
  * @return tvError_t
@@ -1272,9 +1293,15 @@ tvError_t SetDynamicGamma(double tvGammaValue);
  *
  * This function returns the supported Dolby Vision modes and their count
  *
- * @param[out] dvModes[]            - List of available DV modes. Refer ::tvDolbyMode_t @n
- *                                    Valid values are member of ::tvDolbyMode_t
- * @param[out] count                - Count of supported DV modes. Max is tvMode_Max and min is 0
+ * @param[out] dvModes[]       - List of available DV modes.
+ *                             - Array of pointers to `tvDolbyMode_t` that will be populated with the supported DV modes.
+ *                             - The caller must allocate memory for the array of pointers (`tvDolbyMode_t *`) before
+ *                               invoking this function.
+ *                             - The size of the array should be equal to the `tvMode_Max` index of the
+ *                               `tvDolbyMode_t` enumeration.
+ *                             - Each pointer in the array must point to a valid memory location that can store a
+ *                               `tvDolbyMode_t` value.
+ * @param[out] count           - Count of supported DV modes. Max is tvMode_Max and min is 0
  *
  * @return tvError_t
  *
@@ -1365,8 +1392,14 @@ tvError_t SaveTVDolbyVisionMode(tvVideoSrcType_t videoSrcType, int pq_mode,tvVid
  *
  * This function get the array of picture modes supported and their count
  *
- * @param[out] pictureModes              - List of available picture modes. Valid values are as per values returned by pic_modes_t.name and pic_modes_t.values parameter(refer tvPQModeIndex_t).
- * @param[out] count                     - Count of supported picture modes. Maximum possile value is PIC_MODES_SUPPORTED_MAX. Min is 1.
+ * @param[out] pictureModes    - List of available picture modes.
+ *                             - Array of pointers to `pic_modes_t` that will be populated with the supported picture modes.
+ *                             - The caller must allocate memory for the array of pointers (`pic_modes_t *`) before
+ *                               invoking this function.
+ *                             - The size of the array should be equal to the `PIC_MODES_SUPPORTED_MAX`.
+ *                             - Each pointer in the array must point to a valid memory location that can store a
+ *                               `pic_modes_t` value.
+ * @param[out] count           - Count of supported picture modes. Maximum possile value is PIC_MODES_SUPPORTED_MAX. Min is 1.
  *
  * @return tvError_t
  *
