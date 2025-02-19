@@ -59,28 +59,6 @@ extern "C"
 {
 #endif
 
-/**
- * @brief Gets the current white balance info. To be deprecated soon.
- * @note SOC vendors can stub these ODM functions and mark it as weak
- *
- * This function gets the White balance info into the vectors
- *
- * @param[out] params               - WB info param. Valid values for : wbControls is ( "gain", "offset" ), wbGain is (0 to 2047), wbOffset is (-1024 to 1024))
- * @param[out] selector             - Selector vector. Valid values are ( "color temp", "input" )
- * @param[out] colorTmp             - Color temperature vector. Valid values are ( "custom", "normal", "cool", "warm" )
- * @param[out] input                - Input source vector. Valid values are ( "TV", "HDMI", "AV" )
- *
- * @return tvError_t
- *
- * @retval tvERROR_NONE                   - Success
- * @retval tvERROR_INVALID_PARAM          - Input parameter is invalid
- * @retval tvERROR_INVALID_STATE          - When the input value is not valid
- * @retval tvERROR_GENERAL                - Underlying failures - SoC, memory, etc
- *
- * @pre tvInit() should be called before calling this API
- */
- tvError_t GetWbInfo(getWBInfo_t* params, std::vector<std::string> &selector, std::vector<std::string> &colorTmp, std::vector<std::string> &input);
-
 #ifdef __cplusplus
 }
 #endif
