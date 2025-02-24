@@ -194,7 +194,14 @@ tvError_t RegisterVideoFrameRateChangeCB(tvVideoFrameRateCallbackData *cbData);
  *
  * This function returns all the supported content formats. 
  *
- * @param[out] videoFormats    - List of available video formats. Please refer ::tvVideoFormatType_t
+ * @param[out] videoFormats    - List of available video formats.
+ *                             - Array of pointers to `tvVideoFormatType_t` that will be populated with the supported video formats.
+ *                             - The caller must allocate memory for the array of pointers (`tvVideoFormatType_t *`) before
+ *                               invoking this function.
+ *                             - The size of the array should be equal to the `VIDEO_FORMAT_MAX` index of the
+ *                               `tvVideoFormatType_t` enumeration.
+ *                             - Each pointer in the array must point to a valid memory location that can store a
+ *                               `tvVideoFormatType_t` value.
  * @param[out] numberOfFormats - Count of supported video formats. Min should be 1. Max value is VIDEO_FORMAT_MAX.
  *
  * @return tvError_t
@@ -290,7 +297,14 @@ tvError_t GetCurrentVideoSource(tvVideoSrcType_t *currentSource);
  *
  * This function returns all the supported video sources.
  *
- * @param[out] videoSources    - List of available video sources. Please refer ::tvVideoSrcType_t
+ * @param[out] videoSources    - List of available video sources.
+ *                             - Array of pointers to `tvVideoSrcType_t` that will be populated with the supported video sources.
+ *                             - The caller must allocate memory for the array of pointers (`tvVideoSrcType_t *`) before
+ *                               invoking this function.
+ *                             - The size of the array should be equal to the `VIDEO_SOURCE_MAX` index of the
+ *                               `tvVideoSrcType_t` enumeration.
+ *                             - Each pointer in the array must point to a valid memory location that can store a
+ *                               `tvVideoSrcType_t` value.
  * @param[out] numberOfSources - Count of supported video sources. Min should be 1, max should be VIDEO_SOURCE_MAX
  *
  * @return tvError_t
@@ -514,7 +528,14 @@ tvError_t SetCurrentBacklightMode(tvBacklightMode_t blMode);
  *
  * This function returns all the supported backlight dimming modes.
  *
- * @param[out] dimmingModes    - List of dimming modes. Please refer ::tvDimmingMode_t
+ * @param[out] dimmingModes    - List of dimming modes.
+ *                             - Array of pointers to `tvDimmingMode_t` that will be populated with the supported dimming modes.
+ *                             - The caller must allocate memory for the array of pointers (`tvDimmingMode_t *`) before
+ *                               invoking this function.
+ *                             - The size of the array should be equal to the `tvDimmingMode_MAX` index of the
+ *                               `tvDimmingMode_t` enumeration.
+ *                             - Each pointer in the array must point to a valid memory location that can store a
+ *                               `tvDimmingMode_t` value.
  * @param[out] numDimmingModes - Count of supported dimming modes. Min should be 1, Max should be tvDimmingMode_MAX.
  *
  * @return tvError_t
@@ -1453,9 +1474,15 @@ tvError_t SetDynamicGamma(double tvGammaValue);
  *
  * This function returns the supported Dolby Vision modes and their count
  *
- * @param[out] dvModes[]            - List of available DV modes. Refer ::tvDolbyMode_t @n
- *                                    Valid values are member of ::tvDolbyMode_t
- * @param[out] count                - Count of supported DV modes. Max is tvMode_Max and min is 0
+ * @param[out] dvModes[]       - List of available DV modes.
+ *                             - Array of pointers to `tvDolbyMode_t` that will be populated with the supported DV modes.
+ *                             - The caller must allocate memory for the array of pointers (`tvDolbyMode_t *`) before
+ *                               invoking this function.
+ *                             - The size of the array should be equal to the `tvMode_Max` index of the
+ *                               `tvDolbyMode_t` enumeration.
+ *                             - Each pointer in the array must point to a valid memory location that can store a
+ *                               `tvDolbyMode_t` value.
+ * @param[out] count           - Count of supported DV modes. Max is tvMode_Max and min is 0
  *
  * @return tvError_t
  *
@@ -1546,8 +1573,14 @@ tvError_t SaveTVDolbyVisionMode(tvVideoSrcType_t videoSrcType, int pq_mode,tvVid
  *
  * This function get the array of picture modes supported and their count
  *
- * @param[out] pictureModes              - List of available picture modes. Valid values are as per values returned by pic_modes_t.name and pic_modes_t.values parameter(refer tvPQModeIndex_t).
- * @param[out] count                     - Count of supported picture modes. Maximum possile value is PIC_MODES_SUPPORTED_MAX. Min is 1.
+ * @param[out] pictureModes    - List of available picture modes.
+ *                             - Array of pointers to `pic_modes_t` that will be populated with the supported picture modes.
+ *                             - The caller must allocate memory for the array of pointers (`pic_modes_t *`) before
+ *                               invoking this function.
+ *                             - The size of the array should be equal to the `PIC_MODES_SUPPORTED_MAX`.
+ *                             - Each pointer in the array must point to a valid memory location that can store a
+ *                               `pic_modes_t` value.
+ * @param[out] count           - Count of supported picture modes. Maximum possile value is PIC_MODES_SUPPORTED_MAX. Min is 1.
  *
  * @return tvError_t
  *
@@ -2802,6 +2835,91 @@ tvError_t GetLdimZoneShortCircuitStatus(unsigned char* shortcircuit_zone_list, u
  * @pre TvInit() should be called before calling this API.
  */
 tvError_t GetNumberOfDimmingZones(unsigned int* number_of_dimming_zones);
+
+ /**
+ * @brief Sets 2Point Custom WhiteBalance
+ *
+ * This function sets WhiteBalance (Red,Green,Blue Gain/Offset) for the current picture mode index, current video source,
+ * and current video format.
+ * The custom WhiteBalance (Red, Green, Blue Gain/Offset) is applicable only when the color temperature is set to tvColorTemp_USER.
+ *
+ * Gain                             - Modifies the intensity of Red, Green, and Blue at the brighter level
+ * Offset                           - Modifies the intensity of Red, Green, and Blue at the darker level
+ *
+ * @param[in] color                 - Color type value. Valid value will be a member of ::tvWBColor_t
+ * @param[in] control               - Control index value. Valid values will be a member of ::tvWBControl_t
+ * @param[in] value                 - The WhiteBalance Value to be set.Valid range gain (0 - 2047) and offset (-1024 to 1023)
+ *
+ * @return tvError_t
+ *
+ * @retval tvERROR_NONE                      - Success
+ * @retval tvERROR_INVALID_PARAM             - Input parameter is invalid
+ * @retval tvERROR_INVALID_STATE             - Interface is not initialized
+ * @retval tvERROR_OPERATION_NOT_SUPPORTED   - Operation is not supported
+ * @retval tvERROR_GENERAL                   - Underlying failures - SoC, memory, etc
+ *
+ * @pre TvInit() should be called before calling this API
+ * @pre SetColorTemperature() should be set to "tvColorTemp_USER" before calling this API
+ */
+tvError_t SetCustom2PointWhiteBalance(tvWBColor_t color, tvWBControl_t control, int value);
+
+/**
+ * @brief Gets the Custom WhiteBalance
+ *
+ *  This function gets the custom WhiteBalance(Red,Green,Blue Gain/Offset) value for the current video source selected,
+ *  current video format played,picture mode selected,given color and given control value.
+ *
+ *  The function always retrieves the custom WhiteBalance (Red, Green, Blue Gain/Offset) associated with tvColorTemp_USER.
+ *
+ *  Gain                            - Modifies the intensity of Red, Green, and Blue at the brighter level
+ *  Offset                          - Modifies the intensity of Red, Green, and Blue at the darker level
+ *
+ * @param[in] color                 - Color type value. Valid value will be a member of ::tvWBColor_t
+ * @param[in] control               - Control index value. Valid values will be a member of ::tvWBControl_t
+ * @param[out] value                - Current WB value. Valid range gain  (0 - 2047) and offset (-1024 to 1023)
+ *
+ * @return tvError_t
+ *
+ * @retval tvERROR_NONE              - Success
+ * @retval tvERROR_INVALID_PARAM     - Parameter is invalid
+ * @retval tvERROR_INVALID_STATE     - Interface is not initialized
+ * @retval tvERROR_GENERAL           - Underlying failures - SoC, memory, etc
+ *
+ * @pre TvInit() should be called before calling this API
+ *
+ * @see SetCustom2PointWhiteBalance()
+ */
+tvError_t GetCustom2PointWhiteBalance(tvWBColor_t color, tvWBControl_t control, int *value);
+
+/**
+ * @brief Saves WhiteBalance
+ *
+ * This function saves the WhiteBalance in picture profile database for the specific primary video format type
+ * and primary video source. The saved Whitebalance value should be applied automatically whenever the
+ * specified specified primary video format is played and specified primary video source is selected.
+ * Gain                             - Modifies the intensity of Red, Green, and Blue at the brighter level
+ * Offset                           - Modifies the intensity of Red, Green, and Blue at the darker level
+ *
+ * @param[in] videoSrcType          - Source input value.Valid value will be a member of ::tvVideoSrcType_t
+ * @param[in] pictureMode           - Picture mode value to be saved.Valid values are as per values returned by
+ *                                    ::pic_modes_t.value  parmeter from GetTVSupportedPictureModes API.
+ * @param[in] videoFormatType       - Video format type value.Valid value will be a member of ::tvVideoFormatType_t
+ * @param[in] color                 - color value.Valid value will be a member of ::tvWBColor_t
+ * @param[in] control               - control value.Valid value will be a member of ::tvWBControl_t
+ * @param[in] value                 - The WhiteBalance value to be set.Valid range gain  (0 - 2047) and offset (-1024 to 1023)
+ *
+ * @return tvError_t
+ *
+ * @retval tvERROR_NONE                      - Success
+ * @retval tvERROR_INVALID_PARAM             - Input parameter is invalid
+ * @retval tvERROR_INVALID_STATE             - Interface is not initialized
+ * @retval tvERROR_OPERATION_NOT_SUPPORTED   - Operation is not supported
+ * @retval tvERROR_GENERAL                   - Underlying failures - SoC, memory, etc
+ *
+ * @pre TvInit() should be called before calling this API
+ */
+
+tvError_t SaveCustom2PointWhiteBalance(tvVideoSrcType_t videoSrcType, int pq_mode,tvVideoFormatType_t videoFormatType, tvWBColor_t color, tvWBControl_t control, int value);
 
  /**
  * @brief Gets the precision detail capabilities.
