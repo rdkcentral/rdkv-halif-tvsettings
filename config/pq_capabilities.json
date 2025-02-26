@@ -4,7 +4,7 @@
             "from": 0,
             "to": 100
         },
-        "platformsupport": true,
+        "platformSupport": true,
         "context": {
             "Sports": {
                 "SDR": [ "HDMI1", "HDMI2", "HDMI3", "Composite", "Tuner", "IP" ],
@@ -38,7 +38,7 @@
             "from": 0,
             "to": 100
         },
-        "platformsupport": true,
+        "platformSupport": true,
         "context": {
             "Sports": {
                 "SDR": [ "HDMI1", "HDMI2", "HDMI3", "Composite", "Tuner", "IP" ],
@@ -72,7 +72,7 @@
             "from": 0,
             "to": 100
         },
-        "platformsupport": true,
+        "platformSupport": true,
         "context": {
             "Sports": {
                 "SDR": [ "HDMI1", "HDMI2", "HDMI3", "Composite", "Tuner", "IP" ],
@@ -101,12 +101,12 @@
             }
         }
     },
-    "Shharpness" : {
+    "Sharpness" : {
         "rangeInfo": {
             "from": 0,
             "to": 100
         },
-        "platformsupport": true,
+        "platformSupport": true,
         "context": {
             "Sports": {
                 "SDR": [ "HDMI1", "HDMI2", "HDMI3", "Composite", "Tuner", "IP" ],
@@ -140,7 +140,7 @@
             "from": 0,
             "to": 100
         },
-        "platformsupport": true,
+        "platformSupport": true,
         "context": {
             "Sports": {
                 "SDR": [ "HDMI1", "HDMI2", "HDMI3", "Composite", "Tuner", "IP" ],
@@ -174,7 +174,7 @@
             "from": 0,
             "to": 100
         },
-        "platformsupport": true,
+        "platformSupport": true,
         "context": {
             "Sports": {
                 "SDR": [ "HDMI1", "HDMI2", "HDMI3", "Composite", "Tuner", "IP" ],
@@ -207,7 +207,7 @@
         "rangeInfo": {
             "options" : [ "Standard", "Warm", "Cold", "UserDefined" ]
         },
-        "platformsupport": true,
+        "platformSupport": true,
         "context": {
             "Sports": {
                 "SDR": [ "HDMI1", "HDMI2", "HDMI3", "Composite", "Tuner", "IP" ],
@@ -238,8 +238,8 @@
     },
     "PrecisionDetails" : {
         "rangeInfo": {
-        "from": 0,
-        "to": 3
+			"from": 0,
+			"to": 3
         },
         "platformSupport": true,
         "context": {
@@ -253,7 +253,9 @@
     },
     "SDRGamma" : {
         "platformSupport": true,
-        "options": [ "2.0" , "2.2" , "2.4" , "BT.1886" ],
+        "rangeInfo": {
+			"options": [ "2.0" , "2.2" , "2.4" , "BT.1886" ]
+		},
         "context": {
             "Standard": [ "IP", "Tuner", "HDMI1", "HDMI2", "HDMI3", "Composite1" ],
             "Vivid": [ "IP", "Tuner", "HDMI1", "HDMI2", "HDMI3", "Composite1" ],
@@ -264,8 +266,8 @@
     "LocalContrastEnhancement" : {
         "platformSupport": true,
         "rangeInfo": {
-        "from": 0,
-        "to": 3
+			"from": 0,
+			"to": 3
         },
         "context": {
             "Standard": {
@@ -280,8 +282,8 @@
     "MPEGNoiseReduction": {
         "platformSupport": true,
         "rangeInfo": {
-        "from": 0,
-        "to": 3
+			"from": 0,
+			"to": 3
         },
         "context": {
             "Standard": {
@@ -296,8 +298,8 @@
     "DigitalNoiseReduction" : {
         "platformSupport": true,
         "rangeInfo": {
-        "from": 0,
-        "to": 3
+			"from": 0,
+			"to": 3
         },
         "context": {
             "Standard": {
@@ -312,8 +314,8 @@
     "AISuperResolution" : {
         "platformSupport": true,
         "rangeInfo": {
-        "from": 0,
-        "to": 3
+			"from": 0,
+			"to": 3
         },
         "context": {
             "Standard": {
@@ -328,8 +330,8 @@
     "MEMC": {
         "platformSupport": true,
         "rangeInfo": {
-        "from": 0,
-        "to": 3
+			"from": 0,
+			"to": 3
         },
         "context": {
             "Standard": {
@@ -345,8 +347,8 @@
         "platformSupport": true,
         "points": 20,
         "rangeInfo": {
-        "from": -30,
-        "to": 30,
+			"from": -30,
+			"to": 30
         },
         "context": {
             "Cool": {
@@ -366,48 +368,48 @@
     "DolbyVisionCalibration" : {
         "platformSupport": true,
         "rangeTmax": {
-        "from": 40,
-        "to": 10000
+			"from": 40,
+			"to": 10000
         },
         "rangeTmin": {
-        "from": 0.00001,
-        "to": 2
+			"from": 0.00001,
+			"to": 2
         },
         "rangeTgamma": {
-        "from": 1,
-        "to": 4
+			"from": 1,
+			"to": 4
         },
         "rangeRx": {
-        "from": 0,
-        "to": 1
+			"from": 0,
+			"to": 1
         },
         "rangeRy": {
-        "from": 0,
-        "to": 1
+			"from": 0,
+			"to": 1
         },
         "rangeGx": {
-        "from": 0,
-        "to": 1
+			"from": 0,
+			"to": 1
         },
         "rangeGy": {
-        "from": 0,
-        "to": 1
+			"from": 0,
+			"to": 1
         },
         "rangeBx": {
-        "from": 0,
-        "to": 1
+			"from": 0,
+			"to": 1
         },
         "rangeBy": {
-        "from": 0,
-        "to": 1
+			"from": 0,
+			"to": 1
         },
         "rangeWx": {
-        "from": 0,
-        "to": 1
+			"from": 0,
+			"to": 1
         },
         "rangeWy": {
-        "from": 0,
-        "to": 1
+			"from": 0,
+			"to": 1
         },
         "context": [ "DV IQ","DV Bright","DV Dark","Game" ]
     }
