@@ -584,6 +584,7 @@ typedef enum
     tvWB_CONTROL_MAX                            //!< End of enum
 }tvWBControl_t;
 
+/**
  * @brief Structure for DV Calibration Settings.
  *
  * This struct holds calibration settings including
