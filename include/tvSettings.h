@@ -1746,6 +1746,32 @@ tvError_t SetTVPictureMode(const char * pictureMode);
 tvError_t SaveSourcePictureMode(tvVideoSrcType_t videoSrcType, tvVideoFormatType_t videoFormatType, int pictureMode);
 
 /**
+ * @brief Gets the PictureMode capabilities.
+ *
+ * The `context_caps` parameter receives a pointer to a `tvContextCaps_t` structure that lists the different
+ * configuration contexts that this feature can be configured for. If the feature is global, then the
+ * `tvContextCaps_t.num_contexts` is returned as 0.
+ *
+ * The capabilities structure returned by this call is allocated by the HAL function and shall
+ * be safe to reference for the lifetime of the process.
+ *
+ * If the platform does not support PictureMode, then tvERROR_OPERATION_NOT_SUPPORTED is returned.
+ *
+ * @param[out] context_caps - A capabilities structure listing the configuration contexts supported.
+ *
+ * @return tvError_t
+ *
+ * @retval tvERROR_NONE - Success
+ * @retval tvERROR_INVALID_PARAM - Parameter is invalid
+ * @retval tvERROR_INVALID_STATE - Interface is not initialized
+ * @retval tvERROR_OPERATION_NOT_SUPPORTED - Operation is not supported
+ * @retval tvERROR_GENERAL - Underlying failures - SoC, memory, etc
+ *
+ * @pre TvInit() should be called before calling this API
+ */
+tvError_t GetTVPictureModeCaps(tvContextCaps_t ** context_caps);
+
+/**
  * @brief Sets or saves the rgain value
  *
  * This function sets or saves the rgain value for a specfic color temperature and video source. If it is set operation (saveOnly=0) @n
