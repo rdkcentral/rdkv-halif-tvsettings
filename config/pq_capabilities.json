@@ -236,6 +236,106 @@
             }
         }
     },
+    "DimmingMode" : {
+        "rangeInfo": {
+        "options" : [ "Local" , "Fixed" , "Global" ]
+        },
+        "platformsupport": true,
+        "context": {
+            "Sports": {
+                "SDR": [ "HDMI1", "HDMI2", "HDMI3", "Composite", "Tuner", "IP" ],
+                "HLG": [ "HDMI1", "HDMI2", "HDMI3", "Tuner", "IP" ],
+                "HDR10": [ "HDMI1", "HDMI2", "HDMI3", "Tuner", "IP" ]
+            },
+            "Movie": {
+                "SDR": [ "HDMI1", "HDMI2", "HDMI3", "Composite", "Tuner", "IP" ],
+                "HLG": [ "HDMI1", "HDMI2", "HDMI3", "Tuner", "IP" ],
+                "HDR10": [ "HDMI1", "HDMI2", "HDMI3", "Tuner", "IP" ]
+            },
+            "Game": {
+                "SDR": [ "HDMI1", "HDMI2", "HDMI3", "Composite", "Tuner", "IP" ],
+                "HLG": [ "HDMI1", "HDMI2", "HDMI3", "Tuner", "IP" ],
+                "HDR10": [ "HDMI1", "HDMI2", "HDMI3", "Tuner", "IP" ],
+                "DV": [ "HDMI1", "HDMI2", "HDMI3", "Tuner", "IP" ]
+            },
+            "DV IQ": {
+                "DV": [ "HDMI1", "HDMI2", "HDMI3", "Tuner", "IP" ]
+            },
+            "AI PQ": {
+                "DV": [ "HDMI1", "HDMI2", "HDMI3", "Tuner", "IP" ]
+            },
+            "DV Dark": {
+                "DV": [ "HDMI1", "HDMI2", "HDMI3", "Tuner", "IP" ]
+            }
+        }
+    },
+    "LowLatencyState" : {
+        "rangeInfo": {
+            "from": 0,
+            "to": 1
+        },
+        "platformsupport": true,
+        "context": {
+            "Sports": {
+                "SDR": [ "HDMI1", "HDMI2", "HDMI3", "Composite", "Tuner", "IP" ],
+                "HLG": [ "HDMI1", "HDMI2", "HDMI3", "Tuner", "IP" ],
+                "HDR10": [ "HDMI1", "HDMI2", "HDMI3", "Tuner", "IP" ]
+            },
+            "Movie": {
+                "SDR": [ "HDMI1", "HDMI2", "HDMI3", "Composite", "Tuner", "IP" ],
+                "HLG": [ "HDMI1", "HDMI2", "HDMI3", "Tuner", "IP" ],
+                "HDR10": [ "HDMI1", "HDMI2", "HDMI3", "Tuner", "IP" ]
+            },
+            "Game": {
+                "SDR": [ "HDMI1", "HDMI2", "HDMI3", "Composite", "Tuner", "IP" ],
+                "HLG": [ "HDMI1", "HDMI2", "HDMI3", "Tuner", "IP" ],
+                "HDR10": [ "HDMI1", "HDMI2", "HDMI3", "Tuner", "IP" ],
+                "DV": [ "HDMI1", "HDMI2", "HDMI3", "Tuner", "IP" ]
+            },
+            "DV IQ": {
+                "DV": [ "HDMI1", "HDMI2", "HDMI3", "Tuner", "IP" ]
+            },
+            "AI PQ": {
+                "DV": [ "HDMI1", "HDMI2", "HDMI3", "Tuner", "IP" ]
+            },
+            "DV Dark": {
+                "DV": [ "HDMI1", "HDMI2", "HDMI3", "Tuner", "IP" ]
+            }
+        }
+    },
+    "AspectRatio" : {
+        "rangeInfo": {
+        "options" : [ "TV AUTO","TV DIRECT","TV NORMAL","TV 16X9 STRETCH","TV 4X3 PILLARBOX","TV ZOOM" ]
+        },
+        "platformsupport": true,
+        "context": {
+            "Sports": {
+                "SDR": [ "Global" ],
+                "HLG": [ "Global" ],
+                "HDR10": [ "Global" ]
+            },
+            "Movie": {
+                "SDR": [ "Global" ],
+                "HLG": [ "Global" ],
+                "HDR10": [ "Global" ]
+            },
+            "Game": {
+                "SDR": [ "Global" ],
+                "HLG": [ "Global" ],
+                "HDR10": [ "Global" ],
+                "DV": [ "Global" ]
+            },
+            "DV IQ": {
+                "DV": [ "Global" ]
+            },
+            "AI PQ": {
+                "DV": [ "Global" ]
+            },
+            "DV Dark": {
+                "DV": [ "Global" ]
+            }
+        }
+    },
     "PrecisionDetails" : {
         "rangeInfo": {
         "from": 0,

@@ -620,6 +620,32 @@ tvError_t GetTVDimmingMode(char *dimmingMode);
  tvError_t SaveTVDimmingMode(tvVideoSrcType_t videoSrcType, int pq_mode,tvVideoFormatType_t videoFormatType,tvDimmingMode_t dimmingMode);
 
 /**
+ * @brief Gets the TVDimmingMode capabilities.
+ *
+ * The `context_caps` parameter receives a pointer to a `tvContextCaps_t` structure that lists the different
+ * configuration contexts that this feature can be configured for. If the feature is global, then the
+ * `tvContextCaps_t.num_contexts` is returned as 0.
+ *
+ * The capabilities structure returned by this call is allocated by the HAL function and shall
+ * be safe to reference for the lifetime of the process.
+ *
+ * If the platform does not support TVDimmingMode, then tvERROR_OPERATION_NOT_SUPPORTED is returned.
+ *
+ * @param[out] context_caps - A capabilities structure listing the configuration contexts supported.
+ *
+ * @return tvError_t
+ *
+ * @retval tvERROR_NONE - Success
+ * @retval tvERROR_INVALID_PARAM - Parameter is invalid
+ * @retval tvERROR_INVALID_STATE - Interface is not initialized
+ * @retval tvERROR_OPERATION_NOT_SUPPORTED - Operation is not supported
+ * @retval tvERROR_GENERAL - Underlying failures - SoC, memory, etc
+ *
+ * @pre TvInit() should be called before calling this API
+ */
+tvError_t GetTVDimmingModeCaps(tvContextCaps_t ** context_caps);
+
+/**
  * @brief Sets the local dimming level
  *
  * This function updates the new local dimming level to hardware. The change is applied for current primary video source selected,
@@ -1318,6 +1344,32 @@ tvError_t GetAspectRatio(tvDisplayMode_t *dispMode);
 tvError_t SaveAspectRatio(tvVideoSrcType_t videoSrcType, int pq_mode,tvVideoFormatType_t videoFormatType,tvDisplayMode_t value);
 
 /**
+ * @brief Gets the AspectRatio capabilities.
+ *
+ * The `context_caps` parameter receives a pointer to a `tvContextCaps_t` structure that lists the different
+ * configuration contexts that this feature can be configured for. If the feature is global, then the
+ * `tvContextCaps_t.num_contexts` is returned as 0.
+ *
+ * The capabilities structure returned by this call is allocated by the HAL function and shall
+ * be safe to reference for the lifetime of the process.
+ *
+ * If the platform does not support AspectRatio, then tvERROR_OPERATION_NOT_SUPPORTED is returned.
+ *
+ * @param[out] context_caps - A capabilities structure listing the configuration contexts supported.
+ *
+ * @return tvError_t
+ *
+ * @retval tvERROR_NONE - Success
+ * @retval tvERROR_INVALID_PARAM - Parameter is invalid
+ * @retval tvERROR_INVALID_STATE - Interface is not initialized
+ * @retval tvERROR_OPERATION_NOT_SUPPORTED - Operation is not supported
+ * @retval tvERROR_GENERAL - Underlying failures - SoC, memory, etc
+ *
+ * @pre TvInit() should be called before calling this API
+ */
+tvError_t GetAspectRatioCaps(tvContextCaps_t ** context_caps);
+
+/**
  * @brief Sets the low latency state to driver register(s)
  *
  * This function updates the new low latency state value to hardware. The change is applied for current primary video source selected,
@@ -1381,6 +1433,32 @@ tvError_t GetLowLatencyState(int *lowlatencystate);
  tvError_t SaveLowLatencyState( tvVideoSrcType_t videoSrcType, int pq_mode,tvVideoFormatType_t videoFormatType,int value );
 
 /**
+ * @brief Gets the LowLatencyState capabilities.
+ *
+ * The `context_caps` parameter receives a pointer to a `tvContextCaps_t` structure that lists the different
+ * configuration contexts that this feature can be configured for. If the feature is global, then the
+ * `tvContextCaps_t.num_contexts` is returned as 0.
+ *
+ * The capabilities structure returned by this call is allocated by the HAL function and shall
+ * be safe to reference for the lifetime of the process.
+ *
+ * If the platform does not support LowLatencyState, then tvERROR_OPERATION_NOT_SUPPORTED is returned.
+ *
+ * @param[out] context_caps - A capabilities structure listing the configuration contexts supported.
+ *
+ * @return tvError_t
+ *
+ * @retval tvERROR_NONE - Success
+ * @retval tvERROR_INVALID_PARAM - Parameter is invalid
+ * @retval tvERROR_INVALID_STATE - Interface is not initialized
+ * @retval tvERROR_OPERATION_NOT_SUPPORTED - Operation is not supported
+ * @retval tvERROR_GENERAL - Underlying failures - SoC, memory, etc
+ *
+ * @pre TvInit() should be called before calling this API
+ */
+tvError_t GetLowLatencyStateCaps(tvContextCaps_t ** context_caps);
+
+/**
  * @brief Sets the dynamic contrast
  *
  * This function updates the dynamic contrast state to PQ module. The change takes effect for current
@@ -1402,6 +1480,7 @@ tvError_t GetLowLatencyState(int *lowlatencystate);
  *
  * @see GetDynamicContrast()
  */
+
 tvError_t SetDynamicContrast(const char *dynamicContrastEnable);
 
 /**
