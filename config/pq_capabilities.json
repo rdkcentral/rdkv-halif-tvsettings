@@ -808,6 +808,508 @@
             }
         }
     },
+    "DimmingMode": {
+        "rangeInfo": {
+            "options": [
+                "Local",
+                "Fixed",
+                "Global"
+            ]
+        },
+        "platformSupport": true,
+        "context": {
+            "Sports": {
+                "SDR": [
+                    "HDMI1",
+                    "HDMI2",
+                    "HDMI3",
+                    "Composite",
+                    "Tuner",
+                    "IP"
+                ],
+                "HLG": [
+                    "HDMI1",
+                    "HDMI2",
+                    "HDMI3",
+                    "Tuner",
+                    "IP"
+                ],
+                "HDR10": [
+                    "HDMI1",
+                    "HDMI2",
+                    "HDMI3",
+                    "Tuner",
+                    "IP"
+                ]
+            },
+            "Movie": {
+                "SDR": [
+                    "HDMI1",
+                    "HDMI2",
+                    "HDMI3",
+                    "Composite",
+                    "Tuner",
+                    "IP"
+                ],
+                "HLG": [
+                    "HDMI1",
+                    "HDMI2",
+                    "HDMI3",
+                    "Tuner",
+                    "IP"
+                ],
+                "HDR10": [
+                    "HDMI1",
+                    "HDMI2",
+                    "HDMI3",
+                    "Tuner",
+                    "IP"
+                ]
+            },
+            "Game": {
+                "SDR": [
+                    "HDMI1",
+                    "HDMI2",
+                    "HDMI3",
+                    "Composite",
+                    "Tuner",
+                    "IP"
+                ],
+                "HLG": [
+                    "HDMI1",
+                    "HDMI2",
+                    "HDMI3",
+                    "Tuner",
+                    "IP"
+                ],
+                "HDR10": [
+                    "HDMI1",
+                    "HDMI2",
+                    "HDMI3",
+                    "Tuner",
+                    "IP"
+                ],
+                "DV": [
+                    "HDMI1",
+                    "HDMI2",
+                    "HDMI3",
+                    "Tuner",
+                    "IP"
+                ]
+            },
+            "DV IQ": {
+                "DV": [
+                    "HDMI1",
+                    "HDMI2",
+                    "HDMI3",
+                    "Tuner",
+                    "IP"
+                ]
+            },
+            "AI PQ": {
+                "DV": [
+                    "HDMI1",
+                    "HDMI2",
+                    "HDMI3",
+                    "Tuner",
+                    "IP"
+                ]
+            },
+            "DV Dark": {
+                "DV": [
+                    "HDMI1",
+                    "HDMI2",
+                    "HDMI3",
+                    "Tuner",
+                    "IP"
+                ]
+            }
+        }
+    },
+    "LowLatencyState": {
+        "rangeInfo": {
+            "from": 0,
+            "to": 1
+        },
+        "platformSupport": true,
+        "context": {
+            "Sports": {
+                "SDR": [
+                    "HDMI1",
+                    "HDMI2",
+                    "HDMI3",
+                    "Composite",
+                    "Tuner",
+                    "IP"
+                ],
+                "HLG": [
+                    "HDMI1",
+                    "HDMI2",
+                    "HDMI3",
+                    "Tuner",
+                    "IP"
+                ],
+                "HDR10": [
+                    "HDMI1",
+                    "HDMI2",
+                    "HDMI3",
+                    "Tuner",
+                    "IP"
+                ]
+            },
+            "Movie": {
+                "SDR": [
+                    "HDMI1",
+                    "HDMI2",
+                    "HDMI3",
+                    "Composite",
+                    "Tuner",
+                    "IP"
+                ],
+                "HLG": [
+                    "HDMI1",
+                    "HDMI2",
+                    "HDMI3",
+                    "Tuner",
+                    "IP"
+                ],
+                "HDR10": [
+                    "HDMI1",
+                    "HDMI2",
+                    "HDMI3",
+                    "Tuner",
+                    "IP"
+                ]
+            },
+            "Game": {
+                "SDR": [
+                    "HDMI1",
+                    "HDMI2",
+                    "HDMI3",
+                    "Composite",
+                    "Tuner",
+                    "IP"
+                ],
+                "HLG": [
+                    "HDMI1",
+                    "HDMI2",
+                    "HDMI3",
+                    "Tuner",
+                    "IP"
+                ],
+                "HDR10": [
+                    "HDMI1",
+                    "HDMI2",
+                    "HDMI3",
+                    "Tuner",
+                    "IP"
+                ],
+                "DV": [
+                    "HDMI1",
+                    "HDMI2",
+                    "HDMI3",
+                    "Tuner",
+                    "IP"
+                ]
+            },
+            "DV IQ": {
+                "DV": [
+                    "HDMI1",
+                    "HDMI2",
+                    "HDMI3",
+                    "Tuner",
+                    "IP"
+                ]
+            },
+            "AI PQ": {
+                "DV": [
+                    "HDMI1",
+                    "HDMI2",
+                    "HDMI3",
+                    "Tuner",
+                    "IP"
+                ]
+            },
+            "DV Dark": {
+                "DV": [
+                    "HDMI1",
+                    "HDMI2",
+                    "HDMI3",
+                    "Tuner",
+                    "IP"
+                ]
+            }
+        }
+    },
+    "AspectRatio": {
+        "rangeInfo": {
+            "options": [
+                "TV AUTO",
+                "TV DIRECT",
+                "TV NORMAL",
+                "TV 16X9 STRETCH",
+                "TV 4X3 PILLARBOX",
+                "TV ZOOM"
+            ]
+        },
+        "platformSupport": true,
+        "context": {
+            "Standard": {
+                "SDR": [
+                    "IP",
+                    "Tuner",
+                    "HDMI1",
+                    "HDMI2",
+                    "HDMI3",
+                    "HDMI4",
+                    "Composite1"
+                ],
+                "HLG": [
+                    "IP",
+                    "Tuner",
+                    "HDMI1",
+                    "HDMI2",
+                    "HDMI3",
+                    "HDMI4"
+                ],
+                "HDR10": [
+                    "IP",
+                    "Tuner",
+                    "HDMI1",
+                    "HDMI2",
+                    "HDMI3",
+                    "HDMI4"
+                ]
+            },
+            "Sports": {
+                "SDR": [
+                    "IP",
+                    "Tuner",
+                    "HDMI1",
+                    "HDMI2",
+                    "HDMI3",
+                    "HDMI4",
+                    "Composite1"
+                ],
+                "HLG": [
+                    "IP",
+                    "Tuner",
+                    "HDMI1",
+                    "HDMI2",
+                    "HDMI3",
+                    "HDMI4"
+                ],
+                "HDR10": [
+                    "IP",
+                    "Tuner",
+                    "HDMI1",
+                    "HDMI2",
+                    "HDMI3",
+                    "HDMI4"
+                ]
+            },
+            "Theater": {
+                "SDR": [
+                    "IP",
+                    "Tuner",
+                    "HDMI1",
+                    "HDMI2",
+                    "HDMI3",
+                    "HDMI4",
+                    "Composite1"
+                ],
+                "HLG": [
+                    "IP",
+                    "Tuner",
+                    "HDMI1",
+                    "HDMI2",
+                    "HDMI3",
+                    "HDMI4"
+                ],
+                "HDR10": [
+                    "IP",
+                    "Tuner",
+                    "HDMI1",
+                    "HDMI2",
+                    "HDMI3",
+                    "HDMI4"
+                ]
+            },
+            "Vivid": {
+                "SDR": [
+                    "IP",
+                    "Tuner",
+                    "HDMI1",
+                    "HDMI2",
+                    "HDMI3",
+                    "HDMI4",
+                    "Composite1"
+                ],
+                "HLG": [
+                    "IP",
+                    "Tuner",
+                    "HDMI1",
+                    "HDMI2",
+                    "HDMI3",
+                    "HDMI4"
+                ],
+                "HDR10": [
+                    "IP",
+                    "Tuner",
+                    "HDMI1",
+                    "HDMI2",
+                    "HDMI3",
+                    "HDMI4"
+                ]
+            },
+            "Energy Saving": {
+                "SDR": [
+                    "IP",
+                    "Tuner",
+                    "HDMI1",
+                    "HDMI2",
+                    "HDMI3",
+                    "HDMI4",
+                    "Composite1"
+                ],
+                "HLG": [
+                    "IP",
+                    "Tuner",
+                    "HDMI1",
+                    "HDMI2",
+                    "HDMI3",
+                    "HDMI4"
+                ],
+                "HDR10": [
+                    "IP",
+                    "Tuner",
+                    "HDMI1",
+                    "HDMI2",
+                    "HDMI3",
+                    "HDMI4"
+                ]
+            },
+            "FILMMAKER MODE": {
+                "SDR": [
+                    "IP",
+                    "Tuner",
+                    "HDMI1",
+                    "HDMI2",
+                    "HDMI3",
+                    "HDMI4",
+                    "Composite1"
+                ],
+                "HLG": [
+                    "IP",
+                    "Tuner",
+                    "HDMI1",
+                    "HDMI2",
+                    "HDMI3",
+                    "HDMI4"
+                ],
+                "HDR10": [
+                    "IP",
+                    "Tuner",
+                    "HDMI1",
+                    "HDMI2",
+                    "HDMI3",
+                    "HDMI4"
+                ]
+            },
+            "AI PQ": {
+                "SDR": [
+                    "IP",
+                    "Tuner",
+                    "HDMI1",
+                    "HDMI2",
+                    "HDMI3",
+                    "HDMI4",
+                    "Composite1"
+                ],
+                "HLG": [
+                    "IP",
+                    "Tuner",
+                    "HDMI1",
+                    "HDMI2",
+                    "HDMI3",
+                    "HDMI4"
+                ],
+                "HDR10": [
+                    "IP",
+                    "Tuner",
+                    "HDMI1",
+                    "HDMI2",
+                    "HDMI3",
+                    "HDMI4"
+                ]
+            },
+            "Dolby Vision IQ": {
+                "DV": [
+                    "IP",
+                    "Tuner",
+                    "HDMI1",
+                    "HDMI2",
+                    "HDMI3",
+                    "HDMI4"
+                ]
+            },
+            "Dolby Vision Bright": {
+                "DV": [
+                    "IP",
+                    "Tuner",
+                    "HDMI1",
+                    "HDMI2",
+                    "HDMI3",
+                    "HDMI4"
+                ]
+            },
+            "Dolby Vision Dark": {
+                "DV": [
+                    "IP",
+                    "Tuner",
+                    "HDMI1",
+                    "HDMI2",
+                    "HDMI3",
+                    "HDMI4"
+                ]
+            },
+            "Game": {
+                "SDR": [
+                    "IP",
+                    "Tuner",
+                    "HDMI1",
+                    "HDMI2",
+                    "HDMI3",
+                    "HDMI4",
+                    "Composite1"
+                ],
+                "HLG": [
+                    "IP",
+                    "Tuner",
+                    "HDMI1",
+                    "HDMI2",
+                    "HDMI3",
+                    "HDMI4"
+                ],
+                "HDR10": [
+                    "IP",
+                    "Tuner",
+                    "HDMI1",
+                    "HDMI2",
+                    "HDMI3",
+                    "HDMI4"
+                ],
+                "DV": [
+                    "IP",
+                    "Tuner",
+                    "HDMI1",
+                    "HDMI2",
+                    "HDMI3",
+                    "HDMI4"
+                ]
+            }
+        }
+    },
     "PrecisionDetails": {
         "rangeInfo": {
             "from": 0,
@@ -1206,6 +1708,265 @@
                     "HDMI3",
                     "Tuner",
                     "IP"
+                ]
+            }
+        }
+    },
+    "PictureMode": {
+        "platformSupport": true,
+        "context": {
+            "Standard": {
+                "SDR": [
+                    "IP",
+                    "Tuner",
+                    "HDMI1",
+                    "HDMI2",
+                    "HDMI3",
+                    "HDMI4",
+                    "Composite1"
+                ],
+                "HLG": [
+                    "IP",
+                    "Tuner",
+                    "HDMI1",
+                    "HDMI2",
+                    "HDMI3",
+                    "HDMI4"
+                ],
+                "HDR10": [
+                    "IP",
+                    "Tuner",
+                    "HDMI1",
+                    "HDMI2",
+                    "HDMI3",
+                    "HDMI4"
+                ]
+            },
+            "Sports": {
+                "SDR": [
+                    "IP",
+                    "Tuner",
+                    "HDMI1",
+                    "HDMI2",
+                    "HDMI3",
+                    "HDMI4",
+                    "Composite1"
+                ],
+                "HLG": [
+                    "IP",
+                    "Tuner",
+                    "HDMI1",
+                    "HDMI2",
+                    "HDMI3",
+                    "HDMI4"
+                ],
+                "HDR10": [
+                    "IP",
+                    "Tuner",
+                    "HDMI1",
+                    "HDMI2",
+                    "HDMI3",
+                    "HDMI4"
+                ]
+            },
+            "Theater": {
+                "SDR": [
+                    "IP",
+                    "Tuner",
+                    "HDMI1",
+                    "HDMI2",
+                    "HDMI3",
+                    "HDMI4",
+                    "Composite1"
+                ],
+                "HLG": [
+                    "IP",
+                    "Tuner",
+                    "HDMI1",
+                    "HDMI2",
+                    "HDMI3",
+                    "HDMI4"
+                ],
+                "HDR10": [
+                    "IP",
+                    "Tuner",
+                    "HDMI1",
+                    "HDMI2",
+                    "HDMI3",
+                    "HDMI4"
+                ]
+            },
+            "Vivid": {
+                "SDR": [
+                    "IP",
+                    "Tuner",
+                    "HDMI1",
+                    "HDMI2",
+                    "HDMI3",
+                    "HDMI4",
+                    "Composite1"
+                ],
+                "HLG": [
+                    "IP",
+                    "Tuner",
+                    "HDMI1",
+                    "HDMI2",
+                    "HDMI3",
+                    "HDMI4"
+                ],
+                "HDR10": [
+                    "IP",
+                    "Tuner",
+                    "HDMI1",
+                    "HDMI2",
+                    "HDMI3",
+                    "HDMI4"
+                ]
+            },
+            "Energy Saving": {
+                "SDR": [
+                    "IP",
+                    "Tuner",
+                    "HDMI1",
+                    "HDMI2",
+                    "HDMI3",
+                    "HDMI4",
+                    "Composite1"
+                ],
+                "HLG": [
+                    "IP",
+                    "Tuner",
+                    "HDMI1",
+                    "HDMI2",
+                    "HDMI3",
+                    "HDMI4"
+                ],
+                "HDR10": [
+                    "IP",
+                    "Tuner",
+                    "HDMI1",
+                    "HDMI2",
+                    "HDMI3",
+                    "HDMI4"
+                ]
+            },
+            "FILMMAKER MODE": {
+                "SDR": [
+                    "IP",
+                    "Tuner",
+                    "HDMI1",
+                    "HDMI2",
+                    "HDMI3",
+                    "HDMI4",
+                    "Composite1"
+                ],
+                "HLG": [
+                    "IP",
+                    "Tuner",
+                    "HDMI1",
+                    "HDMI2",
+                    "HDMI3",
+                    "HDMI4"
+                ],
+                "HDR10": [
+                    "IP",
+                    "Tuner",
+                    "HDMI1",
+                    "HDMI2",
+                    "HDMI3",
+                    "HDMI4"
+                ]
+            },
+            "AI PQ": {
+                "SDR": [
+                    "IP",
+                    "Tuner",
+                    "HDMI1",
+                    "HDMI2",
+                    "HDMI3",
+                    "HDMI4",
+                    "Composite1"
+                ],
+                "HLG": [
+                    "IP",
+                    "Tuner",
+                    "HDMI1",
+                    "HDMI2",
+                    "HDMI3",
+                    "HDMI4"
+                ],
+                "HDR10": [
+                    "IP",
+                    "Tuner",
+                    "HDMI1",
+                    "HDMI2",
+                    "HDMI3",
+                    "HDMI4"
+                ]
+            },
+            "Dolby Vision IQ": {
+                "DV": [
+                    "IP",
+                    "Tuner",
+                    "HDMI1",
+                    "HDMI2",
+                    "HDMI3",
+                    "HDMI4"
+                ]
+            },
+            "Dolby Vision Bright": {
+                "DV": [
+                    "IP",
+                    "Tuner",
+                    "HDMI1",
+                    "HDMI2",
+                    "HDMI3",
+                    "HDMI4"
+                ]
+            },
+            "Dolby Vision Dark": {
+                "DV": [
+                    "IP",
+                    "Tuner",
+                    "HDMI1",
+                    "HDMI2",
+                    "HDMI3",
+                    "HDMI4"
+                ]
+            },
+            "Game": {
+                "SDR": [
+                    "IP",
+                    "Tuner",
+                    "HDMI1",
+                    "HDMI2",
+                    "HDMI3",
+                    "HDMI4",
+                    "Composite1"
+                ],
+                "HLG": [
+                    "IP",
+                    "Tuner",
+                    "HDMI1",
+                    "HDMI2",
+                    "HDMI3",
+                    "HDMI4"
+                ],
+                "HDR10": [
+                    "IP",
+                    "Tuner",
+                    "HDMI1",
+                    "HDMI2",
+                    "HDMI3",
+                    "HDMI4"
+                ],
+                "DV": [
+                    "IP",
+                    "Tuner",
+                    "HDMI1",
+                    "HDMI2",
+                    "HDMI3",
+                    "HDMI4"
                 ]
             }
         }
