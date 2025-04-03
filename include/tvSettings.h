@@ -713,7 +713,7 @@ tvError_t SaveLocalDimmingLevel(tvVideoSrcType_t videoSrcType, int pq_mode,tvVid
  *
  * @pre TvInit() should be called before calling this API
  */
-tvError_t GetBrightnessCaps(tvContextCaps_t ** context_caps);
+tvError_t GetBrightnessCaps(int *max_brightness, tvContextCaps_t ** context_caps);
 
 /**
  * @brief Sets the brightness value to driver register(s)
@@ -807,7 +807,7 @@ tvError_t SaveBrightness(tvVideoSrcType_t videoSrcType, int pq_mode,tvVideoForma
  *
  * @pre TvInit() should be called before calling this API
  */
-tvError_t GetContrastCaps(tvContextCaps_t ** context_caps);
+tvError_t GetContrastCaps(int* max_contrast, tvContextCaps_t ** context_caps);
 
 /**
  * @brief Sets the contrast value to driver register(s)
@@ -923,7 +923,7 @@ tvError_t SetSharpness(int sharpness);
  *
  * @pre TvInit() should be called before calling this API
  */
-tvError_t GetSharpnessCaps(tvContextCaps_t ** context_caps);
+tvError_t GetSharpnessCaps(int *max_sharpness, tvContextCaps_t ** context_caps);
 
 /**
  * @brief Gets the current sharpness value
@@ -1037,7 +1037,7 @@ tvError_t GetSaturation(int *saturation);
  *
  * @pre TvInit() should be called before calling this API
  */
-tvError_t GetSaturationCaps(tvContextCaps_t ** context_caps);
+tvError_t GetSaturationCaps(int* max_saturation, tvContextCaps_t ** context_caps);
 
 /**
  * @brief Saves the saturation value
@@ -1109,7 +1109,7 @@ tvError_t SetHue(int hue);
  *
  * @pre TvInit() should be called before calling this API
  */
-tvError_t GetHueCaps(tvContextCaps_t ** context_caps);
+tvError_t GetHueCaps(int* max_hue, tvContextCaps_t ** context_caps);
 
 /**
  * @brief Gets the current hue value
@@ -1224,7 +1224,7 @@ tvError_t GetColorTemperature(tvColorTemp_t *colorTemp);
  *
  * @pre TvInit() should be called before calling this API
  */
-tvError_t GetColorTemperatureCaps(tvContextCaps_t ** context_caps);
+tvError_t GetColorTemperatureCaps(tvColorTemp_t** color_temp, size_t* num_color_temp, tvContextCaps_t** context_caps);
 
 /**
  * @brief Saves the color temperature value
@@ -2945,7 +2945,7 @@ tvError_t SaveCustom2PointWhiteBalance(tvVideoSrcType_t videoSrcType, int pq_mod
  *
  * @pre TvInit() should be called before calling this API
  */
-tvError_t GetPrecisionDetailCaps(tvContextCaps_t ** context_caps);
+tvError_t GetPrecisionDetailCaps(int* max_precision, tvContextCaps_t ** context_caps);
 
 /**
  * @brief Gets the precision detail setting.
