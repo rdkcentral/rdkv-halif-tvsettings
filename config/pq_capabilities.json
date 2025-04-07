@@ -85,7 +85,7 @@
                     "IP"
                 ]
             },
-            "DV IQ": {
+            "IQ": {
                 "DV": [
                     "HDMI1",
                     "HDMI2",
@@ -103,7 +103,7 @@
                     "IP"
                 ]
             },
-            "DV Dark": {
+            "Dark": {
                 "DV": [
                     "HDMI1",
                     "HDMI2",
@@ -200,7 +200,7 @@
                     "IP"
                 ]
             },
-            "DV IQ": {
+            "IQ": {
                 "DV": [
                     "HDMI1",
                     "HDMI2",
@@ -218,7 +218,7 @@
                     "IP"
                 ]
             },
-            "DV Dark": {
+            "Dark": {
                 "DV": [
                     "HDMI1",
                     "HDMI2",
@@ -315,7 +315,7 @@
                     "IP"
                 ]
             },
-            "DV IQ": {
+            "IQ": {
                 "DV": [
                     "HDMI1",
                     "HDMI2",
@@ -333,7 +333,7 @@
                     "IP"
                 ]
             },
-            "DV Dark": {
+            "Dark": {
                 "DV": [
                     "HDMI1",
                     "HDMI2",
@@ -430,7 +430,7 @@
                     "IP"
                 ]
             },
-            "DV IQ": {
+            "IQ": {
                 "DV": [
                     "HDMI1",
                     "HDMI2",
@@ -448,7 +448,7 @@
                     "IP"
                 ]
             },
-            "DV Dark": {
+            "Dark": {
                 "DV": [
                     "HDMI1",
                     "HDMI2",
@@ -545,7 +545,7 @@
                     "IP"
                 ]
             },
-            "DV IQ": {
+            "IQ": {
                 "DV": [
                     "HDMI1",
                     "HDMI2",
@@ -563,7 +563,7 @@
                     "IP"
                 ]
             },
-            "DV Dark": {
+            "Dark": {
                 "DV": [
                     "HDMI1",
                     "HDMI2",
@@ -660,7 +660,7 @@
                     "IP"
                 ]
             },
-            "DV IQ": {
+            "IQ": {
                 "DV": [
                     "HDMI1",
                     "HDMI2",
@@ -678,7 +678,7 @@
                     "IP"
                 ]
             },
-            "DV Dark": {
+            "Dark": {
                 "DV": [
                     "HDMI1",
                     "HDMI2",
@@ -779,7 +779,7 @@
                     "IP"
                 ]
             },
-            "DV IQ": {
+            "IQ": {
                 "DV": [
                     "HDMI1",
                     "HDMI2",
@@ -797,7 +797,7 @@
                     "IP"
                 ]
             },
-            "DV Dark": {
+            "Dark": {
                 "DV": [
                     "HDMI1",
                     "HDMI2",
@@ -897,7 +897,7 @@
                     "IP"
                 ]
             },
-            "DV IQ": {
+            "IQ": {
                 "DV": [
                     "HDMI1",
                     "HDMI2",
@@ -915,7 +915,7 @@
                     "IP"
                 ]
             },
-            "DV Dark": {
+            "Dark": {
                 "DV": [
                     "HDMI1",
                     "HDMI2",
@@ -1012,7 +1012,7 @@
                     "IP"
                 ]
             },
-            "DV IQ": {
+            "IQ": {
                 "DV": [
                     "HDMI1",
                     "HDMI2",
@@ -1030,7 +1030,7 @@
                     "IP"
                 ]
             },
-            "DV Dark": {
+            "Dark": {
                 "DV": [
                     "HDMI1",
                     "HDMI2",
@@ -1243,7 +1243,7 @@
                     "HDMI4"
                 ]
             },
-            "Dolby Vision IQ": {
+            "IQ": {
                 "DV": [
                     "IP",
                     "Tuner",
@@ -1253,7 +1253,7 @@
                     "HDMI4"
                 ]
             },
-            "Dolby Vision Bright": {
+            "Bright": {
                 "DV": [
                     "IP",
                     "Tuner",
@@ -1263,7 +1263,7 @@
                     "HDMI4"
                 ]
             },
-            "Dolby Vision Dark": {
+            "Dark": {
                 "DV": [
                     "IP",
                     "Tuner",
@@ -1317,7 +1317,7 @@
         },
         "platformSupport": true,
         "context": {
-            "DV Bright": {
+            "Bright": {
                 "DV": [
                     "IP",
                     "Tuner",
@@ -1326,7 +1326,7 @@
                     "HDMI3"
                 ]
             },
-            "DV IQ": {
+            "IQ": {
                 "DV": [
                     "IP",
                     "Tuner",
@@ -1416,7 +1416,7 @@
                     "HDMI3"
                 ]
             },
-            "DV IQ": {
+            "IQ": {
                 "DV": [
                     "IP",
                     "Tuner",
@@ -1451,7 +1451,7 @@
                     "HDMI3"
                 ]
             },
-            "DV IQ": {
+            "IQ": {
                 "DV": [
                     "IP",
                     "Tuner",
@@ -1486,7 +1486,7 @@
                     "HDMI3"
                 ]
             },
-            "DV IQ": {
+            "IQ": {
                 "DV": [
                     "IP",
                     "Tuner",
@@ -1521,7 +1521,7 @@
                     "HDMI3"
                 ]
             },
-            "DV IQ": {
+            "IQ": {
                 "DV": [
                     "IP",
                     "Tuner",
@@ -1556,7 +1556,7 @@
                     "HDMI3"
                 ]
             },
-            "DV IQ": {
+            "IQ": {
                 "DV": [
                     "IP",
                     "Tuner",
@@ -1662,7 +1662,7 @@
             "to": 1
         },
         "context": {
-            "DV IQ": {
+            "IQ": {
                 "DV": [
                     "HDMI1",
                     "HDMI2",
@@ -1670,7 +1670,7 @@
                     "IP"
                 ]
             },
-            "DV Bright": {
+            "Bright": {
                 "DV": [
                     "IP",
                     "Tuner",
@@ -1679,7 +1679,7 @@
                     "HDMI3"
                 ]
             },
-            "DV Dark": {
+            "Dark": {
                 "DV": [
                     "HDMI1",
                     "HDMI2",
@@ -1912,7 +1912,7 @@
                     "HDMI4"
                 ]
             },
-            "Dolby Vision IQ": {
+            "IQ": {
                 "DV": [
                     "IP",
                     "Tuner",
@@ -1922,7 +1922,7 @@
                     "HDMI4"
                 ]
             },
-            "Dolby Vision Bright": {
+            "Bright": {
                 "DV": [
                     "IP",
                     "Tuner",
@@ -1932,7 +1932,7 @@
                     "HDMI4"
                 ]
             },
-            "Dolby Vision Dark": {
+            "Dark": {
                 "DV": [
                     "IP",
                     "Tuner",
