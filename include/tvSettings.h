@@ -330,7 +330,8 @@ tvError_t GetCurrentVideoSource(tvVideoSrcType_t *currentSource);
  *
  * If the platform does not support backlight, then tvERROR_OPERATION_NOT_SUPPORTED is returned.
  *
- * @param[out] context_caps - A capabilities structure listing the configuration contexts supported.
+ * @param[out] max_backlight - Maximum Backlight value.(Minimum willbe zero).
+ * @param[out] context_caps  - A capabilities structure listing the configuration contexts supported.
  *
  * @return tvError_t
  *
@@ -342,7 +343,7 @@ tvError_t GetCurrentVideoSource(tvVideoSrcType_t *currentSource);
  *
  * @pre TvInit() should be called before calling this API
  */
-tvError_t GetBacklightCaps(tvContextCaps_t ** context_caps);
+tvError_t GetBacklightCaps(int *max_backlight, tvContextCaps_t ** context_caps);
 
 /**
  * @brief Gets the current backlight value
@@ -631,6 +632,9 @@ tvError_t GetTVDimmingMode(char *dimmingMode);
  *
  * If the platform does not support TVDimmingMode, then tvERROR_OPERATION_NOT_SUPPORTED is returned.
  *
+ * @param[out] dimming_mode - Pointer to Pointer which contains platform supported dimmingModes.
+ *                          - Memory allocated at HAL end.
+ *                          - Value will be a member of ::tvDimmingMode_t
  * @param[out] context_caps - A capabilities structure listing the configuration contexts supported.
  *
  * @return tvError_t
@@ -643,7 +647,7 @@ tvError_t GetTVDimmingMode(char *dimmingMode);
  *
  * @pre TvInit() should be called before calling this API
  */
-tvError_t GetTVDimmingModeCaps(tvContextCaps_t ** context_caps);
+tvError_t GetTVDimmingModeCaps(tvDimmingMode_t** dimming_mode, size_t* num_dimming_mode, tvContextCaps_t** context_caps);
 
 /**
  * @brief Sets the local dimming level
@@ -727,7 +731,8 @@ tvError_t SaveLocalDimmingLevel(tvVideoSrcType_t videoSrcType, int pq_mode,tvVid
  *
  * If the platform does not support brightness, then tvERROR_OPERATION_NOT_SUPPORTED is returned.
  *
- * @param[out] context_caps - A capabilities structure listing the configuration contexts supported.
+ * @param[out] max_brightness - Maximum Brightness value.(Minimum willbe zero).
+ * @param[out] context_caps   - A capabilities structure listing the configuration contexts supported.
  *
  * @return tvError_t
  *
@@ -739,7 +744,7 @@ tvError_t SaveLocalDimmingLevel(tvVideoSrcType_t videoSrcType, int pq_mode,tvVid
  *
  * @pre TvInit() should be called before calling this API
  */
-tvError_t GetBrightnessCaps(tvContextCaps_t ** context_caps);
+tvError_t GetBrightnessCaps(int *max_brightness, tvContextCaps_t ** context_caps);
 
 /**
  * @brief Sets the brightness value to driver register(s)
@@ -821,6 +826,7 @@ tvError_t SaveBrightness(tvVideoSrcType_t videoSrcType, int pq_mode,tvVideoForma
  *
  * If the platform does not support contrast, then tvERROR_OPERATION_NOT_SUPPORTED is returned.
  *
+ * @param[out] max_contrast - Maximum Contrast value.(Minimum willbe zero).
  * @param[out] context_caps - A capabilities structure listing the configuration contexts supported.
  *
  * @return tvError_t
@@ -833,7 +839,7 @@ tvError_t SaveBrightness(tvVideoSrcType_t videoSrcType, int pq_mode,tvVideoForma
  *
  * @pre TvInit() should be called before calling this API
  */
-tvError_t GetContrastCaps(tvContextCaps_t ** context_caps);
+tvError_t GetContrastCaps(int* max_contrast, tvContextCaps_t ** context_caps);
 
 /**
  * @brief Sets the contrast value to driver register(s)
@@ -937,7 +943,8 @@ tvError_t SetSharpness(int sharpness);
  *
  * If the platform does not support sharpness, then tvERROR_OPERATION_NOT_SUPPORTED is returned.
  *
- * @param[out] context_caps - A capabilities structure listing the configuration contexts supported.
+ * @param[out] max_sharpness - Maximum Sharpness value.(Minimum willbe zero).
+ * @param[out] context_caps  - A capabilities structure listing the configuration contexts supported.
  *
  * @return tvError_t
  *
@@ -949,7 +956,7 @@ tvError_t SetSharpness(int sharpness);
  *
  * @pre TvInit() should be called before calling this API
  */
-tvError_t GetSharpnessCaps(tvContextCaps_t ** context_caps);
+tvError_t GetSharpnessCaps(int *max_sharpness, tvContextCaps_t ** context_caps);
 
 /**
  * @brief Gets the current sharpness value
@@ -980,7 +987,7 @@ tvError_t GetSharpness(int *sharpness);
  * specified picture mode is selected, specified primary video format is played and specified primary video source is selected.
  * There will be no change in current sharpness value applied in PQ module.
  *
- * @param[in] videoSrcType           - Source input value. Valid value will be a member of ::tvVideoSrcType_t
+ * @param[in] videoSrcType          - Source input value. Valid value will be a member of ::tvVideoSrcType_t
  * @param[in] pq_mode               - Picture mode index. Valid value will be a member of ::tvPQModeIndex_t
  * @param[in] videoFormatType       - Video format type value. Valid value will be a member of ::tvVideoFormatType_t
  * @param[in] value                 - Value of the sharpness to be set. Valid range is (0 - 100)
@@ -1063,7 +1070,7 @@ tvError_t GetSaturation(int *saturation);
  *
  * @pre TvInit() should be called before calling this API
  */
-tvError_t GetSaturationCaps(tvContextCaps_t ** context_caps);
+tvError_t GetSaturationCaps(int* max_saturation, tvContextCaps_t ** context_caps);
 
 /**
  * @brief Saves the saturation value
@@ -1123,6 +1130,7 @@ tvError_t SetHue(int hue);
  *
  * If the platform does not support hue, then tvERROR_OPERATION_NOT_SUPPORTED is returned.
  *
+ * @param[out] max_hue      - Maximum Hue value.(Minimum willbe zero).
  * @param[out] context_caps - A capabilities structure listing the configuration contexts supported.
  *
  * @return tvError_t
@@ -1135,7 +1143,7 @@ tvError_t SetHue(int hue);
  *
  * @pre TvInit() should be called before calling this API
  */
-tvError_t GetHueCaps(tvContextCaps_t ** context_caps);
+tvError_t GetHueCaps(int* max_hue, tvContextCaps_t ** context_caps);
 
 /**
  * @brief Gets the current hue value
@@ -1238,6 +1246,9 @@ tvError_t GetColorTemperature(tvColorTemp_t *colorTemp);
  *
  * If the platform does not support colorTemperature, then tvERROR_OPERATION_NOT_SUPPORTED is returned.
  *
+ * @param[out] color_temp   - Pointer to  Pointer which contains platform supported colorTemperature.
+ *                          - Memory allocated at HAL end.
+ *                          - Value will be a member of ::tvColorTemp_t.
  * @param[out] context_caps - A capabilities structure listing the configuration contexts supported.
  *
  * @return tvError_t
@@ -1250,7 +1261,7 @@ tvError_t GetColorTemperature(tvColorTemp_t *colorTemp);
  *
  * @pre TvInit() should be called before calling this API
  */
-tvError_t GetColorTemperatureCaps(tvContextCaps_t ** context_caps);
+tvError_t GetColorTemperatureCaps(tvColorTemp_t** color_temp, size_t* num_color_temp, tvContextCaps_t** context_caps);
 
 /**
  * @brief Saves the color temperature value
@@ -1354,7 +1365,10 @@ tvError_t SaveAspectRatio(tvVideoSrcType_t videoSrcType, int pq_mode,tvVideoForm
  * be safe to reference for the lifetime of the process.
  *
  * If the platform does not support AspectRatio, then tvERROR_OPERATION_NOT_SUPPORTED is returned.
- *
+ * 
+ * @param[out] aspect_ratio - Pointer to Pointer which contains platform supported aspectRatio.
+ *                          - Memory allocated at HAL end.
+ *                          - Value will be a member of ::tvDisplayMode_t.
  * @param[out] context_caps - A capabilities structure listing the configuration contexts supported.
  *
  * @return tvError_t
@@ -1367,7 +1381,7 @@ tvError_t SaveAspectRatio(tvVideoSrcType_t videoSrcType, int pq_mode,tvVideoForm
  *
  * @pre TvInit() should be called before calling this API
  */
-tvError_t GetAspectRatioCaps(tvContextCaps_t ** context_caps);
+tvError_t GetAspectRatioCaps(tvDisplayMode_t** aspect_ratio, size_t* num_aspect_ratio, tvContextCaps_t** context_caps);
 
 /**
  * @brief Sets the low latency state to driver register(s)
@@ -1444,6 +1458,7 @@ tvError_t GetLowLatencyState(int *lowlatencystate);
  *
  * If the platform does not support LowLatencyState, then tvERROR_OPERATION_NOT_SUPPORTED is returned.
  *
+ * @param[out] max_latency  - Maximum Latency value.(Minimum willbe zero).
  * @param[out] context_caps - A capabilities structure listing the configuration contexts supported.
  *
  * @return tvError_t
@@ -1456,7 +1471,7 @@ tvError_t GetLowLatencyState(int *lowlatencystate);
  *
  * @pre TvInit() should be called before calling this API
  */
-tvError_t GetLowLatencyStateCaps(tvContextCaps_t ** context_caps);
+tvError_t GetLowLatencyStateCaps(int* max_latency, tvContextCaps_t ** context_caps);
 
 /**
  * @brief Sets the dynamic contrast
@@ -1757,7 +1772,10 @@ tvError_t SaveSourcePictureMode(tvVideoSrcType_t videoSrcType, tvVideoFormatType
  *
  * If the platform does not support PictureMode, then tvERROR_OPERATION_NOT_SUPPORTED is returned.
  *
- * @param[out] context_caps - A capabilities structure listing the configuration contexts supported.
+ * @param[out] mode          - Pointer to Pointer which contains platform supported PQModes.
+ *                           - Memory allocated at HAL end.
+ *                           - Value will be a member of ::tvPQModeIndex_t.
+ * @param[out] context_caps  - A capabilities structure listing the configuration contexts supported.
  *
  * @return tvError_t
  *
@@ -1769,7 +1787,7 @@ tvError_t SaveSourcePictureMode(tvVideoSrcType_t videoSrcType, tvVideoFormatType
  *
  * @pre TvInit() should be called before calling this API
  */
-tvError_t GetTVPictureModeCaps(tvContextCaps_t ** context_caps);
+tvError_t GetTVPictureModeCaps(tvPQModeIndex_t **mode,tvContextCaps_t ** context_caps);
 
 /**
  * @brief Sets or saves the rgain value
@@ -3038,7 +3056,8 @@ tvError_t SaveCustom2PointWhiteBalance(tvVideoSrcType_t videoSrcType, int pq_mod
  *
  * If the platform does not support precision detail, then tvERROR_OPERATION_NOT_SUPPORTED is returned.
  *
- * @param[out] context_caps - A capabilities structure listing the configuration contexts supported.
+ * @param[out] max_precision - Maximum Precision value.(Minimum willbe zero).
+ * @param[out] context_caps  - A capabilities structure listing the configuration contexts supported.
  *
  * @return tvError_t
  *
@@ -3050,7 +3069,7 @@ tvError_t SaveCustom2PointWhiteBalance(tvVideoSrcType_t videoSrcType, int pq_mod
  *
  * @pre TvInit() should be called before calling this API
  */
-tvError_t GetPrecisionDetailCaps(tvContextCaps_t ** context_caps);
+tvError_t GetPrecisionDetailCaps(int* max_precision, tvContextCaps_t ** context_caps);
 
 /**
  * @brief Gets the precision detail setting.
@@ -3139,11 +3158,10 @@ videoFormatType, int * precisionDetail);
  *
  * If the platform does not support SDR gamma setting, then tvERROR_OPERATION_NOT_SUPPORTED is returned.
  *
- * @param[out] sdr_gamma - Returns a pointer to an array of supported SDR gamma settings. Values are ::
-tvSdrGamma_t members.
- * The returned array must not be freed by the caller.
+ * @param[out] sdr_gamma     - Returns a pointer to an array of supported SDR gamma settings. Values are ::tvSdrGamma_t members.
+ *                             The returned array must not be freed by the caller.
  * @param[out] num_sdr_gamma - Returns the length of the array pointed to by `sdr_gamma`.
- * @param[out] context_caps - A capabilities structure listing the configuration contexts supported.
+ * @param[out] context_caps  - A capabilities structure listing the configuration contexts supported.
  *
  * @return tvError_t
  *
@@ -3212,8 +3230,8 @@ tvError_t SetSdrGamma(tvVideoSrcType_t videoSrcType, tvPQModeIndex_t pq_mode, tv
  * If the platform does not support an SDR gamma setting, then tvERROR_OPERATION_NOT_SUPPORTED is returned.
  *
  * @param[in] videoSrcType - Source input value. Valid value will be a member of ::tvVideoSrcType_t
- * @param[in] pq_mode - Picture mode index. Valid value will be a member of ::tvPQModeIndex_t
- * @param[out] sdrGamma - SDR gamma setting. Valid value will be a member of ::tvSdrGamma_t.
+ * @param[in] pq_mode      - Picture mode index. Valid value will be a member of ::tvPQModeIndex_t
+ * @param[out] sdrGamma    - SDR gamma setting. Valid value will be a member of ::tvSdrGamma_t.
  *
  * @return tvError_t
  *
@@ -3264,17 +3282,17 @@ tvError_t GetLocalContrastEnhancementCaps(int * maxLocalContrastEnhancement, tvC
  *
  * This function sets the local contrast enhancement value for the specified picture mode,
  * primary video format and primary video source. The local contrast enhancement value should be applied
-automatically by whenever the
+ * automatically by whenever the
  * specified picture mode, primary video format and primary video source is selected.
  *
  * The local contrast enhancement value is applied in the PQ module if the current picture mode, primary video
-format and
+ * format and
  * primary video source match the parameters.
  *
  * If the platform does not support local contrast enhancement, then tvERROR_OPERATION_NOT_SUPPORTED is returned.
  *
- * @param[in] videoSrcType - Source input value. Valid value will be a member of ::tvVideoSrcType_t
- * @param[in] pq_mode - Picture mode index. Valid value will be a member of ::tvPQModeIndex_t
+ * @param[in] videoSrcType    - Source input value. Valid value will be a member of ::tvVideoSrcType_t
+ * @param[in] pq_mode         - Picture mode index. Valid value will be a member of ::tvPQModeIndex_t
  * @param[in] videoFormatType - Video format type value. Valid value will be a member of ::
 tvVideoFormatType_t
  * @param[in] localContrastEnhancement - Value of the local contrast enhancement to be set.
@@ -3300,13 +3318,12 @@ tvError_t SetLocalContrastEnhancement(tvVideoSrcType_t videoSrcType, tvPQModeInd
  *
  * If the platform does not support local contrast enhancement, then tvERROR_OPERATION_NOT_SUPPORTED is returned.
  *
- * @param[in] videoSrcType - Source input value. Valid value will be a member of ::tvVideoSrcType_t
- * @param[in] pq_mode - Picture mode index. Valid value will be a member of ::tvPQModeIndex_t
- * @param[in] videoFormatType - Video format type value. Valid value will be a member of ::
-tvVideoFormatType_t
+ * @param[in] videoSrcType              - Source input value. Valid value will be a member of ::tvVideoSrcType_t
+ * @param[in] pq_mode                   - Picture mode index. Valid value will be a member of ::tvPQModeIndex_t
+ * @param[in] videoFormatType           - Video format type value. Valid value will be a member of ::tvVideoFormatType_t
  * @param[out] localContrastEnhancement - Value of the local contrast enhancement.
- * Valid values are from 0..N where 0=OFF and N is the maximum effect level,
-returned by GetLocalContrastEnhancementCaps().
+ *                                      - Valid values are from 0..N where 0=OFF and N is the maximum effect level,
+ *                                      - returned by GetLocalContrastEnhancementCaps().
  *
  * @return tvError_t
  *
@@ -3327,13 +3344,12 @@ tvError_t GetLocalContrastEnhancement(tvVideoSrcType_t videoSrcType, tvPQModeInd
  *
  * If the platform does not support local contrast enhancement, then tvERROR_OPERATION_NOT_SUPPORTED is returned.
  *
- * @param[in] videoSrcType - Source input value. Valid value will be a member of ::tvVideoSrcType_t
- * @param[in] pq_mode - Picture mode index. Valid value will be a member of ::tvPQModeIndex_t
- * @param[in] videoFormatType - Video format type value. Valid value will be a member of ::
-tvVideoFormatType_t
+ * @param[in] videoSrcType              - Source input value. Valid value will be a member of ::tvVideoSrcType_t
+ * @param[in] pq_mode                   - Picture mode index. Valid value will be a member of ::tvPQModeIndex_t
+ * @param[in] videoFormatType           - Video format type value. Valid value will be a member of ::tvVideoFormatType_t
  * @param[out] localContrastEnhancement - Value of the local contrast enhancement.
- * Valid values are from 0..N where 0=OFF and N is the maximum effect level,
-returned by GetLocalContrastEnhancementCaps().
+ *                                      - Valid values are from 0..N where 0=OFF and N is the maximum effect level,
+ *                                      - returned by GetLocalContrastEnhancementCaps().
  *
  * @return tvError_t
  *
@@ -3360,11 +3376,10 @@ tvError_t GetLocalContrastEnhancementDefault(tvVideoSrcType_t videoSrcType, tvPQ
  * The capabilities structure returned by this call is allocated by the HAL function and shall
  * be safe to reference for the lifetime of the process.
  *
- * If the platform does not support an MPEG noise reduction setting, then tvERROR_OPERATION_NOT_SUPPORTED is
-returned.
+ * If the platform does not support an MPEG noise reduction setting, then tvERROR_OPERATION_NOT_SUPPORTED is returned.
  *
  * @param[out] maxMPEGNoiseReduction - Maximum MPEG noise reduction setting value.
- * @param[out] context_caps - A capabilities structure listing the configuration contexts supported.
+ * @param[out] context_caps          - A capabilities structure listing the configuration contexts supported.
  *
  * @return tvError_t
  *
@@ -3382,8 +3397,7 @@ tvError_t GetMPEGNoiseReductionCaps(int * maxMPEGNoiseReduction, tvContextCaps_t
  * @brief Sets the MPEG noise reduction value.
  *
  * This function sets the MPEG noise reduction value for the specific picture mode,
- * primary video format and primary video source. The set MPEG noise reduction value should be applied automatically
-by whenever the
+ * primary video format and primary video source. The set MPEG noise reduction value should be applied automatically by whenever the
  * specified picture mode, primary video format and primary video source is selected.
  *
  * The MPEG noise reduction value is applied in the PQ module if the current picture mode, primary video format and
@@ -3391,12 +3405,12 @@ by whenever the
  *
  * If the platform does not support MPEG noise reduction, then tvERROR_OPERATION_NOT_SUPPORTED is returned.
  *
- * @param[in] videoSrcType - Source input value. Valid value will be a member of ::tvVideoSrcType_t
- * @param[in] pq_mode - Picture mode index. Valid value will be a member of ::tvPQModeIndex_t
- * @param[in] videoFormatType - Video format type value. Valid value will be a member of ::tvVideoFormatType_t
+ * @param[in] videoSrcType       - Source input value. Valid value will be a member of ::tvVideoSrcType_t
+ * @param[in] pq_mode            - Picture mode index. Valid value will be a member of ::tvPQModeIndex_t
+ * @param[in] videoFormatType    - Video format type value. Valid value will be a member of ::tvVideoFormatType_t
  * @param[in] mpegNoiseReduction - Value of the MPEG noise reduction to be set.
- * Valid values are from 0..N where 0=OFF and N is the maximum effect level,
-returned by GetMPEGNoiseReductionCaps().
+ *                               - Valid values are from 0..N where 0=OFF and N is the maximum effect level,
+ *                               - returned by GetMPEGNoiseReductionCaps().
  *
  * @return tvError_t
  *
@@ -3417,12 +3431,12 @@ tvError_t SetMPEGNoiseReduction(tvVideoSrcType_t videoSrcType, tvPQModeIndex_t p
  *
  * If the platform does not support MPEG noise reduction, then tvERROR_OPERATION_NOT_SUPPORTED is returned.
  *
- * @param[in] videoSrcType - Source input value. Valid value will be a member of ::tvVideoSrcType_t
- * @param[in] pq_mode - Picture mode index. Valid value will be a member of ::tvPQModeIndex_t
- * @param[in] videoFormatType - Video format type value. Valid value will be a member of ::tvVideoFormatType_t
+ * @param[in] videoSrcType        - Source input value. Valid value will be a member of ::tvVideoSrcType_t
+ * @param[in] pq_mode             - Picture mode index. Valid value will be a member of ::tvPQModeIndex_t
+ * @param[in] videoFormatType     - Video format type value. Valid value will be a member of ::tvVideoFormatType_t
  * @param[out] mpegNoiseReduction - Value of the MPEG noise reduction.
- * Valid values are from 0..N where 0=OFF and N is the maximum effect level,
-returned by GetMPEGNoiseReductionCaps().
+ *                                - Valid values are from 0..N where 0=OFF and N is the maximum effect level,
+ *                                - returned by GetMPEGNoiseReductionCaps().
  *
  * @return tvError_t
  *
@@ -3444,12 +3458,12 @@ videoFormatType, int * mpegNoiseReduction);
  *
  * If the platform does not support MPEG noise reduction, then tvERROR_OPERATION_NOT_SUPPORTED is returned.
  *
- * @param[in] videoSrcType - Source input value. Valid value will be a member of ::tvVideoSrcType_t
- * @param[in] pq_mode - Picture mode index. Valid value will be a member of ::tvPQModeIndex_t
- * @param[in] videoFormatType - Video format type value. Valid value will be a member of ::tvVideoFormatType_t
- * @param[out] mpegNoiseReduction - Value of the MPEG noise reduction.
- * Valid values are from 0..N where 0=OFF and N is the maximum effect level,
-returned by GetMPEGNoiseReductionCaps().
+ * @param[in] videoSrcType           - Source input value. Valid value will be a member of ::tvVideoSrcType_t
+ * @param[in] pq_mode                - Picture mode index. Valid value will be a member of ::tvPQModeIndex_t
+ * @param[in] videoFormatType        - Video format type value. Valid value will be a member of ::tvVideoFormatType_t
+ * @param[out] mpegNoiseReduction    - Value of the MPEG noise reduction.
+ *                                   - Valid values are from 0..N where 0=OFF and N is the maximum effect level,
+ *                                   - returned by GetMPEGNoiseReductionCaps().
  *
  * @return tvError_t
  *
@@ -3466,8 +3480,7 @@ tvError_t GetMPEGNoiseReductionDefault(tvVideoSrcType_t videoSrcType, tvPQModeIn
 /**
  * @brief Gets the maximum digital noise reduction setting value supported by the platform.
  *
- * The digital noise reduction setting ranges from 0..N inclusive where 0 is OFF and N is the maximum effect level
-and
+ * The digital noise reduction setting ranges from 0..N inclusive where 0 is OFF and N is the maximum effect level and
  * value supported by the platform. The value of N is returned by this function.
  *
  * The `context_caps` parameter receives a pointer to a `tvContextCaps_t` structure that lists the different
@@ -3477,11 +3490,10 @@ and
  * The capabilities structure returned by this call is allocated by the HAL function and shall
  * be safe to reference for the lifetime of the process.
  *
- * If the platform does not support an digital noise reduction setting, then tvERROR_OPERATION_NOT_SUPPORTED is
-returned.
+ * If the platform does not support an digital noise reduction setting, then tvERROR_OPERATION_NOT_SUPPORTED is returned.
  *
- * @param[out] maxDigitalNoiseReduction - Maximum digital noise reduction setting value.
- * @param[out] context_caps - A capabilities structure listing the configuration contexts supported.
+ * @param[out] maxDigitalNoiseReduction - Maximum digital noise reduction setting value.(Minimum willbe zero)
+ * @param[out] context_caps             - A capabilities structure listing the configuration contexts supported.
  *
  * @return tvError_t
  *
@@ -3499,22 +3511,20 @@ tvError_t GetDigitalNoiseReductionCaps(int * maxDigitalNoiseReduction, tvContext
  * @brief Sets the digital noise reduction value.
  *
  * This function sets the digital noise reduction value for the specified picture mode,
- * primary video format and primary video source. The digital noise reduction value should be applied automatically
-by whenever the
+ * primary video format and primary video source. The digital noise reduction value should be applied automatically by whenever the
  * specified picture mode, primary video format and primary video source are selected.
  *
- * The digital noise reduction value is applied in the PQ module if the current picture mode, primary video format
-and
+ * The digital noise reduction value is applied in the PQ module if the current picture mode, primary video format and
  * primary video source match the parameters.
  *
  * If the platform does not support digital noise reduction, then tvERROR_OPERATION_NOT_SUPPORTED is returned.
  *
- * @param[in] videoSrcType - Source input value. Valid value will be a member of ::tvVideoSrcType_t
- * @param[in] pq_mode - Picture mode index. Valid value will be a member of ::tvPQModeIndex_t
- * @param[in] videoFormatType - Video format type value. Valid value will be a member of ::tvVideoFormatType_t
+ * @param[in] videoSrcType          - Source input value. Valid value will be a member of ::tvVideoSrcType_t
+ * @param[in] pq_mode               - Picture mode index. Valid value will be a member of ::tvPQModeIndex_t
+ * @param[in] videoFormatType       - Video format type value. Valid value will be a member of ::tvVideoFormatType_t
  * @param[in] digitalNoiseReduction - Value of the digital noise reduction.
- * Valid values are from 0..N where 0=OFF and N is the maximum effect level,
-returned by GetDigitalNoiseReductionCaps().
+ *                                  - Valid values are from 0..N where 0=OFF and N is the maximum effect level,
+ *                                  - returned by GetDigitalNoiseReductionCaps().
  *
  * @return tvError_t
  *
@@ -3536,12 +3546,12 @@ tvError_t SetDigitalNoiseReduction(tvVideoSrcType_t videoSrcType, tvPQModeIndex_
  *
  * If the platform does not support digital noise reduction, then tvERROR_OPERATION_NOT_SUPPORTED is returned.
  *
- * @param[in] videoSrcType - Source input value. Valid value will be a member of ::tvVideoSrcType_t
- * @param[in] pq_mode - Picture mode index. Valid value will be a member of ::tvPQModeIndex_t
- * @param[in] videoFormatType - Video format type value. Valid value will be a member of ::tvVideoFormatType_t
- * @param[out] digitalNoiseReduction - Value of the digital noise reduction.
- * Valid values are from 0..N where 0=OFF and N is the maximum effect level,
-returned by GetDigitalNoiseReductionCaps().
+ * @param[in] videoSrcType            - Source input value. Valid value will be a member of ::tvVideoSrcType_t
+ * @param[in] pq_mode                 - Picture mode index. Valid value will be a member of ::tvPQModeIndex_t
+ * @param[in] videoFormatType         - Video format type value. Valid value will be a member of ::tvVideoFormatType_t
+ * @param[out] digitalNoiseReduction  - Value of the digital noise reduction.
+ *                                    - Valid values are from 0..N where 0=OFF and N is the maximum effect level,
+ *                                    - returned by GetDigitalNoiseReductionCaps().
  *
  * @return tvError_t
  *
@@ -3563,12 +3573,12 @@ tvError_t GetDigitalNoiseReduction(tvVideoSrcType_t videoSrcType, tvPQModeIndex_
  *
  * If the platform does not support digital noise reduction, then tvERROR_OPERATION_NOT_SUPPORTED is returned.
  *
- * @param[in] videoSrcType - Source input value. Valid value will be a member of ::tvVideoSrcType_t
- * @param[in] pq_mode - Picture mode index. Valid value will be a member of ::tvPQModeIndex_t
- * @param[in] videoFormatType - Video format type value. Valid value will be a member of ::tvVideoFormatType_t
+ * @param[in] videoSrcType           - Source input value. Valid value will be a member of ::tvVideoSrcType_t
+ * @param[in] pq_mode                - Picture mode index. Valid value will be a member of ::tvPQModeIndex_t
+ * @param[in] videoFormatType        - Video format type value. Valid value will be a member of ::tvVideoFormatType_t
  * @param[out] digitalNoiseReduction - Value of the digital noise reduction.
- * Valid values are from 0..N where 0=OFF and N is the maximum effect level,
-returned by GetDigitalNoiseReductionCaps().
+ *                                   - Valid values are from 0..N where 0=OFF and N is the maximum effect level,
+ *                                   - returned by GetDigitalNoiseReductionCaps().
  *
  * @return tvError_t
  *
@@ -3597,8 +3607,8 @@ tvError_t GetDigitalNoiseReductionDefault(tvVideoSrcType_t videoSrcType, tvPQMod
  *
  * If the platform does not support an AI super resolution setting, then tvERROR_OPERATION_NOT_SUPPORTED is returned.
  *
- * @param[out] maxAISuperResolution - Maximum AI super resolution setting value.
- * @param[out] context_caps - A capabilities structure listing the configuration contexts supported.
+ * @param[out] maxAISuperResolution - Maximum AI super resolution setting value.(Minimum willbe zero)
+ * @param[out] context_caps         - A capabilities structure listing the configuration contexts supported.
  *
  * @return tvError_t
  *
@@ -3616,8 +3626,7 @@ tvError_t GetAISuperResolutionCaps(int * maxAISuperResolution, tvContextCaps_t *
  * @brief Sets the AI super resolution value.
  *
  * This function sets the AI super resolution value in picture profile database for the specific picture mode,
- * primary video format and primary video source. The saved AI super resolution value shall be applied automatically
-whenever the
+ * primary video format and primary video source. The saved AI super resolution value shall be applied automatically whenever the
  * specified picture mode, primary video format and primary video source is selected.
  *
  * The AI super resolution value is applied in the PQ module if the current picture mode and video source match
@@ -3625,12 +3634,12 @@ whenever the
  *
  * If the platform does not support an AI super resolution setting, then tvERROR_OPERATION_NOT_SUPPORTED is returned.
  *
- * @param[in] videoSrcType - Source input value. Valid value will be a member of ::tvVideoSrcType_t
- * @param[in] pq_mode - Picture mode index. Valid value will be a member of ::tvPQModeIndex_t
- * @param[in] videoFormatType - Video format type value. Valid value will be a member of ::tvVideoFormatType_t
+ * @param[in] videoSrcType      - Source input value. Valid value will be a member of ::tvVideoSrcType_t
+ * @param[in] pq_mode           - Picture mode index. Valid value will be a member of ::tvPQModeIndex_t
+ * @param[in] videoFormatType   - Video format type value. Valid value will be a member of ::tvVideoFormatType_t
  * @param[in] aiSuperResolution - Value of the AI super resolution.
- * Valid values are from 0..N where 0=OFF and N is the maximum effect level,
-returned by GetAISuperResolutionCaps().
+ *                              - Valid values are from 0..N where 0=OFF and N is the maximum effect level,
+ *                              - returned by GetAISuperResolutionCaps().
  *
  * @return tvError_t
  *
@@ -3652,12 +3661,12 @@ tvError_t SetAISuperResolution(tvVideoSrcType_t videoSrcType, tvPQModeIndex_t pq
  *
  * If the platform does not support an AI super resolution setting, then tvERROR_OPERATION_NOT_SUPPORTED is returned.
  *
- * @param[in] videoSrcType - Source input value. Valid value will be a member of ::tvVideoSrcType_t
- * @param[in] pq_mode - Picture mode index. Valid value will be a member of ::tvPQModeIndex_t
- * @param[in] videoFormatType - Video format type value. Valid value will be a member of ::tvVideoFormatType_t
+ * @param[in] videoSrcType       - Source input value. Valid value will be a member of ::tvVideoSrcType_t
+ * @param[in] pq_mode            - Picture mode index. Valid value will be a member of ::tvPQModeIndex_t
+ * @param[in] videoFormatType    - Video format type value. Valid value will be a member of ::tvVideoFormatType_t
  * @param[out] aiSuperResolution - Value of the AI super resolution.
- * Valid values are from 0..N where 0=OFF and N is the maximum effect level,
-returned by GetAISuperResolutionCaps().
+ *                               - Valid values are from 0..N where 0=OFF and N is the maximum effect level,
+ *                               - returned by GetAISuperResolutionCaps().
  *
  * @return tvError_t
  *
@@ -3674,18 +3683,17 @@ tvError_t GetAISuperResolution(tvVideoSrcType_t videoSrcType, tvPQModeIndex_t pq
 /**
  * @brief Gets the default AI super resolution value.
  *
- * This function gets the default AI super resolution value in the picture profile database for the specific picture
-mode,
+ * This function gets the default AI super resolution value in the picture profile database for the specific picturemode,
  * primary video format and primary video source.
  *
  * If the platform does not support an AI super resolution setting, then tvERROR_OPERATION_NOT_SUPPORTED is returned.
  *
- * @param[in] videoSrcType - Source input value. Valid value will be a member of ::tvVideoSrcType_t
- * @param[in] pq_mode - Picture mode index. Valid value will be a member of ::tvPQModeIndex_t
- * @param[in] videoFormatType - Video format type value. Valid value will be a member of ::tvVideoFormatType_t
+ * @param[in] videoSrcType       - Source input value. Valid value will be a member of ::tvVideoSrcType_t
+ * @param[in] pq_mode            - Picture mode index. Valid value will be a member of ::tvPQModeIndex_t
+ * @param[in] videoFormatType    - Video format type value. Valid value will be a member of ::tvVideoFormatType_t
  * @param[out] aiSuperResolution - Value of the AI super resolution.
- * Valid values are from 0..N where 0=OFF and N is the maximum effect level,
-returned by GetAISuperResolutionCaps().
+ *                               - Valid values are from 0..N where 0=OFF and N is the maximum effect level,
+ *                               - returned by GetAISuperResolutionCaps().
  *
  * @return tvError_t
  *
@@ -3714,7 +3722,7 @@ tvError_t GetAISuperResolutionDefault(tvVideoSrcType_t videoSrcType, tvPQModeInd
  *
  * If the platform does not support a MEMC setting, then tvERROR_OPERATION_NOT_SUPPORTED is returned.
  *
- * @param[out] maxMEMC - Maximum MEMC setting value.
+ * @param[out] maxMEMC      - Maximum MEMC setting value.(Minimum willbe zero)
  * @param[out] context_caps - A capabilities structure listing the configuration contexts supported.
  *
  * @return tvError_t
@@ -3741,12 +3749,12 @@ tvError_t GetMEMCCaps(int * maxMEMC, tvContextCaps_t ** context_caps);
  *
  * If the platform does not support a MEMC setting, then tvERROR_OPERATION_NOT_SUPPORTED is returned.
  *
- * @param[in] videoSrcType - Source input value. Valid value will be a member of ::tvVideoSrcType_t
- * @param[in] pq_mode - Picture mode index. Valid value will be a member of ::tvPQModeIndex_t
- * @param[in] videoFormatType - Video format type value. Valid value will be a member of ::tvVideoFormatType_t
- * @param[in] memc - Value of the MEMC to be set.
- * Valid values are from 0..N where 0=OFF and N is the maximum effect level,
-returned by GetMEMCCaps().
+ * @param[in] videoSrcType     - Source input value. Valid value will be a member of ::tvVideoSrcType_t
+ * @param[in] pq_mode          - Picture mode index. Valid value will be a member of ::tvPQModeIndex_t
+ * @param[in] videoFormatType  - Video format type value. Valid value will be a member of ::tvVideoFormatType_t
+ * @param[in] memc             - Value of the MEMC to be set.
+ *                             - Valid values are from 0..N where 0=OFF and N is the maximum effect level,
+ *                             - returned by GetMEMCCaps().
  *
  * @return tvError_t
  *
@@ -3768,12 +3776,12 @@ tvError_t SetMEMC(tvVideoSrcType_t videoSrcType, tvPQModeIndex_t pq_mode, tvVide
  *
  * If the platform does not support a MEMC setting, then tvERROR_OPERATION_NOT_SUPPORTED is returned.
  *
- * @param[in] videoSrcType - Source input value. Valid value will be a member of ::tvVideoSrcType_t
- * @param[in] pq_mode - Picture mode index. Valid value will be a member of ::tvPQModeIndex_t
- * @param[in] videoFormatType - Video format type value. Valid value will be a member of ::tvVideoFormatType_t
- * @param[out] memc - Value of the MEMC to be set.
- * Valid values are from 0..N where 0=OFF and N is the maximum effect level,
-returned by GetMEMCCaps().
+ * @param[in] videoSrcType      - Source input value. Valid value will be a member of ::tvVideoSrcType_t
+ * @param[in] pq_mode           - Picture mode index. Valid value will be a member of ::tvPQModeIndex_t
+ * @param[in] videoFormatType   - Video format type value. Valid value will be a member of ::tvVideoFormatType_t
+ * @param[out] memc             - Value of the MEMC to be set.
+ *                              - Valid values are from 0..N where 0=OFF and N is the maximum effect level,
+ *                              - returned by GetMEMCCaps().
  *
  * @return tvError_t
  *
@@ -3795,12 +3803,12 @@ tvError_t GetMEMC(tvVideoSrcType_t videoSrcType, tvPQModeIndex_t pq_mode, tvVide
  *
  * If the platform does not support a MEMC setting, then tvERROR_OPERATION_NOT_SUPPORTED is returned.
  *
- * @param[in] videoSrcType - Source input value. Valid value will be a member of ::tvVideoSrcType_t
- * @param[in] pq_mode - Picture mode index. Valid value will be a member of ::tvPQModeIndex_t
- * @param[in] videoFormatType - Video format type value. Valid value will be a member of ::tvVideoFormatType_t
- * @param[out] memc - Value of the MEMC to be set.
- * Valid values are from 0..N where 0=OFF and N is the maximum effect level,
-returned by GetMEMCCaps().
+ * @param[in] videoSrcType      - Source input value. Valid value will be a member of ::tvVideoSrcType_t
+ * @param[in] pq_mode           - Picture mode index. Valid value will be a member of ::tvPQModeIndex_t
+ * @param[in] videoFormatType   - Video format type value. Valid value will be a member of ::tvVideoFormatType_t
+ * @param[out] memc             - Value of the MEMC to be set.
+ *                              - Valid values are from 0..N where 0=OFF and N is the maximum effect level,
+ *                              - returned by GetMEMCCaps().
  *
  * @return tvError_t
  *
@@ -3817,8 +3825,7 @@ tvError_t GetMEMCDefault(tvVideoSrcType_t videoSrcType, tvPQModeIndex_t pq_mode,
 /**
  * @brief Gets the multi-point white balance capabilities supported by the platform.
  *
- * The number of supported multi-point white balance (gamma) points used in the HAL is returned in
-`num_hal_matrix_points`.
+ * The number of supported multi-point white balance (gamma) points used in the HAL is returned in `num_hal_matrix_points`.
  * The HAL must be given this number of points when a white balance gamma adjustment matrix is set.
  * All points in the HAL matrix are evenly spaced from 0.0 to 1.0.
  *
@@ -3831,8 +3838,7 @@ tvError_t GetMEMCDefault(tvVideoSrcType_t videoSrcType, tvPQModeIndex_t pq_mode,
  * Where a UI matrix has a low count (<20) then the interval of each point may not be evenly spaced.
  * The `ui_matrix_positions` receives a pointer to an array of positions related to the UI gamma adjustment matrix.
  *
- * The same capabilities apply to any multi-point white balance gamma matrix; any picture mode, color temperature,
-video source and video format.
+ * The same capabilities apply to any multi-point white balance gamma matrix; any picture mode, color temperature, video source and video format.
  *
  * The `context_caps` parameter receives a pointer to a `tvContextCaps_t` structure that lists the different
  * configuration contexts that this feature can be configured for. If the feature is global, then the
@@ -3844,15 +3850,12 @@ video source and video format.
  * If the platform does not support multi-point white balance, then tvERROR_OPERATION_NOT_SUPPORTED is returned.
  *
  * @param[out] num_hal_matrix_points - The number of points in the HAL gamma matrix.
- * @param[out] rgb_min - The minimum value for red, green and blue adjustment
-values.
- * @param[out] rgb_max - The maximum value for red, green and blue adjustment
-values.
- * @param[out] num_ui_matrix_points - The number of points in the UI gamma matrix for customer adjustment.
- * @param[out] ui_matrix_positions - An array of positions for the UI matrix points.
- * Points to an array with `num_ui_matrix_points` elements with values between
-0.0 and 1.0.
- * @param[out] context_caps - A capabilities structure listing the configuration contexts supported.
+ * @param[out] rgb_min               - The minimum value for red, green and blue adjustment values.
+ * @param[out] rgb_max               - The maximum value for red, green and blue adjustment values.
+ * @param[out] num_ui_matrix_points  - The number of points in the UI gamma matrix for customer adjustment.
+ * @param[out] ui_matrix_positions   - An array of positions for the UI matrix points.
+ *                                     Points to an array with `num_ui_matrix_points` elements with values between 0.0 and 1.0.
+ * @param[out] context_caps          - A capabilities structure listing the configuration contexts supported.
  *
  * @return tvError_t
  *
@@ -3870,32 +3873,24 @@ double ** ui_matrix_positions, tvContextCaps_t ** context_caps);
 /**
  * @brief Sets the multi-point white balance red, green and blue values for the whole matrix.
  *
- * This function sets the multi-point white balance values in the picture profile database for the specific picture
-mode, color temperature,
+ * This function sets the multi-point white balance values in the picture profile database for the specific picturemode, color temperature,
  * primary video format and primary video source. The matrix values should be applied automatically by whenever the
  * specified picture mode, specified primary video format and specified primary video source is selected.
  *
- * The matrix values are applied in the PQ module if the current picture mode, primary video format and primary
-video source match
- * the parameters.
+ * The matrix values are applied in the PQ module if the current picture mode, primary video format and primary video source match the parameters.
  *
  * The red, green and blue values are provided for all points in the matrix.
- * The 'r', 'g' and 'b' parameters point to integer arrays which must contain `num_hal_matrix_points` elements as
-returned by GetMultiPointWBCaps().
+ * The 'r', 'g' and 'b' parameters point to integer arrays which must contain `num_hal_matrix_points` elements as returned by GetMultiPointWBCaps().
  *
  * If the platform does not support multi-point white balance, then tvERROR_OPERATION_NOT_SUPPORTED is returned.
  *
- * @param[in] colorTemp - Color temperature type value. Valid value will be a member of ::
-tvColorTemp_t
- * @param[in] pq_mode - Picture mode index. Valid value will be a member of ::tvPQModeIndex_t
+ * @param[in] colorTemp       - Color temperature type value. Valid value will be a member of ::tvColorTemp_t
+ * @param[in] pq_mode         - Picture mode index. Valid value will be a member of ::tvPQModeIndex_t
  * @param[in] videoFormatType - Video format type value. Valid value will be a member of ::tvVideoFormatType_t
- * @param[in] videoSrcType - Source input value. Valid value will be a member of ::tvVideoSrcType_t
- * @param[in] r - Array of red values. Element values must be `rgb_min` <= r
-<= `rgb_max` as returned by GetMultiPointWBCaps().
- * @param[in] g - Array of green values. Element values must be `rgb_min` <=
-g <= `rgb_max` as returned by GetMultiPointWBCaps().
- * @param[in] b - Array of blue values. Element values must be `rgb_min` <=
-b <= `rgb_max` as returned by GetMultiPointWBCaps().
+ * @param[in] videoSrcType    - Source input value. Valid value will be a member of ::tvVideoSrcType_t
+ * @param[in] r               - Array of red values. Element values must be `rgb_min` <= r <= `rgb_max` as returned by GetMultiPointWBCaps().
+ * @param[in] g               - Array of green values. Element values must be `rgb_min` <=g <= `rgb_max` as returned by GetMultiPointWBCaps().
+ * @param[in] b               - Array of blue values. Element values must be `rgb_min` <=b <= `rgb_max` as returned by GetMultiPointWBCaps().
  *
  * @return tvError_t
  *
@@ -3924,9 +3919,9 @@ tvError_t SetMultiPointWBMatrix(tvColorTemp_t colorTemp, tvPQModeIndex_t pq_mode
  *
  * If the platform does not support Dolby Vision PQ Calibration, then tvERROR_OPERATION_NOT_SUPPORTED is returned.
  *
- * @param[out] min_values - Minimum DV calibration values.
- * @param[out] max_values - Maximum DV calibration values.
- * @param[out] context_caps - A capabilities structure listing the configuration contexts supported.
+ * @param[out] min_values    - Minimum DV calibration values.
+ * @param[out] max_values    - Maximum DV calibration values.
+ * @param[out] context_caps  - A capabilities structure listing the configuration contexts supported.
  *
  * @return tvError_t
  *
@@ -3943,15 +3938,14 @@ tvError_t GetDVCalibrationCaps(tvDVCalibrationSettings_t ** min_values, tvDVCali
 /**
  * @brief Sets the Dolby Vision PQ calibration values.
  *
- * This function sets the Dolby Vision PQ calibration values in the picture profile database for the specified
-picture mode.
+ * This function sets the Dolby Vision PQ calibration values in the picture profile database for the specified picture mode.
  * The saved calibration values shall be applied automatically whenever the specified picture mode is selected.
  *
  * The calibration values are applied in the PQ module if the current picture mode matches the parameters.
  *
  * If the platform does not support Dolby Vision PQ calibration, then tvERROR_OPERATION_NOT_SUPPORTED is returned.
  *
- * @param[in] pq_mode - Picture mode index. Valid value will be a member of ::tvPQModeIndex_t
+ * @param[in] pq_mode            - Picture mode index. Valid value will be a member of ::tvPQModeIndex_t
  * @param[in] calibration_values - Structure of Dolby Vision PQ calibration values.
  * Valid values are returned by GetDVCalibrationCaps().
  *
@@ -3970,13 +3964,12 @@ tvError_t SetDVCalibration(tvPQModeIndex_t pq_mode, tvDVCalibrationSettings_t * 
 /**
  * @brief Gets the Dolby Vision PQ calibration values.
  *
- * This function gets the Dolby Vision PQ calibration values in the picture profile database for the specified
-picture mode.
+ * This function gets the Dolby Vision PQ calibration values in the picture profile database for the specified picture mode.
  *
  * If the platform does not support Dolby Vision PQ calibration, then tvERROR_OPERATION_NOT_SUPPORTED is returned.
  * If no Dolby Vision PQ calibration has been set for the specified picture mode, then tvERROR_GENERAL is returned.
  *
- * @param[in] pq_mode - Picture mode index. Valid value will be a member of ::tvPQModeIndex_t
+ * @param[in] pq_mode             - Picture mode index. Valid value will be a member of ::tvPQModeIndex_t
  * @param[out] calibration_values - Structure of Dolby Vision PQ calibration values.
  * Valid values are returned by GetDVCalibrationCaps().
  *
@@ -3995,14 +3988,13 @@ tvError_t GetDVCalibration(tvPQModeIndex_t pq_mode, tvDVCalibrationSettings_t * 
 /**
  * @brief Gets the default Dolby Vision PQ calibration values.
  *
- * This function gets the default Dolby Vision PQ calibration values in the picture profile database for the
-specified picture mode.
+ * This function gets the default Dolby Vision PQ calibration values in the picture profile database for the specified picture mode.
  *
  * If the platform does not support Dolby Vision PQ calibration, then tvERROR_OPERATION_NOT_SUPPORTED is returned.
  *
- * @param[in] pq_mode - Picture mode index. Valid value will be a member of ::tvPQModeIndex_t
+ * @param[in] pq_mode             - Picture mode index. Valid value will be a member of ::tvPQModeIndex_t
  * @param[out] calibration_values - Structure of Dolby Vision PQ calibration values.
- * Valid values are returned by GetDVCalibrationCaps().
+ *                                - Valid values are returned by GetDVCalibrationCaps().
  *
  * @return tvError_t
  *
