@@ -422,18 +422,6 @@ typedef enum
   tvDimmingMode_MAX                      //!< End of enum
 }tvDimmingMode_t;
 
-/**
- * @brief Enumeration defining the supported Aspect ratios
- */
-typedef enum {
-    tvAspectRatio_Auto = 0,             //!< Aspect ratio is Auto
-    tvAspectRatio_Direct,               //!< Aspect ratio is Direct
-    tvAspectRatio_Normal,               //!< Aspect ratio is Normal
-    tvAspectRatio_16X9_Stretch,         //!< Aspect ratio is 16x9 Stretch
-    tvAspectRatio_4X3_Pillarbox,        //!< Aspect ratio is 4x3 Pillarbox
-    tvAspectRatio_Zoom,                 //!< Aspect ratio is Zoom
-    tvAspectRatio_MAX                   //!< End of enum
-} tvAspectRatio_t;
 
 /**
  * @brief Enumeration defining the supported LDIM states

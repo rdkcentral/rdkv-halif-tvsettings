@@ -1367,7 +1367,7 @@ tvError_t SaveAspectRatio(tvVideoSrcType_t videoSrcType, int pq_mode,tvVideoForm
  *
  * @pre TvInit() should be called before calling this API
  */
-tvError_t GetAspectRatioCaps(tvAspectRatio_t** aspect_ratio, size_t* num_aspect_ratio, tvContextCaps_t** context_caps);
+tvError_t GetAspectRatioCaps(tvDisplayMode_t** aspect_ratio, size_t* num_aspect_ratio, tvContextCaps_t** context_caps);
 
 /**
  * @brief Sets the low latency state to driver register(s)
