@@ -30,7 +30,7 @@
                     "IP"
                 ]
             },
-            "Movie": {
+            "Theater": {
                 "SDR": [
                     "HDMI1",
                     "HDMI2",
@@ -81,7 +81,6 @@
                     "HDMI1",
                     "HDMI2",
                     "HDMI3",
-                    "Tuner",
                     "IP"
                 ]
             },
@@ -112,7 +111,6 @@
                     "HDMI1",
                     "HDMI2",
                     "HDMI3",
-                    "Tuner",
                     "IP"
                 ]
             },
@@ -121,7 +119,6 @@
                     "HDMI1",
                     "HDMI2",
                     "HDMI3",
-                    "Tuner",
                     "IP"
                 ]
             },
@@ -130,7 +127,6 @@
                     "HDMI1",
                     "HDMI2",
                     "HDMI3",
-                    "Tuner",
                     "IP"
                 ]
             }
@@ -167,7 +163,7 @@
                     "IP"
                 ]
             },
-            "Movie": {
+            "Theater": {
                 "SDR": [
                     "HDMI1",
                     "HDMI2",
@@ -218,7 +214,6 @@
                     "HDMI1",
                     "HDMI2",
                     "HDMI3",
-                    "Tuner",
                     "IP"
                 ]
             },
@@ -227,7 +222,6 @@
                     "HDMI1",
                     "HDMI2",
                     "HDMI3",
-                    "Tuner",
                     "IP"
                 ]
             },
@@ -258,7 +252,6 @@
                     "HDMI1",
                     "HDMI2",
                     "HDMI3",
-                    "Tuner",
                     "IP"
                 ]
             },
@@ -267,7 +260,6 @@
                     "HDMI1",
                     "HDMI2",
                     "HDMI3",
-                    "Tuner",
                     "IP"
                 ]
             }
@@ -304,7 +296,7 @@
                     "IP"
                 ]
             },
-            "Movie": {
+            "Theater": {
                 "SDR": [
                     "HDMI1",
                     "HDMI2",
@@ -355,7 +347,6 @@
                     "HDMI1",
                     "HDMI2",
                     "HDMI3",
-                    "Tuner",
                     "IP"
                 ]
             },
@@ -363,8 +354,8 @@
                 "DV": [
                     "HDMI1",
                     "HDMI2",
+                    "HDMI2",
                     "HDMI3",
-                    "Tuner",
                     "IP"
                 ]
             },
@@ -395,7 +386,6 @@
                     "HDMI1",
                     "HDMI2",
                     "HDMI3",
-                    "Tuner",
                     "IP"
                 ]
             },
@@ -404,7 +394,6 @@
                     "HDMI1",
                     "HDMI2",
                     "HDMI3",
-                    "Tuner",
                     "IP"
                 ]
             }
@@ -441,7 +430,7 @@
                     "IP"
                 ]
             },
-            "Movie": {
+            "Theater": {
                 "SDR": [
                     "HDMI1",
                     "HDMI2",
@@ -492,7 +481,6 @@
                     "HDMI1",
                     "HDMI2",
                     "HDMI3",
-                    "Tuner",
                     "IP"
                 ]
             },
@@ -501,7 +489,6 @@
                     "HDMI1",
                     "HDMI2",
                     "HDMI3",
-                    "Tuner",
                     "IP"
                 ]
             },
@@ -532,7 +519,6 @@
                     "HDMI1",
                     "HDMI2",
                     "HDMI3",
-                    "Tuner",
                     "IP"
                 ]
             },
@@ -541,7 +527,6 @@
                     "HDMI1",
                     "HDMI2",
                     "HDMI3",
-                    "Tuner",
                     "IP"
                 ]
             }
@@ -578,7 +563,7 @@
                     "IP"
                 ]
             },
-            "Movie": {
+            "Theater": {
                 "SDR": [
                     "HDMI1",
                     "HDMI2",
@@ -629,7 +614,6 @@
                     "HDMI1",
                     "HDMI2",
                     "HDMI3",
-                    "Tuner",
                     "IP"
                 ]
             },
@@ -638,7 +622,6 @@
                     "HDMI1",
                     "HDMI2",
                     "HDMI3",
-                    "Tuner",
                     "IP"
                 ]
             },
@@ -648,7 +631,6 @@
                     "HDMI2",
                     "HDMI3",
                     "Composite",
-                    "Tuner",
                     "IP"
                 ],
                 "HLG": [
@@ -669,7 +651,6 @@
                     "HDMI1",
                     "HDMI2",
                     "HDMI3",
-                    "Tuner",
                     "IP"
                 ]
             },
@@ -678,7 +659,6 @@
                     "HDMI1",
                     "HDMI2",
                     "HDMI3",
-                    "Tuner",
                     "IP"
                 ]
             }
@@ -715,7 +695,7 @@
                     "IP"
                 ]
             },
-            "Movie": {
+            "Theater": {
                 "SDR": [
                     "HDMI1",
                     "HDMI2",
@@ -766,7 +746,6 @@
                     "HDMI1",
                     "HDMI2",
                     "HDMI3",
-                    "Tuner",
                     "IP"
                 ]
             },
@@ -775,7 +754,6 @@
                     "HDMI1",
                     "HDMI2",
                     "HDMI3",
-                    "Tuner",
                     "IP"
                 ]
             },
@@ -806,7 +784,6 @@
                     "HDMI1",
                     "HDMI2",
                     "HDMI3",
-                    "Tuner",
                     "IP"
                 ]
             },
@@ -815,7 +792,6 @@
                     "HDMI1",
                     "HDMI2",
                     "HDMI3",
-                    "Tuner",
                     "IP"
                 ]
             }
@@ -856,7 +832,7 @@
                     "IP"
                 ]
             },
-            "Movie": {
+            "Theater": {
                 "SDR": [
                     "HDMI1",
                     "HDMI2",
@@ -907,7 +883,6 @@
                     "HDMI1",
                     "HDMI2",
                     "HDMI3",
-                    "Tuner",
                     "IP"
                 ]
             },
@@ -916,7 +891,6 @@
                     "HDMI1",
                     "HDMI2",
                     "HDMI3",
-                    "Tuner",
                     "IP"
                 ]
             },
@@ -947,7 +921,6 @@
                     "HDMI1",
                     "HDMI2",
                     "HDMI3",
-                    "Tuner",
                     "IP"
                 ]
             },
@@ -956,7 +929,6 @@
                     "HDMI1",
                     "HDMI2",
                     "HDMI3",
-                    "Tuner",
                     "IP"
                 ]
             }
@@ -994,7 +966,7 @@
                     "IP"
                 ]
             },
-            "Movie": {
+            "Theater": {
                 "SDR": [
                     "HDMI1",
                     "HDMI2",
@@ -1049,7 +1021,6 @@
                     "HDMI1",
                     "HDMI2",
                     "HDMI3",
-                    "Tuner",
                     "IP"
                 ]
             },
@@ -1086,7 +1057,6 @@
                     "HDMI1",
                     "HDMI2",
                     "HDMI3",
-                    "Tuner",
                     "IP"
                 ]
             }
@@ -1123,7 +1093,7 @@
                     "IP"
                 ]
             },
-            "Movie": {
+            "Theater": {
                 "SDR": [
                     "HDMI1",
                     "HDMI2",
@@ -1174,7 +1144,6 @@
                     "HDMI1",
                     "HDMI2",
                     "HDMI3",
-                    "Tuner",
                     "IP"
                 ]
             },
@@ -1183,7 +1152,6 @@
                     "HDMI1",
                     "HDMI2",
                     "HDMI3",
-                    "Tuner",
                     "IP"
                 ]
             },
@@ -1221,7 +1189,6 @@
                     "HDMI1",
                     "HDMI2",
                     "HDMI3",
-                    "Tuner",
                     "IP"
                 ]
             }
@@ -1432,7 +1399,6 @@
             "IQ": {
                 "DV": [
                     "IP",
-                    "Tuner",
                     "HDMI1",
                     "HDMI2",
                     "HDMI3",
@@ -1442,7 +1408,6 @@
             "Bright": {
                 "DV": [
                     "IP",
-                    "Tuner",
                     "HDMI1",
                     "HDMI2",
                     "HDMI3",
@@ -1452,7 +1417,6 @@
             "Dark": {
                 "DV": [
                     "IP",
-                    "Tuner",
                     "HDMI1",
                     "HDMI2",
                     "HDMI3",
@@ -1487,7 +1451,6 @@
                 ],
                 "DV": [
                     "IP",
-                    "Tuner",
                     "HDMI1",
                     "HDMI2",
                     "HDMI3",
@@ -1506,7 +1469,6 @@
             "Bright": {
                 "DV": [
                     "IP",
-                    "Tuner",
                     "HDMI1",
                     "HDMI2",
                     "HDMI3"
@@ -1515,7 +1477,6 @@
             "IQ": {
                 "DV": [
                     "IP",
-                    "Tuner",
                     "HDMI1",
                     "HDMI2",
                     "HDMI3"
@@ -1567,7 +1528,7 @@
                     "Composite1"
                 ]
             },
-            "Movie": {
+            "Theater": {
                 "SDR": [
                     "HDMI1",
                     "HDMI2",
@@ -1606,7 +1567,6 @@
             "IQ": {
                 "DV": [
                     "IP",
-                    "Tuner",
                     "HDMI1",
                     "HDMI2",
                     "HDMI3"
@@ -1632,7 +1592,6 @@
                 ],
                 "DV": [
                     "IP",
-                    "Tuner",
                     "HDMI1",
                     "HDMI2",
                     "HDMI3"
@@ -1641,7 +1600,6 @@
             "IQ": {
                 "DV": [
                     "IP",
-                    "Tuner",
                     "HDMI1",
                     "HDMI2",
                     "HDMI3"
@@ -1667,7 +1625,6 @@
                 ],
                 "DV": [
                     "IP",
-                    "Tuner",
                     "HDMI1",
                     "HDMI2",
                     "HDMI3"
@@ -1676,7 +1633,6 @@
             "IQ": {
                 "DV": [
                     "IP",
-                    "Tuner",
                     "HDMI1",
                     "HDMI2",
                     "HDMI3"
@@ -1702,7 +1658,6 @@
                 ],
                 "DV": [
                     "IP",
-                    "Tuner",
                     "HDMI1",
                     "HDMI2",
                     "HDMI3"
@@ -1711,7 +1666,6 @@
             "IQ": {
                 "DV": [
                     "IP",
-                    "Tuner",
                     "HDMI1",
                     "HDMI2",
                     "HDMI3"
@@ -1737,7 +1691,6 @@
                 ],
                 "DV": [
                     "IP",
-                    "Tuner",
                     "HDMI1",
                     "HDMI2",
                     "HDMI3"
@@ -1746,7 +1699,6 @@
             "IQ": {
                 "DV": [
                     "IP",
-                    "Tuner",
                     "HDMI1",
                     "HDMI2",
                     "HDMI3"
@@ -1774,7 +1726,6 @@
                     ],
                     "DV": [
                         "IP",
-                        "Tuner",
                         "HDMI1",
                         "HDMI2",
                         "HDMI3"
@@ -1793,7 +1744,6 @@
                     ],
                     "DV": [
                         "IP",
-                        "Tuner",
                         "HDMI1",
                         "HDMI2",
                         "HDMI3"
@@ -1860,7 +1810,6 @@
             "Bright": {
                 "DV": [
                     "IP",
-                    "Tuner",
                     "HDMI1",
                     "HDMI2",
                     "HDMI3"
@@ -1879,7 +1828,6 @@
                     "HDMI1",
                     "HDMI2",
                     "HDMI3",
-                    "Tuner",
                     "IP"
                 ]
             }
