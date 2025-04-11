@@ -1215,7 +1215,7 @@
                     "HDMI2",
                     "HDMI3",
                     "HDMI4",
-                    "Composite1"
+                    "Composite"
                 ],
                 "HLG": [
                     "IP",
@@ -1242,7 +1242,7 @@
                     "HDMI2",
                     "HDMI3",
                     "HDMI4",
-                    "Composite1"
+                    "Composite"
                 ],
                 "HLG": [
                     "IP",
@@ -1269,7 +1269,7 @@
                     "HDMI2",
                     "HDMI3",
                     "HDMI4",
-                    "Composite1"
+                    "Composite"
                 ],
                 "HLG": [
                     "IP",
@@ -1296,7 +1296,7 @@
                     "HDMI2",
                     "HDMI3",
                     "HDMI4",
-                    "Composite1"
+                    "Composite"
                 ],
                 "HLG": [
                     "IP",
@@ -1323,7 +1323,7 @@
                     "HDMI2",
                     "HDMI3",
                     "HDMI4",
-                    "Composite1"
+                    "Composite"
                 ],
                 "HLG": [
                     "IP",
@@ -1350,7 +1350,7 @@
                     "HDMI2",
                     "HDMI3",
                     "HDMI4",
-                    "Composite1"
+                    "Composite"
                 ],
                 "HLG": [
                     "IP",
@@ -1377,7 +1377,7 @@
                     "HDMI2",
                     "HDMI3",
                     "HDMI4",
-                    "Composite1"
+                    "Composite"
                 ],
                 "HLG": [
                     "IP",
@@ -1431,7 +1431,7 @@
                     "HDMI2",
                     "HDMI3",
                     "HDMI4",
-                    "Composite1"
+                    "Composite"
                 ],
                 "HLG": [
                     "IP",
@@ -1462,7 +1462,7 @@
     "PrecisionDetails": {
         "rangeInfo": {
             "from": 0,
-            "to": 3
+            "to": 1
         },
         "platformSupport": true,
         "context": {
@@ -1503,7 +1503,7 @@
                     "HDMI2",
                     "HDMI3",
                     "HDMI4",
-                    "Composite1"
+                    "Composite"
                 ]
             },
             "Vivid": {
@@ -1514,7 +1514,7 @@
                     "HDMI2",
                     "HDMI3",
                     "HDMI4",
-                    "Composite1"
+                    "Composite"
                 ]
             },
             "Sports": {
@@ -1525,7 +1525,7 @@
                     "HDMI2",
                     "HDMI3",
                     "HDMI4",
-                    "Composite1"
+                    "Composite"
                 ]
             },
             "Theater": {
@@ -1554,7 +1554,7 @@
                     "HDMI1",
                     "HDMI2",
                     "HDMI3",
-                    "Composite1"
+                    "Composite"
                 ],
                 "DV": [
                     "IP",
@@ -1588,7 +1588,7 @@
                     "HDMI1",
                     "HDMI2",
                     "HDMI3",
-                    "Composite1"
+                    "Composite"
                 ],
                 "DV": [
                     "IP",
@@ -1621,7 +1621,7 @@
                     "HDMI1",
                     "HDMI2",
                     "HDMI3",
-                    "Composite1"
+                    "Composite"
                 ],
                 "DV": [
                     "IP",
@@ -1654,7 +1654,7 @@
                     "HDMI1",
                     "HDMI2",
                     "HDMI3",
-                    "Composite1"
+                    "Composite"
                 ],
                 "DV": [
                     "IP",
@@ -1687,7 +1687,7 @@
                     "HDMI1",
                     "HDMI2",
                     "HDMI3",
-                    "Composite1"
+                    "Composite"
                 ],
                 "DV": [
                     "IP",
@@ -1722,7 +1722,7 @@
                         "HDMI1",
                         "HDMI2",
                         "HDMI3",
-                        "Composite1"
+                        "Composite"
                     ],
                     "DV": [
                         "IP",
@@ -1740,7 +1740,7 @@
                         "HDMI1",
                         "HDMI2",
                         "HDMI3",
-                        "Composite1"
+                        "Composite"
                     ],
                     "DV": [
                         "IP",
@@ -1858,7 +1858,7 @@
                     "HDMI2",
                     "HDMI3",
                     "HDMI4",
-                    "Composite1"
+                    "Composite"
                 ],
                 "HLG": [
                     "IP",
@@ -1885,7 +1885,7 @@
                     "HDMI2",
                     "HDMI3",
                     "HDMI4",
-                    "Composite1"
+                    "Composite"
                 ],
                 "HLG": [
                     "IP",
@@ -1912,7 +1912,7 @@
                     "HDMI2",
                     "HDMI3",
                     "HDMI4",
-                    "Composite1"
+                    "Composite"
                 ],
                 "HLG": [
                     "IP",
@@ -1939,7 +1939,7 @@
                     "HDMI2",
                     "HDMI3",
                     "HDMI4",
-                    "Composite1"
+                    "Composite"
                 ],
                 "HLG": [
                     "IP",
@@ -1966,7 +1966,7 @@
                     "HDMI2",
                     "HDMI3",
                     "HDMI4",
-                    "Composite1"
+                    "Composite"
                 ],
                 "HLG": [
                     "IP",
@@ -1993,7 +1993,7 @@
                     "HDMI2",
                     "HDMI3",
                     "HDMI4",
-                    "Composite1"
+                    "Composite"
                 ],
                 "HLG": [
                     "IP",
@@ -2047,7 +2047,7 @@
                     "HDMI2",
                     "HDMI3",
                     "HDMI4",
-                    "Composite1"
+                    "Composite"
                 ],
                 "HLG": [
                     "IP",

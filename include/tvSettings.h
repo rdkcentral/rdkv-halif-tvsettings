@@ -67,7 +67,7 @@ extern "C"
  *
  * This function is used to initialize the TV Setting HAL APIs.
  * All dependent vendor specific driver modules for implementing TV Settings HAL
- * are expected to be initialised when this call return successfully. Calling TvInit() API 
+ * are expected to be initialised when this call return successfully. Calling TvInit() API
  * more than once without a TvTerm() API call should return failure. Any TV Settings
  * HAL API called before TvInit() API should return failure.
  *
@@ -89,7 +89,7 @@ tvError_t TvInit();
  *
  * This function should terminate the TV Settings HAL APIs.
  * All dependent vendor specific driver modules for implementing TV Settings HAL
- * are expected to be terminated when this call return successfully. Calling TvTerm() API 
+ * are expected to be terminated when this call return successfully. Calling TvTerm() API
  * more than once without a TvInit() API call should return failure. Any TV Settings
  * HAL API called after TvTerm() and before TvInit() API should return failure.
  *
@@ -108,9 +108,9 @@ tvError_t TvInit();
  * This function registers a callback for video format change event.
  * Once registered, the callback function will be called by the TV Settings HAL implementation
  * whenever change in video format is detected at the start the primary video playback, with
- * right video format value detected. When the primary video playback stops, the TVSettings 
+ * right video format value detected. When the primary video playback stops, the TVSettings
  * HAL will callback notifying SDR format as the default.
- * 
+ *
  * @param[in] cbData                - Callback data. Please refer ::tvVideoFormatCallbackData
  *
  * @retval tvERROR_NONE            - Success
@@ -121,18 +121,18 @@ tvError_t TvInit();
  * @pre TvInit() should be called before calling this API
  */
 tvError_t RegisterVideoFormatChangeCB(tvVideoFormatCallbackData *cbData);
-    
+
 /**
  * @brief Registers the VideoContent FMM change callback
  *
  * This function registers a callback for the playback Filmmaker mode change event.
  * Once registered, the callback function will be called by the TV Settings HAL implementation
- * whenever the system detects SEI content_type 0x01 and content_subtype 0x00 at the start of the 
- * primary video playback, with value tvContentType_FMM for FMM enter event. Whenever the system 
- * detects SEI content_type other than 0x01 or content_subtype other than 0x00 during middle of 
+ * whenever the system detects SEI content_type 0x01 and content_subtype 0x00 at the start of the
+ * primary video playback, with value tvContentType_FMM for FMM enter event. Whenever the system
+ * detects SEI content_type other than 0x01 or content_subtype other than 0x00 during middle of
  * primary video playback or when playback finishes the callback function will be called with
- * with value tvContentType_NONE for FMM exit event. This applies only to IP video sources and 
- * Tuner video sources. AVI Infoframes for HDMI sources will be handled in dsHDMIIn through 
+ * with value tvContentType_NONE for FMM exit event. This applies only to IP video sources and
+ * Tuner video sources. AVI Infoframes for HDMI sources will be handled in dsHDMIIn through
  * dsHdmiInRegisterAviContentTypeChangeCB.
  *
  * @param[in] cbData                - Callback data. Please refer::tvVideoContentCallbackData
@@ -152,7 +152,7 @@ tvError_t RegisterVideoContentChangeCB(tvVideoContentCallbackData *cbData);
  * This function registers a callback for Video resolution change event.
  * Once registered, the callback function will be called by the TV Settings HAL implementation
  * whenever change in video resolution is detected at the start the primary video playback, with
- * right video resolution value detected. When the primary video playback stops, the TVSettings 
+ * right video resolution value detected. When the primary video playback stops, the TVSettings
  * HAL will not make any callback.
  *
  * @param[in] cbData                - Callback data. Please refer ::tvVideoResolutionCallbackData
@@ -172,7 +172,7 @@ tvError_t RegisterVideoResolutionChangeCB(tvVideoResolutionCallbackData *cbData)
  * This function registers a callback for Video framerate change event.
  * Once registered, the callback function will be called by the TV Settings HAL implementation
  * whenever change in video framerate is detected at the start the primary video playback, with
- * right video framerate value detected. When the primary video playback stops, the TVSettings 
+ * right video framerate value detected. When the primary video playback stops, the TVSettings
  * HAL will not make any callback.
  *
  * @param[in] cbData                - Callback function. Please refer ::tvVideoFrameRateCallbackData
@@ -190,9 +190,9 @@ tvError_t RegisterVideoFrameRateChangeCB(tvVideoFrameRateCallbackData *cbData);
 
 
 /**
- * @brief Gets supported video formats of the system. 
+ * @brief Gets supported video formats of the system.
  *
- * This function returns all the supported content formats. 
+ * This function returns all the supported content formats.
  *
  * @param[out] videoFormats    - List of available video formats.
  *                             - Array of pointers to `tvVideoFormatType_t` that will be populated with the supported video formats.
@@ -238,9 +238,9 @@ tvError_t GetCurrentVideoFormat(tvVideoFormatType_t *videoFormat);
  * @brief Gets the current video resolution
  *
  * This function gets the video resolution of the current primary video played on TV
- * Whenever no video is played this API always returns tvVideoResolution_NONE for resolutionValue in 
+ * Whenever no video is played this API always returns tvVideoResolution_NONE for resolutionValue in
  * tvResolutionParam_t structure and rest of the parameters of tvResolutionParam_t structure are returned as 0 value.
- * 
+ *
  * @param[out] res                      - Video resolution value. Valid value will be a member of ::tvResolutionParam_t
  *
  * @return tvError_t
@@ -259,7 +259,7 @@ tvError_t GetCurrentVideoResolution(tvResolutionParam_t *res);
  *
  * This function gets the video frame rate of the current primary video played on TV
  * Whenever no video is played this API always returns tvVideoFrameRate_NONE.
- * 
+ *
  * @param[out] format                   - Video frame rate value. Valid value will be a member of ::tvVideoFrameRate_t
  *
  * @return tvError_t
@@ -293,7 +293,7 @@ tvError_t GetCurrentVideoFrameRate(tvVideoFrameRate_t *format);
 tvError_t GetCurrentVideoSource(tvVideoSrcType_t *currentSource);
 
 /**
- * @brief Gets supported video sources of the system. 
+ * @brief Gets supported video sources of the system.
  *
  * This function returns all the supported video sources.
  *
@@ -322,15 +322,18 @@ tvError_t GetCurrentVideoSource(tvVideoSrcType_t *currentSource);
  * @brief Gets the Backlight capabilities.
  *
  * The `context_caps` parameter receives a pointer to a `tvContextCaps_t` structure that lists the different
- * configuration contexts that this feature can be configured for. If the feature is global, then the
- * `tvContextCaps_t.num_contexts` is returned as 0.
+ * configuration contexts that this feature can be configured for.
+ * If this feature is global (`num_contexts == 0`) and platform_support is true,
+ * the corresponding pqmode, source, and format entries should be retrieved from the picturemode section
+ * of pq_Capabilities.json
  *
  * The capabilities structure returned by this call is allocated by the HAL function and shall
  * be safe to reference for the lifetime of the process.
  *
  * If the platform does not support backlight, then tvERROR_OPERATION_NOT_SUPPORTED is returned.
  *
- * @param[out] max_backlight - Maximum Backlight value.(Minimum willbe zero).
+ * @param[out] max_backlight - Maximum Backlight value.
+ *                           - The minimum value will be 0.
  * @param[out] context_caps  - A capabilities structure listing the configuration contexts supported.
  *
  * @return tvError_t
@@ -348,7 +351,7 @@ tvError_t GetBacklightCaps(int *max_backlight, tvContextCaps_t ** context_caps);
 /**
  * @brief Gets the current backlight value
  *
- * This function gets the current backlight value for the primary video source selected, 
+ * This function gets the current backlight value for the primary video source selected,
  * primary video format played and picture mode selected.
  *
  * @param[out] backlight       - Current backlight value. Valid range is (0 - 100)
@@ -392,8 +395,8 @@ tvError_t SetBacklight(int backlight);
 /**
  * @brief Saves the backlight value.
  *
- * This function saves the backlight value in picture profile database for the specific picture mode, primary video format type 
- * and primary video source. The saved backlight value should be applied automatically whenever the 
+ * This function saves the backlight value in picture profile database for the specific picture mode, primary video format type
+ * and primary video source. The saved backlight value should be applied automatically whenever the
  * specified picture mode is selected, specified primary video format is played and specified primary video source is selected.
  * There will be no change in current backlight value in backlight HW.
  *
@@ -403,7 +406,7 @@ tvError_t SetBacklight(int backlight);
  * @param[in] value                 - Value of the backlight to be set. Valid range is (0 - 100)
  *
  * @return tvError_t
- *                 
+ *
  * @retval tvERROR_NONE             - Success
  * @retval tvERROR_INVALID_PARAM    - Input parameter is invalid
  * @retval tvERROR_INVALID_STATE    - Interface is not initialized
@@ -415,11 +418,11 @@ tvError_t SaveBacklight(tvVideoSrcType_t videoSrcType, int pq_mode,tvVideoFormat
 
 /**
  * @brief Sets the backlight fade settings
- * 
+ *
  * This function will fade the backlight between 2 different backlight values specified in a given duration.
  * It will only set and does'nt save the value.
  * The function call is asynchronous and expected to return immediately after initiating the fading process.
- * If there is change in backlight value due to SetBacklight API call or a change initiated due to 
+ * If there is change in backlight value due to SetBacklight API call or a change initiated due to
  * picture mode change or primary video source change or primary video format change, the fading stops instantly
  * and system jumps to the new backlight value.
  *
@@ -442,8 +445,8 @@ tvError_t SetBacklightFade(int from,int to,int duration);
 
 /**
  * @brief Gets the backlight fade settings
- * 
- * This function returns current backlight fade settings and the progress level of the fade. 
+ *
+ * This function returns current backlight fade settings and the progress level of the fade.
  *
  * @param[out] from                  - Percentage of current backlight value from where fade starts. Valid range is (0 - 100)
  * @param[out] to                    - Percentage of current backlight value where fade ends. Valid range is (0 - 100)
@@ -514,7 +517,7 @@ tvError_t GetCurrentBacklightMode(tvBacklightMode_t *blMode);
  *
  * @retval tvERROR_NONE                      - Success
  * @retval tvERROR_INVALID_PARAM             - Input parameter is invalid
- * @retval tvERROR_INVALID_STATE             - Interface is not initialized 
+ * @retval tvERROR_INVALID_STATE             - Interface is not initialized
  * @retval tvERROR_GENERAL                   - Underlying failures - SoC, memory, etc
  *
  * @pre TvInit() should be called before calling this API
@@ -525,7 +528,7 @@ tvError_t SetCurrentBacklightMode(tvBacklightMode_t blMode);
 
 
 /**
- * @brief Gets supported backlight dimming modes of the system. 
+ * @brief Gets supported backlight dimming modes of the system.
  *
  * This function returns all the supported backlight dimming modes.
  *
@@ -555,8 +558,8 @@ tvError_t SetCurrentBacklightMode(tvBacklightMode_t blMode);
  *
  * This function updates the new dimming mode to hardware. The change is applied for current primary video source selected,
  * video format played and picture mode selected and if successful will be saved in override picture profile database.
- * The saved dimming mode value should be applied automatically whenever the  current picture mode, current primary video format 
- * If peak brightness capablity of the panel changes as a result of dimming mode change reload the edid accordingly 
+ * The saved dimming mode value should be applied automatically whenever the  current picture mode, current primary video format
+ * If peak brightness capablity of the panel changes as a result of dimming mode change reload the edid accordingly
  * to update VSVDB string if video format currently playing is handled via Dolby Vision core.
  *
  * @param[in] dimmingMode           - Dimming mode to be set. Valid values are ( "local", "fixed", "global" )
@@ -577,7 +580,7 @@ tvError_t SetTVDimmingMode(const char *dimmingMode);
 /**
  * @brief Gets the backlight dimming mode
  *
- * This function gets the current dimmimng mode value for the primary video source selected, 
+ * This function gets the current dimmimng mode value for the primary video source selected,
  * primary video format played and picture mode selected.
  *
  * @param[out] dimmingMode           - Current dimming mode. Valid values are ( "local", "fixed", "global" )
@@ -597,11 +600,11 @@ tvError_t GetTVDimmingMode(char *dimmingMode);
 /**
  * @brief Saves the backlight dimming mode
  *
- * This function saves the backlight dimming mode in picture profile database for the specific picture mode, primary video format type 
- * and primary video source. The saved backlight dimming mode should be applied automatically whenever the 
+ * This function saves the backlight dimming mode in picture profile database for the specific picture mode, primary video format type
+ * and primary video source. The saved backlight dimming mode should be applied automatically whenever the
  * specified picture mode is selected, specified primary video format is played and specified primary video source is selected.
  * There will be no change in current backlight dimming mode.
- * If peak brightness capablity of the panel changes as a result of dimming mode change in future reload the edid accordingly 
+ * If peak brightness capablity of the panel changes as a result of dimming mode change in future reload the edid accordingly
  * to update VSVDB string if current video format is handled via Dolby Vision core.
  *
  * @param[in] videoSrcType          - Source input value. Valid value will be a member of ::tvVideoSrcType_t
@@ -624,17 +627,23 @@ tvError_t GetTVDimmingMode(char *dimmingMode);
  * @brief Gets the TVDimmingMode capabilities.
  *
  * The `context_caps` parameter receives a pointer to a `tvContextCaps_t` structure that lists the different
- * configuration contexts that this feature can be configured for. If the feature is global, then the
- * `tvContextCaps_t.num_contexts` is returned as 0.
+ * configuration contexts that this feature can be configured for.
+ * If this feature is global (`num_contexts == 0`) and platform_support is true,
+ * the corresponding pqmode, source, and format entries should be retrieved from the picturemode section
+ * of pq_Capabilities.json
  *
  * The capabilities structure returned by this call is allocated by the HAL function and shall
  * be safe to reference for the lifetime of the process.
  *
  * If the platform does not support TVDimmingMode, then tvERROR_OPERATION_NOT_SUPPORTED is returned.
  *
- * @param[out] dimming_mode - Pointer to Pointer which contains platform supported dimmingModes.
- *                          - Memory allocated at HAL end.
- *                          - Value will be a member of ::tvDimmingMode_t
+ * @param[out] dimming_mode  - Returns a pointer to an array of platform-supported dimming modes.
+ *                            - Values will be members of ::tvDimmingMode_t.
+ *                            - The returned array must not be freed by the caller.
+ * @param[out] num_dimming_mode - The number of supported dimming modes.
+ *                              - Represents the total elements in the `dimming_mode` array.
+ *                              - Returns the length of the array pointed to by `dimming_mode`.
+ *
  * @param[out] context_caps - A capabilities structure listing the configuration contexts supported.
  *
  * @return tvError_t
@@ -655,7 +664,7 @@ tvError_t GetTVDimmingModeCaps(tvDimmingMode_t** dimming_mode, size_t* num_dimmi
  * This function updates the new local dimming level to hardware. The change is applied for current primary video source selected,
  * video format played and picture mode selected and if successful will be saved in override picture profile database.
  * The saved local dimming level value should be applied automatically whenever the  current picture mode, current primary video format
- * If peak brightness capablity of the panel changes as a result of local dimming level change reload the edid accordingly 
+ * If peak brightness capablity of the panel changes as a result of local dimming level change reload the edid accordingly
  * to update VSVDB string if current video format is handled via Dolby Vision core.
  *
  * @param[in] ldimStateLevel                -  Dimming level to set. Valid value will be a member of ::ldimStateLevel_t
@@ -675,7 +684,7 @@ tvError_t SetLocalDimmingLevel(ldimStateLevel_t ldimStateLevel);
 /**
  * @brief Gets the current dimming level
  *
- * This function gets the current local dimming level for the primary video source selected, 
+ * This function gets the current local dimming level for the primary video source selected,
  * primary video format played and picture mode selected.
  *
  * @param[out] ldimStateLevel               - Current Dimming level returned. Valid value will be a member of ::ldimStateLevel_t
@@ -695,11 +704,11 @@ tvError_t GetLocalDimmingLevel(ldimStateLevel_t *ldimStateLevel);
 /**
  * @brief Saves local dimming level.
  *
- * This function saves the local dimming level in picture profile database for the specific picture mode, primary video format type 
- * and primary video source. The saved local dimming level should be applied automatically whenever the 
+ * This function saves the local dimming level in picture profile database for the specific picture mode, primary video format type
+ * and primary video source. The saved local dimming level should be applied automatically whenever the
  * specified picture mode is selected, specified primary video format is played and specified primary video source is selected.
  * There will be no change in current local dimming level applied in local dimming module.
- * If peak brightness capablity of the panel changes as a result of local dimming level change in future reload the edid accordingly 
+ * If peak brightness capablity of the panel changes as a result of local dimming level change in future reload the edid accordingly
  * to update VSVDB string if current video format is handled via Dolby Vision core.
  *
  * @param[in] videoSrcType          - Source input value. Valid value will be a member of ::tvVideoSrcType_t
@@ -723,15 +732,18 @@ tvError_t SaveLocalDimmingLevel(tvVideoSrcType_t videoSrcType, int pq_mode,tvVid
  * @brief Gets the Brightness capabilities.
  *
  * The `context_caps` parameter receives a pointer to a `tvContextCaps_t` structure that lists the different
- * configuration contexts that this feature can be configured for. If the feature is global, then the
- * `tvContextCaps_t.num_contexts` is returned as 0.
+ * configuration contexts that this feature can be configured for.
+ * If this feature is global (`num_contexts == 0`) and platform_support is true,
+ * the corresponding pqmode, source, and format entries should be retrieved from the picturemode section
+ * of pq_Capabilities.json
  *
  * The capabilities structure returned by this call is allocated by the HAL function and shall
  * be safe to reference for the lifetime of the process.
  *
  * If the platform does not support brightness, then tvERROR_OPERATION_NOT_SUPPORTED is returned.
  *
- * @param[out] max_brightness - Maximum Brightness value.(Minimum willbe zero).
+ * @param[out] max_brightness - Maximum Brightness value.
+ *                           - The minimum value will be 0.
  * @param[out] context_caps   - A capabilities structure listing the configuration contexts supported.
  *
  * @return tvError_t
@@ -770,8 +782,8 @@ tvError_t SetBrightness(int brightness);
 
 /**
  * @brief Gets the current brightness value
- * 
- * This function gets the current brightness value for the primary video source selected, 
+ *
+ * This function gets the current brightness value for the primary video source selected,
  * primary video format played and picture mode selected.
  *
  * @param[out] brightness            - Current brightness value. Valid range is (0 - 100)
@@ -792,8 +804,8 @@ tvError_t GetBrightness(int *brightness);
 /**
  * @brief Saves the brightness value
  *
- * This function saves the brightness value in picture profile database for the specific picture mode, primary video format type 
- * and primary video source. The saved brightness value should be applied automatically by whenever the 
+ * This function saves the brightness value in picture profile database for the specific picture mode, primary video format type
+ * and primary video source. The saved brightness value should be applied automatically by whenever the
  * specified picture mode is selected, specified primary video format is played and specified primary video source is selected.
  * There will be no change in current brightness value applied in PQ module.
  *
@@ -818,15 +830,18 @@ tvError_t SaveBrightness(tvVideoSrcType_t videoSrcType, int pq_mode,tvVideoForma
  * @brief Gets the Contrast capabilities.
  *
  * The `context_caps` parameter receives a pointer to a `tvContextCaps_t` structure that lists the different
- * configuration contexts that this feature can be configured for. If the feature is global, then the
- * `tvContextCaps_t.num_contexts` is returned as 0.
+ * configuration contexts that this feature can be configured for.
+ * If this feature is global (`num_contexts == 0`) and platform_support is true,
+ * the corresponding pqmode, source, and format entries should be retrieved from the picturemode section
+ * of pq_Capabilities.json
  *
  * The capabilities structure returned by this call is allocated by the HAL function and shall
  * be safe to reference for the lifetime of the process.
  *
  * If the platform does not support contrast, then tvERROR_OPERATION_NOT_SUPPORTED is returned.
  *
- * @param[out] max_contrast - Maximum Contrast value.(Minimum willbe zero).
+ * @param[out] max_contrast - Maximum Contrast value.
+ *                          - The minimum value will be 0.
  * @param[out] context_caps - A capabilities structure listing the configuration contexts supported.
  *
  * @return tvError_t
@@ -866,7 +881,7 @@ tvError_t SetContrast(int contrast);
 /**
  * @brief Gets the current contrast value
  *
- * This function gets the current contrast value for the primary video source selected, 
+ * This function gets the current contrast value for the primary video source selected,
  * primary video format played and picture mode selected.
  *
  * @param[out] contrast               - Current contrast value. Valid range is (0 - 100)
@@ -888,8 +903,8 @@ tvError_t GetContrast(int *contrast);
  * @brief Saves the contrast value
  *
  *
- * This function saves the contrast value in picture profile database for the specific picture mode, primary video format type 
- * and primary video source. The saved contrast value should be applied automatically by whenever the 
+ * This function saves the contrast value in picture profile database for the specific picture mode, primary video format type
+ * and primary video source. The saved contrast value should be applied automatically by whenever the
  * specified picture mode is selected, specified primary video format is played and specified primary video source is selected.
  * There will be no change in current contrast value applied in PQ module.
  *
@@ -935,15 +950,18 @@ tvError_t SetSharpness(int sharpness);
  * @brief Gets the Sharpness capabilities.
  *
  * The `context_caps` parameter receives a pointer to a `tvContextCaps_t` structure that lists the different
- * configuration contexts that this feature can be configured for. If the feature is global, then the
- * `tvContextCaps_t.num_contexts` is returned as 0.
+ * configuration contexts that this feature can be configured for.
+ * If this feature is global (`num_contexts == 0`) and platform_support is true,
+ * the corresponding pqmode, source, and format entries should be retrieved from the picturemode section
+ * of pq_Capabilities.json
  *
  * The capabilities structure returned by this call is allocated by the HAL function and shall
  * be safe to reference for the lifetime of the process.
  *
  * If the platform does not support sharpness, then tvERROR_OPERATION_NOT_SUPPORTED is returned.
  *
- * @param[out] max_sharpness - Maximum Sharpness value.(Minimum willbe zero).
+ * @param[out] max_sharpness - Maximum Sharpness value.
+ *                           - The minimum value will be 0.
  * @param[out] context_caps  - A capabilities structure listing the configuration contexts supported.
  *
  * @return tvError_t
@@ -961,14 +979,14 @@ tvError_t GetSharpnessCaps(int *max_sharpness, tvContextCaps_t ** context_caps);
 /**
  * @brief Gets the current sharpness value
  *
- * This function gets the current sharpness value for the primary video source selected, 
+ * This function gets the current sharpness value for the primary video source selected,
  * primary video format played and picture mode selected.
  *
  * @param[out] sharpness              - Current sharpness value. Valid range is (0 - 100)
  *
  * @return tvError_t
  *
- * @retval tvERROR_NONE               - Success 
+ * @retval tvERROR_NONE               - Success
  * @retval tvERROR_INVALID_PARAM      - Parameter is invalid
  * @retval tvERROR_INVALID_STATE      - Interface is not initialized
  * @retval tvERROR_GENERAL            - Underlying failures - SoC, memory, etc
@@ -982,8 +1000,8 @@ tvError_t GetSharpness(int *sharpness);
 /**
  * @brief Saves the sharpness value
  *
- * This function saves the sharpness value in picture profile database for the specific picture mode, primary video format type 
- * and primary video source. The saved sharpness value should be applied automatically by whenever the 
+ * This function saves the sharpness value in picture profile database for the specific picture mode, primary video format type
+ * and primary video source. The saved sharpness value should be applied automatically by whenever the
  * specified picture mode is selected, specified primary video format is played and specified primary video source is selected.
  * There will be no change in current sharpness value applied in PQ module.
  *
@@ -1011,9 +1029,9 @@ tvError_t GetSharpness(int *sharpness);
  * The saved saturation value should be applied automatically whenever the  current picture mode, current primary video format
  *
  * @param[in] saturation              - Saturation value to be set. Valid range is (0 - 100)
- *                       
- * @return tvError_t    
- *  
+ *
+ * @return tvError_t
+ *
  * @retval tvERROR_NONE               - Success
  * @retval tvERROR_INVALID_PARAM      - Parameter is invalid
  * @retval tvERROR_INVALID_STATE      - Interface is not initialized
@@ -1028,7 +1046,7 @@ tvError_t SetSaturation(int saturation);
 /**
  * @brief Gets the current saturation value
  *
- * This function gets the current saturation value for the primary video source selected, 
+ * This function gets the current saturation value for the primary video source selected,
  * primary video format played and picture mode selected.
  *
  * @param[out] saturation              - Current saturation value. Valid range is (0 - 100)
@@ -1050,14 +1068,18 @@ tvError_t GetSaturation(int *saturation);
  * @brief Gets the Saturation capabilities.
  *
  * The `context_caps` parameter receives a pointer to a `tvContextCaps_t` structure that lists the different
- * configuration contexts that this feature can be configured for. If the feature is global, then the
- * `tvContextCaps_t.num_contexts` is returned as 0.
+ * configuration contexts that this feature can be configured for.
+ * If this feature is global (`num_contexts == 0`) and platform_support is true,
+ * the corresponding pqmode, source, and format entries should be retrieved from the picturemode section
+ * of pq_Capabilities.json
  *
  * The capabilities structure returned by this call is allocated by the HAL function and shall
  * be safe to reference for the lifetime of the process.
  *
  * If the platform does not support saturation, then tvERROR_OPERATION_NOT_SUPPORTED is returned.
  *
+ * @param[out] max_saturation - The maximum allowable saturation level.
+ *                          - The minimum value will be 0.
  * @param[out] context_caps - A capabilities structure listing the configuration contexts supported.
  *
  * @return tvError_t
@@ -1075,8 +1097,8 @@ tvError_t GetSaturationCaps(int* max_saturation, tvContextCaps_t ** context_caps
 /**
  * @brief Saves the saturation value
  *
- * This function saves the sharpness value in picture profile database for the specific picture mode, primary video format type 
- * and primary video source. The saved saturation value should be applied automatically by whenever the 
+ * This function saves the sharpness value in picture profile database for the specific picture mode, primary video format type
+ * and primary video source. The saved saturation value should be applied automatically by whenever the
  * specified picture mode is selected, specified primary video format is played and specified primary video source is selected.
  * There will be no change in current saturation value applied in PQ module.
  *
@@ -1122,15 +1144,18 @@ tvError_t SetHue(int hue);
  * @brief Gets the Hue capabilities.
  *
  * The `context_caps` parameter receives a pointer to a `tvContextCaps_t` structure that lists the different
- * configuration contexts that this feature can be configured for. If the feature is global, then the
- * `tvContextCaps_t.num_contexts` is returned as 0.
+ * configuration contexts that this feature can be configured for.
+ * If this feature is global (`num_contexts == 0`) and platform_support is true,
+ * the corresponding pqmode, source, and format entries should be retrieved from the picturemode section
+ * of pq_Capabilities.json
  *
  * The capabilities structure returned by this call is allocated by the HAL function and shall
  * be safe to reference for the lifetime of the process.
  *
  * If the platform does not support hue, then tvERROR_OPERATION_NOT_SUPPORTED is returned.
  *
- * @param[out] max_hue      - Maximum Hue value.(Minimum willbe zero).
+ * @param[out] max_hue      - Maximum Hue value.
+ *                          - The minimum value will be 0.
  * @param[out] context_caps - A capabilities structure listing the configuration contexts supported.
  *
  * @return tvError_t
@@ -1148,7 +1173,7 @@ tvError_t GetHueCaps(int* max_hue, tvContextCaps_t ** context_caps);
 /**
  * @brief Gets the current hue value
  *
- * This function gets the current hue value for the primary video source selected, 
+ * This function gets the current hue value for the primary video source selected,
  * primary video format played and picture mode selected.
  *
  * @param[out] hue                    - Current hue value. Valid range (0 - 100)
@@ -1169,8 +1194,8 @@ tvError_t GetHue(int *hue);
 /**
  * @brief Saves the hue value
  *
- * This function saves the hue  value in picture profile database for the specific picture mode, primary video format type 
- * and primary video source. The saved hue value should be applied automatically by whenever the 
+ * This function saves the hue  value in picture profile database for the specific picture mode, primary video format type
+ * and primary video source. The saved hue value should be applied automatically by whenever the
  * specified picture mode is selected, specified primary video format is played and specified primary video source is selected.
  * There will be no change in current hue value applied in PQ module.
  *
@@ -1216,7 +1241,7 @@ tvError_t SetColorTemperature(tvColorTemp_t colorTemp);
 /**
  * @brief Gets the current color temperature
  *
- * This function gets the current colour temperature value for the primary video source selected, 
+ * This function gets the current colour temperature value for the primary video source selected,
  * primary video format played and picture mode selected.
  *
  * @param[out] colorTemp             - Current color temperature. Valid value will be a member of ::tvColorTemp_t
@@ -1238,17 +1263,24 @@ tvError_t GetColorTemperature(tvColorTemp_t *colorTemp);
  * @brief Gets the ColorTemperature capabilities.
  *
  * The `context_caps` parameter receives a pointer to a `tvContextCaps_t` structure that lists the different
- * configuration contexts that this feature can be configured for. If the feature is global, then the
- * `tvContextCaps_t.num_contexts` is returned as 0.
+ * configuration contexts that this feature can be configured for.
+ * If this feature is global (`num_contexts == 0`) and platform_support is true,
+ * the corresponding pqmode, source, and format entries should be retrieved from the picturemode section
+ * of pq_Capabilities.json
  *
  * The capabilities structure returned by this call is allocated by the HAL function and shall
  * be safe to reference for the lifetime of the process.
  *
  * If the platform does not support colorTemperature, then tvERROR_OPERATION_NOT_SUPPORTED is returned.
  *
- * @param[out] color_temp   - Pointer to  Pointer which contains platform supported colorTemperature.
- *                          - Memory allocated at HAL end.
- *                          - Value will be a member of ::tvColorTemp_t.
+ * @param[out] color_temp   - Returns a pointer to an array of platform-supported color temperature modes.
+ *                          - Values will be members of ::tvColorTemp_t.
+ *                          - The returned array must not be freed by the caller.
+ *
+ * @param[out] num_color_temp - The total number of supported color temperature modes.
+ *                            - Represents the number of elements in the `color_temp` array.
+ * @param[out] num_color_temp - Returns the length of the array pointed to by `color_temp`.
+ *
  * @param[out] context_caps - A capabilities structure listing the configuration contexts supported.
  *
  * @return tvError_t
@@ -1266,8 +1298,8 @@ tvError_t GetColorTemperatureCaps(tvColorTemp_t** color_temp, size_t* num_color_
 /**
  * @brief Saves the color temperature value
  *
- * This function saves the color temperature value in picture profile database for the specific picture mode, primary video format type 
- * and primary video source. The saved color temperature value should be applied automatically by whenever the 
+ * This function saves the color temperature value in picture profile database for the specific picture mode, primary video format type
+ * and primary video source. The saved color temperature value should be applied automatically by whenever the
  * specified picture mode is selected, specified primary video format is played and specified primary video source is selected.
  * There will be no change in current color temperature value applied in PQ module.
  *
@@ -1312,7 +1344,7 @@ tvError_t SetAspectRatio(tvDisplayMode_t dispMode);
 /**
  * @brief Gets the current aspect ratio
  *
- * This function gets the current aspect ratio for the primary video source selected, 
+ * This function gets the current aspect ratio for the primary video source selected,
  * primary video format played and picture mode selected.
  *
  * @param[out] dispMode             -  Aspect ratio value. Valid value will be a member of ::tvDisplayMode_t
@@ -1333,8 +1365,8 @@ tvError_t GetAspectRatio(tvDisplayMode_t *dispMode);
 /**
  * @brief Saves the aspect ratio value
  *
- * This function saves the aspect ratio value in picture profile database for the specific picture mode, primary video format type 
- * and primary video source. The saved aspect ratio value should be applied automatically by whenever the 
+ * This function saves the aspect ratio value in picture profile database for the specific picture mode, primary video format type
+ * and primary video source. The saved aspect ratio value should be applied automatically by whenever the
  * specified picture mode is selected, specified primary video format is played and specified primary video source is selected.
  * There will be no change in current aspect ratio value applied in PQ module.
  *
@@ -1358,17 +1390,24 @@ tvError_t SaveAspectRatio(tvVideoSrcType_t videoSrcType, int pq_mode,tvVideoForm
  * @brief Gets the AspectRatio capabilities.
  *
  * The `context_caps` parameter receives a pointer to a `tvContextCaps_t` structure that lists the different
- * configuration contexts that this feature can be configured for. If the feature is global, then the
- * `tvContextCaps_t.num_contexts` is returned as 0.
+ * configuration contexts that this feature can be configured for.
+ * If this feature is global (`num_contexts == 0`) and platform_support is true,
+ * the corresponding pqmode, source, and format entries should be retrieved from the picturemode section
+ * of pq_Capabilities.json
  *
  * The capabilities structure returned by this call is allocated by the HAL function and shall
  * be safe to reference for the lifetime of the process.
  *
  * If the platform does not support AspectRatio, then tvERROR_OPERATION_NOT_SUPPORTED is returned.
- * 
- * @param[out] aspect_ratio - Pointer to Pointer which contains platform supported aspectRatio.
- *                          - Memory allocated at HAL end.
- *                          - Value will be a member of ::tvDisplayMode_t.
+ *
+ * @param[out] aspect_ratio  - Returns a pointer to an array of platform-supported aspect ratio modes.
+ *                           - Values will be members of ::tvDisplayMode_t.
+ *                           - The returned array must not be freed by the caller.
+ *
+ * @param[out] num_aspect_ratio - The total number of supported aspect ratio modes.
+ *                              - Represents the number of elements in the `aspect_ratio` array.
+ * @param[out] num_aspect_ratio - Returns the length of the array pointed to by `aspect_ratio`.
+ *
  * @param[out] context_caps - A capabilities structure listing the configuration contexts supported.
  *
  * @return tvError_t
@@ -1406,7 +1445,7 @@ tvError_t SetLowLatencyState( int lowLatencyIndex );
 /**
  * @brief Gets the current low latency state
  *
- * This function gets the current low latency value for the primary video source selected, 
+ * This function gets the current low latency value for the primary video source selected,
  * primary video format played and picture mode selected.
  *
  * @param[out] lowlatencystate       - Current low latency index value. Valid values are ( 0, 1 )
@@ -1425,8 +1464,8 @@ tvError_t GetLowLatencyState(int *lowlatencystate);
 /**
  * @brief Saves the low latency index
  *
- * This function saves the low latency index in picture profile database for the specific picture mode, primary video format type 
- * and primary video source. The saved low latency index should be applied automatically by whenever the 
+ * This function saves the low latency index in picture profile database for the specific picture mode, primary video format type
+ * and primary video source. The saved low latency index should be applied automatically by whenever the
  * specified picture mode is selected, specified primary video format is played and specified primary video source is selected.
  * There will be no change in low latency index value applied in PQ module.
  *
@@ -1450,15 +1489,18 @@ tvError_t GetLowLatencyState(int *lowlatencystate);
  * @brief Gets the LowLatencyState capabilities.
  *
  * The `context_caps` parameter receives a pointer to a `tvContextCaps_t` structure that lists the different
- * configuration contexts that this feature can be configured for. If the feature is global, then the
- * `tvContextCaps_t.num_contexts` is returned as 0.
+ * configuration contexts that this feature can be configured for.
+ * If this feature is global (`num_contexts == 0`) and platform_support is true,
+ * the corresponding pqmode, source, and format entries should be retrieved from the picturemode section
+ * of pq_Capabilities.json
  *
  * The capabilities structure returned by this call is allocated by the HAL function and shall
  * be safe to reference for the lifetime of the process.
  *
  * If the platform does not support LowLatencyState, then tvERROR_OPERATION_NOT_SUPPORTED is returned.
  *
- * @param[out] max_latency  - Maximum Latency value.(Minimum willbe zero).
+ * @param[out] max_latency  - Maximum Latency value.
+ *                          - The minimum value will be 0.
  * @param[out] context_caps - A capabilities structure listing the configuration contexts supported.
  *
  * @return tvError_t
@@ -1477,8 +1519,8 @@ tvError_t GetLowLatencyStateCaps(int* max_latency, tvContextCaps_t ** context_ca
  * @brief Sets the dynamic contrast
  *
  * This function updates the dynamic contrast state to PQ module. The change takes effect for current
- * primary video source selected, video format played and picture mode selected, but not saved in picture profile database. 
- * The value is discarded and default value from picture profile database is used when primary video format 
+ * primary video source selected, video format played and picture mode selected, but not saved in picture profile database.
+ * The value is discarded and default value from picture profile database is used when primary video format
  * or primary video source or picture mode changes.
  *
  * @param[in] dynamicContrastEnable  - Dynamic contrast enable flag value (valid values are "enabled" for enable and "disabled" for disable)
@@ -1501,7 +1543,7 @@ tvError_t SetDynamicContrast(const char *dynamicContrastEnable);
 /**
  * @brief Gets the current Dynamic contrast mode
  *
- * This function gets the current dynamic contrast value for the primary video source selected, 
+ * This function gets the current dynamic contrast value for the primary video source selected,
  * primary video format played and picture mode selected.
  *
  * @param[out] isDynamicContrastEnabled        - Current dynamic contrast mode flag value. (valid values are "enabled" for enable and "disabled" for disable)
@@ -1523,7 +1565,7 @@ tvError_t GetDynamicContrast(char *isDynamicContrastEnabled);
 /**
  * @brief Sets and saves the dynamic gamma
  *
- * This function sets the global dynamic gamma value. Currently loaded 2.2 gamma is shifted as per the 
+ * This function sets the global dynamic gamma value. Currently loaded 2.2 gamma is shifted as per the
  * new dynamic gamma value passed. The dynamic gamma value is saved for future use. Any reload of new gamma curve (as a result of
  * colour temperature change) should be followed by shifting of the new gamma curve based on the dynamic gamma value.
  *
@@ -1546,7 +1588,7 @@ tvError_t SetDynamicGamma(double tvGammaValue);
  /**
  * @brief Gets the current dynamic gamma
  *
- * This function gets the current global dynamic gamma value. 
+ * This function gets the current global dynamic gamma value.
  *
  * @param[in] tvGammaValue  - The current dynamic Gamma value to be returned. Valid values are 1.80 till 2.60
  *
@@ -1617,7 +1659,7 @@ tvError_t SetTVDolbyVisionMode(tvDolbyMode_t dolbyMode);
 /**
  * @brief Gets the current current dolby vision mode
  *
- * This function gets the current Dolby vision mode value for the primary video source selected, 
+ * This function gets the current Dolby vision mode value for the primary video source selected,
  * primary video format played and picture mode selected.
  *
  * @param[out] dolbyMode              - Current Dolby vision mode.  Valid values are member of ::tvDolbyMode_t
@@ -1640,9 +1682,9 @@ tvError_t GetTVDolbyVisionMode(tvDolbyMode_t *dolbyMode);
 /**
  * @brief Saves the dolby mode value
  *
- * This function saves the dolby mode value in picture profile database for the specific picture mode, primary video format type 
- * and primary video source. The saved dolby mode value should be applied automatically by whenever the 
- * specified picture mode is selected, specified primary video format(if handled via Dolby core) is played 
+ * This function saves the dolby mode value in picture profile database for the specific picture mode, primary video format type
+ * and primary video source. The saved dolby mode value should be applied automatically by whenever the
+ * specified picture mode is selected, specified primary video format(if handled via Dolby core) is played
  * and specified primary video source is selected. There will be no change in current dolby mode value in Dolby Vision core.
  *
  * @param[in] videoSrcType           - Source input value. Valid value will be a member of ::tvVideoSrcType_t
@@ -1693,7 +1735,7 @@ tvError_t GetTVSupportedPictureModes(pic_modes_t *pictureModes[],unsigned short 
  * This function will get the current selected picture mode for current pirmary video source and primary video format.
  *
  * @param[out] pictureMode         - Current picture mode. Valid values are as per values
- *                                   returned by ::pic_modes_t.name  parmaeter from GetTVSupportedPictureModes API. 
+ *                                   returned by ::pic_modes_t.name  parmaeter from GetTVSupportedPictureModes API.
  *                                   The size of string will be PIC_MODE_NAME_MAX.
  *
  * @return tvError_t
@@ -1719,7 +1761,7 @@ tvError_t GetTVPictureMode(char *pictureMode);
  * primary video format are selected in future.
  *
  * @param[in] pictureMode           - Picture mode to be set.Valid values are as per values
- *                                    returned by ::pic_modes_t.name  parmaeter from GetTVSupportedPictureModes API. 
+ *                                    returned by ::pic_modes_t.name  parmaeter from GetTVSupportedPictureModes API.
  *                                    The size of string will be PIC_MODE_NAME_MAX.
  *
  * @return tvError_t
@@ -1739,12 +1781,12 @@ tvError_t SetTVPictureMode(const char * pictureMode);
 /**
  * @brief Saves picture mode.
  *
- * This function saves the picturemode in picture profile database for the specific primary video format type 
- * and primary video source. The saved picture mode should be applied automatically whenever the 
+ * This function saves the picturemode in picture profile database for the specific primary video format type
+ * and primary video source. The saved picture mode should be applied automatically whenever the
  * specified specified primary video format is played and specified primary video source is selected.
  *
  * @param[in] videoSrcType          - Source input value. Valid value will be a member of ::tvVideoSrcType_t
- * @param[in] pictureMode          - Picture mode value to be saved. Valid values are as per values returned by 
+ * @param[in] pictureMode          - Picture mode value to be saved. Valid values are as per values returned by
  *                                    ::pic_modes_t.value  parmaeter from GetTVSupportedPictureModes API.
  * @param[in] videoFormatType       - Video format type value. Valid value will be a member of ::tvVideoFormatType_t
  *
@@ -1764,17 +1806,23 @@ tvError_t SaveSourcePictureMode(tvVideoSrcType_t videoSrcType, tvVideoFormatType
  * @brief Gets the PictureMode capabilities.
  *
  * The `context_caps` parameter receives a pointer to a `tvContextCaps_t` structure that lists the different
- * configuration contexts that this feature can be configured for. If the feature is global, then the
- * `tvContextCaps_t.num_contexts` is returned as 0.
+ * configuration contexts that this feature can be configured for.
+ * If this feature is global (`num_contexts == 0`) and platform_support is true,
+ * the corresponding pqmode, source, and format entries should be retrieved from the picturemode section
+ * of pq_Capabilities.json
  *
  * The capabilities structure returned by this call is allocated by the HAL function and shall
  * be safe to reference for the lifetime of the process.
  *
  * If the platform does not support PictureMode, then tvERROR_OPERATION_NOT_SUPPORTED is returned.
  *
- * @param[out] mode          - Pointer to Pointer which contains platform supported PQModes.
- *                           - Memory allocated at HAL end.
- *                           - Value will be a member of ::tvPQModeIndex_t.
+ * @param[out] mode          - Returns a pointer to an array of platform-supported PQ modes.
+ *                           - Values will be members of ::tvPQModeIndex_t.
+ *                           - The returned array must not be freed by the caller.
+ *
+ * @param[out] num_pic_modes  - The number of supported picture modes.
+ *                             - Represents the total elements in `mode`.
+ * @param[out] num_pic_modes - Returns the length of the array pointed to by `mode`.
  * @param[out] context_caps  - A capabilities structure listing the configuration contexts supported.
  *
  * @return tvError_t
@@ -1787,18 +1835,18 @@ tvError_t SaveSourcePictureMode(tvVideoSrcType_t videoSrcType, tvVideoFormatType
  *
  * @pre TvInit() should be called before calling this API
  */
-tvError_t GetTVPictureModeCaps(tvPQModeIndex_t **mode,tvContextCaps_t ** context_caps);
+ tvError_t GetTVPictureModeCaps(tvPQModeIndex_t** mode, size_t* num_pic_modes, tvContextCaps_t** context_caps);
 
 /**
  * @brief Sets or saves the rgain value
  *
  * This function sets or saves the rgain value for a specfic color temperature and video source. If it is set operation (saveOnly=0) @n
  * the rgb gain and offset for the specified colour temperature will be loaded in white balance module and @n
- * the new red gain value from this API will be updated, but not saved in picture profile database. 
- * The value is discarded and default value from picture profile database is used when primary video format 
+ * the new red gain value from this API will be updated, but not saved in picture profile database.
+ * The value is discarded and default value from picture profile database is used when primary video format
  * or primary video source or picture mode changes.
- * If it is save operation (saveOnly =1) then the rgain will be saved for the specific video source and colour temperature. The saved 
- * rgain value will be automatically applied in white balance module when the colour temperaure choice is made as result of 
+ * If it is save operation (saveOnly =1) then the rgain will be saved for the specific video source and colour temperature. The saved
+ * rgain value will be automatically applied in white balance module when the colour temperaure choice is made as result of
  * picture mode change or primary video format change or primary video source change.
  *
  * @param[in] colorTemp            - Color temperature value to be save/set. Valid value will be a member of ::tvColorTemp_t
@@ -1843,11 +1891,11 @@ tvError_t GetColorTemp_Rgain_onSource(tvColorTemp_t colorTemp, int* rgain,tvColo
  *
  * This function sets or saves the ggain value for a specfic color temperature and video source. If it is set operation (saveOnly=0) @n
  * the rgb gain and offset for the specified colour temperature will be loaded in white balance module and @n
- * the new green gain value from this API will be updated, but not saved in picture profile database. 
- * The value is discarded and default value from picture profile database is used when primary video format 
+ * the new green gain value from this API will be updated, but not saved in picture profile database.
+ * The value is discarded and default value from picture profile database is used when primary video format
  * or primary video source or picture mode changes.
- * If it is save operation (saveOnly =1) then the ggain will be saved for the specific video source and colour temperature. The saved 
- * ggain value should be automatically applied in white balance module when the colour temperaure choice is made as result of 
+ * If it is save operation (saveOnly =1) then the ggain will be saved for the specific video source and colour temperature. The saved
+ * ggain value should be automatically applied in white balance module when the colour temperaure choice is made as result of
  * picture mode change or primary video format change or primary video source change.
  *
  * @param[in] colorTemp            - Color temperature value to be save/set. Valid value will be a member of ::tvColorTemp_t
@@ -1892,11 +1940,11 @@ tvError_t GetColorTemp_Ggain_onSource(tvColorTemp_t colorTemp, int* ggain,tvColo
  *
  * This function sets or saves the bgain value for a specfic color temperature and video source. If it is set operation (saveOnly=0) @n
  * the rgb gain and offset for the specified colour temperature will be loaded in white balance module and @n
- * the new bgain gain value from this API will be updated, but not saved in picture profile database. 
- * The value is discarded and default value from picture profile database is used when primary video format 
+ * the new bgain gain value from this API will be updated, but not saved in picture profile database.
+ * The value is discarded and default value from picture profile database is used when primary video format
  * or primary video source or picture mode changes.
- * If it is save operation (saveOnly =1) then the bgain will be saved for the specific video source and colour temperature. The saved 
- * bgain value will be automatically applied in white balance module when the colour temperaure choice is made as result of 
+ * If it is save operation (saveOnly =1) then the bgain will be saved for the specific video source and colour temperature. The saved
+ * bgain value will be automatically applied in white balance module when the colour temperaure choice is made as result of
  * picture mode change or primary video format change or primary video source change.
  *
  * @param[in] colorTemp            - Color temperature value to be save/set. Valid value will be a member of ::tvColorTemp_t
@@ -1941,11 +1989,11 @@ tvError_t GetColorTemp_Bgain_onSource(tvColorTemp_t colorTemp, int* bgain,tvColo
  *
  * This function sets or saves the rpostoffset value for a specfic color temperature and video source. If it is set operation (saveOnly=0) @n
  * the rgb gain and offset for the specified colour temperature will be loaded in white balance module and @n
- * the new rpostoffset gain value from this API will be updated, but not saved in picture profile database. 
- * The value is discarded and default value from picture profile database is used when primary video format 
+ * the new rpostoffset gain value from this API will be updated, but not saved in picture profile database.
+ * The value is discarded and default value from picture profile database is used when primary video format
  * or primary video source or picture mode changes.
- * If it is save operation (saveOnly =1) then the rpostoffset will be saved for the specific video source and colour temperature. The saved 
- * rpostoffset value should be automatically applied in white balance module when the colour temperaure choice is made as result of 
+ * If it is save operation (saveOnly =1) then the rpostoffset will be saved for the specific video source and colour temperature. The saved
+ * rpostoffset value should be automatically applied in white balance module when the colour temperaure choice is made as result of
  * picture mode change or primary video format change or primary video source change.
  *
  * @param[in] colorTemp            - Color temperature value to be save/set. Valid value will be a member of ::tvColorTemp_t
@@ -1989,11 +2037,11 @@ tvError_t GetColorTemp_R_post_offset_onSource(tvColorTemp_t colorTemp, int* rpos
  *
  * This function sets or saves the gpostoffset value for a specfic color temperature and video source. If it is set operation (saveOnly=0) @n
  * the rgb gain and offset for the specified colour temperature will be loaded in white balance module and @n
- * the new gpostoffset gain value from this API will be updated, but not saved in picture profile database. 
- * The value is discarded and default value from picture profile database is used when primary video format 
+ * the new gpostoffset gain value from this API will be updated, but not saved in picture profile database.
+ * The value is discarded and default value from picture profile database is used when primary video format
  * or primary video source or picture mode changes.
- * If it is save operation (saveOnly =1) then the gpostoffset will be saved for the specific video source and colour temperature. The saved 
- * gpostoffset value should be automatically applied in white balance module when the colour temperaure choice is made as result of 
+ * If it is save operation (saveOnly =1) then the gpostoffset will be saved for the specific video source and colour temperature. The saved
+ * gpostoffset value should be automatically applied in white balance module when the colour temperaure choice is made as result of
  * picture mode change or primary video format change or primary video source change.
  *
  * @param[in] colorTemp            - Color temperature value to be save/set. Valid value will be a member of ::tvColorTemp_t
@@ -2037,11 +2085,11 @@ tvError_t GetColorTemp_G_post_offset_onSource(tvColorTemp_t colorTemp, int* gpos
  *
  * This function sets or saves the bpostoffset value for a specfic color temperature and video source. If it is set operation (saveOnly=0) @n
  * the rgb gain and offset for the specified colour temperature will be loaded in white balance module and @n
- * the new bpostoffset gain value from this API will be updated, but not saved in picture profile database. 
- * The value is discarded and default value from picture profile database is used when primary video format 
+ * the new bpostoffset gain value from this API will be updated, but not saved in picture profile database.
+ * The value is discarded and default value from picture profile database is used when primary video format
  * or primary video source or picture mode changes.
- * If it is save operation (saveOnly =1) then the bpostoffset will be saved for the specific video source and colour temperature. The saved 
- * bpostoffset value should be automatically applied in white balance module when the colour temperaure choice is made as result of 
+ * If it is save operation (saveOnly =1) then the bpostoffset will be saved for the specific video source and colour temperature. The saved
+ * bpostoffset value should be automatically applied in white balance module when the colour temperaure choice is made as result of
  * picture mode change or primary video format change or primary video source change.
  *
  * @param[in] colorTemp            - Color temperature value to be save/set. Valid value will be a member of ::tvColorTemp_t
@@ -2082,8 +2130,8 @@ tvError_t GetColorTemp_B_post_offset_onSource(tvColorTemp_t colorTemp, int* bpos
 /**
  * @brief Enables / disables the WB mode
  *
- * This function enables or disables white balance calibration mode. When enabled configures backlight in fixed dimming mode 
- * and sets all PQ elements except for gamma/white balance elements in bypass mode/disabled mode. On disable restores the 
+ * This function enables or disables white balance calibration mode. When enabled configures backlight in fixed dimming mode
+ * and sets all PQ elements except for gamma/white balance elements in bypass mode/disabled mode. On disable restores the
  * dimming mode and all PQ elements in the last known state before the WB calibration mode was enabled.
  *
  * @param[in] value                        - Enable / disable WB mode ( @a true for enable , @a false for disable )
@@ -2210,8 +2258,8 @@ tvError_t SaveGammaTable(tvColorTemp_t colortemp, unsigned short *pData_R, unsig
 /**
  * @brief Sets the calibrated Dolby vision TMAX paramaeter in the Dolby vision core.
  *
- * This function sets the Dolby vision TMAX paramaeter in the Dolby vision core, but will not be saved in picture profile database. 
- * The value is discarded and default value from picture profile database is used when primary video format 
+ * This function sets the Dolby vision TMAX paramaeter in the Dolby vision core, but will not be saved in picture profile database.
+ * The value is discarded and default value from picture profile database is used when primary video format
  * or primary video source or picture mode changes.
  *
  * @param[in] value       - Value of the TMAX to be set. Valid range is (0 to 10000)
@@ -2226,7 +2274,7 @@ tvError_t SaveGammaTable(tvColorTemp_t colortemp, unsigned short *pData_R, unsig
  *
  * @pre TvInit() should be called before calling this API
  */
-tvError_t SetDvTmaxValue(int value);    
+tvError_t SetDvTmaxValue(int value);
 
 /**
  * @brief Gets the current Dolby vision TMAX paramaeter from the Dolby vision core.
@@ -2252,7 +2300,7 @@ tvError_t SetDvTmaxValue(int value);
  * @brief Saves the Dolby vision TMAX paramaeter
  *
  * This function saves the Dolby vision TMAX paramaeter in picture profile database for the specified LDIM state level.
- * The saved TMAX value will be applied in Dolby Vision core whenever the specified ldim state level is selected 
+ * The saved TMAX value will be applied in Dolby Vision core whenever the specified ldim state level is selected
  * as a result of picture mode change or primary video source change or primary vidoe format change.
  *
  * @param[in] state       - LDIM state level. Refer ::ldimStateLevel_t
@@ -2296,7 +2344,7 @@ tvError_t GetSupportedComponentColor(int *blComponentColor);
  * This function uses specified saturation property for the specified colour and adjust the default colour properties
  * of the colour management system. The change is applied for current primary video source selected,
  * video format played and picture mode selected and if successfull will be saved in override picture profile database.
- * The saved component saturation value for the specified colour will take effect automatically whenever the 
+ * The saved component saturation value for the specified colour will take effect automatically whenever the
  * current picture mode, current primary video format and current video source are again selected in future.
  *
  * @param[in] blSaturationColor          - Component color. Valid value will be one of the member of ::tvDataComponentColor_t.
@@ -2305,7 +2353,7 @@ tvError_t GetSupportedComponentColor(int *blComponentColor);
  *
  * @return tvError_t
  *
- * @retval tvERROR_NONE                      - Success  
+ * @retval tvERROR_NONE                      - Success
  * @retval tvERROR_INVALID_PARAM             - Input parameter is invalid
  * @retval tvERROR_INVALID_STATE             - Interface is not initialized
  * @retval tvERROR_OPERATION_NOT_SUPPORTED   - Operation is not supported
@@ -2320,7 +2368,7 @@ tvError_t SetCurrentComponentSaturation(tvDataComponentColor_t blSaturationColor
 /**
  * @brief Gets current component saturation
  *
- * This function returns the current component saturation for the specified color, for the primary video source selected, 
+ * This function returns the current component saturation for the specified color, for the primary video source selected,
  * primary video format played and picture mode selected.
  *
  * @param[in] blSaturationColor         - Component color. Valid value will be a member of ::tvDataComponentColor_t
@@ -2346,7 +2394,7 @@ tvError_t GetCurrentComponentSaturation(tvDataComponentColor_t blSaturationColor
  * This function uses specified hue property for the specified colour and adjust the default colour properties
  * of the colour management system. The change is applied for current primary video source selected,
  * video format played and picture mode selected and if successfull will be saved in override picture profile database.
- * The saved component hue value for the specified colour will take effect automatically whenever the 
+ * The saved component hue value for the specified colour will take effect automatically whenever the
  * current picture mode, current primary video format and current video source are again selected in future.
  *
  * @param[in] blHueColor               - Component color. Valid value will be a member of ::tvDataComponentColor_t
@@ -2369,8 +2417,8 @@ tvError_t SetCurrentComponentHue(tvDataComponentColor_t blHueColor, int hue);
 /**
  * @brief Gets current component hue
  *
- * This function returns the current component hue for the specified color, for the primary video source selected, 
- * primary video format played and picture mode selected.                          
+ * This function returns the current component hue for the specified color, for the primary video source selected,
+ * primary video format played and picture mode selected.
  *
  * @param[in] blHueColor              - Component color. Valid value will be a member of ::tvDataComponentColor_t
  * @param[out] hue                     - Hue value of the color. Valid range is (0 - 100)
@@ -2395,7 +2443,7 @@ tvError_t GetCurrentComponentHue(tvDataComponentColor_t blHueColor, int *hue);
  * This function uses specified luma property for the specified colour and adjust the default colour properties
  * of the colour management system. The change is applied for current primary video source selected,
  * video format played and picture mode selected and if successfull will be saved in override picture profile database.
- * The saved component luma value for the specified colour will take effect automatically whenever the 
+ * The saved component luma value for the specified colour will take effect automatically whenever the
  * current picture mode, current primary video format and current video source are again selected in future.
  *
  * @param[in] blLumaColor            - Component color. Valid value will be a member of ::tvDataComponentColor_t
@@ -2418,7 +2466,7 @@ tvError_t SetCurrentComponentLuma(tvDataComponentColor_t blLumaColor, int Luma);
 /**
  * @brief Gets the current component luma
  *
- * This function returns the current component luma for the specified color, for the primary video source selected, 
+ * This function returns the current component luma for the specified color, for the primary video source selected,
  * primary video format played and picture mode selected.
  *
  * @param[in] blLumaColor          - Component color. Valid value will be a member of ::tvDataComponentColor_t
@@ -2441,8 +2489,8 @@ tvError_t GetCurrentComponentLuma(tvDataComponentColor_t blLumaColor, int *Luma)
 /**
  * @brief Save the CMS value
  *
- * This function saves the CMS value in override picture profile database for the specific picture mode, primary video format type 
- * and primary video source. The saved CMS value should automatically take effect whenever the 
+ * This function saves the CMS value in override picture profile database for the specific picture mode, primary video format type
+ * and primary video source. The saved CMS value should automatically take effect whenever the
  * specified picture mode is selected, specified primary video format is played, specified primary video source is selected
  * and the CMS state is enabled for that combination. There will be no change in current CMS value applied in colour management system.
  * When the component_type is passed as COMP_NONE and color_type is passed as tvDataColor_NONE, the cms_value
@@ -2453,8 +2501,8 @@ tvError_t GetCurrentComponentLuma(tvDataComponentColor_t blLumaColor, int *Luma)
  * @param[in] videoFormatType        - Video format type value. Valid value will be a member of ::tvVideoFormatType_t
  * @param[in] component_type        - Component type value. Valid value will be a member of ::tvComponentType_t
  * @param[in] color_type            - Color type value. Valid value will be a member of ::tvDataComponentColor_t
- * @param[in] cms_value              - Value of the CMS to be set. 
- *                                    If the value of component_type is COMP_NONE and color_type is tvDataColor_NONE then the cms_value represents the CMS state. 
+ * @param[in] cms_value              - Value of the CMS to be set.
+ *                                    If the value of component_type is COMP_NONE and color_type is tvDataColor_NONE then the cms_value represents the CMS state.
  *                                    Valid values are true(1) or false(0).
  *                                    If the value of component_type is not COMP_NONE and color_type is not tvDataColor_NONE then the cms_value represents the value for the
  *                                    corresponding colour type (::tvComponentType_t) and component type (::tvDataComponentColor_t) specified.
@@ -2464,7 +2512,7 @@ tvError_t GetCurrentComponentLuma(tvDataComponentColor_t blLumaColor, int *Luma)
  *
  * @retval tvERROR_NONE                      - Success
  * @retval tvERROR_INVALID_PARAM             - Input parameter is invalid
- * @retval tvERROR_INVALID_STATE             - Interface is not initialized 
+ * @retval tvERROR_INVALID_STATE             - Interface is not initialized
  * @retval tvERROR_OPERATION_NOT_SUPPORTED   - Operation is not supported
  * @retval tvERROR_GENERAL                   - Underlying failures - SoC, memory, etc
  *
@@ -2477,12 +2525,12 @@ tvError_t GetCurrentComponentLuma(tvDataComponentColor_t blLumaColor, int *Luma)
  * @brief Sets and save's the CMS state
  *
  * This function enable or disable the CMS state. When enabled the hue/saturation/luma properties for
- * RGBCMY colours stored in override picture profile database for the current picture mode, video source and video format 
- * will used to adjust the default properties of the colour management system. 
- * When disabled the colour management system is restored with default properties and hue/saturation/luma properties 
+ * RGBCMY colours stored in override picture profile database for the current picture mode, video source and video format
+ * will used to adjust the default properties of the colour management system.
+ * When disabled the colour management system is restored with default properties and hue/saturation/luma properties
  * for RGBCMY colours will not be used to adjust default properties.
- * The change is applied for current primary video source selected, video format played and picture mode selected 
- * and if successfull will be saved in override picture profile database. The saved CMS state value should be 
+ * The change is applied for current primary video source selected, video format played and picture mode selected
+ * and if successfull will be saved in override picture profile database. The saved CMS state value should be
  * take effect automatically whenever the  current picture mode, current primary video format
  * and current primary video source are again selected in future.
  *
@@ -2504,7 +2552,7 @@ tvError_t SetCMSState(bool enableCMSState);
  * @brief Gets the CMS state
  *
  * This function gets the current CMSState for the current picture mode selected,
- * current primary video format played and current primary video source selected. 
+ * current primary video format played and current primary video source selected.
  * The default value is determined during PQ calibration before pre production stage.
  *
  * @param[out] enableCMSState        - Current CMS state set. @n
@@ -2519,7 +2567,7 @@ tvError_t SetCMSState(bool enableCMSState);
  * @retval tvERROR_GENERAL                   - Underlying failures - SoC, memory, etc
  *
  * @see SetCMSState()
- * 
+ *
  * @pre TvInit() should be called before calling this API
  */
 tvError_t GetCMSState(bool *enableCMSState);
@@ -2736,7 +2784,7 @@ tvError_t GetRGBPattern(int *r,int *g,int *b);
 tvError_t SetGrayPattern(int YUVValue);
 
 /**
- * @brief Gets the current gray pattern value 
+ * @brief Gets the current gray pattern value
  *
  * This function gets the current gray pattern level
  *
@@ -2856,7 +2904,7 @@ tvError_t EnableLDIM(bool mode);
 /**
  * @brief Enables or disables the white balance module
  *
- * This function enables or disabless the  white balance. 
+ * This function enables or disabless the  white balance.
  *
  * @param[in] mode                 - Valid values are true and false. @n
  *                                     true when  white balance module needs to be enabled @n
@@ -3048,15 +3096,18 @@ tvError_t SaveCustom2PointWhiteBalance(tvVideoSrcType_t videoSrcType, int pq_mod
  * @brief Gets the precision detail capabilities.
  *
  * The `context_caps` parameter receives a pointer to a `tvContextCaps_t` structure that lists the different
- * configuration contexts that this feature can be configured for. If the feature is global, then the
- * `tvContextCaps_t.num_contexts` is returned as 0.
+ * configuration contexts that this feature can be configured for.
+ * If this feature is global (`num_contexts == 0`) and platform_support is true,
+ * the corresponding pqmode, source, and format entries should be retrieved from the picturemode section
+ * of pq_Capabilities.json
  *
  * The capabilities structure returned by this call is allocated by the HAL function and shall
  * be safe to reference for the lifetime of the process.
  *
  * If the platform does not support precision detail, then tvERROR_OPERATION_NOT_SUPPORTED is returned.
  *
- * @param[out] max_precision - Maximum Precision value.(Minimum willbe zero).
+ * @param[out] max_precision - Maximum Precision value
+ *                          - The minimum value will be 0.
  * @param[out] context_caps  - A capabilities structure listing the configuration contexts supported.
  *
  * @return tvError_t
@@ -3150,16 +3201,21 @@ videoFormatType, int * precisionDetail);
  * @brief Gets all SDR gamma setting capabilities supported by the platform.
  *
  * The `context_caps` parameter receives a pointer to a `tvContextCaps_t` structure that lists the different
- * configuration contexts that this feature can be configured for. If the feature is global, then the
- * `tvContextCaps_t.num_contexts` is returned as 0.
+ * configuration contexts that this feature can be configured for.
+ * If this feature is global (`num_contexts == 0`) and platform_support is true,
+ * the corresponding pqmode, source, and format entries should be retrieved from the picturemode section
+ * of pq_Capabilities.json
  *
  * The capabilities structure returned by this call is allocated by the HAL function and shall
  * be safe to reference for the lifetime of the process.
  *
  * If the platform does not support SDR gamma setting, then tvERROR_OPERATION_NOT_SUPPORTED is returned.
  *
- * @param[out] sdr_gamma     - Returns a pointer to an array of supported SDR gamma settings. Values are ::tvSdrGamma_t members.
- *                             The returned array must not be freed by the caller.
+ * @param[out] sdr_gamma     - Returns a pointer to an array of supported SDR gamma settings.
+ *                           - Values will be members of ::tvPQModeIndex_t.
+ *                           - The returned array must not be freed by the caller.
+ * @param[out] num_sdr_gamma  - The total number of supported SDR gamma settings.
+ *                            - Represents the number of elements in the `sdr_gamma` array.
  * @param[out] num_sdr_gamma - Returns the length of the array pointed to by `sdr_gamma`.
  * @param[out] context_caps  - A capabilities structure listing the configuration contexts supported.
  *
@@ -3253,8 +3309,10 @@ level and
  * value supported by the platform. The value of N is returned by this function.
  *
  * The `context_caps` parameter receives a pointer to a `tvContextCaps_t` structure that lists the different
- * configuration contexts that this feature can be configured for. If the feature is global, then the
- * `tvContextCaps_t.num_contexts` is returned as 0.
+ * configuration contexts that this feature can be configured for.
+ * If this feature is global (`num_contexts == 0`) and platform_support is true,
+ * the corresponding pqmode, source, and format entries should be retrieved from the picturemode section
+ * of pq_Capabilities.json
  *
  * The capabilities structure returned by this call is allocated by the HAL function and shall
  * be safe to reference for the lifetime of the process.
@@ -3263,6 +3321,7 @@ level and
 returned.
  *
  * @param[out] maxLocalContrastEnhancement - Maximum local contrast enhancement setting value.
+ *                                         - The minimum value will be 0.
  * @param[out] context_caps - A capabilities structure listing the configuration contexts supported.
  *
  * @return tvError_t
@@ -3370,8 +3429,10 @@ tvError_t GetLocalContrastEnhancementDefault(tvVideoSrcType_t videoSrcType, tvPQ
  * value supported by the platform. The value of N is returned by this function.
  *
  * The `context_caps` parameter receives a pointer to a `tvContextCaps_t` structure that lists the different
- * configuration contexts that this feature can be configured for. If the feature is global, then the
- * `tvContextCaps_t.num_contexts` is returned as 0.
+ * configuration contexts that this feature can be configured for.
+ * If this feature is global (`num_contexts == 0`) and platform_support is true,
+ * the corresponding pqmode, source, and format entries should be retrieved from the picturemode section
+ * of pq_Capabilities.json
  *
  * The capabilities structure returned by this call is allocated by the HAL function and shall
  * be safe to reference for the lifetime of the process.
@@ -3379,6 +3440,7 @@ tvError_t GetLocalContrastEnhancementDefault(tvVideoSrcType_t videoSrcType, tvPQ
  * If the platform does not support an MPEG noise reduction setting, then tvERROR_OPERATION_NOT_SUPPORTED is returned.
  *
  * @param[out] maxMPEGNoiseReduction - Maximum MPEG noise reduction setting value.
+ *                                   - The minimum value will be 0.
  * @param[out] context_caps          - A capabilities structure listing the configuration contexts supported.
  *
  * @return tvError_t
@@ -3484,15 +3546,18 @@ tvError_t GetMPEGNoiseReductionDefault(tvVideoSrcType_t videoSrcType, tvPQModeIn
  * value supported by the platform. The value of N is returned by this function.
  *
  * The `context_caps` parameter receives a pointer to a `tvContextCaps_t` structure that lists the different
- * configuration contexts that this feature can be configured for. If the feature is global, then the
- * `tvContextCaps_t.num_contexts` is returned as 0.
+ * configuration contexts that this feature can be configured for.
+ * If this feature is global (`num_contexts == 0`) and platform_support is true,
+ * the corresponding pqmode, source, and format entries should be retrieved from the picturemode section
+ * of pq_Capabilities.json
  *
  * The capabilities structure returned by this call is allocated by the HAL function and shall
  * be safe to reference for the lifetime of the process.
  *
  * If the platform does not support an digital noise reduction setting, then tvERROR_OPERATION_NOT_SUPPORTED is returned.
  *
- * @param[out] maxDigitalNoiseReduction - Maximum digital noise reduction setting value.(Minimum willbe zero)
+ * @param[out] maxDigitalNoiseReduction - Maximum digital noise reduction setting value.
+ *                                      - The minimum value will be 0.
  * @param[out] context_caps             - A capabilities structure listing the configuration contexts supported.
  *
  * @return tvError_t
@@ -3599,15 +3664,18 @@ tvError_t GetDigitalNoiseReductionDefault(tvVideoSrcType_t videoSrcType, tvPQMod
  * value supported by the platform. The value of N is returned by this function.
  *
  * The `context_caps` parameter receives a pointer to a `tvContextCaps_t` structure that lists the different
- * configuration contexts that this feature can be configured for. If the feature is global, then the
- * `tvContextCaps_t.num_contexts` is returned as 0.
+ * configuration contexts that this feature can be configured for.
+ * If this feature is global (`num_contexts == 0`) and platform_support is true,
+ * the corresponding pqmode, source, and format entries should be retrieved from the picturemode section
+ * of pq_Capabilities.json
  *
  * The capabilities structure returned by this call is allocated by the HAL function and shall
  * be safe to reference for the lifetime of the process.
  *
  * If the platform does not support an AI super resolution setting, then tvERROR_OPERATION_NOT_SUPPORTED is returned.
  *
- * @param[out] maxAISuperResolution - Maximum AI super resolution setting value.(Minimum willbe zero)
+ * @param[out] maxAISuperResolution - Maximum AI super resolution setting value.
+ *                                  - The minimum value will be 0.
  * @param[out] context_caps         - A capabilities structure listing the configuration contexts supported.
  *
  * @return tvError_t
@@ -3714,15 +3782,19 @@ tvError_t GetAISuperResolutionDefault(tvVideoSrcType_t videoSrcType, tvPQModeInd
  * value supported by the platform. The value of N is returned by this function.
  *
  * The `context_caps` parameter receives a pointer to a `tvContextCaps_t` structure that lists the different
- * configuration contexts that this feature can be configured for. If the feature is global, then the
- * `tvContextCaps_t.num_contexts` is returned as 0.
+ * configuration contexts that this feature can be configured for.
+ * If this feature is global (`num_contexts == 0`) and platform_support is true,
+ * the corresponding pqmode, source, and format entries should be retrieved from the picturemode section
+ * of pq_Capabilities.json
  *
  * The capabilities structure returned by this call is allocated by the HAL function and shall
  * be safe to reference for the lifetime of the process.
  *
  * If the platform does not support a MEMC setting, then tvERROR_OPERATION_NOT_SUPPORTED is returned.
  *
- * @param[out] maxMEMC      - Maximum MEMC setting value.(Minimum willbe zero)
+ * @param[out] maxMEMC      - Maximum MEMC setting value.
+ *                          - The minimum value will be 0.
+ *
  * @param[out] context_caps - A capabilities structure listing the configuration contexts supported.
  *
  * @return tvError_t
@@ -3841,8 +3913,10 @@ tvError_t GetMEMCDefault(tvVideoSrcType_t videoSrcType, tvPQModeIndex_t pq_mode,
  * The same capabilities apply to any multi-point white balance gamma matrix; any picture mode, color temperature, video source and video format.
  *
  * The `context_caps` parameter receives a pointer to a `tvContextCaps_t` structure that lists the different
- * configuration contexts that this feature can be configured for. If the feature is global, then the
- * `tvContextCaps_t.num_contexts` is returned as 0.
+ * configuration contexts that this feature can be configured for.
+ * If this feature is global (`num_contexts == 0`) and platform_support is true,
+ * the corresponding pqmode, source, and format entries should be retrieved from the picturemode section
+ * of pq_Capabilities.json
  *
  * The capabilities structure returned by this call is allocated by the HAL function and shall
  * be safe to reference for the lifetime of the process.
@@ -3910,8 +3984,11 @@ tvError_t SetMultiPointWBMatrix(tvColorTemp_t colorTemp, tvPQModeIndex_t pq_mode
  * The min and max values for Tmax, Tmin, Tgamma, Rx, Ry, Gx, Ry, Bx, By, Wx and Wy are returned.
  *
  * The `context_caps` parameter receives a pointer to a `tvContextCaps_t` structure that lists the different
- * configuration contexts that this feature can be configured for. If the feature is global, then the
- * `tvContextCaps_t.num_contexts` is returned as 0.
+ * configuration contexts that this feature can be configured for.
+ * If this feature is global (`num_contexts == 0`) and platform_support is true,
+ * the corresponding pqmode, source, and format entries should be retrieved from the picturemode section
+ * of pq_Capabilities.json
+ *
  * The `context_caps` shall return only the Dolby Vision picture modes.
  *
  * The capabilities structure returned by this call is allocated by the HAL function and shall

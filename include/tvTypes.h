@@ -331,7 +331,7 @@ typedef enum tvPQModeIndex {
     PQ_MODE_AIPQ =12,                           //!< Picture mode is "AIPQ" */
     PQ_MODE_DARK = 13,                          //!< Picture mode is "Dark" */
     PQ_MODE_BRIGHT = 14,                        //!< Picture mode is "Bright" */
-    PQ_MODE_DVIQ = 15,                          //!< Picture mode is "DV IQ" */
+    PQ_MODE_DVIQ = 15,                          //!< Picture mode is "IQ" */
     PQ_MODE_MAX=16                              //!< End of enum
 }tvPQModeIndex_t;
 
