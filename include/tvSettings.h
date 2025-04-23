@@ -321,11 +321,14 @@ tvError_t GetCurrentVideoSource(tvVideoSrcType_t *currentSource);
 /**
  * @brief Gets the Backlight capabilities.
  *
- * The `context_caps` parameter receives a pointer to a `tvContextCaps_t` structure that lists the different
- * configuration contexts that this feature can be configured for.
+ * This function gets the Backlight capabilities from the Backlight section of the pq_capabilities.json.
+ *
  * If this feature is global (`num_contexts == 0`) and platform_support is true,
  * the corresponding pqmode, source, and format entries should be retrieved from the picturemode section
- * of pq_Capabilities.json
+ * of pq_capabilities.json
+ *
+ * The `context_caps` parameter receives a pointer to a `tvContextCaps_t` structure that lists the different
+ * configuration contexts that this feature can be configured for.
  *
  * The capabilities structure returned by this call is allocated by the HAL function and shall
  * be safe to reference for the lifetime of the process.
@@ -624,13 +627,17 @@ tvError_t GetTVDimmingMode(char *dimmingMode);
  tvError_t SaveTVDimmingMode(tvVideoSrcType_t videoSrcType, int pq_mode,tvVideoFormatType_t videoFormatType,tvDimmingMode_t dimmingMode);
 
 /**
- * @brief Gets the TVDimmingMode capabilities.
+ * @brief Gets the DimmingMode capabilities.
+ *
+ *
+ * This function gets the DimmingMode capabilities from the DimmingMode section of the pq_capabilities.json.
+ *
+ * If this feature is global (`num_contexts == 0`) and platform_support is true,
+ * the corresponding pqmode, source, and format entries should be retrieved from the picturemode section
+ * of pq_capabilities.json
  *
  * The `context_caps` parameter receives a pointer to a `tvContextCaps_t` structure that lists the different
  * configuration contexts that this feature can be configured for.
- * If this feature is global (`num_contexts == 0`) and platform_support is true,
- * the corresponding pqmode, source, and format entries should be retrieved from the picturemode section
- * of pq_Capabilities.json
  *
  * The capabilities structure returned by this call is allocated by the HAL function and shall
  * be safe to reference for the lifetime of the process.
@@ -638,8 +645,9 @@ tvError_t GetTVDimmingMode(char *dimmingMode);
  * If the platform does not support TVDimmingMode, then tvERROR_OPERATION_NOT_SUPPORTED is returned.
  *
  * @param[out] dimming_mode  - Returns a pointer to an array of platform-supported dimming modes.
- *                            - Values will be members of ::tvDimmingMode_t.
- *                            - The returned array must not be freed by the caller.
+ *                           - Values will be members of ::tvDimmingMode_t.
+ *                           - The returned array must not be freed by the caller.
+ *                           - Memory should be allocated in HAL function
  * @param[out] num_dimming_mode - The number of supported dimming modes.
  *                              - Represents the total elements in the `dimming_mode` array.
  *                              - Returns the length of the array pointed to by `dimming_mode`.
@@ -731,11 +739,14 @@ tvError_t SaveLocalDimmingLevel(tvVideoSrcType_t videoSrcType, int pq_mode,tvVid
 /**
  * @brief Gets the Brightness capabilities.
  *
- * The `context_caps` parameter receives a pointer to a `tvContextCaps_t` structure that lists the different
- * configuration contexts that this feature can be configured for.
+ * This function gets the Brightness capabilities from the Brightness section of the pq_capabilities.json.
+ *
  * If this feature is global (`num_contexts == 0`) and platform_support is true,
  * the corresponding pqmode, source, and format entries should be retrieved from the picturemode section
- * of pq_Capabilities.json
+ * of pq_capabilities.json
+ *
+ * The `context_caps` parameter receives a pointer to a `tvContextCaps_t` structure that lists the different
+ * configuration contexts that this feature can be configured for.
  *
  * The capabilities structure returned by this call is allocated by the HAL function and shall
  * be safe to reference for the lifetime of the process.
@@ -829,11 +840,14 @@ tvError_t SaveBrightness(tvVideoSrcType_t videoSrcType, int pq_mode,tvVideoForma
 /**
  * @brief Gets the Contrast capabilities.
  *
- * The `context_caps` parameter receives a pointer to a `tvContextCaps_t` structure that lists the different
- * configuration contexts that this feature can be configured for.
+ * This function gets the Contrast capabilities from the Contrast section of the pq_capabilities.json.
+ *
  * If this feature is global (`num_contexts == 0`) and platform_support is true,
  * the corresponding pqmode, source, and format entries should be retrieved from the picturemode section
- * of pq_Capabilities.json
+ * of pq_capabilities.json
+ *
+ * The `context_caps` parameter receives a pointer to a `tvContextCaps_t` structure that lists the different
+ * configuration contexts that this feature can be configured for.
  *
  * The capabilities structure returned by this call is allocated by the HAL function and shall
  * be safe to reference for the lifetime of the process.
@@ -949,11 +963,14 @@ tvError_t SetSharpness(int sharpness);
 /**
  * @brief Gets the Sharpness capabilities.
  *
- * The `context_caps` parameter receives a pointer to a `tvContextCaps_t` structure that lists the different
- * configuration contexts that this feature can be configured for.
+ * This function gets the Sharpness capabilities from the Sharpness section of the pq_capabilities.json.
+ *
  * If this feature is global (`num_contexts == 0`) and platform_support is true,
  * the corresponding pqmode, source, and format entries should be retrieved from the picturemode section
- * of pq_Capabilities.json
+ * of pq_capabilities.json
+ *
+ * The `context_caps` parameter receives a pointer to a `tvContextCaps_t` structure that lists the different
+ * configuration contexts that this feature can be configured for.
  *
  * The capabilities structure returned by this call is allocated by the HAL function and shall
  * be safe to reference for the lifetime of the process.
@@ -1067,11 +1084,14 @@ tvError_t GetSaturation(int *saturation);
 /**
  * @brief Gets the Saturation capabilities.
  *
- * The `context_caps` parameter receives a pointer to a `tvContextCaps_t` structure that lists the different
- * configuration contexts that this feature can be configured for.
+ * This function gets the Saturation capabilities from the Saturation section of the pq_capabilities.json.
+ *
  * If this feature is global (`num_contexts == 0`) and platform_support is true,
  * the corresponding pqmode, source, and format entries should be retrieved from the picturemode section
- * of pq_Capabilities.json
+ * of pq_capabilities.json
+ *
+ * The `context_caps` parameter receives a pointer to a `tvContextCaps_t` structure that lists the different
+ * configuration contexts that this feature can be configured for.
  *
  * The capabilities structure returned by this call is allocated by the HAL function and shall
  * be safe to reference for the lifetime of the process.
@@ -1143,11 +1163,14 @@ tvError_t SetHue(int hue);
 /**
  * @brief Gets the Hue capabilities.
  *
- * The `context_caps` parameter receives a pointer to a `tvContextCaps_t` structure that lists the different
- * configuration contexts that this feature can be configured for.
+ * This function gets the Hue capabilities from the Hue section of the pq_capabilities.json.
+ *
  * If this feature is global (`num_contexts == 0`) and platform_support is true,
  * the corresponding pqmode, source, and format entries should be retrieved from the picturemode section
- * of pq_Capabilities.json
+ * of pq_capabilities.json
+ *
+ * The `context_caps` parameter receives a pointer to a `tvContextCaps_t` structure that lists the different
+ * configuration contexts that this feature can be configured for.
  *
  * The capabilities structure returned by this call is allocated by the HAL function and shall
  * be safe to reference for the lifetime of the process.
@@ -1262,12 +1285,14 @@ tvError_t GetColorTemperature(tvColorTemp_t *colorTemp);
 /**
  * @brief Gets the ColorTemperature capabilities.
  *
- * The `context_caps` parameter receives a pointer to a `tvContextCaps_t` structure that lists the different
- * configuration contexts that this feature can be configured for.
+ * This function gets the ColorTemperature capabilities from the ColorTemperature section of the pq_capabilities.json.
+ *
  * If this feature is global (`num_contexts == 0`) and platform_support is true,
  * the corresponding pqmode, source, and format entries should be retrieved from the picturemode section
- * of pq_Capabilities.json
+ * of pq_capabilities.json
  *
+ * The `context_caps` parameter receives a pointer to a `tvContextCaps_t` structure that lists the different
+ * configuration contexts that this feature can be configured for.
  * The capabilities structure returned by this call is allocated by the HAL function and shall
  * be safe to reference for the lifetime of the process.
  *
@@ -1276,10 +1301,9 @@ tvError_t GetColorTemperature(tvColorTemp_t *colorTemp);
  * @param[out] color_temp   - Returns a pointer to an array of platform-supported color temperature modes.
  *                          - Values will be members of ::tvColorTemp_t.
  *                          - The returned array must not be freed by the caller.
- *
+ *                          - Memory should be allocated in HAL function
  * @param[out] num_color_temp - The total number of supported color temperature modes.
  *                            - Represents the number of elements in the `color_temp` array.
- * @param[out] num_color_temp - Returns the length of the array pointed to by `color_temp`.
  *
  * @param[out] context_caps - A capabilities structure listing the configuration contexts supported.
  *
@@ -1389,11 +1413,14 @@ tvError_t SaveAspectRatio(tvVideoSrcType_t videoSrcType, int pq_mode,tvVideoForm
 /**
  * @brief Gets the AspectRatio capabilities.
  *
- * The `context_caps` parameter receives a pointer to a `tvContextCaps_t` structure that lists the different
- * configuration contexts that this feature can be configured for.
+ * This function gets the AspectRatio capabilities from the AspectRatio section of the pq_capabilities.json.
+ *
  * If this feature is global (`num_contexts == 0`) and platform_support is true,
  * the corresponding pqmode, source, and format entries should be retrieved from the picturemode section
- * of pq_Capabilities.json
+ * of pq_capabilities.json
+ *
+ * The `context_caps` parameter receives a pointer to a `tvContextCaps_t` structure that lists the different
+ * configuration contexts that this feature can be configured for.
  *
  * The capabilities structure returned by this call is allocated by the HAL function and shall
  * be safe to reference for the lifetime of the process.
@@ -1403,10 +1430,9 @@ tvError_t SaveAspectRatio(tvVideoSrcType_t videoSrcType, int pq_mode,tvVideoForm
  * @param[out] aspect_ratio  - Returns a pointer to an array of platform-supported aspect ratio modes.
  *                           - Values will be members of ::tvDisplayMode_t.
  *                           - The returned array must not be freed by the caller.
- *
+ *                           - Memory should be allocated in HAL function
  * @param[out] num_aspect_ratio - The total number of supported aspect ratio modes.
  *                              - Represents the number of elements in the `aspect_ratio` array.
- * @param[out] num_aspect_ratio - Returns the length of the array pointed to by `aspect_ratio`.
  *
  * @param[out] context_caps - A capabilities structure listing the configuration contexts supported.
  *
@@ -1488,11 +1514,14 @@ tvError_t GetLowLatencyState(int *lowlatencystate);
 /**
  * @brief Gets the LowLatencyState capabilities.
  *
- * The `context_caps` parameter receives a pointer to a `tvContextCaps_t` structure that lists the different
- * configuration contexts that this feature can be configured for.
+ * This function gets the LowLatencyState capabilities from the LowLatencyState section of the pq_capabilities.json.
+ *
  * If this feature is global (`num_contexts == 0`) and platform_support is true,
  * the corresponding pqmode, source, and format entries should be retrieved from the picturemode section
- * of pq_Capabilities.json
+ * of pq_capabilities.json
+ *
+ * The `context_caps` parameter receives a pointer to a `tvContextCaps_t` structure that lists the different
+ * configuration contexts that this feature can be configured for.
  *
  * The capabilities structure returned by this call is allocated by the HAL function and shall
  * be safe to reference for the lifetime of the process.
@@ -1805,11 +1834,14 @@ tvError_t SaveSourcePictureMode(tvVideoSrcType_t videoSrcType, tvVideoFormatType
 /**
  * @brief Gets the PictureMode capabilities.
  *
- * The `context_caps` parameter receives a pointer to a `tvContextCaps_t` structure that lists the different
- * configuration contexts that this feature can be configured for.
+ * This function gets the PictureMode capabilities from the PictureMode section of the pq_capabilities.json.
+ *
  * If this feature is global (`num_contexts == 0`) and platform_support is true,
  * the corresponding pqmode, source, and format entries should be retrieved from the picturemode section
- * of pq_Capabilities.json
+ * of pq_capabilities.json
+ *
+ * The `context_caps` parameter receives a pointer to a `tvContextCaps_t` structure that lists the different
+ * configuration contexts that this feature can be configured for.
  *
  * The capabilities structure returned by this call is allocated by the HAL function and shall
  * be safe to reference for the lifetime of the process.
@@ -1819,10 +1851,9 @@ tvError_t SaveSourcePictureMode(tvVideoSrcType_t videoSrcType, tvVideoFormatType
  * @param[out] mode          - Returns a pointer to an array of platform-supported PQ modes.
  *                           - Values will be members of ::tvPQModeIndex_t.
  *                           - The returned array must not be freed by the caller.
- *
+ *                           - Memory should be allocated in HAL function
  * @param[out] num_pic_modes  - The number of supported picture modes.
  *                             - Represents the total elements in `mode`.
- * @param[out] num_pic_modes - Returns the length of the array pointed to by `mode`.
  * @param[out] context_caps  - A capabilities structure listing the configuration contexts supported.
  *
  * @return tvError_t
@@ -3095,11 +3126,14 @@ tvError_t SaveCustom2PointWhiteBalance(tvVideoSrcType_t videoSrcType, int pq_mod
  /**
  * @brief Gets the precision detail capabilities.
  *
- * The `context_caps` parameter receives a pointer to a `tvContextCaps_t` structure that lists the different
- * configuration contexts that this feature can be configured for.
+ * This function gets the PrecisionDetails capabilities from the PrecisionDetails section of the pq_capabilities.json.
+ *
  * If this feature is global (`num_contexts == 0`) and platform_support is true,
  * the corresponding pqmode, source, and format entries should be retrieved from the picturemode section
- * of pq_Capabilities.json
+ * of pq_capabilities.json
+ *
+ * The `context_caps` parameter receives a pointer to a `tvContextCaps_t` structure that lists the different
+ * configuration contexts that this feature can be configured for.
  *
  * The capabilities structure returned by this call is allocated by the HAL function and shall
  * be safe to reference for the lifetime of the process.
@@ -3125,6 +3159,8 @@ tvError_t GetPrecisionDetailCaps(int* max_precision, tvContextCaps_t ** context_
 /**
  * @brief Gets the precision detail setting.
  *
+ * This function gets the precision detail setting for the primary video source selected,
+ * primary video format played and picture mode selected.
  * If the platform does not support precision detail, then tvERROR_OPERATION_NOT_SUPPORTED is returned.
  *
  * @param[in] videoSrcType - Source input value. Valid value will be a member of ::tvVideoSrcType_t
@@ -3176,7 +3212,7 @@ tvError_t SetPrecisionDetail(tvVideoSrcType_t videoSrcType, tvPQModeIndex_t pq_m
 /**
  * @brief Gets the default precision detail setting.
  *
- * This function gets the default precision detail setting.
+ * This function gets the default precision detail setting for the provided source , format and pqmode.
  * If the platform does not support precision detail, then tvERROR_OPERATION_NOT_SUPPORTED is returned.
  *
  * @param[in] videoSrcType - Source input value. Valid value will be a member of ::tvVideoSrcType_t
@@ -3194,17 +3230,19 @@ tvError_t SetPrecisionDetail(tvVideoSrcType_t videoSrcType, tvPQModeIndex_t pq_m
  *
  * @pre TvInit() should be called before calling this API
  */
-tvError_t GetPrecisionDetailDefault(tvVideoSrcType_t videoSrcType, tvPQModeIndex_t pq_mode, tvVideoFormatType_t
-videoFormatType, int * precisionDetail);
+tvError_t GetPrecisionDetailDefault(tvVideoSrcType_t videoSrcType, tvPQModeIndex_t pq_mode, tvVideoFormatType_t videoFormatType, int * precisionDetail);
 
 /**
  * @brief Gets all SDR gamma setting capabilities supported by the platform.
  *
- * The `context_caps` parameter receives a pointer to a `tvContextCaps_t` structure that lists the different
- * configuration contexts that this feature can be configured for.
+ * This function gets the SDRGamma capabilities from the SDRGamma section of the pq_capabilities.json.
+ *
  * If this feature is global (`num_contexts == 0`) and platform_support is true,
  * the corresponding pqmode, source, and format entries should be retrieved from the picturemode section
- * of pq_Capabilities.json
+ * of pq_capabilities.json
+ *
+ * The `context_caps` parameter receives a pointer to a `tvContextCaps_t` structure that lists the different
+ * configuration contexts that this feature can be configured for.
  *
  * The capabilities structure returned by this call is allocated by the HAL function and shall
  * be safe to reference for the lifetime of the process.
@@ -3214,9 +3252,9 @@ videoFormatType, int * precisionDetail);
  * @param[out] sdr_gamma     - Returns a pointer to an array of supported SDR gamma settings.
  *                           - Values will be members of ::tvPQModeIndex_t.
  *                           - The returned array must not be freed by the caller.
+ *                           - Memory should be allocated in HAL function
  * @param[out] num_sdr_gamma  - The total number of supported SDR gamma settings.
  *                            - Represents the number of elements in the `sdr_gamma` array.
- * @param[out] num_sdr_gamma - Returns the length of the array pointed to by `sdr_gamma`.
  * @param[out] context_caps  - A capabilities structure listing the configuration contexts supported.
  *
  * @return tvError_t
@@ -3304,15 +3342,18 @@ tvError_t GetSdrGammaDefault(tvVideoSrcType_t videoSrcType, tvPQModeIndex_t pq_m
 /**
  * @brief Gets the maximum local contrast enhancement setting value supported by the platform.
  *
+ * This function gets the LocalContrastEnhancement capabilities from the LocalContrastEnhancement section of the pq_capabilities.json.
+ *
+ * If this feature is global (`num_contexts == 0`) and platform_support is true,
+ * the corresponding pqmode, source, and format entries should be retrieved from the picturemode section
+ * of pq_capabilities.json
+ *
  * The local contrast enhancement setting ranges from 0..N inclusive where 0 is OFF and N is the maximum effect
 level and
  * value supported by the platform. The value of N is returned by this function.
  *
  * The `context_caps` parameter receives a pointer to a `tvContextCaps_t` structure that lists the different
  * configuration contexts that this feature can be configured for.
- * If this feature is global (`num_contexts == 0`) and platform_support is true,
- * the corresponding pqmode, source, and format entries should be retrieved from the picturemode section
- * of pq_Capabilities.json
  *
  * The capabilities structure returned by this call is allocated by the HAL function and shall
  * be safe to reference for the lifetime of the process.
@@ -3352,10 +3393,10 @@ tvError_t GetLocalContrastEnhancementCaps(int * maxLocalContrastEnhancement, tvC
  *
  * @param[in] videoSrcType    - Source input value. Valid value will be a member of ::tvVideoSrcType_t
  * @param[in] pq_mode         - Picture mode index. Valid value will be a member of ::tvPQModeIndex_t
- * @param[in] videoFormatType - Video format type value. Valid value will be a member of ::
-tvVideoFormatType_t
+ * @param[in] videoFormatType - Video format type value. Valid value will be a member of ::tvVideoFormatType_t
  * @param[in] localContrastEnhancement - Value of the local contrast enhancement to be set.
- * Valid values are from 0..N where 0=OFF and N is the maximum effect level, returned by GetLocalContrastEnhancementCaps().
+ *                                     - Valid values are from 0..N where 0=OFF and N is the maximum effect level, 
+ *                                     - returned by GetLocalContrastEnhancementCaps().
  *
  * @return tvError_t
  *
@@ -3425,14 +3466,17 @@ tvError_t GetLocalContrastEnhancementDefault(tvVideoSrcType_t videoSrcType, tvPQ
 /**
  * @brief Gets the maximum MPEG noise reduction setting value supported by the platform.
  *
+ * This function gets the MPEGNoiseReduction capabilities from the MPEGNoiseReduction section of the pq_capabilities.json.
+ *
+ * If this feature is global (`num_contexts == 0`) and platform_support is true,
+ * the corresponding pqmode, source, and format entries should be retrieved from the picturemode section
+ * of pq_capabilities.json
+ *
  * The MPEG noise reduction setting ranges from 0..N inclusive where 0 is OFF and N is the maximum effect level and
  * value supported by the platform. The value of N is returned by this function.
  *
  * The `context_caps` parameter receives a pointer to a `tvContextCaps_t` structure that lists the different
  * configuration contexts that this feature can be configured for.
- * If this feature is global (`num_contexts == 0`) and platform_support is true,
- * the corresponding pqmode, source, and format entries should be retrieved from the picturemode section
- * of pq_Capabilities.json
  *
  * The capabilities structure returned by this call is allocated by the HAL function and shall
  * be safe to reference for the lifetime of the process.
@@ -3510,8 +3554,7 @@ tvError_t SetMPEGNoiseReduction(tvVideoSrcType_t videoSrcType, tvPQModeIndex_t p
  *
  * @pre TvInit() should be called before calling this API
  */
-tvError_t GetMPEGNoiseReduction(tvVideoSrcType_t videoSrcType, tvPQModeIndex_t pq_mode, tvVideoFormatType_t
-videoFormatType, int * mpegNoiseReduction);
+tvError_t GetMPEGNoiseReduction(tvVideoSrcType_t videoSrcType, tvPQModeIndex_t pq_mode, tvVideoFormatType_t videoFormatType, int * mpegNoiseReduction);
 /**
  * @brief Gets the default MPEG noise reduction value.
  *
@@ -3542,14 +3585,17 @@ tvError_t GetMPEGNoiseReductionDefault(tvVideoSrcType_t videoSrcType, tvPQModeIn
 /**
  * @brief Gets the maximum digital noise reduction setting value supported by the platform.
  *
+ * This function gets the DigitalNoiseReduction capabilities from the DigitalNoiseReduction section of the pq_capabilities.json.
+ *
+ * If this feature is global (`num_contexts == 0`) and platform_support is true,
+ * the corresponding pqmode, source, and format entries should be retrieved from the picturemode section
+ * of pq_capabilities.json
+ *
  * The digital noise reduction setting ranges from 0..N inclusive where 0 is OFF and N is the maximum effect level and
  * value supported by the platform. The value of N is returned by this function.
  *
  * The `context_caps` parameter receives a pointer to a `tvContextCaps_t` structure that lists the different
  * configuration contexts that this feature can be configured for.
- * If this feature is global (`num_contexts == 0`) and platform_support is true,
- * the corresponding pqmode, source, and format entries should be retrieved from the picturemode section
- * of pq_Capabilities.json
  *
  * The capabilities structure returned by this call is allocated by the HAL function and shall
  * be safe to reference for the lifetime of the process.
@@ -3660,14 +3706,17 @@ tvError_t GetDigitalNoiseReductionDefault(tvVideoSrcType_t videoSrcType, tvPQMod
 /**
  * @brief Gets the maximum AI super resolution setting value supported by the platform.
  *
+ * This function gets the AISuperResolution capabilities from the AISuperResolution section of the pq_capabilities.json.
+ *
+ * If this feature is global (`num_contexts == 0`) and platform_support is true,
+ * the corresponding pqmode, source, and format entries should be retrieved from the picturemode section
+ * of pq_capabilities.json
+ *
  * The AI super resolution setting ranges from 0..N inclusive where 0 is OFF and N is the maximum effect level and
  * value supported by the platform. The value of N is returned by this function.
  *
  * The `context_caps` parameter receives a pointer to a `tvContextCaps_t` structure that lists the different
  * configuration contexts that this feature can be configured for.
- * If this feature is global (`num_contexts == 0`) and platform_support is true,
- * the corresponding pqmode, source, and format entries should be retrieved from the picturemode section
- * of pq_Capabilities.json
  *
  * The capabilities structure returned by this call is allocated by the HAL function and shall
  * be safe to reference for the lifetime of the process.
@@ -3778,14 +3827,17 @@ tvError_t GetAISuperResolutionDefault(tvVideoSrcType_t videoSrcType, tvPQModeInd
 /**
  * @brief Gets the maximum MEMC setting value supported by the platform.
  *
+ * This function gets the MEMC capabilities from the MEMC section of the pq_capabilities.json.
+ *
+ * If this feature is global (`num_contexts == 0`) and platform_support is true,
+ * the corresponding pqmode, source, and format entries should be retrieved from the picturemode section
+ * of pq_capabilities.json
+ *
  * The MEMC setting ranges from 0..N inclusive where 0 is OFF and N is the maximum effect level and
  * value supported by the platform. The value of N is returned by this function.
  *
  * The `context_caps` parameter receives a pointer to a `tvContextCaps_t` structure that lists the different
  * configuration contexts that this feature can be configured for.
- * If this feature is global (`num_contexts == 0`) and platform_support is true,
- * the corresponding pqmode, source, and format entries should be retrieved from the picturemode section
- * of pq_Capabilities.json
  *
  * The capabilities structure returned by this call is allocated by the HAL function and shall
  * be safe to reference for the lifetime of the process.
@@ -3897,6 +3949,12 @@ tvError_t GetMEMCDefault(tvVideoSrcType_t videoSrcType, tvPQModeIndex_t pq_mode,
 /**
  * @brief Gets the multi-point white balance capabilities supported by the platform.
  *
+ * This function gets the MultiPointWB capabilities from the MultiPointWB section of the pq_capabilities.json.
+ *
+ * If this feature is global (`num_contexts == 0`) and platform_support is true,
+ * the corresponding pqmode, source, and format entries should be retrieved from the picturemode section
+ * of pq_capabilities.json
+ *
  * The number of supported multi-point white balance (gamma) points used in the HAL is returned in `num_hal_matrix_points`.
  * The HAL must be given this number of points when a white balance gamma adjustment matrix is set.
  * All points in the HAL matrix are evenly spaced from 0.0 to 1.0.
@@ -3914,9 +3972,6 @@ tvError_t GetMEMCDefault(tvVideoSrcType_t videoSrcType, tvPQModeIndex_t pq_mode,
  *
  * The `context_caps` parameter receives a pointer to a `tvContextCaps_t` structure that lists the different
  * configuration contexts that this feature can be configured for.
- * If this feature is global (`num_contexts == 0`) and platform_support is true,
- * the corresponding pqmode, source, and format entries should be retrieved from the picturemode section
- * of pq_Capabilities.json
  *
  * The capabilities structure returned by this call is allocated by the HAL function and shall
  * be safe to reference for the lifetime of the process.
@@ -3981,13 +4036,15 @@ tvError_t SetMultiPointWBMatrix(tvColorTemp_t colorTemp, tvPQModeIndex_t pq_mode
 /**
  * @brief Gets the Dolby Vision PQ Calibration setting capabilities supported by the platform.
  *
+ * This function gets the DolbyVisionCalibration capabilities from the DolbyVisionCalibration section of the pq_capabilities.json.
+ *
+ * If this feature is global (`num_contexts == 0`) and platform_support is true,
+ * the corresponding pqmode, source, and format entries should be retrieved from the picturemode section
+ * of pq_capabilities.json
  * The min and max values for Tmax, Tmin, Tgamma, Rx, Ry, Gx, Ry, Bx, By, Wx and Wy are returned.
  *
  * The `context_caps` parameter receives a pointer to a `tvContextCaps_t` structure that lists the different
  * configuration contexts that this feature can be configured for.
- * If this feature is global (`num_contexts == 0`) and platform_support is true,
- * the corresponding pqmode, source, and format entries should be retrieved from the picturemode section
- * of pq_Capabilities.json
  *
  * The `context_caps` shall return only the Dolby Vision picture modes.
  *
@@ -4024,7 +4081,7 @@ tvError_t GetDVCalibrationCaps(tvDVCalibrationSettings_t ** min_values, tvDVCali
  *
  * @param[in] pq_mode            - Picture mode index. Valid value will be a member of ::tvPQModeIndex_t
  * @param[in] calibration_values - Structure of Dolby Vision PQ calibration values.
- * Valid values are returned by GetDVCalibrationCaps().
+ *                               - Valid values are returned by GetDVCalibrationCaps().
  *
  * @return tvError_t
  *
@@ -4048,7 +4105,7 @@ tvError_t SetDVCalibration(tvPQModeIndex_t pq_mode, tvDVCalibrationSettings_t * 
  *
  * @param[in] pq_mode             - Picture mode index. Valid value will be a member of ::tvPQModeIndex_t
  * @param[out] calibration_values - Structure of Dolby Vision PQ calibration values.
- * Valid values are returned by GetDVCalibrationCaps().
+ *                                - Valid values are returned by GetDVCalibrationCaps().
  *
  * @return tvError_t
  *
