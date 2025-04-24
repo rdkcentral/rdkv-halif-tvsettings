@@ -96,20 +96,23 @@ typedef enum
 }tvBacklightMode_t;
 
 /**
- * @brief Enumeration defining the supported video format types
+ * @brief Video format types supported by the TV.
  *
+ * VIDEO_FORMAT_NONE represents no video format. Other values represent
+ * specific HDR/SDR standards.
  */
-typedef enum tvVideoFormatType_e {
-    VIDEO_FORMAT_NONE  	   = 0,                 //!< No video format
-    VIDEO_FORMAT_HDR10,                         //!< Video format is HDR10
-    VIDEO_FORMAT_HDR10PLUS,                     //!< Video format is HDR10 plus
-    VIDEO_FORMAT_DV,                            //!< Video format is Dolby Vision
-    VIDEO_FORMAT_PRIMESL,                       //!< Video format is PRIMESL
-    VIDEO_FORMAT_HLG,                           //!< Video format is HLG
-    VIDEO_FORMAT_SDR,                           //!< Video format is SDR
-    VIDEO_FORMAT_MVC,                           //!< Video format is MVC
-    VIDEO_FORMAT_MAX                            //!< End of enum
-} tvVideoFormatType_t;
+ typedef enum
+ {
+    VIDEO_FORMAT_NONE       = 0, /**< No specific format */
+    VIDEO_FORMAT_HDR10,          /**< HDR10: static metadata HDR */
+    VIDEO_FORMAT_HDR10PLUS,      /**< HDR10Plus: dynamic metadata HDR */
+    VIDEO_FORMAT_DV,             /**< DV: Dolby Vision dynamic HDR */
+    VIDEO_FORMAT_PRIMESL,        /**< PRIMESL: proprietary HDR format */
+    VIDEO_FORMAT_HLG,            /**< HLG: Hybrid Log-Gamma HDR */
+    VIDEO_FORMAT_SDR,            /**< SDR: Standard Dynamic Range */
+    VIDEO_FORMAT_MVC,            /**< MVC: Multiview Video Coding (3D) */
+    VIDEO_FORMAT_MAX             /**< Upper bound (not a valid format) */
+ } tvVideoFormatType_t;
 
 /**
  * @brief Enumeration defining the supported source offset
@@ -124,30 +127,33 @@ typedef enum tvColorTempSourceOffset_e {
 } tvColorTempSourceOffset_t;
 
 /**
- * @brief Enumeration defining the supported video source types
+ * @brief Video input sources supported by the TV.
  *
+ * Use VIDEO_SOURCE_ALL to apply settings across all sources.
  */
-typedef enum tvVideoSrcType_e {
-    VIDEO_SOURCE_ALL        = -1,               //!< Video source is All
-    VIDEO_SOURCE_ANALOGUE = 0,                  //!< Video source is Analogue
-    VIDEO_SOURCE_COMPOSITE1,                    //!< Video source is Composite1
-    VIDEO_SOURCE_COMPOSITE2,                    //!< Video source is Composite2
-    VIDEO_SOURCE_YPBPR1,                        //!< Video source is YPbPr1
-    VIDEO_SOURCE_YPBPR2,                        //!< Video source is YPbPr2
-    VIDEO_SOURCE_HDMI1,                         //!< Video source is HDMI1
-    VIDEO_SOURCE_HDMI2,                         //!< Video source is HDMI2
-    VIDEO_SOURCE_HDMI3,                         //!< Video source is HDMI3
-    VIDEO_SOURCE_HDMI4,                         //!< Video source is HDMI4
-    VIDEO_SOURCE_VGA,                           //!< Video source is VGA
-    VIDEO_SOURCE_IP,                            //!< Video source is IP
-    VIDEO_SOURCE_TUNER,                         //!< Video source is Tuner
-    VIDEO_SOURCE_SVIDEO,                        //!< Video source is SVideo
-    VIDEO_SOURCE_RESERVED,                      //!< Video source reserved
-    VIDEO_SOURCE_RESERVED1,                     //!< Video source reserved
-    VIDEO_SOURCE_RESERVED2,                     //!< Video source reserved
-    VIDEO_SOURCE_RESERVED3,                     //!< Video source reserved
-    VIDEO_SOURCE_MAX                            //!< End of enum.
-} tvVideoSrcType_t;
+ typedef enum
+ {
+     VIDEO_SOURCE_ALL        = -1, /**< All sources */
+     VIDEO_SOURCE_ANALOGUE   =  0, /**< Analogue input */
+     VIDEO_SOURCE_COMPOSITE  =  1, /**< Composite input (generic) */
+     VIDEO_SOURCE_COMPOSITE1 =  2, /**< Composite input #1 */
+     VIDEO_SOURCE_COMPOSITE2 =  3, /**< Composite input #2 */
+     VIDEO_SOURCE_YPBPR1     =  4, /**< Component (YPbPr) input #1 */
+     VIDEO_SOURCE_YPBPR2     =  5, /**< Component (YPbPr) input #2 */
+     VIDEO_SOURCE_HDMI1      =  6, /**< HDMI input #1 */
+     VIDEO_SOURCE_HDMI2      =  7, /**< HDMI input #2 */
+     VIDEO_SOURCE_HDMI3      =  8, /**< HDMI input #3 */
+     VIDEO_SOURCE_HDMI4      =  9, /**< HDMI input #4 */
+     VIDEO_SOURCE_VGA        = 10, /**< VGA input */
+     VIDEO_SOURCE_IP         = 11, /**< Network IP stream input */
+     VIDEO_SOURCE_TUNER      = 12, /**< RF tuner input */
+     VIDEO_SOURCE_SVIDEO     = 13, /**< S-Video input */
+     VIDEO_SOURCE_RESERVED   = 14, /**< Reserved for future sources */
+     VIDEO_SOURCE_RESERVED1  = 15, /**< Reserved for future sources */
+     VIDEO_SOURCE_RESERVED2  = 16, /**< Reserved for future sources */
+     VIDEO_SOURCE_RESERVED3  = 17, /**< Reserved for future sources */
+     VIDEO_SOURCE_MAX        = 18  /**< Upper bound (not a valid source) */
+ } tvVideoSrcType_t;
 
 /**
  *  @brief Enumeration defining supported video resolution values
@@ -311,29 +317,33 @@ typedef enum tvComponentType_e
 }tvComponentType_t;
 
 /**
- * @brief Enumeration defining the supported PQ mode types
+ * @enum tvPQModeIndex_t
+ * @brief Picture Quality (PQ) modes supported by the TV.
  *
+ * Defines the available picture modes. Use PQ_MODE_INVALID for unspecified contexts,
+ * and PQ_MODE_MAX as a boundary marker (not a valid mode).
  */
-typedef enum tvPQModeIndex {
-    PQ_MODE_INVALID  = -1,                      //!< Picture mode is Invalid
-    PQ_MODE_STANDARD  = 0,                      //!< Picture mode is "Standard" or "Entertainment" */
-    PQ_MODE_VIVID =1 ,                          //!< Picture mode is "Vivid" or "Dynamic" */
-    PQ_MODE_ENERGY_SAVING =2,                   //!< Picture mode is "Energysaving" */
-    PQ_MODE_CUSTOM =3,                          //!< Picture mode is "Custom" or "Expert" */
-    PQ_MODE_THEATER =4 ,                        //!< Picture mode is "Theater" or "Movie" */
-    PQ_MODE_RESERVED1 =5 ,                      //!< Picture mode is Reserved */
-    PQ_MODE_RESERVED2 =6 ,                      //!< Picture mode is Reserved */
-    PQ_MODE_GAME =7,                            //!< Picture mode is "Game" */
-    PQ_MODE_SPORTS =8 ,                         //!< Picture mode is "Sports" */
-    PQ_MODE_GRAPHICS =9 ,                       //!< Picture mode is "Graphics" */
-    PQ_MODE_FMM =10,                            //!< Picture mode is "Filmmaker" */
-    PQ_MODE_VIVID2 =11,                         //!< Picture mode is "Vivid2 or Dynamic2" */
-    PQ_MODE_AIPQ =12,                           //!< Picture mode is "AIPQ" */
-    PQ_MODE_DARK = 13,                          //!< Picture mode is "Dark" */
-    PQ_MODE_BRIGHT = 14,                        //!< Picture mode is "Bright" */
-    PQ_MODE_DVIQ = 15,                          //!< Picture mode is "IQ" */
-    PQ_MODE_MAX=16                              //!< End of enum
-}tvPQModeIndex_t;
+typedef enum
+{
+    PQ_MODE_INVALID       = -1,  /**< Invalid or unspecified PQ mode */
+    PQ_MODE_STANDARD      = 0,   /**< "Standard" or "Entertainment" mode: balanced picture */
+    PQ_MODE_VIVID         = 1,   /**< "Vivid" or "Dynamic" mode: enhanced saturation and contrast */
+    PQ_MODE_ENERGY_SAVING = 2,   /**< "Energy Saving" mode: reduced brightness for power efficiency */
+    PQ_MODE_CUSTOM        = 3,   /**< "Custom" or "Expert" mode: user-defined settings */
+    PQ_MODE_THEATER       = 4,   /**< "Theater" or "Movie" mode: optimized for dark-room viewing */
+    PQ_MODE_RESERVED1     = 5,   /**< Reserved for future PQ modes */
+    PQ_MODE_RESERVED2     = 6,   /**< Reserved for future PQ modes */
+    PQ_MODE_GAME          = 7,   /**< "Game" mode: low-latency settings for gaming */
+    PQ_MODE_SPORTS        = 8,   /**< "Sports" mode: smooth motion for fast action */
+    PQ_MODE_GRAPHICS      = 9,   /**< "Graphics" mode: enhanced clarity for text and UI */
+    PQ_MODE_FMM           = 10,  /**< "Filmmaker" mode: adheres to creator’s intent */
+    PQ_MODE_VIVID2        = 11,  /**< "Vivid2" or "Dynamic2" mode: alternative dynamic settings */
+    PQ_MODE_AIPQ          = 12,  /**< "AIPQ" mode: AI-driven picture optimization */
+    PQ_MODE_DARK          = 13,  /**< "Dark" mode: high contrast for low-light scenes */
+    PQ_MODE_BRIGHT        = 14,  /**< "Bright" mode: increased brightness for well-lit rooms */
+    PQ_MODE_IQ            = 15,  /**< "IQ" mode: intelligent picture quality balancing */
+    PQ_MODE_MAX           = 16   /**< Upper bound (not a valid mode) */
+} tvPQModeIndex_t;
 
 /**
  * @brief Enumeration defining the supported PQ param types
