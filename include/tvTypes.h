@@ -101,9 +101,9 @@ typedef enum
  * VIDEO_FORMAT_NONE represents no video format. Other values represent
  * specific HDR/SDR standards.
  */
- typedef enum
- {
-    VIDEO_FORMAT_NONE       = 0, /**< No specific format */
+typedef enum
+{
+    VIDEO_FORMAT_NONE       = 0, /**< No specific format - No video playback */
     VIDEO_FORMAT_HDR10,          /**< HDR10: static metadata HDR */
     VIDEO_FORMAT_HDR10PLUS,      /**< HDR10Plus: dynamic metadata HDR */
     VIDEO_FORMAT_DV,             /**< DV: Dolby Vision dynamic HDR */
@@ -112,7 +112,7 @@ typedef enum
     VIDEO_FORMAT_SDR,            /**< SDR: Standard Dynamic Range */
     VIDEO_FORMAT_MVC,            /**< MVC: Multiview Video Coding (3D) */
     VIDEO_FORMAT_MAX             /**< Upper bound (not a valid format) */
- } tvVideoFormatType_t;
+} tvVideoFormatType_t;
 
 /**
  * @brief Enumeration defining the supported source offset
@@ -130,30 +130,32 @@ typedef enum tvColorTempSourceOffset_e {
  * @brief Video input sources supported by the TV.
  *
  * Use VIDEO_SOURCE_ALL to apply settings across all sources.
+ * When the video source settings are global, the context structure should be filled
+ * with valid tvVideoSrcType_t memebers and not with VIDEO_SOURCE_ALL.
  */
- typedef enum
- {
-     VIDEO_SOURCE_ALL        = -1, /**< All sources */
-     VIDEO_SOURCE_ANALOGUE   =  0, /**< Analogue input */
-     VIDEO_SOURCE_COMPOSITE  =  1, /**< Composite input (generic) */
-     VIDEO_SOURCE_COMPOSITE1 =  2, /**< Composite input #1 */
-     VIDEO_SOURCE_COMPOSITE2 =  3, /**< Composite input #2 */
-     VIDEO_SOURCE_YPBPR1     =  4, /**< Component (YPbPr) input #1 */
-     VIDEO_SOURCE_YPBPR2     =  5, /**< Component (YPbPr) input #2 */
-     VIDEO_SOURCE_HDMI1      =  6, /**< HDMI input #1 */
-     VIDEO_SOURCE_HDMI2      =  7, /**< HDMI input #2 */
-     VIDEO_SOURCE_HDMI3      =  8, /**< HDMI input #3 */
-     VIDEO_SOURCE_HDMI4      =  9, /**< HDMI input #4 */
-     VIDEO_SOURCE_VGA        = 10, /**< VGA input */
-     VIDEO_SOURCE_IP         = 11, /**< Network IP stream input */
-     VIDEO_SOURCE_TUNER      = 12, /**< RF tuner input */
-     VIDEO_SOURCE_SVIDEO     = 13, /**< S-Video input */
-     VIDEO_SOURCE_RESERVED   = 14, /**< Reserved for future sources */
-     VIDEO_SOURCE_RESERVED1  = 15, /**< Reserved for future sources */
-     VIDEO_SOURCE_RESERVED2  = 16, /**< Reserved for future sources */
-     VIDEO_SOURCE_RESERVED3  = 17, /**< Reserved for future sources */
-     VIDEO_SOURCE_MAX        = 18  /**< Upper bound (not a valid source) */
- } tvVideoSrcType_t;
+typedef enum
+{
+    VIDEO_SOURCE_ALL        = -1, /**< All sources */
+    VIDEO_SOURCE_ANALOGUE   =  0, /**< Analogue input */
+    VIDEO_SOURCE_COMPOSITE  =  1, /**< Composite input (generic) */
+    VIDEO_SOURCE_COMPOSITE1 =  2, /**< Composite input #1 */
+    VIDEO_SOURCE_COMPOSITE2 =  3, /**< Composite input #2 */
+    VIDEO_SOURCE_YPBPR1     =  4, /**< Component (YPbPr) input #1 */
+    VIDEO_SOURCE_YPBPR2     =  5, /**< Component (YPbPr) input #2 */
+    VIDEO_SOURCE_HDMI1      =  6, /**< HDMI input #1 */
+    VIDEO_SOURCE_HDMI2      =  7, /**< HDMI input #2 */
+    VIDEO_SOURCE_HDMI3      =  8, /**< HDMI input #3 */
+    VIDEO_SOURCE_HDMI4      =  9, /**< HDMI input #4 */
+    VIDEO_SOURCE_VGA        = 10, /**< VGA input */
+    VIDEO_SOURCE_IP         = 11, /**< Network IP stream input */
+    VIDEO_SOURCE_TUNER      = 12, /**< RF tuner input */
+    VIDEO_SOURCE_SVIDEO     = 13, /**< S-Video input */
+    VIDEO_SOURCE_RESERVED   = 14, /**< Reserved for future sources */
+    VIDEO_SOURCE_RESERVED1  = 15, /**< Reserved for future sources */
+    VIDEO_SOURCE_RESERVED2  = 16, /**< Reserved for future sources */
+    VIDEO_SOURCE_RESERVED3  = 17, /**< Reserved for future sources */
+    VIDEO_SOURCE_MAX        = 18  /**< Upper bound (not a valid source) */
+} tvVideoSrcType_t;
 
 /**
  *  @brief Enumeration defining supported video resolution values
@@ -615,28 +617,35 @@ typedef struct {
  *
  * A context is formed from a PQ picture mode, video format and video source combination.
  * When listed in capabilities it indicates a valid combination a feature can be configured against.
+ *
+ * @param pq_mode         Picture Quality (PQ) mode index (tvPQModeIndex_t).
+ * @param videoFormatType Video format type (tvVideoFormatType_t).
+ * @param videoSrcType    Video source type (tvVideoSrcType_t).
  */
-typedef struct
-{
-    tvPQModeIndex_t pq_mode; /**< PQ picture mode. When set to PQ_MODE_INVALID, it is global across
-    all PQ picture modes. */
-    tvVideoFormatType_t videoFormatType; /**< Video format When set to VIDEO_FORMAT_NONE, it is global across
-    all video formats. */
-    tvVideoSrcType_t videoSrcType; /**< Video source. When set to VIDEO_SOURCE_ALL, it is global across
-    all video sources. */
+typedef struct {
+    tvPQModeIndex_t     pq_mode;         /**< Valid picture mode from  tvPQModeIndex_t */
+    tvVideoFormatType_t videoFormatType; /**< Valid video format from tvVideoFormatType_t */
+    tvVideoSrcType_t    videoSrcType;    /**< Valid video source from tvVideoSrcType_t */
 } tvConfigContext_t;
 
 /**
- * @brief Structure that holds an array of `tvConfigContext_t`, used to describe all of the supported feature
-capabilities.
+ * @brief Describes all supported configuration contexts (capabilities).
  *
- * When `num_contexts` is 0 it indicates a global feature setting that can't be configured for
- * specific PQ picture modes, video formats or video sources.
+ * Holds an array of specific contexts where a feature can be applied. A global
+ * feature that cannot be fine-tuned per mode/format/source is indicated by
+ * num_contexts == 0.
+ *
+ * If this feature is global (`num_contexts == 0`) and platform_support is true,
+ * the corresponding pqmode, source, and format entries should be retrieved from the picturemode section
+ * of pq_capabilities.json
+ *
+ * @param num_contexts Number of entries in the @c contexts array (0 = global only).
+ * @param contexts     Pointer to an array of configuration contexts.
  */
 typedef struct
 {
-    size_t num_contexts;
-    tvConfigContext_t * contexts;
+    size_t             num_contexts; /**< Count of contexts (0 = global only) */
+    tvConfigContext_t *contexts;     /**< Array of supported contexts */
 } tvContextCaps_t;
 
 /**

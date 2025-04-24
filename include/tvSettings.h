@@ -3094,6 +3094,47 @@ tvError_t SetCustom2PointWhiteBalance(tvWBColor_t color, tvWBControl_t control, 
 tvError_t GetCustom2PointWhiteBalance(tvWBColor_t color, tvWBControl_t control, int *value);
 
 /**
+ * @brief Gets the Custom2PointWhiteBalance capabilities.
+ *
+ * This function gets the Custom2PointWhiteBalance capabilities from the Custom2PointWhiteBalance section of the pq_capabilities.json.
+ *
+ * If this feature is global (`num_contexts == 0`) and platform_support is true,
+ * the corresponding pqmode, source, and format entries should be retrieved from the picturemode section
+ * of pq_capabilities.json
+ *
+ * The `context_caps` parameter receives a pointer to a `tvContextCaps_t` structure that lists the different
+ * configuration contexts that this feature can be configured for.
+ *
+ * The capabilities structure returned by this call is allocated by the HAL function and shall
+ * be safe to reference for the lifetime of the process.
+ *
+ * If the platform does not support backlight, then tvERROR_OPERATION_NOT_SUPPORTED is returned.
+ *
+ * @param[out] min_gain         - Minimum Gain.
+ * @param[out] min_offset       - Minimum Saturation.
+ * @param[out] max_gain         - Maximum Gain.
+ * @param[out] max_offset       - Maximum Saturation.
+ * @param[out] color - A structure representing the supported white balance color components.
+ * @param[out] component - A structure defining the controls available for white balance adjustments.
+ * @param[out] num_color - The total number of supported white balance color components.
+ *                       - Represents the number of elements in the 'color' array.
+ * @param[out] num_control - The total number of supported white balance control options.
+ *                         - Represents the number of elements in the 'component' array.
+ * @param[out] context_caps     - A capabilities structure listing the configuration contexts supported.
+ *
+ * @return tvError_t
+ *
+ * @retval tvERROR_NONE - Success
+ * @retval tvERROR_INVALID_PARAM - Parameter is invalid
+ * @retval tvERROR_INVALID_STATE - Interface is not initialized
+ * @retval tvERROR_OPERATION_NOT_SUPPORTED - Operation is not supported
+ * @retval tvERROR_GENERAL - Underlying failures - SoC, memory, etc
+ *
+ * @pre TvInit() should be called before calling this API
+ */
+tvError_t GetCustom2PointWhiteBalanceCaps ( int *min_gain, int *min_offset, int *max_gain, int *max_offset, tvWBColor_t **color, tvWBControl_t **control, size_t* num_color, size_t* num_control, tvContextCaps_t ** context_caps );
+
+/**
  * @brief Saves WhiteBalance
  *
  * This function saves the WhiteBalance in picture profile database for the specific primary video format type
@@ -3819,8 +3860,7 @@ tvError_t GetMEMC(tvVideoSrcType_t videoSrcType, tvPQModeIndex_t pq_mode, tvVide
  *
  * @pre TvInit() should be called before calling this API
  */
-tvError_t GetMultiPointWBCaps(int * num_hal_matrix_points, int * rgb_min, int * rgb_max, int * num_ui_matrix_points,
-double ** ui_matrix_positions, tvContextCaps_t ** context_caps);
+tvError_t GetMultiPointWBCaps(int * num_hal_matrix_points, int * rgb_min, int * rgb_max, int * num_ui_matrix_points, double ** ui_matrix_positions, tvContextCaps_t ** context_caps);
 
 /**
  * @brief Sets the multi-point white balance red, green and blue values for the whole matrix.
@@ -3857,6 +3897,37 @@ double ** ui_matrix_positions, tvContextCaps_t ** context_caps);
 tvError_t SetMultiPointWBMatrix(tvColorTemp_t colorTemp, tvPQModeIndex_t pq_mode, tvVideoFormatType_t videoFormatType, tvVideoSrcType_t videoSrcType, int * r, int * g, int * b);
 
 /**
+* @brief Gets the multi-point white balance red, green and blue values for the whole matrix.
+*
+* This function gets the multi-point white balance values from the picture profile database for the specific picture mode, color temperature,
+* primary video format and primary video source.
+*
+* The red, green and blue values are provided for all points in the matrix.
+* The 'r', 'g' and 'b' parameters point to integer arrays which must contain `num_hal_matrix_points` elements as returned by GetMultiPointWBCaps().
+*
+* If the platform does not support multi-point white balance, then tvERROR_OPERATION_NOT_SUPPORTED is returned.
+*
+* @param[in] colorTemp         - Color temperature type value. Valid value will be a member of ::tvColorTemp_t
+* @param[in] pq_mode           - Picture mode index. Valid value will be a member of ::tvPQModeIndex_t
+* @param[in] videoFormatType   - Video format type value. Valid value will be a member of ::tvVideoFormatType_t
+* @param[in] videoSrcType      - Source input value. Valid value will be a member of ::tvVideoSrcType_t
+* @param[in] r                 - Array of red values.  Element values must be `rgb_min` <= r <= `rgb_max` as returned by GetMultiPointWBCaps().
+* @param[in] g                 - Array of green values.  Element values must be `rgb_min` <= g <= `rgb_max` as returned by GetMultiPointWBCaps().
+* @param[in] b                 - Array of blue values.  Element values must be `rgb_min` <= b <= `rgb_max` as returned by GetMultiPointWBCaps().
+*
+* @return tvError_t
+*
+* @retval tvERROR_NONE                     - Success
+* @retval tvERROR_INVALID_PARAM            - Input parameter is invalid
+* @retval tvERROR_INVALID_STATE            - Interface is not initialized
+* @retval tvERROR_OPERATION_NOT_SUPPORTED  - Operation is not supported
+* @retval tvERROR_GENERAL                  - Underlying failures - SoC, memory, etc
+*
+* @pre TvInit() should be called before calling this API
+*/
+tvError_t GetMultiPointWBMatrix(tvColorTemp_t colorTemp, tvPQModeIndex_t pq_mode, tvVideoFormatType_t videoFormatType,  tvVideoSrcType_t videoSrcType, int * r, int * g, int * b);
+
+/**
  * @brief Gets the Dolby Vision PQ Calibration setting capabilities supported by the platform.
  *
  * This function gets the DolbyVisionCalibration capabilities from the DolbyVisionCalibration section of the pq_capabilities.json.
@@ -3876,8 +3947,12 @@ tvError_t SetMultiPointWBMatrix(tvColorTemp_t colorTemp, tvPQModeIndex_t pq_mode
  *
  * If the platform does not support Dolby Vision PQ Calibration, then tvERROR_OPERATION_NOT_SUPPORTED is returned.
  *
- * @param[out] min_values    - Minimum DV calibration values.
- * @param[out] max_values    - Maximum DV calibration values.
+ * @param[out] min_values   - Returns a pointer to an structure which contains minimum values of DV calibration params.
+ *                          - The returned Pointer must not be freed by the caller.
+ *                          - Memory should be allocated in HAL function
+ * @param[out] max_values   - Returns a pointer to an structure which contains maximum values of DV calibration params.
+ *                          - The returned Pointer must not be freed by the caller.
+ *                          - Memory should be allocated in HAL function
  * @param[out] context_caps  - A capabilities structure listing the configuration contexts supported.
  *
  * @return tvError_t
@@ -3929,6 +4004,7 @@ tvError_t SetDVCalibration(tvPQModeIndex_t pq_mode, tvDVCalibrationSettings_t * 
  * @param[in] pq_mode             - Picture mode index. Valid value will be a member of ::tvPQModeIndex_t
  * @param[out] calibration_values - Structure of Dolby Vision PQ calibration values.
  *                                - Valid values are returned by GetDVCalibrationCaps().
+ *                                - Memory should be allocated in HAL function
  *
  * @return tvError_t
  *
@@ -3995,6 +4071,10 @@ tvError_t GetDVCalibrationDefault(tvPQModeIndex_t pq_mode, tvDVCalibrationSettin
  *                              - Values will be members of ::tvComponentType_t.
  *                              - The returned array must not be freed by the caller.
  *                              - Memory should be allocated in HAL function
+ * @param[out] num_color - The total number of supported component colors.
+ *                       - Represents the number of elements in the 'color'' array.
+ * @param[out] num_component - The total number of supported component types.
+ *                           -Represents the number of elements in the 'component' array.
  * @param[out] context_caps     - A capabilities structure listing the configuration contexts supported.
  *
  * @return tvError_t
@@ -4007,7 +4087,140 @@ tvError_t GetDVCalibrationDefault(tvPQModeIndex_t pq_mode, tvDVCalibrationSettin
  *
  * @pre TvInit() should be called before calling this API
  */
- tvError_t GetCMSCaps (int *max_hue, int *max_saturation,int *max_luma, tvDataComponentColor_t **color, tvComponentType_t **component, tvContextCaps_t **context_caps);
+tvError_t GetCMSCaps (int *max_hue, int *max_saturation,int *max_luma, tvDataComponentColor_t **color, tvComponentType_t **component, size_t* num_color, size_t* num_component, tvContextCaps_t **context_caps);
+ 
+ /**
+ * @brief Gets the VideoSource capabilities.
+ *
+ * This function gets the VideoSource capabilities from the VideoSource section of the pq_capabilities.json.
+ *
+ * If the platform does not support colorTemperature, then tvERROR_OPERATION_NOT_SUPPORTED is returned.
+ *
+ * @param[out] source       - Returns a pointer to an array of platform-supported video sources.
+ *                          - Values will be members of ::tvVideoSrcType_t.
+ *                          - The returned array must not be freed by the caller.
+ *                          - Memory should be allocated in HAL function
+ * @param[out] num_video_source - The total number of supported video sources.
+ *                             - Represents the number of elements in the `source` array.
+ * @return tvError_t
+ *
+ * @retval tvERROR_NONE - Success
+ * @retval tvERROR_INVALID_PARAM - Parameter is invalid
+ * @retval tvERROR_INVALID_STATE - Interface is not initialized
+ * @retval tvERROR_OPERATION_NOT_SUPPORTED - Operation is not supported
+ * @retval tvERROR_GENERAL - Underlying failures - SoC, memory, etc
+ *
+ * @pre TvInit() should be called before calling this API
+ */
+tvError_t GetVideoSourceCaps( tvVideoSrcType_t **source, size_t* num_video_source);
+
+ /**
+ * @brief Gets the VideoFramerate capabilities.
+ *
+ * This function gets the VideoFramerate capabilities from the VideoFramerate section of the pq_capabilities.json.
+ *
+ * If the platform does not support colorTemperature, then tvERROR_OPERATION_NOT_SUPPORTED is returned.
+ *
+ * @param[out] framerate    - Returns a pointer to an array of platform-supported video framerates.
+ *                          - Values will be members of ::tvVideoFrameRate_t.
+ *                          - The returned array must not be freed by the caller.
+ *                          - Memory should be allocated in HAL function
+ * @param[out] num_video_framerate - The total number of supported video framerates.
+ *                             - Represents the number of elements in the `framerate` array.
+ * @return tvError_t
+ *
+ * @retval tvERROR_NONE - Success
+ * @retval tvERROR_INVALID_PARAM - Parameter is invalid
+ * @retval tvERROR_INVALID_STATE - Interface is not initialized
+ * @retval tvERROR_OPERATION_NOT_SUPPORTED - Operation is not supported
+ * @retval tvERROR_GENERAL - Underlying failures - SoC, memory, etc
+ *
+ * @pre TvInit() should be called before calling this API
+ */
+tvError_t GetVideoFrameRateCaps( tvVideoFrameRate_t **framerate, size_t* num_video_framerate);
+
+ /**
+ * @brief Gets the VideoFormat capabilities.
+ *
+ * This function gets the VideoFormat capabilities from the VideoFormat section of the pq_capabilities.json.
+ *
+ * If the platform does not support colorTemperature, then tvERROR_OPERATION_NOT_SUPPORTED is returned.
+ *
+ * @param[out] format       - Returns a pointer to an array of platform-supported video formats.
+ *                          - Values will be members of ::tvVideoFormatType_t.
+ *                          - The returned array must not be freed by the caller.
+ *                          - Memory should be allocated in HAL function
+ * @param[out] num_video_format - The total number of supported video formats.
+ *                             - Represents the number of elements in the `format` array.
+ * @return tvError_t
+ *
+ * @retval tvERROR_NONE - Success
+ * @retval tvERROR_INVALID_PARAM - Parameter is invalid
+ * @retval tvERROR_INVALID_STATE - Interface is not initialized
+ * @retval tvERROR_OPERATION_NOT_SUPPORTED - Operation is not supported
+ * @retval tvERROR_GENERAL - Underlying failures - SoC, memory, etc
+ *
+ * @pre TvInit() should be called before calling this API
+ */
+tvError_t GetVideoFormatCaps(tvVideoFormatType_t **format, size_t* num_video_format);
+
+ /**
+ * @brief Gets the VideoResolution capabilities.
+ *
+ * This function gets the VideoResolution capabilities from the VideoResolution section of the pq_capabilities.json.
+ *
+ * If the platform does not support colorTemperature, then tvERROR_OPERATION_NOT_SUPPORTED is returned.
+ *
+ * @param[out] resolution   - Returns a pointer to an array of platform-supported video resolutions.
+ *                          - Values will be members of ::tvVideoResolution_t.
+ *                          - The returned array must not be freed by the caller.
+ *                          - Memory should be allocated in HAL function
+ * @param[out] num_video_resolution - The total number of supported video resolution.
+ *                                  - Represents the number of elements in the `resolution` array.
+ * @return tvError_t
+ *
+ * @retval tvERROR_NONE - Success
+ * @retval tvERROR_INVALID_PARAM - Parameter is invalid
+ * @retval tvERROR_INVALID_STATE - Interface is not initialized
+ * @retval tvERROR_OPERATION_NOT_SUPPORTED - Operation is not supported
+ * @retval tvERROR_GENERAL - Underlying failures - SoC, memory, etc
+ *
+ * @pre TvInit() should be called before calling this API
+ */
+tvError_t GetVideoResolutionCaps( tvVideoResolution_t ** resolution, size_t* num_video_resolution);
+
+/**
+ * @brief Gets the BacklightMode capabilities.
+ *
+ * This function gets the BacklightMode capabilities from the BacklightMode section of the pq_capabilities.json.
+ *
+ * If this feature is global (`num_contexts == 0`) and platform_support is true,
+ * the corresponding pqmode, source, and format entries should be retrieved from the picturemode section
+ * of pq_capabilities.json
+ *
+ * The `context_caps` parameter receives a pointer to a `tvContextCaps_t` structure that lists the different
+ * configuration contexts that this feature can be configured for.
+ *
+ * The capabilities structure returned by this call is allocated by the HAL function and shall
+ * be safe to reference for the lifetime of the process.
+ *
+ * If the platform does not support backlight, then tvERROR_OPERATION_NOT_SUPPORTED is returned.
+ *
+ * @param[out] backlight_mode - A structure representing the supported backlight modes.
+ * @param[out] num_backlight_mode - The total number of supported backlight modes. Represents the number of elements in the backlight_mode array.
+ * @param[out] context_caps  - A capabilities structure listing the configuration contexts supported.
+ *
+ * @return tvError_t
+ *
+ * @retval tvERROR_NONE - Success
+ * @retval tvERROR_INVALID_PARAM - Parameter is invalid
+ * @retval tvERROR_INVALID_STATE - Interface is not initialized
+ * @retval tvERROR_OPERATION_NOT_SUPPORTED - Operation is not supported
+ * @retval tvERROR_GENERAL - Underlying failures - SoC, memory, etc
+ *
+ * @pre TvInit() should be called before calling this API
+ */
+tvError_t GetBacklightModeCaps(tvBacklightMode_t** backlight_mode, size_t* num_backlight_mode, tvContextCaps_t** context_caps);
 
 #ifdef __cplusplus
 }
