@@ -96,19 +96,22 @@ typedef enum
 }tvBacklightMode_t;
 
 /**
- * @brief Enumeration defining the supported video format types
+ * @brief Video format types supported by the TV.
  *
+ * VIDEO_FORMAT_NONE represents no video format. Other values represent
+ * specific HDR/SDR standards.
  */
-typedef enum tvVideoFormatType_e {
-    VIDEO_FORMAT_NONE  	   = 0,                 //!< No video format
-    VIDEO_FORMAT_HDR10,                         //!< Video format is HDR10
-    VIDEO_FORMAT_HDR10PLUS,                     //!< Video format is HDR10 plus
-    VIDEO_FORMAT_DV,                            //!< Video format is Dolby Vision
-    VIDEO_FORMAT_PRIMESL,                       //!< Video format is PRIMESL
-    VIDEO_FORMAT_HLG,                           //!< Video format is HLG
-    VIDEO_FORMAT_SDR,                           //!< Video format is SDR
-    VIDEO_FORMAT_MVC,                           //!< Video format is MVC
-    VIDEO_FORMAT_MAX                            //!< End of enum
+typedef enum
+{
+    VIDEO_FORMAT_NONE       = 0, /**< No specific format - No video playback */
+    VIDEO_FORMAT_HDR10,          /**< HDR10: static metadata HDR */
+    VIDEO_FORMAT_HDR10PLUS,      /**< HDR10Plus: dynamic metadata HDR */
+    VIDEO_FORMAT_DV,             /**< DV: Dolby Vision dynamic HDR */
+    VIDEO_FORMAT_PRIMESL,        /**< PRIMESL: proprietary HDR format */
+    VIDEO_FORMAT_HLG,            /**< HLG: Hybrid Log-Gamma HDR */
+    VIDEO_FORMAT_SDR,            /**< SDR: Standard Dynamic Range */
+    VIDEO_FORMAT_MVC,            /**< MVC: Multiview Video Coding (3D) */
+    VIDEO_FORMAT_MAX             /**< Upper bound (not a valid format) */
 } tvVideoFormatType_t;
 
 /**
@@ -124,29 +127,34 @@ typedef enum tvColorTempSourceOffset_e {
 } tvColorTempSourceOffset_t;
 
 /**
- * @brief Enumeration defining the supported video source types
+ * @brief Video input sources supported by the TV.
  *
+ * Use VIDEO_SOURCE_ALL to apply settings across all sources.
+ * When the video source settings are global, the context structure should be filled
+ * with valid tvVideoSrcType_t memebers and not with VIDEO_SOURCE_ALL.
  */
-typedef enum tvVideoSrcType_e {
-    VIDEO_SOURCE_ALL        = -1,               //!< Video source is All
-    VIDEO_SOURCE_ANALOGUE = 0,                  //!< Video source is Analogue
-    VIDEO_SOURCE_COMPOSITE1,                    //!< Video source is Composite1
-    VIDEO_SOURCE_COMPOSITE2,                    //!< Video source is Composite2
-    VIDEO_SOURCE_YPBPR1,                        //!< Video source is YPbPr1
-    VIDEO_SOURCE_YPBPR2,                        //!< Video source is YPbPr2
-    VIDEO_SOURCE_HDMI1,                         //!< Video source is HDMI1
-    VIDEO_SOURCE_HDMI2,                         //!< Video source is HDMI2
-    VIDEO_SOURCE_HDMI3,                         //!< Video source is HDMI3
-    VIDEO_SOURCE_HDMI4,                         //!< Video source is HDMI4
-    VIDEO_SOURCE_VGA,                           //!< Video source is VGA
-    VIDEO_SOURCE_IP,                            //!< Video source is IP
-    VIDEO_SOURCE_TUNER,                         //!< Video source is Tuner
-    VIDEO_SOURCE_SVIDEO,                        //!< Video source is SVideo
-    VIDEO_SOURCE_RESERVED,                      //!< Video source reserved
-    VIDEO_SOURCE_RESERVED1,                     //!< Video source reserved
-    VIDEO_SOURCE_RESERVED2,                     //!< Video source reserved
-    VIDEO_SOURCE_RESERVED3,                     //!< Video source reserved
-    VIDEO_SOURCE_MAX                            //!< End of enum.
+typedef enum
+{
+    VIDEO_SOURCE_ALL        = -1, /**< All sources */
+    VIDEO_SOURCE_ANALOGUE   =  0, /**< Analogue input */
+    VIDEO_SOURCE_COMPOSITE  =  1, /**< Composite input (generic) */
+    VIDEO_SOURCE_COMPOSITE1 =  2, /**< Composite input #1 */
+    VIDEO_SOURCE_COMPOSITE2 =  3, /**< Composite input #2 */
+    VIDEO_SOURCE_YPBPR1     =  4, /**< Component (YPbPr) input #1 */
+    VIDEO_SOURCE_YPBPR2     =  5, /**< Component (YPbPr) input #2 */
+    VIDEO_SOURCE_HDMI1      =  6, /**< HDMI input #1 */
+    VIDEO_SOURCE_HDMI2      =  7, /**< HDMI input #2 */
+    VIDEO_SOURCE_HDMI3      =  8, /**< HDMI input #3 */
+    VIDEO_SOURCE_HDMI4      =  9, /**< HDMI input #4 */
+    VIDEO_SOURCE_VGA        = 10, /**< VGA input */
+    VIDEO_SOURCE_IP         = 11, /**< Network IP stream input */
+    VIDEO_SOURCE_TUNER      = 12, /**< RF tuner input */
+    VIDEO_SOURCE_SVIDEO     = 13, /**< S-Video input */
+    VIDEO_SOURCE_RESERVED   = 14, /**< Reserved for future sources */
+    VIDEO_SOURCE_RESERVED1  = 15, /**< Reserved for future sources */
+    VIDEO_SOURCE_RESERVED2  = 16, /**< Reserved for future sources */
+    VIDEO_SOURCE_RESERVED3  = 17, /**< Reserved for future sources */
+    VIDEO_SOURCE_MAX        = 18  /**< Upper bound (not a valid source) */
 } tvVideoSrcType_t;
 
 /**
@@ -311,25 +319,33 @@ typedef enum tvComponentType_e
 }tvComponentType_t;
 
 /**
- * @brief Enumeration defining the supported PQ mode types
+ * @enum tvPQModeIndex_t
+ * @brief Picture Quality (PQ) modes supported by the TV.
  *
+ * Defines the available picture modes. Use PQ_MODE_INVALID for unspecified contexts,
+ * and PQ_MODE_MAX as a boundary marker (not a valid mode).
  */
-typedef enum tvPQModeIndex {
-    PQ_MODE_INVALID  = -1,                      //!< Picture mode is Invalid
-    PQ_MODE_STANDARD  = 0,                      //!< Picture mode is "Standard" or "Entertainment" */
-    PQ_MODE_VIVID =1 ,                          //!< Picture mode is "Vivid" or "Dynamic" */
-    PQ_MODE_ENERGY_SAVING =2,                   //!< Picture mode is "Energysaving" */
-    PQ_MODE_CUSTOM =3,                          //!< Picture mode is "Custom" or "Expert" */
-    PQ_MODE_THEATER =4 ,                        //!< Picture mode is "Theater" or "Movie" */
-    PQ_MODE_RESERVED1 =5 ,                      //!< Picture mode is Reserved */
-    PQ_MODE_RESERVED2 =6 ,                      //!< Picture mode is Reserved */
-    PQ_MODE_GAME =7,                            //!< Picture mode is "Game" */
-    PQ_MODE_SPORTS =8 ,                         //!< Picture mode is "Sports" */
-    PQ_MODE_GRAPHICS =9 ,                       //!< Picture mode is "Graphics" */
-    PQ_MODE_FMM =10,                            //!< Picture mode is "Filmmaker" */
-    PQ_MODE_VIVID2 =11,                         //!< Picture mode is "Vivid2 or Dynamic2" */
-    PQ_MODE_MAX=15                              //!< End of enum
-}tvPQModeIndex_t;
+typedef enum
+{
+    PQ_MODE_INVALID       = -1,  /**< Invalid or unspecified PQ mode */
+    PQ_MODE_STANDARD      = 0,   /**< "Standard" or "Entertainment" mode: balanced picture */
+    PQ_MODE_VIVID         = 1,   /**< "Vivid" or "Dynamic" mode: enhanced saturation and contrast */
+    PQ_MODE_ENERGY_SAVING = 2,   /**< "Energy Saving" mode: reduced brightness for power efficiency */
+    PQ_MODE_CUSTOM        = 3,   /**< "Custom" or "Expert" mode: user-defined settings */
+    PQ_MODE_THEATER       = 4,   /**< "Theater" or "Movie" mode: optimized for dark-room viewing */
+    PQ_MODE_RESERVED1     = 5,   /**< Reserved for future PQ modes */
+    PQ_MODE_RESERVED2     = 6,   /**< Reserved for future PQ modes */
+    PQ_MODE_GAME          = 7,   /**< "Game" mode: low-latency settings for gaming */
+    PQ_MODE_SPORTS        = 8,   /**< "Sports" mode: smooth motion for fast action */
+    PQ_MODE_GRAPHICS      = 9,   /**< "Graphics" mode: enhanced clarity for text and UI */
+    PQ_MODE_FMM           = 10,  /**< "Filmmaker" mode: adheres to creator’s intent */
+    PQ_MODE_VIVID2        = 11,  /**< "Vivid2" or "Dynamic2" mode: alternative dynamic settings */
+    PQ_MODE_AIPQ          = 12,  /**< "AIPQ" mode: AI-driven picture optimization */
+    PQ_MODE_DARK          = 13,  /**< "Dark" mode: high contrast for low-light scenes */
+    PQ_MODE_BRIGHT        = 14,  /**< "Bright" mode: increased brightness for well-lit rooms */
+    PQ_MODE_IQ            = 15,  /**< "IQ" mode: intelligent picture quality balancing */
+    PQ_MODE_MAX           = 16   /**< Upper bound (not a valid mode) */
+} tvPQModeIndex_t;
 
 /**
  * @brief Enumeration defining the supported PQ param types
@@ -377,11 +393,21 @@ typedef enum tvPQParameterIndex {
     PQ_PARAM_WB_OFFSET_RED,                     //!< Picture parameter is Component Red Offset
     PQ_PARAM_WB_OFFSET_GREEN,                   //!< Picture parameter is Component Green Offset
     PQ_PARAM_WB_OFFSET_BLUE,                    //!< Picture parameter is Component Blue Offset
-    PQ_PARAM_MAX                                //!< End of enum
+    PQ_PARAM_PRECISION_DETAIL,                 //!< Picture parameter is Precision Detail
+    PQ_PARAM_SDR_GAMMA,                        //!< Picture parameter is SDR Gamma
+    PQ_PARAM_LOCAL_CONTRAST_ENHANCEMENT,       //!< Picture parameter is Local Contrast Enhancement
+    PQ_PARAM_MPEG_NOISE_REDUCTION,             //!< Picture parameter is MPEG Noise Reduction
+    PQ_PARAM_DIGITAL_NOISE_REDUCTION,          //!< Picture parameter is Digital Noise Reduction
+    PQ_PARAM_AI_SUPER_RESOLUTION,              //!< Picture parameter is AI Super Resolution
+    PQ_PARAM_MEMC,                             //!< Picture parameter is MEMC
+    PQ_PARAM_MULTI_POINT_WB,                   //!< Picture parameter is Multi-Point WB
+    PQ_PARAM_DOLBY_VISION_CALIBRATION,         //!< Picture parameter is Dolby Vision Calibration
+    PQ_PARAM_MAX                               //!< End of enum
 }tvPQParameterIndex_t;
 
 /**
  *  @brief Enumeration defining the various supported dolby modes
+ *  This enum will be deprecated and switched to tvPQModeIndex_t
  */
  typedef enum {
     tvDolbyMode_Invalid = -1,           //!< Dolby mode is invalid
@@ -570,6 +596,78 @@ typedef enum
     tvWB_CONTROL_MAX                            //!< End of enum
 }tvWBControl_t;
 
+/**
+ * @brief Structure for DV Calibration Settings.
+ *
+ * This struct holds calibration settings including
+ * maximum and minimum temperature settings (Tmax, Tmin), gamma correction (Tgamma),
+ * and RGBW color coordinate values (Rx, Ry, Gx, Gy, Bx, By, Wx, Wy).
+ */
+typedef struct {
+    double Tmax, Tmin,
+        Tgamma,
+        Rx, Ry,
+        Gx, Gy,
+        Bx, By,
+        Wx, Wy;
+} tvDVCalibrationSettings_t;
+
+/**
+ * @brief Structure that holds a single context, used to describe a supported feature configuration.
+ *
+ * A context is formed from a PQ picture mode, video format and video source combination.
+ * When listed in capabilities it indicates a valid combination a feature can be configured against.
+ *
+ * @param pq_mode         Picture Quality (PQ) mode index (tvPQModeIndex_t).
+ * @param videoFormatType Video format type (tvVideoFormatType_t).
+ * @param videoSrcType    Video source type (tvVideoSrcType_t).
+ */
+typedef struct {
+    tvPQModeIndex_t     pq_mode;         /**< Valid picture mode from  tvPQModeIndex_t */
+    tvVideoFormatType_t videoFormatType; /**< Valid video format from tvVideoFormatType_t */
+    tvVideoSrcType_t    videoSrcType;    /**< Valid video source from tvVideoSrcType_t */
+} tvConfigContext_t;
+
+/**
+ * @brief Describes all supported configuration contexts (capabilities).
+ *
+ * Holds an array of specific contexts where a feature can be applied. A global
+ * feature that cannot be fine-tuned per mode/format/source is indicated by
+ * num_contexts == 0.
+ *
+ * If this feature is global (`num_contexts == 0`) and platform_support is true,
+ * the corresponding pqmode, source, and format entries should be retrieved from the picturemode section
+ * of pq_capabilities.json
+ *
+ * @param num_contexts Number of entries in the @c contexts array (0 = global only).
+ * @param contexts     Pointer to an array of configuration contexts.
+ */
+typedef struct
+{
+    size_t             num_contexts; /**< Count of contexts (0 = global only) */
+    tvConfigContext_t *contexts;     /**< Array of supported contexts */
+} tvContextCaps_t;
+
+/**
+ * @brief Enum for SDR Gamma values.
+ *
+ * This enum defines the possible values for SDR gamma correction,
+ * including invalid, specific gamma values (1.8 to 2.4), ITU-R BT.1886 standard,
+ * and the maximum boundary of the enum.
+ */
+typedef enum
+{
+    tvSdrGamma_INVALID = -1, //!< SDR gamma is invalid.
+    tvSdrGamma_1_8, //!< SDR gamma is 1.8
+    tvSdrGamma_1_9, //!< SDR gamma is 1.9
+    tvSdrGamma_2_0, //!< SDR gamma is 2.0
+    tvSdrGamma_2_1, //!< SDR gamma is 2.1
+    tvSdrGamma_2_2, //!< SDR gamma is 2.2
+    tvSdrGamma_2_3, //!< SDR gamma is 2.3
+    tvSdrGamma_2_4, //!< SDR gamma is 2.4
+    tvSdrGamma_BT_1886, //!< SDR gamma is ITU-R BT.1886
+    tvSdrGamma_MAX //!< End of enum
+} tvSdrGamma_t;
 
 #ifdef __cplusplus
 }
