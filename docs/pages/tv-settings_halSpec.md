@@ -73,7 +73,7 @@ Picture profile database will have 5 types of tables:
 5. Gamma table for every color temperature to maintain the gamma calibrated values.
 6. TMAX table for every local dimming level to maintain the TMAX value
 
-- The capabilities of a specific platform with respect to TV picture configuration will be defined in a config file ([pq_capablities.ini](../../config/pq_capablities.ini "pq_capablities.ini")) which decides supported formats, picture modes, dimming modes, dvModes, resolution etc.
+- The capabilities of a specific platform with respect to TV picture configuration will be defined in a config file ([pq_capabilities.ini](../../config/pq_capabilities.ini "pq_capabilities.ini")) which decides supported formats, picture modes, dimming modes, dvModes, resolution etc.
 - Caller must initialize by calling `tvInit()` which must initialize the parameters in default picture property database. These parameters are decided by Soc vendor  based on platform capability.
 - On every bootup the default picture profile database will be copied to override picture profile database.
   
