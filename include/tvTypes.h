@@ -101,8 +101,7 @@ typedef enum
  * VIDEO_FORMAT_NONE represents no video format. Other values represent
  * specific HDR/SDR standards.
  */
-typedef enum
-{
+typedef enum tvVideoFormatType_e {
     VIDEO_FORMAT_NONE       = 0, /**< No specific format - No video playback */
     VIDEO_FORMAT_HDR10,          /**< HDR10: static metadata HDR */
     VIDEO_FORMAT_HDR10PLUS,      /**< HDR10Plus: dynamic metadata HDR */
@@ -133,28 +132,26 @@ typedef enum tvColorTempSourceOffset_e {
  * When the video source settings are global, the context structure should be filled
  * with valid tvVideoSrcType_t memebers and not with VIDEO_SOURCE_ALL.
  */
-typedef enum
-{
+typedef enum tvVideoSrcType_e {
     VIDEO_SOURCE_ALL        = -1, /**< All sources */
     VIDEO_SOURCE_ANALOGUE   =  0, /**< Analogue input */
-    VIDEO_SOURCE_COMPOSITE  =  1, /**< Composite input (generic) */
-    VIDEO_SOURCE_COMPOSITE1 =  2, /**< Composite input #1 */
-    VIDEO_SOURCE_COMPOSITE2 =  3, /**< Composite input #2 */
-    VIDEO_SOURCE_YPBPR1     =  4, /**< Component (YPbPr) input #1 */
-    VIDEO_SOURCE_YPBPR2     =  5, /**< Component (YPbPr) input #2 */
-    VIDEO_SOURCE_HDMI1      =  6, /**< HDMI input #1 */
-    VIDEO_SOURCE_HDMI2      =  7, /**< HDMI input #2 */
-    VIDEO_SOURCE_HDMI3      =  8, /**< HDMI input #3 */
-    VIDEO_SOURCE_HDMI4      =  9, /**< HDMI input #4 */
-    VIDEO_SOURCE_VGA        = 10, /**< VGA input */
-    VIDEO_SOURCE_IP         = 11, /**< Network IP stream input */
-    VIDEO_SOURCE_TUNER      = 12, /**< RF tuner input */
-    VIDEO_SOURCE_SVIDEO     = 13, /**< S-Video input */
-    VIDEO_SOURCE_RESERVED   = 14, /**< Reserved for future sources */
-    VIDEO_SOURCE_RESERVED1  = 15, /**< Reserved for future sources */
-    VIDEO_SOURCE_RESERVED2  = 16, /**< Reserved for future sources */
-    VIDEO_SOURCE_RESERVED3  = 17, /**< Reserved for future sources */
-    VIDEO_SOURCE_MAX        = 18  /**< Upper bound (not a valid source) */
+    VIDEO_SOURCE_COMPOSITE1 =  1, /**< Composite input #1 */
+    VIDEO_SOURCE_COMPOSITE2 =  2, /**< Composite input #2 */
+    VIDEO_SOURCE_YPBPR1     =  3, /**< Component (YPbPr) input #1 */
+    VIDEO_SOURCE_YPBPR2     =  4, /**< Component (YPbPr) input #2 */
+    VIDEO_SOURCE_HDMI1      =  5, /**< HDMI input #1 */
+    VIDEO_SOURCE_HDMI2      =  6, /**< HDMI input #2 */
+    VIDEO_SOURCE_HDMI3      =  7, /**< HDMI input #3 */
+    VIDEO_SOURCE_HDMI4      =  8, /**< HDMI input #4 */
+    VIDEO_SOURCE_VGA        =  9, /**< VGA input */
+    VIDEO_SOURCE_IP         = 10, /**< Network IP stream input */
+    VIDEO_SOURCE_TUNER      = 11, /**< RF tuner input */
+    VIDEO_SOURCE_SVIDEO     = 12, /**< S-Video input */
+    VIDEO_SOURCE_RESERVED   = 13, /**< Reserved for future sources */
+    VIDEO_SOURCE_RESERVED1  = 14, /**< Reserved for future sources */
+    VIDEO_SOURCE_RESERVED2  = 15, /**< Reserved for future sources */
+    VIDEO_SOURCE_RESERVED3  = 16, /**< Reserved for future sources */
+    VIDEO_SOURCE_MAX        = 17  /**< Upper bound (not a valid source) */
 } tvVideoSrcType_t;
 
 /**
@@ -325,8 +322,7 @@ typedef enum tvComponentType_e
  * Defines the available picture modes. Use PQ_MODE_INVALID for unspecified contexts,
  * and PQ_MODE_MAX as a boundary marker (not a valid mode).
  */
-typedef enum
-{
+typedef enum tvPQModeIndex {
     PQ_MODE_INVALID       = -1,  /**< Invalid or unspecified PQ mode */
     PQ_MODE_STANDARD      = 0,   /**< "Standard" or "Entertainment" mode: balanced picture */
     PQ_MODE_VIVID         = 1,   /**< "Vivid" or "Dynamic" mode: enhanced saturation and contrast */
