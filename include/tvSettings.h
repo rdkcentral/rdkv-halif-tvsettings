@@ -1836,9 +1836,8 @@ tvError_t SaveSourcePictureMode(tvVideoSrcType_t videoSrcType, tvVideoFormatType
  *
  * This function gets the PictureMode capabilities from the PictureMode section of the pq_capabilities.json.
  *
- * If this feature is global (`num_contexts == 0`) and platform_support is true,
- * the corresponding pqmode, source, and format entries should be retrieved from the picturemode section
- * of pq_capabilities.json
+ * For this feature num_context must be greater than zero. The context structure must be populated with 
+ * the supported PictureMode, VideoSource, and VideoFormat specific to the platform.
  *
  * The `context_caps` parameter receives a pointer to a `tvContextCaps_t` structure that lists the different
  * configuration contexts that this feature can be configured for.
