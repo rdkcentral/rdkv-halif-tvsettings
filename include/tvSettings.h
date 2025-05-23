@@ -4225,7 +4225,7 @@ tvError_t GetBacklightModeCaps(tvBacklightMode_t** backlight_mode, size_t* num_b
  * @brief Saves the BacklightMode value
  *
  * This function saves the BacklightMode value in picture profile database for the specific picture mode, primary video format type
- * and primary video source. The saved BacklightMode value should be applied automatically by whenever the
+ * and primary video source. The saved BacklightMode value should be applied automatically whenever the
  * specified picture mode is selected, specified primary video format is played and specified primary video source is selected.
  * There will be no change in current BacklightMode value applied in PQ module.
  *
