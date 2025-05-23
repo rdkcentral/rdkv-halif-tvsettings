@@ -1836,9 +1836,8 @@ tvError_t SaveSourcePictureMode(tvVideoSrcType_t videoSrcType, tvVideoFormatType
  *
  * This function gets the PictureMode capabilities from the PictureMode section of the pq_capabilities.json.
  *
- * If this feature is global (`num_contexts == 0`) and platform_support is true,
- * the corresponding pqmode, source, and format entries should be retrieved from the picturemode section
- * of pq_capabilities.json
+ * For this feature num_context must be greater than zero. The context structure must be populated with 
+ * the supported PictureMode, VideoSource, and VideoFormat specific to the platform.
  *
  * The `context_caps` parameter receives a pointer to a `tvContextCaps_t` structure that lists the different
  * configuration contexts that this feature can be configured for.
@@ -4221,6 +4220,31 @@ tvError_t GetVideoResolutionCaps( tvVideoResolution_t ** resolution, size_t* num
  * @pre TvInit() should be called before calling this API
  */
 tvError_t GetBacklightModeCaps(tvBacklightMode_t** backlight_mode, size_t* num_backlight_mode, tvContextCaps_t** context_caps);
+
+/**
+ * @brief Saves the BacklightMode value
+ *
+ * This function saves the BacklightMode value in picture profile database for the specific picture mode, primary video format type
+ * and primary video source. The saved BacklightMode value should be applied automatically whenever the
+ * specified picture mode is selected, specified primary video format is played and specified primary video source is selected.
+ * There will be no change in current BacklightMode value applied in PQ module.
+ *
+ * @param[in] videoSrcType          - Source input value. Valid value will be a member of ::tvVideoSrcType_t
+ * @param[in] pq_mode               - Picture mode index. Valid value will be a member of ::tvPQModeIndex_t
+ * @param[in] videoFormatType       - Video format type value. Valid value will be a member of ::tvVideoFormatType_t
+ * @param[in] value                 - Value of the BacklightMode to be set. Valid value will be member of ::tvBacklightMode_t
+ *
+ * @return tvError_t
+ *
+ * @retval tvERROR_NONE             - Success
+ * @retval tvERROR_INVALID_PARAM    - Input parameter is invalid
+ * @retval tvERROR_INVALID_STATE    - Interface is not initialized
+ * @retval tvERROR_OPERATION_NOT_SUPPORTED - Operation is not supported
+ * @retval tvERROR_GENERAL          - Underlying failures - SoC, memory, etc
+ *
+ * @pre TvInit() should be called before calling this API
+ */
+tvError_t SaveBacklightMode(tvVideoSrcType_t videoSrcType, int pq_mode, tvVideoFormatType_t videoFormatType, tvBacklightMode_t value);
 
 #ifdef __cplusplus
 }
