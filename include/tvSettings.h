@@ -4247,18 +4247,26 @@ tvError_t GetBacklightModeCaps(tvBacklightMode_t** backlight_mode, size_t* num_b
 tvError_t SaveBacklightMode(tvVideoSrcType_t videoSrcType, int pq_mode, tvVideoFormatType_t videoFormatType, tvBacklightMode_t value);
 
 /**
- * @brief This API is used to enable or disable PQ processing.
+ * @brief Enables or disables PQ processing
  *
- * When PQ processing is disabled, HAL should bypass pq pipeline by setting pq parameters to disabled state or
- * setting pq parameters to neutral values.
+ * When PQ processing is disabled, HAL should bypass PQ pipeline by setting PQ parameters to disabled state or
+ * setting PQ parameters to neutral values.
  *
  * @param[in] value - Boolean flag to indicate the enable or disable of PQ processing. 
  *              	- 'true' : disable PQ processing
  *              	- 'false': enable PQ processing
+ *
+ * @return tvError_t
+ *
+ * @retval tvERROR_NONE             - Success
+ * @retval tvERROR_INVALID_PARAM    - Input parameter is invalid
+ * @retval tvERROR_INVALID_STATE    - Interface is not initialized
+ * @retval tvERROR_OPERATION_NOT_SUPPORTED - Operation is not supported
+ * @retval tvERROR_GENERAL          - Underlying failures - SoC, memory, etc
  * 
  * @pre tvInit() must be called before calling this API
  */
-void DisablePQ(bool value);
+tvError_t DisablePQ(bool value);
 
 #ifdef __cplusplus
 }
