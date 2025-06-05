@@ -4259,7 +4259,6 @@ tvError_t SaveBacklightMode(tvVideoSrcType_t videoSrcType, int pq_mode, tvVideoF
  * @return tvError_t
  *
  * @retval tvERROR_NONE             - Success
- * @retval tvERROR_INVALID_PARAM    - Input parameter is invalid
  * @retval tvERROR_INVALID_STATE    - Interface is not initialized
  * @retval tvERROR_OPERATION_NOT_SUPPORTED - Operation is not supported
  * @retval tvERROR_GENERAL          - Underlying failures - SoC, memory, etc
