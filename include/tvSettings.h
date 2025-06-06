@@ -4249,12 +4249,13 @@ tvError_t SaveBacklightMode(tvVideoSrcType_t videoSrcType, int pq_mode, tvVideoF
 /**
  * @brief Enables or disables PQ processing
  *
- * When PQ processing is disabled, HAL should bypass PQ pipeline by setting PQ parameters to disabled state or
- * setting PQ parameters to neutral values.
+ * When PQ processing is disabled, HAL should bypass the PQ pipeline by setting PQ parameters to either a disabled state or neutral values.
+ * If the API receives a request to disable PQ when it is already disabled, or to enable it when it is already enabled, the operation
+ * will still be processed and return tvERROR_NONE, confirming success without an actual state change.
  *
- * @param[in] value - Boolean flag to indicate the enable or disable of PQ processing. 
- *              	- 'true' : disable PQ processing
- *              	- 'false': enable PQ processing
+ * @param[in] isEnabled - Boolean flag to control PQ processing. 
+ *              	       - 'true' : Enables PQ processing
+ *              	       - 'false': Disables PQ processing
  *
  * @return tvError_t
  *
@@ -4265,7 +4266,7 @@ tvError_t SaveBacklightMode(tvVideoSrcType_t videoSrcType, int pq_mode, tvVideoF
  * 
  * @pre tvInit() must be called before calling this API
  */
-tvError_t DisablePQ(bool value);
+tvError_t SetPQProcessingEnabled(bool isEnabled);
 
 #ifdef __cplusplus
 }
