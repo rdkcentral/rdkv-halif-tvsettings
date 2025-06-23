@@ -324,7 +324,8 @@ typedef enum tvComponentType_e
  *
  * PQ_MODE_DISABLE:
  * This mode is used to completely disable the PQ processing pipeline.
- * When this mode is selected, all PQ related processing is turned off. As a result, any attempts to apply or set PQ parameters (such as contrast,brightness etc)  * will have no effect on the screen display and it will be ignored by the system.
+ * When this mode is selected, all PQ related processing is turned off. As a result, any attempts to apply or set PQ parameters (such as contrast,brightness etc)  
+ * will have no effect on the screen display and it will be ignored by the system.
  */
 typedef enum tvPQModeIndex {
     PQ_MODE_INVALID       = -1,  /**< Invalid or unspecified PQ mode */
