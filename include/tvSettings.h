@@ -4378,10 +4378,9 @@ tvError_t Save2PointWB(tvVideoSrcType_t videoSrcType, int pq_mode,tvVideoFormatT
 /**
  * @brief Gets the default 2PointWhiteBalance.
  *
- *  This function gets the default WhiteBalance(Red,Green,Blue Gain/Offset) value for the current video source selected,
- *  current video format played,picture mode selected,given colorTemperature,color and given control value.
+ *  This function gets the default WhiteBalance(Red,Green,Blue Gain/Offset) value for the given videoSource,
+ *  videoFormat,pictureMode,colorTemperature,color and control value.
  *
- *  The function always retrieves the custom WhiteBalance (Red, Green, Blue Gain/Offset) associated with tvColorTemp_USER.
  *
  *  Gain                            - Modifies the intensity of Red, Green, and Blue at the brighter level
  *  Offset                          - Modifies the intensity of Red, Green, and Blue at the darker level
