@@ -4249,9 +4249,8 @@ tvError_t SaveBacklightMode(tvVideoSrcType_t videoSrcType, int pq_mode, tvVideoF
 /**
  * @brief Sets 2Point WhiteBalance across all colorTemperature
  *
- * This function sets WhiteBalance (Red,Green,Blue Gain/Offset) for the Given colorTemperature,current picture mode index, current video source,
+ * This function Sets WhiteBalance (Red,Green,Blue Gain/Offset) for the Given colorTemperature,color,control,current picture mode index, current video source,
  * and current video format.
- * The custom WhiteBalance (Red, Green, Blue Gain/Offset) is applicable only when the color temperature is set to tvColorTemp_USER.
  *
  * Gain                             - Modifies the intensity of Red, Green, and Blue at the brighter level
  * Offset                           - Modifies the intensity of Red, Green, and Blue at the darker level
@@ -4270,17 +4269,15 @@ tvError_t SaveBacklightMode(tvVideoSrcType_t videoSrcType, int pq_mode, tvVideoF
  * @retval tvERROR_GENERAL                   - Underlying failures - SoC, memory, etc
  *
  * @pre TvInit() should be called before calling this API
- * @pre SetColorTemperature() should be set to "tvColorTemp_USER" before calling this API
  */
 tvError_t Set2PointWB(tvColorTemp_t colorTemperature, tvWBColor_t color, tvWBControl_t control, int value);
 
 /**
  * @brief Gets the 2 PointWhiteBalance.
  *
- *  This function gets the custom WhiteBalance(Red,Green,Blue Gain/Offset) value for the current video source selected,
- *  current video format played,picture mode selected,given color and given control value.
+ *  This function gets the WhiteBalance(Red,Green,Blue Gain/Offset) value for the current video source selected,
+ *  current video format played,picture mode selected,given colorTemperature,color and control value.
  *
- *  The function always retrieves the custom WhiteBalance (Red, Green, Blue Gain/Offset) associated with tvColorTemp_USER.
  *
  *  Gain                            - Modifies the intensity of Red, Green, and Blue at the brighter level
  *  Offset                          - Modifies the intensity of Red, Green, and Blue at the darker level
@@ -4377,6 +4374,39 @@ tvError_t Get2PointWBCaps ( int *min_gain, int *min_offset, int *max_gain, int *
  */
 
 tvError_t Save2PointWB(tvVideoSrcType_t videoSrcType, int pq_mode,tvVideoFormatType_t videoFormatType, tvColorTemp_t colorTemperature, tvWBColor_t color, tvWBControl_t control, int value);
+
+/**
+ * @brief Gets the default 2PointWhiteBalance.
+ *
+ *  This function gets the default WhiteBalance(Red,Green,Blue Gain/Offset) value for the current video source selected,
+ *  current video format played,picture mode selected,given colorTemperature,color and given control value.
+ *
+ *  The function always retrieves the custom WhiteBalance (Red, Green, Blue Gain/Offset) associated with tvColorTemp_USER.
+ *
+ *  Gain                            - Modifies the intensity of Red, Green, and Blue at the brighter level
+ *  Offset                          - Modifies the intensity of Red, Green, and Blue at the darker level
+ *
+ * @param[in] videoSrcType          - Source input value.Valid value will be a member of ::tvVideoSrcType_t
+ * @param[in] pictureMode           - Picture mode value to be saved.Valid values are as per values returned by
+ *                                    ::pic_modes_t.value  parmeter from GetTVSupportedPictureModes API.
+ * @param[in] videoFormatType       - Video format type value.Valid value will be a member of ::tvVideoFormatType_t
+ * @param[in] colorTemperature      - ColorTemperature value. Valid value will be a member of ::tvColorTemp_t
+ * @param[in] color                 - Color type value. Valid value will be a member of ::tvWBColor_t
+ * @param[in] control               - Control index value. Valid values will be a member of ::tvWBControl_t
+ * @param[out] value                - Current WB value. Valid range gain  (0 - 2047) and offset (-1024 to 1023)
+ *
+ * @return tvError_t
+ *
+ * @retval tvERROR_NONE              - Success
+ * @retval tvERROR_INVALID_PARAM     - Parameter is invalid
+ * @retval tvERROR_INVALID_STATE     - Interface is not initialized
+ * @retval tvERROR_GENERAL           - Underlying failures - SoC, memory, etc
+ *
+ * @pre TvInit() should be called before calling this API
+ *
+ * @see Set2PointWB()
+ */
+tvError_t GetDefault2PointWB(tvVideoSrcType_t videoSrcType, int pq_mode,tvVideoFormatType_t videoFormatType,tvColorTemp_t colorTemperature, tvWBColor_t color, tvWBControl_t control, int *value);
 
 #ifdef __cplusplus
 }
