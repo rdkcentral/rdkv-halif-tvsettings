@@ -4318,9 +4318,9 @@ tvError_t Get2PointWB(tvColorTemp_t colorTemperature, tvWBColor_t color, tvWBCon
  * If the platform does not support 2PointWB, then tvERROR_OPERATION_NOT_SUPPORTED is returned.
  *
  * @param[out] min_gain              - Minimum Gain.
- * @param[out] min_offset            - Minimum Saturation.
+ * @param[out] min_offset            - Minimum Offset.
  * @param[out] max_gain              - Maximum Gain.
- * @param[out] max_offset            - Maximum Saturation.
+ * @param[out] max_offset            - Maximum Offset.
  * @param[out] colorTemperature      - A pointer to an array of the supported colorTemperature components.
  * @param[out] color                 - A pointer to an array of the supported white balance color components.
  * @param[out] component             - A pointer to an array of the supported controls available for white balance adjustments.
@@ -4349,18 +4349,18 @@ tvError_t Get2PointWBCaps ( int *min_gain, int *min_offset, int *max_gain, int *
  *
  * This function saves the WhiteBalance in picture profile database for the specific colorTemperature, primary video format type
  * PictureMode and primary video source. The saved Whitebalance value should be applied automatically whenever the
- * specified specified primary video format is played and specified primary video source is selected.
+ * specified primary video format is played and specified primary video source is selected.
  * Gain                             - Modifies the intensity of Red, Green, and Blue at the brighter level
  * Offset                           - Modifies the intensity of Red, Green, and Blue at the darker level
  *
  * @param[in] videoSrcType          - Source input value.Valid value will be a member of ::tvVideoSrcType_t
- * @param[in] pictureMode           - Picture mode value to be saved.Valid values are as per values returned by
- *                                    ::pic_modes_t.value  parmeter from GetTVSupportedPictureModes API.
- * @param[in] videoFormatType       - Video format type value.Valid value will be a member of ::tvVideoFormatType_t
+ * @param[in] pictureMode           - Picture mode value to be saved. Valid values are as per values returned by
+ *                                    ::pic_modes_t.value  parameter from GetTVSupportedPictureModes API.
+ * @param[in] videoFormatType       - Video format type value. Valid value will be a member of ::tvVideoFormatType_t
  * @param[in] colorTemperature      - ColorTemperature value. Valid value will be a member of ::tvColorTemp_t
- * @param[in] color                 - color value.Valid value will be a member of ::tvWBColor_t
- * @param[in] control               - control value.Valid value will be a member of ::tvWBControl_t
- * @param[in] value                 - The WhiteBalance value to be set.Valid range gain  (0 - 2047) and offset (-1024 to 1023)
+ * @param[in] color                 - Color value. Valid value will be a member of ::tvWBColor_t
+ * @param[in] control               - Control value. Valid value will be a member of ::tvWBControl_t
+ * @param[in] value                 - The WhiteBalance value to be set. Valid range gain  (0 - 2047) and offset (-1024 to 1023)
  *
  * @return tvError_t
  *
