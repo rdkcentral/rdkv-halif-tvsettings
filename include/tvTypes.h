@@ -321,6 +321,11 @@ typedef enum tvComponentType_e
  *
  * Defines the available picture modes. Use PQ_MODE_INVALID for unspecified contexts,
  * and PQ_MODE_MAX as a boundary marker (not a valid mode).
+ *
+ * PQ_MODE_DISABLE:
+ * This mode is used to completely disable the PQ processing pipeline.
+ * When this mode is selected, all PQ related processing is turned off. As a result, any attempts to apply or set PQ parameters (such as contrast,brightness etc)
+ * will have no effect on the screen display and it will be ignored by the system.
  */
 typedef enum tvPQModeIndex {
     PQ_MODE_INVALID       = -1,  /**< Invalid or unspecified PQ mode */
@@ -340,7 +345,8 @@ typedef enum tvPQModeIndex {
     PQ_MODE_DARK          = 13,  /**< "Dark" mode: high contrast for low-light scenes */
     PQ_MODE_BRIGHT        = 14,  /**< "Bright" mode: increased brightness for well-lit rooms */
     PQ_MODE_IQ            = 15,  /**< "IQ" mode: intelligent picture quality balancing */
-    PQ_MODE_MAX           = 16   /**< Upper bound (not a valid mode) */
+    PQ_MODE_DISABLE       = 16,  /**< "Disable" mode: Disable PQ Pipeline */
+    PQ_MODE_MAX           = 17   /**< Upper bound (not a valid mode) */
 } tvPQModeIndex_t;
 
 /**
