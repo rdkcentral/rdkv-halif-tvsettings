@@ -1800,6 +1800,19 @@
             "from": 0,
             "to": 1
         },
+        "component": [
+            "Tmax",
+            "Tmin",
+            "Tgamma",
+            "Rx",
+            "Ry",
+            "Gx",
+            "Gy",
+            "Bx",
+            "By",
+            "Wx",
+            "Wy"
+        ],
         "context": {
             "IQ": {
                 "DV": [
