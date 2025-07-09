@@ -672,6 +672,26 @@ typedef enum
     tvSdrGamma_MAX //!< End of enum
 } tvSdrGamma_t;
 
+/**
+ * @brief Enumeration defining the supported DolbyVisionCalibration Components
+ *
+ */
+
+typedef enum {
+    tvDVCalibrationComponent_TMAX = 0;  //!< Calibration Component is TMax
+    tvDVCalibrationComponent_TMIN,      //!< Calibration Component is TMin
+    tvDVCalibrationComponent_TGAMMA,    //!< Calibration Component is TGamma
+    tvDVCalibrationComponent_RX,        //!< Calibration Component is Rx
+    tvDVCalibrationComponent_RY,        //!< Calibration Component is Ry
+    tvDVCalibrationComponent_GX,        //!< Calibration Component is Gx
+    tvDVCalibrationComponent_GY,        //!< Calibration Component is Gy
+    tvDVCalibrationComponent_BX,        //!< Calibration Component is Bx
+    tvDVCalibrationComponent_BY,        //!< Calibration Component is By
+    tvDVCalibrationComponent_WX,        //!< Calibration Component is Wx
+    tvDVCalibrationComponent_WY,        //!< Calibration Component is Wy
+    tvDVCalibrationComponent_MAX        //!< Calibration Component is MAX
+}tvDVCalibrationComponent_t;
+
 #ifdef __cplusplus
 }
 #endif
