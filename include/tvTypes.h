@@ -678,7 +678,7 @@ typedef enum
  */
 
 typedef enum {
-    tvDVCalibrationComponent_TMAX = 0;  //!< Calibration Component is TMax
+    tvDVCalibrationComponent_TMAX = 0,  //!< Calibration Component is TMax
     tvDVCalibrationComponent_TMIN,      //!< Calibration Component is TMin
     tvDVCalibrationComponent_TGAMMA,    //!< Calibration Component is TGamma
     tvDVCalibrationComponent_RX,        //!< Calibration Component is Rx

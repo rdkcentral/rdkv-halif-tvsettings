@@ -3971,7 +3971,7 @@ tvError_t GetMultiPointWBMatrix(tvColorTemp_t colorTemp, tvPQModeIndex_t pq_mode
  *
  * @pre TvInit() should be called before calling this API
  */
-tvError_t GetDVCalibrationCaps(tvDVCalibrationSettings_t ** min_values, tvDVCalibrationSettings_t ** max_values,tvDVCalibrationComponent_t **component, size_t* num_component tvContextCaps_t ** context_caps);
+tvError_t GetDVCalibrationCaps(tvDVCalibrationSettings_t ** min_values, tvDVCalibrationSettings_t ** max_values, tvDVCalibrationComponent_t **component, size_t* num_component, tvContextCaps_t ** context_caps);
 
 /**
  * @brief Sets the Dolby Vision PQ calibration values.
