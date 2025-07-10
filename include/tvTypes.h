@@ -51,7 +51,6 @@
 #ifndef _TV_TYPES_H
 #define _TV_TYPES_H
 
-#include "tvTypesODM.h"
 
 #ifdef __cplusplus
 extern "C"

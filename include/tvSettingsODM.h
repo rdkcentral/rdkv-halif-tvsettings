@@ -49,7 +49,6 @@
 
 #ifndef _TV_SETTINGS_ODM_H
 #define _TV_SETTINGS_ODM_H
-#include "tvTypesODM.h"
 
 #ifdef __cplusplus
 extern "C"
