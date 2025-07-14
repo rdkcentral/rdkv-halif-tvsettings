@@ -672,6 +672,28 @@ typedef enum
     tvSdrGamma_MAX //!< End of enum
 } tvSdrGamma_t;
 
+
+/**
+ * @brief Structure defining the supported DolbyVisionCalibration Components
+ *
+ */
+typedef struct {
+    struct tvGammaMatrix_t hal_gamma,  //!< Represents HAL Gamma Values
+    struct tvGammaMatrix_t ui_gamma,   //!< Represent UI Gamma Values
+    double **ui_matrix_positions,      //!< Array of UI Matrix Positions
+    size_t num_ui_matrix_positions     //!< Number of UI Matrix Positions
+} tvMultiPointWB_t;
+
+/**
+ * @brief Structure defining the supported DolbyVisionCalibration Components min,max and matrix points
+ *
+ */
+typedef struct {
+    int gamma_matrix_points,   //!< Gamma Matrix Points
+    int gamma_rgb_min,         //!< Gamma RGB Min
+    int gamma_rgb_max          //!< Gamma RGB Max
+} tvGammaMatrix_t;
+
 #ifdef __cplusplus
 }
 #endif

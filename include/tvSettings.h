@@ -3841,14 +3841,10 @@ tvError_t GetMEMC(tvVideoSrcType_t videoSrcType, tvPQModeIndex_t pq_mode, tvVide
  *
  * If the platform does not support multi-point white balance, then tvERROR_OPERATION_NOT_SUPPORTED is returned.
  *
- * @param[out] num_hal_matrix_points - The number of points in the HAL gamma matrix.
- * @param[out] num_ui_matrix_points  - The number of points in the UI gamma matrix for customer adjustment.
- * @param[out] hal_rgb_min           - The minimum value for red, green and blue adjustment values in HAL.
- * @param[out] hal_rgb_max           - The maximum value for red, green and blue adjustment values in HAL.
- * @param[out] ui_rgb_min            - The minimum value for red, green and blue adjustment values in UI.
- * @param[out] ui_rgb_max            - The maximum value for red, green and blue adjustment values in UI.
- * @param[out] ui_matrix_positions   - An array of positions for the UI matrix points.
- *                                     Points to an array with `num_ui_matrix_points` elements with values between 0.0 and 1.0.
+ * @param[out] multiPointMatrix      - Returns a pointer to an structure which contains values associated with MutiPoint WhiteBalance
+ *                                   - The returned Pointer must not be freed by the caller.
+ *                                   - Memory should be allocated in HAL function
+
  * @param[out] colorTemperature      - A pointer to an array of the supported colorTemperature components.
  * @param[out] color                 - A pointer to an array of the supported white balance color components.
  * @param[out] num_colorTemperature  - The total number of supported MultiPoint white balance colorTemperature components.
@@ -3867,7 +3863,7 @@ tvError_t GetMEMC(tvVideoSrcType_t videoSrcType, tvPQModeIndex_t pq_mode, tvVide
  *
  * @pre TvInit() should be called before calling this API
  */
-tvError_t GetMultiPointWBCaps(int * num_hal_matrix_points, int * num_ui_matrix_points, int * hal_rgb_min, int * hal_rgb_max, int * ui_rgb_min, int * ui_rgb_max, double ** ui_matrix_positions, tvColorTemp_t **colorTemperature, tvWBColor_t **color, size_t* num_colorTemperature, size_t* num_color, tvContextCaps_t ** context_caps); 
+tvError_t GetMultiPointWBCaps( tvMultiPointWB_t **multiPointMatrix, tvColorTemp_t **colorTemperature, tvWBColor_t **color, size_t* num_colorTemperature, size_t* num_color, tvContextCaps_t ** context_caps);
 
 /**
  * @brief Sets the multi-point white balance red, green and blue values for the whole matrix.
