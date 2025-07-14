@@ -2836,5 +2836,37 @@
                 ]
             }
         }
+    },
+    "FactoryWhiteBalance": {
+        "rangeGain": {
+            "from": 0,
+            "to": 2047
+        },
+        "rangeOffset": {
+            "from": -1024,
+            "to": 1023
+        },
+        "control": [
+            "Gain",
+            "Offset"
+        ],
+	"colorTemperature": [
+            "Standard",
+            "Warm",
+            "Cold",
+            "UserDefined"
+        ],
+        "color": [
+            "Red",
+            "Green",
+            "Blue"
+        ],
+        "platformSupport": true,
+        "source" : [
+            "ALL",
+            "HDMI",
+            "TV",
+            "AV"
+        ]
     }
 }
