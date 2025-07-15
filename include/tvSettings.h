@@ -2734,10 +2734,10 @@ tvError_t GetTVGammaTarget(tvColorTemp_t colorTemp,double *x, double *y);
  * This function allows gamma pattern mode to be enabled or disabled. Only if it is enabled the API's SetGammaPattern and SetGrayPattern will take effect. @n
  * When enabled the gamma module will be disabled and system ready to accept the new pattern values from SetGammaPattern and SetGrayPattern APIs. @n
  * When disabled the last set gamma values before the SetGammaPatternMode(true) API call will be restored.
- * This function will only set and does'nt save the value.
+ * This function will only set and doesn't save the value.
  *
  * @param[in] mode         - Valid values are true and false. true when gamma pattern mode needs to be enabled @n
- *                             false when gamma pattern mode needs to be enabled.
+ *                           false when gamma pattern mode needs to be disabled.
  *
  * @return tvError_t
  *
@@ -2770,7 +2770,7 @@ tvError_t SetGammaPatternMode(bool mode);
  *
  * @pre TvInit() should be called before calling this API
  */
-tvError_t SetRGBPattern(int r,int g, int b) ;
+tvError_t SetRGBPattern(int r,int g, int b);
 
 /**
  * @brief Gets the current RGB values of the RGB pattern.
@@ -3971,7 +3971,7 @@ tvError_t GetMultiPointWBMatrix(tvColorTemp_t colorTemp, tvPQModeIndex_t pq_mode
  *
  * @pre TvInit() should be called before calling this API
  */
-tvError_t GetDVCalibrationCaps(tvDVCalibrationSettings_t ** min_values, tvDVCalibrationSettings_t ** max_values, tvDVCalibrationComponent_t **component, size_t* num_component, tvContextCaps_t ** context_caps);
+tvError_t GetDVCalibrationCaps(tvDVCalibrationSettings_t **min_values, tvDVCalibrationSettings_t **max_values, tvDVCalibrationComponent_t **component, size_t *num_component, tvContextCaps_t **context_caps);
 
 /**
  * @brief Sets the Dolby Vision PQ calibration values.

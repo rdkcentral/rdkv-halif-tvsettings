@@ -118,10 +118,10 @@ typedef enum tvVideoFormatType_e {
  *
  */
 typedef enum tvColorTempSourceOffset_e {
-    ALL_SRC_OFFSET = -1,        //!< Video source offset is all
-    HDMI_OFFSET    = 0,         //!< Video source offset HDMI and tuner
-    TV_OFFSET      = 1,         //!< Video source offset IP
-    AV_OFFSET      = 2,         //!< Video source offset Composite
+    ALL_SRC_OFFSET = -1,        //!< ColorTemperature Video source offset is all
+    HDMI_OFFSET    = 0,         //!< ColorTemperature Video source offset HDMI and tuner
+    TV_OFFSET      = 1,         //!< ColorTemperature Video source offset IP
+    AV_OFFSET      = 2,         //!< ColorTemperature Video source offset Composite
     MAX_OFFSET     = 3          //!< End of enum.
 } tvColorTempSourceOffset_t;
 
@@ -298,7 +298,7 @@ typedef enum
     tvDataColor_BLUE = 4,                       //!< Color is Blue
     tvDataColor_YELLOW = 8,                     //!< Color is Yellow
     tvDataColor_CYAN = 16,                      //!< Color is Cyan
-    tvDataColor_MAGENTA = 32,                   //!< Color is Megenta
+    tvDataColor_MAGENTA = 32,                   //!< Color is Magenta
     tvDataColor_MAX = 64                        //!< End of enum
 }tvDataComponentColor_t;
 
@@ -690,7 +690,7 @@ typedef enum {
     tvDVCalibrationComponent_WX,        //!< Calibration Component is Wx
     tvDVCalibrationComponent_WY,        //!< Calibration Component is Wy
     tvDVCalibrationComponent_MAX        //!< Calibration Component is MAX
-}tvDVCalibrationComponent_t;
+} tvDVCalibrationComponent_t;
 
 #ifdef __cplusplus
 }

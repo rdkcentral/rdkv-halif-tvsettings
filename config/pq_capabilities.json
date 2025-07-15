@@ -354,7 +354,6 @@
                 "DV": [
                     "HDMI1",
                     "HDMI2",
-                    "HDMI2",
                     "HDMI3",
                     "IP"
                 ]
@@ -2253,7 +2252,7 @@
                 "HDMI4",
                 "IP",
                 "Tuner",
-                "Composite11"
+                "Composite1"
             ]
         }
     },
