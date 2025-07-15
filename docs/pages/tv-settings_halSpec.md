@@ -1,33 +1,6 @@
 
 # TV Settings HAL Documentation
 
-## Table of Contents
-
-- [Acronyms, Terms and Abbreviations](#acronyms-terms-and-abbreviations)
-- [Description](#description)
-- [Component Runtime Execution Requirements](#component-runtime-execution-requirements)
-  - [Initialization and Startup](#initialization-and-startup)
-  	- [Table Format](#table-format) 
-  - [Threading Model](#threading-model)
-  - [Process Model](#process-model)
-  - [Memory Model](#memory-model)
-  - [Power Management Requirements](#power-management-requirements)
-  - [Asynchronous Notification Model](#asynchronous-notification-model)
-  - [Blocking calls](#blocking-calls)
-  - [Internal Error Handling](#internal-error-handling)
-  - [Persistence Model](#persistence-model)
-- [Non-functional requirements](#non-functional-requirements)
-  - [Logging and debugging requirements](#logging-and-debugging-requirements)
-  - [Memory and performance requirements](#memory-and-performance-requirements)
-  - [Quality Control](#quality-control)
-  - [Licensing](#licensing)
-  - [Build Requirements](#build-requirements)
-  - [Variability Management](#variability-management)
-  - [Platform or Product Customization](#platform-or-product-customization)
-- [Interface API Documentation](#interface-api-documentation)
-  - [Theory of operation and key concepts](#theory-of-operation-and-key-concepts)
-  - [Diagrams](#diagrams)
-
 ## Acronyms, Terms and Abbreviations
 
 - `CPU` - Central Processing Unit
