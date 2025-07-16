@@ -118,10 +118,10 @@ typedef enum tvVideoFormatType_e {
  *
  */
 typedef enum tvColorTempSourceOffset_e {
-    ALL_SRC_OFFSET = -1,        //!< ColorTemperature Video source offset is all
-    HDMI_OFFSET    = 0,         //!< ColorTemperature Video source offset HDMI and tuner
-    TV_OFFSET      = 1,         //!< ColorTemperature Video source offset IP
-    AV_OFFSET      = 2,         //!< ColorTemperature Video source offset Composite
+    ALL_SRC_OFFSET = -1,        //!< WB Calibration Video source offset is ALL
+    HDMI_OFFSET    = 0,         //!< WB Calibration Video source offset is HDMI - Applicable for all HDMI and Tuner
+    TV_OFFSET      = 1,         //!< WB Calibration Video source offset is IP
+    AV_OFFSET      = 2,         //!< WB Calibration Video source offset is Composite
     MAX_OFFSET     = 3          //!< End of enum.
 } tvColorTempSourceOffset_t;
 
