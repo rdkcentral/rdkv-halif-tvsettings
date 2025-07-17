@@ -1872,7 +1872,7 @@ tvError_t SaveSourcePictureMode(tvVideoSrcType_t videoSrcType, tvVideoFormatType
  *
  * This function sets or saves the rgain value for a specfic color temperature and video source. If it is set operation (saveOnly=0) @n
  * the rgb gain and offset for the specified colour temperature will be loaded in white balance module and @n
- * the new red gain value from this API will be updated and saved in picture profile database.
+ * the new red gain value from this API will be applied and saved in the picture profile database.
  * The value is discarded and default value from picture profile database is used when primary video format
  * or primary video source or picture mode changes.
  * If it is save operation (saveOnly =1) then the rgain will be saved for the specific video source and colour temperature. The saved
@@ -1883,7 +1883,8 @@ tvError_t SaveSourcePictureMode(tvVideoSrcType_t videoSrcType, tvVideoFormatType
  * @param[in] rgain                - Rgain Value to be set. Valid range is (0 - 2047)
  * @param[in] sourceId             - SourceId value. Valid value will be a member of ::tvColorTempSourceOffset_t
  * @param[in] saveOnly             - Save=1 / Set and Save=0
- *                                   ( @a 0 for rgain value will be applied to PQ HW. i.e changes can be visible immediately on screen
+ *                                   ( @a 0 for rgain value will be applied to PQ HW and saved in the picture profile database to use later.
+ *                                     i.e changes can be visible immediately on screen
  *                                     @a 1 for rgain value will be saved and applied later i.e changes not visible immediately for current video)
  *
  * @return tvError_t
@@ -1922,7 +1923,7 @@ tvError_t GetColorTemp_Rgain_onSource(tvColorTemp_t colorTemp, int* rgain,tvColo
  *
  * This function sets or saves the ggain value for a specfic color temperature and video source. If it is set operation (saveOnly=0) @n
  * the rgb gain and offset for the specified colour temperature will be loaded in white balance module and @n
- * the new green gain value from this API will be updated and saved in picture profile database.
+ * the new green gain value from this API will be applied and saved in the picture profile database.
  * The value is discarded and default value from picture profile database is used when primary video format
  * or primary video source or picture mode changes.
  * If it is save operation (saveOnly =1) then the ggain will be saved for the specific video source and colour temperature. The saved
@@ -1933,7 +1934,8 @@ tvError_t GetColorTemp_Rgain_onSource(tvColorTemp_t colorTemp, int* rgain,tvColo
  * @param[in] ggain                - Ggain Value to be set. Valid range is (0 - 2047)
  * @param[in] sourceId             - SourceId value. Valid value will be a member of ::tvColorTempSourceOffset_t
  * @param[in] saveOnly             - Save=1 / Set and Save=0
- *                                   ( @a 0 for ggain value will be applied to PQ HW. i.e changes can be visible immediately on screen
+ *                                   ( @a 0 for ggain value will be applied to PQ HW and saved in the picture profile database to use later.
+ *                                     i.e changes can be visible immediately on screen
  *                                     @a 1 for ggain value will be saved and applied later i.e changes not visible immediately for current video)
  *
  * @return tvError_t
@@ -1972,7 +1974,7 @@ tvError_t GetColorTemp_Ggain_onSource(tvColorTemp_t colorTemp, int* ggain,tvColo
  *
  * This function sets or saves the bgain value for a specfic color temperature and video source. If it is set operation (saveOnly=0) @n
  * the rgb gain and offset for the specified colour temperature will be loaded in white balance module and @n
- * the new bgain gain value from this API will be updated and saved in picture profile database.
+ * the new bgain gain value from this API will be applied and saved in the picture profile database.
  * The value is discarded and default value from picture profile database is used when primary video format
  * or primary video source or picture mode changes.
  * If it is save operation (saveOnly =1) then the bgain will be saved for the specific video source and colour temperature. The saved
@@ -1983,7 +1985,8 @@ tvError_t GetColorTemp_Ggain_onSource(tvColorTemp_t colorTemp, int* ggain,tvColo
  * @param[in] bgain                - Bgain Value to be set. Valid range is (0 - 2047)
  * @param[in] sourceId             - SourceId value. Valid value will be a member of ::tvColorTempSourceOffset_t
  * @param[in] saveOnly             - Save=1 / Set and Save=0
- *                                   ( @a 0 for bgain value will be applied to PQ HW. i.e changes can be visible immediately on screen
+ *                                   ( @a 0 for bgain value will be applied to PQ HW and saved in the picture profile database to use later.
+ *                                     i.e changes can be visible immediately on screen
  *                                     @a 1 for bgain value will be saved and applied later i.e changes not visible immediately for current video)
  *
  * @return tvError_t
@@ -2022,7 +2025,7 @@ tvError_t GetColorTemp_Bgain_onSource(tvColorTemp_t colorTemp, int* bgain,tvColo
  *
  * This function sets or saves the rpostoffset value for a specfic color temperature and video source. If it is set operation (saveOnly=0) @n
  * the rgb gain and offset for the specified colour temperature will be loaded in white balance module and @n
- * the new rpostoffset gain value from this API will be updated and saved in picture profile database.
+ * the new rpostoffset gain value from this API will be applied and saved in the picture profile database.
  * The value is discarded and default value from picture profile database is used when primary video format
  * or primary video source or picture mode changes.
  * If it is save operation (saveOnly =1) then the rpostoffset will be saved for the specific video source and colour temperature. The saved
@@ -2033,7 +2036,8 @@ tvError_t GetColorTemp_Bgain_onSource(tvColorTemp_t colorTemp, int* bgain,tvColo
  * @param[in] rpostoffset          - Rpostoffset Value to be set. Valid range is  (-1024 to +1023)
  * @param[in] sourceId             - SourceId value. Valid value will be a member of ::tvColorTempSourceOffset_t
  * @param[in] saveOnly             - Save=1 / Set And Save=0
- *                                   ( @a 0 for rpostoffset value will be applied to PQ HW. i.e changes can be visible immediately on screen
+ *                                   ( @a 0 for rpostoffset value will be applied to PQ HW and saved in the picture profile database to use later.
+ *                                     i.e changes can be visible immediately on screen
  *                                     @a 1 for rpostoffset value will be saved and applied later i.e changes not visible immediately for current video)
  *
  * @return tvError_t
@@ -2071,7 +2075,7 @@ tvError_t GetColorTemp_R_post_offset_onSource(tvColorTemp_t colorTemp, int* rpos
  *
  * This function sets or saves the gpostoffset value for a specfic color temperature and video source. If it is set operation (saveOnly=0) @n
  * the rgb gain and offset for the specified colour temperature will be loaded in white balance module and @n
- * the new gpostoffset gain value from this API will be updated and saved in picture profile database.
+ * the new gpostoffset gain value from this API will be applied and saved in the picture profile database.
  * The value is discarded and default value from picture profile database is used when primary video format
  * or primary video source or picture mode changes.
  * If it is save operation (saveOnly =1) then the gpostoffset will be saved for the specific video source and colour temperature. The saved
@@ -2082,7 +2086,8 @@ tvError_t GetColorTemp_R_post_offset_onSource(tvColorTemp_t colorTemp, int* rpos
  * @param[in] gpostoffset          - Gpostoffset Value to be set. Valid range is  (-1024 to +1023)
  * @param[in] sourceId             - SourceId value. Valid value will be a member of ::tvColorTempSourceOffset_t
  * @param[in] saveOnly             - Save=1 / Set and Save=0
- *                                   ( @a 0 for gpostoffset value will be applied to PQ HW. i.e changes can be visible immediately on screen
+ *                                   ( @a 0 for gpostoffset value will be applied to PQ HW and saved in the picture profile database to use later.
+ *                                     i.e changes can be visible immediately on screen
  *                                     @a 1 for gpostoffset value will be saved and applied later i.e changes not visible immediately for current video)
  *
  * @return tvError_t
@@ -2120,7 +2125,7 @@ tvError_t GetColorTemp_G_post_offset_onSource(tvColorTemp_t colorTemp, int* gpos
  *
  * This function sets or saves the bpostoffset value for a specfic color temperature and video source. If it is set operation (saveOnly=0) @n
  * the rgb gain and offset for the specified colour temperature will be loaded in white balance module and @n
- * the new bpostoffset gain value from this API will be updated and saved in picture profile database.
+ * the new bpostoffset gain value from this API will be applied and saved in the picture profile database.
  * The value is discarded and default value from picture profile database is used when primary video format
  * or primary video source or picture mode changes.
  * If it is save operation (saveOnly =1) then the bpostoffset will be saved for the specific video source and colour temperature. The saved
@@ -2131,7 +2136,8 @@ tvError_t GetColorTemp_G_post_offset_onSource(tvColorTemp_t colorTemp, int* gpos
  * @param[in] bpostoffset          - Bpostoffset Value to be set. Valid range is  (-1024 to +1023)
  * @param[in] sourceId             - SourceId value. Valid value will be a member of ::tvColorTempSourceOffset_t
  * @param[in] saveOnly             - Save=1 / Set and Save=0
- *                                   ( @a 0 for bpostoffset value will be applied to PQ HW. i.e changes can be visible immediately on screen
+ *                                   ( @a 0 for bpostoffset value will be applied to PQ HW and saved in the picture profile database to use later.
+ *                                     i.e changes can be visible immediately on screen
  *                                     @a 1 for bpostoffset value will be saved and applied later i.e changes not visible immediately for current video)
  *
  * @return tvError_t
