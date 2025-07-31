@@ -1,0 +1,3116 @@
+{
+    "Backlight": {
+        "rangeInfo": {
+            "from": 0,
+            "to": 100
+        },
+        "platformSupport": true,
+		//"Context" -> tvContextCaps_t.context
+        "context": {
+		    //"Sports" -> tvConfigContext_t->tvPQModeIndex_t.PQ_MODE_SPORTS
+            "Sports": {
+                //"SDR" -> tvConfigContext_t->tvVideoFormatType_t.VIDEO_FORMAT_SDR
+                "SDR": [
+                    "HDMI1", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_HDMI1
+                    "HDMI2", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_HDMI2
+                    "HDMI3", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_HDMI3
+                    "Composite", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_COMPOSITE
+                    "Tuner", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_TUNER
+                    "IP"  //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_IP
+                ],
+                //"HLG" -> tvConfigContext_t->tvVideoFormatType_t.VIDEO_FORMAT_HLG
+                "HLG": [
+                    "HDMI1", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_HDMI1
+                    "HDMI2", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_HDMI2
+                    "HDMI3", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_HDMI3
+                    "Tuner", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_TUNER
+                    "IP"     //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_IP
+                ],
+                //"HDR10" -> tvConfigContext_t->tvVideoFormatType_t.VIDEO_FORMAT_HDR10
+                "HDR10": [
+                    "HDMI1", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_HDMI1
+                    "HDMI2", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_HDMI2
+                    "HDMI3", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_HDMI3
+                    "Tuner", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_TUNER
+                    "IP"    //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_IP
+                ]
+            },
+            //"Theater" -> tvConfigContext_t->tvPQModeIndex_t.PQ_MODE_THEATER
+            "Theater": {
+                //"SDR" -> tvConfigContext_t->tvVideoFormatType_t.VIDEO_FORMAT_SDR
+                "SDR": [
+                    "HDMI1", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_HDMI1
+                    "HDMI2", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_HDMI2
+                    "HDMI3", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_HDMI3
+                    "Composite",//tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_COMPOSITE
+                    "Tuner",  //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_TUNER
+                    "IP"     //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_IP
+                ],
+                //"HLG" -> tvConfigContext_t->tvVideoFormatType_t.VIDEO_FORMAT_HLG
+                "HLG": [
+                    "HDMI1", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_HDMI1
+                    "HDMI2", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_HDMI2
+                    "HDMI3", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_HDMI3
+                    "Tuner", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_TUNER
+                    "IP"     //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_IP
+                ],
+                //"HDR10" -> tvConfigContext_t->tvVideoFormatType_t.VIDEO_FORMAT_HDR10
+                "HDR10": [
+                    "HDMI1", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_HDMI1
+                    "HDMI2", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_HDMI2
+                    "HDMI3", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_HDMI3
+                    "Tuner", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_TUNER
+                    "IP"     //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_IP
+                ]
+            },
+            //"AI PQ" -> tvConfigContext_t->tvPQModeIndex_t.PQ_MODE_AIPQ
+            "AI PQ": {
+                //"SDR" -> tvConfigContext_t->tvVideoFormatType_t.VIDEO_FORMAT_SDR
+                "SDR": [
+                    "HDMI1", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_HDMI1
+                    "HDMI2", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_HDMI2
+                    "HDMI3", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_HDMI3
+                    "Composite", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_COMPOSITE
+                    "Tuner", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_TUNER
+                    "IP"     //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_IP
+                ],
+                //"HLG" -> tvConfigContext_t->tvVideoFormatType_t.VIDEO_FORMAT_HLG
+                "HLG": [
+                    "HDMI1", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_HDMI1
+                    "HDMI2", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_HDMI2
+                    "HDMI3", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_HDMI3
+                    "Tuner", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_TUNER
+                    "IP"     //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_IP
+                ],
+                //"HDR10" -> tvConfigContext_t->tvVideoFormatType_t.VIDEO_FORMAT_HDR10
+                "HDR10": [
+                    "HDMI1", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_HDMI1
+                    "HDMI2", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_HDMI2
+                    "HDMI3", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_HDMI3
+                    "Tuner", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_TUNER
+                    "IP"     //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_IP
+                ],
+                //"DV" -> tvConfigContext_t->tvVideoFormatType_t.VIDEO_FORMAT_DV
+                "DV": [
+                    "HDMI1", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_HDMI1
+                    "HDMI2", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_HDMI2
+                    "HDMI3", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_HDMI3
+                    "IP"     //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_IP
+                ]
+            },
+            //"Game" -> tvConfigContext_t->tvPQModeIndex_t.PQ_MODE_GAME
+            "Game": {
+                //"SDR" -> tvConfigContext_t->tvVideoFormatType_t.VIDEO_FORMAT_SDR
+                "SDR": [
+                    "HDMI1", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_HDMI1
+                    "HDMI2", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_HDMI2
+                    "HDMI3", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_HDMI3
+                    "Composite", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_COMPOSITE
+                    "Tuner", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_TUNER
+                    "IP"     //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_IP
+                ],
+                //"HLG" -> tvConfigContext_t->tvVideoFormatType_t.VIDEO_FORMAT_HLG
+                "HLG": [
+                    "HDMI1", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_HDMI1
+                    "HDMI2", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_HDMI2
+                    "HDMI3", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_HDMI3
+                    "Tuner", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_TUNER
+                    "IP"     //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_IP
+                ],
+                //"HDR10" -> tvConfigContext_t->tvVideoFormatType_t.VIDEO_FORMAT_HDR10
+                "HDR10": [
+                    "HDMI1", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_HDMI1
+                    "HDMI2", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_HDMI2
+                    "HDMI3", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_HDMI3
+                    "Tuner", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_TUNER
+                    "IP"     //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_IP
+                ],
+                //"DV" -> tvConfigContext_t->tvVideoFormatType_t.VIDEO_FORMAT_DV
+                "DV": [
+                    "HDMI1", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_HDMI1
+                    "HDMI2", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_HDMI2
+                    "HDMI3", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_HDMI3
+                    "IP"     //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_IP
+                ]
+            },
+            //"IQ" -> tvConfigContext_t->tvPQModeIndex_t.PQ_MODE_IQ
+            "IQ": {
+                //"DV" -> tvConfigContext_t->tvVideoFormatType_t.VIDEO_FORMAT_DV
+                "DV": [
+                    "HDMI1", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_HDMI1
+                    "HDMI2", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_HDMI2
+                    "HDMI3", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_HDMI3
+                    "IP"     //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_IP
+                ]
+            },
+            //"Dark" -> tvConfigContext_t->tvPQModeIndex_t.PQ_MODE_DARK
+            "Dark": {
+                //"DV" -> tvConfigContext_t->tvVideoFormatType_t.VIDEO_FORMAT_DV 
+                "DV": [
+                    "HDMI1", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_HDMI1
+                    "HDMI2", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_HDMI2
+                    "HDMI3", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_HDMI3
+                    "IP"     //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_IP
+                ]
+            }
+        }
+    },
+    "Brightness": {
+        "rangeInfo": {
+            "from": 0,
+            "to": 100
+        },
+        "platformSupport": true,
+        //"Context" -> tvContextCaps_t.context
+        "context": {
+            //"Sports" -> tvConfigContext_t->tvPQModeIndex_t.PQ_MODE_SPORTS    
+            "Sports": {
+                //"SDR" ->  tvConfigContext_t->tvVideoFormatType_t.VIDEO_FORMAT_SDR         
+                "SDR": [
+                    "HDMI1", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_HDMI1
+                    "HDMI2", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_HDMI2
+                    "HDMI3", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_HDMI3
+                    "Composite", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_COMPOSITE
+                    "Tuner", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_TUNER
+                    "IP"  //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_IP 
+                ],
+                //"HLG" -> tvConfigContext_t->tvVideoFormatType_t.VIDEO_FORMAT_HLG              
+                "HLG": [
+                    "HDMI1", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_HDMI1 
+                    "HDMI2", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_HDMI2
+                    "HDMI3", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_HDMI3
+                    "Tuner", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_TUNER
+                    "IP"     //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_IP
+                ],
+                //"HDR10" -> tvConfigContext_t->tvVideoFormatType_t.VIDEO_FORMAT_HDR10               
+                "HDR10": [
+                    "HDMI1", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_HDMI1
+                    "HDMI2", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_HDMI2
+                    "HDMI3", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_HDMI3
+                    "Tuner", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_TUNER
+                    "IP"     //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_IP
+                ]
+            },
+            //"Theater" -> tvConfigContext_t->tvPQModeIndex_t.PQ_MODE_THEATER           
+            "Theater": {
+                //"SDR" -> tvConfigContext_t->tvVideoFormatType_t.VIDEO_FORMAT_SDR          
+                "SDR": [
+                    "HDMI1", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_HDMI1
+                    "HDMI2", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_HDMI2
+                    "HDMI3", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_HDMI3
+                    "Composite", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_COMPOSITE
+                    "Tuner", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_TUNER    
+                    "IP"     //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_IP
+                ],
+                //"HLG" -> tvConfigContext_t->tvVideoFormatType_t.VIDEO_FORMAT_HLG              
+                "HLG": [
+                    "HDMI1", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_HDMI1
+                    "HDMI2", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_HDMI2
+                    "HDMI3", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_HDMI3
+                    "Tuner", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_TUNER 
+                    "IP"     //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_IP
+                ],
+                //"HDR10" -> tvConfigContext_t->tvVideoFormatType_t.VIDEO_FORMAT_HDR10               
+                "HDR10": [
+                    "HDMI1", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_HDMI1
+                    "HDMI2", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_HDMI2
+                    "HDMI3", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_HDMI3
+                    "Tuner", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_TUNER
+                    "IP"     //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_IP
+                ]
+            },
+            //"Game" -> tvConfigContext_t->tvPQModeIndex_t.PQ_MODE_GAME          
+            "Game": {
+                //"SDR" -> tvConfigContext_t->tvVideoFormatType_t.VIDEO_FORMAT_SDR          
+                "SDR": [
+                    "HDMI1", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_HDMI1
+                    "HDMI2", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_HDMI2
+                    "HDMI3", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_HDMI3
+                    "Composite", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_COMPOSITE
+                    "Tuner", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_TUNER
+                    "IP"     //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_IP 
+                ],
+                //"HLG" -> tvConfigContext_t->tvVideoFormatType_t.VIDEO_FORMAT_HLG              
+                "HLG": [
+                    "HDMI1", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_HDMI1
+                    "HDMI2", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_HDMI2
+                    "HDMI3", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_HDMI3
+                    "Tuner", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_TUNER
+                    "IP"     //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_IP 
+                ],
+                //"HDR10" -> tvConfigContext_t->tvVideoFormatType_t.VIDEO_FORMAT_HDR10               
+                "HDR10": [
+                    "HDMI1", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_HDMI1
+                    "HDMI2", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_HDMI2
+                    "HDMI3", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_HDMI3 
+                    "Tuner", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_TUNER
+                    "IP"     //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_IP 
+                ],
+                //"DV" -> tvConfigContext_t->tvVideoFormatType_t.VIDEO_FORMAT_DV              
+                "DV": [
+                    "HDMI1", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_HDMI1
+                    "HDMI2", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_HDMI2
+                    "HDMI3", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_HDMI3
+                    "IP"     //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_IP 
+                ]
+            },
+            //"IQ" -> tvConfigContext_t->tvPQModeIndex_t.PQ_MODE_IQ          
+            "IQ": {
+                //"DV" -> tvConfigContext_t->tvVideoFormatType_t.VIDEO_FORMAT_DV          
+                "DV": [
+                    "HDMI1", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_HDMI1
+                    "HDMI2", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_HDMI2
+                    "HDMI3", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_HDMI3
+                    "IP"     //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_IP  
+                ]
+            },
+            //"AI PQ" -> tvConfigContext_t->tvPQModeIndex_t.PQ_MODE_AIPQ           
+            "AI PQ": {
+                //"SDR" -> tvConfigContext_t->tvVideoFormatType_t.VIDEO_FORMAT_SDR          
+                "SDR": [
+                    "HDMI1", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_HDMI1
+                    "HDMI2", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_HDMI2
+                    "HDMI3", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_HDMI3
+                    "Composite", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_COMPOSITE
+                    "Tuner", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_TUNER
+                    "IP"     //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_IP  
+                ],
+                //"HLG" -> tvConfigContext_t->tvVideoFormatType_t.VIDEO_FORMAT_HLG              
+                "HLG": [
+                    "HDMI1", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_HDMI1
+                    "HDMI2", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_HDMI2
+                    "HDMI3", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_HDMI3
+                    "Tuner", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_TUNER
+                    "IP"     //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_IP
+                ],
+                //"HDR10" -> tvConfigContext_t->tvVideoFormatType_t.VIDEO_FORMAT_HDR10               
+                "HDR10": [
+                    "HDMI1", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_HDMI1 
+                    "HDMI2", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_HDMI2
+                    "HDMI3", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_HDMI3
+                    "Tuner", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_TUNER
+                    "IP"     //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_IP
+                ],
+                //"DV" -> tvConfigContext_t->tvVideoFormatType_t.VIDEO_FORMAT_DV              
+                "DV": [
+                    "HDMI1", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_HDMI1
+                    "HDMI2", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_HDMI2 
+                    "HDMI3", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_HDMI3
+                    "IP"     //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_IP     
+                ]
+            },
+            //"Dark" -> tvConfigContext_t->tvPQModeIndex_t.PQ_MODE_DARK          
+            "Dark": {
+                //"DV" -> tvConfigContext_t->tvVideoFormatType_t.VIDEO_FORMAT_DV           
+                "DV": [
+                    "HDMI1", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_HDMI1
+                    "HDMI2", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_HDMI2 
+                    "HDMI3", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_HDMI3
+                    "IP"     //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_IP  
+                ]
+            }
+        }
+    },
+    "Contrast": {
+        "rangeInfo": {
+            "from": 0,
+            "to": 100
+        },
+        "platformSupport": true,
+        //"Context" -> tvContextCaps_t.context
+        "context": {
+            //"Sports" -> tvConfigContext_t->tvPQModeIndex_t.PQ_MODE_SPORTS      
+            "Sports": {
+                //"SDR" -> tvConfigContext_t->tvVideoFormatType_t.VIDEO_FORMAT_SDR          
+                "SDR": [
+                    "HDMI1", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_HDMI1
+                    "HDMI2", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_HDMI2 
+                    "HDMI3", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_HDMI3
+                    "Composite", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_COMPOSITE 
+                    "Tuner",  //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_TUNER
+                    "IP"     //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_IP
+                ],
+                //"HLG" -> tvConfigContext_t->tvVideoFormatType_t.VIDEO_FORMAT_HLG              
+                "HLG": [
+                    "HDMI1", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_HDMI1
+                    "HDMI2", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_HDMI2
+                    "HDMI3", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_HDMI3
+                    "Tuner", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_TUNER
+                    "IP"     //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_IP
+                ],
+                //"HDR10" -> tvConfigContext_t->tvVideoFormatType_t.VIDEO_FORMAT_HDR10              
+                "HDR10": [
+                    "HDMI1", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_HDMI1
+                    "HDMI2", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_HDMI2
+                    "HDMI3", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_HDMI3
+                    "Tuner", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_TUNER
+                    "IP"     //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_IP
+                ]
+            },
+            //"Theater" -> tvConfigContext_t->tvPQModeIndex_t.PQ_MODE_THEATER          
+            "Theater": {
+                //"SDR" -> tvConfigContext_t->tvVideoFormatType_t.VIDEO_FORMAT_SDR          
+                "SDR": [
+                    "HDMI1", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_HDMI1
+                    "HDMI2", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_HDMI2
+                    "HDMI3", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_HDMI3
+                    "Composite", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_COMPOSITE
+                    "Tuner", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_TUNER
+                    "IP"     //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_IP
+                ],
+                //"HLG" -> tvConfigContext_t->tvVideoFormatType_t.VIDEO_FORMAT_HLG              
+                "HLG": [
+                    "HDMI1", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_HDMI1
+                    "HDMI2", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_HDMI2 
+                    "HDMI3", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_HDMI3
+                    "Tuner", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_TUNER
+                    "IP"     //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_IP
+                ],
+                //"HDR10" -> tvConfigContext_t->tvVideoFormatType_t.VIDEO_FORMAT_HDR10               
+                "HDR10": [
+                    "HDMI1", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_HDMI1
+                    "HDMI2", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_HDMI2
+                    "HDMI3", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_HDMI3
+                    "Tuner", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_TUNER
+                    "IP"     //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_IP
+                ]
+            },
+            //"Game" -> tvConfigContext_t->tvPQModeIndex_t.PQ_MODE_GAME          
+            "Game": {
+                //"SDR" -> tvConfigContext_t->tvVideoFormatType_t.VIDEO_FORMAT_SDR          
+                "SDR": [
+                    "HDMI1", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_HDMI1
+                    "HDMI2", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_HDMI2
+                    "HDMI3", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_HDMI3
+                    "Composite", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_COMPOSITE
+                    "Tuner", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_TUNER
+                    "IP"     //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_IP
+                ],
+                //"HLG" -> tvConfigContext_t->tvVideoFormatType_t.VIDEO_FORMAT_HLG              
+                "HLG": [
+                    "HDMI1", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_HDMI1
+                    "HDMI2", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_HDMI2
+                    "HDMI3", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_HDMI3
+                    "Tuner", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_TUNER
+                    "IP"     //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_IP
+                ],
+                //"HDR10" -> tvConfigContext_t->tvVideoFormatType_t.VIDEO_FORMAT_HDR10               
+                "HDR10": [
+                    "HDMI1", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_HDMI1
+                    "HDMI2", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_HDMI2
+                    "HDMI3", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_HDMI3
+                    "Tuner", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_TUNER
+                    "IP"     //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_IP 
+                ],
+                //"DV" -> tvConfigContext_t->tvVideoFormatType_t.VIDEO_FORMAT_DV               
+                "DV": [
+                    "HDMI1", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_HDMI1
+                    "HDMI2", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_HDMI2 
+                    "HDMI3", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_HDMI3
+                    "IP"     //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_IP  
+                ]
+            },
+            //"IQ" -> tvConfigContext_t->tvPQModeIndex_t.PQ_MODE_IQ          
+            "IQ": {
+                //"DV" -> tvConfigContext_t->tvVideoFormatType_t.VIDEO_FORMAT_DV          
+                "DV": [
+                    "HDMI1", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_HDMI1
+                    "HDMI2", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_HDMI2
+                    "HDMI2", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_HDMI2
+                    "HDMI3", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_HDMI3
+                    "IP"     //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_IP 
+                ]
+            },
+            //"AI PQ" -> tvConfigContext_t->tvPQModeIndex_t.PQ_MODE_AIPQ          
+            "AI PQ": {
+                //"SDR" -> tvConfigContext_t->tvVideoFormatType_t.VIDEO_FORMAT_SDR          
+                "SDR": [
+                    "HDMI1", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_HDMI1
+                    "HDMI2", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_HDMI2
+                    "HDMI3", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_HDMI3
+                    "Composite", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_COMPOSITE
+                    "Tuner", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_TUNER
+                    "IP"     //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_IP 
+                ],
+                //"HLG" -> tvConfigContext_t->tvVideoFormatType_t.VIDEO_FORMAT_HLG              
+                "HLG": [
+                    "HDMI1", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_HDMI1
+                    "HDMI2", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_HDMI2
+                    "HDMI3", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_HDMI3
+                    "Tuner", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_TUNER
+                    "IP"     //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_IP
+                ],
+                //"HDR10" -> tvConfigContext_t->tvVideoFormatType_t.VIDEO_FORMAT_HDR10              
+                "HDR10": [
+                    "HDMI1", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_HDMI1
+                    "HDMI2", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_HDMI2
+                    "HDMI3", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_HDMI3
+                    "Tuner", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_TUNER 
+                    "IP"     //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_IP
+                ],
+                //"DV" -> tvConfigContext_t->tvVideoFormatType_t.VIDEO_FORMAT_DV              
+                "DV": [
+                    "HDMI1", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_HDMI1
+                    "HDMI2", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_HDMI2
+                    "HDMI3", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_HDMI3
+                    "IP"     //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_IP
+                ]
+            },
+            //"Dark" -> tvConfigContext_t->tvPQModeIndex_t.PQ_MODE_DARK          
+            "Dark": {
+                //"DV" -> tvConfigContext_t->tvVideoFormatType_t.VIDEO_FORMAT_DV          
+                "DV": [
+                    "HDMI1", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_HDMI1
+                    "HDMI2", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_HDMI2
+                    "HDMI3", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_HDMI3
+                    "IP"     //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_IP
+                ]
+            }
+        }
+    },
+    "Sharpness": {
+        "rangeInfo": {
+            "from": 0,
+            "to": 100
+        },
+        "platformSupport": true,
+        //"Context" -> tvContextCaps_t.context
+        "context": {
+            //"Sports" -> tvConfigContext_t->tvPQModeIndex_t.PQ_MODE_SPORTS      
+            "Sports": {
+                //"SDR" -> tvConfigContext_t->tvVideoFormatType_t.VIDEO_FORMAT_SDR          
+                "SDR": [
+                    "HDMI1", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_HDMI1
+                    "HDMI2", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_HDMI2
+                    "HDMI3", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_HDMI3
+                    "Composite", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_COMPOSITE
+                    "Tuner", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_TUNER
+                    "IP"     //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_IP
+                ],
+                //"HLG" -> tvConfigContext_t->tvVideoFormatType_t.VIDEO_FORMAT_HLG              
+                "HLG": [
+                    "HDMI1", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_HDMI1
+                    "HDMI2", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_HDMI2
+                    "HDMI3", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_HDMI3
+                    "Tuner", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_TUNER
+                    "IP"     //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_IP
+                ],
+                //"HDR10" -> tvConfigContext_t->tvVideoFormatType_t.VIDEO_FORMAT_HDR10              
+                "HDR10": [
+                    "HDMI1", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_HDMI1
+                    "HDMI2", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_HDMI2
+                    "HDMI3", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_HDMI3
+                    "Tuner", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_TUNER
+                    "IP"     //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_IP 
+                ]
+            },
+            //"Theater" -> tvConfigContext_t->tvPQModeIndex_t.PQ_MODE_THEATER           
+            "Theater": {
+                //"SDR" -> tvConfigContext_t->tvVideoFormatType_t.VIDEO_FORMAT_SDR          
+                "SDR": [
+                    "HDMI1", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_HDMI1
+                    "HDMI2", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_HDMI2
+                    "HDMI3", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_HDMI3
+                    "Composite", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_COMPOSITE
+                    "Tuner", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_TUNER
+                    "IP"     //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_IP
+                ],
+                //"HLG" -> tvConfigContext_t->tvVideoFormatType_t.VIDEO_FORMAT_HLG               
+                "HLG": [
+                    "HDMI1", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_HDMI1
+                    "HDMI2", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_HDMI2
+                    "HDMI3", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_HDMI3
+                    "Tuner", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_TUNER
+                    "IP"     //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_IP
+                ],
+                //"HDR10" -> tvConfigContext_t->tvVideoFormatType_t.VIDEO_FORMAT_HDR10              
+                "HDR10": [
+                    "HDMI1", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_HDMI1
+                    "HDMI2", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_HDMI2
+                    "HDMI3", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_HDMI3
+                    "Tuner", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_TUNER
+                    "IP"     //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_IP
+                ]
+            },
+            //"Game" -> tvConfigContext_t->tvPQModeIndex_t.PQ_MODE_GAME          
+            "Game": {
+                //"SDR" -> tvConfigContext_t->tvVideoFormatType_t.VIDEO_FORMAT_SDR          
+                "SDR": [
+                    "HDMI1", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_HDMI1
+                    "HDMI2", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_HDMI2
+                    "HDMI3", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_HDMI3
+                    "Composite", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_COMPOSITE
+                    "Tuner", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_TUNER
+                    "IP"     //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_IP
+                ],
+                //"HLG" -> tvConfigContext_t->tvVideoFormatType_t.VIDEO_FORMAT_HLG               
+                "HLG": [
+                    "HDMI1", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_HDMI1
+                    "HDMI2", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_HDMI2
+                    "HDMI3", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_HDMI3
+                    "Tuner", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_TUNER
+                    "IP"     //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_IP
+                ],
+                //"HDR10" -> tvConfigContext_t->tvVideoFormatType_t.VIDEO_FORMAT_HDR10              
+                "HDR10": [
+                    "HDMI1", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_HDMI1
+                    "HDMI2", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_HDMI2
+                    "HDMI3", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_HDMI3
+                    "Tuner", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_TUNER
+                    "IP"     //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_IP 
+                ],
+                //"DV" -> tvConfigContext_t->tvVideoFormatType_t.VIDEO_FORMAT_DV              
+                "DV": [
+                    "HDMI1", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_HDMI1
+                    "HDMI2", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_HDMI2
+                    "HDMI3", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_HDMI3
+                    "IP"     //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_IP
+                ]
+            },
+            //"IQ" -> tvConfigContext_t->tvPQModeIndex_t.PQ_MODE_IQ            
+            "IQ": {
+                //"DV" -> tvConfigContext_t->tvVideoFormatType_t.VIDEO_FORMAT_DV          
+                "DV": [
+                    "HDMI1", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_HDMI1
+                    "HDMI2", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_HDMI2
+                    "HDMI3", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_HDMI3
+                    "IP"     //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_IP
+                ]
+            },
+            //"AI PQ" -> tvConfigContext_t->tvPQModeIndex_t.PQ_MODE_AIPQ         
+            "AI PQ": {
+                //"SDR" -> tvConfigContext_t->tvVideoFormatType_t.VIDEO_FORMAT_SDR         
+                "SDR": [
+                    "HDMI1", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_HDMI1
+                    "HDMI2", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_HDMI2
+                    "HDMI3", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_HDMI3
+                    "Composite", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_COMPOSITE 
+                    "Tuner", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_TUNER 
+                    "IP"     //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_IP
+                ],
+                //"HLG" -> tvConfigContext_t->tvVideoFormatType_t.VIDEO_FORMAT_HLG             
+                "HLG": [
+                    "HDMI1", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_HDMI1
+                    "HDMI2", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_HDMI2
+                    "HDMI3", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_HDMI3
+                    "Tuner", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_TUNER
+                    "IP"     //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_IP
+                ],
+                //"HDR10" -> tvConfigContext_t->tvVideoFormatType_t.VIDEO_FORMAT_HDR10             
+                "HDR10": [
+                    "HDMI1", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_HDMI1
+                    "HDMI2", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_HDMI2
+                    "HDMI3", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_HDMI3
+                    "Tuner", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_TUNER
+                    "IP"     //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_IP
+                ],
+                //"DV" -> tvConfigContext_t->tvVideoFormatType_t.VIDEO_FORMAT_DV             
+                "DV": [
+                    "HDMI1", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_HDMI1
+                    "HDMI2", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_HDMI2
+                    "HDMI3", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_HDMI3
+                    "IP"     //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_IP
+                ]
+            },
+            //"Dark" -> tvConfigContext_t->tvPQModeIndex_t.PQ_MODE_DARK         
+            "Dark": {
+                //"DV" -> tvConfigContext_t->tvVideoFormatType_t.VIDEO_FORMAT_DV         
+                "DV": [
+                    "HDMI1", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_HDMI1
+                    "HDMI2", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_HDMI2
+                    "HDMI3", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_HDMI3
+                    "IP"     //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_IP
+                ]
+            }
+        }
+    },
+    "Saturation": {
+        "rangeInfo": {
+            "from": 0,
+            "to": 100
+        },
+        "platformSupport": true,
+        //"Context" -> tvContextCaps_t.context
+        "context": {
+            //"Sports" -> tvConfigContext_t->tvPQModeIndex_t.PQ_MODE_SPORTS     
+            "Sports": {
+                //"SDR" -> tvConfigContext_t->tvVideoFormatType_t.VIDEO_FORMAT_SDR         
+                "SDR": [
+                    "HDMI1", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_HDMI1
+                    "HDMI2", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_HDMI2
+                    "HDMI3", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_HDMI3
+                    "Composite", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_COMPOSITE 
+                    "Tuner", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_TUNER 
+                    "IP"     //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_IP
+                ],
+                //"HLG" -> tvConfigContext_t->tvVideoFormatType_t.VIDEO_FORMAT_HLG             
+                "HLG": [
+                    "HDMI1", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_HDMI1
+                    "HDMI2", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_HDMI2
+                    "HDMI3", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_HDMI3
+                    "Tuner", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_TUNER
+                    "IP"     //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_IP 
+                ],
+                //"HDR10" -> tvConfigContext_t->tvVideoFormatType_t.VIDEO_FORMAT_HDR10             
+                "HDR10": [
+                    "HDMI1", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_HDMI1
+                    "HDMI2", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_HDMI2 
+                    "HDMI3", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_HDMI3
+                    "Tuner", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_TUNER
+                    "IP"     //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_IP
+                ]
+            },
+            //"Theater" -> tvConfigContext_t->tvPQModeIndex_t.PQ_MODE_THEATER         
+            "Theater": {
+                //"SDR" -> tvConfigContext_t->tvVideoFormatType_t.VIDEO_FORMAT_SDR         
+                "SDR": [
+                    "HDMI1", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_HDMI1
+                    "HDMI2", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_HDMI2
+                    "HDMI3", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_HDMI3
+                    "Composite", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_COMPOSITE
+                    "Tuner", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_TUNER  
+                    "IP"     //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_IP
+                ],
+                //"HLG" -> tvConfigContext_t->tvVideoFormatType_t.VIDEO_FORMAT_HLG              
+                "HLG": [
+                    "HDMI1", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_HDMI1
+                    "HDMI2", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_HDMI2
+                    "HDMI3", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_HDMI3
+                    "Tuner", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_TUNER
+                    "IP"     //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_IP
+                ],
+                //"HDR10" -> tvConfigContext_t->tvVideoFormatType_t.VIDEO_FORMAT_HDR10             
+                "HDR10": [
+                    "HDMI1", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_HDMI1
+                    "HDMI2", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_HDMI2
+                    "HDMI3", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_HDMI3
+                    "Tuner", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_TUNER
+                    "IP"     //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_IP 
+                ]
+            },
+            //"Game" -> tvConfigContext_t->tvPQModeIndex_t.PQ_MODE_GAME         
+            "Game": {
+                //"SDR" -> tvConfigContext_t->tvVideoFormatType_t.VIDEO_FORMAT_SDR         
+                "SDR": [
+                    "HDMI1", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_HDMI1
+                    "HDMI2", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_HDMI2
+                    "HDMI3", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_HDMI3
+                    "Composite", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_COMPOSITE
+                    "Tuner", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_TUNER
+                    "IP"     //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_IP
+                ],
+                //"HLG" -> tvConfigContext_t->tvVideoFormatType_t.VIDEO_FORMAT_HLG             
+                "HLG": [
+                    "HDMI1", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_HDMI1
+                    "HDMI2", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_HDMI2
+                    "HDMI3", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_HDMI3
+                    "Tuner", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_TUNER
+                    "IP"     //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_IP  
+                ],
+                //"HDR10" -> tvConfigContext_t->tvVideoFormatType_t.VIDEO_FORMAT_HDR10             
+                "HDR10": [
+                    "HDMI1", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_HDMI1
+                    "HDMI2", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_HDMI2 
+                    "HDMI3", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_HDMI3
+                    "Tuner", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_TUNER
+                    "IP"     //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_IP
+                ],
+                //"DV" -> tvConfigContext_t->tvVideoFormatType_t.VIDEO_FORMAT_DV             
+                "DV": [
+                    "HDMI1", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_HDMI1
+                    "HDMI2", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_HDMI2
+                    "HDMI3", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_HDMI3
+                    "IP"     //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_IP
+                ]
+            },
+            //"IQ" -> tvConfigContext_t->tvPQModeIndex_t.PQ_MODE_IQ          
+            "IQ": {
+                //"DV" -> tvConfigContext_t->tvVideoFormatType_t.VIDEO_FORMAT_DV         
+                "DV": [
+                    "HDMI1", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_HDMI1
+                    "HDMI2", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_HDMI2
+                    "HDMI3", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_HDMI3
+                    "IP"     //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_IP
+                ]
+            },
+            //"AI PQ" -> tvConfigContext_t->tvPQModeIndex_t.PQ_MODE_AIPQ         
+            "AI PQ": {
+                //"SDR" -> tvConfigContext_t->tvVideoFormatType_t.VIDEO_FORMAT_SDR         
+                "SDR": [
+                    "HDMI1", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_HDMI1
+                    "HDMI2", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_HDMI2
+                    "HDMI3", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_HDMI3
+                    "Composite", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_COMPOSITE 
+                    "IP"     //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_IP
+                ],
+                //"HLG" -> tvConfigContext_t->tvVideoFormatType_t.VIDEO_FORMAT_HLG             
+                "HLG": [
+                    "HDMI1", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_HDMI1
+                    "HDMI2", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_HDMI2
+                    "HDMI3", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_HDMI3
+                    "Tuner", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_TUNER
+                    "IP"     //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_IP
+                ],
+                //"HDR10" -> tvConfigContext_t->tvVideoFormatType_t.VIDEO_FORMAT_HDR10              
+                "HDR10": [
+                    "HDMI1", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_HDMI1
+                    "HDMI2", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_HDMI2
+                    "HDMI3", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_HDMI3
+                    "Tuner", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_TUNER
+                    "IP"     //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_IP
+                ],
+                //"DV" -> tvConfigContext_t->tvVideoFormatType_t.VIDEO_FORMAT_DV              
+                "DV": [
+                    "HDMI1", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_HDMI1
+                    "HDMI2", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_HDMI2
+                    "HDMI3", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_HDMI3
+                    "IP"     //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_IP
+                ]
+            },
+            //"Dark" -> tvConfigContext_t->tvPQModeIndex_t.PQ_MODE_DARK          
+            "Dark": {
+                //"DV" -> tvConfigContext_t->tvVideoFormatType_t.VIDEO_FORMAT_DV          
+                "DV": [
+                    "HDMI1", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_HDMI1
+                    "HDMI2", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_HDMI2
+                    "HDMI3", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_HDMI3
+                    "IP"     //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_IP
+                ]
+            }
+        }
+    },
+    "Hue": {
+        "rangeInfo": {
+            "from": 0,
+            "to": 100
+        },
+        "platformSupport": true,
+        //"Context" -> tvContextCaps_t.context
+        "context": {
+            //"Sports" -> tvConfigContext_t->tvPQModeIndex_t.PQ_MODE_SPORTS      
+            "Sports": {
+                //"SDR" -> tvConfigContext_t->tvVideoFormatType_t.VIDEO_FORMAT_SDR          
+                "SDR": [
+                    "HDMI1", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_HDMI1
+                    "HDMI2", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_HDMI2
+                    "HDMI3", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_HDMI3
+                    "Composite", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_COMPOSITE
+                    "Tuner", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_TUNER  
+                    "IP"     //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_IP
+                ],
+                //"HLG" -> tvConfigContext_t->tvVideoFormatType_t.VIDEO_FORMAT_HLG             
+                "HLG": [
+                    "HDMI1", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_HDMI1
+                    "HDMI2", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_HDMI2
+                    "HDMI3", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_HDMI3
+                    "Tuner", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_TUNER
+                    "IP"     //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_IP
+                ],
+                //"HDR10" -> tvConfigContext_t->tvVideoFormatType_t.VIDEO_FORMAT_HDR10               
+                "HDR10": [
+                    "HDMI1", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_HDMI1
+                    "HDMI2", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_HDMI2
+                    "HDMI3", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_HDMI3
+                    "Tuner", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_TUNER
+                    "IP"     //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_IP
+                ]
+            },
+            //"Theater" -> tvConfigContext_t->tvPQModeIndex_t.PQ_MODE_THEATER          
+            "Theater": {
+                //"SDR" -> tvConfigContext_t->tvVideoFormatType_t.VIDEO_FORMAT_SDR          
+                "SDR": [
+                    "HDMI1", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_HDMI1
+                    "HDMI2", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_HDMI2
+                    "HDMI3", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_HDMI3
+                    "Composite", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_COMPOSITE
+                    "Tuner",  //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_TUNER
+                    "IP"      //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_IP
+                ],
+                //"HLG" -> tvConfigContext_t->tvVideoFormatType_t.VIDEO_FORMAT_HLG              
+                "HLG": [
+                    "HDMI1", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_HDMI1
+                    "HDMI2", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_HDMI2
+                    "HDMI3", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_HDMI3
+                    "Tuner", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_TUNER
+                    "IP"     //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_IP
+                ],
+                //"HDR10" -> tvConfigContext_t->tvVideoFormatType_t.VIDEO_FORMAT_HDR10               
+                "HDR10": [
+                    "HDMI1", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_HDMI1
+                    "HDMI2", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_HDMI2
+                    "HDMI3", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_HDMI3
+                    "Tuner", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_TUNER
+                    "IP"     //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_IP
+                ]
+            },
+            //"Game" -> tvConfigContext_t->tvPQModeIndex_t.PQ_MODE_GAME          
+            "Game": {
+                //"SDR" -> tvConfigContext_t->tvVideoFormatType_t.VIDEO_FORMAT_SDR          
+                "SDR": [
+                    "HDMI1", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_HDMI1
+                    "HDMI2", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_HDMI2
+                    "HDMI3", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_HDMI3
+                    "Composite", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_COMPOSITE
+                    "Tuner", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_TUNER
+                    "IP"     //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_IP
+                ],
+                //"HLG" -> tvConfigContext_t->tvVideoFormatType_t.VIDEO_FORMAT_HLG              
+                "HLG": [
+                    "HDMI1", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_HDMI1
+                    "HDMI2", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_HDMI2
+                    "HDMI3", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_HDMI3
+                    "Tuner", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_TUNER
+                    "IP"     //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_IP
+                ],
+                //"HDR10" -> tvConfigContext_t->tvVideoFormatType_t.VIDEO_FORMAT_HDR10              
+                "HDR10": [
+                    "HDMI1", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_HDMI1
+                    "HDMI2", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_HDMI2
+                    "HDMI3", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_HDMI3
+                    "Tuner", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_TUNER
+                    "IP"     //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_IP
+                ],
+                //"DV" -> tvConfigContext_t->tvVideoFormatType_t.VIDEO_FORMAT_DV              
+                "DV": [
+                    "HDMI1", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_HDMI1
+                    "HDMI2", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_HDMI2 
+                    "HDMI3", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_HDMI3
+                    "IP"     //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_IP
+                ]
+            },
+            //"IQ" -> tvConfigContext_t->tvPQModeIndex_t.PQ_MODE_IQ            
+            "IQ": {
+                //"DV" -> tvConfigContext_t->tvVideoFormatType_t.VIDEO_FORMAT_DV           
+                "DV": [
+                    "HDMI1", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_HDMI1
+                    "HDMI2", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_HDMI2
+                    "HDMI3", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_HDMI3
+                    "IP"     //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_IP
+                ]
+            },
+            //"AI PQ" -> tvConfigContext_t->tvPQModeIndex_t.PQ_MODE_AIPQ          
+            "AI PQ": {
+                //"SDR" -> tvConfigContext_t->tvVideoFormatType_t.VIDEO_FORMAT_SDR          
+                "SDR": [
+                    "HDMI1", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_HDMI1
+                    "HDMI2", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_HDMI2
+                    "HDMI3", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_HDMI3
+                    "Composite", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_COMPOSITE
+                    "Tuner", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_TUNER
+                    "IP"     //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_IP
+                ],
+                //"HLG" -> tvConfigContext_t->tvVideoFormatType_t.VIDEO_FORMAT_HLG              
+                "HLG": [
+                    "HDMI1", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_HDMI1
+                    "HDMI2", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_HDMI2
+                    "HDMI3", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_HDMI3 
+                    "Tuner", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_TUNER
+                    "IP"     //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_IP
+                ],
+                //"HDR10" -> tvConfigContext_t->tvVideoFormatType_t.VIDEO_FORMAT_HDR10              
+                "HDR10": [
+                    "HDMI1", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_HDMI1
+                    "HDMI2", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_HDMI2
+                    "HDMI3", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_HDMI3
+                    "Tuner", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_TUNER
+                    "IP"     //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_IP 
+                ],
+                //"DV" -> tvConfigContext_t->tvVideoFormatType_t.VIDEO_FORMAT_DV              
+                "DV": [
+                    "HDMI1", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_HDMI1
+                    "HDMI2", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_HDMI2
+                    "HDMI3", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_HDMI3
+                    "IP"     //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_IP
+                ]
+            },
+            //"Dark" -> tvConfigContext_t->tvPQModeIndex_t.PQ_MODE_DARK          
+            "Dark": {
+                //"DV" -> tvConfigContext_t->tvVideoFormatType_t.VIDEO_FORMAT_DV          
+                "DV": [
+                    "HDMI1", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_HDMI1
+                    "HDMI2", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_HDMI2
+                    "HDMI3", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_HDMI3
+                    "IP"     //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_IP 
+                ]
+            }
+        }
+    },
+    "ColorTemperature": {
+        "rangeInfo": {
+            "options": [
+                "Standard",
+                "Warm",
+                "Cold",
+                "UserDefined"
+            ]
+        },
+        "platformSupport": true,
+        //"Context" -> tvContextCaps_t.context
+        "context": {
+            //"Sports" -> tvConfigContext_t->tvPQModeIndex_t.PQ_MODE_SPORTS      
+            "Sports": {
+                //"SDR" -> tvConfigContext_t->tvVideoFormatType_t.VIDEO_FORMAT_SDR          
+                "SDR": [
+                    "HDMI1", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_HDMI1
+                    "HDMI2", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_HDMI2
+                    "HDMI3", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_HDMI3
+                    "Composite", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_COMPOSITE
+                    "Tuner", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_TUNER
+                    "IP"     //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_IP
+                ],
+                //"HLG" -> tvConfigContext_t->tvVideoFormatType_t.VIDEO_FORMAT_HLG             
+                "HLG": [
+                    "HDMI1", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_HDMI1
+                    "HDMI2", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_HDMI2
+                    "HDMI3", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_HDMI3
+                    "Tuner", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_TUNER
+                    "IP"     //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_IP
+                ],
+                //"HDR10" -> tvConfigContext_t->tvVideoFormatType_t.VIDEO_FORMAT_HDR10              
+                "HDR10": [
+                    "HDMI1", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_HDMI1
+                    "HDMI2", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_HDMI2
+                    "HDMI3", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_HDMI3
+                    "Tuner", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_TUNER
+                    "IP"     //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_IP
+                ]
+            },
+            //"Theater" -> tvConfigContext_t->tvPQModeIndex_t.PQ_MODE_THEATER          
+            "Theater": {
+                //"SDR" -> tvConfigContext_t->tvVideoFormatType_t.VIDEO_FORMAT_SDR          
+                "SDR": [
+                    "HDMI1", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_HDMI1
+                    "HDMI2", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_HDMI2 
+                    "HDMI3", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_HDMI3
+                    "Composite", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_COMPOSITE
+                    "Tuner", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_TUNER
+                    "IP"     //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_IP 
+                ],
+                //"HLG" -> tvConfigContext_t->tvVideoFormatType_t.VIDEO_FORMAT_HLG              
+                "HLG": [
+                    "HDMI1", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_HDMI1
+                    "HDMI2", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_HDMI2
+                    "HDMI3", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_HDMI3
+                    "Tuner", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_TUNER
+                    "IP"     //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_IP
+                ],
+                //"HDR10" -> tvConfigContext_t->tvVideoFormatType_t.VIDEO_FORMAT_HDR10              
+                "HDR10": [
+                    "HDMI1", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_HDMI1
+                    "HDMI2", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_HDMI2
+                    "HDMI3", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_HDMI3
+                    "Tuner", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_TUNER
+                    "IP"     //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_IP
+                ]
+            },
+            //"Game" -> tvConfigContext_t->tvPQModeIndex_t.PQ_MODE_GAME          
+            "Game": {
+                //"SDR" -> tvConfigContext_t->tvVideoFormatType_t.VIDEO_FORMAT_SDR          
+                "SDR": [
+                    "HDMI1", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_HDMI1
+                    "HDMI2", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_HDMI2
+                    "HDMI3", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_HDMI3
+                    "Composite", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_COMPOSITE
+                    "Tuner", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_TUNER
+                    "IP"     //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_IP
+                ],
+                //"HLG" -> tvConfigContext_t->tvVideoFormatType_t.VIDEO_FORMAT_HLG              
+                "HLG": [
+                    "HDMI1", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_HDMI1
+                    "HDMI2", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_HDMI2
+                    "HDMI3", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_HDMI3
+                    "Tuner", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_TUNER
+                    "IP"     //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_IP
+                ],
+                //"HDR10" -> tvConfigContext_t->tvVideoFormatType_t.VIDEO_FORMAT_HDR10               
+                "HDR10": [
+                    "HDMI1", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_HDMI1
+                    "HDMI2", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_HDMI2
+                    "HDMI3", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_HDMI3
+                    "Tuner", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_TUNER
+                    "IP"     //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_IP 
+                ],
+                //"DV" -> tvConfigContext_t->tvVideoFormatType_t.VIDEO_FORMAT_DV              
+                "DV": [
+                    "HDMI1", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_HDMI1
+                    "HDMI2", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_HDMI2
+                    "HDMI3", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_HDMI3
+                    "IP"     //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_IP
+                ]
+            },
+            //"IQ" -> tvConfigContext_t->tvPQModeIndex_t.PQ_MODE_IQ          
+            "IQ": {
+                //"DV" -> tvConfigContext_t->tvVideoFormatType_t.VIDEO_FORMAT_DV          
+                "DV": [
+                    "HDMI1", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_HDMI1
+                    "HDMI2", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_HDMI2
+                    "HDMI3", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_HDMI3
+                    "IP"     //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_IP
+                ]
+            },
+            //"AI PQ" -> tvConfigContext_t->tvPQModeIndex_t.PQ_MODE_AIPQ          
+            "AI PQ": {
+                //"SDR" -> tvConfigContext_t->tvVideoFormatType_t.VIDEO_FORMAT_SDR          
+                "SDR": [
+                    "HDMI1", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_HDMI1
+                    "HDMI2", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_HDMI2
+                    "HDMI3", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_HDMI3
+                    "Composite", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_COMPOSITE 
+                    "Tuner", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_TUNER 
+                    "IP"     //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_IP 
+                ], 
+                //"HLG" -> tvConfigContext_t->tvVideoFormatType_t.VIDEO_FORMAT_HLG              
+                "HLG": [
+                    "HDMI1", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_HDMI1
+                    "HDMI2", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_HDMI2 
+                    "HDMI3", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_HDMI3
+                    "Tuner", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_TUNER 
+                    "IP"     //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_IP
+                ],
+                //"HDR10" -> tvConfigContext_t->tvVideoFormatType_t.VIDEO_FORMAT_HDR10              
+                "HDR10": [
+                    "HDMI1", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_HDMI1
+                    "HDMI2", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_HDMI2
+                    "HDMI3", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_HDMI3
+                    "Tuner", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_TUNER
+                    "IP"     //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_IP
+                ],
+                //"DV" -> tvConfigContext_t->tvVideoFormatType_t.VIDEO_FORMAT_DV              
+                "DV": [
+                    "HDMI1", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_HDMI1
+                    "HDMI2", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_HDMI2
+                    "HDMI3", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_HDMI3
+                    "IP"     //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_IP
+                ]
+            },
+            //"Dark" -> tvConfigContext_t->tvPQModeIndex_t.PQ_MODE_DARK          
+            "Dark": {
+                //"DV" -> tvConfigContext_t->tvVideoFormatType_t.VIDEO_FORMAT_DV          
+                "DV": [
+                    "HDMI1", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_HDMI1
+                    "HDMI2", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_HDMI2
+                    "HDMI3", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_HDMI3
+                    "IP"     //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_IP
+                ]
+            }
+        }
+    },
+    "DimmingMode": {
+        "rangeInfo": {
+            "options": [
+                "Local",
+                "Fixed",
+                "Global"
+            ]
+        },
+        "platformSupport": true,
+        //"Context" -> tvContextCaps_t.context
+        "context": {
+            //"Sports" -> tvConfigContext_t->tvPQModeIndex_t.PQ_MODE_SPORTS      
+            "Sports": {
+                //"SDR" -> tvConfigContext_t->tvVideoFormatType_t.VIDEO_FORMAT_SDR          
+                "SDR": [
+                    "HDMI1", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_HDMI1
+                    "HDMI2", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_HDMI2
+                    "HDMI3", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_HDMI3
+                    "Composite", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_COMPOSITE
+                    "Tuner", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_TUNER 
+                    "IP"     //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_IP
+                ],
+                //"HLG" -> tvConfigContext_t->tvVideoFormatType_t.VIDEO_FORMAT_HLG              
+                "HLG": [
+                    "HDMI1", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_HDMI1
+                    "HDMI2", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_HDMI2
+                    "HDMI3", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_HDMI3
+                    "IP"     //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_IP
+                ],
+                //"HDR10" -> tvConfigContext_t->tvVideoFormatType_t.VIDEO_FORMAT_HDR10              
+                "HDR10": [
+                    "HDMI1", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_HDMI1
+                    "HDMI2", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_HDMI2
+                    "HDMI3", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_HDMI3
+                    "IP"     //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_IP
+                ]
+            },
+            //"Theater" -> tvConfigContext_t->tvPQModeIndex_t.PQ_MODE_THEATER            
+            "Theater": {
+                //"SDR" -> tvConfigContext_t->tvVideoFormatType_t.VIDEO_FORMAT_SDR          
+                "SDR": [
+                    "HDMI1", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_HDMI1
+                    "HDMI2", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_HDMI2
+                    "HDMI3", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_HDMI3
+                    "Composite", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_COMPOSITE
+                    "Tuner", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_TUNER
+                    "IP"     //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_IP
+                ],
+                //"HLG" -> tvConfigContext_t->tvVideoFormatType_t.VIDEO_FORMAT_HLG              
+                "HLG": [
+                    "HDMI1", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_HDMI1
+                    "HDMI2", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_HDMI2
+                    "HDMI3", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_HDMI3
+                    "IP"     //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_IP
+                ],
+                //"HDR10" -> tvConfigContext_t->tvVideoFormatType_t.VIDEO_FORMAT_HDR10               
+                "HDR10": [
+                    "HDMI1", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_HDMI1
+                    "HDMI2", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_HDMI2
+                    "HDMI3", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_HDMI3
+                    "IP"     //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_IP
+                ]
+            },
+            //"Game" -> tvConfigContext_t->tvPQModeIndex_t.PQ_MODE_GAME          
+            "Game": {
+                //"SDR" -> tvConfigContext_t->tvVideoFormatType_t.VIDEO_FORMAT_SDR          
+                "SDR": [
+                    "HDMI1", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_HDMI1
+                    "HDMI2", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_HDMI2
+                    "HDMI3", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_HDMI3
+                    "Composite", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_COMPOSITE
+                    "Tuner",  //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_TUNER
+                    "IP"      //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_IP
+                ],
+                //"HLG" -> tvConfigContext_t->tvVideoFormatType_t.VIDEO_FORMAT_HLG              
+                "HLG": [
+                    "HDMI1", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_HDMI1
+                    "HDMI2", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_HDMI2
+                    "HDMI3", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_HDMI3
+                    "IP"     //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_IP
+                ],
+                //"HDR10" -> tvConfigContext_t->tvVideoFormatType_t.VIDEO_FORMAT_HDR10              
+                "HDR10": [
+                    "HDMI1", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_HDMI1
+                    "HDMI2", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_HDMI2
+                    "HDMI3", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_HDMI3
+                    "IP"     //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_IP 
+                ],
+                //"DV" -> tvConfigContext_t->tvVideoFormatType_t.VIDEO_FORMAT_DV              
+                "DV": [
+                    "HDMI1", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_HDMI1
+                    "HDMI2", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_HDMI2
+                    "HDMI3", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_HDMI3
+                    "IP"     //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_IP
+                ]
+            },
+            //"IQ" -> tvConfigContext_t->tvPQModeIndex_t.PQ_MODE_IQ          
+            "IQ": {
+                //"DV" -> tvConfigContext_t->tvVideoFormatType_t.VIDEO_FORMAT_DV          
+                "DV": [
+                    "HDMI1", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_HDMI1
+                    "HDMI2", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_HDMI2
+                    "HDMI3", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_HDMI3
+                    "IP"     //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_IP 
+                ]
+            },
+            //"AI PQ" -> tvConfigContext_t->tvPQModeIndex_t.PQ_MODE_AIPQ          
+            "AI PQ": {
+                //"SDR" -> tvConfigContext_t->tvVideoFormatType_t.VIDEO_FORMAT_SDR          
+                "SDR": [
+                    "HDMI1", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_HDMI1
+                    "HDMI2", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_HDMI2
+                    "HDMI3", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_HDMI3
+                    "Composite", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_COMPOSITE
+                    "Tuner", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_TUNER
+                    "IP"     //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_IP
+                ],
+                //"HLG" -> tvConfigContext_t->tvVideoFormatType_t.VIDEO_FORMAT_HLG              
+                "HLG": [
+                    "HDMI1", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_HDMI1
+                    "HDMI2", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_HDMI2 
+                    "HDMI3", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_HDMI3
+                    "IP"    //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_IP
+                ],
+                //"HDR10" -> tvConfigContext_t->tvVideoFormatType_t.VIDEO_FORMAT_HDR10               
+                "HDR10": [
+                    "HDMI1", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_HDMI1
+                    "HDMI2", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_HDMI2
+                    "HDMI3", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_HDMI3
+                    "IP"     //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_IP
+                ],
+                //"DV" -> tvConfigContext_t->tvVideoFormatType_t.VIDEO_FORMAT_DV              
+                "DV": [
+                    "HDMI1", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_HDMI1
+                    "HDMI2", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_HDMI2
+                    "HDMI3", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_HDMI3
+                    "IP"     //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_IP
+                ]
+            },
+            //"Dark" -> tvConfigContext_t->tvPQModeIndex_t.PQ_MODE_DARK           
+            "Dark": {
+                //"DV" -> tvConfigContext_t->tvVideoFormatType_t.VIDEO_FORMAT_DV          
+                "DV": [
+                    "HDMI1", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_HDMI1
+                    "HDMI2", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_HDMI2
+                    "HDMI3", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_HDMI3
+                    "IP"     //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_IP
+                ]
+            }
+        }
+    },
+    "LowLatencyState": {
+        "rangeInfo": {
+            "from": 0,
+            "to": 1
+        },
+        "platformSupport": true,
+        //"Context" -> tvContextCaps_t.context
+        "context": {
+            //"Sports" -> tvConfigContext_t->tvPQModeIndex_t.PQ_MODE_SPORTS      
+            "Sports": {
+                //"SDR" -> tvConfigContext_t->tvVideoFormatType_t.VIDEO_FORMAT_SDR          
+                "SDR": [
+                    "HDMI1", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_HDMI1
+                    "HDMI2", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_HDMI2
+                    "HDMI3", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_HDMI3
+                    "Composite", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_COMPOSITE
+                    "Tuner", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_TUNER
+                    "IP"    //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_IP 
+                ],
+                //"HLG" -> tvConfigContext_t->tvVideoFormatType_t.VIDEO_FORMAT_HLG              
+                "HLG": [
+                    "HDMI1", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_HDMI1
+                    "HDMI2", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_HDMI2
+                    "HDMI3", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_HDMI3
+                    "Tuner", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_TUNER
+                    "IP"    //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_IP
+                ],
+                //"HDR10" -> tvConfigContext_t->tvVideoFormatType_t.VIDEO_FORMAT_HDR10               
+                "HDR10": [
+                    "HDMI1", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_HDMI1
+                    "HDMI2", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_HDMI2
+                    "HDMI3", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_HDMI3
+                    "Tuner", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_TUNER
+                    "IP"     //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_IP
+                ]
+            },
+            //"Theater" -> tvConfigContext_t->tvPQModeIndex_t.PQ_MODE_THEATER          
+            "Theater": {
+                //"SDR" -> tvConfigContext_t->tvVideoFormatType_t.VIDEO_FORMAT_SDR          
+                "SDR": [
+                    "HDMI1", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_HDMI1
+                    "HDMI2", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_HDMI2
+                    "HDMI3", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_HDMI3
+                    "Composite", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_COMPOSITE
+                    "Tuner", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_TUNER
+                    "IP"     //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_IP
+                ],
+                //"HLG" -> tvConfigContext_t->tvVideoFormatType_t.VIDEO_FORMAT_HLG              
+                "HLG": [
+                    "HDMI1", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_HDMI1
+                    "HDMI2", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_HDMI2
+                    "HDMI3", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_HDMI3
+                    "Tuner", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_TUNER
+                    "IP"    //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_IP
+                ],
+                //"HDR10" -> tvConfigContext_t->tvVideoFormatType_t.VIDEO_FORMAT_HDR10               
+                "HDR10": [
+                    "HDMI1", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_HDMI1
+                    "HDMI2", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_HDMI2
+                    "HDMI3", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_HDMI3
+                    "Tuner", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_TUNER
+                    "IP"     //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_IP 
+                ]
+            },
+            //"Game" -> tvConfigContext_t->tvPQModeIndex_t.PQ_MODE_GAME          
+            "Game": {
+                //"SDR" -> tvConfigContext_t->tvVideoFormatType_t.VIDEO_FORMAT_SDR          
+                "SDR": [
+                    "HDMI1", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_HDMI1
+                    "HDMI2", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_HDMI2
+                    "HDMI3", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_HDMI3
+                    "Composite", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_COMPOSITE
+                    "Tuner", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_TUNER
+                    "IP"     //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_IP
+                ],
+                //"HLG" -> tvConfigContext_t->tvVideoFormatType_t.VIDEO_FORMAT_HLG              
+                "HLG": [
+                    "HDMI1", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_HDMI1
+                    "HDMI2", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_HDMI2
+                    "HDMI3", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_HDMI3
+                    "Tuner", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_TUNER
+                    "IP"     //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_IP
+                ],
+                //"HDR10" -> tvConfigContext_t->tvVideoFormatType_t.VIDEO_FORMAT_HDR10              
+                "HDR10": [
+                    "HDMI1", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_HDMI1
+                    "HDMI2", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_HDMI2
+                    "HDMI3", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_HDMI3
+                    "Tuner", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_TUNER
+                    "IP"     //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_IP
+                ],
+                //"DV" -> tvConfigContext_t->tvVideoFormatType_t.VIDEO_FORMAT_DV               
+                "DV": [
+                    "HDMI1", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_HDMI1
+                    "HDMI2", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_HDMI2
+                    "HDMI3", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_HDMI3
+                    "IP"     //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_IP
+                ]
+            },
+            //"IQ" -> tvConfigContext_t->tvPQModeIndex_t.PQ_MODE_IQ           
+            "IQ": {
+                //"DV" -> tvConfigContext_t->tvVideoFormatType_t.VIDEO_FORMAT_DV            
+                "DV": [
+                    "HDMI1", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_HDMI1
+                    "HDMI2", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_HDMI2
+                    "HDMI3", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_HDMI3
+                    "IP"     //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_IP
+                ]
+            },
+            //"AI PQ" -> tvConfigContext_t->tvPQModeIndex_t.PQ_MODE_AIPQ           
+            "AI PQ": {
+                //"SDR" -> tvConfigContext_t->tvVideoFormatType_t.VIDEO_FORMAT_SDR          
+                "SDR": [
+                    "HDMI1", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_HDMI1
+                    "HDMI2", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_HDMI2
+                    "HDMI3", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_HDMI3
+                    "Composite", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_COMPOSITE
+                    "Tuner", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_TUNER 
+                    "IP"     //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_IP
+                ],
+                //"HLG" -> tvConfigContext_t->tvVideoFormatType_t.VIDEO_FORMAT_HLG              
+                "HLG": [
+                    "HDMI1", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_HDMI1
+                    "HDMI2", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_HDMI2
+                    "HDMI3", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_HDMI3
+                    "IP"     //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_IP
+                ],
+                //"HDR10" -> tvConfigContext_t->tvVideoFormatType_t.VIDEO_FORMAT_HDR10              
+                "HDR10": [
+                    "HDMI1", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_HDMI1
+                    "HDMI2", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_HDMI2
+                    "HDMI3", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_HDMI3
+                    "IP"     //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_IP 
+                ],
+                //"DV" -> tvConfigContext_t->tvVideoFormatType_t.VIDEO_FORMAT_DV              
+                "DV": [
+                    "HDMI1", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_HDMI1
+                    "HDMI2", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_HDMI2
+                    "HDMI3", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_HDMI3
+                    "Tuner", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_TUNER
+                    "IP"     //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_IP
+                ]
+            },
+            //"Dark" -> tvConfigContext_t->tvPQModeIndex_t.PQ_MODE_DARK          
+            "Dark": {
+                //"DV" -> tvConfigContext_t->tvVideoFormatType_t.VIDEO_FORMAT_DV           
+                "DV": [
+                    "HDMI1", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_HDMI1
+                    "HDMI2", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_HDMI2
+                    "HDMI3", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_HDMI3
+                    "IP"     //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_IP
+                ]
+            }
+        }
+    },
+    "AspectRatio": {
+        "rangeInfo": {
+            "options": [
+                "TV AUTO",
+                "TV DIRECT",
+                "TV NORMAL",
+                "TV 16X9 STRETCH",
+                "TV 4X3 PILLARBOX",
+                "TV ZOOM"
+            ]
+        },
+        "platformSupport": true,
+        //"Context" -> tvContextCaps_t.context
+        "context": {
+            //"Standard" ->  tvConfigContext_t->tvPQModeIndex_t.PQ_MODE_STANDARD    
+            "Standard": {
+                //"SDR" -> tvConfigContext_t->tvVideoFormatType_t.VIDEO_FORMAT_SDR         
+                "SDR": [
+                    "IP", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_IP
+                    "Tuner", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_TUNER
+                    "HDMI1", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_HDMI1
+                    "HDMI2", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_HDMI2
+                    "HDMI3", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_HDMI3
+                    "HDMI4", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_HDMI4
+                    "Composite" //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_COMPOSITE
+                ],
+                //"HLG" -> tvConfigContext_t->tvVideoFormatType_t.VIDEO_FORMAT_HLG              
+                "HLG": [
+                    "IP", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_IP
+                    "Tuner", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_TUNER
+                    "HDMI1", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_HDMI1
+                    "HDMI2", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_HDMI2
+                    "HDMI3", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_HDMI3
+                    "HDMI4"  //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_HDMI4 
+                ],
+                //"HDR10" -> tvConfigContext_t->tvVideoFormatType_t.VIDEO_FORMAT_HDR10               
+                "HDR10": [
+                    "IP", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_IP 
+                    "Tuner", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_TUNER
+                    "HDMI1", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_HDMI1
+                    "HDMI2", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_HDMI2
+                    "HDMI3", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_HDMI3
+                    "HDMI4"  //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_HDMI4
+                ]
+            },
+            //"Sports" -> tvConfigContext_t->tvPQModeIndex_t.PQ_MODE_SPORTS          
+            "Sports": {
+                //"SDR" -> tvConfigContext_t->tvVideoFormatType_t.VIDEO_FORMAT_SDR          
+                "SDR": [
+                    "IP", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_IP
+                    "Tuner", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_TUNER
+                    "HDMI1", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_HDMI1
+                    "HDMI2", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_HDMI2
+                    "HDMI3", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_HDMI3
+                    "HDMI4", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_HDMI4
+                    "Composite" //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_COMPOSITE
+                ],
+                //"HLG" -> tvConfigContext_t->tvVideoFormatType_t.VIDEO_FORMAT_HLG              
+                "HLG": [
+                    "IP", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_IP
+                    "Tuner", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_TUNER
+                    "HDMI1", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_HDMI1
+                    "HDMI2", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_HDMI2
+                    "HDMI3", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_HDMI3
+                    "HDMI4"  //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_HDMI4
+                ],
+                //"HDR10" -> tvConfigContext_t->tvVideoFormatType_t.VIDEO_FORMAT_HDR10              
+                "HDR10": [
+                    "IP", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_IP
+                    "Tuner", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_TUNER
+                    "HDMI1", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_HDMI1
+                    "HDMI2", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_HDMI2
+                    "HDMI3", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_HDMI3
+                    "HDMI4"  //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_HDMI4
+                ]
+            },
+            //"Theater" -> tvConfigContext_t->tvPQModeIndex_t.PQ_MODE_THEATER          
+            "Theater": {
+                //"SDR" -> tvConfigContext_t->tvVideoFormatType_t.VIDEO_FORMAT_SDR          
+                "SDR": [
+                    "IP", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_IP
+                    "Tuner", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_TUNER
+                    "HDMI1", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_HDMI1
+                    "HDMI2", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_HDMI2
+                    "HDMI3", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_HDMI3
+                    "HDMI4", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_HDMI4
+                    "Composite" //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_COMPOSITE
+                ],
+                //"HLG" -> tvConfigContext_t->tvVideoFormatType_t.VIDEO_FORMAT_HLG              
+                "HLG": [
+                    "IP", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_IP
+                    "Tuner", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_TUNER
+                    "HDMI1", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_HDMI1
+                    "HDMI2", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_HDMI2
+                    "HDMI3", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_HDMI3
+                    "HDMI4"  //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_HDMI4
+                ],
+                //"HDR10" -> tvConfigContext_t->tvVideoFormatType_t.VIDEO_FORMAT_HDR10               
+                "HDR10": [
+                    "IP", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_IP
+                    "Tuner", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_TUNER
+                    "HDMI1", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_HDMI1
+                    "HDMI2", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_HDMI2
+                    "HDMI3", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_HDMI3
+                    "HDMI4"  //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_HDMI4
+                ]
+            },
+            //"Vivid" -> tvConfigContext_t->tvPQModeIndex_t.PQ_MODE_VIVID          
+            "Vivid": {
+                //"SDR" -> tvConfigContext_t->tvVideoFormatType_t.VIDEO_FORMAT_SDR          
+                "SDR": [
+                    "IP", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_IP
+                    "Tuner", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_TUNER
+                    "HDMI1", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_HDMI1
+                    "HDMI2", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_HDMI2
+                    "HDMI3", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_HDMI3
+                    "HDMI4", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_HDMI4
+                    "Composite" //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_COMPOSITE
+                ],
+                //"HLG" -> tvConfigContext_t->tvVideoFormatType_t.VIDEO_FORMAT_HLG               
+                "HLG": [
+                    "IP", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_IP
+                    "Tuner", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_TUNER
+                    "HDMI1", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_HDMI1
+                    "HDMI2", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_HDMI2
+                    "HDMI3", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_HDMI3
+                    "HDMI4"  //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_HDMI4
+                ],
+                //"HDR10" -> tvConfigContext_t->tvVideoFormatType_t.VIDEO_FORMAT_HDR10              
+                "HDR10": [
+                    "IP", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_IP
+                    "Tuner", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_TUNER
+                    "HDMI1", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_HDMI1
+                    "HDMI2", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_HDMI2
+                    "HDMI3", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_HDMI3
+                    "HDMI4"  //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_HDMI4
+                ]
+            },
+            //"EnergySaving" -> tvConfigContext_t->tvPQModeIndex_t.PQ_MODE_ENERGY_SAVING       
+            "EnergySaving": {
+                //"SDR" -> tvConfigContext_t->tvVideoFormatType_t.VIDEO_FORMAT_SDR          
+                "SDR": [
+                    "IP", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_IP
+                    "Tuner", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_TUNER
+                    "HDMI1", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_HDMI1
+                    "HDMI2", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_HDMI2 
+                    "HDMI3", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_HDMI3
+                    "HDMI4", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_HDMI4
+                    "Composite" //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_COMPOSITE
+                ],
+                //"HLG" -> tvConfigContext_t->tvVideoFormatType_t.VIDEO_FORMAT_HLG               
+                "HLG": [
+                    "IP", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_IP
+                    "Tuner", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_TUNER
+                    "HDMI1", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_HDMI1
+                    "HDMI2", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_HDMI2
+                    "HDMI3", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_HDMI3
+                    "HDMI4"  //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_HDMI4
+                ],
+                //"HDR10" -> tvConfigContext_t->tvVideoFormatType_t.VIDEO_FORMAT_HDR10              
+                "HDR10": [
+                    "IP", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_IP
+                    "Tuner", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_TUNER
+                    "HDMI1", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_HDMI1
+                    "HDMI2", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_HDMI2
+                    "HDMI3", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_HDMI3
+                    "HDMI4"  //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_HDMI4
+                ]
+            },
+            //"FilmMaker" ->  tvConfigContext_t->tvPQModeIndex_t.PQ_MODE_FMM          
+            "FilmMaker": {
+                //"SDR" -> tvConfigContext_t->tvVideoFormatType_t.VIDEO_FORMAT_SDR           
+                "SDR": [
+                    "IP", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_IP
+                    "Tuner", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_TUNER
+                    "HDMI1", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_HDMI1
+                    "HDMI2", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_HDMI2
+                    "HDMI3", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_HDMI3
+                    "HDMI4", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_HDMI4
+                    "Composite" //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_COMPOSITE
+                ],
+                //"HLG" -> tvConfigContext_t->tvVideoFormatType_t.VIDEO_FORMAT_HLG              
+                "HLG": [
+                    "IP", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_IP
+                    "Tuner", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_TUNER
+                    "HDMI1", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_HDMI1
+                    "HDMI2", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_HDMI2
+                    "HDMI3", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_HDMI3
+                    "HDMI4"  //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_HDMI4
+                ],
+                //"HDR10" -> tvConfigContext_t->tvVideoFormatType_t.VIDEO_FORMAT_HDR10              
+                "HDR10": [
+                    "IP", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_IP
+                    "Tuner", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_TUNER
+                    "HDMI1", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_HDMI1
+                    "HDMI2", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_HDMI2
+                    "HDMI3", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_HDMI3
+                    "HDMI4"  //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_HDMI4
+                ]
+            },
+            //"AI PQ" -> tvConfigContext_t->tvPQModeIndex_t.PQ_MODE_AIPQ          
+            "AI PQ": {
+                //"SDR" -> tvConfigContext_t->tvVideoFormatType_t.VIDEO_FORMAT_SDR          
+                "SDR": [
+                    "IP", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_IP
+                    "Tuner", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_TUNER
+                    "HDMI1", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_HDMI1
+                    "HDMI2", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_HDMI2
+                    "HDMI3", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_HDMI3
+                    "HDMI4", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_HDMI4
+                    "Composite" //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_COMPOSITE
+                ],
+                //"HLG" -> tvConfigContext_t->tvVideoFormatType_t.VIDEO_FORMAT_HLG              
+                "HLG": [
+                    "IP", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_IP 
+                    "Tuner", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_TUNER
+                    "HDMI1", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_HDMI1
+                    "HDMI2", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_HDMI2
+                    "HDMI3", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_HDMI3
+                    "HDMI4"  //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_HDMI4
+                ],
+                //"HDR10" -> tvConfigContext_t->tvVideoFormatType_t.VIDEO_FORMAT_HDR10              
+                "HDR10": [
+                    "IP", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_IP
+                    "Tuner", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_TUNER
+                    "HDMI1", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_HDMI1
+                    "HDMI2", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_HDMI2
+                    "HDMI3", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_HDMI3
+                    "HDMI4"  //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_HDMI4
+                ]
+            },
+            //"IQ" -> tvConfigContext_t->tvPQModeIndex_t.PQ_MODE_IQ           
+            "IQ": {
+                //"DV" -> tvConfigContext_t->tvVideoFormatType_t.VIDEO_FORMAT_DV          
+                "DV": [
+                    "IP", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_IP 
+                    "HDMI1", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_HDMI1
+                    "HDMI2", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_HDMI2
+                    "HDMI3", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_HDMI3
+                    "HDMI4"  //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_HDMI4
+                ]
+            },
+            //"Bright" -> tvConfigContext_t->tvPQModeIndex_t.PQ_MODE_BRIGHT          
+            "Bright": {
+                //"DV" -> tvConfigContext_t->tvVideoFormatType_t.VIDEO_FORMAT_DV            
+                "DV": [
+                    "IP", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_IP 
+                    "HDMI1", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_HDMI1
+                    "HDMI2", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_HDMI2
+                    "HDMI3", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_HDMI3
+                    "HDMI4"  //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_HDMI4
+                ]
+            },
+            //"Dark" -> tvConfigContext_t->tvPQModeIndex_t.PQ_MODE_DARK          
+            "Dark": {
+                //"DV" -> tvConfigContext_t->tvVideoFormatType_t.VIDEO_FORMAT_DV            
+                "DV": [
+                    "IP", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_IP
+                    "HDMI1", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_HDMI1
+                    "HDMI2", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_HDMI2
+                    "HDMI3", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_HDMI3
+                    "HDMI4"  //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_HDMI4
+                ]
+            },
+            //"Game" -> tvConfigContext_t->tvPQModeIndex_t.PQ_MODE_GAME          
+            "Game": {
+                //"SDR" -> tvConfigContext_t->tvVideoFormatType_t.VIDEO_FORMAT_SDR          
+                "SDR": [
+                    "IP", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_IP
+                    "Tuner", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_TUNER
+                    "HDMI1", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_HDMI1
+                    "HDMI2", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_HDMI2
+                    "HDMI3", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_HDMI3
+                    "HDMI4", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_HDMI4
+                    "Composite" //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_COMPOSITE
+                ],
+                //"HLG" -> tvConfigContext_t->tvVideoFormatType_t.VIDEO_FORMAT_HLG               
+                "HLG": [
+                    "IP", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_IP
+                    "Tuner", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_TUNER
+                    "HDMI1", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_HDMI1
+                    "HDMI2", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_HDMI2
+                    "HDMI3", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_HDMI3
+                    "HDMI4"  //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_HDMI4
+                ],
+                //"HDR10" -> tvConfigContext_t->tvVideoFormatType_t.VIDEO_FORMAT_HDR10              
+                "HDR10": [
+                    "IP", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_IP
+                    "Tuner", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_TUNER
+                    "HDMI1", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_HDMI1
+                    "HDMI2", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_HDMI2
+                    "HDMI3", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_HDMI3
+                    "HDMI4"  //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_HDMI4
+                ],
+                //"DV" -> tvConfigContext_t->tvVideoFormatType_t.VIDEO_FORMAT_DV               
+                "DV": [
+                    "IP", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_IP
+                    "HDMI1", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_HDMI1
+                    "HDMI2", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_HDMI2
+                    "HDMI3", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_HDMI3
+                    "HDMI4"  //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_HDMI4
+                ]
+            }
+        }
+    },
+    "PrecisionDetail": {
+        "rangeInfo": {
+            "from": 0,
+            "to": 1
+        },
+        "platformSupport": true,
+        //"Context" -> tvContextCaps_t.context 
+        "context": {
+            //"Bright" -> tvConfigContext_t->tvPQModeIndex_t.PQ_MODE_BRIGHT       
+            "Bright": {
+                //"DV" -> tvConfigContext_t->tvVideoFormatType_t.VIDEO_FORMAT_DV          
+                "DV": [
+                    "IP", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_IP
+                    "HDMI1", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_HDMI1
+                    "HDMI2", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_HDMI2
+                    "HDMI3"  //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_HDMI3
+                ]
+            },
+            //"IQ" -> tvConfigContext_t->tvPQModeIndex_t.PQ_MODE_IQ           
+            "IQ": {
+                //"DV" -> tvConfigContext_t->tvVideoFormatType_t.VIDEO_FORMAT_DV            
+                "DV": [
+                    "IP", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_IP
+                    "HDMI1", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_HDMI1
+                    "HDMI2", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_HDMI2 
+                    "HDMI3"  //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_HDMI3 
+                ]
+            }
+        }
+    },
+    "SDRGamma": {
+        "platformSupport": true,
+        "rangeInfo": {
+            "options": [
+                "2.0",
+                "2.2",
+                "2.4",
+                "BT.1886"
+            ]
+        },
+        //"Context" -> tvContextCaps_t.context
+        "context": {
+            //"Standard" ->  tvConfigContext_t->tvPQModeIndex_t.PQ_MODE_STANDARD       
+            "Standard": {
+                //"SDR" -> tvConfigContext_t->tvVideoFormatType_t.VIDEO_FORMAT_SDR          
+                "SDR": [
+                    "IP", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_IP
+                    "Tuner", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_TUNER
+                    "HDMI1", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_HDMI1
+                    "HDMI2", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_HDMI2
+                    "HDMI3", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_HDMI3
+                    "HDMI4", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_HDMI4
+                    "Composite" //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_COMPOSITE
+                ]
+            },
+            //"Vivid" -> tvConfigContext_t->tvPQModeIndex_t.PQ_MODE_VIVID         
+            "Vivid": {
+                //"SDR" -> tvConfigContext_t->tvVideoFormatType_t.VIDEO_FORMAT_SDR         
+                "SDR": [
+                    "IP", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_IP
+                    "Tuner", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_TUNER
+                    "HDMI1", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_HDMI1
+                    "HDMI2", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_HDMI2
+                    "HDMI3", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_HDMI3
+                    "HDMI4", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_HDMI4
+                    "Composite" //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_COMPOSITE
+                ]
+            },
+            //"Sports" -> tvConfigContext_t->tvPQModeIndex_t.PQ_MODE_SPORTS         
+            "Sports": {
+                //"SDR" -> tvConfigContext_t->tvVideoFormatType_t.VIDEO_FORMAT_SDR         
+                "SDR": [
+                    "IP", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_IP
+                    "Tuner", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_TUNER
+                    "HDMI1", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_HDMI1
+                    "HDMI2", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_HDMI2
+                    "HDMI3", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_HDMI3
+                    "HDMI4", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_HDMI4
+                    "Composite" //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_COMPOSITE
+                ]
+            },
+            "Theater": {
+                //"SDR" -> tvConfigContext_t->tvVideoFormatType_t.VIDEO_FORMAT_SDR          
+                "SDR": [
+                    "HDMI1", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_HDMI1
+                    "HDMI2", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_HDMI2
+                    "HDMI3", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_HDMI3 
+                    "Composite", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_COMPOSITE
+                    "Tuner", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_TUNER
+                    "IP"     //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_IP
+                ]
+            }
+        }
+    },
+    "LocalContrastEnhancement": {
+        "platformSupport": true,
+        "rangeInfo": {
+            "from": 0,
+            "to": 3
+        },
+        //"Context" -> tvContextCaps_t.context
+        "context": {
+            //"Standard" ->  tvConfigContext_t->tvPQModeIndex_t.PQ_MODE_STANDARD     
+            "Standard": {
+                //"SDR" -> tvConfigContext_t->tvVideoFormatType_t.VIDEO_FORMAT_SDR         
+                "SDR": [
+                    "IP", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_IP
+                    "Tuner", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_TUNER
+                    "HDMI1", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_HDMI1
+                    "HDMI2", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_HDMI2
+                    "HDMI3", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_HDMI3
+                    "Composite" //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_COMPOSITE
+                ],
+                //"DV" -> tvConfigContext_t->tvVideoFormatType_t.VIDEO_FORMAT_DV             
+                "DV": [
+                    "IP", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_IP
+                    "Tuner", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_TUNER
+                    "HDMI1", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_HDMI1
+                    "HDMI2", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_HDMI2
+                    "HDMI3"  //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_HDMI3
+                ]
+            },
+            //"IQ" -> tvConfigContext_t->tvPQModeIndex_t.PQ_MODE_IQ         
+            "IQ": {
+                //"DV" -> tvConfigContext_t->tvVideoFormatType_t.VIDEO_FORMAT_DV          
+                "DV": [
+                    "IP", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_IP
+                    "HDMI1", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_HDMI1
+                    "HDMI2", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_HDMI2
+                    "HDMI3"  //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_HDMI3
+                ]
+            }
+        }
+    },
+    "MPEGNoiseReduction": {
+        "platformSupport": true,
+        "rangeInfo": {
+            "from": 0,
+            "to": 3
+        },
+        //"Context" -> tvContextCaps_t.context
+        "context": {
+            //"Standard" ->  tvConfigContext_t->tvPQModeIndex_t.PQ_MODE_STANDARD     
+            "Standard": {
+                //"SDR" -> tvConfigContext_t->tvVideoFormatType_t.VIDEO_FORMAT_SDR          
+                "SDR": [
+                    "IP", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_IP
+                    "Tuner", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_TUNER
+                    "HDMI1", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_HDMI1
+                    "HDMI2", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_HDMI2
+                    "HDMI3", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_HDMI3
+                    "Composite" //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_COMPOSITE
+                ],
+                //"DV" -> tvConfigContext_t->tvVideoFormatType_t.VIDEO_FORMAT_DV             
+                "DV": [
+                    "IP", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_IP
+                    "HDMI1", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_HDMI1
+                    "HDMI2", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_HDMI2
+                    "HDMI3"  //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_HDMI3
+                ]
+            },
+            //"IQ" -> tvConfigContext_t->tvPQModeIndex_t.PQ_MODE_IQ        
+            "IQ": {
+                //"DV" -> tvConfigContext_t->tvVideoFormatType_t.VIDEO_FORMAT_DV         
+                "DV": [
+                    "IP", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_IP
+                    "HDMI1", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_HDMI1
+                    "HDMI2", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_HDMI2
+                    "HDMI3"  //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_HDMI3
+                ]
+            }
+        }
+    },
+    "DigitalNoiseReduction": {
+        "platformSupport": true,
+        "rangeInfo": {
+            "from": 0,
+            "to": 3
+        },
+        //"Context" -> tvContextCaps_t.context
+        "context": {
+            //"Standard" ->  tvConfigContext_t->tvPQModeIndex_t.PQ_MODE_STANDARD     
+            "Standard": {
+                //"SDR" -> tvConfigContext_t->tvVideoFormatType_t.VIDEO_FORMAT_SDR          
+                "SDR": [
+                    "IP", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_IP
+                    "Tuner", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_TUNER
+                    "HDMI1", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_HDMI1
+                    "HDMI2", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_HDMI2
+                    "HDMI3", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_HDMI3
+                    "Composite" //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_COMPOSITE
+                ],
+                //"DV" -> tvConfigContext_t->tvVideoFormatType_t.VIDEO_FORMAT_DV              
+                "DV": [
+                    "IP", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_IP
+                    "HDMI1", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_HDMI1
+                    "HDMI2", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_HDMI2
+                    "HDMI3"  //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_HDMI3
+                ]
+            },
+            //"IQ" -> tvConfigContext_t->tvPQModeIndex_t.PQ_MODE_IQ           
+            "IQ": {
+                //"DV" -> tvConfigContext_t->tvVideoFormatType_t.VIDEO_FORMAT_DV           
+                "DV": [
+                    "IP", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_IP
+                    "HDMI1", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_HDMI1
+                    "HDMI2", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_HDMI2
+                    "HDMI3"  //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_HDMI3
+                ]
+            }
+        }
+    },
+    "AISuperResolution": {
+        "platformSupport": true,
+        "rangeInfo": {
+            "from": 0,
+            "to": 3
+        },
+        //"Context" -> tvContextCaps_t.context
+        "context": {
+            //"Standard" ->  tvConfigContext_t->tvPQModeIndex_t.PQ_MODE_STANDARD      
+            "Standard": {
+                //"SDR" -> tvConfigContext_t->tvVideoFormatType_t.VIDEO_FORMAT_SDR          
+                "SDR": [
+                    "IP", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_IP
+                    "Tuner", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_TUNER
+                    "HDMI1", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_HDMI1
+                    "HDMI2", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_HDMI2
+                    "HDMI3", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_HDMI3
+                    "Composite" //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_COMPOSITE
+                ],
+                //"DV" -> tvConfigContext_t->tvVideoFormatType_t.VIDEO_FORMAT_DV              
+                "DV": [
+                    "IP", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_IP
+                    "HDMI1", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_HDMI1
+                    "HDMI2", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_HDMI2
+                    "HDMI3"  //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_HDMI3
+                ]
+            },
+            //"IQ" -> tvConfigContext_t->tvPQModeIndex_t.PQ_MODE_IQ          
+            "IQ": {
+                //"DV" -> tvConfigContext_t->tvVideoFormatType_t.VIDEO_FORMAT_DV           
+                "DV": [
+                    "IP", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_IP
+                    "HDMI1", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_HDMI1
+                    "HDMI2", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_HDMI2
+                    "HDMI3"  //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_HDMI3
+                ]
+            }
+        }
+    },
+    "MEMC": {
+        "platformSupport": true,
+        "rangeInfo": {
+            "from": 0,
+            "to": 3
+        },
+        //"Context" -> tvContextCaps_t.context
+        "context": {
+            //"Standard" ->  tvConfigContext_t->tvPQModeIndex_t.PQ_MODE_STANDARD       
+            "Standard": {
+                //"SDR" -> tvConfigContext_t->tvVideoFormatType_t.VIDEO_FORMAT_SDR          
+                "SDR": [
+                    "IP", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_IP
+                    "Tuner", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_TUNER
+                    "HDMI1", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_HDMI1
+                    "HDMI2", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_HDMI2
+                    "HDMI3", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_HDMI3
+                    "Composite" //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_COMPOSITE
+                ],
+                //"DV" -> tvConfigContext_t->tvVideoFormatType_t.VIDEO_FORMAT_DV              
+                "DV": [
+                    "IP", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_IP
+                    "HDMI1", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_HDMI1
+                    "HDMI2", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_HDMI2
+                    "HDMI3"  //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_HDMI3
+                ]
+            },
+            //"IQ" -> tvConfigContext_t->tvPQModeIndex_t.PQ_MODE_IQ          
+            "IQ": {
+                //"DV" -> tvConfigContext_t->tvVideoFormatType_t.VIDEO_FORMAT_DV           
+                "DV": [
+                    "IP", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_IP
+                    "HDMI1", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_HDMI1
+                    "HDMI2", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_HDMI2
+                    "HDMI3"  //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_HDMI3
+                ]
+            }
+        }
+    },
+    "MultiPointWB": {
+        "platformSupport": true,
+        "points": 20,
+        "rangeInfo": {
+            "from": -30,
+            "to": 30
+        },
+        "ColorTemperature": [
+            "Standard",
+            "Warm",
+            "Cold",
+            "UserDefined"
+        ],
+        //"Context" -> tvContextCaps_t.context
+        "context": {
+            //"Standard" ->  tvConfigContext_t->tvPQModeIndex_t.PQ_MODE_STANDARD     
+            "Standard": {
+                //"SDR" -> tvConfigContext_t->tvVideoFormatType_t.VIDEO_FORMAT_SDR         
+                "SDR": [
+                    "IP", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_IP
+                    "Tuner", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_TUNER
+                    "HDMI1", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_HDMI1
+                    "HDMI2", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_HDMI2
+                    "HDMI3", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_HDMI3
+                    "Composite" //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_COMPOSITE
+                ],
+                //"DV" -> tvConfigContext_t->tvVideoFormatType_t.VIDEO_FORMAT_DV             
+                "DV": [
+                    "IP", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_IP
+                    "HDMI1", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_HDMI1
+                    "HDMI2", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_HDMI2
+                    "HDMI3"  //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_HDMI3
+                ]
+            },
+            //"EnergySaving" -> tvConfigContext_t->tvPQModeIndex_t.PQ_MODE_ENERGY_SAVING         
+            "EnergySaving": {
+                //"SDR" -> tvConfigContext_t->tvVideoFormatType_t.VIDEO_FORMAT_SDR         
+                "SDR": [
+                    "IP", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_IP
+                    "Tuner", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_TUNER
+                    "HDMI1", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_HDMI1
+                    "HDMI2", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_HDMI2
+                    "HDMI3", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_HDMI3
+                    "Composite" //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_COMPOSITE
+                ],
+                //"DV" -> tvConfigContext_t->tvVideoFormatType_t.VIDEO_FORMAT_DV             
+                "DV": [
+                    "IP", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_IP
+                    "HDMI1", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_HDMI1
+                    "HDMI2", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_HDMI2
+                    "HDMI3"  //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_HDMI3
+                ]
+            }
+        }
+    },
+    "DolbyVisionCalibration": {
+        "platformSupport": true,
+        "rangeTmax": {
+            "from": 40,
+            "to": 10000
+        },
+        "rangeTmin": {
+            "from": 0.00001,
+            "to": 2
+        },
+        "rangeTgamma": {
+            "from": 1,
+            "to": 4
+        },
+        "rangeRx": {
+            "from": 0,
+            "to": 1
+        },
+        "rangeRy": {
+            "from": 0,
+            "to": 1
+        },
+        "rangeGx": {
+            "from": 0,
+            "to": 1
+        },
+        "rangeGy": {
+            "from": 0,
+            "to": 1
+        },
+        "rangeBx": {
+            "from": 0,
+            "to": 1
+        },
+        "rangeBy": {
+            "from": 0,
+            "to": 1
+        },
+        "rangeWx": {
+            "from": 0,
+            "to": 1
+        },
+        "rangeWy": {
+            "from": 0,
+            "to": 1
+        },
+        //"Context" -> tvContextCaps_t.context
+        "context": {
+            //"IQ" -> tvConfigContext_t->tvPQModeIndex_t.PQ_MODE_IQ      
+            "IQ": {
+                //"DV" -> tvConfigContext_t->tvVideoFormatType_t.VIDEO_FORMAT_DV          
+                "DV": [
+                    "HDMI1", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_HDMI1
+                    "HDMI2", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_HDMI2
+                    "HDMI3", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_HDMI3
+                    "IP"     //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_IP 
+                ]
+            },
+            //"Bright" -> tvConfigContext_t->tvPQModeIndex_t.PQ_MODE_BRIGHT           
+            "Bright": {
+                //"DV" -> tvConfigContext_t->tvVideoFormatType_t.VIDEO_FORMAT_DV          
+                "DV": [
+                    "IP",    //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_IP 
+                    "HDMI1", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_HDMI1
+                    "HDMI2", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_HDMI2
+                    "HDMI3"  //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_HDMI3
+                ]
+            },
+            //"Dark" -> tvConfigContext_t->tvPQModeIndex_t.PQ_MODE_DARK         
+            "Dark": {
+                //"DV" -> tvConfigContext_t->tvVideoFormatType_t.VIDEO_FORMAT_DV          
+                "DV": [
+                    "HDMI1", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_HDMI1
+                    "HDMI2", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_HDMI2
+                    "HDMI3", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_HDMI3 
+                    "IP"     //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_IP 
+                ]
+            },
+            //"Game" -> tvConfigContext_t->tvPQModeIndex_t.PQ_MODE_GAME          
+            "Game": {
+                //"DV" -> tvConfigContext_t->tvVideoFormatType_t.VIDEO_FORMAT_DV          
+                "DV": [
+                    "HDMI1", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_HDMI1
+                    "HDMI2", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_HDMI2
+                    "HDMI3", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_HDMI3
+                    "IP"     //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_IP 
+                ]
+            }
+        }
+    },
+    "PictureMode": {
+        "platformSupport": true,
+        "rangeInfo": {
+            "options": [
+                "Standard",
+                "Sports",
+                "Theater",
+                "Game",
+                "Dark",
+                "Bright",
+                "IQ",
+                "EnergySaving",
+                "Vivid",
+                "AI PQ"
+            ]
+        },
+        //"Context" -> tvContextCaps_t.context
+        "context": {
+            //"Standard" ->  tvConfigContext_t->tvPQModeIndex_t.PQ_MODE_STANDARD      
+            "Standard": {
+                //"SDR" -> tvConfigContext_t->tvVideoFormatType_t.VIDEO_FORMAT_SDR          
+                "SDR": [
+                    "IP", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_IP 
+                    "Tuner", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_TUNER
+                    "HDMI1", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_HDMI1
+                    "HDMI2", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_HDMI2
+                    "HDMI3", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_HDMI3
+                    "HDMI4", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_HDMI4
+                    "Composite" //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_COMPOSITE
+                ],
+                //"HLG" -> tvConfigContext_t->tvVideoFormatType_t.VIDEO_FORMAT_HLG              
+                "HLG": [
+                    "IP", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_IP 
+                    "Tuner", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_TUNER
+                    "HDMI1", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_HDMI1
+                    "HDMI2", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_HDMI2
+                    "HDMI3", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_HDMI3
+                    "HDMI4"  //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_HDMI4
+                ],
+                //"HDR10" -> tvConfigContext_t->tvVideoFormatType_t.VIDEO_FORMAT_HDR10              
+                "HDR10": [
+                    "IP",    //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_IP 
+                    "Tuner", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_TUNER
+                    "HDMI1", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_HDMI1
+                    "HDMI2", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_HDMI2
+                    "HDMI3", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_HDMI3
+                    "HDMI4"  //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_HDMI4
+                ]
+            },
+            //"Sports" -> tvConfigContext_t->tvPQModeIndex_t.PQ_MODE_SPORTS          
+            "Sports": {
+                //"SDR" -> tvConfigContext_t->tvVideoFormatType_t.VIDEO_FORMAT_SDR          
+                "SDR": [
+                    "IP", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_IP
+                    "Tuner", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_TUNER
+                    "HDMI1", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_HDMI1
+                    "HDMI2", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_HDMI2
+                    "HDMI3", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_HDMI3
+                    "HDMI4", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_HDMI4
+                    "Composite" //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_COMPOSITE
+                ],
+                //"HLG" -> tvConfigContext_t->tvVideoFormatType_t.VIDEO_FORMAT_HLG              
+                "HLG": [
+                    "IP", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_IP
+                    "Tuner", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_TUNER
+                    "HDMI1", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_HDMI1
+                    "HDMI2", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_HDMI2
+                    "HDMI3", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_HDMI3
+                    "HDMI4"  //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_HDMI4
+                ],
+                //"HDR10" -> tvConfigContext_t->tvVideoFormatType_t.VIDEO_FORMAT_HDR10              
+                "HDR10": [
+                    "IP", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_IP
+                    "Tuner", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_TUNER
+                    "HDMI1", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_HDMI1
+                    "HDMI2", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_HDMI2
+                    "HDMI3", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_HDMI3
+                    "HDMI4"  //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_HDMI4
+                ]
+            },
+            //"Theater" -> tvConfigContext_t->tvPQModeIndex_t.PQ_MODE_THEATER          
+            "Theater": {
+                //"SDR" -> tvConfigContext_t->tvVideoFormatType_t.VIDEO_FORMAT_SDR          
+                "SDR": [
+                    "IP", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_IP
+                    "Tuner", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_TUNER
+                    "HDMI1", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_HDMI1
+                    "HDMI2", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_HDMI2
+                    "HDMI3", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_HDMI3
+                    "HDMI4", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_HDMI4
+                    "Composite" //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_COMPOSITE
+                ],
+                //"HLG" -> tvConfigContext_t->tvVideoFormatType_t.VIDEO_FORMAT_HLG              
+                "HLG": [
+                    "IP", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_IP
+                    "Tuner", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_TUNER
+                    "HDMI1", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_HDMI1
+                    "HDMI2", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_HDMI2
+                    "HDMI3", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_HDMI3
+                    "HDMI4"  //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_HDMI4
+                ],
+                //"HDR10" -> tvConfigContext_t->tvVideoFormatType_t.VIDEO_FORMAT_HDR10              
+                "HDR10": [
+                    "IP", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_IP
+                    "Tuner", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_TUNER
+                    "HDMI1", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_HDMI1
+                    "HDMI2", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_HDMI2
+                    "HDMI3", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_HDMI3
+                    "HDMI4"  //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_HDMI4
+                ]
+            },
+            //"Vivid" -> tvConfigContext_t->tvPQModeIndex_t.PQ_MODE_VIVID          
+            "Vivid": {
+                //"SDR" -> tvConfigContext_t->tvVideoFormatType_t.VIDEO_FORMAT_SDR          
+                "SDR": [
+                    "IP", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_IP
+                    "Tuner", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_TUNER
+                    "HDMI1", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_HDMI1
+                    "HDMI2", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_HDMI2
+                    "HDMI3", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_HDMI3
+                    "HDMI4", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_HDMI4
+                    "Composite" //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_COMPOSITE
+                ],
+                //"HLG" -> tvConfigContext_t->tvVideoFormatType_t.VIDEO_FORMAT_HLG               
+                "HLG": [
+                    "IP", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_IP
+                    "Tuner", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_TUNER
+                    "HDMI1", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_HDMI1
+                    "HDMI2", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_HDMI2
+                    "HDMI3", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_HDMI3
+                    "HDMI4"  //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_HDMI4
+                ],
+                //"HDR10" -> tvConfigContext_t->tvVideoFormatType_t.VIDEO_FORMAT_HDR10              
+                "HDR10": [
+                    "IP", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_IP
+                    "Tuner", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_TUNER
+                    "HDMI1", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_HDMI1
+                    "HDMI2", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_HDMI2
+                    "HDMI3", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_HDMI3
+                    "HDMI4"  //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_HDMI4
+                ]
+            },
+            //"EnergySaving" -> tvConfigContext_t->tvPQModeIndex_t.PQ_MODE_ENERGY_SAVING          
+            "EnergySaving": {
+                //"SDR" -> tvConfigContext_t->tvVideoFormatType_t.VIDEO_FORMAT_SDR          
+                "SDR": [
+                    "IP", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_IP
+                    "Tuner", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_TUNER
+                    "HDMI1", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_HDMI1
+                    "HDMI2", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_HDMI2
+                    "HDMI3", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_HDMI3
+                    "HDMI4", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_HDMI4
+                    "Composite" //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_COMPOSITE
+                ],
+                //"HLG" -> tvConfigContext_t->tvVideoFormatType_t.VIDEO_FORMAT_HLG              
+                "HLG": [
+                    "IP", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_IP
+                    "Tuner", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_TUNER
+                    "HDMI1", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_HDMI1
+                    "HDMI2", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_HDMI2
+                    "HDMI3", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_HDMI3
+                    "HDMI4"  //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_HDMI4
+                ],
+                //"HDR10" -> tvConfigContext_t->tvVideoFormatType_t.VIDEO_FORMAT_HDR10              
+                "HDR10": [
+                    "IP", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_IP
+                    "Tuner", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_TUNER
+                    "HDMI1", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_HDMI1
+                    "HDMI2", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_HDMI2
+                    "HDMI3", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_HDMI3
+                    "HDMI4"  //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_HDMI4
+                ]
+            },
+            //"AI PQ" -> tvConfigContext_t->tvPQModeIndex_t.PQ_MODE_AIPQ          
+            "AI PQ": {
+                //"SDR" -> tvConfigContext_t->tvVideoFormatType_t.VIDEO_FORMAT_SDR           
+                "SDR": [
+                    "IP", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_IP
+                    "Tuner", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_TUNER
+                    "HDMI1", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_HDMI1
+                    "HDMI2", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_HDMI2
+                    "HDMI3", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_HDMI3
+                    "HDMI4", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_HDMI4
+                    "Composite" //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_COMPOSITE
+                ],
+                //"HLG" -> tvConfigContext_t->tvVideoFormatType_t.VIDEO_FORMAT_HLG               
+                "HLG": [
+                    "IP", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_IP
+                    "Tuner", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_TUNER
+                    "HDMI1", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_HDMI1
+                    "HDMI2", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_HDMI2
+                    "HDMI3", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_HDMI3
+                    "HDMI4"  //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_HDMI4
+                ],
+                //"HDR10" -> tvConfigContext_t->tvVideoFormatType_t.VIDEO_FORMAT_HDR10               
+                "HDR10": [
+                    "IP", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_IP
+                    "Tuner", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_TUNER
+                    "HDMI1", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_HDMI1
+                    "HDMI2", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_HDMI2
+                    "HDMI3", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_HDMI3
+                    "HDMI4"  //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_HDMI4
+                ]
+            },
+            //"IQ" -> tvConfigContext_t->tvPQModeIndex_t.PQ_MODE_IQ          
+            "IQ": {
+                //"DV" -> tvConfigContext_t->tvVideoFormatType_t.VIDEO_FORMAT_DV          
+                "DV": [
+                    "IP", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_IP
+                    "HDMI1", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_HDMI1
+                    "HDMI2", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_HDMI2
+                    "HDMI3", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_HDMI3
+                    "HDMI4"  //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_HDMI4
+                ]
+            },
+            //"Bright" -> tvConfigContext_t->tvPQModeIndex_t.PQ_MODE_BRIGHT          
+            "Bright": {
+                //"DV" -> tvConfigContext_t->tvVideoFormatType_t.VIDEO_FORMAT_DV          
+                "DV": [
+                    "IP", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_IP
+                    "HDMI1", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_HDMI1
+                    "HDMI2", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_HDMI2
+                    "HDMI3", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_HDMI3
+                    "HDMI4"  //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_HDMI4
+                ]
+            },
+            //"Dark" -> tvConfigContext_t->tvPQModeIndex_t.PQ_MODE_DARK          
+            "Dark": {
+                //"DV" -> tvConfigContext_t->tvVideoFormatType_t.VIDEO_FORMAT_DV          
+                "DV": [
+                    "IP", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_IP
+                    "HDMI1", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_HDMI1
+                    "HDMI2", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_HDMI2
+                    "HDMI3", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_HDMI3
+                    "HDMI4"  //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_HDMI4
+                ]
+            },
+            //"Game" -> tvConfigContext_t->tvPQModeIndex_t.PQ_MODE_GAME          
+            "Game": {
+                //"SDR" -> tvConfigContext_t->tvVideoFormatType_t.VIDEO_FORMAT_SDR          
+                "SDR": [
+                    "IP", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_IP
+                    "Tuner", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_TUNER
+                    "HDMI1", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_HDMI1
+                    "HDMI2", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_HDMI2
+                    "HDMI3", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_HDMI3
+                    "HDMI4", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_HDMI4
+                    "Composite" //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_COMPOSITE
+                ],
+                //"HLG" -> tvConfigContext_t->tvVideoFormatType_t.VIDEO_FORMAT_HLG              
+                "HLG": [
+                    "IP", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_IP
+                    "Tuner", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_TUNER
+                    "HDMI1", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_HDMI1
+                    "HDMI2", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_HDMI2
+                    "HDMI3", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_HDMI3
+                    "HDMI4"  //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_HDMI4
+                ],
+                //"HDR10" -> tvConfigContext_t->tvVideoFormatType_t.VIDEO_FORMAT_HDR10              
+                "HDR10": [
+                    "IP", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_IP
+                    "Tuner", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_TUNER
+                    "HDMI1", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_HDMI1
+                    "HDMI2", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_HDMI2
+                    "HDMI3", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_HDMI3
+                    "HDMI4"  //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_HDMI4
+                ],
+                //"DV" -> tvConfigContext_t->tvVideoFormatType_t.VIDEO_FORMAT_DV              
+                "DV": [
+                    "IP", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_IP
+                    "HDMI1", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_HDMI1
+                    "HDMI2", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_HDMI2
+                    "HDMI3", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_HDMI3
+                    "HDMI4"  //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_HDMI4
+                ]
+            }
+        }
+    },
+    "CMS": {
+        "rangeHue": {
+            "from": 0,
+            "to": 100
+        },
+        "rangeSaturation": {
+            "from": 0,
+            "to": 100
+        },
+        "rangeLuma": {
+            "from": 0,
+            "to": 30
+        },
+        "component": [
+                "Hue",
+                "Saturation",
+                "Luma"
+            ],
+        "color": [
+                "Red",
+                "Green",
+                "Blue",
+                "Cyan",
+                "Yellow",
+                "Magenta"
+            ],
+        "platformSupport": true,
+        //"Context" -> tvContextCaps_t.context
+        "context": {
+            //"Sports" -> tvConfigContext_t->tvPQModeIndex_t.PQ_MODE_SPORTS       
+            "Sports": {
+                //"SDR" -> tvConfigContext_t->tvVideoFormatType_t.VIDEO_FORMAT_SDR          
+                "SDR": [
+                    "HDMI1", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_HDMI1
+                    "HDMI2", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_HDMI2
+                    "HDMI3", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_HDMI3
+                    "Composite", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_COMPOSITE
+                    "Tuner",  //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_TUNER
+                    "IP"     //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_IP  
+                ],
+                //"HLG" -> tvConfigContext_t->tvVideoFormatType_t.VIDEO_FORMAT_HLG               
+                "HLG": [
+                    "HDMI1", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_HDMI1
+                    "HDMI2", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_HDMI2
+                    "HDMI3", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_HDMI3
+                    "Tuner", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_TUNER
+                    "IP"     //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_IP  
+                ],
+                //"HDR10" -> tvConfigContext_t->tvVideoFormatType_t.VIDEO_FORMAT_HDR10              
+                "HDR10": [
+                    "HDMI1", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_HDMI1
+                    "HDMI2", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_HDMI2
+                    "HDMI3", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_HDMI3
+                    "Tuner", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_TUNER
+                    "IP"     //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_IP  
+                ]
+            },
+            //"Theater" -> tvConfigContext_t->tvPQModeIndex_t.PQ_MODE_THEATER           
+            "Theater": {
+                //"SDR" -> tvConfigContext_t->tvVideoFormatType_t.VIDEO_FORMAT_SDR          
+                "SDR": [
+                    "HDMI1", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_HDMI1
+                    "HDMI2", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_HDMI2
+                    "HDMI3", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_HDMI3
+                    "Composite", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_COMPOSITE
+                    "Tuner", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_TUNER  
+                    "IP"     //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_IP
+                ],
+                //"HLG" -> tvConfigContext_t->tvVideoFormatType_t.VIDEO_FORMAT_HLG              
+                "HLG": [
+                    "HDMI1", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_HDMI1
+                    "HDMI2", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_HDMI2
+                    "HDMI3", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_HDMI3
+                    "Tuner", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_TUNER
+                    "IP"     //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_IP
+                ],
+                //"HDR10" -> tvConfigContext_t->tvVideoFormatType_t.VIDEO_FORMAT_HDR10              
+                "HDR10": [
+                    "HDMI1", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_HDMI1
+                    "HDMI2", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_HDMI2
+                    "HDMI3", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_HDMI3
+                    "Tuner", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_TUNER
+                    "IP"     //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_IP
+                ]
+            },
+            //"AI PQ" -> tvConfigContext_t->tvPQModeIndex_t.PQ_MODE_AIPQ           
+            "AI PQ": {
+                //"SDR" -> tvConfigContext_t->tvVideoFormatType_t.VIDEO_FORMAT_SDR          
+                "SDR": [
+                    "HDMI1", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_HDMI1
+                    "HDMI2", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_HDMI2
+                    "HDMI3", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_HDMI3
+                    "Composite", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_COMPOSITE
+                    "Tuner", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_TUNER
+                    "IP"     //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_IP
+                ],
+                //"HLG" -> tvConfigContext_t->tvVideoFormatType_t.VIDEO_FORMAT_HLG              
+                "HLG": [
+                    "HDMI1", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_HDMI1
+                    "HDMI2", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_HDMI2
+                    "HDMI3", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_HDMI3
+                    "Tuner", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_TUNER
+                    "IP"     //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_IP
+                ],
+                //"HDR10" -> tvConfigContext_t->tvVideoFormatType_t.VIDEO_FORMAT_HDR10              
+                "HDR10": [
+                    "HDMI1", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_HDMI1
+                    "HDMI2", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_HDMI2
+                    "HDMI3", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_HDMI3
+                    "Tuner", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_TUNER
+                    "IP"     //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_IP
+                ],
+                //"DV" -> tvConfigContext_t->tvVideoFormatType_t.VIDEO_FORMAT_DV                
+                "DV": [
+                    "HDMI1", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_HDMI1
+                    "HDMI2", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_HDMI2
+                    "HDMI3", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_HDMI3
+                    "IP"     //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_IP
+                ]
+            },
+            //"Game" -> tvConfigContext_t->tvPQModeIndex_t.PQ_MODE_GAME           
+            "Game": {
+                //"SDR" -> tvConfigContext_t->tvVideoFormatType_t.VIDEO_FORMAT_SDR          
+                "SDR": [
+                    "HDMI1", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_HDMI1
+                    "HDMI2", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_HDMI2
+                    "HDMI3", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_HDMI3
+                    "Composite", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_COMPOSITE
+                    "Tuner", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_TUNER
+                    "IP"     //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_IP
+                ],
+                //"HLG" -> tvConfigContext_t->tvVideoFormatType_t.VIDEO_FORMAT_HLG             
+                "HLG": [
+                    "HDMI1", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_HDMI1
+                    "HDMI2", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_HDMI2
+                    "HDMI3", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_HDMI3
+                    "Tuner", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_TUNER
+                    "IP"     //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_IP
+                ],
+                //"HDR10" -> tvConfigContext_t->tvVideoFormatType_t.VIDEO_FORMAT_HDR10             
+                "HDR10": [
+                    "HDMI1", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_HDMI1
+                    "HDMI2", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_HDMI2
+                    "HDMI3", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_HDMI3
+                    "Tuner", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_TUNER
+                    "IP"     //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_IP
+                ],
+                //"DV" -> tvConfigContext_t->tvVideoFormatType_t.VIDEO_FORMAT_DV              
+                "DV": [
+                    "HDMI1", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_HDMI1
+                    "HDMI2", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_HDMI2
+                    "HDMI3", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_HDMI3
+                    "IP"     //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_IP
+                ]
+            },
+            //"IQ" -> tvConfigContext_t->tvPQModeIndex_t.PQ_MODE_IQ         
+            "IQ": {
+                //"DV" -> tvConfigContext_t->tvVideoFormatType_t.VIDEO_FORMAT_DV          
+                "DV": [
+                    "HDMI1", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_HDMI1
+                    "HDMI2", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_HDMI2
+                    "HDMI3", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_HDMI3
+                    "IP"     //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_IP
+                ]
+            },
+            //"Dark" -> tvConfigContext_t->tvPQModeIndex_t.PQ_MODE_DARK         
+            "Dark": {
+                //"DV" -> tvConfigContext_t->tvVideoFormatType_t.VIDEO_FORMAT_DV         
+                "DV": [
+                    "HDMI1", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_HDMI1
+                    "HDMI2", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_HDMI2
+                    "HDMI3", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_HDMI3
+                    "IP"     //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_IP
+                ]
+            }
+        }
+    },
+    "VideoSource": {
+        "rangeInfo": {
+            "options": [
+                "HDMI1",
+                "HDMI2",
+                "HDMI3",
+                "HDMI4",
+                "IP",
+                "Tuner",
+                "Composite1"
+            ]
+        }
+    },
+    "VideoFramerate": {
+        "rangeInfo": {
+            "options": [
+                "24",
+                "30",
+                "50",
+                "60"
+            ]
+        }
+    },
+    "VideoFormat": {
+        "rangeInfo": {
+            "options": [
+                "HDR10",
+                "HLG",
+                "SDR",
+                "DV"
+            ]
+        }
+    },
+    "VideoResolution": {
+        "rangeInfo": {
+            "options": [
+                "720x240",
+                "2880x240",
+                "720x288",
+                "2880x288",
+                "1920x1080",
+                "3840x2160",
+                "4096x2160"
+            ]
+        }
+    },
+    "Custom2PointWhiteBalance": {
+        "rangeGain": {
+            "from": 0,
+            "to": 2047
+        },
+        "rangeOffset": {
+            "from": -1024,
+            "to": 1023
+        },
+
+        "control": [
+                "Gain",
+                "Offset"
+            ],
+        "color": [
+                "Red",
+                "Green",
+                "Blue"
+            ],
+        "platformSupport": true,
+        //"Context" -> tvContextCaps_t.context
+        "context": {
+            //"Sports" -> tvConfigContext_t->tvPQModeIndex_t.PQ_MODE_SPORTS     
+            "Sports": {
+                //"SDR" -> tvConfigContext_t->tvVideoFormatType_t.VIDEO_FORMAT_SDR         
+                "SDR": [
+                    "HDMI1", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_HDMI1
+                    "HDMI2", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_HDMI2
+                    "HDMI3", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_HDMI3
+                    "Composite", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_COMPOSITE
+                    "Tuner", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_TUNER
+                    "IP"     //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_IP
+                ],
+                //"HLG" -> tvConfigContext_t->tvVideoFormatType_t.VIDEO_FORMAT_HLG              
+                "HLG": [
+                    "HDMI1", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_HDMI1
+                    "HDMI2", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_HDMI2
+                    "HDMI3", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_HDMI3
+                    "Tuner", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_TUNER
+                    "IP"     //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_IP
+                ],
+                //"HDR10" -> tvConfigContext_t->tvVideoFormatType_t.VIDEO_FORMAT_HDR10              
+                "HDR10": [
+                    "HDMI1", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_HDMI1
+                    "HDMI2", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_HDMI2
+                    "HDMI3", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_HDMI2
+                    "Tuner", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_TUNER
+                    "IP"     //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_IP
+                ]
+            },
+            //"Theater" -> tvConfigContext_t->tvPQModeIndex_t.PQ_MODE_THEATER          
+            "Theater": {
+                //"SDR" -> tvConfigContext_t->tvVideoFormatType_t.VIDEO_FORMAT_SDR          
+                "SDR": [
+                    "HDMI1", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_HDMI1
+                    "HDMI2", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_HDMI2
+                    "HDMI3", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_HDMI3
+                    "Composite", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_COMPOSITE
+                    "Tuner", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_TUNER
+                    "IP"     //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_IP
+                ],
+                //"HLG" -> tvConfigContext_t->tvVideoFormatType_t.VIDEO_FORMAT_HLG              
+                "HLG": [
+                    "HDMI1", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_HDMI1
+                    "HDMI2", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_HDMI2
+                    "HDMI3", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_HDMI3
+                    "Tuner", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_TUNER
+                    "IP"     //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_IP
+                ],
+                //"HDR10" -> tvConfigContext_t->tvVideoFormatType_t.VIDEO_FORMAT_HDR10             
+                "HDR10": [
+                    "HDMI1", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_HDMI1
+                    "HDMI2", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_HDMI2
+                    "HDMI3", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_HDMI3
+                    "Tuner", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_TUNER
+                    "IP"     //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_IP
+                ]
+            },
+            //"AI PQ" -> tvConfigContext_t->tvPQModeIndex_t.PQ_MODE_AIPQ          
+            "AI PQ": {
+                //"SDR" -> tvConfigContext_t->tvVideoFormatType_t.VIDEO_FORMAT_SDR          
+                "SDR": [
+                    "HDMI1", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_HDMI1
+                    "HDMI2", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_HDMI2
+                    "HDMI3", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_HDMI3
+                    "Composite", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_COMPOSITE
+                    "Tuner", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_TUNER
+                    "IP"     //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_IP
+                ],
+                //"HLG" -> tvConfigContext_t->tvVideoFormatType_t.VIDEO_FORMAT_HLG              
+                "HLG": [
+                    "HDMI1", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_HDMI1
+                    "HDMI2", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_HDMI2
+                    "HDMI3", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_HDMI3
+                    "Tuner", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_TUNER
+                    "IP"     //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_IP
+                ],
+                //"HDR10" -> tvConfigContext_t->tvVideoFormatType_t.VIDEO_FORMAT_HDR10              
+                "HDR10": [
+                    "HDMI1", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_HDMI1
+                    "HDMI2", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_HDMI2
+                    "HDMI3", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_HDMI3
+                    "Tuner", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_TUNER
+                    "IP"     //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_IP
+                ],
+                //"DV" -> tvConfigContext_t->tvVideoFormatType_t.VIDEO_FORMAT_DV              
+                "DV": [
+                    "HDMI1", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_HDMI1
+                    "HDMI2", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_HDMI2
+                    "HDMI3", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_HDMI3
+                    "IP"     //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_IP
+                ]
+            },
+            //"Game" -> tvConfigContext_t->tvPQModeIndex_t.PQ_MODE_GAME          
+            "Game": {
+                //"SDR" -> tvConfigContext_t->tvVideoFormatType_t.VIDEO_FORMAT_SDR          
+                "SDR": [
+                    "HDMI1", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_HDMI1
+                    "HDMI2", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_HDMI2
+                    "HDMI3", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_HDMI3
+                    "Composite", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_COMPOSITE
+                    "Tuner", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_TUNER
+                    "IP"     //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_IP
+                ],
+                //"HLG" -> tvConfigContext_t->tvVideoFormatType_t.VIDEO_FORMAT_HLG              
+                "HLG": [
+                    "HDMI1", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_HDMI1
+                    "HDMI2", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_HDMI2
+                    "HDMI3", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_HDMI3
+                    "Tuner", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_TUNER
+                    "IP"     //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_IP
+                ],
+                //"HDR10" -> tvConfigContext_t->tvVideoFormatType_t.VIDEO_FORMAT_HDR10               
+                "HDR10": [
+                    "HDMI1", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_HDMI1
+                    "HDMI2", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_HDMI2
+                    "HDMI3", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_HDMI3
+                    "Tuner", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_TUNER
+                    "IP"     //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_IP
+                ],
+                //"DV" -> tvConfigContext_t->tvVideoFormatType_t.VIDEO_FORMAT_DV              
+                "DV": [
+                    "HDMI1", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_HDMI1
+                    "HDMI2", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_HDMI2
+                    "HDMI3", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_HDMI3
+                    "IP"     //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_IP
+                ]
+            },
+            //"IQ" -> tvConfigContext_t->tvPQModeIndex_t.PQ_MODE_IQ          
+            "IQ": {
+                //"DV" -> tvConfigContext_t->tvVideoFormatType_t.VIDEO_FORMAT_DV           
+                "DV": [
+                    "HDMI1", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_HDMI1
+                    "HDMI2", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_HDMI2
+                    "HDMI3", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_HDMI3
+                    "IP"     //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_IP
+                ]
+            },
+            //"Dark" -> tvConfigContext_t->tvPQModeIndex_t.PQ_MODE_DARK          
+            "Dark": {
+                //"DV" -> tvConfigContext_t->tvVideoFormatType_t.VIDEO_FORMAT_DV           
+                "DV": [
+                    "HDMI1", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_HDMI1
+                    "HDMI2", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_HDMI2
+                    "HDMI3", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_HDMI3
+                    "IP"     //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_IP
+                ]
+            }
+        }
+    },
+    "BacklightMode": {
+        "rangeInfo": {
+            "options": [
+                "Manual",
+                "Ambient"
+            ]
+        },
+        "platformSupport": true,
+        //"Context" -> tvContextCaps_t.context
+        "context": {
+            //"Standard" ->  tvConfigContext_t->tvPQModeIndex_t.PQ_MODE_STANDARD      
+            "Standard": {
+                //"SDR" -> tvConfigContext_t->tvVideoFormatType_t.VIDEO_FORMAT_SDR          
+                "SDR": [
+                    "IP", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_IP 
+                    "Tuner", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_TUNER
+                    "HDMI1", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_HDMI1
+                    "HDMI2", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_HDMI2
+                    "HDMI3", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_HDMI3
+                    "HDMI4", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_HDMI4
+                    "Composite" //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_COMPOSITE
+                ],
+                //"HLG" -> tvConfigContext_t->tvVideoFormatType_t.VIDEO_FORMAT_HLG              
+                "HLG": [
+                    "IP", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_IP 
+                    "Tuner", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_TUNER
+                    "HDMI1", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_HDMI1
+                    "HDMI2", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_HDMI2
+                    "HDMI3", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_HDMI3
+                    "HDMI4"  //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_HDMI4
+                ],
+                //"HDR10" -> tvConfigContext_t->tvVideoFormatType_t.VIDEO_FORMAT_HDR10              
+                "HDR10": [
+                    "IP", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_IP 
+                    "Tuner", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_TUNER
+                    "HDMI1", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_HDMI1
+                    "HDMI2", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_HDMI2
+                    "HDMI3", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_HDMI3
+                    "HDMI4"  //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_HDMI4
+                ]
+            },
+            //"Sports" -> tvConfigContext_t->tvPQModeIndex_t.PQ_MODE_SPORTS          
+            "Sports": {
+                //"SDR" -> tvConfigContext_t->tvVideoFormatType_t.VIDEO_FORMAT_SDR          
+                "SDR": [
+                    "IP", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_IP 
+                    "Tuner", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_TUNER
+                    "HDMI1", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_HDMI1
+                    "HDMI2", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_HDMI2
+                    "HDMI3", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_HDMI3
+                    "HDMI4", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_HDMI4
+                    "Composite" //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_COMPOSITE
+                ],
+                //"HLG" -> tvConfigContext_t->tvVideoFormatType_t.VIDEO_FORMAT_HLG              
+                "HLG": [
+                    "IP", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_IP 
+                    "Tuner", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_TUNER
+                    "HDMI1", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_HDMI1
+                    "HDMI2", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_HDMI2
+                    "HDMI3", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_HDMI3
+                    "HDMI4"  //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_HDMI4
+                ],
+                //"HDR10" -> tvConfigContext_t->tvVideoFormatType_t.VIDEO_FORMAT_HDR10               
+                "HDR10": [
+                    "IP", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_IP 
+                    "Tuner", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_TUNER
+                    "HDMI1", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_HDMI1
+                    "HDMI2", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_HDMI2
+                    "HDMI3", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_HDMI3
+                    "HDMI4"  //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_HDMI4
+                ]
+            },
+            //"Theater" -> tvConfigContext_t->tvPQModeIndex_t.PQ_MODE_THEATER            
+            "Theater": {
+                //"SDR" -> tvConfigContext_t->tvVideoFormatType_t.VIDEO_FORMAT_SDR          
+                "SDR": [
+                    "IP", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_IP 
+                    "Tuner", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_TUNER
+                    "HDMI1", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_HDMI1
+                    "HDMI2", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_HDMI2
+                    "HDMI3", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_HDMI3
+                    "HDMI4", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_HDMI4
+                    "Composite" //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_COMPOSITE
+                ],
+                //"HLG" -> tvConfigContext_t->tvVideoFormatType_t.VIDEO_FORMAT_HLG              
+                "HLG": [
+                    "IP", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_IP 
+                    "Tuner", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_TUNER
+                    "HDMI1", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_HDMI1
+                    "HDMI2", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_HDMI2
+                    "HDMI3", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_HDMI3
+                    "HDMI4"  //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_HDMI4
+                ],
+                //"HDR10" -> tvConfigContext_t->tvVideoFormatType_t.VIDEO_FORMAT_HDR10                
+                "HDR10": [
+                    "IP", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_IP 
+                    "Tuner", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_TUNER
+                    "HDMI1", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_HDMI1
+                    "HDMI2", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_HDMI2
+                    "HDMI3", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_HDMI3
+                    "HDMI4"  //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_HDMI4
+                ]
+            },
+            //"Vivid" -> tvConfigContext_t->tvPQModeIndex_t.PQ_MODE_VIVID         
+            "Vivid": {
+                //"SDR" -> tvConfigContext_t->tvVideoFormatType_t.VIDEO_FORMAT_SDR          
+                "SDR": [
+                    "IP", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_IP 
+                    "Tuner", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_TUNER
+                    "HDMI1", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_HDMI1
+                    "HDMI2", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_HDMI2
+                    "HDMI3", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_HDMI3
+                    "HDMI4", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_HDMI4
+                    "Composite" //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_COMPOSITE
+                ],
+                //"HLG" -> tvConfigContext_t->tvVideoFormatType_t.VIDEO_FORMAT_HLG              
+                "HLG": [
+                    "IP", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_IP 
+                    "Tuner", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_TUNER
+                    "HDMI1", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_HDMI1
+                    "HDMI2", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_HDMI2
+                    "HDMI3", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_HDMI3
+                    "HDMI4"  //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_HDMI4
+                ],
+                //"HDR10" -> tvConfigContext_t->tvVideoFormatType_t.VIDEO_FORMAT_HDR10               
+                "HDR10": [
+                    "IP", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_IP 
+                    "Tuner", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_TUNER
+                    "HDMI1", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_HDMI1
+                    "HDMI2", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_HDMI2
+                    "HDMI3", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_HDMI3
+                    "HDMI4"  //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_HDMI4
+                ]
+            },
+            //"EnergySaving" -> tvConfigContext_t->tvPQModeIndex_t.PQ_MODE_ENERGY_SAVING          
+            "EnergySaving": {
+                //"SDR" -> tvConfigContext_t->tvVideoFormatType_t.VIDEO_FORMAT_SDR          
+                "SDR": [
+                    "IP", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_IP 
+                    "Tuner", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_TUNER
+                    "HDMI1", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_HDMI1
+                    "HDMI2", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_HDMI2
+                    "HDMI3", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_HDMI3
+                    "HDMI4", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_HDMI4
+                    "Composite" //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_COMPOSITE
+                ],
+                //"HLG" -> tvConfigContext_t->tvVideoFormatType_t.VIDEO_FORMAT_HLG              
+                "HLG": [
+                    "IP", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_IP 
+                    "Tuner", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_TUNER
+                    "HDMI1", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_HDMI1
+                    "HDMI2", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_HDMI2
+                    "HDMI3", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_HDMI3
+                    "HDMI4"  //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_HDMI4
+                ],
+                //"HDR10" -> tvConfigContext_t->tvVideoFormatType_t.VIDEO_FORMAT_HDR10              
+                "HDR10": [
+                    "IP", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_IP 
+                    "Tuner", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_TUNER
+                    "HDMI1", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_HDMI1
+                    "HDMI2", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_HDMI2
+                    "HDMI3", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_HDMI3
+                    "HDMI4"  //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_HDMI4
+                ]
+            },
+            //"FilmMaker" ->  tvConfigContext_t->tvPQModeIndex_t.PQ_MODE_FMM          
+            "FilmMaker": {
+                //"SDR" -> tvConfigContext_t->tvVideoFormatType_t.VIDEO_FORMAT_SDR          
+                "SDR": [
+                    "IP", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_IP 
+                    "Tuner", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_TUNER
+                    "HDMI1", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_HDMI1
+                    "HDMI2", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_HDMI2
+                    "HDMI3", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_HDMI3
+                    "HDMI4", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_HDMI4
+                    "Composite" //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_COMPOSITE
+                ],
+                //"HLG" -> tvConfigContext_t->tvVideoFormatType_t.VIDEO_FORMAT_HLG              
+                "HLG": [
+                    "IP", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_IP 
+                    "Tuner", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_TUNER
+                    "HDMI1", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_HDMI1
+                    "HDMI2", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_HDMI2
+                    "HDMI3", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_HDMI3
+                    "HDMI4"  //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_HDMI4
+                ],
+                //"HDR10" -> tvConfigContext_t->tvVideoFormatType_t.VIDEO_FORMAT_HDR10              
+                "HDR10": [
+                    "IP", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_IP 
+                    "Tuner", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_TUNER
+                    "HDMI1", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_HDMI1
+                    "HDMI2", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_HDMI2
+                    "HDMI3", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_HDMI3
+                    "HDMI4"  //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_HDMI4
+                ]
+            },
+            //"AI PQ" -> tvConfigContext_t->tvPQModeIndex_t.PQ_MODE_AIPQ         
+            "AI PQ": {
+                //"SDR" -> tvConfigContext_t->tvVideoFormatType_t.VIDEO_FORMAT_SDR          
+                "SDR": [
+                    "IP", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_IP 
+                    "Tuner", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_TUNER
+                    "HDMI1", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_HDMI1
+                    "HDMI2", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_HDMI2
+                    "HDMI3", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_HDMI3
+                    "HDMI4", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_HDMI4
+                    "Composite" //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_COMPOSITE
+                ],
+                //"HLG" -> tvConfigContext_t->tvVideoFormatType_t.VIDEO_FORMAT_HLG              
+                "HLG": [
+                    "IP", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_IP 
+                    "Tuner", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_TUNER
+                    "HDMI1", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_HDMI1
+                    "HDMI2", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_HDMI2
+                    "HDMI3", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_HDMI3
+                    "HDMI4"  //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_HDMI4
+                ],
+                //"HDR10" -> tvConfigContext_t->tvVideoFormatType_t.VIDEO_FORMAT_HDR10              
+                "HDR10": [
+                    "IP", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_IP 
+                    "Tuner", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_TUNER
+                    "HDMI1", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_HDMI1
+                    "HDMI2", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_HDMI2
+                    "HDMI3", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_HDMI3
+                    "HDMI4"  //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_HDMI4
+                ]
+            },
+            //"IQ" -> tvConfigContext_t->tvPQModeIndex_t.PQ_MODE_IQ          
+            "IQ": {
+                //"DV" -> tvConfigContext_t->tvVideoFormatType_t.VIDEO_FORMAT_DV          
+                "DV": [
+                    "IP", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_IP 
+                    "HDMI1", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_HDMI1
+                    "HDMI2", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_HDMI2
+                    "HDMI3", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_HDMI3
+                    "HDMI4"  //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_HDMI4
+                ]
+            },
+            //"Bright" -> tvConfigContext_t->tvPQModeIndex_t.PQ_MODE_BRIGHT         
+            "Bright": {
+                //"DV" -> tvConfigContext_t->tvVideoFormatType_t.VIDEO_FORMAT_DV          
+                "DV": [
+                    "IP", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_IP 
+                    "HDMI1", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_HDMI1
+                    "HDMI2", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_HDMI2
+                    "HDMI3", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_HDMI3
+                    "HDMI4"  //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_HDMI4
+                ]
+            },
+            //"Dark" -> tvConfigContext_t->tvPQModeIndex_t.PQ_MODE_DARK         
+            "Dark": {
+                //"DV" -> tvConfigContext_t->tvVideoFormatType_t.VIDEO_FORMAT_DV          
+                "DV": [
+                    "IP", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_IP 
+                    "HDMI1", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_HDMI1
+                    "HDMI2", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_HDMI2
+                    "HDMI3", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_HDMI3
+                    "HDMI4"  //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_HDMI4
+                ]
+            },
+            //"Game" -> tvConfigContext_t->tvPQModeIndex_t.PQ_MODE_GAME          
+            "Game": {
+                //"SDR" -> tvConfigContext_t->tvVideoFormatType_t.VIDEO_FORMAT_SDR          
+                "SDR": [
+                    "IP", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_IP 
+                    "Tuner", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_TUNER
+                    "HDMI1", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_HDMI1
+                    "HDMI2", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_HDMI2
+                    "HDMI3", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_HDMI3
+                    "HDMI4", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_HDMI4
+                    "Composite" //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_COMPOSITE
+                ],
+                //"HLG" -> tvConfigContext_t->tvVideoFormatType_t.VIDEO_FORMAT_HLG              
+                "HLG": [
+                    "IP", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_IP 
+                    "Tuner", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_TUNER
+                    "HDMI1", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_HDMI1
+                    "HDMI2", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_HDMI2
+                    "HDMI3", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_HDMI3
+                    "HDMI4"  //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_HDMI4
+                ],
+                //"HDR10" -> tvConfigContext_t->tvVideoFormatType_t.VIDEO_FORMAT_HDR10               
+                "HDR10": [
+                    "IP", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_IP 
+                    "Tuner", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_TUNER
+                    "HDMI1", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_HDMI1
+                    "HDMI2", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_HDMI2
+                    "HDMI3", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_HDMI3
+                    "HDMI4"  //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_HDMI4
+                ],
+                //"DV" -> tvConfigContext_t->tvVideoFormatType_t.VIDEO_FORMAT_DV              
+                "DV": [
+                    "IP", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_IP 
+                    "HDMI1", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_HDMI1
+                    "HDMI2", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_HDMI2
+                    "HDMI3", //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_HDMI3
+                    "HDMI4"  //tvConfigContext_t->tvVideoSrcType_t.VIDEO_SOURCE_HDMI4
+                ]
+            }
+        }
+    }
+}
