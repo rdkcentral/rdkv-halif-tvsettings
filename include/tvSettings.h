@@ -1974,7 +1974,7 @@ tvError_t GetColorTemp_Ggain_onSource(tvColorTemp_t colorTemp, int* ggain,tvColo
  *
  * This function sets or saves the bgain value for a specfic color temperature and video source. If it is set operation (saveOnly=0) @n
  * the rgb gain and offset for the specified colour temperature will be loaded in white balance module and @n
- * the new bgain gain value from this API will be applied and saved in the picture profile database.
+ * the new blue gain value from this API will be applied and saved in the picture profile database.
  * The value is discarded and default value from picture profile database is used when primary video format
  * or primary video source or picture mode changes.
  * If it is save operation (saveOnly =1) then the bgain will be saved for the specific video source and colour temperature. The saved
