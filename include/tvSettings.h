@@ -2734,10 +2734,10 @@ tvError_t GetTVGammaTarget(tvColorTemp_t colorTemp,double *x, double *y);
  * This function allows gamma pattern mode to be enabled or disabled. Only if it is enabled the API's SetGammaPattern and SetGrayPattern will take effect. @n
  * When enabled the gamma module will be disabled and system ready to accept the new pattern values from SetGammaPattern and SetGrayPattern APIs. @n
  * When disabled the last set gamma values before the SetGammaPatternMode(true) API call will be restored.
- * This function will only set and does'nt save the value.
+ * This function will only set and doesn't save the value.
  *
  * @param[in] mode         - Valid values are true and false. true when gamma pattern mode needs to be enabled @n
- *                             false when gamma pattern mode needs to be enabled.
+ *                           false when gamma pattern mode needs to be disabled.
  *
  * @return tvError_t
  *
@@ -2770,7 +2770,7 @@ tvError_t SetGammaPatternMode(bool mode);
  *
  * @pre TvInit() should be called before calling this API
  */
-tvError_t SetRGBPattern(int r,int g, int b) ;
+tvError_t SetRGBPattern(int r,int g, int b);
 
 /**
  * @brief Gets the current RGB values of the RGB pattern.
@@ -3988,6 +3988,13 @@ tvError_t GetDefaultMultiPointWBMatrix(tvVideoSrcType_t videoSrcType, tvPQModeIn
  * @param[out] max_values   - Returns a pointer to an structure which contains maximum values of DV calibration params.
  *                          - The returned Pointer must not be freed by the caller.
  *                          - Memory should be allocated in HAL function
+ * @param[out] component    - Returns a pointer to an array of platform-supported component type.
+ *                          - Values will be members of ::tvDVCalibrationComponent_t.
+ *                          - The returned array must not be freed by the caller.
+ *                          - Memory should be allocated in HAL function
+ * @param[out] num_component - The total number of supported DVCalibration component types.
+ *                           - Represents the number of elements in the 'component' array.
+ *
  * @param[out] context_caps  - A capabilities structure listing the configuration contexts supported.
  *
  * @return tvError_t
@@ -4000,7 +4007,7 @@ tvError_t GetDefaultMultiPointWBMatrix(tvVideoSrcType_t videoSrcType, tvPQModeIn
  *
  * @pre TvInit() should be called before calling this API
  */
-tvError_t GetDVCalibrationCaps(tvDVCalibrationSettings_t ** min_values, tvDVCalibrationSettings_t ** max_values, tvContextCaps_t ** context_caps);
+tvError_t GetDVCalibrationCaps(tvDVCalibrationSettings_t **min_values, tvDVCalibrationSettings_t **max_values, tvDVCalibrationComponent_t **component, size_t *num_component, tvContextCaps_t **context_caps);
 
 /**
  * @brief Sets the Dolby Vision PQ calibration values.
@@ -4012,7 +4019,9 @@ tvError_t GetDVCalibrationCaps(tvDVCalibrationSettings_t ** min_values, tvDVCali
  *
  * If the platform does not support Dolby Vision PQ calibration, then tvERROR_OPERATION_NOT_SUPPORTED is returned.
  *
+ * @param[in] videoSrcType       - Source input value. Valid value will be a member of ::tvVideoSrcType_t
  * @param[in] pq_mode            - Picture mode index. Valid value will be a member of ::tvPQModeIndex_t
+ * @param[in] videoFormatType    - Video format type value. Valid value will be a member of ::tvVideoFormatType_t
  * @param[in] calibration_values - Structure of Dolby Vision PQ calibration values.
  *                               - Valid values are returned by GetDVCalibrationCaps().
  *
@@ -4026,7 +4035,7 @@ tvError_t GetDVCalibrationCaps(tvDVCalibrationSettings_t ** min_values, tvDVCali
  *
  * @pre TvInit() should be called before calling this API
  */
-tvError_t SetDVCalibration(tvPQModeIndex_t pq_mode, tvDVCalibrationSettings_t * calibration_values);
+tvError_t SetDVCalibration(tvVideoSrcType_t videoSrcType, tvPQModeIndex_t pq_mode, tvVideoFormatType_t videoFormatType, tvDVCalibrationSettings_t * calibration_values);
 
 /**
  * @brief Gets the Dolby Vision PQ calibration values.
@@ -4036,7 +4045,9 @@ tvError_t SetDVCalibration(tvPQModeIndex_t pq_mode, tvDVCalibrationSettings_t * 
  * If the platform does not support Dolby Vision PQ calibration, then tvERROR_OPERATION_NOT_SUPPORTED is returned.
  * If no Dolby Vision PQ calibration has been set for the specified picture mode, then tvERROR_GENERAL is returned.
  *
+ * @param[in] videoSrcType        - Source input value. Valid value will be a member of ::tvVideoSrcType_t
  * @param[in] pq_mode             - Picture mode index. Valid value will be a member of ::tvPQModeIndex_t
+ * @param[in] videoFormatType     - Video format type value. Valid value will be a member of ::tvVideoFormatType_t
  * @param[out] calibration_values - Structure of Dolby Vision PQ calibration values.
  *                                - Valid values are returned by GetDVCalibrationCaps().
  *                                - Memory should be allocated in HAL function
@@ -4051,7 +4062,7 @@ tvError_t SetDVCalibration(tvPQModeIndex_t pq_mode, tvDVCalibrationSettings_t * 
  *
  * @pre TvInit() should be called before calling this API
  */
-tvError_t GetDVCalibration(tvPQModeIndex_t pq_mode, tvDVCalibrationSettings_t * calibration_values);
+tvError_t GetDVCalibration(tvVideoSrcType_t videoSrcType, tvPQModeIndex_t pq_mode, tvVideoFormatType_t videoFormatType, tvDVCalibrationSettings_t * calibration_values);
 
 /**
  * @brief Gets the default Dolby Vision PQ calibration values.
@@ -4060,7 +4071,9 @@ tvError_t GetDVCalibration(tvPQModeIndex_t pq_mode, tvDVCalibrationSettings_t * 
  *
  * If the platform does not support Dolby Vision PQ calibration, then tvERROR_OPERATION_NOT_SUPPORTED is returned.
  *
+ * @param[in] videoSrcType        - Source input value. Valid value will be a member of ::tvVideoSrcType_t
  * @param[in] pq_mode             - Picture mode index. Valid value will be a member of ::tvPQModeIndex_t
+ * @param[in] videoFormatType     - Video format type value. Valid value will be a member of ::tvVideoFormatType_t
  * @param[out] calibration_values - Structure of Dolby Vision PQ calibration values.
  *                                - Valid values are returned by GetDVCalibrationCaps().
  *
@@ -4074,7 +4087,7 @@ tvError_t GetDVCalibration(tvPQModeIndex_t pq_mode, tvDVCalibrationSettings_t * 
  *
  * @pre TvInit() should be called before calling this API
  */
-tvError_t GetDVCalibrationDefault(tvPQModeIndex_t pq_mode, tvDVCalibrationSettings_t * calibration_values);
+tvError_t GetDVCalibrationDefault(tvVideoSrcType_t videoSrcType, tvPQModeIndex_t pq_mode, tvVideoFormatType_t videoFormatType, tvDVCalibrationSettings_t * calibration_values);
 
 /**
  * @brief Gets the CMS capabilities.
