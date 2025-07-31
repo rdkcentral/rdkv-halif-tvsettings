@@ -354,7 +354,6 @@
                 "DV": [
                     "HDMI1",
                     "HDMI2",
-                    "HDMI2",
                     "HDMI3",
                     "IP"
                 ]
@@ -1800,6 +1799,19 @@
             "from": 0,
             "to": 1
         },
+        "component": [
+            "Tmax",
+            "Tmin",
+            "Tgamma",
+            "Rx",
+            "Ry",
+            "Gx",
+            "Gy",
+            "Bx",
+            "By",
+            "Wx",
+            "Wy"
+        ],
         "context": {
             "IQ": {
                 "DV": [
@@ -2240,7 +2252,7 @@
                 "HDMI4",
                 "IP",
                 "Tuner",
-                "Composite11"
+                "Composite1"
             ]
         }
     },
@@ -2836,5 +2848,37 @@
                 ]
             }
         }
+    },
+    "FactoryWhiteBalance": {
+        "rangeGain": {
+            "from": 0,
+            "to": 2047
+        },
+        "rangeOffset": {
+            "from": -1024,
+            "to": 1023
+        },
+        "control": [
+            "Gain",
+            "Offset"
+        ],
+	"ColorTemperature": [
+            "Standard",
+            "Warm",
+            "Cold",
+            "UserDefined"
+        ],
+        "color": [
+            "Red",
+            "Green",
+            "Blue"
+        ],
+        "platformSupport": true,
+        "source" : [
+            "ALL",
+            "HDMI",
+            "TV",
+            "AV"
+        ]
     }
 }
