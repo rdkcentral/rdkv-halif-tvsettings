@@ -2711,7 +2711,7 @@
             "from": -1024,
             "to": 1023
         },
-        "colorTemperature": [
+        "ColorTemperature": [
             "Standard",
             "Warm",
             "Cold",
