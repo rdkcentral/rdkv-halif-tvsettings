@@ -565,7 +565,7 @@ tvError_t SetCurrentBacklightMode(tvBacklightMode_t blMode);
  * If peak brightness capablity of the panel changes as a result of dimming mode change reload the edid accordingly
  * to update VSVDB string if video format currently playing is handled via Dolby Vision core.
  *
- * @param[in] dimmingMode           - Dimming mode to be set. Valid values are ( "local", "fixed", "global" )
+ * @param[in] dimmingMode           - Dimming mode to be set. Valid values are ( "Local", "Fixed", "Global" )
  *
  * @return tvError_t
  *
@@ -586,7 +586,7 @@ tvError_t SetTVDimmingMode(const char *dimmingMode);
  * This function gets the current dimmimng mode value for the primary video source selected,
  * primary video format played and picture mode selected.
  *
- * @param[out] dimmingMode           - Current dimming mode. Valid values are ( "local", "fixed", "global" )
+ * @param[out] dimmingMode           - Current dimming mode. Valid values are ( "Local", "Fixed", "Global" )
  *
  * @return tvError_t
  *
