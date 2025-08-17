@@ -246,6 +246,26 @@ tvError_t GetTVSupportedHDR10ModesODM(pic_modes_t *dvModes[],unsigned short *cou
  */
 tvError_t SetTVHDR10ModeODM(const char * hdr10Mode);
 
+/**
+ * @brief Sets wake-up configuration
+ * @note SOC vendors can stub these ODM functions and mark it as weak
+ *
+ * This function enables/disables the specific deepsleep wake-up source
+ *
+ * @param[in] src_type                     - Wakeup source type. Valid value will be a member of ::tvWakeupSrcType_t
+ * @param[in] value                        - Enable/disable wakeup source to be set ( 0 for @a disable and 1 for @a enable )
+ *
+ * @return tvError_t
+ *
+ * @retval tvERROR_NONE                      - Success
+ * @retval tvERROR_INVALID_PARAM             - Input parameter is invalid
+ * @retval tvERROR_INVALID_STATE             - Interface is not initialized
+ * @retval tvERROR_GENERAL                   - Underlying failures - SoC, memory, write failure, etc
+ *
+ * @pre TvInit() should be called before calling this API
+*/
+tvError_t SetWakeupConfig(const tvWakeupSrcType_t src_type, const bool value);
+
 #ifdef __cplusplus
 }
 #endif
