@@ -674,7 +674,7 @@ typedef enum
 
 
 /**
- * @brief Structure defining the Gamma Whitbelance min,max and matrix points
+ * @brief Structure defining the Gamma WhiteBalance min,max and matrix points
  *
  */
 typedef struct {

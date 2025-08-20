@@ -3853,7 +3853,7 @@ tvError_t GetMEMC(tvVideoSrcType_t videoSrcType, tvPQModeIndex_t pq_mode, tvVide
  *
  * If the platform does not support multi-point white balance, then tvERROR_OPERATION_NOT_SUPPORTED is returned.
  *
- * @param[out] multiPointMatrix      - Returns a pointer to an structure which contains values associated with MutiPoint WhiteBalance
+ * @param[out] multiPointMatrix      - Returns a pointer to an structure which contains values associated with MultiPoint WhiteBalance
  *                                   - The returned Pointer must not be freed by the caller.
  *                                   - Memory should be allocated in HAL function
 
