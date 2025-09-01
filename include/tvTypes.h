@@ -678,9 +678,9 @@ typedef enum
  *
  */
 typedef struct {
-    int gamma_matrix_points,   //!< Gamma Matrix Points
-    int gamma_rgb_min,         //!< Gamma RGB Min
-    int gamma_rgb_max          //!< Gamma RGB Max
+    int gamma_matrix_points;   //!< Gamma Matrix Points
+    int gamma_rgb_min;         //!< Gamma RGB Min
+    int gamma_rgb_max;         //!< Gamma RGB Max
 } tvGammaMatrix_t;
 
 /**
@@ -688,10 +688,10 @@ typedef struct {
  *
  */
 typedef struct {
-    tvGammaMatrix_t hal_gamma,      //!< Represents HAL Gamma Values
-    tvGammaMatrix_t ui_gamma,       //!< Represent UI Gamma Values
-    double **ui_matrix_positions,   //!< Array of UI Matrix Positions
-    size_t num_ui_matrix_positions  //!< Number of UI Matrix Positions
+    tvGammaMatrix_t hal_gamma;      //!< Represents HAL Gamma Values
+    tvGammaMatrix_t ui_gamma;       //!< Represent UI Gamma Values
+    double **ui_matrix_positions;   //!< Array of UI Matrix Positions
+    size_t num_ui_matrix_positions; //!< Number of UI Matrix Positions
 } tvMultiPointWB_t;
 
 /**
