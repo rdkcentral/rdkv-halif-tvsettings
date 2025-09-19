@@ -118,10 +118,10 @@ typedef enum tvVideoFormatType_e {
  *
  */
 typedef enum tvColorTempSourceOffset_e {
-    ALL_SRC_OFFSET = -1,        //!< Video source offset is all
-    HDMI_OFFSET    = 0,         //!< Video source offset HDMI and tuner
-    TV_OFFSET      = 1,         //!< Video source offset IP
-    AV_OFFSET      = 2,         //!< Video source offset Composite
+    ALL_SRC_OFFSET = -1,        //!< WB Calibration Video source offset is ALL
+    HDMI_OFFSET    = 0,         //!< WB Calibration Video source offset is HDMI - Applicable for all HDMI and Tuner
+    TV_OFFSET      = 1,         //!< WB Calibration Video source offset is IP
+    AV_OFFSET      = 2,         //!< WB Calibration Video source offset is Composite
     MAX_OFFSET     = 3          //!< End of enum.
 } tvColorTempSourceOffset_t;
 
@@ -298,7 +298,7 @@ typedef enum
     tvDataColor_BLUE = 4,                       //!< Color is Blue
     tvDataColor_YELLOW = 8,                     //!< Color is Yellow
     tvDataColor_CYAN = 16,                      //!< Color is Cyan
-    tvDataColor_MAGENTA = 32,                   //!< Color is Megenta
+    tvDataColor_MAGENTA = 32,                   //!< Color is Magenta
     tvDataColor_MAX = 64                        //!< End of enum
 }tvDataComponentColor_t;
 
@@ -671,6 +671,26 @@ typedef enum
     tvSdrGamma_BT_1886, //!< SDR gamma is ITU-R BT.1886
     tvSdrGamma_MAX //!< End of enum
 } tvSdrGamma_t;
+
+/**
+ * @brief Enumeration defining the supported DolbyVisionCalibration Components
+ *
+ */
+
+typedef enum {
+    tvDVCalibrationComponent_TMAX = 0,  //!< Calibration Component is TMax
+    tvDVCalibrationComponent_TMIN,      //!< Calibration Component is TMin
+    tvDVCalibrationComponent_TGAMMA,    //!< Calibration Component is TGamma
+    tvDVCalibrationComponent_RX,        //!< Calibration Component is Rx
+    tvDVCalibrationComponent_RY,        //!< Calibration Component is Ry
+    tvDVCalibrationComponent_GX,        //!< Calibration Component is Gx
+    tvDVCalibrationComponent_GY,        //!< Calibration Component is Gy
+    tvDVCalibrationComponent_BX,        //!< Calibration Component is Bx
+    tvDVCalibrationComponent_BY,        //!< Calibration Component is By
+    tvDVCalibrationComponent_WX,        //!< Calibration Component is Wx
+    tvDVCalibrationComponent_WY,        //!< Calibration Component is Wy
+    tvDVCalibrationComponent_MAX        //!< Calibration Component is MAX
+} tvDVCalibrationComponent_t;
 
 #ifdef __cplusplus
 }
