@@ -4432,6 +4432,102 @@ tvError_t Save2PointWB(tvVideoSrcType_t videoSrcType, int pq_mode,tvVideoFormatT
  */
 tvError_t GetDefault2PointWB(tvVideoSrcType_t videoSrcType, int pq_mode,tvVideoFormatType_t videoFormatType,tvColorTemp_t colorTemperature, tvWBColor_t color, tvWBControl_t control, int *value);
 
+/**
+ * @brief Gets the Backlight Dimming Level capabilities and maximum Dimming Level setting value supported by the platform.
+ *
+ * This function gets the Dimming Level capabilities from the "Dimming Level" section of the pq_capabilities.json.
+ *
+ * If this feature is global (`num_contexts == 0`) and `platform_support` is true,
+ * the corresponding picture mode, source, and format entries should be retrieved from the "picturemode" section
+ * of pq_capabilities.json
+ *
+ * The Dimming Level setting ranges from 0..N inclusive where 0 is OFF (Fixed Backlight) and N is the maximum dimming effect level
+ * supported by the platform. The value of N is returned by this function.
+ *
+ * Dimming Level 0 refers to the Fixed Backlight mode, where values > 0 refer to different dimming levels supported by
+ * Local or Global dimming. At any point in time, the platform shall support either Global or Local dimming (implementation specific).
+ *
+ * The `context_caps` parameter receives a pointer to a `tvContextCaps_t` structure that lists the different
+ * configuration contexts that this feature can be configured for.
+ *
+ * The capabilities structure returned by this call is allocated by the HAL function and shall
+ * be safe to reference for the lifetime of the process.
+ *
+ * If the platform does not support a Dimming Level setting, then tvERROR_OPERATION_NOT_SUPPORTED is returned.
+ *
+ * @param[out] maxDimmingLevel       - Maximum Dimming Level setting value.
+ *                                   - The minimum value is always 0.
+ * @param[out] context_caps          - A capabilities structure listing the configuration contexts supported.
+ *
+ * @return tvError_t
+ *
+ * @retval tvERROR_NONE - Success
+ * @retval tvERROR_INVALID_PARAM - Parameter is invalid
+ * @retval tvERROR_INVALID_STATE - Interface is not initialized
+ * @retval tvERROR_OPERATION_NOT_SUPPORTED - Operation is not supported
+ * @retval tvERROR_GENERAL - Underlying failures - SoC, memory, etc
+ *
+ * @pre TvInit() should be called before calling this API
+ */
+
+tvError_t GetBacklightDimmingLevelCaps(int* maxDimmingLevel, tvContextCaps_t** context_caps);
+/**
+ * @brief Sets the Dimming Level value.
+ *
+ * This function sets the Dimming Level value for the specific picture mode, primary video format and primary video source.
+ * The configured Dimming Level value should be applied automatically whenever the
+ * specified picture mode, primary video format and primary video source are selected.
+ *
+ * The Dimming Level value is applied in the PQ module if the current picture mode, primary video format and
+ * primary video source match the parameters.
+ *
+ * If the platform does not support Dimming Level, then tvERROR_OPERATION_NOT_SUPPORTED is returned.
+ *
+ * @param[in] videoSrcType       - Source input value. Valid value will be a member of ::tvVideoSrcType_t
+ * @param[in] pq_mode            - Picture mode index. Valid value will be a member of ::tvPQModeIndex_t
+ * @param[in] videoFormatType    - Video format type value. Valid value will be a member of ::tvVideoFormatType_t
+ * @param[in] dimmingLevel       - Value of the Dimming Level to be set.
+ *                               - Valid values are from 0..N where 0=OFF (Fixed Backlight) and N is the maximum dimming level,
+ *                               - returned by GetBacklightDimmingLevelCaps().
+ *
+ * @return tvError_t
+ *
+ * @retval tvERROR_NONE - Success
+ * @retval tvERROR_INVALID_PARAM - Input parameter is invalid
+ * @retval tvERROR_INVALID_STATE - Interface is not initialized
+ * @retval tvERROR_OPERATION_NOT_SUPPORTED - Operation is not supported
+ * @retval tvERROR_GENERAL - Underlying failures - SoC, memory, etc
+ *
+ * @pre TvInit() should be called before calling this API
+ */
+tvError_t SetBacklightDimmingLevel(tvVideoSrcType_t videoSrcType, tvPQModeIndex_t pq_mode, tvVideoFormatType_t videoFormatType, int dimmingLevel);
+/**
+ * @brief Gets the Dimming Level value.
+ *
+ * This function gets the Dimming Level value for the specific picture mode,
+ * primary video format and primary video source.
+ *
+ * If the platform does not support Dimming Level, then tvERROR_OPERATION_NOT_SUPPORTED is returned.
+ *
+ * @param[in] videoSrcType        - Source input value. Valid value will be a member of ::tvVideoSrcType_t
+ * @param[in] pq_mode             - Picture mode index. Valid value will be a member of ::tvPQModeIndex_t
+ * @param[in] videoFormatType     - Video format type value. Valid value will be a member of ::tvVideoFormatType_t
+ * @param[out] dimmingLevel       - Value of the Dimming Level.
+ *                                - Valid values are from 0..N where 0=OFF (Fixed Backlight) and N is the maximum dimming level,
+ *                                - returned by GetBacklightDimmingLevelCaps().
+ *
+ * @return tvError_t
+ *
+ * @retval tvERROR_NONE - Success
+ * @retval tvERROR_INVALID_PARAM - Input parameter is invalid
+ * @retval tvERROR_INVALID_STATE - Interface is not initialized
+ * @retval tvERROR_OPERATION_NOT_SUPPORTED - Operation is not supported
+ * @retval tvERROR_GENERAL - Underlying failures - SoC, memory, etc
+ *
+ * @pre TvInit() should be called before calling this API
+ */
+tvError_t GetBacklightDimmingLevel(tvVideoSrcType_t videoSrcType, tvPQModeIndex_t pq_mode, tvVideoFormatType_t videoFormatType, int * dimmingLevel);
+
 #ifdef __cplusplus
 }
 #endif
