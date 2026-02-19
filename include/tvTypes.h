@@ -212,8 +212,12 @@ typedef enum
     tvVideoFrameRate_24,                        //!< Frame rate is 24
     tvVideoFrameRate_25,                        //!< Frame rate is 25
     tvVideoFrameRate_30,                        //!< Frame rate is 30
+    tvVideoFrameRate_48,                        //!< Frame rate is 48
     tvVideoFrameRate_50,                        //!< Frame rate is 50
     tvVideoFrameRate_60,                        //!< Frame rate is 60
+    tvVideoFrameRate_100,                        //!< Frame rate is 100
+    tvVideoFrameRate_120,                        //!< Frame rate is 120
+    tvVideoFrameRate_144,                        //!< Frame rate is 144
     tvVideoFrameRate_23dot98,                   //!< Frame rate is 23.98
     tvVideoFrameRate_29dot97,                   //!< Frame rate is 29.97
     tvVideoFrameRate_59dot94,                   //!< Frame rate is 59.94
