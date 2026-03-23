@@ -530,17 +530,6 @@ typedef void (*tvVideoFrameRateChangeCB)(tvVideoFrameRate_t frameRate,void *user
  */
 typedef void (*tvVideoSourceChangeCB)(tvVideoSrcType_t source, void *userData);
 
-/**
- * @brief Callback for tvVideoSourceChangeCB
- *
- * This callback is triggered when a video source change is encountered.
- *
- * @param[in] source            - Type of video source. Valid values will be members of ::tvVideoSrcType_t
- * @param[in] userData          - User data passed during callback registration
- *
- */
-typedef void (*tvVideoSourceChangeCB)(tvVideoSrcType_t source, void *userData);
-
 /** 
  * @brief Structure for the pic modes and value.@n
    The value contains the index and parameter is applicable only for get/set of picmodes.
