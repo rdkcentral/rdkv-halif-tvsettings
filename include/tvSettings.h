@@ -131,7 +131,7 @@ tvError_t RegisterVideoFormatChangeCB(tvVideoFormatCallbackData *cbData);
  * the correct video source value.
  *
  * When the primary video playback stops or no active video is present,
- * the HAL may optionally notify with VIDEO_SOURCE_NONE or avoid triggering the callback.
+ * the HAL may optionally notify with VIDEO_SOURCE_IP or avoid triggering the callback.
  *
  * @param[in] cbData                - Callback function. Please refer ::tvVideoSourceCallbackData
  *
