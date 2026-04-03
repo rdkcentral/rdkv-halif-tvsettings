@@ -1,0 +1,135 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "PQ Capabilities",
+  "type": "object",
+  "additionalProperties": {
+    "type": "object",
+    "properties": {
+      "platformSupport": { "type": "boolean" },
+      "rangeInfo": {
+        "type": "object",
+        "properties": {
+          "from": { "type": "number" },
+          "to": { "type": "number" },
+          "options": {
+            "type": "array",
+            "items": { "type": "string" }
+          }
+        },
+        "additionalProperties": false
+      },
+      "points": { "type": "integer" },
+      "ColorTemperature": {
+        "type": "array",
+        "items": { "type": "string" }
+      },
+      "rangeGain": {
+        "type": "object",
+        "properties": {
+          "from": { "type": "number" },
+          "to": { "type": "number" }
+        }
+      },
+      "rangeOffset": {
+        "type": "object",
+        "properties": {
+          "from": { "type": "number" },
+          "to": { "type": "number" }
+        }
+      },
+      "control": {
+        "type": "array",
+        "items": { "type": "string" }
+      },
+      "color": {
+        "type": "array",
+        "items": { "type": "string" }
+      },
+      "rangeHue": {
+        "type": "object",
+        "properties": {
+          "from": { "type": "number" },
+          "to": { "type": "number" }
+        }
+      },
+      "rangeSaturation": {
+        "type": "object",
+        "properties": {
+          "from": { "type": "number" },
+          "to": { "type": "number" }
+        }
+      },
+      "rangeLuma": {
+        "type": "object",
+        "properties": {
+          "from": { "type": "number" },
+          "to": { "type": "number" }
+        }
+      },
+      "context": {
+        "type": "object",
+        "propertyNames": {
+          "enum": [
+            "Standard",
+            "Sports",
+            "Theater",
+            "Vivid",
+            "EnergySaving",
+            "FilmMaker",
+            "AI PQ",
+            "IQ",
+            "Bright",
+            "Dark",
+            "Game"
+          ]
+        },
+        "patternProperties": {
+          ".*": {
+            "type": "object",
+            "propertyNames": {
+              "enum": ["SDR", "HLG", "HDR10", "DV"]
+            },
+            "patternProperties": {
+              ".*": {
+                "type": "array",
+                "items": {
+                  "type": "string",
+                  "enum": [
+                    "HDMI1",
+                    "HDMI2",
+                    "HDMI3",
+                    "HDMI4",
+                    "Composite",
+                    "Composite1",
+                    "Tuner",
+                    "IP"
+                  ]
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "patternProperties": {
+      "^range[A-Z].*": {
+        "type": "object",
+        "properties": {
+          "from": { "type": "number" },
+          "to": { "type": "number" },
+          "options": {
+            "type": "array",
+            "items": { "type": "string" }
+          }
+        },
+        "anyOf": [
+          { "required": ["from", "to"] },
+          { "required": ["options"] }
+        ],
+        "additionalProperties": false
+      }
+    },
+    "additionalProperties": true
+  }
+}
+
