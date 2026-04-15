@@ -2647,7 +2647,7 @@ tvError_t GetCMSState(bool *enableCMSState);
  *
  * @param[in] videoSrcType       - Source input value. Valid value will be a member of ::tvVideoSrcType_t
  * @param[in] videoFormatType    - Video format type value. Valid value will be a member of ::tvVideoFormatType_t
- * @param[out] pq_mode           - Default picture mode index for the given source and format.
+ * @param[out] pqMode           - Default picture mode index for the given source and format.
  *                                 Valid value will be a member of ::tvPQModeIndex_t
  *
  * @return tvError_t
@@ -2660,7 +2660,7 @@ tvError_t GetCMSState(bool *enableCMSState);
  *
  * @pre TvInit() should be called before calling this API
  */
-tvError_t GetDefaultPQMode(tvVideoSrcType_t videoSrcType,tvVideoFormatType_t videoFormatType,tvPQModeIndex_t* pq_mode);
+tvError_t GetDefaultPQMode(tvVideoSrcType_t videoSrcType,tvVideoFormatType_t videoFormatType,tvPQModeIndex_t* pqMode);
 
 /**
  * @brief Gets the PQ Setting parameters
