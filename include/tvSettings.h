@@ -4528,6 +4528,38 @@ tvError_t SetBacklightDimmingLevel(tvVideoSrcType_t videoSrcType, tvPQModeIndex_
  */
 tvError_t GetBacklightDimmingLevel(tvVideoSrcType_t videoSrcType, tvPQModeIndex_t pq_mode, tvVideoFormatType_t videoFormatType, int * dimmingLevel);
 
+tvError_t GetFadeDisplayCaps(&m_fadeDisplayMin, &m_fadeDisplayMax, &m_fadeDurationMin, &m_fadeDurationMax, &m_fadeDisplayCaps);;
+/**
+ * @brief Gets the Fade Display capabilities.
+ *
+ * This function retrieves the Fade Display capabilities, including the minimum and maximum values for fade display,
+ * fade duration, and fade display capabilities.
+ *
+ * The Fade Display value is applied in the PQ module if the current picture mode, primary video format and
+ * primary video source match the parameters.
+ *
+ * If the platform does not support BacklightFade, then tvERROR_OPERATION_NOT_SUPPORTED is returned.
+ *
+ * @param[in] videoSrcType       - Source input value. Valid value will be a member of ::tvVideoSrcType_t
+ * @param[in] pq_mode            - Picture mode index. Valid value will be a member of ::tvPQModeIndex_t
+ * @param[in] videoFormatType    - Video format type value. Valid value will be a member of ::tvVideoFormatType_t
+ * @param[in] fadeDisplayFrom    - Value of the Fade Display to start to be set.
+ * @param[in] fadeDisplayTo      - Value of the Fade Display to end to be set.
+ * @param[in] fadeDisplayDuration- Value of the Fade Display duration to be set.
+ *                               - Valid values are from 0..N where 0=OFF (Fixed Backlight) and N is the maximum fade display level,
+ *                               - returned by GetFadeDisplayCaps().
+ *
+ * @return tvError_t
+ *
+ * @retval tvERROR_NONE - Success
+ * @retval tvERROR_INVALID_PARAM - Input parameter is invalid
+ * @retval tvERROR_INVALID_STATE - Interface is not initialized
+ * @retval tvERROR_OPERATION_NOT_SUPPORTED - Operation is not supported
+ * @retval tvERROR_GENERAL - Underlying failures - SoC, memory, etc
+ *
+ * @pre TvInit() should be called before calling this API
+ */
+
 #ifdef __cplusplus
 }
 #endif
