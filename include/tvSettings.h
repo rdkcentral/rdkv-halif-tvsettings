@@ -2639,6 +2639,28 @@ tvError_t GetCMSState(bool *enableCMSState);
  */
  tvError_t GetDefaultPQParams(int pqIndex,tvVideoSrcType_t videoSrcType,tvVideoFormatType_t videoFormatType, tvPQParameterIndex_t pqParamIndex, int *value);
 
+/**
+ * @brief Gets the default PQ mode
+ *
+ * This function returns the default picture mode (picture mode index) for a given primary
+ * video source and primary video format.
+ *
+ * @param[in] videoSrcType       - Source input value. Valid value will be a member of ::tvVideoSrcType_t
+ * @param[in] videoFormatType    - Video format type value. Valid value will be a member of ::tvVideoFormatType_t
+ * @param[out] pqMode           - Default picture mode index for the given source and format.
+ *                                 Valid value will be a member of ::tvPQModeIndex_t
+ *
+ * @return tvError_t
+ *
+ * @retval tvERROR_NONE                      - Success
+ * @retval tvERROR_INVALID_PARAM             - Input parameter is invalid
+ * @retval tvERROR_INVALID_STATE             - Interface is not initialized
+ * @retval tvERROR_OPERATION_NOT_SUPPORTED   - Operation is not supported
+ * @retval tvERROR_GENERAL                   - Underlying failures - SoC, memory, etc
+ *
+ * @pre TvInit() should be called before calling this API
+ */
+tvError_t GetDefaultPQMode(tvVideoSrcType_t videoSrcType,tvVideoFormatType_t videoFormatType,tvPQModeIndex_t* pqMode);
 
 /**
  * @brief Gets the PQ Setting parameters
