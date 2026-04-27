@@ -2642,7 +2642,7 @@ tvError_t GetCMSState(bool *enableCMSState);
 /**
  * @brief Gets the default PQ mode
  *
- * This function returns the default PQ picture mode (picture mode index) for a given primary
+ * This function returns the default picture mode (picture mode index) for a given primary
  * video source and primary video format.
  *
  * @param[in] videoSrcType       - Source input value. Valid value will be a member of ::tvVideoSrcType_t
