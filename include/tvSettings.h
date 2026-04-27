@@ -2723,7 +2723,7 @@ tvError_t EnableGammaMode(int mode);
  * and display the full screen pattern of the primary colour passed. This function will only set and does'nt save the value.
  *
  * @param[in] is_10_bit         - Value to check if red/green/blue paramter is 10 bit resolution or 8 bit resolution. @n
- *                                  Valid values are  ( @a 0 for is 10 bit,  @a 1 for 8 bit). If 8 bit resolution is passed @n
+ *                                  Valid values are  ( @a 0 for 8 bit,  @a 1 for 10 bit). If 8 bit resolution is passed @n
  *                                  values should be converted to 10 bit by 2 bit left shift and then used.
  * @param[in] R_Value           - Red level of input pattern. Valid range is ( 0 - 1023 for 10 bit and 0 to 255 for 8 bit )
  * @param[in] G_Value           - Green level of input pattern. Valid range is ( 0 - 1023 for 10 bit and 0 to 255 for 8 bit )
