@@ -127,8 +127,10 @@ tvError_t RegisterVideoFormatChangeCB(tvVideoFormatCallbackData *cbData);
  *
  * This function registers a callback for Video source change event.
  * Once registered, the callback function will be invoked by the TV Settings HAL implementation
- * whenever a change in video source is detected at the start of primary video playback, with
- * the correct video source value.
+ * whenever a change in the video source is detected in the low-level driver
+ * (for example, when the connection is established between the HDMI and the decoded video path),
+ * with the correct video source value.
+ * A valid supported video source can be referenced using the tvVideoSrcType_t enum.
  *
  * When the primary video playback stops or no active video is present,
  * the HAL may optionally notify with VIDEO_SOURCE_IP or avoid triggering the callback.
