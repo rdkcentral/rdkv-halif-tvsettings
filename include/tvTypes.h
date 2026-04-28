@@ -520,13 +520,22 @@ typedef void (*tvVideoResolutionChangeCB)(tvResolutionParam_t resolutionStruct,v
 typedef void (*tvVideoFrameRateChangeCB)(tvVideoFrameRate_t frameRate,void *userData);
 
 /**
- * @brief Callback for tvVideoSourceChangeCB
+ * @brief Callback invoked on video source change events
  *
- * This callback is triggered when a video source change is encountered.
+ * This callback is registered via RegisterVideoSourceChangeCB() and is
+ * triggered whenever the active video source changes.
  *
- * @param[in] source            - Type of video source. Valid values will be members of ::tvVideoSrcType_t
- * @param[in] userData          - User data passed during callback registration
+ * The @p userData parameter corresponds to the context provided during
+ * registration, typically a pointer to tvVideoSourceCallbackData, which
+ * holds client-specific information required during callback execution.
  *
+ * Flow:
+ * RegisterVideoSourceChangeCB() --> stores tvVideoSourceCallbackData
+ *                                --> invokes tvVideoSourceChangeCB()
+ *                                --> passes tvVideoSourceCallbackData as userData
+ *
+ * @param[in] source    Type of video source (see ::tvVideoSrcType_t)
+ * @param[in] userData  Pointer to user context (e.g., tvVideoSourceCallbackData)
  */
 typedef void (*tvVideoSourceChangeCB)(tvVideoSrcType_t source, void *userData);
 
