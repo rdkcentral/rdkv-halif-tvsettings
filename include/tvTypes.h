@@ -529,11 +529,6 @@ typedef void (*tvVideoFrameRateChangeCB)(tvVideoFrameRate_t frameRate,void *user
  * registration, typically a pointer to tvVideoSourceCallbackData, which
  * holds client-specific information required during callback execution.
  *
- * Flow:
- * RegisterVideoSourceChangeCB() --> stores tvVideoSourceCallbackData
- *                                --> invokes tvVideoSourceChangeCB()
- *                                --> passes tvVideoSourceCallbackData as userData
- *
  * @param[in] source    Type of video source (see ::tvVideoSrcType_t)
  * @param[in] userData  Pointer to user context (e.g., tvVideoSourceCallbackData)
  */
