@@ -519,6 +519,21 @@ typedef void (*tvVideoResolutionChangeCB)(tvResolutionParam_t resolutionStruct,v
  */
 typedef void (*tvVideoFrameRateChangeCB)(tvVideoFrameRate_t frameRate,void *userData);
 
+/**
+ * @brief Callback invoked on video source change events
+ *
+ * This callback is registered via RegisterVideoSourceChangeCB() and is
+ * triggered whenever the active video source changes.
+ *
+ * The @p userData parameter corresponds to the context provided during
+ * registration, typically a pointer to tvVideoSourceCallbackData, which
+ * holds client-specific information required during callback execution.
+ *
+ * @param[in] source    Type of video source (see ::tvVideoSrcType_t)
+ * @param[in] userData  Pointer to user context (e.g., tvVideoSourceCallbackData)
+ */
+typedef void (*tvVideoSourceChangeCB)(tvVideoSrcType_t source, void *userData);
+
 /** 
  * @brief Structure for the pic modes and value.@n
    The value contains the index and parameter is applicable only for get/set of picmodes.
@@ -576,6 +591,11 @@ typedef struct
     void *userdata;                             //!< User data passed back to caller during call back
     tvVideoFrameRateChangeCB cb;                //!< Video frame change call back function pointed
 }tvVideoFrameRateCallbackData;
+
+typedef struct {
+    void *userData;
+    tvVideoSourceChangeCB cb;
+} tvVideoSourceCallbackData;
 
 /**
  * @brief Enumeration defining the supported WhiteBalance Color
