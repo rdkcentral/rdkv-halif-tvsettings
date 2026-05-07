@@ -123,6 +123,32 @@ tvError_t TvInit();
 tvError_t RegisterVideoFormatChangeCB(tvVideoFormatCallbackData *cbData);
 
 /**
+ * @brief Registers the Video source change callback
+ *
+ * This function registers a callback for Video source change event.
+ * Once registered, the callback function will be invoked by the TV Settings HAL implementation
+ * whenever a change in the video source is detected in the low-level driver
+ * (for example, when the connection is established between the HDMI and the decoded video path),
+ * with the correct video source value.
+ * A valid supported video source can be referenced using the tvVideoSrcType_t enum.
+ *
+ * When the primary video playback stops or no active video is present,
+ * the HAL may optionally notify with VIDEO_SOURCE_IP or avoid triggering the callback.
+ *
+ * @param[in] cbData                - Callback function. Please refer ::tvVideoSourceCallbackData
+ *
+ * @return tvError_t
+ *
+ * @retval tvERROR_NONE            - Success
+ * @retval tvERROR_INVALID_PARAM   - Parameter is invalid
+ * @retval tvERROR_INVALID_STATE   - Interface is not initialized
+ * @retval tvERROR_GENERAL         - Underlying failures - SoC, memory, etc
+ *
+ * @pre TvInit() should be called before calling this API
+ */
+tvError_t RegisterVideoSourceChangeCB(tvVideoSourceCallbackData *cbData);
+
+/**
  * @brief Registers the VideoContent FMM change callback
  *
  * This function registers a callback for the playback Filmmaker mode change event.
@@ -2639,6 +2665,28 @@ tvError_t GetCMSState(bool *enableCMSState);
  */
  tvError_t GetDefaultPQParams(int pqIndex,tvVideoSrcType_t videoSrcType,tvVideoFormatType_t videoFormatType, tvPQParameterIndex_t pqParamIndex, int *value);
 
+/**
+ * @brief Gets the default PQ mode
+ *
+ * This function returns the default picture mode (picture mode index) for a given primary
+ * video source and primary video format.
+ *
+ * @param[in] videoSrcType       - Source input value. Valid value will be a member of ::tvVideoSrcType_t
+ * @param[in] videoFormatType    - Video format type value. Valid value will be a member of ::tvVideoFormatType_t
+ * @param[out] pqMode           - Default picture mode index for the given source and format.
+ *                                 Valid value will be a member of ::tvPQModeIndex_t
+ *
+ * @return tvError_t
+ *
+ * @retval tvERROR_NONE                      - Success
+ * @retval tvERROR_INVALID_PARAM             - Input parameter is invalid
+ * @retval tvERROR_INVALID_STATE             - Interface is not initialized
+ * @retval tvERROR_OPERATION_NOT_SUPPORTED   - Operation is not supported
+ * @retval tvERROR_GENERAL                   - Underlying failures - SoC, memory, etc
+ *
+ * @pre TvInit() should be called before calling this API
+ */
+tvError_t GetDefaultPQMode(tvVideoSrcType_t videoSrcType,tvVideoFormatType_t videoFormatType,tvPQModeIndex_t* pqMode);
 
 /**
  * @brief Gets the PQ Setting parameters
