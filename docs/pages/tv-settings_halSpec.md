@@ -1,372 +1,1363 @@
 
 # TV Settings HAL Documentation
 
+ 
+
 ## Table of Contents
 
-- [Acronyms, Terms and Abbreviations](#acronyms-terms-and-abbreviations)
-- [Description](#description)
-- [Component Runtime Execution Requirements](#component-runtime-execution-requirements)
-  - [Initialization and Startup](#initialization-and-startup)
-  	- [Table Format](#table-format) 
-  - [Threading Model](#threading-model)
-  - [Process Model](#process-model)
-  - [Memory Model](#memory-model)
-  - [Power Management Requirements](#power-management-requirements)
-  - [Asynchronous Notification Model](#asynchronous-notification-model)
-  - [Blocking calls](#blocking-calls)
-  - [Internal Error Handling](#internal-error-handling)
-  - [Persistence Model](#persistence-model)
-- [Non-functional requirements](#non-functional-requirements)
-  - [Logging and debugging requirements](#logging-and-debugging-requirements)
-  - [Memory and performance requirements](#memory-and-performance-requirements)
-  - [Quality Control](#quality-control)
-  - [Licensing](#licensing)
-  - [Build Requirements](#build-requirements)
-  - [Variability Management](#variability-management)
-  - [Platform or Product Customization](#platform-or-product-customization)
-- [Interface API Documentation](#interface-api-documentation)
-  - [Theory of operation and key concepts](#theory-of-operation-and-key-concepts)
-  - [Diagrams](#diagrams)
+ 
+
+* [Acronyms, Terms and Abbreviations](#acronyms-terms-and-abbreviations)
+
+* [Description](#description)
+
+* [Component Runtime Execution Requirements](#component-runtime-execution-requirements)
+
+ 
+
+  * [Initialization and Startup](#initialization-and-startup)
+
+ 
+
+    * [Table Format](#table-format)
+
+  * [Threading Model](#threading-model)
+
+  * [Process Model](#process-model)
+
+  * [Memory Model](#memory-model)
+
+  * [Power Management Requirements](#power-management-requirements)
+
+  * [Asynchronous Notification Model](#asynchronous-notification-model)
+
+  * [Blocking calls](#blocking-calls)
+
+  * [Internal Error Handling](#internal-error-handling)
+
+  * [Persistence Model](#persistence-model)
+
+* [Non-functional requirements](#non-functional-requirements)
+
+ 
+
+  * [Logging and debugging requirements](#logging-and-debugging-requirements)
+
+  * [Memory and performance requirements](#memory-and-performance-requirements)
+
+  * [Quality Control](#quality-control)
+
+  * [Licensing](#licensing)
+
+  * [Build Requirements](#build-requirements)
+
+  * [Variability Management](#variability-management)
+
+  * [Platform or Product Customization](#platform-or-product-customization)
+
+* [Interface API Documentation](#interface-api-documentation)
+
+ 
+
+  * [Theory of operation and key concepts](#theory-of-operation-and-key-concepts)
+
+  * [Tables](#tables)
+
+  * [Diagrams](#diagrams)
+
+ 
+
+---
+
+ 
 
 ## Acronyms, Terms and Abbreviations
 
-- `CPU` - Central Processing Unit
-- `HAL` - Hardware Abstraction layer
-- `PQ`  - Picture Quality
-- `SOC` - System on chip
-- `OEM` - Original Equipment Manufacturer
-- `ALS` - Auto Light Sensor
-- `API` - Application Programming Interface
-- `DV`  - Dolby Vision
-- `CMS` - Colorspace Management System
-- `TMAX`- Temperature MAX
-- `SRD` - Standard Dynamic Range
-- `HDR` - High Dynamic Range
-- `HLG` - Hybrid Log Gamma
-- `UHD` - Ultra High Definition
-- `LDIM`- Local Dimming
+ 
+
+* `CPU` - Central Processing Unit
+
+* `HAL` - Hardware Abstraction Layer
+
+* `PQ`  - Picture Quality
+
+* `SOC` - System on Chip
+
+* `OEM` - Original Equipment Manufacturer
+
+* `ALS` - Auto Light Sensor
+
+* `API` - Application Programming Interface
+
+* `DV`  - Dolby Vision
+
+* `CMS` - Colorspace Management System
+
+* `TMAX`- Temperature MAX
+
+* `SRD` - Standard Dynamic Range
+
+* `HDR` - High Dynamic Range
+
+* `HLG` - Hybrid Log Gamma
+
+* `UHD` - Ultra High Definition
+
+* `LDIM`- Local Dimming
+
+ 
+
+---
+
+ 
 
 ## Description
 
-TV Settings `HAL` is an interface which provides `APIs` to modify/control the picture quality parameters, dimming modes and auto backlight modes.
+ 
+
+TV Settings HAL provides APIs to modify and control picture quality parameters, dimming modes, and auto backlight modes.
+
+ 
 
 ```mermaid
-%%{ init : { "theme" : "forest", "flowchart" : { "curve" : "linear" }}}%%
+
 flowchart TD
-Caller <--> x[TV Setting HAL] 
-x[TV Setting HAL] <--> y[Video/Picture Quality Driver]
-style Caller fill:#99CCFF,stroke:#333,stroke-width:0.3px
-style y fill:#fc9,stroke:#333,stroke-width:0.3px
-style x fill:#9f9,stroke:#333,stroke-width:0.3px
+
+  Caller <---> HAL[TV Settings HAL]
+
+  HAL <---> Driver[Video and Picture Quality Driver]
+
 ```
-	
+
+ 
+
+---
+
+ 
+
 ## Component Runtime Execution Requirements
+
+ 
 
 ### Initialization and Startup
 
-The caller must initialize the `APIs` with picture quality modes for specific platforms and initiates communication with picture quality drivers. The standard/default values shall be maintained in default Picture profile database and any modified values for these parameters using TV Settings HAL APIs will be maintained in override Picture profile database. HAL shall be responsible to store these Picture profile data into the database.
-Picture profile database will have 5 types of tables:
-1. Picture property table to maintain all picture properties for a given picture mode, video format and video source
-2. Picture mode association table maintain the association of a given video source and video format to a picture mode
-3. If input source, picture mode, and video format are not already set or specified, they will default to "IP source," "Entertainment," and "SDR," respectively. However, if the caller attempts to change parameters that rely on these values, they will be acted upon default values accordingly.
-4. White balance table for every color temperature and video source to maintain WB calibrated values
-5. Gamma table for every color temperature to maintain the gamma calibrated values.
-6. TMAX table for every local dimming level to maintain the TMAX value
+ 
 
-- The capabilities of a specific platform with respect to TV picture configuration will be defined in a config file ([pq_capabilities.ini](https://github.com/rdkcentral/rdkv-halif-tvsettings/blob/main/config/pq_capabilities.ini) which decides supported formats, picture modes, dimming modes, dvModes, resolution etc.
-- Caller must initialize by calling `tvInit()` which must initialize the parameters in default picture property database. These parameters are decided by Soc vendor  based on platform capability.
-- On every bootup the default picture profile database will be copied to override picture profile database.
-  
-#### Table Format
-##### Picture Property Table
-| Video Source | Video Format | Picture Mode | Picture Property |
-| --- | --- | --- | --- |
-| HDMI1 | SDR | Standard/Entertainment | Brightness |
-|  |  |  | Contrast |
-|  |  |  | Sharpness |
-|  |  |  | Saturation |
-|  |  |  | Hue |
-|  |  |  | Backlight |
-|  |  |  | Dolbymode |
-|  |  |  | AspectRatio |
-|  |  |  | Colortemperature |
-|  |  |  | Dimming Mode |
-|  |  |  | Local Dimming |
-|  |  |  | Low Latency |
-|  |  |  | CMS State |
-|  |  |  | CMS Saturation RED |
-|  |  |  | CMS Saturation BLUE |
-|  |  |  | CMS Saturation GREEN |
-|  |  |  | CMS Saturation YELLOW |
-|  |  |  | CMS Saturation CYAN |
-|  |  |  | CMS Saturation MAGENTA |
-|  |  |  | CMS Hue RED |
-|  |  |  | CMS Hue BLUE |
-|  |  |  | CMS Hue GREEN |
-|  |  |  | CMS Hue YELLOW |
-|  |  |  | CMS Hue CYAN |
-|  |  |  | CMS Hue MAGENTA |
-|  |  |  | CMS Luma RED |
-|  |  |  | CMS Luma BLUE |
-|  |  |  | CMS Luma GREEN |
-|  |  |  | CMS Luma YELLOW |
-|  |  |  | CMS Luma CYAN |
-|  |  |  | CMS Luma MAGENTA |
-|  |  |  | Custom WhiteBalance Gain RED |
-|  |  |  | Custom WhiteBalance Gain GREEN |
-|  |  |  | Custom WhiteBalance Gain BLUE |
-|  |  |  | Custom WhiteBalance Offset RED |
-|  |  |  | Custom WhiteBalance Offset GREEN |
-|  |  |  | Custom WhiteBalance Offset BLUE |
-|  |  | Theater/Movie | Repeat as standard |
-|  |  | FilmMaker | Repeat as standard |
-|  |  | Sports | Repeat as standard |
-|  |  | Game | Repeat as standard |
-|  |  | Custom/Expert | Repeat as standard |
-|  |  | EnergySaving | Repeat as standard |
-|  |  | Vivid | Repeat as standard |
-|  |  | Graphics | Repeat as standard |
-|  | HDR10 | Repeat as SDR |
-|  | HLG | Repeat as SDR |
-|  | DV | Repeat as SDR |
-| HDMI2 | Repeat as HDMI1 |
-| HDMI3 | Repeat as HDMI1 |
-| Tunner | Repeat as HDMI1 |
-| IP | Repeat as HDMI1 |
-| Composite | Repeat as HDMI1 |
+The platform capabilities are defined in
 
-Note: Currently Dolby mode is treated as a picture property and not a picture mode. In future Dolby mode might be treated as picture mode. Values of index in pq_capabilites.ini are mapped to enum values in tvTypes.h
+[`pq_capabilities.json`](https://github.com/rdkcentral/rdkv-halif-tvsettings/config/pq_capabilities.json).
 
-##### Picture Association Table
-| Video Source | Video Format | Picture Mode |
-| --- | --- | --- |
-| HDMI1 | SDR | Standard/Entertainment |
-|  |  | Theater/Movie |
-|  |  | FilmMaker |
-|  |  | Sports |
-|  |  | Game |
-|  |  | Custom/Expert |
-|  |  | EnergySaving |
-|  |  | Vivid |
-|  |  | Graphics |
-|  | HDR10 | Repeat as SDR |
-|  | HLG | Repeat as SDR |
-|  | DV | Repeat as SDR |
-| HDMI2 | Repeat as HDMI1 |
-| HDMI3 | Repeat as HDMI1 |
-| Tunner | Repeat as HDMI1 |
-| IP | Repeat as HDMI1 |
-| Composite | Repeat as HDMI1 |
+ 
 
-##### WB Table
-| Video Source | White Balance | Property | Value Range |
-| --- | --- | --- | --- |
-| HDMI1 | Cold White Balance Table | Red Gain | 0-2047 |
-|  |  | Green Gain | 0-2047 |
-|  |  | Blue Gain | 0-2047 |
-|  |  | Red offset | (-1024) to (+1023) |
-|  |  | Green offset | (-1024) to (+1023) |
-|  |  | Blue offset | (-1024) to (+1023) |
-|  | Warm White Balance Table | Repeat as Cold White Balance Table |
-|  | Normal White Balance Table | Repeat as Cold White Balance Table |
-|  | User White Balance Table | Repeat as Cold White Balance Table |
-|  | Boost cold White Balance Table | Repeat as Cold White Balance Table |
-|  | Bost warm White Balance Table | Repeat as Cold White Balance Table |
-|  | Boost normal White Balance Table | Repeat as Cold White Balance Table |
-|  | Boost user White Balance Table | Repeat as Cold White Balance Table |
-| HDMI2 | Repeat as HDMI1 |
-| HDMI3 | Repeat as HDMI1 |
-| Tunner | Repeat as HDMI1 |
-| IP | Repeat as HDMI1 |
-| Composite | Repeat as HDMI1 |
+This JSON describes supported formats, modes, dimming levels, DV modes, resolution, etc. It is **illustrative only** and not consumed at runtime by middleware or applications. The HAL API surface remains authoritative.
 
-##### Gamma Table
-| Gamma | Index | Property | Value Range |
-| --- | --- | --- | --- |
-| Cold Gamma Table | 0 | Red Gain | 0-1023 |
-|  |  | Green Gain | 0-1023 |
-|  |  | Blue Gain | 0-1023 |
-|  | 1 | Repeat as 0 |
-|  | 2 | Repeat as 0 |
-|  | . | |
-|  | 254 | Repeat as 0 |
-|  | 255 | Repeat as 0 |
-| Warm Gamma Table |Repeat as Cold Gamma Table |
-| Normal Gamma Table | Repeat as Cold Gamma Table |
-| User Gamma Table | Repeat as Cold Gamma Table |
-| Boorst cold Gamma Table | Repeat as Cold Gamma Table |
-| Boost warm Gamma Table | Repeat as Cold Gamma Table |
-| Boost normal Gamma Table | Repeat as Cold Gamma Table |
-| Boost user Gamma Table | Repeat as Cold Gamma Table |
+ 
 
-##### TMAX Table
-| TMAX | Value Range |
-| --- | --- |
-| Non Boost | 0 to 10000 |
-| Boost | 0 to 10000 |
-| Burst | 0 to 10000 |
+On boot:
+
+ 
+
+* `tvInit()` initialises default PQ parameters defined by the SoC vendor.
+
+* Default profiles are copied into override profiles.
+
+* Caller invokes HAL APIs to change parameters; changes persist in override DB.
+
+ 
+
+#### Example `pq_capabilities.json` Structure
+
+ 
+
+```json
+
+{
+
+  "Backlight": {
+
+    "rangeInfo": { "from": 0, "to": 100 },
+
+    "platformSupport": true,
+
+    "context": {
+
+      "Sports": { "SDR": ["HDMI1", "HDMI2", "IP"] },
+
+      "Game":   { "HDR10": ["HDMI1", "HDMI2"] }
+
+    }
+
+  },
+
+  "Brightness": {
+
+    "rangeInfo": { "from": 0, "to": 100 },
+
+    "platformSupport": true
+
+  },
+
+  "ColorTemperature": {
+
+    "rangeInfo": {
+
+      "options": ["Standard", "Warm", "Cold", "UserDefined"]
+
+    },
+
+    "platformSupport": true
+
+  }
+
+}
+
+```
+
+ 
+
+---
+
+ 
 
 ### Threading Model
 
-This interface is not required to be thread safe. 
-There are no constraints on thread creation or signal handling. 
+ 
+
+The HAL is not required to be thread safe.
+
+Callbacks must not block or be re-entrant.
+
+ 
+
+---
+
+ 
 
 ### Process Model
 
-This interface is expected to support a single instantiation with a single process.
+ 
+
+Single instantiation, single process supported.
+
+ 
+
+---
+
+ 
 
 ### Memory Model
 
-The caller is responsible for allocating and cleaning up any memory used.
+ 
+
+Callers allocate/frees memory unless HAL returns internal structures (e.g., `tvContextCaps_t**`), which remain valid for the lifetime of the process.
+
+ 
+
+---
+
+ 
 
 ### Power Management Requirements
 
-This interface is not required to participate in power management.
+ 
+
+No explicit power management required.
+
+ 
+
+---
+
+ 
 
 ### Asynchronous Notification Model
 
-This interface requires callback notification registration for VideoFormatChange, VideoResolutionChange, VideoFrameRateChange, VideoContentChange. The caller must return the callback context as fast as possible and will not block.
+ 
+
+Callbacks for VideoFormatChange, VideoResolutionChange, VideoFrameRateChange, and VideoContentChange must return immediately.
+
+ 
+
+Ordering recommendation: **Format → Resolution → FrameRate → Content**.
+
+ 
+
+---
+
+ 
 
 ### Blocking calls
 
-This interface is required to have no blocking calls.
+ 
+
+* Fast path (<10ms): All Get/Set APIs
+
+* Slow path (<100ms): DB reloads, reapplying PQ after format changes
+
+* Async required for operations exceeding thresholds
+
+ 
+
+---
+
+ 
 
 ### Internal Error Handling
 
-All `APIs` must return error synchronously as return argument.
+ 
+
+| Error Code                        | Meaning                           | Caller Action              |
+
+| --------------------------------- | --------------------------------- | -------------------------- |
+
+| `tvERROR_NONE`                    | Success                           | Continue                   |
+
+| `tvERROR_OPERATION_NOT_SUPPORTED` | Not supported on platform/context | Skip gracefully            |
+
+| `tvERROR_INVALID_STATE`           | Invalid lifecycle state           | Retry after re-init        |
+
+| `tvERROR_INVALID_PARAM`           | Invalid/out-of-range arg          | Clamp/retry                |
+
+| `tvERROR_UNKNOWN`                 | Unspecified error                 | Log, retry/fail gracefully |
+
+ 
+
+---
+
+ 
 
 ### Persistence Model
 
-Each vendor needs to define their own config file which is expected to be stored in rootfs and this must be a readonly.
-Config file must contain the supported formats, picture modes, dimming modes, dvModes, resolution etc.
+ 
+
+Vendor config file (read-only, rootfs) defines supported features.
+
+Default DB copied to override DB at boot.
+
+ 
+
+---
+
+ 
 
 ## Non-functional requirements
 
-Following non-functional requirement must be supported by the TV Settings `HAL` component:
+ 
 
-### Logging and debugging requirements
+* **Logging**: DEBUG, INFO, ERROR. DEBUG disabled by default.
 
-This interface is required to support DEBUG, INFO and ERROR messages. DEBUG is required to be disabled by default and enabled when needed.
+* **Performance**: No excessive memory/CPU usage.
 
-### Memory and performance requirements
+* **Quality**: Coverity, Valgrind, Black Duck/FossID, zero warnings.
 
-This interface is required  to not cause excessive memory and `CPU` utilization.
+* **Build**: Outputs `libtvsettings-hal.so`.
 
-### Quality Control
+* **Versioning**: Header-based versioning; JSON only illustrative.
 
-- This interface is required to perform static analysis, our preferred tool is Coverity.
-- Have a zero-warning policy with regards to compiling. All warnings must be treated as errors.
-- Use of memory analysis tools like Valgrind are encouraged to identify leaks/corruptions.
-- `HAL` Tests will endeavour to create worst case scenarios to assist investigations.
-- Copyright validation is required to be performed, e.g.: `Black duck`, `FossID`.
-- Improvements by any party to the testing suite are required to be fed back.
+ 
 
-### Licensing
+---
 
-This interface is expected to get released under the Apache License 2.0.
-
-### Build Requirements
-
-TV Settings `HAL` source code must build into a shared library and must be named as `libtvsettings-hal.so`.
-  
-### Variability Management
-
-Any changes in the `APIs` must be reviewed and approved by component architects.
-
-### Platform or Product Customization
-
-Product or platform specification requirements will be handled in vendor specific config file.
+ 
 
 ## Interface API Documentation
 
-`API` documentation will be provided by Doxygen which will be generated from the header file(s).
+ 
 
 ### Theory of operation and key concepts
 
-This interface handles various functionalities/requests related to Picture Quality settings :
+ 
 
-- Brightness
-- Contrast
-- Hue
-- Saturation
-- White Balance
-- Sharpness
-- Color Temperature
-- Backlight 
-- Aspect Ratio
-- Dimming Modes
-- Local Dimming Level
-- Low Latency state
-- Notify Video Format Change
-- Notify Video Resolution Change
-- Notify Video FrameRate Change
-- Notify Video Content Change
+* Brightness, Contrast, Hue, Saturation, Sharpness
 
-There are other platform specific Picture Quality settings that can be managed by this interface :
+* Colour Temperature
 
-- CMS
-- Dolby Vision
+* White Balance
+
+* Backlight, Aspect Ratio, Dimming Modes, Local Dimming Level
+
+* Low Latency Mode
+
+* Video Format/Resolution/FrameRate/Content notifications
+
+ 
+
+**White Balance Model:**
+
+ 
+
+* Gains: 0–2047
+
+* Offsets: −1024 to +1024
+
+* Enums: `R_GAIN`, `G_GAIN`, `B_GAIN`, `R_POST_OFFSET`, `G_POST_OFFSET`, `B_POST_OFFSET`
+
+ 
+
+**Colour Temperature Strings vs Enums:**
+
+ 
+
+| JSON string   | API enum                     |
+
+| ------------- | ---------------------------- |
+
+| Standard      | `tvColorTemp_STANDARD`       |
+
+| Warm          | `tvColorTemp_WARM`           |
+
+| Cold          | `tvColorTemp_COLD`           |
+
+| UserDefined   | `tvColorTemp_USER`           |
+
+| BoostStandard | `tvColorTemp_BOOST_STANDARD` |
+
+| BoostWarm     | `tvColorTemp_BOOST_WARM`     |
+
+| BoostCold     | `tvColorTemp_BOOST_COLD`     |
+
+| BoostUser     | `tvColorTemp_BOOST_USER`     |
+
+ 
+
+---
+
+ 
+
+## Tables
+
+ 
+
+### Picture Property Table
+
+ 
+
+| Video Source | Video Format | Picture Mode | Picture Property           |
+
+| ------------ | ------------ | ------------ | -------------------------- |
+
+| HDMI1        | SDR          | Standard     | Brightness, Contrast, Hue… |
+
+| HDMI1        | HDR10        | Standard     | Brightness, Contrast, Hue… |
+
+| HDMI2        | SDR/HDR10    | Standard     | Repeat as HDMI1            |
+
+| IP           | SDR/HDR10    | Standard     | Repeat as HDMI1            |
+
+ 
+
+---
+
+ 
+
+### Picture Association Table
+
+ 
+
+| Video Source | Video Format | Picture Mode(s)               |
+
+| ------------ | ------------ | ----------------------------- |
+
+| HDMI1        | SDR          | Standard, Movie, Sports, Game |
+
+| HDMI1        | HDR10        | Standard, Movie, Sports, Game |
+
+| HDMI2        | SDR/HDR10    | Repeat as HDMI1               |
+
+| IP           | SDR/HDR10    | Repeat as HDMI1               |
+
+ 
+
+---
+
+ 
+
+### White Balance Table
+
+ 
+
+| Video Source | WB Table    | Property          | Value Range     |
+
+| ------------ | ----------- | ----------------- | --------------- |
+
+| HDMI1        | Cold        | R/G/B Gain        | 0–2047          |
+
+| HDMI1        | Cold        | R/G/B Offset      | −1024 to +1024  |
+
+| HDMI1        | Warm/Normal | R/G/B Gain/Offset | Repeat as Cold  |
+
+| HDMI2/IP     | All modes   | All properties    | Repeat as HDMI1 |
+
+ 
+
+---
+
+ 
+
+### Gamma Table
+
+ 
+
+| Gamma Table   | Index | Property   | Value Range |
+
+| ------------- | ----- | ---------- | ----------- |
+
+| Cold/Warm/... | 0–255 | R/G/B Gain | 0–1023      |
+
+ 
+
+---
+
+ 
+
+### TMAX Table
+
+ 
+
+| Mode      | Value Range |
+
+| --------- | ----------- |
+
+| Non-Boost | 0–10000     |
+
+| Boost     | 0–10000     |
+
+| Burst     | 0–10000     |
+
+ 
+
+---
+
+ 
+
+## Diagrams
+
+ 
+
+### Init and Callback Sequence
+
+ 
+
+```mermaid
+
+sequenceDiagram
+
+  participant Caller
+
+  participant HAL
+
+  participant OPPDB
+
+  participant DPPDB
+
+  participant Driver
+
+ 
+
+  Caller->>HAL: tvInit
+
+  HAL->>Driver: Allocate resources
+
+  Driver-->>HAL: return
+
+  HAL->>DPPDB: Read default profiles
+
+  DPPDB-->>HAL: return
+
+  HAL->>OPPDB: Copy to override
+
+  OPPDB-->>HAL: return
+
+  HAL-->>Caller: return
+
+```
+
+ 
+
+### Set/Get/Save Picture Quality
+
+ 
+
+```mermaid
+
+sequenceDiagram
+
+  Caller->>HAL: SetPQ
+
+  HAL->>Driver: Apply PQ
+
+  Driver-->>HAL: return
+
+  HAL->>OPPDB: Save PQ
+
+  OPPDB-->>HAL: return
+
+  HAL-->>Caller: return
+
+```
+
+ 
+
+### Set With SaveOnly Flag
+
+ 
+
+```mermaid
+
+sequenceDiagram
+
+  alt SaveOnly=0
+
+    Caller->>HAL: SetColourTemp
+
+    HAL->>Driver: Apply
+
+    Driver-->>HAL: return
+
+  else SaveOnly=1
+
+    Caller->>HAL: SetColourTemp
+
+    HAL->>OPPDB: Save only
+
+    OPPDB-->>HAL: return
+
+  end
+
+```
+
+ 
+
+### Gamma/TMAX Sequence
+
+ 
+
+```mermaid
+
+sequenceDiagram
+
+  Caller->>HAL: SetGammaTable
+
+  HAL->>Driver: Apply Gamma
+
+  Driver-->>HAL: return
+
+  Caller->>HAL: SaveGammaTable
+
+  HAL->>OPPDB: Save Gamma
+
+  OPPDB-->>HAL: return
+
+```
+
+ 
+
+### Terminate Sequence
+
+ 
+
+```mermaid
+
+sequenceDiagram
+
+  Caller->>HAL: tvTerm
+
+  HAL->>Driver: Release resources
+
+  Driver-->>HAL: return
+
+```
+
+ 
+
+### Functional State Diagram
+
+ 
+
+```mermaid
+
+stateDiagram-v2
+
+  [*] --> Closed
+
+  Closed --> Open: tvInit
+
+  Open --> Control: Set/Get PQ
+
+  Control --> Validate: Driver returns status
+
+  Validate --> Open
+
+  Open --> Monitor: Watch events
+
+  Monitor --> Notify: Notify events
+
+  Notify --> Monitor
+
+```
+
+ 
+
+From: Weatherup, Gerald (Senior Product Architect) <Gerald.Weatherup@sky.uk>
+Sent: Tuesday, September 2, 2025 17:46
+To: Patel, Utkarsh (Senior Software Engineer) <utkarsh.patel@sky.uk>
+Subject: New doc - how does this look?
+
+ 
+
+# TV Settings HAL Documentation
+
+ 
+
+## Table of Contents
+
+ 
+
+* [Acronyms, Terms and Abbreviations](#acronyms-terms-and-abbreviations)
+
+* [Description](#description)
+
+* [Component Runtime Execution Requirements](#component-runtime-execution-requirements)
+
+ 
+
+  * [Initialization and Startup](#initialization-and-startup)
+
+ 
+
+    * [Table Format](#table-format)
+
+  * [Threading Model](#threading-model)
+
+  * [Process Model](#process-model)
+
+  * [Memory Model](#memory-model)
+
+  * [Power Management Requirements](#power-management-requirements)
+
+  * [Asynchronous Notification Model](#asynchronous-notification-model)
+
+  * [Blocking calls](#blocking-calls)
+
+  * [Internal Error Handling](#internal-error-handling)
+
+  * [Persistence Model](#persistence-model)
+
+* [Non-functional requirements](#non-functional-requirements)
+
+ 
+
+  * [Logging and debugging requirements](#logging-and-debugging-requirements)
+
+  * [Memory and performance requirements](#memory-and-performance-requirements)
+
+  * [Quality Control](#quality-control)
+
+  * [Licensing](#licensing)
+
+  * [Build Requirements](#build-requirements)
+
+  * [Variability Management](#variability-management)
+
+  * [Platform or Product Customization](#platform-or-product-customization)
+
+* [Interface API Documentation](#interface-api-documentation)
+
+ 
+
+  * [Theory of operation and key concepts](#theory-of-operation-and-key-concepts)
+
+  * [Diagrams](#diagrams)
+
+ 
+
+## Acronyms, Terms and Abbreviations
+
+ 
+
+* `CPU` - Central Processing Unit
+
+* `HAL` - Hardware Abstraction Layer
+
+* `PQ`  - Picture Quality
+
+* `SOC` - System on Chip
+
+* `OEM` - Original Equipment Manufacturer
+
+* `ALS` - Auto Light Sensor
+
+* `API` - Application Programming Interface
+
+* `DV`  - Dolby Vision
+
+* `CMS` - Colorspace Management System
+
+* `TMAX`- Temperature MAX
+
+* `SRD` - Standard Dynamic Range
+
+* `HDR` - High Dynamic Range
+
+* `HLG` - Hybrid Log Gamma
+
+* `UHD` - Ultra High Definition
+
+* `LDIM`- Local Dimming
+
+ 
+
+## Description
+
+ 
+
+TV Settings HAL is an interface which provides APIs to modify and control picture quality parameters, dimming modes and auto backlight modes.
+
+ 
+
+```mermaid
+
+flowchart TD
+
+  Caller <---> HAL[TV Settings HAL]
+
+  HAL <---> Driver[Video and Picture Quality Driver]
+
+```
+
+ 
+
+## Component Runtime Execution Requirements
+
+ 
+
+### Initialization and Startup
+
+ 
+
+The caller must initialize the APIs with picture quality modes for specific platforms and initiate communication with picture quality drivers.
+
+ 
+
+The capabilities of a specific platform with respect to TV picture configuration are defined in a config file `pq_capabilities.json`. This JSON expresses supported formats, picture modes, dimming modes, DV modes, resolution, etc. It is illustrative and platform-tailored, not consumed directly by middleware or apps. The HAL API surface remains the contract.
+
+ 
+
+Caller must initialize by calling `tvInit()` which initializes the parameters in the default picture property database. These parameters are decided by the SoC vendor based on platform capability. On every bootup the default picture profile database will be copied to the override picture profile database.
+
+ 
+
+#### Capability Discovery
+
+ 
+
+Vendors may extend `pq_capabilities.json` for their platforms, but the HAL exposes only the enums defined in `tvTypes.h`. If a capability is not available on a platform/context, the HAL API must indicate that through return codes (e.g., `tvERROR_OPERATION_NOT_SUPPORTED`).
+
+ 
+
+**Example JSON structure (illustrative):**
+
+ 
+
+```json
+
+{
+
+  "Backlight": {
+
+    "rangeInfo": { "from": 0, "to": 100 },
+
+    "platformSupport": true,
+
+    "context": {
+
+      "Sports": { "SDR": ["HDMI1", "HDMI2", "IP"] },
+
+      "Game":   { "HDR10": ["HDMI1", "HDMI2"] }
+
+    }
+
+  },
+
+  "Brightness": {
+
+    "rangeInfo": { "from": 0, "to": 100 },
+
+    "platformSupport": true
+
+  },
+
+  "ColorTemperature": {
+
+    "rangeInfo": {
+
+      "options": ["Standard", "Warm", "Cold", "UserDefined"]
+
+    },
+
+    "platformSupport": true
+
+  }
+
+}
+
+```
+
+ 
+
+This example shows how ranges, support flags, and context mappings are expressed. Actual platform JSONs may add or omit fields as needed.
+
+ 
+
+---
+
+ 
+
+### Threading Model
+
+ 
+
+This interface is not required to be thread safe.
+
+There are no constraints on thread creation or signal handling.
+
+ 
+
+---
+
+ 
+
+### Process Model
+
+ 
+
+This interface is expected to support a single instantiation with a single process.
+
+ 
+
+---
+
+ 
+
+### Memory Model
+
+ 
+
+The caller is responsible for allocating and cleaning up any memory used.
+
+ 
+
+Some APIs return HAL-allocated structures (e.g., `tvContextCaps_t**`). These are owned by the HAL and remain valid for the lifetime of the process. The caller must not free them.
+
+ 
+
+---
+
+ 
+
+### Power Management Requirements
+
+ 
+
+This interface is not required to participate in power management.
+
+ 
+
+---
+
+ 
+
+### Asynchronous Notification Model
+
+ 
+
+This interface requires callback notification registration for VideoFormatChange, VideoResolutionChange, VideoFrameRateChange, and VideoContentChange.
+
+ 
+
+Callbacks are invoked in a HAL-managed thread context. They are not re-entrant, and ordering is not guaranteed unless explicitly documented. Recommended order of notification: Format → Resolution → FrameRate → Content. Callers must return from the callback quickly.
+
+ 
+
+---
+
+ 
+
+### Blocking calls
+
+ 
+
+This interface is required to have no blocking calls.
+
+ 
+
+Guidance:
+
+ 
+
+* Fast-path (<10ms): All Get/Set APIs.
+
+* Slow-path (<100ms): DB reloads or PQ re-application after format change.
+
+* Operations expected to exceed these thresholds must use asynchronous paths.
+
+ 
+
+---
+
+ 
+
+### Internal Error Handling
+
+ 
+
+All APIs must return errors synchronously as return values.
+
+ 
+
+Standard error codes include:
+
+ 
+
+| Error Code                        | Meaning                                           | Caller Action                 |
+
+| --------------------------------- | ------------------------------------------------- | ----------------------------- |
+
+| `tvERROR_NONE`                    | Operation successful                              | Continue                      |
+
+| `tvERROR_OPERATION_NOT_SUPPORTED` | Capability not supported on this platform/context | Degrade gracefully or skip    |
+
+| `tvERROR_INVALID_STATE`           | Operation attempted in invalid lifecycle state    | Retry after re-init           |
+
+| `tvERROR_INVALID_PARAM`           | Argument out of range or invalid                  | Clamp/retry with valid value  |
+
+| `tvERROR_UNKNOWN`                 | Unspecified internal error                        | Log, retry or fail gracefully |
+
+ 
+
+---
+
+ 
+
+### Persistence Model
+
+ 
+
+Each vendor must define their own config file (read-only, in rootfs).
+
+The config must contain supported formats, picture modes, dimming modes, DV modes, resolution etc.
+
+ 
+
+---
+
+ 
+
+## Non-functional requirements
+
+ 
+
+Following non-functional requirement must be supported by the TV Settings HAL component:
+
+ 
+
+### Logging and debugging requirements
+
+ 
+
+This interface is required to support DEBUG, INFO and ERROR messages. DEBUG must be disabled by default and enabled when needed.
+
+ 
+
+---
+
+ 
+
+### Memory and performance requirements
+
+ 
+
+This interface must not cause excessive memory or CPU utilization.
+
+ 
+
+---
+
+ 
+
+### Quality Control
+
+ 
+
+* Perform static analysis, preferred tool: Coverity.
+
+* Zero-warning policy when compiling.
+
+* Memory analysis (Valgrind) encouraged.
+
+* Copyright validation (Black Duck, FossID) required.
+
+* Tests must cover worst-case scenarios.
+
+ 
+
+---
+
+ 
+
+### Licensing
+
+ 
+
+This interface is expected to be released under the Apache License 2.0.
+
+ 
+
+---
+
+ 
+
+### Build Requirements
+
+ 
+
+TV Settings HAL source code must build into a shared library and must be named as `libtvsettings-hal.so`.
+
+ 
+
+---
+
+ 
+
+### Variability Management
+
+ 
+
+Any changes in the APIs must be reviewed and approved by component architects.
+
+ 
+
+Capability variability is expressed in JSON; API variability is strictly versioned in headers (`tvTypes.h`).
+
+ 
+
+---
+
+ 
+
+### Platform or Product Customization
+
+ 
+
+Product or platform specific requirements (e.g., PQ tuning, picture modes) must be handled in vendor-specific config files.
+
+ 
+
+---
+
+ 
+
+## Interface API Documentation
+
+ 
+
+API documentation is generated by Doxygen from header files.
+
+ 
+
+### Theory of operation and key concepts
+
+ 
+
+This interface handles the following functionalities:
+
+ 
+
+* Brightness
+
+* Contrast
+
+* Hue
+
+* Saturation
+
+* Sharpness
+
+* Color Temperature
+
+* White Balance
+
+* Backlight
+
+* Aspect Ratio
+
+* Dimming Modes
+
+* Local Dimming Level
+
+* Low Latency
+
+* Notifications: Video Format, Resolution, FrameRate, Content
+
+ 
+
+**White Balance Model**
+
+ 
+
+* Parameters: R/G/B gains (0–2047), offsets (−1024 to +1024).
+
+* Exposed via `tvRGBType_t` enums (`R_GAIN`, `G_GAIN`, `B_GAIN`, `R_POST_OFFSET`, `G_POST_OFFSET`, `B_POST_OFFSET`).
+
+* Calibration may be global or per-source, using `tvColorTempSourceOffset_t`.
+
+* Defaults are vendor-calibrated; overrides persist in DB.
+
+ 
+
+**Colour Temperature: Strings vs Enums**
+
+ 
+
+* HAL APIs use `tvColorTemp_t` enums (authoritative).
+
+* JSON uses strings (illustrative/reference).
+
+* Reference mapping:
+
+ 
+
+| JSON string     | API enum                     |
+
+| --------------- | ---------------------------- |
+
+| `Standard`      | `tvColorTemp_STANDARD`       |
+
+| `Warm`          | `tvColorTemp_WARM`           |
+
+| `Cold`          | `tvColorTemp_COLD`           |
+
+| `UserDefined`   | `tvColorTemp_USER`           |
+
+| `BoostStandard` | `tvColorTemp_BOOST_STANDARD` |
+
+| `BoostWarm`     | `tvColorTemp_BOOST_WARM`     |
+
+| `BoostCold`     | `tvColorTemp_BOOST_COLD`     |
+
+| `BoostUser`     | `tvColorTemp_BOOST_USER`     |
+
+ 
+
+If a valid enum is not supported on a given platform/context, the HAL returns `tvERROR_OPERATION_NOT_SUPPORTED`.
+
+ 
+
+---
+
+ 
 
 ### Diagrams
 
+ 
+
 #### Operational Call Diagram
+
+ 
+
 ##### Init and Callback Sequence
+
+ 
+
 ```mermaid
+
 sequenceDiagram
-participant Caller as Caller
-    participant HAL as TV Settings HAL
-    participant OPPDB as Override Picture Profile DB
-    participant DPPDB as Default Picture Profile DB
-    participant Driver as SoC
 
-    Caller->>HAL:tvInit()
-    Note over HAL: Initialize the TV Setting HAL APIs
-    HAL->>Driver: Allocates resources
-    Driver-->>HAL:return
-    HAL->>DPPDB: tvSettings_GetDefaultPQParams() Read default picture profile properites
-    DPPDB-->>HAL:return
-    HAL->>OPPDB: Copy default picture profile properites
-    OPPDB-->>HAL:return
-    HAL-->>Caller:return
-    Caller->>HAL: SetTVPictureMode()
-    Note over HAL: Set the default picture mode entertainment
-    HAL->>OPPDB: tvSettings_GetPQParams() Read associated picture properties
-    OPPDB-->>HAL:return
-    Note over HAL: Reload gamma and white balance if there is a colour temperature value change.
-    HAL->>OPPDB: Read associated Gamma and White balance
-    OPPDB-->>HAL:return
-    Note over HAL: Reload TMAX if there is a LDIM level change
-    HAL->>OPPDB: Read associated TMAX value
-    OPPDB-->>HAL:return
-    Note over HAL: Apply the new picture properties, gamma, TMAX and white balance if they have changed.
-    HAL->>Driver: Apply new picture properties
-    Driver-->>HAL:return
-    HAL->>OPPDB: Update the Picture mode association table
-    Note over HAL: Associate new picture mode to current video format and current video source
-    OPPDB-->>HAL:return
-    HAL-->>Caller:return
+  participant Caller as Caller
 
-    Caller->>HAL: RegisterCallBack
-    Note over HAL:RegisterCallBack for Format/Resolution/FrameRate/VideoContent Change
-    HAL-->>Caller:return
+  participant HAL as TV Settings HAL
 
-    Driver-->>HAL:Notify on video format/framerate/resolution/videocontent/videosource change
-    Note over HAL: Reload associated Picture mode and all associated picture properties if there is video format and video source change.
-    Note over HAL: However video source change will not be notified to caller
-    HAL->>OPPDB: Read associated picture mode
-    OPPDB-->>HAL:return
-    HAL->>OPPDB: Read associated picture properties
-    OPPDB-->>HAL:return
-    Note over HAL: Reload gamma and white balance if there is a colour temperature value change.
-    HAL->>OPPDB: Read associated Gamma and White balance
-    OPPDB-->>HAL:return
-    Note over HAL: Reload TMAX if there is a LDIM level change
-    HAL->>OPPDB: Read associated TMAX value
-    OPPDB-->>HAL:return
-    Note over HAL: Apply the new picture properties, gamma and white balance if they have changed.
-    HAL->>Driver: Apply new picture properties
-    Driver-->>HAL: return
-    HAL-->>Caller:Notify on video format/framerate/resolution/content change
+  participant OPPDB as Override Picture Profile DB
+
+  participant DPPDB as Default Picture Profile DB
+
+  participant Driver as SoC
+
+ 
+
+  Caller->>HAL: tvInit
+
+  Note over HAL: Initialize TV Settings HAL APIs
+
+  HAL->>Driver: Allocate resources
+
+  Driver-->>HAL: return
+
+  HAL->>DPPDB: Read default picture profile properties
+
+  DPPDB-->>HAL: return
+
+  HAL->>OPPDB: Copy default to override
+
+  OPPDB-->>HAL: return
+
+  HAL-->>Caller: return
+
+ 
+
+  Caller->>HAL: SetTVPictureMode
+
+  Note over HAL: Set default picture mode entertainment
+
+  HAL->>OPPDB: Read associated picture properties
+
+  OPPDB-->>HAL: return
+
+  Note over HAL: Reload gamma and white balance if colour temperature changed
+
+  HAL->>OPPDB: Read associated gamma and white balance
+
+  OPPDB-->>HAL: return
+
+  Note over HAL: Reload TMAX if local dimming level changed
+
+  HAL->>OPPDB: Read TMAX value
+
+  OPPDB-->>HAL: return
+
+  HAL->>Driver: Apply picture properties
+
+  Driver-->>HAL: return
+
+  HAL->>OPPDB: Update picture mode association
+
+  OPPDB-->>HAL: return
+
+  HAL-->>Caller: return
+
+ 
+
+  Caller->>HAL: RegisterCallback
+
+  Note over HAL: Register for format, resolution, framerate, content changes
+
+  HAL-->>Caller: return
+
+ 
+
+  Driver-->>HAL: Notify video format, framerate, resolution, content change
+
+  Note over HAL: Reload associated mode and properties on source or format change
+
+  HAL->>OPPDB: Read picture mode and properties
+
+  OPPDB-->>HAL: return
+
+  HAL->>Driver: Apply updated properties
+
+  Driver-->>HAL: return
+
+  HAL-->>Caller: Notify change
+
 ```
 
 ##### Set/Get/Save Picture Quality Parameter Sequence
