@@ -1578,7 +1578,12 @@ tvError_t GetLowLatencyStateCaps(int* max_latency, tvContextCaps_t ** context_ca
  * The value is discarded and default value from picture profile database is used when primary video format
  * or primary video source or picture mode changes.
  *
- * @param[in] dynamicContrastEnable  - Dynamic contrast enable flag value (valid values are "enabled" for enable and "disabled" for disable)
+ * Note: This API is independent of EnableDynamicContrast(). The dynamic contrast module is enabled by default,
+ * and this API can be used directly to control runtime behavior.
+ *
+ * @param[in] dynamicContrastMode - Dynamic contrast flag value:
+ *                                    - "enabled": Enable dynamic contrast
+ *                                    - "disabled": Disable dynamic contrast
  *
  * @return tvError_t
  *
@@ -1593,7 +1598,7 @@ tvError_t GetLowLatencyStateCaps(int* max_latency, tvContextCaps_t ** context_ca
  * @see GetDynamicContrast()
  */
 
-tvError_t SetDynamicContrast(const char *dynamicContrastEnable);
+tvError_t SetDynamicContrast(const char *dynamicContrastMode);
 
 /**
  * @brief Gets the current Dynamic contrast mode
@@ -1601,7 +1606,12 @@ tvError_t SetDynamicContrast(const char *dynamicContrastEnable);
  * This function gets the current dynamic contrast value for the primary video source selected,
  * primary video format played and picture mode selected.
  *
- * @param[out] isDynamicContrastEnabled        - Current dynamic contrast mode flag value. (valid values are "enabled" for enable and "disabled" for disable)
+ * Note: This API is independent of EnableDynamicContrast(). The dynamic contrast module is enabled by default,
+ * and this API can be used directly to control runtime behavior.
+ *
+ * @param[out] dynamicContrastMode - Dynamic contrast flag value:
+ *                                    - "enabled": Enable dynamic contrast
+ *                                    - "disabled": Disable dynamic contrast
  *
  * @return tvError_t
  *
@@ -1615,7 +1625,7 @@ tvError_t SetDynamicContrast(const char *dynamicContrastEnable);
  *
  * @see SetDynamicContrast()
  */
-tvError_t GetDynamicContrast(char *isDynamicContrastEnabled);
+tvError_t GetDynamicContrast(char *dynamicContrastMode);
 
 /**
  * @brief Sets and saves the dynamic gamma
@@ -3013,11 +3023,14 @@ tvError_t EnableWhiteBalance(bool mode);
 /**
  * @brief Enables or disables the dynamic contrast module
  *
- * This function enables or disabless the dynamic contrast module.
+ * This function enables or disables the dynamic contrast module at the system level.
+ * It is intended for factory-side configuration and is not required for regular PQ pipeline operations.
+ * By default, the dynamic contrast module is enabled in the PQ pipeline, so SetDynamicContrast() and GetDynamicContrast()
+ * can be used directly without invoking this API.
  *
- * @param[in] mode                 - Valid values are true and false. @n
- *                                     true when dynamic contrast module needs to be enabled @n
- *                                      false when dynamic contrast needs to be disabled.
+ * @param[in] mode - Boolean flag to control module state:
+ *                   - true: Enable dynamic contrast module
+ *                   - false: Disable dynamic contrast module
  *
  * @return tvError_t
  *
