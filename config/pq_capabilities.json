@@ -1847,6 +1847,73 @@
             }
         }
     },
+    "DolbyVisionMode": {
+        "platformSupport": true,
+        "rangeInfo": {
+            "options": [
+                "Dark",
+                "Bright"
+            ]
+        },
+        "context": {
+            "Standard": {
+                "HDR10": [
+                    "HDMI1",
+                    "HDMI2",
+                    "HDMI3",
+                    "IP"
+                ],
+                "HLG": [
+                    "HDMI1",
+                    "HDMI2",
+                    "HDMI3",
+                    "IP"
+                ]
+            },
+            "Sports": {
+                "HDR10": [
+                    "IP",
+                    "HDMI1",
+                    "HDMI2",
+                    "HDMI3"
+                ],
+                "HLG": [
+                    "IP",
+                    "HDMI1",
+                    "HDMI2",
+                    "HDMI3"
+                ]
+            },
+            "Theater": {
+                "HDR10": [
+                    "HDMI1",
+                    "HDMI2",
+                    "HDMI3",
+                    "IP"
+                ],
+                "HLG": [
+                    "HDMI1",
+                    "HDMI2",
+                    "HDMI3",
+                    "IP"
+                ]
+            },
+            "EnergySaving": {
+                "HDR10": [
+                    "HDMI1",
+                    "HDMI2",
+                    "HDMI3",
+                    "IP"
+                ],
+                "HLG": [
+                    "HDMI1",
+                    "HDMI2",
+                    "HDMI3",
+                    "IP"
+                ]
+            }
+        }
+    },
     "PictureMode": {
         "platformSupport": true,
         "rangeInfo": {
