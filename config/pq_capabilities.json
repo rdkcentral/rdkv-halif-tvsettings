@@ -1718,6 +1718,11 @@
             "Cold",
             "UserDefined"
         ],
+         "color": [
+            "Red",
+            "Green",
+            "Blue"
+        ],
         "context": {
             "Standard": {
                 "SDR": [
