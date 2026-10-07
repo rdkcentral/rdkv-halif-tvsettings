@@ -1861,12 +1861,14 @@
                     "HDMI1",
                     "HDMI2",
                     "HDMI3",
+                    "HDMI4",
                     "IP"
                 ],
                 "HLG": [
                     "HDMI1",
                     "HDMI2",
                     "HDMI3",
+                    "HDMI4",
                     "IP"
                 ]
             },
@@ -1875,13 +1877,15 @@
                     "IP",
                     "HDMI1",
                     "HDMI2",
-                    "HDMI3"
+                    "HDMI3",
+                    "HDMI4"
                 ],
                 "HLG": [
                     "IP",
                     "HDMI1",
                     "HDMI2",
-                    "HDMI3"
+                    "HDMI3",
+                    "HDMI4"
                 ]
             },
             "Theater": {
@@ -1889,12 +1893,14 @@
                     "HDMI1",
                     "HDMI2",
                     "HDMI3",
+                    "HDMI4",
                     "IP"
                 ],
                 "HLG": [
                     "HDMI1",
                     "HDMI2",
                     "HDMI3",
+                    "HDMI4",
                     "IP"
                 ]
             },
@@ -1903,12 +1909,14 @@
                     "HDMI1",
                     "HDMI2",
                     "HDMI3",
+                    "HDMI4",
                     "IP"
                 ],
                 "HLG": [
                     "HDMI1",
                     "HDMI2",
                     "HDMI3",
+                    "HDMI4",
                     "IP"
                 ]
             }
