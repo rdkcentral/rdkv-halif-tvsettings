@@ -1768,8 +1768,10 @@ tvError_t SaveTVDolbyVisionMode(tvVideoSrcType_t videoSrcType, int pq_mode,tvVid
  * The `context_caps` parameter receives a pointer to a `tvContextCaps_t` structure
  * that lists the configuration contexts supported by the platform.
  *
- * The capabilities structures returned by this call are allocated by the HAL
- * function and shall be safe to reference for the lifetime of the process.
+ * The capability data returned by this call, including `dolby_mode` and
+ * `context_caps`, is allocated and owned by the HAL and remains valid for the
+ * lifetime of the process. The caller may read this data but must not modify
+ * or free it. No deallocation API is provided or required.
  *
  * If the platform does not support Dolby Vision modes, then
  * tvERROR_OPERATION_NOT_SUPPORTED is returned.
