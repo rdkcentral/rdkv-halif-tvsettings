@@ -1765,6 +1765,10 @@ tvError_t SaveTVDolbyVisionMode(tvVideoSrcType_t videoSrcType, int pq_mode,tvVid
  * This function gets the Dolby Vision mode capabilities from the DolbyVisionMode
  * section of the pq_capabilities.json.
  *
+ * If the product exposes `Dark` and `Bright` as picture modes through the
+ * `SetTVPictureMode()` and `GetTVPictureMode()` APIs, the `DolbyVisionMode`
+ * capability should not be used for the DV format.
+ *
  * The `context_caps` parameter receives a pointer to a `tvContextCaps_t` structure
  * that lists the configuration contexts supported by the platform.
  *
