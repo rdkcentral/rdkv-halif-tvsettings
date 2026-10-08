@@ -1760,6 +1760,45 @@ tvError_t GetTVDolbyVisionMode(tvDolbyMode_t *dolbyMode);
 tvError_t SaveTVDolbyVisionMode(tvVideoSrcType_t videoSrcType, int pq_mode,tvVideoFormatType_t videoFormatType,tvDolbyMode_t value);
 
 /**
+ * @brief Gets the Dolby Vision mode capabilities.
+ *
+ * This function gets the Dolby Vision mode capabilities from the DolbyVisionMode
+ * section of the pq_capabilities.json.
+ *
+ * If the product exposes `Dark` and `Bright` as picture modes through the
+ * `SetTVPictureMode()` and `GetTVPictureMode()` APIs, the `DolbyVisionMode`
+ * capability should not be used for the DV format.
+ *
+ * The `context_caps` parameter receives a pointer to a `tvContextCaps_t` structure
+ * that lists the configuration contexts supported by the platform.
+ *
+ * The capability data returned by this call, including `dolby_mode` and
+ * `context_caps`, is allocated and owned by the HAL and remains valid for the
+ * lifetime of the process. The caller may read this data but must not modify
+ * or free it. No deallocation API is provided or required.
+ *
+ * If the platform does not support Dolby Vision modes, then
+ * tvERROR_OPERATION_NOT_SUPPORTED is returned.
+ *
+ * @param[out] dolby_mode     - Returns a pointer to an array of supported Dolby Vision modes.
+ *                             - Values will be members of ::tvDolbyMode_t.
+ *                             - The returned array must not be freed by the caller.
+ * @param[out] num_dolby_mode - The number of supported Dolby Vision modes.
+ * @param[out] context_caps   - A capabilities structure listing the configuration contexts supported.
+ *
+ * @return tvError_t
+ *
+ * @retval tvERROR_NONE - Success
+ * @retval tvERROR_INVALID_PARAM - Parameter is invalid
+ * @retval tvERROR_INVALID_STATE - Interface is not initialized
+ * @retval tvERROR_OPERATION_NOT_SUPPORTED - Operation is not supported
+ * @retval tvERROR_GENERAL - Underlying failures - SoC, memory, etc
+ *
+ * @pre TvInit() should be called before calling this API
+ */
+tvError_t GetTVDolbyVisionModeCaps(tvDolbyMode_t** dolby_mode, size_t* num_dolby_mode, tvContextCaps_t** context_caps);
+
+/**
  * @brief Gets the supported picture modes and their count
  *
  * This function get the array of picture modes supported and their count
