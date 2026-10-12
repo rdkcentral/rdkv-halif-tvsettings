@@ -1847,6 +1847,109 @@
             }
         }
     },
+    "DolbyVisionMode": {
+        "platformSupport": true,
+        "rangeInfo": {
+            "options": [
+                "Dark",
+                "Bright"
+            ]
+        },
+        "context": {
+            "Standard": {
+                "HDR10": [
+                    "HDMI1",
+                    "HDMI2",
+                    "HDMI3",
+                    "HDMI4",
+                    "IP"
+                ],
+                "HLG": [
+                    "HDMI1",
+                    "HDMI2",
+                    "HDMI3",
+                    "HDMI4",
+                    "IP"
+                ],
+                "DV": [
+                    "HDMI1",
+                    "HDMI2",
+                    "HDMI3",
+                    "HDMI4",
+                    "IP"
+                ]
+            },
+            "Sports": {
+                "HDR10": [
+                    "IP",
+                    "HDMI1",
+                    "HDMI2",
+                    "HDMI3",
+                    "HDMI4"
+                ],
+                "HLG": [
+                    "IP",
+                    "HDMI1",
+                    "HDMI2",
+                    "HDMI3",
+                    "HDMI4"
+                ],
+                "DV": [
+                    "IP",
+                    "HDMI1",
+                    "HDMI2",
+                    "HDMI3",
+                    "HDMI4"
+                ]
+            },
+            "Theater": {
+                "HDR10": [
+                    "HDMI1",
+                    "HDMI2",
+                    "HDMI3",
+                    "HDMI4",
+                    "IP"
+                ],
+                "HLG": [
+                    "HDMI1",
+                    "HDMI2",
+                    "HDMI3",
+                    "HDMI4",
+                    "IP"
+                ],
+                "DV": [
+                    "HDMI1",
+                    "HDMI2",
+                    "HDMI3",
+                    "HDMI4",
+                    "IP"
+                ]
+            },
+            "EnergySaving": {
+                "HDR10": [
+                    "HDMI1",
+                    "HDMI2",
+                    "HDMI3",
+                    "HDMI4",
+                    "IP"
+                ],
+                "HLG": [
+                    "HDMI1",
+                    "HDMI2",
+                    "HDMI3",
+                    "HDMI4",
+                    "IP"
+                ],
+                "DV": [
+                    "HDMI1",
+                    "HDMI2",
+                    "HDMI3",
+                    "HDMI4",
+                    "IP"
+                ]
+            }
+        }
+    },
     "PictureMode": {
         "platformSupport": true,
         "rangeInfo": {
