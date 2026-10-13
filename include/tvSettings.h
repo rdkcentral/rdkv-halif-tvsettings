@@ -395,6 +395,7 @@ tvError_t GetBacklightCaps(int *max_backlight, tvContextCaps_t ** context_caps);
  * @pre TvInit() should be called before calling this API
  *
  * @see SetBacklight()
+ *
  */
 tvError_t GetBacklight(int *backlight);
 
@@ -428,10 +429,10 @@ tvError_t SetBacklight(int backlight);
  * and primary video source. The saved backlight value should be applied automatically whenever the
  * specified picture mode is selected, specified primary video format is played and specified primary video source is selected.
  * There will be no change in current backlight value in backlight HW.
- * The supported formats, sources, and modes must be fetched from the configuration details of each specific feature in the
- * PQ capability configuration file.
+ * The source, format, and picture mode shall be validated against the supported video sources, video formats, and
+ * picture modes specified in the PQ capability configuration file for the respective feature.
  *
- * @param[in] videoSrcType           - Source input value. Valid value will be a member of ::tvVideoSrcType_t
+ * @param[in] videoSrcType          - Source input value. Valid value will be a member of ::tvVideoSrcType_t
  * @param[in] pq_mode               - Picture mode index. Valid value will be a member of ::tvPQModeIndex_t
  * @param[in] videoFormatType       - Video format type value. Valid value will be a member of ::tvVideoFormatType_t
  * @param[in] value                 - Value of the backlight to be set. Valid range is (0 - 100)
@@ -637,8 +638,8 @@ tvError_t GetTVDimmingMode(char *dimmingMode);
  * There will be no change in current backlight dimming mode.
  * If peak brightness capablity of the panel changes as a result of dimming mode change in future reload the edid accordingly
  * to update VSVDB string if current video format is handled via Dolby Vision core.
- * The supported formats, sources, and modes must be fetched from the configuration details of each specific feature in the
- * PQ capability configuration file.
+ * The source, format, and picture mode shall be validated against the supported video sources, video formats, and
+ * picture modes specified in the PQ capability configuration file for the respective feature.
  *
  * @param[in] videoSrcType          - Source input value. Valid value will be a member of ::tvVideoSrcType_t
  * @param[in] pq_mode               - Picture mode index. Valid value will be a member of ::tvPQModeIndex_t
@@ -748,8 +749,8 @@ tvError_t GetLocalDimmingLevel(ldimStateLevel_t *ldimStateLevel);
  * There will be no change in current local dimming level applied in local dimming module.
  * If peak brightness capablity of the panel changes as a result of local dimming level change in future reload the edid accordingly
  * to update VSVDB string if current video format is handled via Dolby Vision core.
- * The supported formats, sources, and modes must be fetched from the configuration details of each specific feature in the
- * PQ capability configuration file.
+ * The source, format, and picture mode shall be validated against the supported video sources, video formats, and
+ * picture modes specified in the PQ capability configuration file for the respective feature.
  *
  * @param[in] videoSrcType          - Source input value. Valid value will be a member of ::tvVideoSrcType_t
  * @param[in] pq_mode               - Picture mode index. Valid value will be a member of ::tvPQModeIndex_t
@@ -851,10 +852,10 @@ tvError_t GetBrightness(int *brightness);
  * and primary video source. The saved brightness value should be applied automatically whenever the
  * specified picture mode is selected, specified primary video format is played and specified primary video source is selected.
  * There will be no change in current brightness value applied in PQ module.
- * The supported formats, sources, and modes must be fetched from the configuration details of each specific feature in the
- * PQ capability configuration file.
+ * The source, format, and picture mode shall be validated against the supported video sources, video formats, and
+ * picture modes specified in the PQ capability configuration file for the respective feature.
  *
- * @param[in] videoSrcType           - Source input value. Valid value will be a member of ::tvVideoSrcType_t
+ * @param[in] videoSrcType          - Source input value. Valid value will be a member of ::tvVideoSrcType_t
  * @param[in] pq_mode               - Picture mode index. Valid value will be a member of ::tvPQModeIndex_t
  * @param[in] videoFormatType       - Video format type value. Valid value will be a member of ::tvVideoFormatType_t
  * @param[in] value                 - Value of the brightness to be set. Valid range is (0 - 100)
@@ -950,15 +951,14 @@ tvError_t GetContrast(int *contrast);
 /**
  * @brief Saves the contrast value
  *
- *
  * This function saves the contrast value in picture profile database for the specific picture mode, primary video format type
  * and primary video source. The saved contrast value should be applied automatically whenever the
  * specified picture mode is selected, specified primary video format is played and specified primary video source is selected.
  * There will be no change in current contrast value applied in PQ module.
- * The supported formats, sources, and modes must be fetched from the configuration details of each specific feature in the
- * PQ capability configuration file.
+ * The source, format, and picture mode shall be validated against the supported video sources, video formats, and
+ * picture modes specified in the PQ capability configuration file for the respective feature.
  *
- * @param[in] videoSrcType           - Source input value. Valid value will be a member of ::tvVideoSrcType_t
+ * @param[in] videoSrcType          - Source input value. Valid value will be a member of ::tvVideoSrcType_t
  * @param[in] pq_mode               - Picture mode index. Valid value will be a member of ::tvPQModeIndex_t
  * @param[in] videoFormatType       - Video format type value. Valid value will be a member of ::tvVideoFormatType_t
  * @param[in] value                 - Value of the contrast to be set. Valid range is (0 - 100)
@@ -1057,8 +1057,8 @@ tvError_t GetSharpness(int *sharpness);
  * and primary video source. The saved sharpness value should be applied automatically whenever the
  * specified picture mode is selected, specified primary video format is played and specified primary video source is selected.
  * There will be no change in current sharpness value applied in PQ module.
- * The supported formats, sources, and modes must be fetched from the configuration details of each specific feature in the
- * PQ capability configuration file.
+ * The source, format, and picture mode shall be validated against the supported video sources, video formats, and
+ * picture modes specified in the PQ capability configuration file for the respective feature.
  *
  * @param[in] videoSrcType          - Source input value. Valid value will be a member of ::tvVideoSrcType_t
  * @param[in] pq_mode               - Picture mode index. Valid value will be a member of ::tvPQModeIndex_t
@@ -1159,10 +1159,10 @@ tvError_t GetSaturationCaps(int* max_saturation, tvContextCaps_t ** context_caps
  * and primary video source. The saved saturation value should be applied automatically whenever the
  * specified picture mode is selected, specified primary video format is played and specified primary video source is selected.
  * There will be no change in current saturation value applied in PQ module.
- * The supported formats, sources, and modes must be fetched from the configuration details of each specific feature in the
- * PQ capability configuration file.
+ * The source, format, and picture mode shall be validated against the supported video sources, video formats, and
+ * picture modes specified in the PQ capability configuration file for the respective feature.
  *
- * @param[in] videoSrcType           - Source input value. Valid value will be a member of ::tvVideoSrcType_t
+ * @param[in] videoSrcType          - Source input value. Valid value will be a member of ::tvVideoSrcType_t
  * @param[in] pq_mode               - Picture mode index. Valid value will be a member of ::tvPQModeIndex_t
  * @param[in] videoFormatType       - Video format type value. Valid value will be a member of ::tvVideoFormatType_t
  * @param[in] value                 - Value of the saturation to be set. Valid range is (0 - 100)
@@ -1261,10 +1261,10 @@ tvError_t GetHue(int *hue);
  * and primary video source. The saved hue value should be applied automatically whenever the
  * specified picture mode is selected, specified primary video format is played and specified primary video source is selected.
  * There will be no change in current hue value applied in PQ module.
- * The supported formats, sources, and modes must be fetched from the configuration details of each specific feature in the
- * PQ capability configuration file.
+ * The source, format, and picture mode shall be validated against the supported video sources, video formats, and
+ * picture modes specified in the PQ capability configuration file for the respective feature.
  *
- * @param[in] videoSrcType           - Source input value. Valid value will be a member of ::tvVideoSrcType_t
+ * @param[in] videoSrcType          - Source input value. Valid value will be a member of ::tvVideoSrcType_t
  * @param[in] pq_mode               - Picture mode index. Valid value will be a member of ::tvPQModeIndex_t
  * @param[in] videoFormatType       - Video format type value. Valid value will be a member of ::tvVideoFormatType_t
  * @param[in] value                 - Value of the hue to be set. Valid range is (0 - 100)
@@ -1368,10 +1368,10 @@ tvError_t GetColorTemperatureCaps(tvColorTemp_t** color_temp, size_t* num_color_
  * and primary video source. The saved color temperature value should be applied automatically whenever the
  * specified picture mode is selected, specified primary video format is played and specified primary video source is selected.
  * There will be no change in current color temperature value applied in PQ module.
- * The supported formats, sources, and modes must be fetched from the configuration details of each specific feature in the
- * PQ capability configuration file.
+ * The source, format, and picture mode shall be validated against the supported video sources, video formats, and
+ * picture modes specified in the PQ capability configuration file for the respective feature.
  *
- * @param[in] videoSrcType           - Source input value. Valid value will be a member of ::tvVideoSrcType_t
+ * @param[in] videoSrcType          - Source input value. Valid value will be a member of ::tvVideoSrcType_t
  * @param[in] pq_mode               - Picture mode index. Valid value will be a member of ::tvPQModeIndex_t
  * @param[in] videoFormatType       - Video format type value. Valid value will be a member of ::tvVideoFormatType_t
  * @param[in] value                 - Value of the color temperature to be set. Valid value will be member of ::tvColorTemp_t
@@ -1437,10 +1437,10 @@ tvError_t GetAspectRatio(tvDisplayMode_t *dispMode);
  * and primary video source. The saved aspect ratio value should be applied automatically whenever the
  * specified picture mode is selected, specified primary video format is played and specified primary video source is selected.
  * There will be no change in current aspect ratio value applied in PQ module.
- * The supported formats, sources, and modes must be fetched from the configuration details of each specific feature in the
- * PQ capability configuration file.
+ * The source, format, and picture mode shall be validated against the supported video sources, video formats, and
+ * picture modes specified in the PQ capability configuration file for the respective feature.
  *
- * @param[in] videoSrcType           - Source input value. Valid value will be a member of ::tvVideoSrcType_t
+ * @param[in] videoSrcType          - Source input value. Valid value will be a member of ::tvVideoSrcType_t
  * @param[in] pq_mode               - Picture mode index. Valid value will be a member of ::tvPQModeIndex_t
  * @param[in] videoFormatType       - Video format type value. Valid value will be a member of ::tvVideoFormatType_t
  * @param[in] value                 - Value of the aspect ratio to be set. Valid value will be a member of ::tvDisplayMode_t
@@ -1540,10 +1540,10 @@ tvError_t GetLowLatencyState(int *lowlatencystate);
  * and primary video source. The saved low latency index should be applied automatically whenever the
  * specified picture mode is selected, specified primary video format is played and specified primary video source is selected.
  * There will be no change in low latency index value applied in PQ module.
- * The supported formats, sources, and modes must be fetched from the configuration details of each specific feature in the
- * PQ capability configuration file.
+ * The source, format, and picture mode shall be validated against the supported video sources, video formats, and
+ * picture modes specified in the PQ capability configuration file for the respective feature.
  *
- * @param[in] videoSrcType           - Source input value. Valid value will be a member of ::tvVideoSrcType_t
+ * @param[in] videoSrcType          - Source input value. Valid value will be a member of ::tvVideoSrcType_t
  * @param[in] pq_mode               - Picture mode index. Valid value will be a member of ::tvPQModeIndex_t
  * @param[in] videoFormatType       - Video format type value. Valid value will be a member of ::tvVideoFormatType_t
  * @param[in] value                 - Value of the low latency index to be set. Valid values are ( 0, 1 )
@@ -1763,10 +1763,10 @@ tvError_t GetTVDolbyVisionMode(tvDolbyMode_t *dolbyMode);
  * and primary video source. The saved dolby mode value should be applied automatically whenever the
  * specified picture mode is selected, specified primary video format(if handled via Dolby core) is played
  * and specified primary video source is selected. There will be no change in current dolby mode value in Dolby Vision core.
- * The supported formats, sources, and modes must be fetched from the configuration details of each specific feature in the
- * PQ capability configuration file.
+ * The source, format, and picture mode shall be validated against the supported video sources, video formats, and
+ * picture modes specified in the PQ capability configuration file for the respective feature.
  *
- * @param[in] videoSrcType           - Source input value. Valid value will be a member of ::tvVideoSrcType_t
+ * @param[in] videoSrcType          - Source input value. Valid value will be a member of ::tvVideoSrcType_t
  * @param[in] pq_mode               - Picture mode index. Valid value will be a member of ::tvPQModeIndex_t
  * @param[in] videoFormatType       - Video format type value. Valid value will be a member of ::tvVideoFormatType_t
  * @param[in] value                 - Value of the dolby mode to be set. Valid value will be a member of ::tvDolbyMode_t
@@ -1902,13 +1902,11 @@ tvError_t SetTVPictureMode(const char * pictureMode);
  * This function saves the picturemode in picture profile database for the specific primary video format type
  * and primary video source. The saved picture mode should be applied automatically whenever the
  * specified specified primary video format is played and specified primary video source is selected.
- * The supported formats, sources, and modes must be fetched from the configuration details of each specific feature in the
- * PQ capability configuration file.
  *
- * @param[in] videoSrcType          - Source input value. Valid value will be a member of ::tvVideoSrcType_t
+ * @param[in] videoSrcType         - Source input value. Valid value will be a member of ::tvVideoSrcType_t
  * @param[in] pictureMode          - Picture mode value to be saved. Valid values are as per values returned by
  *                                    ::pic_modes_t.value  parmaeter from GetTVSupportedPictureModes API.
- * @param[in] videoFormatType       - Video format type value. Valid value will be a member of ::tvVideoFormatType_t
+ * @param[in] videoFormatType      - Video format type value. Valid value will be a member of ::tvVideoFormatType_t
  *
  * @return tvError_t
  *
@@ -2370,8 +2368,6 @@ tvError_t GetGammaTable(unsigned short *pData_R, unsigned short *pData_G, unsign
  * This function saves the gamma calibrated values in picture profile database for the primary colors for a specific color temperature.
  * The saved gamma calibrated values will be automatically applied when the specified colour temperature choice is made
  * as a result of picture mode change or primary video source change or primary vidoe format change.
- * The supported formats, sources, and modes must be fetched from the configuration details of each specific feature in the
- * PQ capability configuration file.
  *
  * @param[in] colortemp       - Color temperature. Valid value will be member of ::tvColorTemp_t
  * @param[out] pData_R        - Array of gamma red values. Valid range is (0 - 1023)
@@ -2437,19 +2433,17 @@ tvError_t SetDvTmaxValue(int value);
  * This function saves the Dolby vision TMAX paramaeter in picture profile database for the specified LDIM state level.
  * The saved TMAX value will be applied in Dolby Vision core whenever the specified ldim state level is selected
  * as a result of picture mode change or primary video source change or primary vidoe format change.
- * The supported formats, sources, and modes must be fetched from the configuration details of each specific feature in the
- * PQ capability configuration file.
  *
  * @param[in] state       - LDIM state level. Refer ::ldimStateLevel_t
  * @param[in] value       - Value of the TMAX to be saved. Valid range is (0 to 10000)
  *
  * @return tvError_t
  *
- * @retval tvERROR_NONE             - Success
- * @retval tvERROR_INVALID_PARAM    - Input parameter is invalid
- * @retval tvERROR_INVALID_STATE    - Interface is not initialized
+ * @retval tvERROR_NONE                      - Success
+ * @retval tvERROR_INVALID_PARAM             - Input parameter is invalid
+ * @retval tvERROR_INVALID_STATE             - Interface is not initialized
  * @retval tvERROR_OPERATION_NOT_SUPPORTED   - Operation is not supported
- * @retval tvERROR_GENERAL          - Underlying failures - SoC, memory, etc
+ * @retval tvERROR_GENERAL                   - Underlying failures - SoC, memory, etc
  *
  * @pre TvInit() should be called before calling this API
  */
@@ -2632,13 +2626,15 @@ tvError_t GetCurrentComponentLuma(tvDataComponentColor_t blLumaColor, int *Luma)
  * and the CMS state is enabled for that combination. There will be no change in current CMS value applied in colour management system.
  * When the component_type is passed as COMP_NONE and color_type is passed as tvDataColor_NONE, the cms_value
  * refers to CMS state.
+ * The source, format, and picture mode shall be validated against the supported video sources, video formats, and
+ * picture modes specified in the PQ capability configuration file for the respective feature.
  *
- * @param[in] videoSrcType            - Source input value. Valid value will be a member of ::tvVideoSrcType_t
- * @param[in] pq_mode                - Picture mode index. Valid value will be a member of ::tvPQModeIndex_t
- * @param[in] videoFormatType        - Video format type value. Valid value will be a member of ::tvVideoFormatType_t
+ * @param[in] videoSrcType          - Source input value. Valid value will be a member of ::tvVideoSrcType_t
+ * @param[in] pq_mode               - Picture mode index. Valid value will be a member of ::tvPQModeIndex_t
+ * @param[in] videoFormatType       - Video format type value. Valid value will be a member of ::tvVideoFormatType_t
  * @param[in] component_type        - Component type value. Valid value will be a member of ::tvComponentType_t
  * @param[in] color_type            - Color type value. Valid value will be a member of ::tvDataComponentColor_t
- * @param[in] cms_value              - Value of the CMS to be set.
+ * @param[in] cms_value             - Value of the CMS to be set.
  *                                    If the value of component_type is COMP_NONE and color_type is tvDataColor_NONE then the cms_value represents the CMS state.
  *                                    Valid values are true(1) or false(0).
  *                                    If the value of component_type is not COMP_NONE and color_type is not tvDataColor_NONE then the cms_value represents the value for the
@@ -3270,8 +3266,8 @@ tvError_t GetCustom2PointWhiteBalanceCaps ( int *min_gain, int *min_offset, int 
  * specified specified primary video format is played and specified primary video source is selected.
  * Gain                             - Modifies the intensity of Red, Green, and Blue at the brighter level
  * Offset                           - Modifies the intensity of Red, Green, and Blue at the darker level
- * The supported formats, sources, and modes must be fetched from the configuration details of each specific feature in the
- * PQ capability configuration file.
+ * The source, format, and picture mode shall be validated against the supported video sources, video formats, and
+ * picture modes specified in the PQ capability configuration file for the respective feature.
  *
  * @param[in] videoSrcType          - Source input value.Valid value will be a member of ::tvVideoSrcType_t
  * @param[in] pictureMode           - Picture mode value to be saved.Valid values are as per values returned by
@@ -3291,7 +3287,6 @@ tvError_t GetCustom2PointWhiteBalanceCaps ( int *min_gain, int *min_offset, int 
  *
  * @pre TvInit() should be called before calling this API
  */
-
 tvError_t SaveCustom2PointWhiteBalance(tvVideoSrcType_t videoSrcType, int pq_mode,tvVideoFormatType_t videoFormatType, tvWBColor_t color, tvWBControl_t control, int value);
 
  /**
@@ -3357,9 +3352,11 @@ tvError_t GetPrecisionDetail(tvVideoSrcType_t videoSrcType, tvPQModeIndex_t pq_m
  * This function sets the new precision detail setting, which only applies to the certain video formats in specific
  * picture modes and sources.
  * The change is applied to hardware if the current video format (DV) and picture mode (DV IQ or DV Bright) support
-precision detail.
+ * precision detail.
  * The saved precision detail setting shall be applied automatically whenever the current picture mode and current
-primary video format support precision detail.
+ * primary video format support precision detail.
+ * The source, format, and picture mode shall be validated against the supported video sources, video formats, and
+ * picture modes specified in the PQ capability configuration file for the respective feature.
  *
  * If the platform does not support precision detail, then tvERROR_OPERATION_NOT_SUPPORTED is returned.
  *
@@ -3447,6 +3444,8 @@ tvError_t GetSdrGamma(tvVideoSrcType_t videoSrcType, tvPQModeIndex_t pq_mode, tv
  *
  * The SDR gamma value is applied in the PQ module if the current picture mode and video source match
  * the parameters.
+ * The source, format, and picture mode shall be validated against the supported video sources, video formats, and
+ * picture modes specified in the PQ capability configuration file for the respective feature.
  *
  * If the platform does not support an SDR gamma setting, then tvERROR_OPERATION_NOT_SUPPORTED is returned.
  *
@@ -3513,8 +3512,9 @@ tvError_t GetLocalContrastEnhancementCaps(int * maxLocalContrastEnhancement, tvC
  * specified picture mode, primary video format and primary video source is selected.
  *
  * The local contrast enhancement value is applied in the PQ module if the current picture mode, primary video
- * format and
- * primary video source match the parameters.
+ * format and primary video source match the parameters.
+ * The source, format, and picture mode shall be validated against the supported video sources, video formats, and
+ * picture modes specified in the PQ capability configuration file for the respective feature.
  *
  * If the platform does not support local contrast enhancement, then tvERROR_OPERATION_NOT_SUPPORTED is returned.
  *
@@ -3609,6 +3609,8 @@ tvError_t GetMPEGNoiseReductionCaps(int * maxMPEGNoiseReduction, tvContextCaps_t
  *
  * The MPEG noise reduction value is applied in the PQ module if the current picture mode, primary video format and
  * primary video source match the parameters.
+ * The source, format, and picture mode shall be validated against the supported video sources, video formats, and
+ * picture modes specified in the PQ capability configuration file for the respective feature.
  *
  * If the platform does not support MPEG noise reduction, then tvERROR_OPERATION_NOT_SUPPORTED is returned.
  *
@@ -3702,6 +3704,8 @@ tvError_t GetDigitalNoiseReductionCaps(int * maxDigitalNoiseReduction, tvContext
  *
  * The digital noise reduction value is applied in the PQ module if the current picture mode, primary video format and
  * primary video source match the parameters.
+ * The source, format, and picture mode shall be validated against the supported video sources, video formats, and
+ * picture modes specified in the PQ capability configuration file for the respective feature.
  *
  * If the platform does not support digital noise reduction, then tvERROR_OPERATION_NOT_SUPPORTED is returned.
  *
@@ -3796,6 +3800,8 @@ tvError_t GetAISuperResolutionCaps(int * maxAISuperResolution, tvContextCaps_t *
  *
  * The AI super resolution value is applied in the PQ module if the current picture mode and video source match
  * the parameters.
+ * The source, format, and picture mode shall be validated against the supported video sources, video formats, and
+ * picture modes specified in the PQ capability configuration file for the respective feature.
  *
  * If the platform does not support an AI super resolution setting, then tvERROR_OPERATION_NOT_SUPPORTED is returned.
  *
@@ -3891,6 +3897,8 @@ tvError_t GetMEMCCaps(int * maxMEMC, tvContextCaps_t ** context_caps);
  *
  * The MEMC value is applied in the PQ module if the current picture mode and video source match
  * the parameters.
+ * The source, format, and picture mode shall be validated against the supported video sources, video formats, and
+ * picture modes specified in the PQ capability configuration file for the respective feature.
  *
  * If the platform does not support a MEMC setting, then tvERROR_OPERATION_NOT_SUPPORTED is returned.
  *
@@ -3998,6 +4006,9 @@ tvError_t GetMultiPointWBCaps(int * num_hal_matrix_points, int * rgb_min, int * 
  * This function sets the multi-point white balance values in the picture profile database for the specific picturemode, color temperature,
  * primary video format and primary video source. The matrix values should be applied automatically whenever the
  * specified picture mode, specified primary video format and specified primary video source is selected.
+ *
+ * The source, format, and picture mode shall be validated against the supported video sources, video formats, and
+ * picture modes specified in the PQ capability configuration file for the respective feature.
  *
  * The matrix values are applied in the PQ module if the current picture mode, primary video format and primary video source match the parameters.
  *
@@ -4109,6 +4120,9 @@ tvError_t GetDVCalibrationCaps(tvDVCalibrationSettings_t **min_values, tvDVCalib
  *
  * This function sets the Dolby Vision PQ calibration values in the picture profile database for the specified picture mode.
  * The saved calibration values shall be applied automatically whenever the specified picture mode is selected.
+ *
+ * The source, format, and picture mode shall be validated against the supported video sources, video formats, and
+ * picture modes specified in the PQ capability configuration file for the respective feature.
  *
  * The calibration values are applied in the PQ module if the current picture mode matches the parameters.
  *
@@ -4372,6 +4386,8 @@ tvError_t GetBacklightModeCaps(tvBacklightMode_t** backlight_mode, size_t* num_b
  * and primary video source. The saved BacklightMode value should be applied automatically whenever the
  * specified picture mode is selected, specified primary video format is played and specified primary video source is selected.
  * There will be no change in current BacklightMode value applied in PQ module.
+ * The source, format, and picture mode shall be validated against the supported video sources, video formats, and
+ * picture modes specified in the PQ capability configuration file for the respective feature.
  *
  * @param[in] videoSrcType          - Source input value. Valid value will be a member of ::tvVideoSrcType_t
  * @param[in] pq_mode               - Picture mode index. Valid value will be a member of ::tvPQModeIndex_t
@@ -4380,11 +4396,11 @@ tvError_t GetBacklightModeCaps(tvBacklightMode_t** backlight_mode, size_t* num_b
  *
  * @return tvError_t
  *
- * @retval tvERROR_NONE             - Success
- * @retval tvERROR_INVALID_PARAM    - Input parameter is invalid
- * @retval tvERROR_INVALID_STATE    - Interface is not initialized
- * @retval tvERROR_OPERATION_NOT_SUPPORTED - Operation is not supported
- * @retval tvERROR_GENERAL          - Underlying failures - SoC, memory, etc
+ * @retval tvERROR_NONE                     - Success
+ * @retval tvERROR_INVALID_PARAM            - Input parameter is invalid
+ * @retval tvERROR_INVALID_STATE            - Interface is not initialized
+ * @retval tvERROR_OPERATION_NOT_SUPPORTED  - Operation is not supported
+ * @retval tvERROR_GENERAL                  - Underlying failures - SoC, memory, etc
  *
  * @pre TvInit() should be called before calling this API
  */
@@ -4494,6 +4510,9 @@ tvError_t Get2PointWBCaps ( int *min_gain, int *min_offset, int *max_gain, int *
  * This function saves the WhiteBalance in picture profile database for the specific colorTemperature, primary video format type
  * PictureMode and primary video source. The saved Whitebalance value should be applied automatically whenever the
  * specified primary video format is played and specified primary video source is selected.
+ * The source, format, and picture mode shall be validated against the supported video sources, video formats, and
+ * picture modes specified in the PQ capability configuration file for the respective feature.
+ *
  * Gain                             - Modifies the intensity of Red, Green, and Blue at the brighter level
  * Offset                           - Modifies the intensity of Red, Green, and Blue at the darker level
  *
@@ -4596,6 +4615,9 @@ tvError_t GetBacklightDimmingLevelCaps(int* maxDimmingLevel, tvContextCaps_t** c
  * This function sets the Dimming Level value for the specific picture mode, primary video format and primary video source.
  * The configured Dimming Level value should be applied automatically whenever the
  * specified picture mode, primary video format and primary video source are selected.
+ *
+ * The source, format, and picture mode shall be validated against the supported video sources, video formats, and
+ * picture modes specified in the PQ capability configuration file for the respective feature.
  *
  * The Dimming Level value is applied in the PQ module if the current picture mode, primary video format and
  * primary video source match the parameters.
