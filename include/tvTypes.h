@@ -406,6 +406,7 @@ typedef enum tvPQParameterIndex {
     PQ_PARAM_DOLBY_VISION_CALIBRATION,         //!< Picture parameter is Dolby Vision Calibration
     PQ_PARAM_BACKLIGHT_MODE,                   //!< Picture parameter is BacklightMode
     PQ_PARAM_BACKLIGHT_DIMMINGLEVEL,           //!< Picture parameter is Backlight Dimming Level
+    PQ_PARAM_BACKLIGHT_FADE,                   //!< Picture parameter is Backlight Fade
     PQ_PARAM_MAX                               //!< End of enum
 }tvPQParameterIndex_t;
 
