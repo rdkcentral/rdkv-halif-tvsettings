@@ -1903,6 +1903,9 @@ tvError_t SetTVPictureMode(const char * pictureMode);
  * and primary video source. The saved picture mode should be applied automatically whenever the
  * specified specified primary video format is played and specified primary video source is selected.
  *
+ * The source, format, and picture mode shall be validated against the supported video sources, video formats, and
+ * picture modes specified in the PQ capability configuration file for the respective feature.
+ *
  * @param[in] videoSrcType         - Source input value. Valid value will be a member of ::tvVideoSrcType_t
  * @param[in] pictureMode          - Picture mode value to be saved. Valid values are as per values returned by
  *                                    ::pic_modes_t.value  parmaeter from GetTVSupportedPictureModes API.
@@ -3444,8 +3447,10 @@ tvError_t GetSdrGamma(tvVideoSrcType_t videoSrcType, tvPQModeIndex_t pq_mode, tv
  *
  * The SDR gamma value is applied in the PQ module if the current picture mode and video source match
  * the parameters.
- * The source, format, and picture mode shall be validated against the supported video sources, video formats, and
- * picture modes specified in the PQ capability configuration file for the respective feature.
+ * The SDR gamma setting is applicable only to SDR video content and shall not be applied to
+ * non-SDR video formats.
+ * The source and picture mode shall be validated against the supported video sources and
+ * picture modes specified in the PQ capability configuration file for this feature.
  *
  * If the platform does not support an SDR gamma setting, then tvERROR_OPERATION_NOT_SUPPORTED is returned.
  *
