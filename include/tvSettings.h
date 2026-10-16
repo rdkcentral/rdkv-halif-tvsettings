@@ -842,7 +842,7 @@ tvError_t GetBrightness(int *brightness);
  * @brief Saves the brightness value
  *
  * This function saves the brightness value in picture profile database for the specific picture mode, primary video format type
- * and primary video source. The saved brightness value should be applied automatically by whenever the
+ * and primary video source. The saved brightness value should be applied automatically whenever the
  * specified picture mode is selected, specified primary video format is played and specified primary video source is selected.
  * There will be no change in current brightness value applied in PQ module.
  *
@@ -944,7 +944,7 @@ tvError_t GetContrast(int *contrast);
  *
  *
  * This function saves the contrast value in picture profile database for the specific picture mode, primary video format type
- * and primary video source. The saved contrast value should be applied automatically by whenever the
+ * and primary video source. The saved contrast value should be applied automatically whenever the
  * specified picture mode is selected, specified primary video format is played and specified primary video source is selected.
  * There will be no change in current contrast value applied in PQ module.
  *
@@ -1044,7 +1044,7 @@ tvError_t GetSharpness(int *sharpness);
  * @brief Saves the sharpness value
  *
  * This function saves the sharpness value in picture profile database for the specific picture mode, primary video format type
- * and primary video source. The saved sharpness value should be applied automatically by whenever the
+ * and primary video source. The saved sharpness value should be applied automatically whenever the
  * specified picture mode is selected, specified primary video format is played and specified primary video source is selected.
  * There will be no change in current sharpness value applied in PQ module.
  *
@@ -1143,8 +1143,8 @@ tvError_t GetSaturationCaps(int* max_saturation, tvContextCaps_t ** context_caps
 /**
  * @brief Saves the saturation value
  *
- * This function saves the sharpness value in picture profile database for the specific picture mode, primary video format type
- * and primary video source. The saved saturation value should be applied automatically by whenever the
+ * This function saves the saturation value in picture profile database for the specific picture mode, primary video format type
+ * and primary video source. The saved saturation value should be applied automatically whenever the
  * specified picture mode is selected, specified primary video format is played and specified primary video source is selected.
  * There will be no change in current saturation value applied in PQ module.
  *
@@ -1244,7 +1244,7 @@ tvError_t GetHue(int *hue);
  * @brief Saves the hue value
  *
  * This function saves the hue  value in picture profile database for the specific picture mode, primary video format type
- * and primary video source. The saved hue value should be applied automatically by whenever the
+ * and primary video source. The saved hue value should be applied automatically whenever the
  * specified picture mode is selected, specified primary video format is played and specified primary video source is selected.
  * There will be no change in current hue value applied in PQ module.
  *
@@ -1349,7 +1349,7 @@ tvError_t GetColorTemperatureCaps(tvColorTemp_t** color_temp, size_t* num_color_
  * @brief Saves the color temperature value
  *
  * This function saves the color temperature value in picture profile database for the specific picture mode, primary video format type
- * and primary video source. The saved color temperature value should be applied automatically by whenever the
+ * and primary video source. The saved color temperature value should be applied automatically whenever the
  * specified picture mode is selected, specified primary video format is played and specified primary video source is selected.
  * There will be no change in current color temperature value applied in PQ module.
  *
@@ -1416,7 +1416,7 @@ tvError_t GetAspectRatio(tvDisplayMode_t *dispMode);
  * @brief Saves the aspect ratio value
  *
  * This function saves the aspect ratio value in picture profile database for the specific picture mode, primary video format type
- * and primary video source. The saved aspect ratio value should be applied automatically by whenever the
+ * and primary video source. The saved aspect ratio value should be applied automatically whenever the
  * specified picture mode is selected, specified primary video format is played and specified primary video source is selected.
  * There will be no change in current aspect ratio value applied in PQ module.
  *
@@ -1517,7 +1517,7 @@ tvError_t GetLowLatencyState(int *lowlatencystate);
  * @brief Saves the low latency index
  *
  * This function saves the low latency index in picture profile database for the specific picture mode, primary video format type
- * and primary video source. The saved low latency index should be applied automatically by whenever the
+ * and primary video source. The saved low latency index should be applied automatically whenever the
  * specified picture mode is selected, specified primary video format is played and specified primary video source is selected.
  * There will be no change in low latency index value applied in PQ module.
  *
@@ -1738,7 +1738,7 @@ tvError_t GetTVDolbyVisionMode(tvDolbyMode_t *dolbyMode);
  * @brief Saves the dolby mode value
  *
  * This function saves the dolby mode value in picture profile database for the specific picture mode, primary video format type
- * and primary video source. The saved dolby mode value should be applied automatically by whenever the
+ * and primary video source. The saved dolby mode value should be applied automatically whenever the
  * specified picture mode is selected, specified primary video format(if handled via Dolby core) is played
  * and specified primary video source is selected. There will be no change in current dolby mode value in Dolby Vision core.
  *
@@ -3477,7 +3477,7 @@ tvError_t GetLocalContrastEnhancementCaps(int * maxLocalContrastEnhancement, tvC
  *
  * This function sets the local contrast enhancement value for the specified picture mode,
  * primary video format and primary video source. The local contrast enhancement value should be applied
- * automatically by whenever the
+ * automatically whenever the
  * specified picture mode, primary video format and primary video source is selected.
  *
  * The local contrast enhancement value is applied in the PQ module if the current picture mode, primary video
@@ -3572,7 +3572,7 @@ tvError_t GetMPEGNoiseReductionCaps(int * maxMPEGNoiseReduction, tvContextCaps_t
  * @brief Sets the MPEG noise reduction value.
  *
  * This function sets the MPEG noise reduction value for the specific picture mode,
- * primary video format and primary video source. The set MPEG noise reduction value should be applied automatically by whenever the
+ * primary video format and primary video source. The set MPEG noise reduction value should be applied automatically whenever the
  * specified picture mode, primary video format and primary video source is selected.
  *
  * The MPEG noise reduction value is applied in the PQ module if the current picture mode, primary video format and
@@ -3665,7 +3665,7 @@ tvError_t GetDigitalNoiseReductionCaps(int * maxDigitalNoiseReduction, tvContext
  * @brief Sets the digital noise reduction value.
  *
  * This function sets the digital noise reduction value for the specified picture mode,
- * primary video format and primary video source. The digital noise reduction value should be applied automatically by whenever the
+ * primary video format and primary video source. The digital noise reduction value should be applied automatically whenever the
  * specified picture mode, primary video format and primary video source are selected.
  *
  * The digital noise reduction value is applied in the PQ module if the current picture mode, primary video format and
@@ -3964,7 +3964,7 @@ tvError_t GetMultiPointWBCaps(int * num_hal_matrix_points, int * rgb_min, int * 
  * @brief Sets the multi-point white balance red, green and blue values for the whole matrix.
  *
  * This function sets the multi-point white balance values in the picture profile database for the specific picturemode, color temperature,
- * primary video format and primary video source. The matrix values should be applied automatically by whenever the
+ * primary video format and primary video source. The matrix values should be applied automatically whenever the
  * specified picture mode, specified primary video format and specified primary video source is selected.
  *
  * The matrix values are applied in the PQ module if the current picture mode, primary video format and primary video source match the parameters.
