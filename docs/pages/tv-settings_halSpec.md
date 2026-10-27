@@ -293,7 +293,7 @@ This interface handles various functionalities/requests related to Picture Quali
 - Precision Detail, SDR Gamma, Local Contrast Enhancement
 - MPEG Noise Reduction, Digital Noise Reduction, AI Super Resolution, and MEMC
 - CMS tuning and state control
-- DV end-user calibration (refer tvDVCalibrationSettings_t)
+- DV end-user calibration (refer `tvDVCalibrationSettings_t`)
 - Notify Video Source, Video Format, Video Resolution, Video FrameRate and Video Content Change
 
 There are other platform specific Picture Quality settings that can be managed by this interface :
