@@ -75,7 +75,7 @@ Picture profile database will have 5 types of tables:
 6. TMAX table for every local dimming level to maintain the TMAX value
 
 - The capabilities of a specific platform with respect to TV picture configuration are defined in capability config files ([pq_capabilities.json](https://github.com/rdkcentral/rdkv-halif-tvsettings/blob/main/config/pq_capabilities.json) and [pq_capabilities.ini](https://github.com/rdkcentral/rdkv-halif-tvsettings/blob/main/config/pq_capabilities.ini)) which decide supported formats, picture modes, dimming modes, dimming levels, backlight modes, DV modes, and resolutions.
-- Caller must initialize by calling `TvInit()` which must initialize the parameters in default picture property database. These parameters are decided by Soc vendor  based on platform capability.
+- Caller must initialize by calling `TvInit()` which must initialize the parameters in default picture property database. These parameters are decided by the SoC vendor based on platform capabilities.
 - On every bootup the default picture profile database will be copied to override picture profile database.
   
 #### Table Format
@@ -293,7 +293,8 @@ This interface handles various functionalities/requests related to Picture Quali
 - Precision Detail, SDR Gamma, Local Contrast Enhancement
 - MPEG Noise Reduction, Digital Noise Reduction, AI Super Resolution, and MEMC
 - CMS tuning and state control
-- DV end-user calibration (refer `tvDVCalibrationSettings_t`)
+- DV end-user calibration (refer `tvDVCalibrationSettings_t`)
+
 - Notify Video Source, Video Format, Video Resolution, Video FrameRate and Video Content Change
 
 There are other platform specific Picture Quality settings that can be managed by this interface :
@@ -303,7 +304,7 @@ There are other platform specific Picture Quality settings that can be managed b
 
 ### Public API Coverage
 
-The public interface in `include/tvSettings.h` is organized into functional API groups. Unless specified otherwise, `Set*` updates active runtime values, `Get*` reads current runtime values, `Save*` persists values to the override picture profile database for a context, and `*Caps` reports supported ranges/options and contexts via `tvContextCaps_t`.
+The public interface in `include/tvSettings.h` is organized into functional API groups. Unless specified otherwise, `Set*` updates active runtime values, `Get*` reads current runtime values, and `Save*` persists values to the override picture profile database for a context. Capability APIs report supported ranges/options. Context-aware `*Caps` APIs additionally report supported contexts via `tvContextCaps_t` when applicable.
 
 #### Lifecycle and callback registration
 
@@ -474,6 +475,12 @@ SaveBrightness(), SaveContrast(), SaveSaturation(), SaveHue(), SaveSharpness(), 
   
 <h5>RegisterCallback :</h5>
 RegisterVideoFormatChangeCB(), RegisterVideoSourceChangeCB(), RegisterVideoContentChangeCB(), RegisterVideoResolutionChangeCB(), RegisterVideoFrameRateChangeCB()
+
+<h5>tvSettings_AdvancedSetMethods :</h5>
+SetMEMC(), SetAISuperResolution(),SetDigitalNoiseReduction(), SetMPEGNoiseReduction(),SetLocalContrastEnhancement(), SetSdrGamma(), SetPrecisionDetail(), SetDVCalibration(), SetMultiPointWBMatrix(), etc.
+
+<h5>tvSettings_AdvancedGetMethods :</h5>
+GetMEMC(), GetAISuperResolution(), GetDigitalNoiseReduction(), GetMPEGNoiseReduction(), GetLocalContrastEnhancement(), GetSdrGamma(), GetPrecisionDetail(), GetDVCalibration(), GetMultiPointWBMatrix(), etc.
 
 ##### Set With SaveOnly Flag Sequence
 
