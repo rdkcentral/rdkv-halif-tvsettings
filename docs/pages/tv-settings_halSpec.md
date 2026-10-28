@@ -26,6 +26,7 @@
   - [Platform or Product Customization](#platform-or-product-customization)
 - [Interface API Documentation](#interface-api-documentation)
   - [Theory of operation and key concepts](#theory-of-operation-and-key-concepts)
+  - [Public API Coverage](#public-api-coverage)
   - [Diagrams](#diagrams)
 
 ## Acronyms, Terms and Abbreviations
@@ -48,7 +49,7 @@
 
 ## Description
 
-TV Settings `HAL` is an interface which provides `APIs` to modify/control the picture quality parameters, dimming modes and auto backlight modes.
+TV Settings `HAL` is an interface which provides `APIs` to modify/control picture quality parameters, backlight controls, dimming modes, local dimming, backlight dimming level, white-balance and calibration features.
 
 ```mermaid
 %%{ init : { "theme" : "forest", "flowchart" : { "curve" : "linear" }}}%%
@@ -73,8 +74,8 @@ Picture profile database will have 5 types of tables:
 5. Gamma table for every color temperature to maintain the gamma calibrated values.
 6. TMAX table for every local dimming level to maintain the TMAX value
 
-- The capabilities of a specific platform with respect to TV picture configuration will be defined in a config file ([pq_capabilities.ini](https://github.com/rdkcentral/rdkv-halif-tvsettings/blob/main/config/pq_capabilities.ini) which decides supported formats, picture modes, dimming modes, dvModes, resolution etc.
-- Caller must initialize by calling `tvInit()` which must initialize the parameters in default picture property database. These parameters are decided by Soc vendor  based on platform capability.
+- The capabilities of a specific platform with respect to TV picture configuration are defined in capability config files ([pq_capabilities.json](https://github.com/rdkcentral/rdkv-halif-tvsettings/blob/main/config/pq_capabilities.json) and [pq_capabilities.ini](https://github.com/rdkcentral/rdkv-halif-tvsettings/blob/main/config/pq_capabilities.ini)) which decide supported formats, picture modes, dimming modes, dimming levels, backlight modes, DV modes, and resolutions.
+- Caller must initialize by calling `TvInit()` which must initialize the parameters in default picture property database. These parameters are decided by the SoC vendor based on platform capabilities.
 - On every bootup the default picture profile database will be copied to override picture profile database.
   
 #### Table Format
@@ -225,7 +226,7 @@ This interface is not required to participate in power management.
 
 ### Asynchronous Notification Model
 
-This interface requires callback notification registration for VideoFormatChange, VideoResolutionChange, VideoFrameRateChange, VideoContentChange. The caller must return the callback context as fast as possible and will not block.
+This interface requires callback notification registration for VideoFormatChange, VideoResolutionChange, VideoFrameRateChange, VideoContentChange, VideoSourceChange. The caller must return the callback context as fast as possible and will not block.
 
 ### Blocking calls
 
@@ -238,7 +239,7 @@ All `APIs` must return error synchronously as return argument.
 ### Persistence Model
 
 Each vendor needs to define their own config file which is expected to be stored in rootfs and this must be a readonly.
-Config file must contain the supported formats, picture modes, dimming modes, dvModes, resolution etc.
+Config files must contain the supported formats, picture modes, dimming modes, dimming levels, backlight modes, DV modes, resolutions, and per-context constraints.
 
 ## Non-functional requirements
 
@@ -285,27 +286,78 @@ Product or platform specification requirements will be handled in vendor specifi
 
 This interface handles various functionalities/requests related to Picture Quality settings :
 
-- Brightness
-- Contrast
-- Hue
-- Saturation
-- White Balance
-- Sharpness
-- Color Temperature
-- Backlight 
-- Aspect Ratio
-- Dimming Modes
-- Local Dimming Level
-- Low Latency state
-- Notify Video Format Change
-- Notify Video Resolution Change
-- Notify Video FrameRate Change
-- Notify Video Content Change
+- Brightness, Contrast, Hue, Saturation, and Sharpness
+- Color Temperature, 2-point white balance, and multi-point white balance
+- Backlight value, Backlight mode, Dimming mode, Local Dimming Level, and Backlight Dimming Level
+- Aspect Ratio and Low Latency state
+- Precision Detail, SDR Gamma, Local Contrast Enhancement
+- MPEG Noise Reduction, Digital Noise Reduction, AI Super Resolution, and MEMC
+- CMS tuning and state control
+- DV end-user calibration (refer `tvDVCalibrationSettings_t`)
+
+- Notify Video Source, Video Format, Video Resolution, Video FrameRate and Video Content Change
 
 There are other platform specific Picture Quality settings that can be managed by this interface :
 
-- CMS
-- Dolby Vision
+- LDIM test and diagnostics controls
+- Gamma/Gray/RGB pattern controls for factory calibration
+
+### Public API Coverage
+
+The public interface in `include/tvSettings.h` is organized into functional API groups. Unless specified otherwise, `Set*` updates active runtime values, `Get*` reads current runtime values, and `Save*` persists values to the override picture profile database for a context. Capability APIs report supported ranges/options. Context-aware `*Caps` APIs additionally report supported contexts via `tvContextCaps_t` when applicable.
+
+#### Lifecycle and callback registration
+
+- `TvInit()` and `TvTerm()` manage HAL lifecycle.
+- Callback registration APIs include `RegisterVideoFormatChangeCB()`, `RegisterVideoSourceChangeCB()`, `RegisterVideoContentChangeCB()`, `RegisterVideoResolutionChangeCB()`, and `RegisterVideoFrameRateChangeCB()`.
+
+#### Video source/format/resolution and picture-mode discovery
+
+- Runtime getters: `GetCurrentVideoSource()`, `GetCurrentVideoFormat()`, `GetCurrentVideoResolution()`, `GetCurrentVideoFrameRate()`.
+- Supported-list getters: `GetTVSupportedVideoSources()`, `GetTVSupportedVideoFormats()`, `GetTVSupportedPictureModes()`, `GetTVSupportedDolbyVisionModes()`.
+- Capability getters: `GetVideoSourceCaps()`, `GetVideoFormatCaps()`, `GetVideoResolutionCaps()`, `GetVideoFrameRateCaps()`, `GetTVPictureModeCaps()`.
+- Picture mode control: `GetTVPictureMode()`, `SetTVPictureMode()`, `SaveSourcePictureMode()`, `GetDefaultPQMode()`.
+
+#### Backlight, dimming and LDIM controls
+
+- Backlight value APIs: `GetBacklightCaps()`, `GetBacklight()`, `SetBacklight()`, `SaveBacklight()`.
+- Backlight fade APIs: `SetBacklightFade()`, `GetCurrentBacklightFade()`.
+- Backlight mode APIs: `GetSupportedBacklightModes()`, `GetCurrentBacklightMode()`, `SetCurrentBacklightMode()`, `GetBacklightModeCaps()`, `SaveBacklightMode()`.
+- Dimming mode APIs: `GetTVSupportedDimmingModes()`, `SetTVDimmingMode()`, `GetTVDimmingMode()`, `SaveTVDimmingMode()`, `GetTVDimmingModeCaps()`.
+- Local dimming APIs: `SetLocalDimmingLevel()`, `GetLocalDimmingLevel()`, `SaveLocalDimmingLevel()`.
+- Backlight dimming level APIs: `GetBacklightDimmingLevelCaps()`, `SetBacklightDimmingLevel()`, `GetBacklightDimmingLevel()`.
+- LDIM diagnostics/test APIs: `GetOpenCircuitStatus()`, `GetLdimZoneShortCircuitStatus()`, `GetNumberOfDimmingZones()`, `EnableLDIMPixelCompensation()`, `EnableLDIM()`, `StartLDIMSequenceTest()`, `SetBacklightTestMode()`.
+
+#### Core PQ controls
+
+- Core controls with caps/get/set/save are available for Brightness, Contrast, Sharpness, Saturation and Hue.
+- Additional controls include Color Temperature (`SetColorTemperature()`, `GetColorTemperature()`, `SaveColorTemperature()`, `GetColorTemperatureCaps()`), Aspect Ratio (`SetAspectRatio()`, `GetAspectRatio()`, `SaveAspectRatio()`, `GetAspectRatioCaps()`), and Low Latency (`SetLowLatencyState()`, `GetLowLatencyState()`, `SaveLowLatencyState()`, `GetLowLatencyStateCaps()`).
+
+#### White balance, gamma and calibration
+
+- Source-specific white balance trim APIs: `Set/GetColorTemp_*_onSource()` variants.
+- White balance calibration mode: `EnableWBCalibrationMode()`, `GetCurrentWBCalibrationMode()`.
+- 2-point white balance: `Set2PointWB()`, `Get2PointWB()`, `Save2PointWB()`, `GetDefault2PointWB()`, `Get2PointWBCaps()`.
+- Custom 2-point white balance: `SetCustom2PointWhiteBalance()`, `GetCustom2PointWhiteBalance()`, `SaveCustom2PointWhiteBalance()`, `GetCustom2PointWhiteBalanceCaps()`.
+- Gamma and patterns: `SetGammaTable()`, `GetGammaTable()`, `GetDefaultGammaTable()`, `SaveGammaTable()`, `EnableGammaMode()`, `SetGammaPattern()`, `SetGammaPatternMode()`, `SetRGBPattern()`, `GetRGBPattern()`, `SetGrayPattern()`, `GetGrayPattern()`, `GetTVGammaTarget()`.
+- Dolby Vision calibration: `GetDVCalibrationCaps()`, `SetDVCalibration()`, `GetDVCalibration()`, `GetDVCalibrationDefault()`, and DV Tmax controls (`SetDvTmaxValue()`, `GetDvTmaxValue()`, `SaveDvTmaxValue()`).
+
+#### CMS and advanced PQ features
+
+- CMS tuning APIs: `GetSupportedComponentColor()`, `Set/GetCurrentComponentSaturation()`, `Set/GetCurrentComponentHue()`, `Set/GetCurrentComponentLuma()`, `SaveCMS()`, `SetCMSState()`, `GetCMSState()`, `GetCMSCaps()`.
+- Advanced PQ feature APIs: `Get/Set` and `*Caps` for Precision Detail, SDR Gamma, Local Contrast Enhancement, MPEG Noise Reduction, Digital Noise Reduction, AI Super Resolution, and MEMC.
+- Multi-point white balance APIs: `GetMultiPointWBCaps()`, `SetMultiPointWBMatrix()`, `GetMultiPointWBMatrix()`.
+
+#### Generic parameter APIs
+
+- Generic parameter lookup APIs include `GetPQParams()` and `GetDefaultPQParams()` and are used by runtime workflows and persistence flow.
+- API expansion in `tvSettings.h` with broad capability-query (`*Caps`) coverage and context-driven APIs.
+- Addition of `RegisterVideoSourceChangeCB()` callback and `GetDefaultPQMode()` default mode API.
+- Addition of Backlight Dimming Level APIs and related parameter index entries.
+- Expansion of advanced PQ controls (Precision Detail, SDR Gamma, Local Contrast Enhancement, MPEG/Digital Noise Reduction, AI Super Resolution, MEMC, Multi-point WB, DV calibration).
+- `tvPQModeIndex_t` expansion with `PQ_MODE_AIPQ`, `PQ_MODE_DARK`, `PQ_MODE_BRIGHT`, `PQ_MODE_IQ`, and `PQ_MODE_DISABLE`.
+- Capability model updates in `pq_capabilities.json`, including `DimmingLevel` support and source-name normalization from `Composite` to `Composite1`.
+- ODM-facing headers reduced to a minimal surface where `tvSettingsODM.h` exposes gamma test-point hooks and `tvTypesODM.h` keeps ODM gamma structure definitions.
 
 ### Diagrams
 
@@ -347,12 +399,12 @@ participant Caller as Caller
     HAL-->>Caller:return
 
     Caller->>HAL: RegisterCallBack
-    Note over HAL:RegisterCallBack for Format/Resolution/FrameRate/VideoContent Change
+    Note over HAL:RegisterCallBack for Format/Resolution/FrameRate/VideoContent/VideoSource Change
     HAL-->>Caller:return
 
     Driver-->>HAL:Notify on video format/framerate/resolution/videocontent/videosource change
     Note over HAL: Reload associated Picture mode and all associated picture properties if there is video format and video source change.
-    Note over HAL: However video source change will not be notified to caller
+    Note over HAL: Video source change will be notified to caller
     HAL->>OPPDB: Read associated picture mode
     OPPDB-->>HAL:return
     HAL->>OPPDB: Read associated picture properties
@@ -366,7 +418,7 @@ participant Caller as Caller
     Note over HAL: Apply the new picture properties, gamma and white balance if they have changed.
     HAL->>Driver: Apply new picture properties
     Driver-->>HAL: return
-    HAL-->>Caller:Notify on video format/framerate/resolution/content change
+    HAL-->>Caller:Notify on video format/framerate/resolution/content/source change
 ```
 
 ##### Set/Get/Save Picture Quality Parameter Sequence
@@ -413,16 +465,22 @@ participant Caller as Caller
 <h5> LEGEND: </h5>
 
 <h5>tvSettings_SetMethods:</h5>
-SetBrightness(), SetContrast(), SetSaturation(), SetHue(),SetSharpness(), SetColorTemperature(),SetBacklight(), etc..
+SetBrightness(), SetContrast(), SetSaturation(), SetHue(), SetSharpness(), SetColorTemperature(), SetBacklight(), SetCurrentBacklightMode(), SetTVDimmingMode(), SetBacklightDimmingLevel(), etc.
 
 <h5>tvSettings_GetMethods:</h5> 
-GetBrightness(), GetContrast(), GetSaturation(), GetHue(),GetSharpness(), GetColorTemperature(),GetBacklight(), GetPQParams(), GetDefaultPQParams() etc..
+GetBrightness(), GetContrast(), GetSaturation(), GetHue(), GetSharpness(), GetColorTemperature(), GetBacklight(), GetBacklightDimmingLevel(), GetPQParams(), GetDefaultPQParams(), GetDefaultPQMode() etc.
  
 <h5>tvSettings_SaveMethods :</h5> 
-SaveBrightness(), SaveContrast(), SaveSaturation(), SaveHue(),SaveSharpness(), SaveColorTemperature(),SaveBacklight(), etc..
+SaveBrightness(), SaveContrast(), SaveSaturation(), SaveHue(), SaveSharpness(), SaveColorTemperature(), SaveBacklight(), SaveBacklightMode(), SaveTVDimmingMode(), etc.
   
 <h5>RegisterCallback :</h5>
-RegisterVideoFormatChangeCB(),RegisterVideoContentChangeCB(),RegisterVideoResolutionChangeCB(), RegisterVideoFrameRateChangeCB()
+RegisterVideoFormatChangeCB(), RegisterVideoSourceChangeCB(), RegisterVideoContentChangeCB(), RegisterVideoResolutionChangeCB(), RegisterVideoFrameRateChangeCB()
+
+<h5>tvSettings_AdvancedSetMethods :</h5>
+SetMEMC(), SetAISuperResolution(),SetDigitalNoiseReduction(), SetMPEGNoiseReduction(),SetLocalContrastEnhancement(), SetSdrGamma(), SetPrecisionDetail(), SetDVCalibration(), SetMultiPointWBMatrix(), etc.
+
+<h5>tvSettings_AdvancedGetMethods :</h5>
+GetMEMC(), GetAISuperResolution(), GetDigitalNoiseReduction(), GetMPEGNoiseReduction(), GetLocalContrastEnhancement(), GetSdrGamma(), GetPrecisionDetail(), GetDVCalibration(), GetMultiPointWBMatrix(), etc.
 
 ##### Set With SaveOnly Flag Sequence
 
