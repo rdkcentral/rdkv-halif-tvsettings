@@ -4138,6 +4138,11 @@ tvError_t GetDVCalibrationCaps(tvDVCalibrationSettings_t **min_values, tvDVCalib
  * @param[in] videoFormatType    - Video format type value. Valid value will be a member of ::tvVideoFormatType_t
  * @param[in] calibration_values - Structure of Dolby Vision PQ calibration values.
  *                               - Valid values are returned by GetDVCalibrationCaps().
+ *                               - All parameter values  are represented using the double data type.
+ *                               - Tmax valid range is (40 to 10000)
+ *                               - Tmin valid range is (0.00001 to 2)
+ *                               - Tgamma valid range is (1 to 4)
+ *                               - Rx, Ry, Gx, Gy, Bx, By, Wx, and Wy valid range is (0 to 1)
  *
  * @return tvError_t
  *
@@ -4165,6 +4170,10 @@ tvError_t SetDVCalibration(tvVideoSrcType_t videoSrcType, tvPQModeIndex_t pq_mod
  * @param[out] calibration_values - Structure of Dolby Vision PQ calibration values.
  *                                - Valid values are returned by GetDVCalibrationCaps().
  *                                - Memory should be allocated in HAL function
+ *                                - Tmax valid range is (40 to 10000)
+ *                                - Tmin valid range is (0.00001 to 2)
+ *                                - Tgamma valid range is (1 to 4)
+ *                                - Rx, Ry, Gx, Gy, Bx, By, Wx, and Wy valid range is (0 to 1)
  *
  * @return tvError_t
  *
