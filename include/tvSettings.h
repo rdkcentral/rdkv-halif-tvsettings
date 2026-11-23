@@ -114,9 +114,11 @@ tvError_t TvInit();
  * @param[in] cbData                - Callback data. Please refer ::tvVideoFormatCallbackData
  *
  * @retval tvERROR_NONE            - Success
- * @retval tvERROR_INVALID_PARAM   - Parameter is invalid
+ * @retval tvERROR_INVALID_PARAM   - A parameter is invalid, such as a
+ *                                   NULL pointer or a value outside the valid range defined for this API
  * @retval tvERROR_INVALID_STATE   - Interface is not initialized
  * @retval tvERROR_GENERAL         - Underlying failures - SoC, memory, etc
+ * @retval tvERROR_OPERATION_NOT_SUPPORTED - The feature or operation is not supported by the platform
  *
  * @pre TvInit() should be called before calling this API
  */
@@ -140,9 +142,11 @@ tvError_t RegisterVideoFormatChangeCB(tvVideoFormatCallbackData *cbData);
  * @return tvError_t
  *
  * @retval tvERROR_NONE            - Success
- * @retval tvERROR_INVALID_PARAM   - Parameter is invalid
+ * @retval tvERROR_INVALID_PARAM   - A parameter is invalid, such as a
+ *                                   NULL pointer or a value outside the valid range defined for this API
  * @retval tvERROR_INVALID_STATE   - Interface is not initialized
  * @retval tvERROR_GENERAL         - Underlying failures - SoC, memory, etc
+ * @retval tvERROR_OPERATION_NOT_SUPPORTED - The feature or operation is not supported by the platform
  *
  * @pre TvInit() should be called before calling this API
  */
@@ -164,9 +168,11 @@ tvError_t RegisterVideoSourceChangeCB(tvVideoSourceCallbackData *cbData);
  * @param[in] cbData                - Callback data. Please refer::tvVideoContentCallbackData
  *
  * @retval tvERROR_NONE            - Success
- * @retval tvERROR_INVALID_PARAM   - Parameter is invalid
+ * @retval tvERROR_INVALID_PARAM   - A parameter is invalid, such as a
+ *                                   NULL pointer or a value outside the valid range defined for this API
  * @retval tvERROR_INVALID_STATE   - Interface is not initialized
  * @retval tvERROR_GENERAL         - Underlying failures - SoC, memory, etc
+ * @retval tvERROR_OPERATION_NOT_SUPPORTED - The feature or operation is not supported by the platform
  *
  * @pre TvInit() should be called before calling this API
  */
@@ -184,9 +190,11 @@ tvError_t RegisterVideoContentChangeCB(tvVideoContentCallbackData *cbData);
  * @param[in] cbData                - Callback data. Please refer ::tvVideoResolutionCallbackData
  *
  * @retval tvERROR_NONE            - Success
- * @retval tvERROR_INVALID_PARAM   - Parameter is invalid
+ * @retval tvERROR_INVALID_PARAM   - A parameter is invalid, such as a
+ *                                   NULL pointer or a value outside the valid range defined for this API
  * @retval tvERROR_INVALID_STATE   - Interface is not initialized
  * @retval tvERROR_GENERAL         - Underlying failures - SoC, memory, etc
+ * @retval tvERROR_OPERATION_NOT_SUPPORTED - The feature or operation is not supported by the platform
  *
  * @pre TvInit() should be called before calling this API
  */
@@ -206,9 +214,11 @@ tvError_t RegisterVideoResolutionChangeCB(tvVideoResolutionCallbackData *cbData)
  * @return tvError_t
  *
  * @retval tvERROR_NONE            - Success
- * @retval tvERROR_INVALID_PARAM   - Parameter is invalid
+ * @retval tvERROR_INVALID_PARAM   - A parameter is invalid, such as a
+ *                                   NULL pointer or a value outside the valid range defined for this API
  * @retval tvERROR_INVALID_STATE   - Interface is not initialized
  * @retval tvERROR_GENERAL         - Underlying failures - SoC, memory, etc
+ * @retval tvERROR_OPERATION_NOT_SUPPORTED - The feature or operation is not supported by the platform
  *
  * @pre TvInit() should be called before calling this API
  */
@@ -233,9 +243,11 @@ tvError_t RegisterVideoFrameRateChangeCB(tvVideoFrameRateCallbackData *cbData);
  * @return tvError_t
  *
  * @retval tvERROR_NONE            - Success
- * @retval tvERROR_INVALID_PARAM   - Parameter is invalid
+ * @retval tvERROR_INVALID_PARAM   - A parameter is invalid, such as a
+ *                                   NULL pointer or a value outside the valid range defined for this API
  * @retval tvERROR_INVALID_STATE   - Interface is not initialized
  * @retval tvERROR_GENERAL         - Underlying failures - SoC, memory, etc
+ * @retval tvERROR_OPERATION_NOT_SUPPORTED - The feature or operation is not supported by the platform
  *
  * @pre TvInit() should be called before calling this API
  */
@@ -252,9 +264,11 @@ tvError_t RegisterVideoFrameRateChangeCB(tvVideoFrameRateCallbackData *cbData);
  * @return tvError_t
  *
  * @retval tvERROR_NONE                      - Success
- * @retval tvERROR_INVALID_PARAM             - Parameter is invalid
+ * @retval tvERROR_INVALID_PARAM             - A parameter is invalid, such as a
+ *                                             NULL pointer or a value outside the valid range defined for this API
  * @retval tvERROR_INVALID_STATE             - Interface is not initialized
  * @retval tvERROR_GENERAL                   - Underlying failures - SoC, memory, etc
+ * @retval tvERROR_OPERATION_NOT_SUPPORTED   - The feature or operation is not supported by the platform
  *
  * @pre TvInit() should be called before calling this API
  */
@@ -272,9 +286,11 @@ tvError_t GetCurrentVideoFormat(tvVideoFormatType_t *videoFormat);
  * @return tvError_t
  *
  * @retval tvERROR_NONE                     - Success
- * @retval tvERROR_INVALID_PARAM            - Input parameter is invalid
+ * @retval tvERROR_INVALID_PARAM            - A parameter is invalid, such as a
+ *                                            NULL pointer or a value outside the valid range defined for this API
  * @retval tvERROR_INVALID_STATE            - Interface is not initialized
  * @retval tvERROR_GENERAL                  - Underlying failures - SoC, memory, etc
+ * @retval tvERROR_OPERATION_NOT_SUPPORTED  - The feature or operation is not supported by the platform
  *
  * @pre TvInit() should be called before calling this API
  */
@@ -291,9 +307,11 @@ tvError_t GetCurrentVideoResolution(tvResolutionParam_t *res);
  * @return tvError_t
  *
  * @retval tvERROR_NONE                     - Success
- * @retval tvERROR_INVALID_PARAM            - Parameter is invalid
+ * @retval tvERROR_INVALID_PARAM            - A parameter is invalid, such as a
+ *                                            NULL pointer or a value outside the valid range defined for this API
  * @retval tvERROR_INVALID_STATE            - Interface is not initialized
  * @retval tvERROR_GENERAL                  - Underlying failures - SoC, memory, etc
+ * @retval tvERROR_OPERATION_NOT_SUPPORTED  - The feature or operation is not supported by the platform
  *
  * @pre TvInit() should be called before calling this API
  */
@@ -310,9 +328,11 @@ tvError_t GetCurrentVideoFrameRate(tvVideoFrameRate_t *format);
  * @return tvError_t
  *
  * @retval tvERROR_NONE                     - Success
- * @retval tvERROR_INVALID_PARAM            - Parameter is invalid
+ * @retval tvERROR_INVALID_PARAM            - A parameter is invalid, such as a
+ *                                            NULL pointer or a value outside the valid range defined for this API
  * @retval tvERROR_INVALID_STATE            - Interface is not initialized
  * @retval tvERROR_GENERAL                  - Underlying failures - SoC, memory, etc
+ * @retval tvERROR_OPERATION_NOT_SUPPORTED  - The feature or operation is not supported by the platform
  *
  * @pre TvInit() should be called before calling this API
  */
@@ -336,9 +356,11 @@ tvError_t GetCurrentVideoSource(tvVideoSrcType_t *currentSource);
  * @return tvError_t
  *
  * @retval tvERROR_NONE            - Success
- * @retval tvERROR_INVALID_PARAM   - Parameter is invalid
+ * @retval tvERROR_INVALID_PARAM   - A parameter is invalid, such as a
+ *                                   NULL pointer or a value outside the valid range defined for this API
  * @retval tvERROR_INVALID_STATE   - Interface is not initialized
  * @retval tvERROR_GENERAL         - Underlying failures - SoC, memory, etc
+ * @retval tvERROR_OPERATION_NOT_SUPPORTED  - The feature or operation is not supported by the platform
  *
  * @pre TvInit() should be called before calling this API
  */
@@ -368,9 +390,10 @@ tvError_t GetCurrentVideoSource(tvVideoSrcType_t *currentSource);
  * @return tvError_t
  *
  * @retval tvERROR_NONE - Success
- * @retval tvERROR_INVALID_PARAM - Parameter is invalid
+ * @retval tvERROR_INVALID_PARAM - A parameter is invalid, such as a
+ *                                 NULL pointer or a value outside the valid range defined for this API
  * @retval tvERROR_INVALID_STATE - Interface is not initialized
- * @retval tvERROR_OPERATION_NOT_SUPPORTED - Operation is not supported
+ * @retval tvERROR_OPERATION_NOT_SUPPORTED  - The feature or operation is not supported by the platform
  * @retval tvERROR_GENERAL - Underlying failures - SoC, memory, etc
  *
  * @pre TvInit() should be called before calling this API
@@ -383,14 +406,18 @@ tvError_t GetBacklightCaps(int *max_backlight, tvContextCaps_t ** context_caps);
  * This function gets the current backlight value for the primary video source selected,
  * primary video format played and picture mode selected.
  *
+ * If the platform does not support backlight, then tvERROR_OPERATION_NOT_SUPPORTED is returned.
+ *
  * @param[out] backlight       - Current backlight value. Valid range is (0 - 100)
  *
  * @return tvError_t
  *
  * @retval tvERROR_NONE            - Success
- * @retval tvERROR_INVALID_PARAM   - Parameter is invalid
+ * @retval tvERROR_INVALID_PARAM   - A parameter is invalid, such as a
+ *                                   NULL pointer or a value outside the valid range defined for this API
  * @retval tvERROR_INVALID_STATE   - Interface is not initialized
  * @retval tvERROR_GENERAL         - Underlying failures - SoC, memory, etc
+ * @retval tvERROR_OPERATION_NOT_SUPPORTED  - The feature or operation is not supported by the platform
  *
  * @pre TvInit() should be called before calling this API
  *
@@ -407,14 +434,18 @@ tvError_t GetBacklight(int *backlight);
  * The saved backlight value should be applied automatically whenever the  current picture mode, current primary video format
  * and current primary video source are again selected in future.
  *
+ * If the platform does not support backlight, then tvERROR_OPERATION_NOT_SUPPORTED is returned.
+ *
  * @param[in] backlight            - Backlight value to be set. Valid range is (0 - 100)
  *
  * @return tvError_t
  *
  * @retval tvERROR_NONE            - Success
- * @retval tvERROR_INVALID_PARAM   - Input parameter is invalid
+ * @retval tvERROR_INVALID_PARAM   - A parameter is invalid, such as a
+ *                                   NULL pointer or a value outside the valid range defined for this API
  * @retval tvERROR_INVALID_STATE   - Interface is not initialized
  * @retval tvERROR_GENERAL         - Underlying failures - SoC, memory, etc
+ * @retval tvERROR_OPERATION_NOT_SUPPORTED  - The feature or operation is not supported by the platform
  *
  * @pre TvInit() should be called before calling this API
  *
@@ -432,6 +463,8 @@ tvError_t SetBacklight(int backlight);
  * The source, format, and picture mode shall be validated against the supported video sources, video formats, and
  * picture modes specified in the PQ capability configuration file for the respective feature.
  *
+ * If the platform does not support backlight, then tvERROR_OPERATION_NOT_SUPPORTED is returned.
+ *
  * @param[in] videoSrcType          - Source input value. Valid value will be a member of ::tvVideoSrcType_t
  * @param[in] pq_mode               - Picture mode index. Valid value will be a member of ::tvPQModeIndex_t
  * @param[in] videoFormatType       - Video format type value. Valid value will be a member of ::tvVideoFormatType_t
@@ -440,9 +473,11 @@ tvError_t SetBacklight(int backlight);
  * @return tvError_t
  *
  * @retval tvERROR_NONE             - Success
- * @retval tvERROR_INVALID_PARAM    - Input parameter is invalid
+ * @retval tvERROR_INVALID_PARAM    - A parameter is invalid, such as a
+ *                                    NULL pointer or a value outside the valid range defined for this API
  * @retval tvERROR_INVALID_STATE    - Interface is not initialized
  * @retval tvERROR_GENERAL          - Underlying failures - SoC, memory, etc
+ * @retval tvERROR_OPERATION_NOT_SUPPORTED  - The feature or operation is not supported by the platform
  *
  * @pre TvInit() should be called before calling this API
  */
@@ -467,9 +502,11 @@ tvError_t SaveBacklight(tvVideoSrcType_t videoSrcType, int pq_mode,tvVideoFormat
  * @return tvError_t
  *
  * @retval tvERROR_NONE             - Success
- * @retval tvERROR_INVALID_PARAM    - Input parameter is invalid
+ * @retval tvERROR_INVALID_PARAM    - A parameter is invalid, such as a
+ *                                    NULL pointer or a value outside the valid range defined for this API
  * @retval tvERROR_INVALID_STATE    - Interface is not initialized
  * @retval tvERROR_GENERAL          - Underlying failures - SoC, memory, etc
+ * @retval tvERROR_OPERATION_NOT_SUPPORTED  - The feature or operation is not supported by the platform
  *
  * @pre TvInit() should be called before calling this API
  */
@@ -487,9 +524,11 @@ tvError_t SetBacklightFade(int from,int to,int duration);
  * @return tvError_t
  *
  * @retval tvERROR_NONE             - Success
- * @retval tvERROR_INVALID_PARAM    - Parameter is invalid
+ * @retval tvERROR_INVALID_PARAM    - A parameter is invalid, such as a
+ *                                    NULL pointer or a value outside the valid range defined for this API
  * @retval tvERROR_INVALID_STATE    - Interface is not initialized
  * @retval tvERROR_GENERAL          - Underlying failures - SoC, memory, etc
+ * @retval tvERROR_OPERATION_NOT_SUPPORTED  - The feature or operation is not supported by the platform
  *
  * @pre TvInit() should be called before calling this API
  */
@@ -501,14 +540,18 @@ tvError_t GetCurrentBacklightFade(int *from,int *to,int *current);
  * This function returns all supported backlight modes for the TV
  * The output has the bitwise OR-ed value of all the supported backlight modes (tvBacklightMode_t).
  *
+ * If the platform does not support backlightModes, then tvERROR_OPERATION_NOT_SUPPORTED is returned.
+ *
  * @param[out] blModes            - Supported backlight modes. Valid values will be members of ::tvBacklightMode_t
  *
  * @return tvError_t
  *
  * @retval tvERROR_NONE               - Success
- * @retval tvERROR_INVALID_PARAM      - Parameter is invalid
+ * @retval tvERROR_INVALID_PARAM      - A parameter is invalid, such as a
+ *                                      NULL pointer or a value outside the valid range defined for this API
  * @retval tvERROR_INVALID_STATE      - Interface is not initialized
  * @retval tvERROR_GENERAL            - Underlying failures - SoC, memory, etc
+ * @retval tvERROR_OPERATION_NOT_SUPPORTED  - The feature or operation is not supported by the platform
  *
  * @pre TvInit() should be called before calling this API
  *
@@ -521,15 +564,19 @@ tvError_t GetSupportedBacklightModes(int *blModes);
  *
  * This function gets the current backlight mode.
  *
+ * If the platform does not support backlightModes, then tvERROR_OPERATION_NOT_SUPPORTED is returned.
+ *
  * @param[out] blMode            - Current backlight mode. Valid value will be a member of ::tvBacklightMode_t
  *                                 If more than one value is received then INVALID_PARAM is returned.
  *
  * @return tvError_t
  *
  * @retval tvERROR_NONE              - Success
- * @retval tvERROR_INVALID_PARAM     - Parameter is invalid
+ * @retval tvERROR_INVALID_PARAM     - A parameter is invalid, such as a
+ *                                     NULL pointer or a value outside the valid range defined for this API
  * @retval tvERROR_INVALID_STATE     - Interface is not initialized
  * @retval tvERROR_GENERAL           - Underlying failures - SoC, memory, etc
+ * @retval tvERROR_OPERATION_NOT_SUPPORTED  - The feature or operation is not supported by the platform
  *
  * @pre TvInit() should be called before calling this API
  *
@@ -542,15 +589,19 @@ tvError_t GetCurrentBacklightMode(tvBacklightMode_t *blMode);
  *
  * This function sets the backlight mode.
  *
- * @param[in] blMode                         - Backlight mode to be set. Valid value can be one of the member of ::tvBacklightMode_t".
+ * If the platform does not support backlightModes, then tvERROR_OPERATION_NOT_SUPPORTED is returned.
+ *
+ * @param[in] blMode                         - Backlight mode to be set. Valid value can be one of the member of ::tvBacklightMode_t.
  *                                             If more than one value is bitwise OR-ed and passed then the function should return invalid param.
  *
  * @return tvError_t
  *
  * @retval tvERROR_NONE                      - Success
- * @retval tvERROR_INVALID_PARAM             - Input parameter is invalid
+ * @retval tvERROR_INVALID_PARAM             - A parameter is invalid, such as a
+ *                                             NULL pointer or a value outside the valid range defined for this API
  * @retval tvERROR_INVALID_STATE             - Interface is not initialized
  * @retval tvERROR_GENERAL                   - Underlying failures - SoC, memory, etc
+ * @retval tvERROR_OPERATION_NOT_SUPPORTED   - The feature or operation is not supported by the platform
  *
  * @pre TvInit() should be called before calling this API
  *
@@ -563,6 +614,8 @@ tvError_t SetCurrentBacklightMode(tvBacklightMode_t blMode);
  * @brief Gets supported backlight dimming modes of the system.
  *
  * This function returns all the supported backlight dimming modes.
+ *
+ * If the platform does not support TVDimmingMode, then tvERROR_OPERATION_NOT_SUPPORTED is returned.
  *
  * @param[out] dimmingModes    - List of dimming modes.
  *                             - Array of pointers to `tvDimmingMode_t` that will be populated with the supported dimming modes.
@@ -577,9 +630,11 @@ tvError_t SetCurrentBacklightMode(tvBacklightMode_t blMode);
  * @return tvError_t
  *
  * @retval tvERROR_NONE            - Success
- * @retval tvERROR_INVALID_PARAM   - Parameter is invalid
+ * @retval tvERROR_INVALID_PARAM   - A parameter is invalid, such as a
+ *                                   NULL pointer or a value outside the valid range defined for this API
  * @retval tvERROR_INVALID_STATE   - Interface is not initialized
  * @retval tvERROR_GENERAL         - Underlying failures - SoC, memory, etc
+ * @retval tvERROR_OPERATION_NOT_SUPPORTED  - The feature or operation is not supported by the platform
  *
  * @pre TvInit() should be called before calling this API
  */
@@ -594,14 +649,17 @@ tvError_t SetCurrentBacklightMode(tvBacklightMode_t blMode);
  * If peak brightness capablity of the panel changes as a result of dimming mode change reload the edid accordingly
  * to update VSVDB string if video format currently playing is handled via Dolby Vision core.
  *
+ * If the platform does not support TVDimmingMode, then tvERROR_OPERATION_NOT_SUPPORTED is returned.
+ *
  * @param[in] dimmingMode           - Dimming mode to be set. Valid values are ( "Local", "Fixed", "Global" )
  *
  * @return tvError_t
  *
  * @retval tvERROR_NONE                      - Success
- * @retval tvERROR_INVALID_PARAM             - Input parameter is invalid
+ * @retval tvERROR_INVALID_PARAM             - A parameter is invalid, such as a
+ *                                             NULL pointer or a value outside the valid range defined for this API
  * @retval tvERROR_INVALID_STATE             - Interface is not initialized
- * @retval tvERROR_OPERATION_NOT_SUPPORTED   - Operation is not supported
+ * @retval tvERROR_OPERATION_NOT_SUPPORTED   - The feature or operation is not supported by the platform
  * @retval tvERROR_GENERAL                   - Underlying failures - SoC, memory, etc
  *
  * @pre TvInit() should be called before calling this API
@@ -615,14 +673,17 @@ tvError_t SetTVDimmingMode(const char *dimmingMode);
  * This function gets the current dimmimng mode value for the primary video source selected,
  * primary video format played and picture mode selected.
  *
+ * If the platform does not support TVDimmingMode, then tvERROR_OPERATION_NOT_SUPPORTED is returned.
+ *
  * @param[out] dimmingMode           - Current dimming mode. Valid values are ( "Local", "Fixed", "Global" )
  *
  * @return tvError_t
  *
  * @retval tvERROR_NONE                      - Success
- * @retval tvERROR_INVALID_PARAM             - Parameter is invalid
+ * @retval tvERROR_INVALID_PARAM             - A parameter is invalid, such as a
+ *                                             NULL pointer or a value outside the valid range defined for this API
  * @retval tvERROR_INVALID_STATE             - Interface is not initialized
- * @retval tvERROR_OPERATION_NOT_SUPPORTED   - Operation is not supported
+ * @retval tvERROR_OPERATION_NOT_SUPPORTED   - The feature or operation is not supported by the platform
  * @retval tvERROR_GENERAL                   - Underlying failures - SoC, memory, etc
  *
  * @pre TvInit() should be called before calling this API
@@ -641,6 +702,8 @@ tvError_t GetTVDimmingMode(char *dimmingMode);
  * The source, format, and picture mode shall be validated against the supported video sources, video formats, and
  * picture modes specified in the PQ capability configuration file for the respective feature.
  *
+ * If the platform does not support TVDimmingMode, then tvERROR_OPERATION_NOT_SUPPORTED is returned.
+ *
  * @param[in] videoSrcType          - Source input value. Valid value will be a member of ::tvVideoSrcType_t
  * @param[in] pq_mode               - Picture mode index. Valid value will be a member of ::tvPQModeIndex_t
  * @param[in] videoFormatType       - Video format type. Valid value will be a member of ::tvVideoFormatType_t
@@ -649,9 +712,11 @@ tvError_t GetTVDimmingMode(char *dimmingMode);
  * @return tvError_t
  *
  * @retval tvERROR_NONE             - Success
- * @retval tvERROR_INVALID_PARAM    - Input parameter is invalid
+ * @retval tvERROR_INVALID_PARAM    - A parameter is invalid, such as a
+ *                                    NULL pointer or a value outside the valid range defined for this API
  * @retval tvERROR_INVALID_STATE    - Interface is not initialized
  * @retval tvERROR_GENERAL          - Underlying failures - SoC, memory, etc
+ * @retval tvERROR_OPERATION_NOT_SUPPORTED   - The feature or operation is not supported by the platform
  *
  * @pre TvInit() should be called before calling this API
  */
@@ -688,9 +753,10 @@ tvError_t GetTVDimmingMode(char *dimmingMode);
  * @return tvError_t
  *
  * @retval tvERROR_NONE - Success
- * @retval tvERROR_INVALID_PARAM - Parameter is invalid
+ * @retval tvERROR_INVALID_PARAM - A parameter is invalid, such as a
+ *                                 NULL pointer or a value outside the valid range defined for this API
  * @retval tvERROR_INVALID_STATE - Interface is not initialized
- * @retval tvERROR_OPERATION_NOT_SUPPORTED - Operation is not supported
+ * @retval tvERROR_OPERATION_NOT_SUPPORTED   - The feature or operation is not supported by the platform
  * @retval tvERROR_GENERAL - Underlying failures - SoC, memory, etc
  *
  * @pre TvInit() should be called before calling this API
@@ -706,14 +772,17 @@ tvError_t GetTVDimmingModeCaps(tvDimmingMode_t** dimming_mode, size_t* num_dimmi
  * If peak brightness capablity of the panel changes as a result of local dimming level change reload the edid accordingly
  * to update VSVDB string if current video format is handled via Dolby Vision core.
  *
+ * If the platform does not support localdimminglevel, then tvERROR_OPERATION_NOT_SUPPORTED is returned.
+ *
  * @param[in] ldimStateLevel                -  Dimming level to set. Valid value will be a member of ::ldimStateLevel_t
  *
  * @return tvError_t
  *
  * @retval tvERROR_NONE                      - Success
- * @retval tvERROR_INVALID_PARAM             - Input parameter is invalid
+ * @retval tvERROR_INVALID_PARAM             - A parameter is invalid, such as a
+ *                                             NULL pointer or a value outside the valid range defined for this API
  * @retval tvERROR_INVALID_STATE             - Interface is not initialized
- * @retval tvERROR_OPERATION_NOT_SUPPORTED   - Operation is not supported
+ * @retval tvERROR_OPERATION_NOT_SUPPORTED   - The feature or operation is not supported by the platform
  * @retval tvERROR_GENERAL                   - Underlying failures - SoC, memory, etc
  *
  * @pre TvInit() should be called before calling this API
@@ -726,14 +795,17 @@ tvError_t SetLocalDimmingLevel(ldimStateLevel_t ldimStateLevel);
  * This function gets the current local dimming level for the primary video source selected,
  * primary video format played and picture mode selected.
  *
+ * If the platform does not support localdimminglevel, then tvERROR_OPERATION_NOT_SUPPORTED is returned.
+ *
  * @param[out] ldimStateLevel               - Current Dimming level returned. Valid value will be a member of ::ldimStateLevel_t
  *
  * @return tvError_t
  *
  * @retval tvERROR_NONE                      - Success
- * @retval tvERROR_INVALID_PARAM             - Parameter is invalid
+ * @retval tvERROR_INVALID_PARAM             - A parameter is invalid, such as a
+ *                                             NULL pointer or a value outside the valid range defined for this API
  * @retval tvERROR_INVALID_STATE             - Interface is not initialized
- * @retval tvERROR_OPERATION_NOT_SUPPORTED   - Operation is not supported
+ * @retval tvERROR_OPERATION_NOT_SUPPORTED   - The feature or operation is not supported by the platform
  * @retval tvERROR_GENERAL                   - Underlying failures - SoC, memory, etc
  *
  * @pre TvInit() should be called before calling this API
@@ -752,6 +824,8 @@ tvError_t GetLocalDimmingLevel(ldimStateLevel_t *ldimStateLevel);
  * The source, format, and picture mode shall be validated against the supported video sources, video formats, and
  * picture modes specified in the PQ capability configuration file for the respective feature.
  *
+ * If the platform does not support localdimminglevel, then tvERROR_OPERATION_NOT_SUPPORTED is returned.
+ *
  * @param[in] videoSrcType          - Source input value. Valid value will be a member of ::tvVideoSrcType_t
  * @param[in] pq_mode               - Picture mode index. Valid value will be a member of ::tvPQModeIndex_t
  * @param[in] videoFormatType       - Video format type value. Valid value will be a member of ::tvVideoFormatType_t
@@ -760,9 +834,10 @@ tvError_t GetLocalDimmingLevel(ldimStateLevel_t *ldimStateLevel);
  * @return tvError_t
  *
  * @retval tvERROR_NONE                      - Success
- * @retval tvERROR_INVALID_PARAM             - Input parameter is invalid
+ * @retval tvERROR_INVALID_PARAM             - A parameter is invalid, such as a
+ *                                             NULL pointer or a value outside the valid range defined for this API
  * @retval tvERROR_INVALID_STATE             - Interface is not initialized
- * @retval tvERROR_OPERATION_NOT_SUPPORTED   - Operation is not supported
+ * @retval tvERROR_OPERATION_NOT_SUPPORTED   - The feature or operation is not supported by the platform
  * @retval tvERROR_GENERAL                   - Underlying failures - SoC, memory, etc
  *
  * @pre TvInit() should be called before calling this API
@@ -793,9 +868,10 @@ tvError_t SaveLocalDimmingLevel(tvVideoSrcType_t videoSrcType, int pq_mode,tvVid
  * @return tvError_t
  *
  * @retval tvERROR_NONE - Success
- * @retval tvERROR_INVALID_PARAM - Parameter is invalid
+ * @retval tvERROR_INVALID_PARAM - A parameter is invalid, such as a
+ *                                 NULL pointer or a value outside the valid range defined for this API
  * @retval tvERROR_INVALID_STATE - Interface is not initialized
- * @retval tvERROR_OPERATION_NOT_SUPPORTED - Operation is not supported
+ * @retval tvERROR_OPERATION_NOT_SUPPORTED   - The feature or operation is not supported by the platform
  * @retval tvERROR_GENERAL - Underlying failures - SoC, memory, etc
  *
  * @pre TvInit() should be called before calling this API
@@ -809,14 +885,18 @@ tvError_t GetBrightnessCaps(int *max_brightness, tvContextCaps_t ** context_caps
  * video format played and picture mode selected and if successful will be saved in override picture profile database.
  * The saved brightness value should be applied automatically whenever the  current picture mode, current primary video format
  *
+ * If the platform does not support brightness, then tvERROR_OPERATION_NOT_SUPPORTED is returned.
+ *
  * @param[in] brightness             - Brightness value to be set. Valid range is (0 - 100)
  *
  * @return tvError_t
  *
  * @retval tvERROR_NONE              - Success
- * @retval tvERROR_INVALID_PARAM     - Input parameter is invalid
+ * @retval tvERROR_INVALID_PARAM     - A parameter is invalid, such as a
+ *                                     NULL pointer or a value outside the valid range defined for this API
  * @retval tvERROR_INVALID_STATE     - Interface is not initialized
  * @retval tvERROR_GENERAL           - Underlying failures - SoC, memory, etc
+ * @retval tvERROR_OPERATION_NOT_SUPPORTED   - The feature or operation is not supported by the platform
  *
  * @pre TvInit() should be called before calling this API
  *
@@ -830,14 +910,18 @@ tvError_t SetBrightness(int brightness);
  * This function gets the current brightness value for the primary video source selected,
  * primary video format played and picture mode selected.
  *
+ * If the platform does not support brightness, then tvERROR_OPERATION_NOT_SUPPORTED is returned.
+ *
  * @param[out] brightness            - Current brightness value. Valid range is (0 - 100)
  *
  * @return tvError_t
  *
  * @retval tvERROR_NONE              - Success
- * @retval tvERROR_INVALID_PARAM     - Parameter is invalid
+ * @retval tvERROR_INVALID_PARAM     - A parameter is invalid, such as a
+ *                                     NULL pointer or a value outside the valid range defined for this API
  * @retval tvERROR_INVALID_STATE     - Interface is not initialized
  * @retval tvERROR_GENERAL           - Underlying failures - SoC, memory, etc
+ * @retval tvERROR_OPERATION_NOT_SUPPORTED   - The feature or operation is not supported by the platform
  *
  * @pre TvInit() should be called before calling this API
  *
@@ -855,6 +939,8 @@ tvError_t GetBrightness(int *brightness);
  * The source, format, and picture mode shall be validated against the supported video sources, video formats, and
  * picture modes specified in the PQ capability configuration file for the respective feature.
  *
+ * If the platform does not support brightness, then tvERROR_OPERATION_NOT_SUPPORTED is returned.
+ *
  * @param[in] videoSrcType          - Source input value. Valid value will be a member of ::tvVideoSrcType_t
  * @param[in] pq_mode               - Picture mode index. Valid value will be a member of ::tvPQModeIndex_t
  * @param[in] videoFormatType       - Video format type value. Valid value will be a member of ::tvVideoFormatType_t
@@ -863,9 +949,11 @@ tvError_t GetBrightness(int *brightness);
  * @return tvError_t
  *
  * @retval tvERROR_NONE             - Success
- * @retval tvERROR_INVALID_PARAM    - Input parameter is invalid
+ * @retval tvERROR_INVALID_PARAM    - A parameter is invalid, such as a
+ *                                    NULL pointer or a value outside the valid range defined for this API
  * @retval tvERROR_INVALID_STATE    - Interface is not initialized
  * @retval tvERROR_GENERAL          - Underlying failures - SoC, memory, etc
+ * @retval tvERROR_OPERATION_NOT_SUPPORTED   - The feature or operation is not supported by the platform
  *
  * @pre TvInit() should be called before calling this API
  * @todo: instead of int for pq_mode use tvPQModeIndex_t enum for all save API's
@@ -896,9 +984,10 @@ tvError_t SaveBrightness(tvVideoSrcType_t videoSrcType, int pq_mode,tvVideoForma
  * @return tvError_t
  *
  * @retval tvERROR_NONE - Success
- * @retval tvERROR_INVALID_PARAM - Parameter is invalid
+ * @retval tvERROR_INVALID_PARAM - A parameter is invalid, such as a
+ *                                 NULL pointer or a value outside the valid range defined for this API
  * @retval tvERROR_INVALID_STATE - Interface is not initialized
- * @retval tvERROR_OPERATION_NOT_SUPPORTED - Operation is not supported
+ * @retval tvERROR_OPERATION_NOT_SUPPORTED   - The feature or operation is not supported by the platform
  * @retval tvERROR_GENERAL - Underlying failures - SoC, memory, etc
  *
  * @pre TvInit() should be called before calling this API
@@ -912,14 +1001,18 @@ tvError_t GetContrastCaps(int* max_contrast, tvContextCaps_t ** context_caps);
  * video format played and picture mode selected and if successful will be saved in override picture profile database.
  * The saved contrast value should be applied automatically whenever the  current picture mode, current primary video format
  *
+ * If the platform does not support contrast, then tvERROR_OPERATION_NOT_SUPPORTED is returned.
+ *
  * @param[in] contrast               - Contrast value to be set.Valid range is (0 - 100)
  *
  * @return tvError_t
  *
  * @retval tvERROR_NONE              - Success
- * @retval tvERROR_INVALID_PARAM     - Input parameter is invalid
+ * @retval tvERROR_INVALID_PARAM     - A parameter is invalid, such as a
+ *                                     NULL pointer or a value outside the valid range defined for this API
  * @retval tvERROR_INVALID_STATE     - Interface is not initialized
  * @retval tvERROR_GENERAL           - Underlying failures - SoC, memory, etc
+ * @retval tvERROR_OPERATION_NOT_SUPPORTED   - The feature or operation is not supported by the platform
  *
  * @pre TvInit() should be called before calling this API
  *
@@ -933,14 +1026,18 @@ tvError_t SetContrast(int contrast);
  * This function gets the current contrast value for the primary video source selected,
  * primary video format played and picture mode selected.
  *
+ * If the platform does not support contrast, then tvERROR_OPERATION_NOT_SUPPORTED is returned.
+ *
  * @param[out] contrast               - Current contrast value. Valid range is (0 - 100)
  *
  * @return tvError_t
  *
  * @retval tvERROR_NONE               - Success
- * @retval tvERROR_INVALID_PARAM      - Parameter is invalid
+ * @retval tvERROR_INVALID_PARAM      - A parameter is invalid, such as a
+ *                                      NULL pointer or a value outside the valid range defined for this API
  * @retval tvERROR_INVALID_STATE      - Interface is not initialized
  * @retval tvERROR_GENERAL            - Underlying failures - SoC, memory, etc
+ * @retval tvERROR_OPERATION_NOT_SUPPORTED   - The feature or operation is not supported by the platform
  *
  * @pre TvInit() should be called before calling this API
  *
@@ -958,6 +1055,8 @@ tvError_t GetContrast(int *contrast);
  * The source, format, and picture mode shall be validated against the supported video sources, video formats, and
  * picture modes specified in the PQ capability configuration file for the respective feature.
  *
+ * If the platform does not support contrast, then tvERROR_OPERATION_NOT_SUPPORTED is returned.
+ *
  * @param[in] videoSrcType          - Source input value. Valid value will be a member of ::tvVideoSrcType_t
  * @param[in] pq_mode               - Picture mode index. Valid value will be a member of ::tvPQModeIndex_t
  * @param[in] videoFormatType       - Video format type value. Valid value will be a member of ::tvVideoFormatType_t
@@ -966,9 +1065,11 @@ tvError_t GetContrast(int *contrast);
  * @return tvError_t
  *
  * @retval tvERROR_NONE             - Success
- * @retval tvERROR_INVALID_PARAM    - Input parameter is invalid
+ * @retval tvERROR_INVALID_PARAM    - A parameter is invalid, such as a
+ *                                    NULL pointer or a value outside the valid range defined for this API
  * @retval tvERROR_INVALID_STATE    - Interface is not initialized
  * @retval tvERROR_GENERAL          - Underlying failures - SoC, memory, etc
+ * @retval tvERROR_OPERATION_NOT_SUPPORTED   - The feature or operation is not supported by the platform
  *
  * @pre TvInit() should be called before calling this API
  */
@@ -981,14 +1082,18 @@ tvError_t SaveContrast(tvVideoSrcType_t videoSrcType, int pq_mode,tvVideoFormatT
  * video format played and picture mode selected and if successful will be saved in override picture profile database.
  * The saved sharpness value should be applied automatically whenever the  current picture mode, current primary video format
  *
+ * If the platform does not support sharpness, then tvERROR_OPERATION_NOT_SUPPORTED is returned.
+ *
  * @param[in] sharpness                - Sharpness value to be set. Valid range is (0 - 100)
  *
  * @return tvError_t
  *
  * @retval tvERROR_NONE                - Success
- * @retval tvERROR_INVALID_PARAM       - Input parameter is invalid
+ * @retval tvERROR_INVALID_PARAM       - A parameter is invalid, such as a
+ *                                       NULL pointer or a value outside the valid range defined for this API
  * @retval tvERROR_INVALID_STATE       - Interface is not initialized
  * @retval tvERROR_GENERAL             - Underlying failures - SoC, memory, etc
+ * @retval tvERROR_OPERATION_NOT_SUPPORTED   - The feature or operation is not supported by the platform
  *
  * @pre TvInit() should be called before calling this API
  *
@@ -1020,9 +1125,10 @@ tvError_t SetSharpness(int sharpness);
  * @return tvError_t
  *
  * @retval tvERROR_NONE - Success
- * @retval tvERROR_INVALID_PARAM - Parameter is invalid
+ * @retval tvERROR_INVALID_PARAM - A parameter is invalid, such as a
+ *                                 NULL pointer or a value outside the valid range defined for this API
  * @retval tvERROR_INVALID_STATE - Interface is not initialized
- * @retval tvERROR_OPERATION_NOT_SUPPORTED - Operation is not supported
+ * @retval tvERROR_OPERATION_NOT_SUPPORTED   - The feature or operation is not supported by the platform
  * @retval tvERROR_GENERAL - Underlying failures - SoC, memory, etc
  *
  * @pre TvInit() should be called before calling this API
@@ -1035,14 +1141,18 @@ tvError_t GetSharpnessCaps(int *max_sharpness, tvContextCaps_t ** context_caps);
  * This function gets the current sharpness value for the primary video source selected,
  * primary video format played and picture mode selected.
  *
+ * If the platform does not support sharpness, then tvERROR_OPERATION_NOT_SUPPORTED is returned.
+ *
  * @param[out] sharpness              - Current sharpness value. Valid range is (0 - 100)
  *
  * @return tvError_t
  *
  * @retval tvERROR_NONE               - Success
- * @retval tvERROR_INVALID_PARAM      - Parameter is invalid
+ * @retval tvERROR_INVALID_PARAM      - A parameter is invalid, such as a
+ *                                      NULL pointer or a value outside the valid range defined for this API
  * @retval tvERROR_INVALID_STATE      - Interface is not initialized
  * @retval tvERROR_GENERAL            - Underlying failures - SoC, memory, etc
+ * @retval tvERROR_OPERATION_NOT_SUPPORTED   - The feature or operation is not supported by the platform
  *
  * @pre TvInit() should be called before calling this API
  *
@@ -1060,6 +1170,8 @@ tvError_t GetSharpness(int *sharpness);
  * The source, format, and picture mode shall be validated against the supported video sources, video formats, and
  * picture modes specified in the PQ capability configuration file for the respective feature.
  *
+ * If the platform does not support sharpness, then tvERROR_OPERATION_NOT_SUPPORTED is returned.
+ *
  * @param[in] videoSrcType          - Source input value. Valid value will be a member of ::tvVideoSrcType_t
  * @param[in] pq_mode               - Picture mode index. Valid value will be a member of ::tvPQModeIndex_t
  * @param[in] videoFormatType       - Video format type value. Valid value will be a member of ::tvVideoFormatType_t
@@ -1068,9 +1180,11 @@ tvError_t GetSharpness(int *sharpness);
  * @return tvError_t
  *
  * @retval tvERROR_NONE             - Success
- * @retval tvERROR_INVALID_PARAM    - Input parameter is invalid
+ * @retval tvERROR_INVALID_PARAM    - A parameter is invalid, such as a
+ *                                    NULL pointer or a value outside the valid range defined for this API
  * @retval tvERROR_INVALID_STATE    - Interface is not initialized
  * @retval tvERROR_GENERAL          - Underlying failures - SoC, memory, etc
+ * @retval tvERROR_OPERATION_NOT_SUPPORTED   - The feature or operation is not supported by the platform
  *
  * @pre TvInit() should be called before calling this API
  */
@@ -1083,14 +1197,18 @@ tvError_t GetSharpness(int *sharpness);
  * video format played and picture mode selected and if successful will be saved in override picture profile database.
  * The saved saturation value should be applied automatically whenever the  current picture mode, current primary video format
  *
+ * If the platform does not support saturation, then tvERROR_OPERATION_NOT_SUPPORTED is returned.
+ *
  * @param[in] saturation              - Saturation value to be set. Valid range is (0 - 100)
  *
  * @return tvError_t
  *
  * @retval tvERROR_NONE               - Success
- * @retval tvERROR_INVALID_PARAM      - Parameter is invalid
+ * @retval tvERROR_INVALID_PARAM      - A parameter is invalid, such as a
+ *                                      NULL pointer or a value outside the valid range defined for this API
  * @retval tvERROR_INVALID_STATE      - Interface is not initialized
  * @retval tvERROR_GENERAL            - Underlying failures - SoC, memory, etc
+ * @retval tvERROR_OPERATION_NOT_SUPPORTED   - The feature or operation is not supported by the platform
  *
  * @pre TvInit() should be called before calling this API
  *
@@ -1104,14 +1222,18 @@ tvError_t SetSaturation(int saturation);
  * This function gets the current saturation value for the primary video source selected,
  * primary video format played and picture mode selected.
  *
+ * If the platform does not support saturation, then tvERROR_OPERATION_NOT_SUPPORTED is returned.
+ *
  * @param[out] saturation              - Current saturation value. Valid range is (0 - 100)
  *
  * @return tvError_t
  *
  * @retval tvERROR_NONE                - Success
- * @retval tvERROR_INVALID_PARAM       - Parameter is invalid
+ * @retval tvERROR_INVALID_PARAM       - A parameter is invalid, such as a
+ *                                       NULL pointer or a value outside the valid range defined for this API
  * @retval tvERROR_INVALID_STATE       - Interface is not initialized
  * @retval tvERROR_GENERAL             - Underlying failures - SoC, memory, etc
+ * @retval tvERROR_OPERATION_NOT_SUPPORTED   - The feature or operation is not supported by the platform
  *
  * @pre TvInit() should be called before calling this API
  *
@@ -1143,9 +1265,10 @@ tvError_t GetSaturation(int *saturation);
  * @return tvError_t
  *
  * @retval tvERROR_NONE - Success
- * @retval tvERROR_INVALID_PARAM - Parameter is invalid
+ * @retval tvERROR_INVALID_PARAM - A parameter is invalid, such as a
+ *                                 NULL pointer or a value outside the valid range defined for this API
  * @retval tvERROR_INVALID_STATE - Interface is not initialized
- * @retval tvERROR_OPERATION_NOT_SUPPORTED - Operation is not supported
+ * @retval tvERROR_OPERATION_NOT_SUPPORTED   - The feature or operation is not supported by the platform
  * @retval tvERROR_GENERAL - Underlying failures - SoC, memory, etc
  *
  * @pre TvInit() should be called before calling this API
@@ -1162,6 +1285,8 @@ tvError_t GetSaturationCaps(int* max_saturation, tvContextCaps_t ** context_caps
  * The source, format, and picture mode shall be validated against the supported video sources, video formats, and
  * picture modes specified in the PQ capability configuration file for the respective feature.
  *
+ * If the platform does not support saturation, then tvERROR_OPERATION_NOT_SUPPORTED is returned.
+ *
  * @param[in] videoSrcType          - Source input value. Valid value will be a member of ::tvVideoSrcType_t
  * @param[in] pq_mode               - Picture mode index. Valid value will be a member of ::tvPQModeIndex_t
  * @param[in] videoFormatType       - Video format type value. Valid value will be a member of ::tvVideoFormatType_t
@@ -1170,9 +1295,11 @@ tvError_t GetSaturationCaps(int* max_saturation, tvContextCaps_t ** context_caps
  * @return tvError_t
  *
  * @retval tvERROR_NONE             - Success
- * @retval tvERROR_INVALID_PARAM    - Input parameter is invalid
+ * @retval tvERROR_INVALID_PARAM    - A parameter is invalid, such as a
+ *                                    NULL pointer or a value outside the valid range defined for this API
  * @retval tvERROR_INVALID_STATE    - Interface is not initialized
  * @retval tvERROR_GENERAL          - Underlying failures - SoC, memory, etc
+ * @retval tvERROR_OPERATION_NOT_SUPPORTED   - The feature or operation is not supported by the platform
  *
  * @pre TvInit() should be called before calling this API
  */
@@ -1185,14 +1312,18 @@ tvError_t SaveSaturation(tvVideoSrcType_t videoSrcType, int pq_mode,tvVideoForma
  * video format played and picture mode selected and if successful will be saved in override picture profile database.
  * The saved hue value should be applied automatically whenever the  current picture mode, current primary video format
  *
+ * If the platform does not support hue, then tvERROR_OPERATION_NOT_SUPPORTED is returned.
+ *
  * @param[in] hue                     - Hue value to be set. Valid range is (0 - 100)
  *
  * @return tvError_t
  *
  * @retval tvERROR_NONE               - Success
- * @retval tvERROR_INVALID_PARAM      - Input parameter is invalid
+ * @retval tvERROR_INVALID_PARAM      - A parameter is invalid, such as a
+ *                                      NULL pointer or a value outside the valid range defined for this API
  * @retval tvERROR_INVALID_STATE      - Interface is not initialized
  * @retval tvERROR_GENERAL            - Underlying failures - SoC, memory, etc
+ * @retval tvERROR_OPERATION_NOT_SUPPORTED   - The feature or operation is not supported by the platform
  *
  * @pre TvInit() should be called before calling this API
  *
@@ -1224,9 +1355,10 @@ tvError_t SetHue(int hue);
  * @return tvError_t
  *
  * @retval tvERROR_NONE - Success
- * @retval tvERROR_INVALID_PARAM - Parameter is invalid
+ * @retval tvERROR_INVALID_PARAM - A parameter is invalid, such as a
+ *                                 NULL pointer or a value outside the valid range defined for this API
  * @retval tvERROR_INVALID_STATE - Interface is not initialized
- * @retval tvERROR_OPERATION_NOT_SUPPORTED - Operation is not supported
+ * @retval tvERROR_OPERATION_NOT_SUPPORTED   - The feature or operation is not supported by the platform
  * @retval tvERROR_GENERAL - Underlying failures - SoC, memory, etc
  *
  * @pre TvInit() should be called before calling this API
@@ -1239,14 +1371,18 @@ tvError_t GetHueCaps(int* max_hue, tvContextCaps_t ** context_caps);
  * This function gets the current hue value for the primary video source selected,
  * primary video format played and picture mode selected.
  *
+ * If the platform does not support hue, then tvERROR_OPERATION_NOT_SUPPORTED is returned.
+ *
  * @param[out] hue                    - Current hue value. Valid range (0 - 100)
  *
  * @return tvError_t
  *
  * @retval tvERROR_NONE               - Success
- * @retval tvERROR_INVALID_PARAM      - Parameter is invalid
+ * @retval tvERROR_INVALID_PARAM      - A parameter is invalid, such as a
+ *                                      NULL pointer or a value outside the valid range defined for this API
  * @retval tvERROR_INVALID_STATE      - Interface is not initialized
  * @retval tvERROR_GENERAL            - Underlying failures - SoC, memory, etc
+ * @retval tvERROR_OPERATION_NOT_SUPPORTED   - The feature or operation is not supported by the platform
  *
  * @pre TvInit() should be called before calling this API
  *
@@ -1264,6 +1400,8 @@ tvError_t GetHue(int *hue);
  * The source, format, and picture mode shall be validated against the supported video sources, video formats, and
  * picture modes specified in the PQ capability configuration file for the respective feature.
  *
+ * If the platform does not support hue, then tvERROR_OPERATION_NOT_SUPPORTED is returned.
+ *
  * @param[in] videoSrcType          - Source input value. Valid value will be a member of ::tvVideoSrcType_t
  * @param[in] pq_mode               - Picture mode index. Valid value will be a member of ::tvPQModeIndex_t
  * @param[in] videoFormatType       - Video format type value. Valid value will be a member of ::tvVideoFormatType_t
@@ -1272,9 +1410,11 @@ tvError_t GetHue(int *hue);
  * @return tvError_t
  *
  * @retval tvERROR_NONE             - Success
- * @retval tvERROR_INVALID_PARAM    - Input parameter is invalid
+ * @retval tvERROR_INVALID_PARAM    - A parameter is invalid, such as a
+ *                                    NULL pointer or a value outside the valid range defined for this API
  * @retval tvERROR_INVALID_STATE    - Interface is not initialized
  * @retval tvERROR_GENERAL          - Underlying failures - SoC, memory, etc
+ * @retval tvERROR_OPERATION_NOT_SUPPORTED   - The feature or operation is not supported by the platform
  *
  * @pre TvInit() should be called before calling this API
  */
@@ -1288,14 +1428,18 @@ tvError_t SaveHue(tvVideoSrcType_t videoSrcType, int pq_mode,tvVideoFormatType_t
  * The saved color temperature value should be applied automatically whenever the  current picture mode, current primary video format
  * Loads the corresponding gamma and white balance values assoicated to the colour temperature from the picure quality database.
  *
+ * If the platform does not support colorTemperature, then tvERROR_OPERATION_NOT_SUPPORTED is returned.
+ *
  * @param[in] colorTemp              - Color temperature value to be set. Valid value will be a member of ::tvColorTemp_t
  *
  * @return tvError_t
  *
  * @retval tvERROR_NONE              - Success
- * @retval tvERROR_INVALID_PARAM     - Input parameter is invalid
+ * @retval tvERROR_INVALID_PARAM     - A parameter is invalid, such as a
+ *                                     NULL pointer or a value outside the valid range defined for this API
  * @retval tvERROR_INVALID_STATE     - Interface is not initialized
  * @retval tvERROR_GENERAL           - Underlying failures - SoC, memory, etc
+ * @retval tvERROR_OPERATION_NOT_SUPPORTED   - The feature or operation is not supported by the platform
  *
  * @pre TvInit() should be called before calling this API
  *
@@ -1309,14 +1453,18 @@ tvError_t SetColorTemperature(tvColorTemp_t colorTemp);
  * This function gets the current colour temperature value for the primary video source selected,
  * primary video format played and picture mode selected.
  *
+ * If the platform does not support colorTemperature, then tvERROR_OPERATION_NOT_SUPPORTED is returned.
+ *
  * @param[out] colorTemp             - Current color temperature. Valid value will be a member of ::tvColorTemp_t
  *
  * @return tvError_t
  *
  * @retval tvERROR_NONE              - Success
- * @retval tvERROR_INVALID_PARAM     - Parameter is invalid
+ * @retval tvERROR_INVALID_PARAM     - A parameter is invalid, such as a
+ *                                     NULL pointer or a value outside the valid range defined for this API
  * @retval tvERROR_INVALID_STATE     - Interface is not initialized
  * @retval tvERROR_GENERAL           - Underlying failures - SoC, memory, etc
+ * @retval tvERROR_OPERATION_NOT_SUPPORTED   - The feature or operation is not supported by the platform
  *
  * @pre TvInit() should be called before calling this API
  *
@@ -1352,9 +1500,10 @@ tvError_t GetColorTemperature(tvColorTemp_t *colorTemp);
  * @return tvError_t
  *
  * @retval tvERROR_NONE - Success
- * @retval tvERROR_INVALID_PARAM - Parameter is invalid
+ * @retval tvERROR_INVALID_PARAM - A parameter is invalid, such as a
+ *                                 NULL pointer or a value outside the valid range defined for this API
  * @retval tvERROR_INVALID_STATE - Interface is not initialized
- * @retval tvERROR_OPERATION_NOT_SUPPORTED - Operation is not supported
+ * @retval tvERROR_OPERATION_NOT_SUPPORTED   - The feature or operation is not supported by the platform
  * @retval tvERROR_GENERAL - Underlying failures - SoC, memory, etc
  *
  * @pre TvInit() should be called before calling this API
@@ -1371,6 +1520,8 @@ tvError_t GetColorTemperatureCaps(tvColorTemp_t** color_temp, size_t* num_color_
  * The source, format, and picture mode shall be validated against the supported video sources, video formats, and
  * picture modes specified in the PQ capability configuration file for the respective feature.
  *
+ * If the platform does not support colorTemperature, then tvERROR_OPERATION_NOT_SUPPORTED is returned.
+ *
  * @param[in] videoSrcType          - Source input value. Valid value will be a member of ::tvVideoSrcType_t
  * @param[in] pq_mode               - Picture mode index. Valid value will be a member of ::tvPQModeIndex_t
  * @param[in] videoFormatType       - Video format type value. Valid value will be a member of ::tvVideoFormatType_t
@@ -1379,9 +1530,11 @@ tvError_t GetColorTemperatureCaps(tvColorTemp_t** color_temp, size_t* num_color_
  * @return tvError_t
  *
  * @retval tvERROR_NONE             - Success
- * @retval tvERROR_INVALID_PARAM    - Input parameter is invalid
+ * @retval tvERROR_INVALID_PARAM    - A parameter is invalid, such as a
+ *                                    NULL pointer or a value outside the valid range defined for this API
  * @retval tvERROR_INVALID_STATE    - Interface is not initialized
  * @retval tvERROR_GENERAL          - Underlying failures - SoC, memory, etc
+ * @retval tvERROR_OPERATION_NOT_SUPPORTED   - The feature or operation is not supported by the platform
  *
  * @pre TvInit() should be called before calling this API
  */
@@ -1394,14 +1547,18 @@ tvError_t SaveColorTemperature(tvVideoSrcType_t videoSrcType, int pq_mode,tvVide
  * video format played and picture mode selected and if successful will be saved in override picture profile database.
  * The saved aspect ratio value should be applied automatically whenever the  current picture mode, current primary video format
  *
+ * If the platform does not support AspectRatio, then tvERROR_OPERATION_NOT_SUPPORTED is returned.
+ *
  * @param[in] dispMode                - Aspect ratio value to be set. Valid value will be a member of ::tvDisplayMode_t
  *
  * @return tvError_t
  *
  * @retval tvERROR_NONE                      - Success
- * @retval tvERROR_INVALID_PARAM             - Input parameter is invalid
+ * @retval tvERROR_INVALID_PARAM             - A parameter is invalid, such as a
+ *                                             NULL pointer or a value outside the valid range defined for this API
  * @retval tvERROR_INVALID_STATE             - Interface is not initialized
  * @retval tvERROR_GENERAL                   - Underlying failures - SoC, memory, etc
+ * @retval tvERROR_OPERATION_NOT_SUPPORTED   - The feature or operation is not supported by the platform
  *
  * @pre TvInit() should be called before calling this API
  *
@@ -1415,14 +1572,18 @@ tvError_t SetAspectRatio(tvDisplayMode_t dispMode);
  * This function gets the current aspect ratio for the primary video source selected,
  * primary video format played and picture mode selected.
  *
+ * If the platform does not support AspectRatio, then tvERROR_OPERATION_NOT_SUPPORTED is returned.
+ *
  * @param[out] dispMode             -  Aspect ratio value. Valid value will be a member of ::tvDisplayMode_t
  *
  * @return tvError_t
  *
  * @retval tvERROR_NONE                      - Success
- * @retval tvERROR_INVALID_PARAM             - Parameter is invalid
+ * @retval tvERROR_INVALID_PARAM             - A parameter is invalid, such as a
+ *                                             NULL pointer or a value outside the valid range defined for this API
  * @retval tvERROR_INVALID_STATE             - Interface is not initialized
  * @retval tvERROR_GENERAL                   - Underlying failures - SoC, memory, etc
+ * @retval tvERROR_OPERATION_NOT_SUPPORTED   - The feature or operation is not supported by the platform
  *
  * @pre TvInit() should be called before calling this API
  *
@@ -1440,6 +1601,8 @@ tvError_t GetAspectRatio(tvDisplayMode_t *dispMode);
  * The source, format, and picture mode shall be validated against the supported video sources, video formats, and
  * picture modes specified in the PQ capability configuration file for the respective feature.
  *
+ * If the platform does not support AspectRatio, then tvERROR_OPERATION_NOT_SUPPORTED is returned.
+ *
  * @param[in] videoSrcType          - Source input value. Valid value will be a member of ::tvVideoSrcType_t
  * @param[in] pq_mode               - Picture mode index. Valid value will be a member of ::tvPQModeIndex_t
  * @param[in] videoFormatType       - Video format type value. Valid value will be a member of ::tvVideoFormatType_t
@@ -1448,9 +1611,11 @@ tvError_t GetAspectRatio(tvDisplayMode_t *dispMode);
  * @return tvError_t
  *
  * @retval tvERROR_NONE             - Success
- * @retval tvERROR_INVALID_PARAM    - Input parameter is invalid
+ * @retval tvERROR_INVALID_PARAM    - A parameter is invalid, such as a
+ *                                    NULL pointer or a value outside the valid range defined for this API
  * @retval tvERROR_INVALID_STATE    - Interface is not initialized
  * @retval tvERROR_GENERAL          - Underlying failures - SoC, memory, etc
+ * @retval tvERROR_OPERATION_NOT_SUPPORTED   - The feature or operation is not supported by the platform
  *
  * @pre TvInit() should be called before calling this API
  */
@@ -1485,9 +1650,10 @@ tvError_t SaveAspectRatio(tvVideoSrcType_t videoSrcType, int pq_mode,tvVideoForm
  * @return tvError_t
  *
  * @retval tvERROR_NONE - Success
- * @retval tvERROR_INVALID_PARAM - Parameter is invalid
+ * @retval tvERROR_INVALID_PARAM - A parameter is invalid, such as a
+ *                                 NULL pointer or a value outside the valid range defined for this API
  * @retval tvERROR_INVALID_STATE - Interface is not initialized
- * @retval tvERROR_OPERATION_NOT_SUPPORTED - Operation is not supported
+ * @retval tvERROR_OPERATION_NOT_SUPPORTED   - The feature or operation is not supported by the platform
  * @retval tvERROR_GENERAL - Underlying failures - SoC, memory, etc
  *
  * @pre TvInit() should be called before calling this API
@@ -1501,14 +1667,18 @@ tvError_t GetAspectRatioCaps(tvDisplayMode_t** aspect_ratio, size_t* num_aspect_
  * video format played and picture mode selected and if successful will be saved in override picture profile database.
  * The saved low latency state value should be applied automatically whenever the  current picture mode, current primary video format
  *
+ * If the platform does not support LowLatencyState, then tvERROR_OPERATION_NOT_SUPPORTED is returned.
+ *
  * @param[in] lowLatencyIndex       - Value of the low latency index to be set. Valid values are ( 0 for disable, 1 for enable)
  *
  * @return tvError_t
  *
  * @retval tvERROR_NONE             - Success
- * @retval tvERROR_INVALID_PARAM    - Input parameter is invalid
+ * @retval tvERROR_INVALID_PARAM    - A parameter is invalid, such as a
+ *                                    NULL pointer or a value outside the valid range defined for this API
  * @retval tvERROR_INVALID_STATE    - Interface is not initialized
  * @retval tvERROR_GENERAL          - Underlying failures - SoC, memory, etc
+ * @retval tvERROR_OPERATION_NOT_SUPPORTED   - The feature or operation is not supported by the platform
  *
  * @pre TvInit() should be called before calling this API
  */
@@ -1520,14 +1690,18 @@ tvError_t SetLowLatencyState( int lowLatencyIndex );
  * This function gets the current low latency value for the primary video source selected,
  * primary video format played and picture mode selected.
  *
+ * If the platform does not support LowLatencyState, then tvERROR_OPERATION_NOT_SUPPORTED is returned.
+ *
  * @param[out] lowlatencystate       - Current low latency index value. Valid values are ( 0, 1 )
  *
  * @return tvError_t
  *
  * @retval tvERROR_NONE             - Success
- * @retval tvERROR_INVALID_PARAM    - Parameter is invalid
+ * @retval tvERROR_INVALID_PARAM    - A parameter is invalid, such as a
+ *                                    NULL pointer or a value outside the valid range defined for this API
  * @retval tvERROR_INVALID_STATE    - Interface is not initialized
  * @retval tvERROR_GENERAL          - Underlying failures - SoC, memory, etc
+ * @retval tvERROR_OPERATION_NOT_SUPPORTED   - The feature or operation is not supported by the platform
  *
  * @pre TvInit() should be called before calling this API
  */
@@ -1543,6 +1717,8 @@ tvError_t GetLowLatencyState(int *lowlatencystate);
  * The source, format, and picture mode shall be validated against the supported video sources, video formats, and
  * picture modes specified in the PQ capability configuration file for the respective feature.
  *
+ * If the platform does not support LowLatencyState, then tvERROR_OPERATION_NOT_SUPPORTED is returned.
+ *
  * @param[in] videoSrcType          - Source input value. Valid value will be a member of ::tvVideoSrcType_t
  * @param[in] pq_mode               - Picture mode index. Valid value will be a member of ::tvPQModeIndex_t
  * @param[in] videoFormatType       - Video format type value. Valid value will be a member of ::tvVideoFormatType_t
@@ -1551,9 +1727,11 @@ tvError_t GetLowLatencyState(int *lowlatencystate);
  * @return tvError_t
  *
  * @retval tvERROR_NONE             - Success
- * @retval tvERROR_INVALID_PARAM    - Input parameter is invalid
+ * @retval tvERROR_INVALID_PARAM    - A parameter is invalid, such as a
+ *                                    NULL pointer or a value outside the valid range defined for this API
  * @retval tvERROR_INVALID_STATE    - Interface is not initialized
  * @retval tvERROR_GENERAL          - Underlying failures - SoC, memory, etc
+ * @retval tvERROR_OPERATION_NOT_SUPPORTED   - The feature or operation is not supported by the platform
  *
  * @pre TvInit() should be called before calling this API
  */
@@ -1583,9 +1761,10 @@ tvError_t GetLowLatencyState(int *lowlatencystate);
  * @return tvError_t
  *
  * @retval tvERROR_NONE - Success
- * @retval tvERROR_INVALID_PARAM - Parameter is invalid
+ * @retval tvERROR_INVALID_PARAM - A parameter is invalid, such as a
+ *                                 NULL pointer or a value outside the valid range defined for this API
  * @retval tvERROR_INVALID_STATE - Interface is not initialized
- * @retval tvERROR_OPERATION_NOT_SUPPORTED - Operation is not supported
+ * @retval tvERROR_OPERATION_NOT_SUPPORTED - The feature or operation is not supported by the platform
  * @retval tvERROR_GENERAL - Underlying failures - SoC, memory, etc
  *
  * @pre TvInit() should be called before calling this API
@@ -1605,9 +1784,10 @@ tvError_t GetLowLatencyStateCaps(int* max_latency, tvContextCaps_t ** context_ca
  * @return tvError_t
  *
  * @retval tvERROR_NONE                      - Success
- * @retval tvERROR_INVALID_PARAM             - Input parameter is invalid
+ * @retval tvERROR_INVALID_PARAM             - A parameter is invalid, such as a
+ *                                             NULL pointer or a value outside the valid range defined for this API
  * @retval tvERROR_INVALID_STATE             - Interface is not initialized
- * @retval tvERROR_OPERATION_NOT_SUPPORTED   - Operation is not supported
+ * @retval tvERROR_OPERATION_NOT_SUPPORTED   - The feature or operation is not supported by the platform
  * @retval tvERROR_GENERAL                   - Underlying failures - SoC, memory, etc
  *
  * @pre TvInit() should be called before calling this API
@@ -1628,9 +1808,10 @@ tvError_t SetDynamicContrast(const char *dynamicContrastEnable);
  * @return tvError_t
  *
  * @retval tvERROR_NONE                      - Success
- * @retval tvERROR_INVALID_PARAM             - Parameter is invalid
+ * @retval tvERROR_INVALID_PARAM             - A parameter is invalid, such as a
+ *                                             NULL pointer or a value outside the valid range defined for this API
  * @retval tvERROR_INVALID_STATE             - Interface is not initialized
- * @retval tvERROR_OPERATION_NOT_SUPPORTED   - Operation is not supported
+ * @retval tvERROR_OPERATION_NOT_SUPPORTED   - The feature or operation is not supported by the platform
  * @retval tvERROR_GENERAL                   - Underlying failures - SoC, memory, etc
  *
  * @pre TvInit() should be called before calling this API
@@ -1651,9 +1832,10 @@ tvError_t GetDynamicContrast(char *isDynamicContrastEnabled);
  * @return tvError_t
  *
  * @retval tvERROR_NONE                      - Success
- * @retval tvERROR_INVALID_PARAM             - Input parameter is invalid
+ * @retval tvERROR_INVALID_PARAM             - A parameter is invalid, such as a
+ *                                             NULL pointer or a value outside the valid range defined for this API
  * @retval tvERROR_INVALID_STATE             - Interface is not initialized
- * @retval tvERROR_OPERATION_NOT_SUPPORTED   - Operation is not supported
+ * @retval tvERROR_OPERATION_NOT_SUPPORTED   - The feature or operation is not supported by the platform
  * @retval tvERROR_GENERAL                   - Underlying failures - SoC, memory, etc
  *
  * @pre TvInit() should be called before calling this API
@@ -1672,9 +1854,10 @@ tvError_t SetDynamicGamma(double tvGammaValue);
  * @return tvError_t
  *
  * @retval tvERROR_NONE                      - Success
- * @retval tvERROR_INVALID_PARAM             - Parameter is invalid
+ * @retval tvERROR_INVALID_PARAM             - A parameter is invalid, such as a
+ *                                             NULL pointer or a value outside the valid range defined for this API
  * @retval tvERROR_INVALID_STATE             - Interface is not initialized
- * @retval tvERROR_OPERATION_NOT_SUPPORTED   - Operation is not supported
+ * @retval tvERROR_OPERATION_NOT_SUPPORTED   - The feature or operation is not supported by the platform
  * @retval tvERROR_GENERAL                   - Underlying failures - SoC, memory, etc
  *
  * @pre TvInit() should be called before calling this API
@@ -1700,9 +1883,10 @@ tvError_t SetDynamicGamma(double tvGammaValue);
  * @return tvError_t
  *
  * @retval tvERROR_NONE                      - Success
- * @retval tvERROR_INVALID_PARAM             - Parameter is invalid
+ * @retval tvERROR_INVALID_PARAM             - A parameter is invalid, such as a
+ *                                             NULL pointer or a value outside the valid range defined for this API
  * @retval tvERROR_INVALID_STATE             - Interface is not initialized
- * @retval tvERROR_OPERATION_NOT_SUPPORTED   - Operation is not supported
+ * @retval tvERROR_OPERATION_NOT_SUPPORTED   - The feature or operation is not supported by the platform
  * @retval tvERROR_GENERAL                   - Underlying failures - SoC, memory, etc
  *
  * @pre TvInit() should be called before calling this API
@@ -1716,15 +1900,18 @@ tvError_t GetTVSupportedDolbyVisionModes(tvDolbyMode_t *dvModes[],unsigned short
  * video format played and picture mode selected and if successful will be saved in override picture profile database.
  * The saved dolby vision mode value should be applied automatically whenever the  current picture mode, current primary video format
  *
+ * If the platform does not support Dolby Vision modes, then tvERROR_OPERATION_NOT_SUPPORTED is returned.
+ *
  * @param[in] dolbyMode              - Dolby vision mode to be set.  Valid values are member of ::tvDolbyMode_t
  *
  * @return tvError_t
  *
  * @retval tvERROR_NONE                      - Success
  *
- * @retval tvERROR_INVALID_PARAM             - Input parameter is invalid
+ * @retval tvERROR_INVALID_PARAM             - A parameter is invalid, such as a
+ *                                             NULL pointer or a value outside the valid range defined for this API
  * @retval tvERROR_INVALID_STATE             - Interface is not initialized
- * @retval tvERROR_OPERATION_NOT_SUPPORTED   - Operation is not supported
+ * @retval tvERROR_OPERATION_NOT_SUPPORTED   - The feature or operation is not supported by the platform
  * @retval tvERROR_GENERAL                   - Underlying failures - SoC, memory, etc
  *
  * @pre TvInit() should be called before calling this API
@@ -1739,14 +1926,17 @@ tvError_t SetTVDolbyVisionMode(tvDolbyMode_t dolbyMode);
  * This function gets the current Dolby vision mode value for the primary video source selected,
  * primary video format played and picture mode selected.
  *
+ * If the platform does not support Dolby Vision modes, then tvERROR_OPERATION_NOT_SUPPORTED is returned.
+ *
  * @param[out] dolbyMode              - Current Dolby vision mode.  Valid values are member of ::tvDolbyMode_t
  *
  * @return tvError_t
  *
  * @retval tvERROR_NONE                      - Success
  * @retval tvERROR_INVALID_STATE             - Interface is not initialized
- * @retval tvERROR_INVALID_PARAM             - Parameter is invalid
- * @retval tvERROR_OPERATION_NOT_SUPPORTED   - Operation is not supported
+ * @retval tvERROR_INVALID_PARAM             - A parameter is invalid, such as a
+ *                                             NULL pointer or a value outside the valid range defined for this API
+ * @retval tvERROR_OPERATION_NOT_SUPPORTED   - The feature or operation is not supported by the platform
  * @retval tvERROR_GENERAL                   - Underlying failures - SoC, memory, etc
  *
  * @pre TvInit() should be called before calling this API
@@ -1766,6 +1956,8 @@ tvError_t GetTVDolbyVisionMode(tvDolbyMode_t *dolbyMode);
  * The source, format, and picture mode shall be validated against the supported video sources, video formats, and
  * picture modes specified in the PQ capability configuration file for the respective feature.
  *
+ * If the platform does not support Dolby Vision modes, then tvERROR_OPERATION_NOT_SUPPORTED is returned.
+ *
  * @param[in] videoSrcType          - Source input value. Valid value will be a member of ::tvVideoSrcType_t
  * @param[in] pq_mode               - Picture mode index. Valid value will be a member of ::tvPQModeIndex_t
  * @param[in] videoFormatType       - Video format type value. Valid value will be a member of ::tvVideoFormatType_t
@@ -1774,9 +1966,10 @@ tvError_t GetTVDolbyVisionMode(tvDolbyMode_t *dolbyMode);
  * @return tvError_t
  *
  * @retval tvERROR_NONE                      - Success
- * @retval tvERROR_INVALID_PARAM             - Input parameter is invalid
+ * @retval tvERROR_INVALID_PARAM             - A parameter is invalid, such as a
+ *                                             NULL pointer or a value outside the valid range defined for this API
  * @retval tvERROR_INVALID_STATE             - Interface is not initialized
- * @retval tvERROR_OPERATION_NOT_SUPPORTED   - Operation is not supported
+ * @retval tvERROR_OPERATION_NOT_SUPPORTED   - The feature or operation is not supported by the platform
  * @retval tvERROR_GENERAL                   - Underlying failures - SoC, memory, etc
  *
  * @pre TvInit() should be called before calling this API
@@ -1813,9 +2006,10 @@ tvError_t SaveTVDolbyVisionMode(tvVideoSrcType_t videoSrcType, int pq_mode,tvVid
  * @return tvError_t
  *
  * @retval tvERROR_NONE - Success
- * @retval tvERROR_INVALID_PARAM - Parameter is invalid
+ * @retval tvERROR_INVALID_PARAM - A parameter is invalid, such as a
+ *                                 NULL pointer or a value outside the valid range defined for this API
  * @retval tvERROR_INVALID_STATE - Interface is not initialized
- * @retval tvERROR_OPERATION_NOT_SUPPORTED - Operation is not supported
+ * @retval tvERROR_OPERATION_NOT_SUPPORTED   - The feature or operation is not supported by the platform
  * @retval tvERROR_GENERAL - Underlying failures - SoC, memory, etc
  *
  * @pre TvInit() should be called before calling this API
@@ -1826,6 +2020,8 @@ tvError_t GetTVDolbyVisionModeCaps(tvDolbyMode_t** dolby_mode, size_t* num_dolby
  * @brief Gets the supported picture modes and their count
  *
  * This function get the array of picture modes supported and their count
+ *
+ * If the platform does not support PictureMode, then tvERROR_OPERATION_NOT_SUPPORTED is returned.
  *
  * @param[out] pictureModes    - List of available picture modes.
  *                             - Array of pointers to `pic_modes_t` that will be populated with the supported picture modes.
@@ -1839,9 +2035,11 @@ tvError_t GetTVDolbyVisionModeCaps(tvDolbyMode_t** dolby_mode, size_t* num_dolby
  * @return tvError_t
  *
  * @retval tvERROR_NONE                   - Success
- * @retval tvERROR_INVALID_PARAM          - Parameter is invalid
+ * @retval tvERROR_INVALID_PARAM          - A parameter is invalid, such as a
+ *                                          NULL pointer or a value outside the valid range defined for this API
  * @retval tvERROR_INVALID_STATE          - Interface is not initialized
  * @retval tvERROR_GENERAL                - Underlying failures - SoC, memory, etc
+ * @retval tvERROR_OPERATION_NOT_SUPPORTED   - The feature or operation is not supported by the platform
  *
  * @pre TvInit() should be called before calling this API
  */
@@ -1852,6 +2050,8 @@ tvError_t GetTVSupportedPictureModes(pic_modes_t *pictureModes[],unsigned short 
  *
  * This function will get the current selected picture mode for current pirmary video source and primary video format.
  *
+ * If the platform does not support PictureMode, then tvERROR_OPERATION_NOT_SUPPORTED is returned.
+ *
  * @param[out] pictureMode         - Current picture mode. Valid values are as per values
  *                                   returned by ::pic_modes_t.name  parmaeter from GetTVSupportedPictureModes API.
  *                                   The size of string will be PIC_MODE_NAME_MAX.
@@ -1859,9 +2059,11 @@ tvError_t GetTVSupportedPictureModes(pic_modes_t *pictureModes[],unsigned short 
  * @return tvError_t
  *
  * @retval tvERROR_NONE            - Success
- * @retval tvERROR_INVALID_PARAM   - Parameter is invalid
+ * @retval tvERROR_INVALID_PARAM   - A parameter is invalid, such as a
+ *                                   NULL pointer or a value outside the valid range defined for this API
  * @retval tvERROR_INVALID_STATE   - Interface is not initialized
  * @retval tvERROR_GENERAL         - Underlying failures - SoC, memory, etc
+ * @retval tvERROR_OPERATION_NOT_SUPPORTED   - The feature or operation is not supported by the platform
  *
  * @pre TvInit() should be called before calling this API
  *
@@ -1878,6 +2080,8 @@ tvError_t GetTVPictureMode(char *pictureMode);
  * picture mode and all the associated picture properties will be reloaded again when the current video source and current
  * primary video format are selected in future.
  *
+ * If the platform does not support PictureMode, then tvERROR_OPERATION_NOT_SUPPORTED is returned.
+ *
  * @param[in] pictureMode           - Picture mode to be set.Valid values are as per values
  *                                    returned by ::pic_modes_t.name  parmaeter from GetTVSupportedPictureModes API.
  *                                    The size of string will be PIC_MODE_NAME_MAX.
@@ -1885,9 +2089,11 @@ tvError_t GetTVPictureMode(char *pictureMode);
  * @return tvError_t
  *
  * @retval tvERROR_NONE             - Success
- * @retval tvERROR_INVALID_PARAM    - Input parameter is invalid
+ * @retval tvERROR_INVALID_PARAM    - A parameter is invalid, such as a
+ *                                    NULL pointer or a value outside the valid range defined for this API
  * @retval tvERROR_INVALID_STATE    - Interface is not initialized
  * @retval tvERROR_GENERAL          - Underlying failures - SoC, memory, etc
+ * @retval tvERROR_OPERATION_NOT_SUPPORTED   - The feature or operation is not supported by the platform
  *
  * @pre TvInit() should be called before calling this API
  *
@@ -1906,6 +2112,8 @@ tvError_t SetTVPictureMode(const char * pictureMode);
  * The source, format, and picture mode shall be validated against the supported video sources, video formats, and
  * picture modes specified in the PQ capability configuration file for the respective feature.
  *
+ * If the platform does not support PictureMode, then tvERROR_OPERATION_NOT_SUPPORTED is returned.
+ *
  * @param[in] videoSrcType         - Source input value. Valid value will be a member of ::tvVideoSrcType_t
  * @param[in] pictureMode          - Picture mode value to be saved. Valid values are as per values returned by
  *                                    ::pic_modes_t.value  parmaeter from GetTVSupportedPictureModes API.
@@ -1914,9 +2122,10 @@ tvError_t SetTVPictureMode(const char * pictureMode);
  * @return tvError_t
  *
  * @retval tvERROR_NONE                      - Success
- * @retval tvERROR_INVALID_PARAM             - Input parameter is invalid
+ * @retval tvERROR_INVALID_PARAM             - A parameter is invalid, such as a
+ *                                             NULL pointer or a value outside the valid range defined for this API
  * @retval tvERROR_INVALID_STATE             - Interface is not initialized
- * @retval tvERROR_OPERATION_NOT_SUPPORTED   - Operation is not supported
+ * @retval tvERROR_OPERATION_NOT_SUPPORTED   - The feature or operation is not supported by the platform
  * @retval tvERROR_GENERAL                   - Underlying failures - SoC, memory, etc
  *
  * @pre TvInit() should be called before calling this API
@@ -1950,9 +2159,10 @@ tvError_t SaveSourcePictureMode(tvVideoSrcType_t videoSrcType, tvVideoFormatType
  * @return tvError_t
  *
  * @retval tvERROR_NONE - Success
- * @retval tvERROR_INVALID_PARAM - Parameter is invalid
+ * @retval tvERROR_INVALID_PARAM - A parameter is invalid, such as a
+ *                                 NULL pointer or a value outside the valid range defined for this API
  * @retval tvERROR_INVALID_STATE - Interface is not initialized
- * @retval tvERROR_OPERATION_NOT_SUPPORTED - Operation is not supported
+ * @retval tvERROR_OPERATION_NOT_SUPPORTED   - The feature or operation is not supported by the platform
  * @retval tvERROR_GENERAL - Underlying failures - SoC, memory, etc
  *
  * @pre TvInit() should be called before calling this API
@@ -1971,6 +2181,8 @@ tvError_t SaveSourcePictureMode(tvVideoSrcType_t videoSrcType, tvVideoFormatType
  * rgain value will be automatically applied in white balance module when the colour temperaure choice is made as result of
  * picture mode change or primary video format change or primary video source change.
  *
+ * If the platform does not support factoryWhiteBalance, then tvERROR_OPERATION_NOT_SUPPORTED is returned.
+ *
  * @param[in] colorTemp            - Color temperature value to be save/set. Valid value will be a member of ::tvColorTemp_t
  * @param[in] rgain                - Rgain Value to be set. Valid range is (0 - 2047)
  * @param[in] sourceId             - SourceId value. Valid value will be a member of ::tvColorTempSourceOffset_t
@@ -1983,8 +2195,10 @@ tvError_t SaveSourcePictureMode(tvVideoSrcType_t videoSrcType, tvVideoFormatType
  *
  * @retval tvERROR_NONE             - Success
  * @retval tvERROR_INVALID_STATE    - Interface is not initialized
- * @retval tvERROR_INVALID_PARAM    - Input parameter is invalid
+ * @retval tvERROR_INVALID_PARAM    - A parameter is invalid, such as a
+ *                                    NULL pointer or a value outside the valid range defined for this API
  * @retval tvERROR_GENERAL          - Underlying failures - SoC, memory, etc
+ * @retval tvERROR_OPERATION_NOT_SUPPORTED   - The feature or operation is not supported by the platform
  *
  * @pre TvInit() should be called before calling this API
  */
@@ -1995,6 +2209,8 @@ tvError_t SetColorTemp_Rgain_onSource(tvColorTemp_t colorTemp, int rgain,tvColor
  *
  * This function gets the current rgain value for a specific color temperature and source offset.
  *
+ * If the platform does not support factoryWhiteBalance, then tvERROR_OPERATION_NOT_SUPPORTED is returned.
+ *
  * @param[in] colorTemp            - Color temperature value. Valid value will be a member of ::tvColorTemp_t
  * @param[out] rgain               - Rgain Value. Valid range is (0 - 2047)
  * @param[in] sourceId             - SourceId value. Valid value will be a member of ::tvColorTempSourceOffset_t
@@ -2003,8 +2219,10 @@ tvError_t SetColorTemp_Rgain_onSource(tvColorTemp_t colorTemp, int rgain,tvColor
  *
  * @retval tvERROR_NONE             - Success
  * @retval tvERROR_INVALID_STATE    - Interface is not initialized
- * @retval tvERROR_INVALID_PARAM    - Input parameter is invalid
+ * @retval tvERROR_INVALID_PARAM    - A parameter is invalid, such as a
+ *                                    NULL pointer or a value outside the valid range defined for this API
  * @retval tvERROR_GENERAL          - Underlying failures - SoC, memory, etc
+ * @retval tvERROR_OPERATION_NOT_SUPPORTED   - The feature or operation is not supported by the platform
  *
  * @pre TvInit() should be called before calling this API
  */
@@ -2022,6 +2240,8 @@ tvError_t GetColorTemp_Rgain_onSource(tvColorTemp_t colorTemp, int* rgain,tvColo
  * ggain value should be automatically applied in white balance module when the colour temperaure choice is made as result of
  * picture mode change or primary video format change or primary video source change.
  *
+ * If the platform does not support factoryWhiteBalance, then tvERROR_OPERATION_NOT_SUPPORTED is returned.
+ *
  * @param[in] colorTemp            - Color temperature value to be save/set. Valid value will be a member of ::tvColorTemp_t
  * @param[in] ggain                - Ggain Value to be set. Valid range is (0 - 2047)
  * @param[in] sourceId             - SourceId value. Valid value will be a member of ::tvColorTempSourceOffset_t
@@ -2034,8 +2254,10 @@ tvError_t GetColorTemp_Rgain_onSource(tvColorTemp_t colorTemp, int* rgain,tvColo
  *
  * @retval tvERROR_NONE             - Success
  * @retval tvERROR_INVALID_STATE    - Interface is not initialized
- * @retval tvERROR_INVALID_PARAM    - Input parameter is invalid
+ * @retval tvERROR_INVALID_PARAM    - A parameter is invalid, such as a
+ *                                    NULL pointer or a value outside the valid range defined for this API
  * @retval tvERROR_GENERAL          - Underlying failures - SoC, memory, etc
+ * @retval tvERROR_OPERATION_NOT_SUPPORTED   - The feature or operation is not supported by the platform
  *
  * @pre TvInit() should be called before calling this API
  */
@@ -2046,6 +2268,8 @@ tvError_t SetColorTemp_Ggain_onSource(tvColorTemp_t colorTemp, int ggain,tvColor
  *
  * This function gets the ggain value for a specfic color temperature and source.
  *
+ * If the platform does not support factoryWhiteBalance, then tvERROR_OPERATION_NOT_SUPPORTED is returned.
+ *
  * @param[in] colorTemp            - Color temperature value. Valid value will be a member of ::tvColorTemp_t
  * @param[out] ggain               - Ggain Value. Valid range is (0 - 2047)
  * @param[in] sourceId             - SourceId value. Valid value will be a member of ::tvColorTempSourceOffset_t
@@ -2054,8 +2278,10 @@ tvError_t SetColorTemp_Ggain_onSource(tvColorTemp_t colorTemp, int ggain,tvColor
  *
  * @retval tvERROR_NONE             - Success
  * @retval tvERROR_INVALID_STATE    - Interface is not initialized
- * @retval tvERROR_INVALID_PARAM    - Input parameter is invalid
+ * @retval tvERROR_INVALID_PARAM    - A parameter is invalid, such as a
+ *                                    NULL pointer or a value outside the valid range defined for this API
  * @retval tvERROR_GENERAL          - Underlying failures - SoC, memory, etc
+ * @retval tvERROR_OPERATION_NOT_SUPPORTED   - The feature or operation is not supported by the platform
  *
  * @pre TvInit() should be called before calling this API
  */
@@ -2073,6 +2299,8 @@ tvError_t GetColorTemp_Ggain_onSource(tvColorTemp_t colorTemp, int* ggain,tvColo
  * bgain value will be automatically applied in white balance module when the colour temperaure choice is made as result of
  * picture mode change or primary video format change or primary video source change.
  *
+ * If the platform does not support factoryWhiteBalance, then tvERROR_OPERATION_NOT_SUPPORTED is returned.
+ *
  * @param[in] colorTemp            - Color temperature value to be save/set. Valid value will be a member of ::tvColorTemp_t
  * @param[in] bgain                - Bgain Value to be set. Valid range is (0 - 2047)
  * @param[in] sourceId             - SourceId value. Valid value will be a member of ::tvColorTempSourceOffset_t
@@ -2085,8 +2313,10 @@ tvError_t GetColorTemp_Ggain_onSource(tvColorTemp_t colorTemp, int* ggain,tvColo
  *
  * @retval tvERROR_NONE             - Success
  * @retval tvERROR_INVALID_STATE    - Interface is not initialized
- * @retval tvERROR_INVALID_PARAM    - Input parameter is invalid
+ * @retval tvERROR_INVALID_PARAM    - A parameter is invalid, such as a
+ *                                    NULL pointer or a value outside the valid range defined for this API
  * @retval tvERROR_GENERAL          - Underlying failures - SoC, memory, etc
+ * @retval tvERROR_OPERATION_NOT_SUPPORTED   - The feature or operation is not supported by the platform
  *
  * @pre TvInit() should be called before calling this API
  */
@@ -2097,6 +2327,8 @@ tvError_t SetColorTemp_Bgain_onSource(tvColorTemp_t colorTemp, int bgain,tvColor
  *
  * This function gets the bgain value for a specfic color temperature and source
  *
+ * If the platform does not support factoryWhiteBalance, then tvERROR_OPERATION_NOT_SUPPORTED is returned.
+ *
  * @param[in] colorTemp            - Color temperature value. Valid value will be a member of ::tvColorTemp_t
  * @param[out] bgain               - Bgain Value. Valid range is (0 - 2047)
  * @param[in] sourceId             - SourceId value. Valid value will be a member of ::tvColorTempSourceOffset_t
@@ -2105,8 +2337,10 @@ tvError_t SetColorTemp_Bgain_onSource(tvColorTemp_t colorTemp, int bgain,tvColor
  *
  * @retval tvERROR_NONE             - Success
  * @retval tvERROR_INVALID_STATE    - Interface is not initialized
- * @retval tvERROR_INVALID_PARAM    - Input parameter is invalid
+ * @retval tvERROR_INVALID_PARAM    - A parameter is invalid, such as a
+ *                                    NULL pointer or a value outside the valid range defined for this API
  * @retval tvERROR_GENERAL          - Underlying failures - SoC, memory, etc
+ * @retval tvERROR_OPERATION_NOT_SUPPORTED   - The feature or operation is not supported by the platform
  *
  * @pre TvInit() should be called before calling this API
  */
@@ -2124,6 +2358,8 @@ tvError_t GetColorTemp_Bgain_onSource(tvColorTemp_t colorTemp, int* bgain,tvColo
  * rpostoffset value should be automatically applied in white balance module when the colour temperaure choice is made as result of
  * picture mode change or primary video format change or primary video source change.
  *
+ * If the platform does not support factoryWhiteBalance, then tvERROR_OPERATION_NOT_SUPPORTED is returned.
+ *
  * @param[in] colorTemp            - Color temperature value to be save/set. Valid value will be a member of ::tvColorTemp_t
  * @param[in] rpostoffset          - Rpostoffset Value to be set. Valid range is  (-1024 to +1023)
  * @param[in] sourceId             - SourceId value. Valid value will be a member of ::tvColorTempSourceOffset_t
@@ -2136,8 +2372,10 @@ tvError_t GetColorTemp_Bgain_onSource(tvColorTemp_t colorTemp, int* bgain,tvColo
  *
  * @retval tvERROR_NONE             - Success
  * @retval tvERROR_INVALID_STATE    - Interface is not initialized
- * @retval tvERROR_INVALID_PARAM    - Input parameter is invalid
+ * @retval tvERROR_INVALID_PARAM    - A parameter is invalid, such as a
+ *                                    NULL pointer or a value outside the valid range defined for this API
  * @retval tvERROR_GENERAL          - Underlying failures - SoC, memory, etc
+ * @retval tvERROR_OPERATION_NOT_SUPPORTED   - The feature or operation is not supported by the platform
  *
  * @pre TvInit() should be called before calling this API
  */
@@ -2148,6 +2386,8 @@ tvError_t SetColorTemp_R_post_offset_onSource(tvColorTemp_t colorTemp, int rpost
  *
  * This function gets the current rpostoffset value for a specfic color temperature and source.
  *
+ * If the platform does not support factoryWhiteBalance, then tvERROR_OPERATION_NOT_SUPPORTED is returned.
+ *
  * @param[in] colorTemp            - Color temperature value. Valid value will be a member of ::tvColorTemp_t
  * @param[out] rpostoffset         - Rpostoffset Value. Valid range is (-1024 to +1023)
  * @param[in] sourceId             - SourceId value. Valid value will be a member of ::tvColorTempSourceOffset_t
@@ -2155,8 +2395,10 @@ tvError_t SetColorTemp_R_post_offset_onSource(tvColorTemp_t colorTemp, int rpost
  * @return tvError_t
  * @retval tvERROR_NONE             - Success
  * @retval tvERROR_INVALID_STATE    - Interface is not initialized
- * @retval tvERROR_INVALID_PARAM    - Input parameter is invalid
+ * @retval tvERROR_INVALID_PARAM    - A parameter is invalid, such as a
+ *                                    NULL pointer or a value outside the valid range defined for this API
  * @retval tvERROR_GENERAL          - Underlying failures - SoC, memory, etc
+ * @retval tvERROR_OPERATION_NOT_SUPPORTED   - The feature or operation is not supported by the platform
  *
  * @pre TvInit() should be called before calling this API
  */
@@ -2174,6 +2416,8 @@ tvError_t GetColorTemp_R_post_offset_onSource(tvColorTemp_t colorTemp, int* rpos
  * gpostoffset value should be automatically applied in white balance module when the colour temperaure choice is made as result of
  * picture mode change or primary video format change or primary video source change.
  *
+ * If the platform does not support factoryWhiteBalance, then tvERROR_OPERATION_NOT_SUPPORTED is returned.
+ *
  * @param[in] colorTemp            - Color temperature value to be save/set. Valid value will be a member of ::tvColorTemp_t
  * @param[in] gpostoffset          - Gpostoffset Value to be set. Valid range is  (-1024 to +1023)
  * @param[in] sourceId             - SourceId value. Valid value will be a member of ::tvColorTempSourceOffset_t
@@ -2185,8 +2429,10 @@ tvError_t GetColorTemp_R_post_offset_onSource(tvColorTemp_t colorTemp, int* rpos
  * @return tvError_t
  * @retval tvERROR_NONE             - Success
  * @retval tvERROR_INVALID_STATE    - Interface is not initialized
- * @retval tvERROR_INVALID_PARAM    - Input parameter is invalid
+ * @retval tvERROR_INVALID_PARAM    - A parameter is invalid, such as a
+ *                                    NULL pointer or a value outside the valid range defined for this API
  * @retval tvERROR_GENERAL          - Underlying failures - SoC, memory, etc
+ * @retval tvERROR_OPERATION_NOT_SUPPORTED   - The feature or operation is not supported by the platform
  *
  * @pre TvInit() should be called before calling this API
  */
@@ -2197,6 +2443,8 @@ tvError_t SetColorTemp_G_post_offset_onSource(tvColorTemp_t colorTemp, int gpost
  *
  * This function gets the gpostoffset value for a specfic color temperature and source.
  *
+ * If the platform does not support factoryWhiteBalance, then tvERROR_OPERATION_NOT_SUPPORTED is returned.
+ *
  * @param[in] colorTemp            - Color temperature value. Valid value will be a member of ::tvColorTemp_t
  * @param[out] gpostoffset         - Gpostoffset Value. Valid range is (-1024 to +1023)
  * @param[in] sourceId             - SourceId value. Valid value will be a member of ::tvColorTempSourceOffset_t
@@ -2205,8 +2453,10 @@ tvError_t SetColorTemp_G_post_offset_onSource(tvColorTemp_t colorTemp, int gpost
  *
  * @retval tvERROR_NONE             - Success
  * @retval tvERROR_INVALID_STATE    - Interface is not initialized
- * @retval tvERROR_INVALID_PARAM    - Input parameter is invalid
+ * @retval tvERROR_INVALID_PARAM    - A parameter is invalid, such as a
+ *                                    NULL pointer or a value outside the valid range defined for this API
  * @retval tvERROR_GENERAL          - Underlying failures - SoC, memory, etc
+ * @retval tvERROR_OPERATION_NOT_SUPPORTED   - The feature or operation is not supported by the platform
  *
  * @pre TvInit() should be called before calling this API
  */
@@ -2224,6 +2474,8 @@ tvError_t GetColorTemp_G_post_offset_onSource(tvColorTemp_t colorTemp, int* gpos
  * bpostoffset value should be automatically applied in white balance module when the colour temperaure choice is made as result of
  * picture mode change or primary video format change or primary video source change.
  *
+ * If the platform does not support factoryWhiteBalance, then tvERROR_OPERATION_NOT_SUPPORTED is returned.
+ *
  * @param[in] colorTemp            - Color temperature value to be save/set. Valid value will be a member of ::tvColorTemp_t
  * @param[in] bpostoffset          - Bpostoffset Value to be set. Valid range is  (-1024 to +1023)
  * @param[in] sourceId             - SourceId value. Valid value will be a member of ::tvColorTempSourceOffset_t
@@ -2235,8 +2487,10 @@ tvError_t GetColorTemp_G_post_offset_onSource(tvColorTemp_t colorTemp, int* gpos
  * @return tvError_t
  * @retval tvERROR_NONE             - Success
  * @retval tvERROR_INVALID_STATE    - Interface is not initialized
- * @retval tvERROR_INVALID_PARAM    - Input parameter is invalid
+ * @retval tvERROR_INVALID_PARAM    - A parameter is invalid, such as a
+ *                                    NULL pointer or a value outside the valid range defined for this API
  * @retval tvERROR_GENERAL          - Underlying failures - SoC, memory, etc
+ * @retval tvERROR_OPERATION_NOT_SUPPORTED   - The feature or operation is not supported by the platform
  *
  * @pre TvInit() should be called before calling this API
  */
@@ -2247,6 +2501,8 @@ tvError_t SetColorTemp_B_post_offset_onSource(tvColorTemp_t colorTemp, int bpost
  *
  * This function gets the bpostoffset value for a specfic color temperature and source
  *
+ * If the platform does not support factoryWhiteBalance, then tvERROR_OPERATION_NOT_SUPPORTED is returned.
+ *
  * @param[in] colorTemp            - Color temperature value. Valid value will be a member of ::tvColorTemp_t
  * @param[out] bpostoffset         - Bpostoffset Value. Valid range is (-1024 to +1023)
  * @param[in] sourceId             - SourceId value. Valid value will be a member of ::tvColorTempSourceOffset_t
@@ -2254,8 +2510,10 @@ tvError_t SetColorTemp_B_post_offset_onSource(tvColorTemp_t colorTemp, int bpost
  * @return tvError_t
  * @retval tvERROR_NONE             - Success
  * @retval tvERROR_INVALID_STATE    - Interface is not initialized
- * @retval tvERROR_INVALID_PARAM    - Input parameter is invalid
+ * @retval tvERROR_INVALID_PARAM    - A parameter is invalid, such as a
+ *                                    NULL pointer or a value outside the valid range defined for this API
  * @retval tvERROR_GENERAL          - Underlying failures - SoC, memory, etc
+ * @retval tvERROR_OPERATION_NOT_SUPPORTED   - The feature or operation is not supported by the platform
  *
  * @pre TvInit() should be called before calling this API
  */
@@ -2275,6 +2533,7 @@ tvError_t GetColorTemp_B_post_offset_onSource(tvColorTemp_t colorTemp, int* bpos
  * @retval tvERROR_NONE                   - Success
  * @retval tvERROR_INVALID_STATE          - Interface is not initialized
  * @retval tvERROR_GENERAL                - Underlying failures - SoC, memory, etc
+ * @retval tvERROR_OPERATION_NOT_SUPPORTED   - The feature or operation is not supported by the platform
  *
  * @pre TvInit() should be called before calling this API
  */
@@ -2290,9 +2549,11 @@ tvError_t GetColorTemp_B_post_offset_onSource(tvColorTemp_t colorTemp, int* bpos
  * @return tvError_t
  *
  * @retval tvERROR_NONE                   - Success
- * @retval tvERROR_INVALID_PARAM          - Parameter is invalid
+ * @retval tvERROR_INVALID_PARAM          - A parameter is invalid, such as a
+ *                                          NULL pointer or a value outside the valid range defined for this API
  * @retval tvERROR_INVALID_STATE          - Interface is not initialized
  * @retval tvERROR_GENERAL                - Underlying failures - SoC, memory, etc
+ * @retval tvERROR_OPERATION_NOT_SUPPORTED   - The feature or operation is not supported by the platform
  *
  * @pre TvInit() should be called before calling this API
  */
@@ -2314,9 +2575,11 @@ tvError_t GetCurrentWBCalibrationMode(bool *value);
  * @return tvError_t
  *
  * @retval tvERROR_NONE             - Success
- * @retval tvERROR_INVALID_PARAM    - Input parameter is invalid
+ * @retval tvERROR_INVALID_PARAM    - A parameter is invalid, such as a
+ *                                    NULL pointer or a value outside the valid range defined for this API
  * @retval tvERROR_INVALID_STATE    - Interface is not initialized
  * @retval tvERROR_GENERAL          - Underlying failures - SoC, memory, etc
+ * @retval tvERROR_OPERATION_NOT_SUPPORTED   - The feature or operation is not supported by the platform
  *
  * @pre TvInit() should be called before calling this API
  */
@@ -2336,9 +2599,11 @@ tvError_t SetGammaTable(unsigned short *pData_R, unsigned short *pData_G, unsign
  * @return tvError_t
  *
  * @retval tvERROR_NONE             - Success
- * @retval tvERROR_INVALID_PARAM    - Input parameter is invalid
+ * @retval tvERROR_INVALID_PARAM    - A parameter is invalid, such as a
+ *                                    NULL pointer or a value outside the valid range defined for this API
  * @retval tvERROR_INVALID_STATE    - Interface is not initialized
  * @retval tvERROR_GENERAL          - Underlying failures - SoC, memory, etc
+ * @retval tvERROR_OPERATION_NOT_SUPPORTED   - The feature or operation is not supported by the platform
  *
  * @pre TvInit() should be called before calling this API
  */
@@ -2357,9 +2622,11 @@ tvError_t GetDefaultGammaTable(tvColorTemp_t colortemp, unsigned short *pData_R,
  * @return tvError_t
  *
  * @retval tvERROR_NONE             - Success
- * @retval tvERROR_INVALID_PARAM    - Input parameter is invalid
+ * @retval tvERROR_INVALID_PARAM    - A parameter is invalid, such as a
+ *                                    NULL pointer or a value outside the valid range defined for this API
  * @retval tvERROR_INVALID_STATE    - Interface is not initialized
  * @retval tvERROR_GENERAL          - Underlying failures - SoC, memory, etc
+ * @retval tvERROR_OPERATION_NOT_SUPPORTED   - The feature or operation is not supported by the platform
  *
  * @pre TvInit() should be called before calling this API
  */
@@ -2381,9 +2648,11 @@ tvError_t GetGammaTable(unsigned short *pData_R, unsigned short *pData_G, unsign
  * @return tvError_t
  *
  * @retval tvERROR_NONE             - Success
- * @retval tvERROR_INVALID_PARAM    - Input parameter is invalid
+ * @retval tvERROR_INVALID_PARAM    - A parameter is invalid, such as a
+ *                                    NULL pointer or a value outside the valid range defined for this API
  * @retval tvERROR_INVALID_STATE    - Interface is not initialized
  * @retval tvERROR_GENERAL          - Underlying failures - SoC, memory, etc
+ * @retval tvERROR_OPERATION_NOT_SUPPORTED   - The feature or operation is not supported by the platform
  *
  * @pre TvInit() should be called before calling this API
  */
@@ -2401,9 +2670,10 @@ tvError_t SaveGammaTable(tvColorTemp_t colortemp, unsigned short *pData_R, unsig
  * @return tvError_t
  *
  * @retval tvERROR_NONE             - Success
- * @retval tvERROR_INVALID_PARAM    - Input parameter is invalid
+ * @retval tvERROR_INVALID_PARAM    - A parameter is invalid, such as a
+ *                                    NULL pointer or a value outside the valid range defined for this API
  * @retval tvERROR_INVALID_STATE    - Interface is not initialized
- * @retval tvERROR_OPERATION_NOT_SUPPORTED   - Operation is not supported
+ * @retval tvERROR_OPERATION_NOT_SUPPORTED   - The feature or operation is not supported by the platform
  * @retval tvERROR_GENERAL          - Underlying failures - SoC, memory, etc
  *
  * @pre TvInit() should be called before calling this API
@@ -2420,9 +2690,10 @@ tvError_t SetDvTmaxValue(int value);
  * @return tvError_t
  *
  * @retval tvERROR_NONE             - Success
- * @retval tvERROR_INVALID_PARAM    - Parameter is invalid
+ * @retval tvERROR_INVALID_PARAM    - A parameter is invalid, such as a
+ *                                    NULL pointer or a value outside the valid range defined for this API
  * @retval tvERROR_INVALID_STATE    - Interface is not initialized
- * @retval tvERROR_OPERATION_NOT_SUPPORTED   - Operation is not supported
+ * @retval tvERROR_OPERATION_NOT_SUPPORTED   - The feature or operation is not supported by the platform
  * @retval tvERROR_GENERAL          - Underlying failures - SoC, memory, etc
  *
  * @pre TvInit() should be called before calling this API
@@ -2443,9 +2714,10 @@ tvError_t SetDvTmaxValue(int value);
  * @return tvError_t
  *
  * @retval tvERROR_NONE                      - Success
- * @retval tvERROR_INVALID_PARAM             - Input parameter is invalid
+ * @retval tvERROR_INVALID_PARAM             - A parameter is invalid, such as a
+ *                                             NULL pointer or a value outside the valid range defined for this API
  * @retval tvERROR_INVALID_STATE             - Interface is not initialized
- * @retval tvERROR_OPERATION_NOT_SUPPORTED   - Operation is not supported
+ * @retval tvERROR_OPERATION_NOT_SUPPORTED   - The feature or operation is not supported by the platform
  * @retval tvERROR_GENERAL                   - Underlying failures - SoC, memory, etc
  *
  * @pre TvInit() should be called before calling this API
@@ -2458,14 +2730,17 @@ tvError_t SetDvTmaxValue(int value);
  * This function gets the supported component colors. @n
  * The output has the bitwise OR-ed value of all the supported colors (tvDataComponentColor_t).
  *
+ * If the platform does not support cms, then tvERROR_OPERATION_NOT_SUPPORTED is returned.
+ *
  * @param[out] blComponentColor           - Bit wise OR-ed value for supported component colors. Please refer ::tvDataComponentColor_t
  *
  * @return tvError_t
  *
  * @retval tvERROR_NONE                      - Success
- * @retval tvERROR_INVALID_PARAM             - Parameter is invalid
+ * @retval tvERROR_INVALID_PARAM             - A parameter is invalid, such as a
+ *                                             NULL pointer or a value outside the valid range defined for this API
  * @retval tvERROR_INVALID_STATE             - Interface is not initialized
- * @retval tvERROR_OPERATION_NOT_SUPPORTED   - Operation is not supported
+ * @retval tvERROR_OPERATION_NOT_SUPPORTED   - The feature or operation is not supported by the platform
  * @retval tvERROR_GENERAL                   - Underlying failures - SoC, memory, etc
  *
  * @pre TvInit() should be called before calling this API
@@ -2481,6 +2756,8 @@ tvError_t GetSupportedComponentColor(int *blComponentColor);
  * The saved component saturation value for the specified colour will take effect automatically whenever the
  * current picture mode, current primary video format and current video source are again selected in future.
  *
+ * If the platform does not support cms, then tvERROR_OPERATION_NOT_SUPPORTED is returned.
+ *
  * @param[in] blSaturationColor          - Component color. Valid value will be one of the member of ::tvDataComponentColor_t.
  *                                         If more than one value is bitwise OR-ed and passed then the function should return invalid param.
  * @param[in] saturation                 - Saturation value to be set. Valid range is (0 - 100)
@@ -2488,9 +2765,10 @@ tvError_t GetSupportedComponentColor(int *blComponentColor);
  * @return tvError_t
  *
  * @retval tvERROR_NONE                      - Success
- * @retval tvERROR_INVALID_PARAM             - Input parameter is invalid
+ * @retval tvERROR_INVALID_PARAM             - A parameter is invalid, such as a
+ *                                             NULL pointer or a value outside the valid range defined for this API
  * @retval tvERROR_INVALID_STATE             - Interface is not initialized
- * @retval tvERROR_OPERATION_NOT_SUPPORTED   - Operation is not supported
+ * @retval tvERROR_OPERATION_NOT_SUPPORTED   - The feature or operation is not supported by the platform
  * @retval tvERROR_GENERAL                   - Underlying failures - SoC, memory, etc
  *
  * @pre TvInit() and SetCMSState(true) should be called before calling this API
@@ -2505,15 +2783,18 @@ tvError_t SetCurrentComponentSaturation(tvDataComponentColor_t blSaturationColor
  * This function returns the current component saturation for the specified color, for the primary video source selected,
  * primary video format played and picture mode selected.
  *
+ * If the platform does not support cms, then tvERROR_OPERATION_NOT_SUPPORTED is returned.
+ *
  * @param[in] blSaturationColor         - Component color. Valid value will be a member of ::tvDataComponentColor_t
  * @param[out] saturation               - Saturation value of the color. Valid range is (0 - 100)
  *
  * @return tvError_t
  *
  * @retval tvERROR_NONE                      - Success
- * @retval tvERROR_INVALID_PARAM             - Input parameter is invalid
+ * @retval tvERROR_INVALID_PARAM             - A parameter is invalid, such as a
+ *                                             NULL pointer or a value outside the valid range defined for this API
  * @retval tvERROR_INVALID_STATE             - Interface is not initialized
- * @retval tvERROR_OPERATION_NOT_SUPPORTED   - Operation is not supported
+ * @retval tvERROR_OPERATION_NOT_SUPPORTED   - The feature or operation is not supported by the platform
  * @retval tvERROR_GENERAL                   - Underlying failures - SoC, memory, etc
  *
  * @see SetCurrentComponentSaturation()
@@ -2531,15 +2812,18 @@ tvError_t GetCurrentComponentSaturation(tvDataComponentColor_t blSaturationColor
  * The saved component hue value for the specified colour will take effect automatically whenever the
  * current picture mode, current primary video format and current video source are again selected in future.
  *
+ * If the platform does not support cms, then tvERROR_OPERATION_NOT_SUPPORTED is returned.
+ *
  * @param[in] blHueColor               - Component color. Valid value will be a member of ::tvDataComponentColor_t
  * @param[in] hue                      - Hue value to be set. Valid range is (0 - 100)
  *
  * @return tvError_t
  *
  * @retval tvERROR_NONE                      - Success
- * @retval tvERROR_INVALID_PARAM             - Input parameter is invalid
+ * @retval tvERROR_INVALID_PARAM             - A parameter is invalid, such as a
+ *                                             NULL pointer or a value outside the valid range defined for this API
  * @retval tvERROR_INVALID_STATE             - Interface is not initialized
- * @retval tvERROR_OPERATION_NOT_SUPPORTED   - Operation is not supported
+ * @retval tvERROR_OPERATION_NOT_SUPPORTED   - The feature or operation is not supported by the platform
  * @retval tvERROR_GENERAL                   - Underlying failures - SoC, memory, etc
  *
  * @pre TvInit() and SetCMSState(true) should be called before calling this API
@@ -2554,15 +2838,18 @@ tvError_t SetCurrentComponentHue(tvDataComponentColor_t blHueColor, int hue);
  * This function returns the current component hue for the specified color, for the primary video source selected,
  * primary video format played and picture mode selected.
  *
+ * If the platform does not support cms, then tvERROR_OPERATION_NOT_SUPPORTED is returned.
+ *
  * @param[in] blHueColor              - Component color. Valid value will be a member of ::tvDataComponentColor_t
  * @param[out] hue                     - Hue value of the color. Valid range is (0 - 100)
  *
  * @return tvError_t
  *
  * @retval tvERROR_NONE                      - Success
- * @retval tvERROR_INVALID_PARAM             - Input parameter is invalid
+ * @retval tvERROR_INVALID_PARAM             - A parameter is invalid, such as a
+ *                                             NULL pointer or a value outside the valid range defined for this API
  * @retval tvERROR_INVALID_STATE             - Interface is not initialized
- * @retval tvERROR_OPERATION_NOT_SUPPORTED   - Operation is not supported
+ * @retval tvERROR_OPERATION_NOT_SUPPORTED   - The feature or operation is not supported by the platform
  * @retval tvERROR_GENERAL                   - Underlying failures - SoC, memory, etc
  *
  * @see SetCurrentComponentHue()
@@ -2580,15 +2867,18 @@ tvError_t GetCurrentComponentHue(tvDataComponentColor_t blHueColor, int *hue);
  * The saved component luma value for the specified colour will take effect automatically whenever the
  * current picture mode, current primary video format and current video source are again selected in future.
  *
+ * If the platform does not support cms, then tvERROR_OPERATION_NOT_SUPPORTED is returned.
+ *
  * @param[in] blLumaColor            - Component color. Valid value will be a member of ::tvDataComponentColor_t
  * @param[in] Luma                    - Luma value to be set. Valid range is (0 - 30)
  *
  * @return tvError_t
  *
  * @retval tvERROR_NONE                      - Success
- * @retval tvERROR_INVALID_PARAM             - Input parameter is invalid
+ * @retval tvERROR_INVALID_PARAM             - A parameter is invalid, such as a
+ *                                             NULL pointer or a value outside the valid range defined for this API
  * @retval tvERROR_INVALID_STATE             - Interface is not initialized
- * @retval tvERROR_OPERATION_NOT_SUPPORTED   - Operation is not supported
+ * @retval tvERROR_OPERATION_NOT_SUPPORTED   - The feature or operation is not supported by the platform
  * @retval tvERROR_GENERAL                   - Underlying failures - SoC, memory, etc
  *
  * @pre TvInit() and SetCMSState(true) should be called before calling this API
@@ -2603,15 +2893,18 @@ tvError_t SetCurrentComponentLuma(tvDataComponentColor_t blLumaColor, int Luma);
  * This function returns the current component luma for the specified color, for the primary video source selected,
  * primary video format played and picture mode selected.
  *
+ * If the platform does not support cms, then tvERROR_OPERATION_NOT_SUPPORTED is returned.
+ *
  * @param[in] blLumaColor          - Component color. Valid value will be a member of ::tvDataComponentColor_t
  * @param[out] Luma                 - Luma value of the color. Valid range is (0 - 30)
  *
  * @return tvError_t
  *
  * @retval tvERROR_NONE                      - Success
- * @retval tvERROR_INVALID_PARAM             - Input parameter is invalid
+ * @retval tvERROR_INVALID_PARAM             - A parameter is invalid, such as a
+ *                                             NULL pointer or a value outside the valid range defined for this API
  * @retval tvERROR_INVALID_STATE             - Interface is not initialized
- * @retval tvERROR_OPERATION_NOT_SUPPORTED   - Operation is not supported
+ * @retval tvERROR_OPERATION_NOT_SUPPORTED   - The feature or operation is not supported by the platform
  * @retval tvERROR_GENERAL                   - Underlying failures - SoC, memory, etc
  *
  * @see SetCurrentComponentLuma()
@@ -2632,6 +2925,8 @@ tvError_t GetCurrentComponentLuma(tvDataComponentColor_t blLumaColor, int *Luma)
  * The source, format, and picture mode shall be validated against the supported video sources, video formats, and
  * picture modes specified in the PQ capability configuration file for the respective feature.
  *
+ * If the platform does not support cms, then tvERROR_OPERATION_NOT_SUPPORTED is returned.
+ *
  * @param[in] videoSrcType          - Source input value. Valid value will be a member of ::tvVideoSrcType_t
  * @param[in] pq_mode               - Picture mode index. Valid value will be a member of ::tvPQModeIndex_t
  * @param[in] videoFormatType       - Video format type value. Valid value will be a member of ::tvVideoFormatType_t
@@ -2647,9 +2942,10 @@ tvError_t GetCurrentComponentLuma(tvDataComponentColor_t blLumaColor, int *Luma)
  * @return tvError_t
  *
  * @retval tvERROR_NONE                      - Success
- * @retval tvERROR_INVALID_PARAM             - Input parameter is invalid
+ * @retval tvERROR_INVALID_PARAM             - A parameter is invalid, such as a
+ *                                             NULL pointer or a value outside the valid range defined for this API
  * @retval tvERROR_INVALID_STATE             - Interface is not initialized
- * @retval tvERROR_OPERATION_NOT_SUPPORTED   - Operation is not supported
+ * @retval tvERROR_OPERATION_NOT_SUPPORTED   - The feature or operation is not supported by the platform
  * @retval tvERROR_GENERAL                   - Underlying failures - SoC, memory, etc
  *
  * @see SetCMSState(), SetCurrentComponentHue(), GetCurrentComponentLuma() and SetCurrentComponentSaturation()
@@ -2670,6 +2966,8 @@ tvError_t GetCurrentComponentLuma(tvDataComponentColor_t blLumaColor, int *Luma)
  * take effect automatically whenever the  current picture mode, current primary video format
  * and current primary video source are again selected in future.
  *
+ * If the platform does not support cms, then tvERROR_OPERATION_NOT_SUPPORTED is returned.
+ *
  * @param[in] enableCMSState        - CMS state to be set. @n
  *                                    Valid values are true if need to be enabled and false if need to be disabled.
  *
@@ -2677,7 +2975,7 @@ tvError_t GetCurrentComponentLuma(tvDataComponentColor_t blLumaColor, int *Luma)
  *
  * @retval tvERROR_NONE                      - Success
  * @retval tvERROR_INVALID_STATE             - Interface is not initialized
- * @retval tvERROR_OPERATION_NOT_SUPPORTED   - Operation is not supported
+ * @retval tvERROR_OPERATION_NOT_SUPPORTED   - The feature or operation is not supported by the platform
  * @retval tvERROR_GENERAL                   - Underlying failures - SoC, memory, etc
  *
  * @pre TvInit() should be called before calling this API
@@ -2691,15 +2989,18 @@ tvError_t SetCMSState(bool enableCMSState);
  * current primary video format played and current primary video source selected.
  * The default value is determined during PQ calibration before pre production stage.
  *
+ * If the platform does not support cms, then tvERROR_OPERATION_NOT_SUPPORTED is returned.
+ *
  * @param[out] enableCMSState        - Current CMS state set. @n
  *                                    Valid values are true if it is enabled and false if it is disabled.
  *
  * @return tvError_t
  *
  * @retval tvERROR_NONE                      - Success
- * @retval tvERROR_INVALID_PARAM             - Parameter is invalid
+ * @retval tvERROR_INVALID_PARAM             - A parameter is invalid, such as a
+ *                                             NULL pointer or a value outside the valid range defined for this API
  * @retval tvERROR_INVALID_STATE             - Interface is not initialized
- * @retval tvERROR_OPERATION_NOT_SUPPORTED   - Operation is not supported
+ * @retval tvERROR_OPERATION_NOT_SUPPORTED   - The feature or operation is not supported by the platform
  * @retval tvERROR_GENERAL                   - Underlying failures - SoC, memory, etc
  *
  * @see SetCMSState()
@@ -2713,6 +3014,8 @@ tvError_t GetCMSState(bool *enableCMSState);
  *
  * This function returns default values for various PQ Setting parameters for a given picture mode index, primary video source @n
  * and primary video format.
+ * The source, format, and picture mode shall be validated against the supported video sources, video formats, and
+ * picture modes specified in the PQ capability configuration file for the respective feature.
  * GetCMSState will return value of CMS state set by SetCMSState for respective source, format and picture mode.
  *
  * @param[in] videoSrcType          - Source input value. Valid value will be a member of ::tvVideoSrcType_t
@@ -2724,9 +3027,10 @@ tvError_t GetCMSState(bool *enableCMSState);
  * @return tvError_t
  *
  * @retval tvERROR_NONE                      - Success
- * @retval tvERROR_INVALID_PARAM             - Input parameter is invalid
+ * @retval tvERROR_INVALID_PARAM             - A parameter is invalid, such as a
+ *                                             NULL pointer or a value outside the valid range defined for this API
  * @retval tvERROR_INVALID_STATE             - Interface is not initialized
- * @retval tvERROR_OPERATION_NOT_SUPPORTED   - Operation is not supported
+ * @retval tvERROR_OPERATION_NOT_SUPPORTED   - The feature or operation is not supported by the platform
  * @retval tvERROR_GENERAL                   - Underlying failures - SoC, memory, etc
  *
  * @pre TvInit() should be called before calling this API
@@ -2747,9 +3051,10 @@ tvError_t GetCMSState(bool *enableCMSState);
  * @return tvError_t
  *
  * @retval tvERROR_NONE                      - Success
- * @retval tvERROR_INVALID_PARAM             - Input parameter is invalid
+ * @retval tvERROR_INVALID_PARAM             - A parameter is invalid, such as a
+ *                                             NULL pointer or a value outside the valid range defined for this API
  * @retval tvERROR_INVALID_STATE             - Interface is not initialized
- * @retval tvERROR_OPERATION_NOT_SUPPORTED   - Operation is not supported
+ * @retval tvERROR_OPERATION_NOT_SUPPORTED   - The feature or operation is not supported by the platform
  * @retval tvERROR_GENERAL                   - Underlying failures - SoC, memory, etc
  *
  * @pre TvInit() should be called before calling this API
@@ -2761,6 +3066,8 @@ tvError_t GetDefaultPQMode(tvVideoSrcType_t videoSrcType,tvVideoFormatType_t vid
  *
  * This function returns the override values for various PQ Setting parameters for a given picture mode index, primary video source @n
  * and primary video format.
+ * The source, format, and picture mode shall be validated against the supported video sources, video formats, and
+ * picture modes specified in the PQ capability configuration file for the respective feature.
  *
  * @param[in] pqIndex               - Picture mode index value. Valid values will be a member of ::tvPQModeIndex_t
  * @param[in] videoSrcType          - Source input value. Valid value will be a member of ::tvVideoSrcType_t
@@ -2771,9 +3078,10 @@ tvError_t GetDefaultPQMode(tvVideoSrcType_t videoSrcType,tvVideoFormatType_t vid
  * @return tvError_t
  *
  * @retval tvERROR_NONE                      - Success
- * @retval tvERROR_INVALID_PARAM             - Input parameter is invalid
+ * @retval tvERROR_INVALID_PARAM             - A parameter is invalid, such as a
+ *                                             NULL pointer or a value outside the valid range defined for this API
  * @retval tvERROR_INVALID_STATE             - Interface is not initialized
- * @retval tvERROR_OPERATION_NOT_SUPPORTED   - Operation is not supported
+ * @retval tvERROR_OPERATION_NOT_SUPPORTED   - The feature or operation is not supported by the platform
  * @retval tvERROR_GENERAL                   - Underlying failures - SoC, memory, etc
  *
  * @pre TvInit() should be called before calling this API
@@ -2803,8 +3111,11 @@ int GetMaxGainValue();
  * @return tvError_t
  *
  * @retval tvERROR_NONE             - Success
- * @retval tvERROR_INVALID_PARAM    - Input parameter is invalid
+ * @retval tvERROR_INVALID_PARAM    - A parameter is invalid, such as a
+ *                                    NULL pointer or a value outside the valid range defined for this API
+ * @retval tvERROR_INVALID_STATE    - Interface is not initialized
  * @retval tvERROR_GENERAL          - Underlying failures - SoC, memory, etc
+ * @retval tvERROR_OPERATION_NOT_SUPPORTED   - The feature or operation is not supported by the platform
  *
  * @pre TvInit() should be called before calling this API
  */
@@ -2826,9 +3137,11 @@ tvError_t EnableGammaMode(int mode);
  * @return tvError_t
  *
  * @retval tvERROR_NONE             - Success
- * @retval tvERROR_INVALID_PARAM    - Input parameter is invalid
+ * @retval tvERROR_INVALID_PARAM    - A parameter is invalid, such as a
+ *                                    NULL pointer or a value outside the valid range defined for this API
  * @retval tvERROR_INVALID_STATE    - Interface is not initialized
  * @retval tvERROR_GENERAL          - Underlying failures - SoC, memory, etc
+ * @retval tvERROR_OPERATION_NOT_SUPPORTED   - The feature or operation is not supported by the platform
  *
  * @pre TvInit() and SetGammaPatternMode(true) should be called before calling this API
  *
@@ -2848,9 +3161,12 @@ tvError_t SetGammaPattern(int is_10_bit, int R_Value, int G_Value, int B_Value);
 * @return tvError_t
  *
  * @retval tvERROR_NONE             - Success
- * @retval tvERROR_INVALID_PARAM    - Input parameter is invalid
+ * @retval tvERROR_INVALID_PARAM    - A parameter is invalid, such as a
+ *                                    NULL pointer or a value outside the valid range defined for this API
  * @retval tvERROR_INVALID_STATE    - Interface is not initialized
  * @retval tvERROR_GENERAL          - Underlying failures - SoC, memory, etc
+ * @retval tvERROR_OPERATION_NOT_SUPPORTED   - The feature or operation is not supported by the platform
+ *
  * @pre TvInit() should be called before calling this API
  */
 
@@ -2872,6 +3188,7 @@ tvError_t GetTVGammaTarget(tvColorTemp_t colorTemp,double *x, double *y);
  * @retval tvERROR_NONE             - Success
  * @retval tvERROR_INVALID_STATE    - Interface is not initialized
  * @retval tvERROR_GENERAL          - Underlying failures - SoC, memory, etc
+ * @retval tvERROR_OPERATION_NOT_SUPPORTED   - The feature or operation is not supported by the platform
  *
  * @pre TvInit() should be called before calling this API
  *
@@ -2892,9 +3209,11 @@ tvError_t SetGammaPatternMode(bool mode);
  * @return tvError_t
  *
  * @retval tvERROR_NONE             - Success
- * @retval tvERROR_INVALID_PARAM    - Input parameter is invalid
+ * @retval tvERROR_INVALID_PARAM    - A parameter is invalid, such as a
+ *                                    NULL pointer or a value outside the valid range defined for this API
  * @retval tvERROR_INVALID_STATE    - Interface is not initialized
  * @retval tvERROR_GENERAL          - Underlying failures - SoC, memory, etc
+ * @retval tvERROR_OPERATION_NOT_SUPPORTED   - The feature or operation is not supported by the platform
  *
  * @pre TvInit() should be called before calling this API
  */
@@ -2912,9 +3231,11 @@ tvError_t SetRGBPattern(int r,int g, int b);
  * @return tvError_t
  *
  * @retval tvERROR_NONE             - Success
- * @retval tvERROR_INVALID_PARAM    - Parameter is invalid
+ * @retval tvERROR_INVALID_PARAM    - A parameter is invalid, such as a
+ *                                    NULL pointer or a value outside the valid range defined for this API
  * @retval tvERROR_INVALID_STATE    - Interface is not initialized
  * @retval tvERROR_GENERAL          - Underlying failures - SoC, memory, etc
+ * @retval tvERROR_OPERATION_NOT_SUPPORTED   - The feature or operation is not supported by the platform
  *
  * @pre TvInit() should be called before calling this API
  */
@@ -2931,9 +3252,11 @@ tvError_t GetRGBPattern(int *r,int *g,int *b);
  * @return tvError_t
  *
  * @retval tvERROR_NONE             - Success
- * @retval tvERROR_INVALID_PARAM    - Input parameter is invalid
+ * @retval tvERROR_INVALID_PARAM    - A parameter is invalid, such as a
+ *                                    NULL pointer or a value outside the valid range defined for this API
  * @retval tvERROR_INVALID_STATE    - Interface is not initialized
  * @retval tvERROR_GENERAL          - Underlying failures - SoC, memory, etc
+ * @retval tvERROR_OPERATION_NOT_SUPPORTED   - The feature or operation is not supported by the platform
  *
  * @pre TvInit() and SetGammaPatternMode(true) should be called before calling this API
  *
@@ -2951,9 +3274,11 @@ tvError_t SetGrayPattern(int YUVValue);
  * @return tvError_t
  *
  * @retval tvERROR_NONE             - Success
- * @retval tvERROR_INVALID_PARAM    - Parameter is invalid
+ * @retval tvERROR_INVALID_PARAM    - A parameter is invalid, such as a
+ *                                    NULL pointer or a value outside the valid range defined for this API
  * @retval tvERROR_INVALID_STATE    - Interface is not initialized
  * @retval tvERROR_GENERAL          - Underlying failures - SoC, memory, etc
+ * @retval tvERROR_OPERATION_NOT_SUPPORTED   - The feature or operation is not supported by the platform
  *
  * @pre TvInit() should be called before calling this API
  */
@@ -2970,9 +3295,11 @@ tvError_t SetGrayPattern(int YUVValue);
  * @return tvError_t
  *
  * @retval tvERROR_NONE             - Success
- * @retval tvERROR_INVALID_PARAM    - Parameter is invalid
+ * @retval tvERROR_INVALID_PARAM    - A parameter is invalid, such as a
+ *                                    NULL pointer or a value outside the valid range defined for this API
  * @retval tvERROR_INVALID_STATE    - Interface is not initialized
  * @retval tvERROR_GENERAL          - Underlying failures - SoC, memory, etc
+ * @retval tvERROR_OPERATION_NOT_SUPPORTED   - The feature or operation is not supported by the platform
  *
  * @pre TvInit() should be called before calling this API
  */
@@ -2993,6 +3320,7 @@ tvError_t GetOpenCircuitStatus(int *status);
  * @retval tvERROR_NONE             - Success
  * @retval tvERROR_INVALID_STATE    - Interface is not initialized
  * @retval tvERROR_GENERAL          - Underlying failures - SoC, memory, etc
+ * @retval tvERROR_OPERATION_NOT_SUPPORTED   - The feature or operation is not supported by the platform
  *
  * @pre TvInit() should be called before calling this API
  */
@@ -3013,6 +3341,7 @@ tvError_t EnableLDIMPixelCompensation(bool mode);
  * @retval tvERROR_NONE             - Success
  * @retval tvERROR_INVALID_STATE    - Interface is not initialized
  * @retval tvERROR_GENERAL          - Underlying failures - SoC, memory, etc
+ * @retval tvERROR_OPERATION_NOT_SUPPORTED   - The feature or operation is not supported by the platform
  *
  * @pre TvInit() should be called before calling this API
  */
@@ -3031,9 +3360,11 @@ tvError_t EnableLDIM(bool mode);
  * @return tvError_t
  *
  * @retval tvERROR_NONE             - Success
- * @retval tvERROR_INVALID_PARAM    - Input parameter is invalid
+ * @retval tvERROR_INVALID_PARAM    - A parameter is invalid, such as a
+ *                                    NULL pointer or a value outside the valid range defined for this API
  * @retval tvERROR_INVALID_STATE    - Interface is not initialized
  * @retval tvERROR_GENERAL          - Underlying failures - SoC, memory, etc
+ * @retval tvERROR_OPERATION_NOT_SUPPORTED   - The feature or operation is not supported by the platform
  *
  * @pre TvInit() should be called before calling this API
  */
@@ -3051,9 +3382,11 @@ tvError_t EnableLDIM(bool mode);
  * @return tvError_t
  *
  * @retval tvERROR_NONE             - Success
- * @retval tvERROR_INVALID_PARAM    - Input parameter is invalid
+ * @retval tvERROR_INVALID_PARAM    - A parameter is invalid, such as a
+ *                                    NULL pointer or a value outside the valid range defined for this API
  * @retval tvERROR_INVALID_STATE    - Interface is not initialized
  * @retval tvERROR_GENERAL          - Underlying failures - SoC, memory, etc
+ * @retval tvERROR_OPERATION_NOT_SUPPORTED   - The feature or operation is not supported by the platform
  *
  * @pre TvInit() should be called before calling this API
  */
@@ -3073,6 +3406,7 @@ tvError_t EnableLDIM(bool mode);
  * @retval tvERROR_NONE             - Success
  * @retval tvERROR_INVALID_STATE    - Interface is not initialized
  * @retval tvERROR_GENERAL          - Underlying failures - SoC, memory, etc
+ * @retval tvERROR_OPERATION_NOT_SUPPORTED   - The feature or operation is not supported by the platform
  *
  * @pre TvInit() should be called before calling this API
  */
@@ -3092,6 +3426,7 @@ tvError_t EnableWhiteBalance(bool mode);
  * @retval tvERROR_NONE             - Success
  * @retval tvERROR_INVALID_STATE    - Interface is not initialized
  * @retval tvERROR_GENERAL          - Underlying failures - SoC, memory, etc
+ * @retval tvERROR_OPERATION_NOT_SUPPORTED   - The feature or operation is not supported by the platform
  *
  * @pre TvInit() should be called before calling this API
  */
@@ -3111,6 +3446,7 @@ tvError_t EnableDynamicContrast(bool mode);
  * @retval tvERROR_NONE             - Success
  * @retval tvERROR_INVALID_STATE    - Interface is not initialized
  * @retval tvERROR_GENERAL          - Underlying failures - SoC, memory, etc
+ * @retval tvERROR_OPERATION_NOT_SUPPORTED   - The feature or operation is not supported by the platform
  *
  * @pre TvInit() should be called before calling this API
  */
@@ -3133,11 +3469,12 @@ tvError_t EnableLocalContrast(bool mode);
  *                                        1 - Failure, at least one short circuit detected.
  *
  * @return tvError_t
- * @retval tvERROR_NONE                    Short circuit detection completed successfully.
- * @retval tvERROR_INVALID_PARAM           Invalid input parameter.
- * @retval tvERROR_INVALID_STATE           Detection logic failed to execute.
- * @retval tvERROR_GENERAL                 Underlying failures (SoC, memory, etc.).
- * @retval tvERROR_OPERATION_NOT_SUPPORTED Operation is not supported on this platform.
+ * @retval tvERROR_NONE                    - Short circuit detection completed successfully.
+ * @retval tvERROR_INVALID_PARAM           - A parameter is invalid, such as a
+ *                                           NULL pointer or a value outside the valid range defined for this API.
+ * @retval tvERROR_INVALID_STATE           - Detection logic failed to execute.
+ * @retval tvERROR_GENERAL                 - Underlying failures (SoC, memory, etc.).
+ * @retval tvERROR_OPERATION_NOT_SUPPORTED - The feature or operation is not supported by the platform.
  *
  * @see GetNumberOfDimmingZones()
  *
@@ -3155,11 +3492,12 @@ tvError_t GetLdimZoneShortCircuitStatus(unsigned char* shortcircuit_zone_list, u
  *                                      will be stored. This is a platform-specific value.
  *
  * @return tvError_t
- * @retval tvERROR_NONE                    The number of dimming zones was retrieved successfully.
- * @retval tvERROR_INVALID_PARAM           Invalid input parameter (e.g., number_of_dimming_zones is NULL).
- * @retval tvERROR_INVALID_STATE           The system is not in a state where dimming zones can be queried.
- * @retval tvERROR_GENERAL                 Underlying failures (e.g., hardware issues, memory errors).
- * @retval tvERROR_OPERATION_NOT_SUPPORTED The platform does not support dimming zones.
+ * @retval tvERROR_NONE                    -  The number of dimming zones was retrieved successfully.
+ * @retval tvERROR_INVALID_PARAM           -  A parameter is invalid, such as a
+ *                                            NULL pointer or a value outside the valid range defined for this API.
+ * @retval tvERROR_INVALID_STATE           -  The system is not in a state where dimming zones can be queried.
+ * @retval tvERROR_GENERAL                 -  Underlying failures (e.g., hardware issues, memory errors).
+ * @retval tvERROR_OPERATION_NOT_SUPPORTED -  The feature or operation is not supported by the platform.
  *
  * @pre TvInit() should be called before calling this API.
  */
@@ -3175,6 +3513,8 @@ tvError_t GetNumberOfDimmingZones(unsigned int* number_of_dimming_zones);
  * Gain                             - Modifies the intensity of Red, Green, and Blue at the brighter level
  * Offset                           - Modifies the intensity of Red, Green, and Blue at the darker level
  *
+ * If the platform does not support Custom2PointWhiteBalance, then tvERROR_OPERATION_NOT_SUPPORTED is returned.
+ *
  * @param[in] color                 - Color type value. Valid value will be a member of ::tvWBColor_t
  * @param[in] control               - Control index value. Valid values will be a member of ::tvWBControl_t
  * @param[in] value                 - The WhiteBalance Value to be set.Valid range gain (0 - 2047) and offset (-1024 to 1023)
@@ -3182,9 +3522,10 @@ tvError_t GetNumberOfDimmingZones(unsigned int* number_of_dimming_zones);
  * @return tvError_t
  *
  * @retval tvERROR_NONE                      - Success
- * @retval tvERROR_INVALID_PARAM             - Input parameter is invalid
+ * @retval tvERROR_INVALID_PARAM             - A parameter is invalid, such as a
+ *                                             NULL pointer or a value outside the valid range defined for this API
  * @retval tvERROR_INVALID_STATE             - Interface is not initialized
- * @retval tvERROR_OPERATION_NOT_SUPPORTED   - Operation is not supported
+ * @retval tvERROR_OPERATION_NOT_SUPPORTED   - The feature or operation is not supported by the platform
  * @retval tvERROR_GENERAL                   - Underlying failures - SoC, memory, etc
  *
  * @pre TvInit() should be called before calling this API
@@ -3200,6 +3541,8 @@ tvError_t SetCustom2PointWhiteBalance(tvWBColor_t color, tvWBControl_t control, 
  *
  *  The function always retrieves the custom WhiteBalance (Red, Green, Blue Gain/Offset) associated with tvColorTemp_USER.
  *
+ *  If the platform does not support Custom2PointWhiteBalance, then tvERROR_OPERATION_NOT_SUPPORTED is returned.
+ *
  *  Gain                            - Modifies the intensity of Red, Green, and Blue at the brighter level
  *  Offset                          - Modifies the intensity of Red, Green, and Blue at the darker level
  *
@@ -3210,9 +3553,11 @@ tvError_t SetCustom2PointWhiteBalance(tvWBColor_t color, tvWBControl_t control, 
  * @return tvError_t
  *
  * @retval tvERROR_NONE              - Success
- * @retval tvERROR_INVALID_PARAM     - Parameter is invalid
+ * @retval tvERROR_INVALID_PARAM     - A parameter is invalid, such as a
+ *                                     NULL pointer or a value outside the valid range defined for this API
  * @retval tvERROR_INVALID_STATE     - Interface is not initialized
  * @retval tvERROR_GENERAL           - Underlying failures - SoC, memory, etc
+ * @retval tvERROR_OPERATION_NOT_SUPPORTED   - The feature or operation is not supported by the platform
  *
  * @pre TvInit() should be called before calling this API
  *
@@ -3235,7 +3580,7 @@ tvError_t GetCustom2PointWhiteBalance(tvWBColor_t color, tvWBControl_t control, 
  * The capabilities structure returned by this call is allocated by the HAL function and shall
  * be safe to reference for the lifetime of the process.
  *
- * If the platform does not support backlight, then tvERROR_OPERATION_NOT_SUPPORTED is returned.
+ * If the platform does not support Custom2PointWhiteBalance, then tvERROR_OPERATION_NOT_SUPPORTED is returned.
  *
  * @param[out] min_gain         - Minimum Gain.
  * @param[out] min_offset       - Minimum Saturation.
@@ -3252,9 +3597,10 @@ tvError_t GetCustom2PointWhiteBalance(tvWBColor_t color, tvWBControl_t control, 
  * @return tvError_t
  *
  * @retval tvERROR_NONE - Success
- * @retval tvERROR_INVALID_PARAM - Parameter is invalid
+ * @retval tvERROR_INVALID_PARAM - A parameter is invalid, such as a
+ *                                 NULL pointer or a value outside the valid range defined for this API
  * @retval tvERROR_INVALID_STATE - Interface is not initialized
- * @retval tvERROR_OPERATION_NOT_SUPPORTED - Operation is not supported
+ * @retval tvERROR_OPERATION_NOT_SUPPORTED   - The feature or operation is not supported by the platform
  * @retval tvERROR_GENERAL - Underlying failures - SoC, memory, etc
  *
  * @pre TvInit() should be called before calling this API
@@ -3272,6 +3618,8 @@ tvError_t GetCustom2PointWhiteBalanceCaps ( int *min_gain, int *min_offset, int 
  * The source, format, and picture mode shall be validated against the supported video sources, video formats, and
  * picture modes specified in the PQ capability configuration file for the respective feature.
  *
+ * If the platform does not support Custom2PointWhiteBalance, then tvERROR_OPERATION_NOT_SUPPORTED is returned.
+ *
  * @param[in] videoSrcType          - Source input value.Valid value will be a member of ::tvVideoSrcType_t
  * @param[in] pictureMode           - Picture mode value to be saved.Valid values are as per values returned by
  *                                    ::pic_modes_t.value  parmeter from GetTVSupportedPictureModes API.
@@ -3283,9 +3631,10 @@ tvError_t GetCustom2PointWhiteBalanceCaps ( int *min_gain, int *min_offset, int 
  * @return tvError_t
  *
  * @retval tvERROR_NONE                      - Success
- * @retval tvERROR_INVALID_PARAM             - Input parameter is invalid
+ * @retval tvERROR_INVALID_PARAM             - A parameter is invalid, such as a
+ *                                             NULL pointer or a value outside the valid range defined for this API
  * @retval tvERROR_INVALID_STATE             - Interface is not initialized
- * @retval tvERROR_OPERATION_NOT_SUPPORTED   - Operation is not supported
+ * @retval tvERROR_OPERATION_NOT_SUPPORTED   - The feature or operation is not supported by the platform
  * @retval tvERROR_GENERAL                   - Underlying failures - SoC, memory, etc
  *
  * @pre TvInit() should be called before calling this API
@@ -3316,9 +3665,10 @@ tvError_t SaveCustom2PointWhiteBalance(tvVideoSrcType_t videoSrcType, int pq_mod
  * @return tvError_t
  *
  * @retval tvERROR_NONE - Success
- * @retval tvERROR_INVALID_PARAM - Parameter is invalid
+ * @retval tvERROR_INVALID_PARAM - A parameter is invalid, such as a
+ *                                 NULL pointer or a value outside the valid range defined for this API
  * @retval tvERROR_INVALID_STATE - Interface is not initialized
- * @retval tvERROR_OPERATION_NOT_SUPPORTED - Operation is not supported
+ * @retval tvERROR_OPERATION_NOT_SUPPORTED   - The feature or operation is not supported by the platform
  * @retval tvERROR_GENERAL - Underlying failures - SoC, memory, etc
  *
  * @pre TvInit() should be called before calling this API
@@ -3330,6 +3680,9 @@ tvError_t GetPrecisionDetailCaps(int* max_precision, tvContextCaps_t ** context_
  *
  * This function gets the precision detail setting for the primary video source selected,
  * primary video format played and picture mode selected.
+ * The source, format, and picture mode shall be validated against the supported video sources, video formats, and
+ * picture modes specified in the PQ capability configuration file for the respective feature.
+ *
  * If the platform does not support precision detail, then tvERROR_OPERATION_NOT_SUPPORTED is returned.
  *
  * @param[in] videoSrcType - Source input value. Valid value will be a member of ::tvVideoSrcType_t
@@ -3340,9 +3693,10 @@ tvError_t GetPrecisionDetailCaps(int* max_precision, tvContextCaps_t ** context_
  * @return tvError_t
  *
  * @retval tvERROR_NONE - Success
- * @retval tvERROR_INVALID_PARAM - Parameter is invalid
+ * @retval tvERROR_INVALID_PARAM - A parameter is invalid, such as a
+ *                                 NULL pointer or a value outside the valid range defined for this API
  * @retval tvERROR_INVALID_STATE - Interface is not initialized
- * @retval tvERROR_OPERATION_NOT_SUPPORTED - Operation is not supported
+ * @retval tvERROR_OPERATION_NOT_SUPPORTED   - The feature or operation is not supported by the platform
  * @retval tvERROR_GENERAL - Underlying failures - SoC, memory, etc
  *
  * @pre TvInit() should be called before calling this API
@@ -3371,9 +3725,10 @@ tvError_t GetPrecisionDetail(tvVideoSrcType_t videoSrcType, tvPQModeIndex_t pq_m
  * @return tvError_t
  *
  * @retval tvERROR_NONE - Success
- * @retval tvERROR_INVALID_PARAM - Parameter is invalid
+ * @retval tvERROR_INVALID_PARAM - A parameter is invalid, such as a
+ *                                 NULL pointer or a value outside the valid range defined for this API
  * @retval tvERROR_INVALID_STATE - Interface is not initialized
- * @retval tvERROR_OPERATION_NOT_SUPPORTED - Operation is not supported
+ * @retval tvERROR_OPERATION_NOT_SUPPORTED   - The feature or operation is not supported by the platform
  * @retval tvERROR_GENERAL - Underlying failures - SoC, memory, etc
  *
  * @pre TvInit() should be called before calling this API
@@ -3408,9 +3763,10 @@ tvError_t SetPrecisionDetail(tvVideoSrcType_t videoSrcType, tvPQModeIndex_t pq_m
  * @return tvError_t
  *
  * @retval tvERROR_NONE - Success
- * @retval tvERROR_INVALID_PARAM - Parameter is invalid
+ * @retval tvERROR_INVALID_PARAM - A parameter is invalid, such as a
+ *                                 NULL pointer or a value outside the valid range defined for this API
  * @retval tvERROR_INVALID_STATE - Interface is not initialized
- * @retval tvERROR_OPERATION_NOT_SUPPORTED - Operation is not supported
+ * @retval tvERROR_OPERATION_NOT_SUPPORTED   - The feature or operation is not supported by the platform
  * @retval tvERROR_GENERAL - Underlying failures - SoC, memory, etc
  *
  * @pre TvInit() should be called before calling this API
@@ -3419,6 +3775,8 @@ tvError_t GetSdrGammaCaps(tvSdrGamma_t ** sdr_gamma, size_t * num_sdr_gamma, tvC
 
 /**
  * @brief Gets the current SDR gamma setting for a given picture mode and primary video source.
+ * The source and picture mode shall be validated against the supported video sources and
+ * picture modes specified in the PQ capability configuration file for this feature.
  *
  * If the platform does not support an SDR gamma setting, then tvERROR_OPERATION_NOT_SUPPORTED is returned.
  *
@@ -3429,9 +3787,10 @@ tvError_t GetSdrGammaCaps(tvSdrGamma_t ** sdr_gamma, size_t * num_sdr_gamma, tvC
  * @return tvError_t
  *
  * @retval tvERROR_NONE - Success
- * @retval tvERROR_INVALID_PARAM - Parameter is invalid
+ * @retval tvERROR_INVALID_PARAM - A parameter is invalid, such as a
+ *                                 NULL pointer or a value outside the valid range defined for this API
  * @retval tvERROR_INVALID_STATE - Interface is not initialized
- * @retval tvERROR_OPERATION_NOT_SUPPORTED - Operation is not supported
+ * @retval tvERROR_OPERATION_NOT_SUPPORTED   - The feature or operation is not supported by the platform
  * @retval tvERROR_GENERAL - Underlying failures - SoC, memory, etc
  *
  * @pre TvInit() should be called before calling this API
@@ -3461,9 +3820,10 @@ tvError_t GetSdrGamma(tvVideoSrcType_t videoSrcType, tvPQModeIndex_t pq_mode, tv
  * @return tvError_t
  *
  * @retval tvERROR_NONE - Success
- * @retval tvERROR_INVALID_PARAM - Input parameter is invalid
+ * @retval tvERROR_INVALID_PARAM - A parameter is invalid, such as a
+ *                                 NULL pointer or a value outside the valid range defined for this API
  * @retval tvERROR_INVALID_STATE - Interface is not initialized
- * @retval tvERROR_OPERATION_NOT_SUPPORTED - Operation is not supported
+ * @retval tvERROR_OPERATION_NOT_SUPPORTED   - The feature or operation is not supported by the platform
  * @retval tvERROR_GENERAL - Underlying failures - SoC, memory, etc
  *
  * @pre TvInit() should be called before calling this API
@@ -3499,9 +3859,10 @@ returned.
  * @return tvError_t
  *
  * @retval tvERROR_NONE - Success
- * @retval tvERROR_INVALID_PARAM - Parameter is invalid
+ * @retval tvERROR_INVALID_PARAM - A parameter is invalid, such as a
+ *                                 NULL pointer or a value outside the valid range defined for this API
  * @retval tvERROR_INVALID_STATE - Interface is not initialized
- * @retval tvERROR_OPERATION_NOT_SUPPORTED - Operation is not supported
+ * @retval tvERROR_OPERATION_NOT_SUPPORTED   - The feature or operation is not supported by the platform
  * @retval tvERROR_GENERAL - Underlying failures - SoC, memory, etc
  *
  * @pre TvInit() should be called before calling this API
@@ -3533,9 +3894,10 @@ tvError_t GetLocalContrastEnhancementCaps(int * maxLocalContrastEnhancement, tvC
  * @return tvError_t
  *
  * @retval tvERROR_NONE - Success
- * @retval tvERROR_INVALID_PARAM - Input parameter is invalid
+ * @retval tvERROR_INVALID_PARAM - A parameter is invalid, such as a
+ *                                 NULL pointer or a value outside the valid range defined for this API
  * @retval tvERROR_INVALID_STATE - Interface is not initialized
- * @retval tvERROR_OPERATION_NOT_SUPPORTED - Operation is not supported
+ * @retval tvERROR_OPERATION_NOT_SUPPORTED   - The feature or operation is not supported by the platform
  * @retval tvERROR_GENERAL - Underlying failures - SoC, memory, etc
  *
  * @pre TvInit() should be called before calling this API
@@ -3547,6 +3909,8 @@ tvError_t SetLocalContrastEnhancement(tvVideoSrcType_t videoSrcType, tvPQModeInd
  *
  * This function gets the local contrast enhancement value for the specified picture mode,
  * primary video format and primary video source.
+ * The source, format, and picture mode shall be validated against the supported video sources, video formats, and
+ * picture modes specified in the PQ capability configuration file for the respective feature.
  *
  * If the platform does not support local contrast enhancement, then tvERROR_OPERATION_NOT_SUPPORTED is returned.
  *
@@ -3560,9 +3924,10 @@ tvError_t SetLocalContrastEnhancement(tvVideoSrcType_t videoSrcType, tvPQModeInd
  * @return tvError_t
  *
  * @retval tvERROR_NONE - Success
- * @retval tvERROR_INVALID_PARAM - Input parameter is invalid
+ * @retval tvERROR_INVALID_PARAM - A parameter is invalid, such as a
+ *                                 NULL pointer or a value outside the valid range defined for this API
  * @retval tvERROR_INVALID_STATE - Interface is not initialized
- * @retval tvERROR_OPERATION_NOT_SUPPORTED - Operation is not supported
+ * @retval tvERROR_OPERATION_NOT_SUPPORTED   - The feature or operation is not supported by the platform
  * @retval tvERROR_GENERAL - Underlying failures - SoC, memory, etc
  *
  * @pre TvInit() should be called before calling this API
@@ -3596,9 +3961,10 @@ tvError_t GetLocalContrastEnhancement(tvVideoSrcType_t videoSrcType, tvPQModeInd
  * @return tvError_t
  *
  * @retval tvERROR_NONE - Success
- * @retval tvERROR_INVALID_PARAM - Parameter is invalid
+ * @retval tvERROR_INVALID_PARAM - A parameter is invalid, such as a
+ *                                 NULL pointer or a value outside the valid range defined for this API
  * @retval tvERROR_INVALID_STATE - Interface is not initialized
- * @retval tvERROR_OPERATION_NOT_SUPPORTED - Operation is not supported
+ * @retval tvERROR_OPERATION_NOT_SUPPORTED   - The feature or operation is not supported by the platform
  * @retval tvERROR_GENERAL - Underlying failures - SoC, memory, etc
  *
  * @pre TvInit() should be called before calling this API
@@ -3629,9 +3995,10 @@ tvError_t GetMPEGNoiseReductionCaps(int * maxMPEGNoiseReduction, tvContextCaps_t
  * @return tvError_t
  *
  * @retval tvERROR_NONE - Success
- * @retval tvERROR_INVALID_PARAM - Input parameter is invalid
+ * @retval tvERROR_INVALID_PARAM - A parameter is invalid, such as a
+ *                                 NULL pointer or a value outside the valid range defined for this API
  * @retval tvERROR_INVALID_STATE - Interface is not initialized
- * @retval tvERROR_OPERATION_NOT_SUPPORTED - Operation is not supported
+ * @retval tvERROR_OPERATION_NOT_SUPPORTED   - The feature or operation is not supported by the platform
  * @retval tvERROR_GENERAL - Underlying failures - SoC, memory, etc
  *
  * @pre TvInit() should be called before calling this API
@@ -3642,6 +4009,8 @@ tvError_t SetMPEGNoiseReduction(tvVideoSrcType_t videoSrcType, tvPQModeIndex_t p
  *
  * This function gets the MPEG noise reduction value for the specific picture mode,
  * primary video format and primary video source.
+ * The source, format, and picture mode shall be validated against the supported video sources, video formats, and
+ * picture modes specified in the PQ capability configuration file for the respective feature.
  *
  * If the platform does not support MPEG noise reduction, then tvERROR_OPERATION_NOT_SUPPORTED is returned.
  *
@@ -3655,9 +4024,10 @@ tvError_t SetMPEGNoiseReduction(tvVideoSrcType_t videoSrcType, tvPQModeIndex_t p
  * @return tvError_t
  *
  * @retval tvERROR_NONE - Success
- * @retval tvERROR_INVALID_PARAM - Input parameter is invalid
+ * @retval tvERROR_INVALID_PARAM - A parameter is invalid, such as a
+ *                                 NULL pointer or a value outside the valid range defined for this API
  * @retval tvERROR_INVALID_STATE - Interface is not initialized
- * @retval tvERROR_OPERATION_NOT_SUPPORTED - Operation is not supported
+ * @retval tvERROR_OPERATION_NOT_SUPPORTED   - The feature or operation is not supported by the platform
  * @retval tvERROR_GENERAL - Underlying failures - SoC, memory, etc
  *
  * @pre TvInit() should be called before calling this API
@@ -3691,9 +4061,10 @@ tvError_t GetMPEGNoiseReduction(tvVideoSrcType_t videoSrcType, tvPQModeIndex_t p
  * @return tvError_t
  *
  * @retval tvERROR_NONE - Success
- * @retval tvERROR_INVALID_PARAM - Parameter is invalid
+ * @retval tvERROR_INVALID_PARAM - A parameter is invalid, such as a
+ *                                 NULL pointer or a value outside the valid range defined for this API
  * @retval tvERROR_INVALID_STATE - Interface is not initialized
- * @retval tvERROR_OPERATION_NOT_SUPPORTED - Operation is not supported
+ * @retval tvERROR_OPERATION_NOT_SUPPORTED   - The feature or operation is not supported by the platform
  * @retval tvERROR_GENERAL - Underlying failures - SoC, memory, etc
  *
  * @pre TvInit() should be called before calling this API
@@ -3724,9 +4095,10 @@ tvError_t GetDigitalNoiseReductionCaps(int * maxDigitalNoiseReduction, tvContext
  * @return tvError_t
  *
  * @retval tvERROR_NONE - Success
- * @retval tvERROR_INVALID_PARAM - Input parameter is invalid
+ * @retval tvERROR_INVALID_PARAM - A parameter is invalid, such as a
+ *                                 NULL pointer or a value outside the valid range defined for this API
  * @retval tvERROR_INVALID_STATE - Interface is not initialized
- * @retval tvERROR_OPERATION_NOT_SUPPORTED - Operation is not supported
+ * @retval tvERROR_OPERATION_NOT_SUPPORTED   - The feature or operation is not supported by the platform
  * @retval tvERROR_GENERAL - Underlying failures - SoC, memory, etc
  *
  * @pre TvInit() should be called before calling this API
@@ -3738,6 +4110,8 @@ tvError_t SetDigitalNoiseReduction(tvVideoSrcType_t videoSrcType, tvPQModeIndex_
  *
  * This function gets the digital noise reduction value for the specified picture mode,
  * primary video format and primary video source.
+ * The source, format, and picture mode shall be validated against the supported video sources, video formats, and
+ * picture modes specified in the PQ capability configuration file for the respective feature.
  *
  * If the platform does not support digital noise reduction, then tvERROR_OPERATION_NOT_SUPPORTED is returned.
  *
@@ -3751,9 +4125,10 @@ tvError_t SetDigitalNoiseReduction(tvVideoSrcType_t videoSrcType, tvPQModeIndex_
  * @return tvError_t
  *
  * @retval tvERROR_NONE - Success
- * @retval tvERROR_INVALID_PARAM - Input parameter is invalid
+ * @retval tvERROR_INVALID_PARAM - A parameter is invalid, such as a
+ *                                 NULL pointer or a value outside the valid range defined for this API
  * @retval tvERROR_INVALID_STATE - Interface is not initialized
- * @retval tvERROR_OPERATION_NOT_SUPPORTED - Operation is not supported
+ * @retval tvERROR_OPERATION_NOT_SUPPORTED   - The feature or operation is not supported by the platform
  * @retval tvERROR_GENERAL - Underlying failures - SoC, memory, etc
  *
  * @pre TvInit() should be called before calling this API
@@ -3787,9 +4162,10 @@ tvError_t GetDigitalNoiseReduction(tvVideoSrcType_t videoSrcType, tvPQModeIndex_
  * @return tvError_t
  *
  * @retval tvERROR_NONE - Success
- * @retval tvERROR_INVALID_PARAM - Parameter is invalid
+ * @retval tvERROR_INVALID_PARAM - A parameter is invalid, such as a
+ *                                 NULL pointer or a value outside the valid range defined for this API
  * @retval tvERROR_INVALID_STATE - Interface is not initialized
- * @retval tvERROR_OPERATION_NOT_SUPPORTED - Operation is not supported
+ * @retval tvERROR_OPERATION_NOT_SUPPORTED   - The feature or operation is not supported by the platform
  * @retval tvERROR_GENERAL - Underlying failures - SoC, memory, etc
  *
  * @pre TvInit() should be called before calling this API
@@ -3820,9 +4196,10 @@ tvError_t GetAISuperResolutionCaps(int * maxAISuperResolution, tvContextCaps_t *
  * @return tvError_t
  *
  * @retval tvERROR_NONE - Success
- * @retval tvERROR_INVALID_PARAM - Input parameter is invalid
+ * @retval tvERROR_INVALID_PARAM - A parameter is invalid, such as a
+ *                                 NULL pointer or a value outside the valid range defined for this API
  * @retval tvERROR_INVALID_STATE - Interface is not initialized
- * @retval tvERROR_OPERATION_NOT_SUPPORTED - Operation is not supported
+ * @retval tvERROR_OPERATION_NOT_SUPPORTED   - The feature or operation is not supported by the platform
  * @retval tvERROR_GENERAL - Underlying failures - SoC, memory, etc
  *
  * @pre TvInit() should be called before calling this API
@@ -3834,6 +4211,8 @@ tvError_t SetAISuperResolution(tvVideoSrcType_t videoSrcType, tvPQModeIndex_t pq
  *
  * This function gets the AI super resolution value in the picture profile database for the specific picture mode,
  * primary video format and primary video source.
+ * The source, format, and picture mode shall be validated against the supported video sources, video formats, and
+ * picture modes specified in the PQ capability configuration file for the respective feature.
  *
  * If the platform does not support an AI super resolution setting, then tvERROR_OPERATION_NOT_SUPPORTED is returned.
  *
@@ -3847,9 +4226,10 @@ tvError_t SetAISuperResolution(tvVideoSrcType_t videoSrcType, tvPQModeIndex_t pq
  * @return tvError_t
  *
  * @retval tvERROR_NONE - Success
- * @retval tvERROR_INVALID_PARAM - Input parameter is invalid
+ * @retval tvERROR_INVALID_PARAM - A parameter is invalid, such as a
+ *                                 NULL pointer or a value outside the valid range defined for this API
  * @retval tvERROR_INVALID_STATE - Interface is not initialized
- * @retval tvERROR_OPERATION_NOT_SUPPORTED - Operation is not supported
+ * @retval tvERROR_OPERATION_NOT_SUPPORTED   - The feature or operation is not supported by the platform
  * @retval tvERROR_GENERAL - Underlying failures - SoC, memory, etc
  *
  * @pre TvInit() should be called before calling this API
@@ -3884,9 +4264,10 @@ tvError_t GetAISuperResolution(tvVideoSrcType_t videoSrcType, tvPQModeIndex_t pq
  * @return tvError_t
  *
  * @retval tvERROR_NONE - Success
- * @retval tvERROR_INVALID_PARAM - Parameter is invalid
+ * @retval tvERROR_INVALID_PARAM - A parameter is invalid, such as a
+ *                                 NULL pointer or a value outside the valid range defined for this API
  * @retval tvERROR_INVALID_STATE - Interface is not initialized
- * @retval tvERROR_OPERATION_NOT_SUPPORTED - Operation is not supported
+ * @retval tvERROR_OPERATION_NOT_SUPPORTED   - The feature or operation is not supported by the platform
  * @retval tvERROR_GENERAL - Underlying failures - SoC, memory, etc
  *
  * @pre TvInit() should be called before calling this API
@@ -3917,9 +4298,10 @@ tvError_t GetMEMCCaps(int * maxMEMC, tvContextCaps_t ** context_caps);
  * @return tvError_t
  *
  * @retval tvERROR_NONE - Success
- * @retval tvERROR_INVALID_PARAM - Input parameter is invalid
+ * @retval tvERROR_INVALID_PARAM - A parameter is invalid, such as a
+ *                                 NULL pointer or a value outside the valid range defined for this API
  * @retval tvERROR_INVALID_STATE - Interface is not initialized
- * @retval tvERROR_OPERATION_NOT_SUPPORTED - Operation is not supported
+ * @retval tvERROR_OPERATION_NOT_SUPPORTED   - The feature or operation is not supported by the platform
  * @retval tvERROR_GENERAL - Underlying failures - SoC, memory, etc
  *
  * @pre TvInit() should be called before calling this API
@@ -3931,6 +4313,8 @@ tvError_t SetMEMC(tvVideoSrcType_t videoSrcType, tvPQModeIndex_t pq_mode, tvVide
  *
  * This function gets the MEMC value in the picture profile database for the specific picture mode,
  * primary video format and primary video source.
+ * The source, format, and picture mode shall be validated against the supported video sources, video formats, and
+ * picture modes specified in the PQ capability configuration file for the respective feature.
  *
  * If the platform does not support a MEMC setting, then tvERROR_OPERATION_NOT_SUPPORTED is returned.
  *
@@ -3944,9 +4328,10 @@ tvError_t SetMEMC(tvVideoSrcType_t videoSrcType, tvPQModeIndex_t pq_mode, tvVide
  * @return tvError_t
  *
  * @retval tvERROR_NONE - Success
- * @retval tvERROR_INVALID_PARAM - Input parameter is invalid
+ * @retval tvERROR_INVALID_PARAM - A parameter is invalid, such as a
+ *                                 NULL pointer or a value outside the valid range defined for this API
  * @retval tvERROR_INVALID_STATE - Interface is not initialized
- * @retval tvERROR_OPERATION_NOT_SUPPORTED - Operation is not supported
+ * @retval tvERROR_OPERATION_NOT_SUPPORTED   - The feature or operation is not supported by the platform
  * @retval tvERROR_GENERAL - Underlying failures - SoC, memory, etc
  *
  * @pre TvInit() should be called before calling this API
@@ -3996,9 +4381,10 @@ tvError_t GetMEMC(tvVideoSrcType_t videoSrcType, tvPQModeIndex_t pq_mode, tvVide
  * @return tvError_t
  *
  * @retval tvERROR_NONE - Success
- * @retval tvERROR_INVALID_PARAM - Parameter is invalid
+ * @retval tvERROR_INVALID_PARAM - A parameter is invalid, such as a
+ *                                 NULL pointer or a value outside the valid range defined for this API
  * @retval tvERROR_INVALID_STATE - Interface is not initialized
- * @retval tvERROR_OPERATION_NOT_SUPPORTED - Operation is not supported
+ * @retval tvERROR_OPERATION_NOT_SUPPORTED   - The feature or operation is not supported by the platform
  * @retval tvERROR_GENERAL - Underlying failures - SoC, memory, etc
  *
  * @pre TvInit() should be called before calling this API
@@ -4033,9 +4419,10 @@ tvError_t GetMultiPointWBCaps(int * num_hal_matrix_points, int * rgb_min, int * 
  * @return tvError_t
  *
  * @retval tvERROR_NONE - Success
- * @retval tvERROR_INVALID_PARAM - Input parameter is invalid
+ * @retval tvERROR_INVALID_PARAM - A parameter is invalid, such as a
+ *                                 NULL pointer or a value outside the valid range defined for this API
  * @retval tvERROR_INVALID_STATE - Interface is not initialized
- * @retval tvERROR_OPERATION_NOT_SUPPORTED - Operation is not supported
+ * @retval tvERROR_OPERATION_NOT_SUPPORTED   - The feature or operation is not supported by the platform
  * @retval tvERROR_GENERAL - Underlying failures - SoC, memory, etc
  *
  * @pre TvInit() should be called before calling this API
@@ -4047,6 +4434,8 @@ tvError_t SetMultiPointWBMatrix(tvColorTemp_t colorTemp, tvPQModeIndex_t pq_mode
 *
 * This function gets the multi-point white balance values from the picture profile database for the specific picture mode, color temperature,
 * primary video format and primary video source.
+* * The source, format, and picture mode shall be validated against the supported video sources, video formats, and
+ * picture modes specified in the PQ capability configuration file for the respective feature.
 *
 * The red, green and blue values are provided for all points in the matrix.
 * The 'r', 'g' and 'b' parameters point to integer arrays which must contain `num_hal_matrix_points` elements as returned by GetMultiPointWBCaps().
@@ -4064,9 +4453,10 @@ tvError_t SetMultiPointWBMatrix(tvColorTemp_t colorTemp, tvPQModeIndex_t pq_mode
 * @return tvError_t
 *
 * @retval tvERROR_NONE                     - Success
-* @retval tvERROR_INVALID_PARAM            - Input parameter is invalid
+* @retval tvERROR_INVALID_PARAM            - A parameter is invalid, such as a
+ *                                           NULL pointer or a value outside the valid range defined for this API
 * @retval tvERROR_INVALID_STATE            - Interface is not initialized
-* @retval tvERROR_OPERATION_NOT_SUPPORTED  - Operation is not supported
+* @retval tvERROR_OPERATION_NOT_SUPPORTED  - The feature or operation is not supported by the platform
 * @retval tvERROR_GENERAL                  - Underlying failures - SoC, memory, etc
 *
 * @pre TvInit() should be called before calling this API
@@ -4111,9 +4501,10 @@ tvError_t GetMultiPointWBMatrix(tvColorTemp_t colorTemp, tvPQModeIndex_t pq_mode
  * @return tvError_t
  *
  * @retval tvERROR_NONE - Success
- * @retval tvERROR_INVALID_PARAM - Parameter is invalid
+ * @retval tvERROR_INVALID_PARAM - A parameter is invalid, such as a
+ *                                 NULL pointer or a value outside the valid range defined for this API
  * @retval tvERROR_INVALID_STATE - Interface is not initialized
- * @retval tvERROR_OPERATION_NOT_SUPPORTED - Operation is not supported
+ * @retval tvERROR_OPERATION_NOT_SUPPORTED   - The feature or operation is not supported by the platform
  * @retval tvERROR_GENERAL - Underlying failures - SoC, memory, etc
  *
  * @pre TvInit() should be called before calling this API
@@ -4142,9 +4533,10 @@ tvError_t GetDVCalibrationCaps(tvDVCalibrationSettings_t **min_values, tvDVCalib
  * @return tvError_t
  *
  * @retval tvERROR_NONE - Success
- * @retval tvERROR_INVALID_PARAM - Input parameter is invalid
+ * @retval tvERROR_INVALID_PARAM - A parameter is invalid, such as a
+ *                                 NULL pointer or a value outside the valid range defined for this API
  * @retval tvERROR_INVALID_STATE - Interface is not initialized
- * @retval tvERROR_OPERATION_NOT_SUPPORTED - Operation is not supported
+ * @retval tvERROR_OPERATION_NOT_SUPPORTED   - The feature or operation is not supported by the platform
  * @retval tvERROR_GENERAL - Underlying failures - SoC, memory, etc
  *
  * @pre TvInit() should be called before calling this API
@@ -4155,6 +4547,8 @@ tvError_t SetDVCalibration(tvVideoSrcType_t videoSrcType, tvPQModeIndex_t pq_mod
  * @brief Gets the Dolby Vision PQ calibration values.
  *
  * This function gets the Dolby Vision PQ calibration values in the picture profile database for the specified picture mode.
+ * The source, format, and picture mode shall be validated against the supported video sources, video formats, and
+ * picture modes specified in the PQ capability configuration file for the respective feature.
  *
  * If the platform does not support Dolby Vision PQ calibration, then tvERROR_OPERATION_NOT_SUPPORTED is returned.
  * If no Dolby Vision PQ calibration has been set for the specified picture mode, then tvERROR_GENERAL is returned.
@@ -4169,9 +4563,10 @@ tvError_t SetDVCalibration(tvVideoSrcType_t videoSrcType, tvPQModeIndex_t pq_mod
  * @return tvError_t
  *
  * @retval tvERROR_NONE - Success
- * @retval tvERROR_INVALID_PARAM - Input parameter is invalid
+ * @retval tvERROR_INVALID_PARAM - A parameter is invalid, such as a
+ *                                 NULL pointer or a value outside the valid range defined for this API
  * @retval tvERROR_INVALID_STATE - Interface is not initialized
- * @retval tvERROR_OPERATION_NOT_SUPPORTED - Operation is not supported
+ * @retval tvERROR_OPERATION_NOT_SUPPORTED   - The feature or operation is not supported by the platform
  * @retval tvERROR_GENERAL - Underlying failures - SoC, memory, etc
  *
  * @pre TvInit() should be called before calling this API
@@ -4182,6 +4577,8 @@ tvError_t GetDVCalibration(tvVideoSrcType_t videoSrcType, tvPQModeIndex_t pq_mod
  * @brief Gets the default Dolby Vision PQ calibration values.
  *
  * This function gets the default Dolby Vision PQ calibration values in the picture profile database for the specified picture mode.
+ * The source, format, and picture mode shall be validated against the supported video sources, video formats, and
+ * picture modes specified in the PQ capability configuration file for the respective feature.
  *
  * If the platform does not support Dolby Vision PQ calibration, then tvERROR_OPERATION_NOT_SUPPORTED is returned.
  *
@@ -4194,9 +4591,10 @@ tvError_t GetDVCalibration(tvVideoSrcType_t videoSrcType, tvPQModeIndex_t pq_mod
  * @return tvError_t
  *
  * @retval tvERROR_NONE - Success
- * @retval tvERROR_INVALID_PARAM - Input parameter is invalid
+ * @retval tvERROR_INVALID_PARAM - A parameter is invalid, such as a
+ *                                 NULL pointer or a value outside the valid range defined for this API
  * @retval tvERROR_INVALID_STATE - Interface is not initialized
- * @retval tvERROR_OPERATION_NOT_SUPPORTED - Operation is not supported
+ * @retval tvERROR_OPERATION_NOT_SUPPORTED   - The feature or operation is not supported by the platform
  * @retval tvERROR_GENERAL - Underlying failures - SoC, memory, etc
  *
  * @pre TvInit() should be called before calling this API
@@ -4217,7 +4615,7 @@ tvError_t GetDVCalibrationDefault(tvVideoSrcType_t videoSrcType, tvPQModeIndex_t
  * The capabilities structure returned by this call is allocated by the HAL function and shall
  * be safe to reference for the lifetime of the process.
  *
- * If the platform does not support colorTemperature, then tvERROR_OPERATION_NOT_SUPPORTED is returned.
+ * If the platform does not support cms, then tvERROR_OPERATION_NOT_SUPPORTED is returned.
  *
  * @param[out] max_hue          - Maximum Hue value.
  *                              - The minimum value will be 0.
@@ -4242,9 +4640,10 @@ tvError_t GetDVCalibrationDefault(tvVideoSrcType_t videoSrcType, tvPQModeIndex_t
  * @return tvError_t
  *
  * @retval tvERROR_NONE - Success
- * @retval tvERROR_INVALID_PARAM - Parameter is invalid
+ * @retval tvERROR_INVALID_PARAM - A parameter is invalid, such as a
+ *                                 NULL pointer or a value outside the valid range defined for this API
  * @retval tvERROR_INVALID_STATE - Interface is not initialized
- * @retval tvERROR_OPERATION_NOT_SUPPORTED - Operation is not supported
+ * @retval tvERROR_OPERATION_NOT_SUPPORTED   - The feature or operation is not supported by the platform
  * @retval tvERROR_GENERAL - Underlying failures - SoC, memory, etc
  *
  * @pre TvInit() should be called before calling this API
@@ -4256,8 +4655,6 @@ tvError_t GetCMSCaps (int *max_hue, int *max_saturation,int *max_luma, tvDataCom
  *
  * This function gets the VideoSource capabilities from the VideoSource section of the pq_capabilities.json.
  *
- * If the platform does not support colorTemperature, then tvERROR_OPERATION_NOT_SUPPORTED is returned.
- *
  * @param[out] source       - Returns a pointer to an array of platform-supported video sources.
  *                          - Values will be members of ::tvVideoSrcType_t.
  *                          - The returned array must not be freed by the caller.
@@ -4267,9 +4664,10 @@ tvError_t GetCMSCaps (int *max_hue, int *max_saturation,int *max_luma, tvDataCom
  * @return tvError_t
  *
  * @retval tvERROR_NONE - Success
- * @retval tvERROR_INVALID_PARAM - Parameter is invalid
+ * @retval tvERROR_INVALID_PARAM - A parameter is invalid, such as a
+ *                                 NULL pointer or a value outside the valid range defined for this API
  * @retval tvERROR_INVALID_STATE - Interface is not initialized
- * @retval tvERROR_OPERATION_NOT_SUPPORTED - Operation is not supported
+ * @retval tvERROR_OPERATION_NOT_SUPPORTED   - The feature or operation is not supported by the platform
  * @retval tvERROR_GENERAL - Underlying failures - SoC, memory, etc
  *
  * @pre TvInit() should be called before calling this API
@@ -4281,8 +4679,6 @@ tvError_t GetVideoSourceCaps( tvVideoSrcType_t **source, size_t* num_video_sourc
  *
  * This function gets the VideoFramerate capabilities from the VideoFramerate section of the pq_capabilities.json.
  *
- * If the platform does not support colorTemperature, then tvERROR_OPERATION_NOT_SUPPORTED is returned.
- *
  * @param[out] framerate    - Returns a pointer to an array of platform-supported video framerates.
  *                          - Values will be members of ::tvVideoFrameRate_t.
  *                          - The returned array must not be freed by the caller.
@@ -4292,9 +4688,10 @@ tvError_t GetVideoSourceCaps( tvVideoSrcType_t **source, size_t* num_video_sourc
  * @return tvError_t
  *
  * @retval tvERROR_NONE - Success
- * @retval tvERROR_INVALID_PARAM - Parameter is invalid
+ * @retval tvERROR_INVALID_PARAM - A parameter is invalid, such as a
+ *                                 NULL pointer or a value outside the valid range defined for this API
  * @retval tvERROR_INVALID_STATE - Interface is not initialized
- * @retval tvERROR_OPERATION_NOT_SUPPORTED - Operation is not supported
+ * @retval tvERROR_OPERATION_NOT_SUPPORTED   - The feature or operation is not supported by the platform
  * @retval tvERROR_GENERAL - Underlying failures - SoC, memory, etc
  *
  * @pre TvInit() should be called before calling this API
@@ -4306,8 +4703,6 @@ tvError_t GetVideoFrameRateCaps( tvVideoFrameRate_t **framerate, size_t* num_vid
  *
  * This function gets the VideoFormat capabilities from the VideoFormat section of the pq_capabilities.json.
  *
- * If the platform does not support colorTemperature, then tvERROR_OPERATION_NOT_SUPPORTED is returned.
- *
  * @param[out] format       - Returns a pointer to an array of platform-supported video formats.
  *                          - Values will be members of ::tvVideoFormatType_t.
  *                          - The returned array must not be freed by the caller.
@@ -4317,9 +4712,10 @@ tvError_t GetVideoFrameRateCaps( tvVideoFrameRate_t **framerate, size_t* num_vid
  * @return tvError_t
  *
  * @retval tvERROR_NONE - Success
- * @retval tvERROR_INVALID_PARAM - Parameter is invalid
+ * @retval tvERROR_INVALID_PARAM - A parameter is invalid, such as a
+ *                                 NULL pointer or a value outside the valid range defined for this API
  * @retval tvERROR_INVALID_STATE - Interface is not initialized
- * @retval tvERROR_OPERATION_NOT_SUPPORTED - Operation is not supported
+ * @retval tvERROR_OPERATION_NOT_SUPPORTED   - The feature or operation is not supported by the platform
  * @retval tvERROR_GENERAL - Underlying failures - SoC, memory, etc
  *
  * @pre TvInit() should be called before calling this API
@@ -4331,8 +4727,6 @@ tvError_t GetVideoFormatCaps(tvVideoFormatType_t **format, size_t* num_video_for
  *
  * This function gets the VideoResolution capabilities from the VideoResolution section of the pq_capabilities.json.
  *
- * If the platform does not support colorTemperature, then tvERROR_OPERATION_NOT_SUPPORTED is returned.
- *
  * @param[out] resolution   - Returns a pointer to an array of platform-supported video resolutions.
  *                          - Values will be members of ::tvVideoResolution_t.
  *                          - The returned array must not be freed by the caller.
@@ -4342,9 +4736,10 @@ tvError_t GetVideoFormatCaps(tvVideoFormatType_t **format, size_t* num_video_for
  * @return tvError_t
  *
  * @retval tvERROR_NONE - Success
- * @retval tvERROR_INVALID_PARAM - Parameter is invalid
+ * @retval tvERROR_INVALID_PARAM - A parameter is invalid, such as a
+ *                                 NULL pointer or a value outside the valid range defined for this API
  * @retval tvERROR_INVALID_STATE - Interface is not initialized
- * @retval tvERROR_OPERATION_NOT_SUPPORTED - Operation is not supported
+ * @retval tvERROR_OPERATION_NOT_SUPPORTED   - The feature or operation is not supported by the platform
  * @retval tvERROR_GENERAL - Underlying failures - SoC, memory, etc
  *
  * @pre TvInit() should be called before calling this API
@@ -4366,7 +4761,7 @@ tvError_t GetVideoResolutionCaps( tvVideoResolution_t ** resolution, size_t* num
  * The capabilities structure returned by this call is allocated by the HAL function and shall
  * be safe to reference for the lifetime of the process.
  *
- * If the platform does not support backlight, then tvERROR_OPERATION_NOT_SUPPORTED is returned.
+ * If the platform does not support backlightMode, then tvERROR_OPERATION_NOT_SUPPORTED is returned.
  *
  * @param[out] backlight_mode - A structure representing the supported backlight modes.
  * @param[out] num_backlight_mode - The total number of supported backlight modes. Represents the number of elements in the backlight_mode array.
@@ -4375,9 +4770,10 @@ tvError_t GetVideoResolutionCaps( tvVideoResolution_t ** resolution, size_t* num
  * @return tvError_t
  *
  * @retval tvERROR_NONE - Success
- * @retval tvERROR_INVALID_PARAM - Parameter is invalid
+ * @retval tvERROR_INVALID_PARAM - A parameter is invalid, such as a
+ *                                 NULL pointer or a value outside the valid range defined for this API
  * @retval tvERROR_INVALID_STATE - Interface is not initialized
- * @retval tvERROR_OPERATION_NOT_SUPPORTED - Operation is not supported
+ * @retval tvERROR_OPERATION_NOT_SUPPORTED   - The feature or operation is not supported by the platform
  * @retval tvERROR_GENERAL - Underlying failures - SoC, memory, etc
  *
  * @pre TvInit() should be called before calling this API
@@ -4394,6 +4790,8 @@ tvError_t GetBacklightModeCaps(tvBacklightMode_t** backlight_mode, size_t* num_b
  * The source, format, and picture mode shall be validated against the supported video sources, video formats, and
  * picture modes specified in the PQ capability configuration file for the respective feature.
  *
+ * If the platform does not support backlightMode, then tvERROR_OPERATION_NOT_SUPPORTED is returned.
+ *
  * @param[in] videoSrcType          - Source input value. Valid value will be a member of ::tvVideoSrcType_t
  * @param[in] pq_mode               - Picture mode index. Valid value will be a member of ::tvPQModeIndex_t
  * @param[in] videoFormatType       - Video format type value. Valid value will be a member of ::tvVideoFormatType_t
@@ -4402,9 +4800,10 @@ tvError_t GetBacklightModeCaps(tvBacklightMode_t** backlight_mode, size_t* num_b
  * @return tvError_t
  *
  * @retval tvERROR_NONE                     - Success
- * @retval tvERROR_INVALID_PARAM            - Input parameter is invalid
+ * @retval tvERROR_INVALID_PARAM            - A parameter is invalid, such as a
+ *                                            NULL pointer or a value outside the valid range defined for this API
  * @retval tvERROR_INVALID_STATE            - Interface is not initialized
- * @retval tvERROR_OPERATION_NOT_SUPPORTED  - Operation is not supported
+ * @retval tvERROR_OPERATION_NOT_SUPPORTED  - The feature or operation is not supported by the platform
  * @retval tvERROR_GENERAL                  - Underlying failures - SoC, memory, etc
  *
  * @pre TvInit() should be called before calling this API
@@ -4417,6 +4816,8 @@ tvError_t SaveBacklightMode(tvVideoSrcType_t videoSrcType, int pq_mode, tvVideoF
  * This function Sets WhiteBalance (Red,Green,Blue Gain/Offset) for the Given colorTemperature,color,control,current picture mode index, current video source,
  * and current video format.
  *
+ * If the platform does not support 2PointWB, then tvERROR_OPERATION_NOT_SUPPORTED is returned.
+ *
  * Gain                             - Modifies the intensity of Red, Green, and Blue at the brighter level
  * Offset                           - Modifies the intensity of Red, Green, and Blue at the darker level
  *
@@ -4428,9 +4829,10 @@ tvError_t SaveBacklightMode(tvVideoSrcType_t videoSrcType, int pq_mode, tvVideoF
  * @return tvError_t
  *
  * @retval tvERROR_NONE                      - Success
- * @retval tvERROR_INVALID_PARAM             - Input parameter is invalid
+ * @retval tvERROR_INVALID_PARAM             - A parameter is invalid, such as a
+ *                                             NULL pointer or a value outside the valid range defined for this API
  * @retval tvERROR_INVALID_STATE             - Interface is not initialized
- * @retval tvERROR_OPERATION_NOT_SUPPORTED   - Operation is not supported
+ * @retval tvERROR_OPERATION_NOT_SUPPORTED   - The feature or operation is not supported by the platform
  * @retval tvERROR_GENERAL                   - Underlying failures - SoC, memory, etc
  *
  * @pre TvInit() should be called before calling this API
@@ -4443,6 +4845,7 @@ tvError_t Set2PointWB(tvColorTemp_t colorTemperature, tvWBColor_t color, tvWBCon
  *  This function gets the WhiteBalance(Red,Green,Blue Gain/Offset) value for the current video source selected,
  *  current video format played,picture mode selected,given colorTemperature,color and control value.
  *
+ *  If the platform does not support 2PointWB, then tvERROR_OPERATION_NOT_SUPPORTED is returned.
  *
  *  Gain                            - Modifies the intensity of Red, Green, and Blue at the brighter level
  *  Offset                          - Modifies the intensity of Red, Green, and Blue at the darker level
@@ -4455,9 +4858,11 @@ tvError_t Set2PointWB(tvColorTemp_t colorTemperature, tvWBColor_t color, tvWBCon
  * @return tvError_t
  *
  * @retval tvERROR_NONE              - Success
- * @retval tvERROR_INVALID_PARAM     - Parameter is invalid
+ * @retval tvERROR_INVALID_PARAM     - A parameter is invalid, such as a
+ *                                     NULL pointer or a value outside the valid range defined for this API
  * @retval tvERROR_INVALID_STATE     - Interface is not initialized
  * @retval tvERROR_GENERAL           - Underlying failures - SoC, memory, etc
+ * @retval tvERROR_OPERATION_NOT_SUPPORTED   - The feature or operation is not supported by the platform
  *
  * @pre TvInit() should be called before calling this API
  *
@@ -4500,9 +4905,10 @@ tvError_t Get2PointWB(tvColorTemp_t colorTemperature, tvWBColor_t color, tvWBCon
  * @return tvError_t
  *
  * @retval tvERROR_NONE - Success
- * @retval tvERROR_INVALID_PARAM - Parameter is invalid
+ * @retval tvERROR_INVALID_PARAM - A parameter is invalid, such as a
+ *                                 NULL pointer or a value outside the valid range defined for this API
  * @retval tvERROR_INVALID_STATE - Interface is not initialized
- * @retval tvERROR_OPERATION_NOT_SUPPORTED - Operation is not supported
+ * @retval tvERROR_OPERATION_NOT_SUPPORTED   - The feature or operation is not supported by the platform
  * @retval tvERROR_GENERAL - Underlying failures - SoC, memory, etc
  *
  * @pre TvInit() should be called before calling this API
@@ -4517,6 +4923,8 @@ tvError_t Get2PointWBCaps ( int *min_gain, int *min_offset, int *max_gain, int *
  * specified primary video format is played and specified primary video source is selected.
  * The source, format, and picture mode shall be validated against the supported video sources, video formats, and
  * picture modes specified in the PQ capability configuration file for the respective feature.
+ *
+ * If the platform does not support 2PointWB, then tvERROR_OPERATION_NOT_SUPPORTED is returned.
  *
  * Gain                             - Modifies the intensity of Red, Green, and Blue at the brighter level
  * Offset                           - Modifies the intensity of Red, Green, and Blue at the darker level
@@ -4533,9 +4941,10 @@ tvError_t Get2PointWBCaps ( int *min_gain, int *min_offset, int *max_gain, int *
  * @return tvError_t
  *
  * @retval tvERROR_NONE                      - Success
- * @retval tvERROR_INVALID_PARAM             - Input parameter is invalid
+ * @retval tvERROR_INVALID_PARAM             - A parameter is invalid, such as a
+ *                                             NULL pointer or a value outside the valid range defined for this API
  * @retval tvERROR_INVALID_STATE             - Interface is not initialized
- * @retval tvERROR_OPERATION_NOT_SUPPORTED   - Operation is not supported
+ * @retval tvERROR_OPERATION_NOT_SUPPORTED   - The feature or operation is not supported by the platform
  * @retval tvERROR_GENERAL                   - Underlying failures - SoC, memory, etc
  *
  * @pre TvInit() should be called before calling this API
@@ -4548,6 +4957,10 @@ tvError_t Save2PointWB(tvVideoSrcType_t videoSrcType, int pq_mode,tvVideoFormatT
  *
  *  This function gets the default WhiteBalance(Red,Green,Blue Gain/Offset) value for the given videoSource,
  *  videoFormat,pictureMode,colorTemperature,color and control value.
+ *  The source, format, and picture mode shall be validated against the supported video sources, video formats, and
+ *  picture modes specified in the PQ capability configuration file for the respective feature.
+ *
+ *  If the platform does not support 2PointWB, then tvERROR_OPERATION_NOT_SUPPORTED is returned.
  *
  *
  *  Gain                            - Modifies the intensity of Red, Green, and Blue at the brighter level
@@ -4565,9 +4978,11 @@ tvError_t Save2PointWB(tvVideoSrcType_t videoSrcType, int pq_mode,tvVideoFormatT
  * @return tvError_t
  *
  * @retval tvERROR_NONE              - Success
- * @retval tvERROR_INVALID_PARAM     - Parameter is invalid
+ * @retval tvERROR_INVALID_PARAM     - A parameter is invalid, such as a
+ *                                     NULL pointer or a value outside the valid range defined for this API
  * @retval tvERROR_INVALID_STATE     - Interface is not initialized
  * @retval tvERROR_GENERAL           - Underlying failures - SoC, memory, etc
+ * @retval tvERROR_OPERATION_NOT_SUPPORTED   - The feature or operation is not supported by the platform
  *
  * @pre TvInit() should be called before calling this API
  *
@@ -4605,9 +5020,10 @@ tvError_t GetDefault2PointWB(tvVideoSrcType_t videoSrcType, int pq_mode,tvVideoF
  * @return tvError_t
  *
  * @retval tvERROR_NONE - Success
- * @retval tvERROR_INVALID_PARAM - Parameter is invalid
+ * @retval tvERROR_INVALID_PARAM - A parameter is invalid, such as a
+ *                                 NULL pointer or a value outside the valid range defined for this API
  * @retval tvERROR_INVALID_STATE - Interface is not initialized
- * @retval tvERROR_OPERATION_NOT_SUPPORTED - Operation is not supported
+ * @retval tvERROR_OPERATION_NOT_SUPPORTED   - The feature or operation is not supported by the platform
  * @retval tvERROR_GENERAL - Underlying failures - SoC, memory, etc
  *
  * @pre TvInit() should be called before calling this API
@@ -4639,9 +5055,10 @@ tvError_t GetBacklightDimmingLevelCaps(int* maxDimmingLevel, tvContextCaps_t** c
  * @return tvError_t
  *
  * @retval tvERROR_NONE - Success
- * @retval tvERROR_INVALID_PARAM - Input parameter is invalid
+ * @retval tvERROR_INVALID_PARAM - A parameter is invalid, such as a
+ *                                 NULL pointer or a value outside the valid range defined for this API
  * @retval tvERROR_INVALID_STATE - Interface is not initialized
- * @retval tvERROR_OPERATION_NOT_SUPPORTED - Operation is not supported
+ * @retval tvERROR_OPERATION_NOT_SUPPORTED   - The feature or operation is not supported by the platform
  * @retval tvERROR_GENERAL - Underlying failures - SoC, memory, etc
  *
  * @pre TvInit() should be called before calling this API
@@ -4652,6 +5069,8 @@ tvError_t SetBacklightDimmingLevel(tvVideoSrcType_t videoSrcType, tvPQModeIndex_
  *
  * This function gets the Dimming Level value for the specific picture mode,
  * primary video format and primary video source.
+ * The source, format, and picture mode shall be validated against the supported video sources, video formats, and
+ * picture modes specified in the PQ capability configuration file for the respective feature.
  *
  * If the platform does not support Dimming Level, then tvERROR_OPERATION_NOT_SUPPORTED is returned.
  *
@@ -4665,9 +5084,10 @@ tvError_t SetBacklightDimmingLevel(tvVideoSrcType_t videoSrcType, tvPQModeIndex_
  * @return tvError_t
  *
  * @retval tvERROR_NONE - Success
- * @retval tvERROR_INVALID_PARAM - Input parameter is invalid
+ * @retval tvERROR_INVALID_PARAM - A parameter is invalid, such as a
+ *                                 NULL pointer or a value outside the valid range defined for this API
  * @retval tvERROR_INVALID_STATE - Interface is not initialized
- * @retval tvERROR_OPERATION_NOT_SUPPORTED - Operation is not supported
+ * @retval tvERROR_OPERATION_NOT_SUPPORTED   - The feature or operation is not supported by the platform
  * @retval tvERROR_GENERAL - Underlying failures - SoC, memory, etc
  *
  * @pre TvInit() should be called before calling this API
