@@ -4078,38 +4078,6 @@ tvError_t SetMultiPointWBMatrix(tvVideoSrcType_t videoSrcType, tvPQModeIndex_t p
 tvError_t GetMultiPointWBMatrix(tvVideoSrcType_t videoSrcType, tvPQModeIndex_t pq_mode, tvVideoFormatType_t videoFormatType, tvColorTemp_t colorTemp, int * r, int * g, int * b);
 
 /**
- * @brief Gets the default MultiPoint WhiteBalance.
- *
- *  This function gets the default multi-point white balance values for the given videoSource,
- *  videoFormat,pictureMode and colorTemperature.
- *
- *
- *  Gain                            - Modifies the intensity of Red, Green, and Blue at the brighter level
- *  Offset                          - Modifies the intensity of Red, Green, and Blue at the darker level
- *
- * @param[in] videoSrcType          - Source input value.Valid value will be a member of ::tvVideoSrcType_t
- * @param[in] pictureMode           - Picture mode value to be saved.Valid values are as per values returned by
- *                                    ::pic_modes_t.value  parmeter from GetTVSupportedPictureModes API.
- * @param[in] videoFormatType       - Video format type value.Valid value will be a member of ::tvVideoFormatType_t
- * @param[in] colorTemperature      - ColorTemperature value. Valid value will be a member of ::tvColorTemp_t
- * @param[in] r                     - Array of red values.  Element values must be `rgb_min` <= r <= `rgb_max` as returned by GetMultiPointWBCaps().
- * @param[in] g                     - Array of green values.  Element values must be `rgb_min` <= g <= `rgb_max` as returned by GetMultiPointWBCaps().
- * @param[in] b                     - Array of blue values.  Element values must be `rgb_min` <= b <= `rgb_max` as returned by GetMultiPointWBCaps().
- *
- * @return tvError_t
- *
- * @retval tvERROR_NONE              - Success
- * @retval tvERROR_INVALID_PARAM     - Parameter is invalid
- * @retval tvERROR_INVALID_STATE     - Interface is not initialized
- * @retval tvERROR_GENERAL           - Underlying failures - SoC, memory, etc
- *
- * @pre TvInit() should be called before calling this API
- *
- * @see SetMultiPointWBMatrix()
- */
-tvError_t GetDefaultMultiPointWBMatrix(tvVideoSrcType_t videoSrcType, tvPQModeIndex_t pq_mode, tvVideoFormatType_t videoFormatType, tvColorTemp_t colorTemp, int * r, int * g, int * b);
-
-/**
  * @brief Gets the Dolby Vision PQ Calibration setting capabilities supported by the platform.
  *
  * This function gets the DolbyVisionCalibration capabilities from the DolbyVisionCalibration section of the pq_capabilities.json.
