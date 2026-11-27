@@ -404,7 +404,7 @@ tvError_t GetBacklight(int *backlight);
  *
  * This function updates the new backlight value to hardware. The change is applied for current primary video source selected,
  * video format played and picture mode selected and if successful will be saved in override picture profile database.
- * The saved backlight value should be applied automatically whenever the  current picture mode, current primary video format
+ * The saved backlight value should be applied automatically whenever the current picture mode, current primary video format
  * and current primary video source are again selected in future.
  *
  * @param[in] backlight            - Backlight value to be set. Valid range is (0 - 100)
@@ -452,7 +452,7 @@ tvError_t SaveBacklight(tvVideoSrcType_t videoSrcType, int pq_mode,tvVideoFormat
  * @brief Sets the backlight fade settings
  *
  * This function will fade the backlight between 2 different backlight values specified in a given duration.
- * It will only set and does'nt save the value.
+ * It will only set and doesn't save the value.
  * The function call is asynchronous and expected to return immediately after initiating the fading process.
  * If there is change in backlight value due to SetBacklight API call or a change initiated due to
  * picture mode change or primary video source change or primary video format change, the fading stops instantly
@@ -519,7 +519,8 @@ tvError_t GetSupportedBacklightModes(int *blModes);
 /**
  * @brief Gets current blacklight mode
  *
- * This function gets the current backlight mode.
+ * This function gets the current backlight mode for the primary video source selected,
+ * primary video format played and picture mode selected.
  *
  * @param[out] blMode            - Current backlight mode. Valid value will be a member of ::tvBacklightMode_t
  *                                 If more than one value is received then INVALID_PARAM is returned.
@@ -540,7 +541,10 @@ tvError_t GetCurrentBacklightMode(tvBacklightMode_t *blMode);
 /**
  * @brief Sets the backlight mode
  *
- * This function sets the backlight mode.
+ * This function sets the backlight mode to hardware.The change is applied for current primary video source selected,
+ * video format played and picture mode selected and if successful will be saved in override picture profile database.
+ * The saved backlight mode value should be applied automatically whenever the current picture mode,current primary video format
+ * and current primary video source are selected.
  *
  * @param[in] blMode                         - Backlight mode to be set. Valid value can be one of the member of ::tvBacklightMode_t".
  *                                             If more than one value is bitwise OR-ed and passed then the function should return invalid param.
@@ -591,6 +595,7 @@ tvError_t SetCurrentBacklightMode(tvBacklightMode_t blMode);
  * This function updates the new dimming mode to hardware. The change is applied for current primary video source selected,
  * video format played and picture mode selected and if successful will be saved in override picture profile database.
  * The saved dimming mode value should be applied automatically whenever the  current picture mode, current primary video format
+ * and current primary video source are selected.
  * If peak brightness capablity of the panel changes as a result of dimming mode change reload the edid accordingly
  * to update VSVDB string if video format currently playing is handled via Dolby Vision core.
  *
@@ -703,6 +708,7 @@ tvError_t GetTVDimmingModeCaps(tvDimmingMode_t** dimming_mode, size_t* num_dimmi
  * This function updates the new local dimming level to hardware. The change is applied for current primary video source selected,
  * video format played and picture mode selected and if successful will be saved in override picture profile database.
  * The saved local dimming level value should be applied automatically whenever the  current picture mode, current primary video format
+ * and current primary video source are selected.
  * If peak brightness capablity of the panel changes as a result of local dimming level change reload the edid accordingly
  * to update VSVDB string if current video format is handled via Dolby Vision core.
  *
@@ -807,7 +813,8 @@ tvError_t GetBrightnessCaps(int *max_brightness, tvContextCaps_t ** context_caps
  *
  * This function updates the new brightness value to hardware. The change is applied for current primary video source selected,
  * video format played and picture mode selected and if successful will be saved in override picture profile database.
- * The saved brightness value should be applied automatically whenever the  current picture mode, current primary video format
+ * The saved brightness value should be applied automatically whenever the current picture mode, current primary video format
+ * and current primary video source are selected.
  *
  * @param[in] brightness             - Brightness value to be set. Valid range is (0 - 100)
  *
@@ -910,7 +917,8 @@ tvError_t GetContrastCaps(int* max_contrast, tvContextCaps_t ** context_caps);
  *
  * This function updates the new contrast value to hardware. The change is applied for current primary video source selected,
  * video format played and picture mode selected and if successful will be saved in override picture profile database.
- * The saved contrast value should be applied automatically whenever the  current picture mode, current primary video format
+ * The saved contrast value should be applied automatically whenever the current picture mode, current primary video format
+ * and current primary video source are selected.
  *
  * @param[in] contrast               - Contrast value to be set.Valid range is (0 - 100)
  *
@@ -979,7 +987,8 @@ tvError_t SaveContrast(tvVideoSrcType_t videoSrcType, int pq_mode,tvVideoFormatT
  *
  * This function updates the new sharpness value to hardware. The change is applied for current primary video source selected,
  * video format played and picture mode selected and if successful will be saved in override picture profile database.
- * The saved sharpness value should be applied automatically whenever the  current picture mode, current primary video format
+ * The saved sharpness value should be applied automatically whenever the current picture mode, current primary video format
+ * and current primary video source are selected.
  *
  * @param[in] sharpness                - Sharpness value to be set. Valid range is (0 - 100)
  *
@@ -1081,7 +1090,8 @@ tvError_t GetSharpness(int *sharpness);
  *
  * This function updates the new saturation value to hardware. The change is applied for current primary video source selected,
  * video format played and picture mode selected and if successful will be saved in override picture profile database.
- * The saved saturation value should be applied automatically whenever the  current picture mode, current primary video format
+ * The saved saturation value should be applied automatically whenever the current picture mode, current primary video format
+ * and current primary video source are selected.
  *
  * @param[in] saturation              - Saturation value to be set. Valid range is (0 - 100)
  *
@@ -1183,7 +1193,8 @@ tvError_t SaveSaturation(tvVideoSrcType_t videoSrcType, int pq_mode,tvVideoForma
  *
  * This function updates the new hue value to hardware. The change is applied for current primary video source selected,
  * video format played and picture mode selected and if successful will be saved in override picture profile database.
- * The saved hue value should be applied automatically whenever the  current picture mode, current primary video format
+ * The saved hue value should be applied automatically whenever the current picture mode, current primary video format
+ * and current primary video source are selected.
  *
  * @param[in] hue                     - Hue value to be set. Valid range is (0 - 100)
  *
@@ -1257,7 +1268,7 @@ tvError_t GetHue(int *hue);
 /**
  * @brief Saves the hue value
  *
- * This function saves the hue  value in picture profile database for the specific picture mode, primary video format type
+ * This function saves the hue value in picture profile database for the specific picture mode, primary video format type
  * and primary video source. The saved hue value should be applied automatically whenever the
  * specified picture mode is selected, specified primary video format is played and specified primary video source is selected.
  * There will be no change in current hue value applied in PQ module.
@@ -1285,7 +1296,8 @@ tvError_t SaveHue(tvVideoSrcType_t videoSrcType, int pq_mode,tvVideoFormatType_t
  *
  * This function updates the new color temperature value to hardware. The change is applied for current primary video source selected,
  * video format played and picture mode selected and if successful will be saved in override picture profile database.
- * The saved color temperature value should be applied automatically whenever the  current picture mode, current primary video format
+ * The saved color temperature value should be applied automatically whenever the current picture mode, current primary video format
+ *  and current primary video source are selected.
  * Loads the corresponding gamma and white balance values assoicated to the colour temperature from the picure quality database.
  *
  * @param[in] colorTemp              - Color temperature value to be set. Valid value will be a member of ::tvColorTemp_t
@@ -1392,7 +1404,8 @@ tvError_t SaveColorTemperature(tvVideoSrcType_t videoSrcType, int pq_mode,tvVide
  *
  * This function updates the new aspect ratio value to hardware. The change is applied for current primary video source selected,
  * video format played and picture mode selected and if successful will be saved in override picture profile database.
- * The saved aspect ratio value should be applied automatically whenever the  current picture mode, current primary video format
+ * The saved aspect ratio value should be applied automatically whenever the current picture mode, current primary video format
+ * and current primary video source are selected.
  *
  * @param[in] dispMode                - Aspect ratio value to be set. Valid value will be a member of ::tvDisplayMode_t
  *
@@ -1499,7 +1512,8 @@ tvError_t GetAspectRatioCaps(tvDisplayMode_t** aspect_ratio, size_t* num_aspect_
  *
  * This function updates the new low latency state value to hardware. The change is applied for current primary video source selected,
  * video format played and picture mode selected and if successful will be saved in override picture profile database.
- * The saved low latency state value should be applied automatically whenever the  current picture mode, current primary video format
+ * The saved low latency state value should be applied automatically whenever the current picture mode, current primary video format
+ * and current primary video source are selected.
  *
  * @param[in] lowLatencyIndex       - Value of the low latency index to be set. Valid values are ( 0 for disable, 1 for enable)
  *
@@ -1714,7 +1728,8 @@ tvError_t GetTVSupportedDolbyVisionModes(tvDolbyMode_t *dvModes[],unsigned short
  *
  * This function updates the new dolby vision mode value to hardware. The change is applied for current primary video source selected,
  * video format played and picture mode selected and if successful will be saved in override picture profile database.
- * The saved dolby vision mode value should be applied automatically whenever the  current picture mode, current primary video format
+ * The saved dolby vision mode value should be applied automatically whenever the current picture mode, current primary video format
+ * and current primary video source are selected.
  *
  * @param[in] dolbyMode              - Dolby vision mode to be set.  Valid values are member of ::tvDolbyMode_t
  *
@@ -1734,7 +1749,7 @@ tvError_t GetTVSupportedDolbyVisionModes(tvDolbyMode_t *dvModes[],unsigned short
 tvError_t SetTVDolbyVisionMode(tvDolbyMode_t dolbyMode);
 
 /**
- * @brief Gets the current current dolby vision mode
+ * @brief Gets the current dolby vision mode
  *
  * This function gets the current Dolby vision mode value for the primary video source selected,
  * primary video format played and picture mode selected.
@@ -1902,6 +1917,7 @@ tvError_t SetTVPictureMode(const char * pictureMode);
  * This function saves the picturemode in picture profile database for the specific primary video format type
  * and primary video source. The saved picture mode should be applied automatically whenever the
  * specified specified primary video format is played and specified primary video source is selected.
+ * There will be no change in current picturemode applied in PQ module.
  *
  * The source, format, and picture mode shall be validated against the supported video sources, video formats, and
  * picture modes specified in the PQ capability configuration file for the respective feature.
@@ -2304,7 +2320,7 @@ tvError_t GetCurrentWBCalibrationMode(bool *value);
  * This function sets the gamma calibrated values(0 - 1023) for the primary colors to gamma Hardware
  * for the current selected colour temperature, but they are not saved in picture profile database. The gamma values
  * will be discarded and default value from picture profile database is used on colour temperature value change as a result of picture mode change or primary video source
- * change or primary vidoe format change.
+ * change or primary video format change.
  *
  * @param[in] pData_R       - Array of gamma red values. Valid range is (0 - 1023)
  * @param[in] pData_G       - Array of gamma green values. Valid range is (0 - 1023)
@@ -2366,11 +2382,12 @@ tvError_t GetDefaultGammaTable(tvColorTemp_t colortemp, unsigned short *pData_R,
 tvError_t GetGammaTable(unsigned short *pData_R, unsigned short *pData_G, unsigned short *pData_B, unsigned short size);
 
 /**
- * @brief Saves the gamma calibrated values.s
+ * @brief Saves the gamma calibrated values
  *
  * This function saves the gamma calibrated values in picture profile database for the primary colors for a specific color temperature.
  * The saved gamma calibrated values will be automatically applied when the specified colour temperature choice is made
- * as a result of picture mode change or primary video source change or primary vidoe format change.
+ * as a result of picture mode change or primary video source change or primary video format change.
+ * There will be no change in current gamma calibrated values applied in PQ module.
  *
  * @param[in] colortemp       - Color temperature. Valid value will be member of ::tvColorTemp_t
  * @param[out] pData_R        - Array of gamma red values. Valid range is (0 - 1023)
@@ -2390,9 +2407,9 @@ tvError_t GetGammaTable(unsigned short *pData_R, unsigned short *pData_G, unsign
 tvError_t SaveGammaTable(tvColorTemp_t colortemp, unsigned short *pData_R, unsigned short *pData_G, unsigned short *pData_B, unsigned short size);
 
 /**
- * @brief Sets the calibrated Dolby vision TMAX paramaeter in the Dolby vision core.
+ * @brief Sets the calibrated Dolby vision TMAX parameter in the Dolby vision core.
  *
- * This function sets the Dolby vision TMAX paramaeter in the Dolby vision core, but will not be saved in picture profile database.
+ * This function sets the Dolby vision TMAX parameter in the Dolby vision core, but will not be saved in picture profile database.
  * The value is discarded and default value from picture profile database is used when primary video format
  * or primary video source or picture mode changes.
  *
@@ -2411,9 +2428,9 @@ tvError_t SaveGammaTable(tvColorTemp_t colortemp, unsigned short *pData_R, unsig
 tvError_t SetDvTmaxValue(int value);
 
 /**
- * @brief Gets the current Dolby vision TMAX paramaeter from the Dolby vision core.
+ * @brief Gets the current Dolby vision TMAX parameter from the Dolby vision core.
  *
- * This function gets the current Dolby vision TMAX paramaeter from the Dolby vision core.
+ * This function gets the current Dolby vision TMAX parameter from the Dolby vision core.
  *
  * @param[out] value       - Value of the TMAX to be set. Valid range is (0 to 10000)
  *
@@ -2431,11 +2448,12 @@ tvError_t SetDvTmaxValue(int value);
 
 
 /**
- * @brief Saves the Dolby vision TMAX paramaeter
+ * @brief Saves the Dolby vision TMAX parameter
  *
- * This function saves the Dolby vision TMAX paramaeter in picture profile database for the specified LDIM state level.
+ * This function saves the Dolby vision TMAX parameter in picture profile database for the specified LDIM state level.
  * The saved TMAX value will be applied in Dolby Vision core whenever the specified ldim state level is selected
- * as a result of picture mode change or primary video source change or primary vidoe format change.
+ * as a result of picture mode change or primary video source change or primary video format change.
+ * There will be no change in current Dolby vision TMAX parameter values applied in PQ module.
  *
  * @param[in] state       - LDIM state level. Refer ::ldimStateLevel_t
  * @param[in] value       - Value of the TMAX to be saved. Valid range is (0 to 10000)
@@ -2814,7 +2832,7 @@ tvError_t EnableGammaMode(int mode);
  * @brief Sets the gamma pattern
  *
  * This function sets the primary color level at 10bit resolution( 0 - 1023 ). Should bypass all PQ elements @n
- * and display the full screen pattern of the primary colour passed. This function will only set and does'nt save the value.
+ * and display the full screen pattern of the primary colour passed. This function will only set and doesn't save the value.
  *
  * @param[in] is_10_bit         - Value to check if red/green/blue paramter is 10 bit resolution or 8 bit resolution. @n
  *                                  Valid values are  ( @a 0 for 8 bit,  @a 1 for 10 bit). If 8 bit resolution is passed @n
@@ -3168,8 +3186,11 @@ tvError_t GetNumberOfDimmingZones(unsigned int* number_of_dimming_zones);
  /**
  * @brief Sets 2Point Custom WhiteBalance
  *
- * This function sets WhiteBalance (Red,Green,Blue Gain/Offset) for the current picture mode index, current video source,
- * and current video format.
+ * This function Sets WhiteBalance(Red,Green,Blue Gain/Offset) values to the hardware for the Given color,control,
+ * current picture mode index,current video source and current video format. The change is applied for the
+ * current primary video source selected, video format played and picture mode selected and if successfull will be saved
+ * in the override picture profile database. The saved WhiteBalance values should be applied automatically whenever the
+ * current picture mode, current primary video format and current primary video source are selected.
  * The custom WhiteBalance (Red, Green, Blue Gain/Offset) is applicable only when the color temperature is set to tvColorTemp_USER.
  *
  * Gain                             - Modifies the intensity of Red, Green, and Blue at the brighter level
@@ -3264,9 +3285,10 @@ tvError_t GetCustom2PointWhiteBalanceCaps ( int *min_gain, int *min_offset, int 
 /**
  * @brief Saves WhiteBalance
  *
- * This function saves the WhiteBalance in picture profile database for the specific primary video format type
+ * This function saves the WhiteBalance in picture profile database for the specific picture mode, primary video format type
  * and primary video source. The saved Whitebalance value should be applied automatically whenever the
- * specified specified primary video format is played and specified primary video source is selected.
+ * specified picture mode, primary video format is played and  primary video source is selected.
+ * There will be no change in current White Balance values applied in PQ module.
  * Gain                             - Modifies the intensity of Red, Green, and Blue at the brighter level
  * Offset                           - Modifies the intensity of Red, Green, and Blue at the darker level
  * The source, format, and picture mode shall be validated against the supported video sources, video formats, and
@@ -3354,10 +3376,10 @@ tvError_t GetPrecisionDetail(tvVideoSrcType_t videoSrcType, tvPQModeIndex_t pq_m
  *
  * This function sets the new precision detail setting, which only applies to the certain video formats in specific
  * picture modes and sources.
- * The change is applied to hardware if the current video format (DV) and picture mode (DV IQ or DV Bright) support
+ * The change is applied to hardware if the current video format (DV),video source and picture mode (DV IQ or DV Bright) support
  * precision detail.
- * The saved precision detail setting shall be applied automatically whenever the current picture mode and current
- * primary video format support precision detail.
+ * The saved precision detail setting shall be applied automatically whenever the specified picture mode, primary video source
+ * and primary video format is selected.
  * The source, format, and picture mode shall be validated against the supported video sources, video formats, and
  * picture modes specified in the PQ capability configuration file for the respective feature.
  *
@@ -3511,10 +3533,9 @@ tvError_t GetLocalContrastEnhancementCaps(int * maxLocalContrastEnhancement, tvC
 /**
  * @brief Sets the local contrast enhancement value.
  *
- * This function sets the local contrast enhancement value for the specified picture mode,
- * primary video format and primary video source. The local contrast enhancement value should be applied
- * automatically whenever the
- * specified picture mode, primary video format and primary video source is selected.
+ * This function sets the local contrast enhancement value in the picture profile database for the specified picture mode,
+ * primary video format and primary video source. The saved local contrast enhancement value should be applied
+ * automatically whenever the specified picture mode, primary video format and primary video source is selected.
  *
  * The local contrast enhancement value is applied in the PQ module if the current picture mode, primary video
  * format and primary video source match the parameters.
@@ -3608,8 +3629,8 @@ tvError_t GetMPEGNoiseReductionCaps(int * maxMPEGNoiseReduction, tvContextCaps_t
 /**
  * @brief Sets the MPEG noise reduction value.
  *
- * This function sets the MPEG noise reduction value for the specific picture mode,
- * primary video format and primary video source. The set MPEG noise reduction value should be applied automatically whenever the
+ * This function sets the MPEG noise reduction value in the picture profile database for the specific picture mode,
+ * primary video format and primary video source. The saved MPEG noise reduction value should be applied automatically whenever the
  * specified picture mode, primary video format and primary video source is selected.
  *
  * The MPEG noise reduction value is applied in the PQ module if the current picture mode, primary video format and
@@ -3703,9 +3724,9 @@ tvError_t GetDigitalNoiseReductionCaps(int * maxDigitalNoiseReduction, tvContext
 /**
  * @brief Sets the digital noise reduction value.
  *
- * This function sets the digital noise reduction value for the specified picture mode,
- * primary video format and primary video source. The digital noise reduction value should be applied automatically whenever the
- * specified picture mode, primary video format and primary video source are selected.
+ * This function sets the digital noise reduction in the picture profile database value for the specified picture mode,
+ * primary video format and primary video source. The saved digital noise reduction value should be applied automatically
+ * whenever the specified picture mode, primary video format and primary video source are selected.
  *
  * The digital noise reduction value is applied in the PQ module if the current picture mode, primary video format and
  * primary video source match the parameters.
@@ -3803,8 +3824,8 @@ tvError_t GetAISuperResolutionCaps(int * maxAISuperResolution, tvContextCaps_t *
  * primary video format and primary video source. The saved AI super resolution value shall be applied automatically whenever the
  * specified picture mode, primary video format and primary video source is selected.
  *
- * The AI super resolution value is applied in the PQ module if the current picture mode and video source match
- * the parameters.
+ * The AI super resolution value is applied in the PQ module if the current picture mode, primary video format and
+ * primary video source match the parameters.
  * The source, format, and picture mode shall be validated against the supported video sources, video formats, and
  * picture modes specified in the PQ capability configuration file for the respective feature.
  *
@@ -3900,8 +3921,8 @@ tvError_t GetMEMCCaps(int * maxMEMC, tvContextCaps_t ** context_caps);
  * primary video format and primary video source. The saved MEMC value shall be applied automatically whenever the
  * specified picture mode, primary video format and primary video source is selected.
  *
- * The MEMC value is applied in the PQ module if the current picture mode and video source match
- * the parameters.
+ * The MEMC value is applied in the PQ module if the current picture mode, primary video format and
+ * primary video source match the parameters.
  * The source, format, and picture mode shall be validated against the supported video sources, video formats, and
  * picture modes specified in the PQ capability configuration file for the respective feature.
  *
@@ -4123,13 +4144,16 @@ tvError_t GetDVCalibrationCaps(tvDVCalibrationSettings_t **min_values, tvDVCalib
 /**
  * @brief Sets the Dolby Vision PQ calibration values.
  *
- * This function sets the Dolby Vision PQ calibration values in the picture profile database for the specified picture mode.
- * The saved calibration values shall be applied automatically whenever the specified picture mode is selected.
+ * This function sets the Dolby Vision PQ calibration values in the picture profile database for the specified picture mode,
+ * primary video format and primary video source.
+ * The saved calibration values shall be applied automatically whenever the specified picture mode,
+ * primary video format and primary video source are selected.
  *
  * The source, format, and picture mode shall be validated against the supported video sources, video formats, and
  * picture modes specified in the PQ capability configuration file for the respective feature.
  *
- * The calibration values are applied in the PQ module if the current picture mode matches the parameters.
+ * The calibration values are applied in the PQ module if the current picture mode, primary video format and
+ * primary video source match the parameters.
  *
  * If the platform does not support Dolby Vision PQ calibration, then tvERROR_OPERATION_NOT_SUPPORTED is returned.
  *
@@ -4154,7 +4178,8 @@ tvError_t SetDVCalibration(tvVideoSrcType_t videoSrcType, tvPQModeIndex_t pq_mod
 /**
  * @brief Gets the Dolby Vision PQ calibration values.
  *
- * This function gets the Dolby Vision PQ calibration values in the picture profile database for the specified picture mode.
+ * This function gets the Dolby Vision PQ calibration values in the picture profile database for the specified picture mode,
+ * primary video format and primary video source.
  *
  * If the platform does not support Dolby Vision PQ calibration, then tvERROR_OPERATION_NOT_SUPPORTED is returned.
  * If no Dolby Vision PQ calibration has been set for the specified picture mode, then tvERROR_GENERAL is returned.
@@ -4181,7 +4206,8 @@ tvError_t GetDVCalibration(tvVideoSrcType_t videoSrcType, tvPQModeIndex_t pq_mod
 /**
  * @brief Gets the default Dolby Vision PQ calibration values.
  *
- * This function gets the default Dolby Vision PQ calibration values in the picture profile database for the specified picture mode.
+ * This function gets the default Dolby Vision PQ calibration values in the picture profile database for the specified
+ * picture mode, primary video format and primary video source.
  *
  * If the platform does not support Dolby Vision PQ calibration, then tvERROR_OPERATION_NOT_SUPPORTED is returned.
  *
@@ -4414,8 +4440,12 @@ tvError_t SaveBacklightMode(tvVideoSrcType_t videoSrcType, int pq_mode, tvVideoF
 /**
  * @brief Sets 2Point WhiteBalance across all colorTemperature
  *
- * This function Sets WhiteBalance (Red,Green,Blue Gain/Offset) for the Given colorTemperature,color,control,current picture mode index, current video source,
- * and current video format.
+ * This function Sets WhiteBalance(Red,Green,Blue Gain/Offset) values to the hardware for the Given colorTemperature,color,control,
+ * current picture mode index, current video source and current video format.
+ * The change is applied for the current primary video source selected, video format played and picture mode selected
+ * and if successfull will be saved in the override picture profile database.
+ * The saved WhiteBalance values should be applied automatically whenever the specified colorTemperature and the current
+ * picture mode, current primary video format and current primary video source are selected.
  *
  * Gain                             - Modifies the intensity of Red, Green, and Blue at the brighter level
  * Offset                           - Modifies the intensity of Red, Green, and Blue at the darker level
@@ -4512,9 +4542,10 @@ tvError_t Get2PointWBCaps ( int *min_gain, int *min_offset, int *max_gain, int *
 /**
  * @brief Saves 2PointWB
  *
- * This function saves the WhiteBalance in picture profile database for the specific colorTemperature, primary video format type
- * PictureMode and primary video source. The saved Whitebalance value should be applied automatically whenever the
- * specified primary video format is played and specified primary video source is selected.
+ * This function saves the WhiteBalance in picture profile database for the specific colorTemperature, primary video format type,
+ * pictureMode and primary video source. The saved Whitebalance value should be applied automatically whenever the
+ * specified picture mode, primary video format is played and primary video source is selected.
+ * There will be no change in current WhiteBalance value applied in PQ module.
  * The source, format, and picture mode shall be validated against the supported video sources, video formats, and
  * picture modes specified in the PQ capability configuration file for the respective feature.
  *
